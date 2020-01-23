@@ -22,3 +22,5 @@ colnames(thomp_sub)[2] <- "percent_cor_subs"
 
 # merge by site and year - abundance should be the same per site and year?? check they are! 
 # will need error adjustments for data thief
+
+
