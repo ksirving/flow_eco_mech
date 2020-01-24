@@ -6,6 +6,7 @@
 setwd("/Users/katieirving/Documents/git/flow_eco_mech")
 
 library(tidyverse)
+library(magrittr)
 
 # various data sets from literature. fish info, e.g. abundance, with environmental variables in various formats.
 # purpose here is to consolidate and standardize
@@ -136,6 +137,41 @@ dis_sub <- dis_sub[,c(1,2,4,6,9)]
 dis_sub  
 
 write.csv(dis_sub, "output_data/00_thompson_clean.csv")  
-  
+
+dis_sub <- read.csv("output_data/00_thompson_clean.csv")
+dis_sub
+# upload environmental varaiables from table
+env_vars <- read.csv("input_data/Thompson_env_data.csv")
+env_vars <- env_vars[-16,] # remove extra row
+env_vars$Site <- as.character(env_vars$Site)
+env_vars$X <- NULL
+env_vars$Year <- as.numeric(as.character(env_vars$Year))
+# replace small letters with capitals to match dfs
+dis_sub_site <- dis_sub$site
+
+dis_sub_site %<>%
+  gsub("a","A", .) %>%
+    gsub("b", "B", .) %>%
+      gsub("c", "C", .)
+
+
+dis_sub$site <- dis_sub_site
+colnames(dis_sub) [2:3] <- c("Site", "Year")
+dis_sub$Year <- as.numeric(as.character(dis_sub$Year))
+
+str(dis_sub)
+str(env_vars)
+# merge datasets 
+all_data <- merge(dis_sub, env_vars, by=c("Year", "Site"), all=T)
+all_data$X <- NULL
+all_data$method <- paste("electro3")
+all_data$scale_m <- paste("100")
+write.csv(all_data, "output_data/00_Thompson_all_data_clean.csv")
+#################
+# upload and clean SMEA data 
+
+#  2002 - 2008 (missing 2006)
+#  thompson & SMEA - survey method??
+
   
   
