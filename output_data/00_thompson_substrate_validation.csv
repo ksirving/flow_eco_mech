@@ -1,0 +1,16 @@
+,abundance,percent_cor_subs,site,year,s_symbol,y_symbol
+1,0.9914,-0.00121,c,2005,diamond,open
+2,6.4434,0.1158,c,2008,diamond,diagonal
+3,4.6561,0.1327,b,2008,square,diagonal
+4,1.0033,0.1617,b,2005,square,open
+5,-0.00563,0.1894,c,2007,diamond,vertical
+6,-0.0022,0.2365,b,2007,square,vertical
+7,9.8385,0.2848,b,2003,square,solid
+8,8.4805,0.3246,c,2003,diamond,solid
+9,10.7923,0.5671,a,2006,circle,horizontal
+10,10.215,0.6492,b,2006,square,horizontal
+11,10.5683,0.6949,b,2007,diamond,vertical
+12,11.037,0.724,a,2005,diamond,open
+13,-0.00299,0.759,c,2006,diamond,horizontal
+14,14.892,0.5733,b,2004,square,curved_diag
+15,15.1453,0.786,a,2008,circle,diagonal
