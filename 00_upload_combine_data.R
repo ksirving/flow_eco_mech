@@ -171,7 +171,26 @@ write.csv(all_data, "output_data/00_Thompson_all_data_clean.csv")
 # upload and clean SMEA data 
 
 #  2002 - 2008 (missing 2006)
-#  thompson & SMEA - survey method??
+#  thompson & SMEA - survey method?? habitat utilization = observations
 
-  
-  
+## upload SMEA data
+
+dep_ad <- read.csv("input_data/SMEA_depth_2003_2004_adult.csv", header=T)
+sub_ad <- read.csv("input_data/SMEA_substrate_2003_2004_adult.csv", header=T)
+vel_ad <- read.csv("input_data/SMEA_velocity_2003_2004_adult.csv", header =T)
+
+
+dep_ad
+
+# transform percentage into abundance
+#  seapare years
+
+ 
+dep_ad_03 <- dep_ad[, 1:5]
+dep_ad_04 <- dep_ad[,c(1,6:8)]
+dep_ad_03
+
+write.csv(dep_ad_03, "output_data/00_SMEA_depth_adult_2003.csv")
+write.csv(dep_ad_04, "output_data/00_SMEA_depth_adult_2004.csv")
+
+dep_ad_03$M_Blvd_ab <- round(dep_ad_03$M_Blvd/100*28)
