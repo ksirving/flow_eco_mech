@@ -414,52 +414,19 @@ sand$Abundance_r <- round(sand$Abundance)
 
 #  they should match - they do!!
 cobble$Abundance_r %in% sand$Abundance_r
+?order
+cobble <- cobble[order(cobble$Abundance_r,decreasing=T),]
+sand <- sand[order(sand$Abundance_r,decreasing=T),] 
+sand
 cobble
 
-# add reach number
-
-reach <- read.csv("input_data/SAS_2014_abundance_v_reach_number.csv")
-reach
-
-reach_no_z <- subset(reach, !abundance ==0)
-reach_no_z
-
-cobble_no_z <- subset(cobble, !Abundance_r ==0)
-sand_no_z <- subset(sand, !Abundance_r ==0)
-cobble_no_z
-sand_no_z
-
-substrate <- merge(sand_no_z, cobble_no_z, by="Abundance_r")
+substrate <- cbind(sand,cobble)
 substrate
 
 #  remove old abundance columns
-substrate <- substrate[,-c(2,5)]
-substrate <- substrate[!duplicated(substrate),]
+substrate <- substrate[,-c(1,5,6)]
+# data combined but can't be 100% sure that cobble v sand are correct in zero abundance sites
 
-#  add reach number
-
-reach_sub <- merge(reach_no_z, substrate, by.x="abundance", by.y="Abundance_r")
-reach_sub
-
-#  same with remaining zeros - reach will not match data in report but no other way of getting reach number
-reach_no_z <- subset(reach, abundance ==0)
-reach_no_z
-
-cobble_no_z <- subset(cobble, Abundance_r ==0)
-sand_no_z <- subset(sand, Abundance_r ==0)
-cobble_no_z
-sand_no_z
-
-substrate <- merge(sand_no_z, cobble_no_z, by="Abundance_r")
-substrate
-
-#  remove old abundance columns
-substrate <- substrate[,-c(2,5)]
-substrate <- substrate[!duplicated(substrate),]
-
-#  add reach number
-
-reach_sub <- merge(reach_no_z, substrate, by.x="abundance", by.y="Abundance_r")
-reach_sub
+write.csv(substrate, "output_data/00_SAS_2014_abundance_substrate.csv")
 
 
