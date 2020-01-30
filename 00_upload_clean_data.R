@@ -536,4 +536,31 @@ envicr <- envicr[-1,]
 envicr
 
 write.csv(envicr, "output_data/00_Envicraft_2010_Temp_abundance.csv")
-  
+
+# ######## Saiki - distribution data
+
+depth <- read.csv("input_data/Saiki_et_al_2000_Depth_dist.csv")
+depth
+
+substrate <- read.csv("input_data/Saiki_et_al_2000_substrate_dist.csv")
+substrate # only sand present at MWD
+
+velo <- read.csv("input_data/Saiki_et_al_2000_velocity_dist.csv")
+velo  
+
+sum(depth$SGR_N) # 532
+sum(depth$MWD_N) # 157
+
+sum(substrate$SGR_N) # 531
+sum(substrate$MWD_N) # 158 # same in paper - don't know why numbers different - error?
+
+sum(velo$SGR_N) # 532
+sum(velo$MWD_N) # 157
+
+## save
+write.csv(depth, "output_data/00_Saiki_2000_depth_dist.csv")
+write.csv(substrate, "output_data/00_Saiki_2000_substrate_dist.csv")
+write.csv(velo, "output_data/00_Saiki_2000_velocity_dist.csv")
+
+
+
