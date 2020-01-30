@@ -429,4 +429,64 @@ substrate <- substrate[,-c(1,5,6)]
 
 write.csv(substrate, "output_data/00_SAS_2014_abundance_substrate.csv")
 
+# Brown et al 2005
 
+#  upload 
+brown <- read.csv("input_data/Brown_etal_2005_env_vars.csv", header=T)
+brown
+#  select relevant columns
+
+brown <- brown[,c(1,2,7,9,10,11, 12)]
+colnames(brown) <- c("Site", "Discharge", "Depth", "Substrate", "Spec_cond", "Temp","P/A")
+
+#  add year and fish method
+
+brown$Year <- paste("2000")
+brown$Method <-paste("electro1")
+
+brown$Substrate_cat  
+
+if(brown$Substrate <= 1.5)
+
+
+
+#  covert substrate values to category
+
+
+sites <- brown$Site
+sites
+x=1
+
+for(x in 1: length (sites)) {
+
+if(brown$Substrate[x] <= 1.5) {
+  brown$Substrate_cat [x] <- paste("Concrete") 
+  
+} else if (brown$Substrate[x] >= 1.6 && brown$Substrate[x] <= 2.5) {
+  brown$Substrate_cat [x] <- paste("Silt_mud") 
+  
+} else if (brown$Substrate[x] >= 2.6 && brown$Substrate[x] <= 3.5) {
+  brown$Substrate_cat [x] <- paste("Sand") 
+  
+} else if (brown$Substrate[x] >= 3.6 && brown$Substrate[x] <= 4.5) {
+  brown$Substrate_cat [x] <- paste("Fine_Sediment")   
+  
+} else if (brown$Substrate[x] >= 4.6 && brown$Substrate[x] <= 5.5) {
+  brown$Substrate_cat [x] <- paste("Coarse_Sediment") 
+  
+} else if (brown$Substrate[x] >= 5.6 && brown$Substrate[x] <= 6.5) {
+  brown$Substrate_cat [x] <- paste("Very_Coarse_Sediment") 
+  
+} else if (brown$Substrate[x] >= 6.6 && brown$Substrate[x] <= 7.5) {
+  brown$Substrate_cat [x] <- paste("Small_Cobble") 
+ 
+  
+} else {
+  brown$Substrate_cat [x] <- paste("Large_Cobble") 
+}
+
+}
+
+brown
+write.csv(brown, "output_data/00_Brown_2000_abundance_env_vars.csv")  
+  
