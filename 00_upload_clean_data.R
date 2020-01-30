@@ -489,4 +489,51 @@ if(brown$Substrate[x] <= 1.5) {
 
 brown
 write.csv(brown, "output_data/00_Brown_2000_abundance_env_vars.csv")  
+
+# SAWA report 2014
+
+## upload
+
+abund <- read.csv("input_data/SAWA_2014_sas_abundance.csv")
+colnames(abund)[2] <- "abundance"
+abund
+env_vars <- read.csv("input_data/SAWA_2014_env_vars.csv")
+env_vars
+env_vars <- env_vars[,c(1,2,3,7)]
+colnames(env_vars) <- c("Site", "Section", "Temp", "pH")
+
+
+hab_vars <- read.csv("input_data/SAWA_2014_hab_vars.csv")
+hab_vars
+hab_vars <- hab_vars[,c(1,2,3,4,5,6,9:13)]
+colnames(hab_vars) <- c("Site", "Section", "Channel_width_m", "Max_depth_cm", 
+                        "depth_edge_east_cm", "depth_edge_west_cm", "mud_silt", 
+                        "sand", "gravel", "cobble", "boulder" )
+
+# merge env and hab data
+env_hab_vars <- merge(hab_vars, env_vars, by=c("Site", "Section"))
+env_hab_vars
+
+#  merge with abundance
+
+abun_env_hab <- merge(env_hab_vars, abund, by="Site", all=T)
+
+abun_env_hab
+# substrate in different format - will need to standardise to combine. 
+# don't know what the repeated measurements mean
+
+write.csv(abun_env_hab, "output_data/00_SAWA_2014_env_hab_abundance.csv")
+
+# envicraft - only for temp range
+
+envicr <- read.csv("input_data/Enicraft_survey_and_reloc_2010_appendix.csv")
+
+envicr <- envicr[-c(1,12:19),] 
+rownames(envicr) <- envicr$Date
+
+envicr <- as.data.frame(t(envicr))
+envicr <- envicr[-1,]
+envicr
+
+write.csv(envicr, "output_data/00_Envicraft_2010_Temp_abundance.csv")
   
