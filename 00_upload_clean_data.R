@@ -562,5 +562,495 @@ write.csv(depth, "output_data/00_Saiki_2000_depth_dist.csv")
 write.csv(substrate, "output_data/00_Saiki_2000_substrate_dist.csv")
 write.csv(velo, "output_data/00_Saiki_2000_velocity_dist.csv")
 
+# SAR 2015 
+
+# upload data
+
+micro_avail <- read.csv("input_data/SAR 2015 Microhabitat Availability.csv")
+micro_use <- read.csv("input_data/SAR 2015 Microhabitat Use.csv")
+fish_data <- read.csv("input_data/SAR 2015 Reach Fish Data.csv")
+
+colnames(micro_avail)[8:13] <- c("Transect", "ch_width_m", "Depth_cm", "Velocity_0.6_ms","Velocity_0.2_ms", "Velocity_0.8_ms")
+micro_avail <- micro_avail[,-c(4, 19,20)]
+names(micro_avail)
+
+names(micro_use) [14:20] <- c("length_mm", "Distance_fish_abv_bottom_cm", "Velocity_at_fish_ms", "Depth_cm", "Velocity_0.6_ms", "Velocity_0.2_ms", "Velocity_0.8_ms")
+head(micro_use)
+micro_use$coord_code <- paste(micro_use$Latitude, "_", micro_use$Longitude, sep="")
+unique(micro_use$coord_code) # 11 sites in total
+dim(micro_use)
+
+#  make sure species name is homogenous
+micro_usex
+micro_use$Species <- gsub("Santa Ana sucker", "Santa Ana Sucker", micro_use$Species)
+unique(micro_use$Species)
+
+#  look at sucker sites
+
+micro_suck <- subset(micro_use, Species=="Santa Ana Sucker")
+dim(micro_suck) # 136
+
+unique(micro_suck$coord_code) # present at all sites
+
+#  combine datasets??
+
+names(micro_avail) # habitat info
+names(micro_use) # species, abundance and habitat
+names(fish_data) # species info e.g. FL etc
+
+# size classes - TL=5.9122 + 1.1092*SL
+# standard length juvenile = 21-30mm
+
+head(fish_data)
+
+#  add life stage
+str(fish_data)
+fish_data$Fork.length <- as.numeric(as.character(fish_data$Fork.length))
+fish_data$Total.length <- as.numeric(as.character(fish_data$Total.length))
+
+sum(is.na(fish_data$Fork.length)) # 714
+sum(is.na(fish_data$Total.length)) # 2115
+
+na_rows <- which(is.na(fish_data$Fork.length))
+fish_data[na_rows,] # total length taken not fork length
+
+# remove fork length NAs and run if/else
+
+fish_dataFL <- fish_data[-na_rows, ]
+fish_dataTL <- fish_data[na_rows, ]
+
+fish <- row.names(fish_dataFL)
+fish
+
+
+for(x in 1: length (fish)) {
+  
+  if(fish_dataFL$Fork.length[x] <= 20) {
+    fish_dataFL$life_stage [x] <- paste("Larvae") 
+    
+  # } else if (fish_data$Fork.length[x] = NA) {
+  #   fish_data$life_stage  [x] <- paste("NA") 
+    
+  } else if (fish_dataFL$Fork.length[x] >= 21 && fish_dataFL$Fork.length[x] <= 30) {
+    fish_dataFL$life_stage  [x] <- paste("Juvenile") 
+
+  } else {
+    fish_dataFL$life_stage [x] <- paste("Adult") 
+  }
+  
+}
+
+head(fish_dataFL)
+unique(fish_dataFL$life_stage)
+
+# run for TL 
+#  first estimate sl from TL
+#  TL=5.9122 + 1.1092*SL
+
+# SL = (TL-5.9122)/1.1092
+
+
+x
+fish_dataTL$standard.length <- (fish_dataTL$Total.length - 5.9122)/1.1092
+
+sum(is.na(fish_dataTL$standard.length)) #19
+na_rows <- which(is.na(fish_dataTL$standard.length))
+
+fish_dataTL <- fish_dataTL[-na_rows,] # remove as no sas here
+fish <- row.names(fish_dataTL)
+fish
+
+for(x in 1: length (fish)) {
+  
+  if(fish_dataTL$standard.length[x] <= 20) {
+    fish_dataTL$life_stage [x] <- paste("Larvae") 
+    
+    # } else if (fish_data$Fork.length[x] = NA) {
+    #   fish_data$life_stage  [x] <- paste("NA") 
+    
+  } else if (fish_dataTL$standard.length[x] >= 21 && fish_dataTL$standard.length[x] <= 30) {
+    fish_dataTL$life_stage  [x] <- paste("Juvenile") 
+    
+  } else {
+    fish_dataTL$life_stage [x] <- paste("Adult") 
+  }
+  
+}
+
+head(fish_dataFL)
+unique(fish_dataTL$life_stage)
+
+fish_dataFL$standard.length <- 0
+
+#  combine datasets
+
+fish_data_all <- rbind(fish_dataFL, fish_dataTL)
+unique(fish_data_all$Common.name)
+# subset to only SAS to merge length data with env data
+
+fish_data_sas <- subset(fish_data_all, Common.name=="Santa Ana Sucker")
+unique(fish_data_sas$life_stage) # only adult
+
+
+head(micro_avail)
+head(micro_suck)
+head(fish_data_sas)
+
+#  as all adults, only micro_suck needed
+
+names(micro_suck)
+
+depth <- micro_suck[,c(1:3,5,6,7,12,13,17,27)]
+head(depth)
+substrate <- micro_suck[,c(1:3,5,6,7,12,13,23,27)]
+velocity <- micro_suck[,c(1:3,5,6,7,12,13,16,18:20,27)]
+
+# save 
+
+write.csv(depth, "output_data/00_Wulff_2015_depth_abundance.csv")
+write.csv(substrate, "output_data/00_Wulff_2015_substrate_abundance.csv")
+write.csv(velocity, "output_data/00_Wulff_2015_velocity_abundance.csv")
+
+#  SAR 2016 
+
+# upload data
+
+micro_avail <- read.csv("input_data/SAR 2016 Microhabitat Availability Data.csv")
+micro_use <- read.csv("input_data/SAR 2016 Microhabitat Use Data.csv")
+fish_data <- read.csv("input_data/SAR 2016 Reach Fish Data_v3_2.05.2019.csv")
+reach_data <- read.csv("input_data/SAR 2016 Reach Habitat Data.csv")
+
+head(micro_avail)
+
+colnames(micro_avail)[7:9] <- c("ch_width_m", "Depth_cm", "Velocity_0.6_ms")
+# micro_avail <- micro_avail[,-c(4, 19,20)]
+names(micro_avail)
+
+names(micro_use)
+names(micro_use) [14:20] <- c("length_mm", "Distance_fish_abv_bottom_cm", "Velocity_at_fish_ms", "Depth_cm", "Velocity_0.6_ms", "Velocity_0.2_ms", "Velocity_0.8_ms")
+head(micro_use)
+micro_use$coord_code_s <- paste(micro_use$Starting.Latitude, "_", micro_use$Starting.Longitude, sep="")
+micro_use$coord_code_e <- paste(micro_use$Ending.Latitude, "_", micro_use$Ending.Longitude, sep="")
+
+unique(micro_use$coord_code_e) # 3 sites in total
+dim(micro_use)
+
+#  make sure species name is homogenous
+micro_usex
+micro_use$Species <- gsub("Santa Ana sucker", "Santa Ana Sucker", micro_use$Species)
+unique(micro_use$Species)
+
+#  look at sucker sites
+
+micro_suck <- subset(micro_use, Species=="Santa Ana Sucker")
+dim(micro_suck) # 78
+
+unique(micro_suck$coord_code) # present at all sites
+
+#  combine datasets??
+
+names(micro_avail) # habitat info
+names(micro_use) # species, abundance and habitat
+names(fish_data) # species info e.g. FL etc
+
+# size classes - TL=5.9122 + 1.1092*SL
+# standard length juvenile = 21-30mm
+
+head(fish_data)
+
+colnames(fish_data)[10:11] <- c("Total.length", "Fork.length")
+
+#  add life stage
+str(fish_data)
+fish_data$Fork.length <- as.numeric(as.character(fish_data$Fork.length))
+fish_data$Total.length <- as.numeric(as.character(fish_data$Total.length))
+
+sum(is.na(fish_data$Fork.length)) # 1375
+sum(is.na(fish_data$Total.length)) # 1907
+
+na_rows <- which(is.na(fish_data$Fork.length))
+fish_data[na_rows,] # total length taken not fork length
+
+# remove fork length NAs and run if/else
+
+fish_dataFL <- fish_data[-na_rows, ]
+fish_dataTL <- fish_data[na_rows, ]
+
+fish <- row.names(fish_dataFL)
+fish
+
+
+for(x in 1: length (fish)) {
+  
+  if(fish_dataFL$Fork.length[x] <= 20) {
+    fish_dataFL$life_stage [x] <- paste("Larvae") 
+    
+    # } else if (fish_data$Fork.length[x] = NA) {
+    #   fish_data$life_stage  [x] <- paste("NA") 
+    
+  } else if (fish_dataFL$Fork.length[x] >= 21 && fish_dataFL$Fork.length[x] <= 30) {
+    fish_dataFL$life_stage  [x] <- paste("Juvenile") 
+    
+  } else {
+    fish_dataFL$life_stage [x] <- paste("Adult") 
+  }
+  
+}
+
+head(fish_dataFL)
+unique(fish_dataFL$life_stage)
+
+# run for TL 
+#  first estimate sl from TL
+#  TL=5.9122 + 1.1092*SL
+
+# SL = (TL-5.9122)/1.1092
+
+
+fish_dataTL$standard.length <- (fish_dataTL$Total.length - 5.9122)/1.1092
+
+sum(is.na(fish_dataTL$standard.length)) #19
+na_rows <- which(is.na(fish_dataTL$standard.length))
+
+fish_dataTL[na_rows,]
+
+fish_dataTL <- fish_dataTL[-na_rows,] # remove as no sas here
+fish <- row.names(fish_dataTL)
+fish
+
+for(x in 1: length (fish)) {
+  
+  if(fish_dataTL$standard.length[x] <= 20) {
+    fish_dataTL$life_stage [x] <- paste("Larvae") 
+    
+    # } else if (fish_data$Fork.length[x] = NA) {
+    #   fish_data$life_stage  [x] <- paste("NA") 
+    
+  } else if (fish_dataTL$standard.length[x] >= 21 && fish_dataTL$standard.length[x] <= 30) {
+    fish_dataTL$life_stage  [x] <- paste("Juvenile") 
+    
+  } else {
+    fish_dataTL$life_stage [x] <- paste("Adult") 
+  }
+  
+}
+
+head(fish_dataFL)
+unique(fish_dataTL$life_stage)
+
+fish_dataFL$standard.length <- 0
+
+#  combine datasets
+
+fish_data_all <- rbind(fish_dataFL, fish_dataTL)
+unique(fish_data_all$Common.Name)
+# subset to only SAS to merge length data with env data
+
+fish_data_sas <- subset(fish_data_all, Common.Name=="Santa Ana Sucker")
+unique(fish_data_sas$life_stage) # only adult
+
+
+head(micro_avail)
+head(micro_suck)
+head(fish_data_sas)
+head(reach_data)
+
+micro_suck$site_code <- paste(micro_suck$Location, "_", micro_suck$Section, sep="")
+unique(micro_suck$site_code) # 2
+
+micro_avail$site_code <- paste(micro_avail$Location, "_", micro_avail$Section, sep="")
+unique(micro_avail$site_code) # 2
+micro_avail$coord_code <- paste(micro_avail$Latitude, "_", micro_avail$Longitude, sep="")
+unique(micro_avail$coord_code)
+
+reach_data$site_code <- paste(reach_data$Location, "_", reach_data$Section, sep="")
+unique(reach_data$site_code) # 7 sites
+reach_data$coord_code <- paste(reach_data$Latitude, "_", reach_data$Longitude, sep="")
+unique(reach_data$coord_code)
+#  as all adults, only micro_suck needed
+
+names(micro_suck)
+
+depth <- micro_suck[,c(1:4,5,6,7,12,13,17,27, 29)]
+head(depth)
+substrate <- micro_suck[,c(1:4,5,6,7,12,13,21,27, 29)]
+velocity <- micro_suck[,c(1:4,5,6,7,12,13,16,18:20,27, 29)]
+head(velocity)
+head(substrate)
+# save 
+
+write.csv(depth, "output_data/00_Wulff_2016_depth_abundance.csv")
+write.csv(substrate, "output_data/00_Wulff_2016_substrate_abundance.csv")
+write.csv(velocity, "output_data/00_Wulff_2016_velocity_abundance.csv")
+
+# SAR 2017
+
+
+# upload data
+# micro_avail - not taken in 2017
+
+micro_use <- read.csv("input_data/SAR 2017 Microhabitat Use Data_AfterDMS.csv")
+fish_data <- read.csv("input_data/SAR 2017 Reach Fish Data_afterDMS.csv")
+reach_data <- read.csv("input_data/SAR 2017 Reach Habitat Data_afterDMS.csv")
+
+
+
+names(micro_use)
+names(micro_use) [10:16] <- c("length_mm", "Distance_fish_abv_bottom_cm", "Velocity_at_fish_ms", "Depth_cm", "Velocity_0.6_ms", "Velocity_0.2_ms", "Velocity_0.8_ms")
+head(micro_use)
+# micro_use$coord_code_s <- paste(micro_use$Starting.Latitude, "_", micro_use$Starting.Longitude, sep="")
+# micro_use$coord_code_e <- paste(micro_use$Ending.Latitude, "_", micro_use$Ending.Longitude, sep="")
+# no coordinates
+
+unique(micro_use$coord_code_e) # 3 sites in total
+dim(micro_use) # 47
+
+#  make sure species name is homogenous
+
+unique(micro_use$Species) # only SAS
+
+#  look at sucker sites
+
+micro_suck <- subset(micro_use, Species=="Santa Ana Sucker")
+dim(micro_suck) # 17
+
+unique(micro_suck$coord_code) # present at all sites
+
+#  combine datasets??
+
+# names(micro_avail) # habitat info
+names(micro_use) # species, abundance and habitat
+names(fish_data) # species info e.g. FL etc
+
+# size classes - TL=5.9122 + 1.1092*SL
+# standard length juvenile = 21-30mm
+
+head(fish_data)
+
+colnames(fish_data)[10:11] <- c("Total.length", "Fork.length")
+
+#  add life stage
+str(fish_data)
+fish_data$Fork.length <- as.numeric(as.character(fish_data$Fork.length))
+fish_data$Total.length <- as.numeric(as.character(fish_data$Total.length))
+
+sum(is.na(fish_data$Fork.length)) # 121
+sum(is.na(fish_data$Total.length)) # 3830
+
+na_rows <- which(is.na(fish_data$Fork.length))
+fish_data[na_rows,] # total length taken not fork length
+
+# remove fork length NAs and run if/else
+
+fish_dataFL <- fish_data[-na_rows, ]
+fish_dataTL <- fish_data[na_rows, ]
+
+fish <- row.names(fish_dataFL)
+fish
+
+
+for(x in 1: length (fish)) {
+  
+  if(fish_dataFL$Fork.length[x] <= 20) {
+    fish_dataFL$life_stage [x] <- paste("Larvae") 
+    
+    # } else if (fish_data$Fork.length[x] = NA) {
+    #   fish_data$life_stage  [x] <- paste("NA") 
+    
+  } else if (fish_dataFL$Fork.length[x] >= 21 && fish_dataFL$Fork.length[x] <= 30) {
+    fish_dataFL$life_stage  [x] <- paste("Juvenile") 
+    
+  } else {
+    fish_dataFL$life_stage [x] <- paste("Adult") 
+  }
+  
+}
+
+head(fish_dataFL)
+unique(fish_dataFL$life_stage)
+
+# run for TL 
+#  first estimate sl from TL
+#  TL=5.9122 + 1.1092*SL
+
+# SL = (TL-5.9122)/1.1092
+
+
+fish_dataTL$standard.length <- (fish_dataTL$Total.length - 5.9122)/1.1092
+
+sum(is.na(fish_dataTL$standard.length)) #19
+na_rows <- which(is.na(fish_dataTL$standard.length))
+
+fish_dataTL[na_rows,]
+
+fish_dataTL <- fish_dataTL[-na_rows,] # remove as no sas here
+fish <- row.names(fish_dataTL)
+fish
+
+for(x in 1: length (fish)) {
+  
+  if(fish_dataTL$standard.length[x] <= 20) {
+    fish_dataTL$life_stage [x] <- paste("Larvae") 
+    
+    # } else if (fish_data$Fork.length[x] = NA) {
+    #   fish_data$life_stage  [x] <- paste("NA") 
+    
+  } else if (fish_dataTL$standard.length[x] >= 21 && fish_dataTL$standard.length[x] <= 30) {
+    fish_dataTL$life_stage  [x] <- paste("Juvenile") 
+    
+  } else {
+    fish_dataTL$life_stage [x] <- paste("Adult") 
+  }
+  
+}
+
+head(fish_dataFL)
+unique(fish_dataTL$life_stage)
+
+fish_dataFL$standard.length <- 0
+
+#  combine datasets
+
+fish_data_all <- rbind(fish_dataFL, fish_dataTL)
+unique(fish_data_all$Common.Name)
+# subset to only SAS to merge length data with env data
+
+fish_data_sas <- subset(fish_data_all, Common.Name=="Santa Ana Sucker")
+unique(fish_data_sas$life_stage) # only adult
+
+
+head(micro_avail)
+head(micro_suck)
+head(fish_data_sas)
+head(reach_data)
+
+micro_suck$site_code <- paste(micro_suck$Location, "_", micro_suck$Section, "_", micro_suck$Reach, sep="")
+unique(micro_suck$site_code) # 2
+
+micro_avail$site_code <- paste(micro_avail$Location, "_", micro_avail$Section, sep="")
+unique(micro_avail$site_code) # 2
+micro_avail$coord_code <- paste(micro_avail$Latitude, "_", micro_avail$Longitude, sep="")
+unique(micro_avail$coord_code)
+
+
+reach_data$site_code <- paste(reach_data$Location, "_", reach_data$Section, sep="")
+unique(reach_data$site_code) # 7 sites
+reach_data$coord_code <- paste(reach_data$Latitude, "_", reach_data$Longitude, sep="")
+unique(reach_data$coord_code)
+#  as all adults, only micro_suck needed
+
+names(micro_suck)
+
+depth <- micro_suck[,c(1:3,8,9,10,13,23)]
+head(depth)
+substrate <- micro_suck[,c(1:3,8,9,10,17,23)]
+velocity <- micro_suck[,c(1:3,8,9,10,12,14,15,16,23)]
+head(velocity)
+head(substrate)
+# save 
+
+write.csv(depth, "output_data/00_Wulff_2017_depth_abundance.csv")
+write.csv(substrate, "output_data/00_Wulff_2017_substrate_abundance.csv")
+write.csv(velocity, "output_data/00_Wulff_2017_velocity_abundance.csv")
 
 
