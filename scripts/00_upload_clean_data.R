@@ -181,7 +181,9 @@ sub_ad <- read.csv("input_data/SMEA_substrate_2003_2004_adult.csv", header=T)
 vel_ad <- read.csv("input_data/SMEA_velocity_2003_2004_adult.csv", header =T)
 
 
-dep_ad
+sub_ad
+smea_perc <- sub_ad[,c(1,5,8)]
+write.csv(smea_perc, "output_data/00_smea_total_percentage.csv")
 
 # transform percentage into abundance
 #  seapare years

@@ -32,19 +32,22 @@ saiki
 #  SMEA adult
 
 smea_2003 <- read.csv("output_data/00_SMEA_adult_substrate_2003_abundance.csv")
+smea_2003_perc <- smea_2003[2,6]
+
 smea_2003 <- smea_2003[-10, c(2, 7:9)]
 names(smea_2003) [1] <- "substrate"
 smea_2003
 #  need to match substrate categories
 
 smea_2004 <- read.csv("output_data/00_SMEA_adult_substrate_2004_abundance.csv")
+smea_2004_perc <- smea_2004[2,6]
 smea_2004 <- smea_2004[-10, c(2,6,7)]
 names(smea_2004) [1] <- "substrate"
 smea_2004
 #  merge
 
 smea <- merge(smea_2003, smea_2004, by="substrate")
-smea
+smea 
 
 # Thompson
 # sites are years and site together and treated as separate sites as have different conditions
