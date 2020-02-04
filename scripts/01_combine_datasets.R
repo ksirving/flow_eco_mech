@@ -205,5 +205,27 @@ smea[8, 2:6 ] <- (smea[8,2:6]+smea[9,2:6])# add silt_sand to silt
 # depth - relationship
 # velocity - relationship
 
+##### temperature
+
+setwd("/Users/katieirving/Documents/git/flow_eco_mech")
+
+envicraft <- read.csv("output_data/00_Envicraft_2010_Temp_abundance.csv")
+sawa <- read.csv("output_data/00_SAWA_2014_env_hab_abundance.csv")
+
+
+envicraft
+sawa <- sawa[, c(2,3,13, 15)]
+sawa
+
+## general - <22c
+## can survive 38c
+
+# h.	0 – 80mm : 0+ yrs., SL 81 – 120mm : 1+ yrs, and SL 121mm+ : 2+ yrs. (sawa 2014, saiki 2000)
+
+range(sawa$Temp)
+# 18.0 28.3 - backed up by others e.g. less than 30 degrees
+# min 15.9 degrees - envicraft
+# saiki may have some for life stage
+
 
 
