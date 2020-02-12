@@ -76,21 +76,110 @@ unique(lar_substrate$LAR_sites) # 52 sites
 # concrete = 0
 # mixed - all except concrete - >60 = 15, 40-60 = 10, 20-40 = 5, below 5 = 0
 
+# [3] Percent Substrate as Bedrock                       
+# [4] Percent Substrate Larger than Fine Gravel  (>16 mm)
+# [5] Percent Cobble                                     
+# [6] CPOM Presence                                      
+# [7] Percent Fines (silts/clay/muck)                    
+# [8] Percent Gravel - coarse                            
+# [9] Percent Gravel - fine                              
+# [10] Percent Hardpan                                    
+# [11] Percent Other Substrate                            
+# [12] Percent Concrete/Asphalt                           
+# [13] Percent Bedrock - rough                            
+# [14] Percent Bedrock - smooth                           
+# [15] Percent Sand                                       
+# [16] Percent Substrate Smaller than Sand (<2 mm)        
+# [17] Percent Boulders - small                           
+# [18] Percent Substrate Fine Gravel or Smaller (<16 mm)  
+# [19] Percent Wood                                       
+# [20] Percent Boulders - large 
+
 # clean data for loop
 lar_substrate$result <- as.numeric(as.character(lar_substrate$result))
 lar_substrate <- separate(lar_substrate, col=sampledate, into =c("date", "time", "time2"), sep=c(" "), remove=F)
 lar_substrate$date <- gsub("/", "_", lar_substrate$date)
 
+# fine sediment - 15,16,18,7
+# coarse sediment - 4, 8,9,
+# extra coarse sediment - 3,5,10,13,14,17,20
+
 # list sites
 sites <- unique(lar_substrate$LAR_sites)
-vars <- droplevels(unique(lar_substrate$variablename) [c(5,7,8,9,12,15,17)]) # same
 
-# which(lar_substrate$variablename==vars)
+#may add "other substrate"
+#  get variables of interest
+vars <- droplevels(unique(lar_substrate$variablename) [c(3,5,7,8,9,10,12,13,14,15,17,20)]) # 
+
+# separate into categories
+fines <-vars[c(3,10)]
+coars <-vars[c(4,5)] 
+ex_coars <-vars[c(1,2,6,8,9,11,12)] 
+conc <- vars[7]
 
 
-# dataframe of results
-dfc <- as.data.frame(matrix(ncol=6))
-colnames(dfc) <- c("site", "date", "sitename", "lat", "lon", "substrate_score")
+df_cats <- as.data.frame(matrix(ncol=10))
+colnames(df_cats) <- c("site", "date", "sitename", "lat", "lon", "fine_sediment","coarse_sediment", "extra_coarse", "concrete", "total")
+
+# loop to get main category of substrate on overall percentage of category
+
+for(s in 1: length(sites)){
+  
+  # subset site
+  data <- subset(lar_substrate, LAR_sites == sites[s])
+
+  # list sites
+  sep_date <- unique(data$sampledate)
+ 
+
+  for(y in 1:length(sep_date)) {
+    
+    
+    #then subset date from each site
+    dfx <- subset(data, sampledate == sep_date[y])
+
+    vx <- dfx$variablename %in% vars
+   
+    # create dataframe from varaibles and percentages
+    data_dat <- as.data.frame(matrix(ncol=2, nrow=12))
+    colnames(data_dat) <- c("variablename", "result")
+   
+    data_dat[,1] <- vars
+    data_dat[,2] <- dfx[vx, "result"][1:12]
+   
+
+   fx <-  data_dat$variablename %in% fines
+   cx <-  data_dat$variablename %in% coars
+   ecx <-  data_dat$variablename %in% ex_coars
+   co <-  data_dat$variablename %in% conc
+   
+   df <- as.data.frame(matrix(ncol=10))
+   colnames(df) <- c("site", "date", "sitename", "lat", "lon", "fine_sediment","coarse_sediment", "extra_coarse", "concrete", "total")
+   
+   df$site <- paste(dfx$LAR_sites[1])
+   df$date <- paste(dfx$sampledate[1])
+   df$sitename <- paste(dfx$sitename[1])
+   df$lat <- paste(dfx$targetlatitude[1])
+   df$lon <- paste(dfx$targetlongitude[1])
+   df$fine_sediment <- sum(data_dat[fx,"result"])
+   df$coarse_sediment <- sum(data_dat[cx,"result"])
+   df$extra_coarse <- sum(data_dat[ecx,"result"])
+   df$concrete <- sum(data_dat[co,"result"])
+   df$total <- sum(df[,6:9])
+
+   df_cats <- rbind(df_cats, df)
+   
+  }
+  
+}
+
+## data frame with percentage cover per category
+write.csv(df_cats, "output_data/substrate_scores/02_substrate_categories.csv")
+df_cats
+
+# # dataframe of results
+# dfc <- as.data.frame(matrix(ncol=6))
+# colnames(dfc) <- c("site", "date", "sitename", "lat", "lon", "substrate_score")
 x=1
 y=1
 s=1
@@ -318,7 +407,9 @@ sort(temp$result)
 high_temps <- subset(temp, result >  29.8)
 high_temps # may, june and july
 
-high_temps$LAR_sites
+h_sites <- high_temps$LAR_sites
+
+highs <- subset(lar_data, LAR_sites )
 
 
 
