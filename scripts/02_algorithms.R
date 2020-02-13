@@ -118,8 +118,8 @@ ex_coars <-vars[c(1,2,6,8,9,11,12)]
 conc <- vars[7]
 
 
-df_cats <- as.data.frame(matrix(ncol=10))
-colnames(df_cats) <- c("site", "date", "sitename", "lat", "lon", "fine_sediment","coarse_sediment", "extra_coarse", "concrete", "total")
+df_cats <- as.data.frame(matrix(ncol=11))
+colnames(df_cats) <- c("site", "date", "sitename", "lat", "lon", "fine_sediment","coarse_sediment", "extra_coarse", "concrete", "total", "mixed")
 
 # loop to get main category of substrate on overall percentage of category
 
@@ -153,8 +153,8 @@ for(s in 1: length(sites)){
    ecx <-  data_dat$variablename %in% ex_coars
    co <-  data_dat$variablename %in% conc
    
-   df <- as.data.frame(matrix(ncol=10))
-   colnames(df) <- c("site", "date", "sitename", "lat", "lon", "fine_sediment","coarse_sediment", "extra_coarse", "concrete", "total")
+   df <- as.data.frame(matrix(ncol=11))
+   colnames(df) <- c("site", "date", "sitename", "lat", "lon", "fine_sediment","coarse_sediment", "extra_coarse", "concrete", "total", "mixed")
    
    df$site <- paste(dfx$LAR_sites[1])
    df$date <- paste(dfx$sampledate[1])
@@ -166,6 +166,7 @@ for(s in 1: length(sites)){
    df$extra_coarse <- sum(data_dat[ecx,"result"])
    df$concrete <- sum(data_dat[co,"result"])
    df$total <- sum(df[,6:9])
+   df$mixed <- sum(df[,6:8])
 
    df_cats <- rbind(df_cats, df)
    
@@ -177,53 +178,43 @@ for(s in 1: length(sites)){
 write.csv(df_cats, "output_data/substrate_scores/02_substrate_categories.csv")
 df_cats
 
-# # dataframe of results
-# dfc <- as.data.frame(matrix(ncol=6))
-# colnames(dfc) <- c("site", "date", "sitename", "lat", "lon", "substrate_score")
-x=1
-y=1
-s=1
-x
-y
-s
+# add score for sites  per life stage
+df_cats <- read.csv("output_data/substrate_scores/02_substrate_categories.csv")
+rownames(df_cats)
+rows <- rownames(df_cats)
+df_cats$fine_sediment[2]
+df_cats$coarse_sediment[2] 
+v=2
+?mutate
+v
+df_cats$concrete[v]  == max(50)
 
-for(x in 1:length(sites)) {
+for(v in 2: length(rows)) {
   
-# subset site
-data <- subset(lar_substrate, LAR_sites == sites[x])
-head(data)
-# unique(data$sampledate)
-# y
-# list sites
-sep_date <- unique(data$sampledate)
+  if(df_cats$fine_sediment[v] ==0 || df_cats$fine_sediment[v] >=80  && df_cats$coarse_sediment[v]  <=1 && df_cats$extra_coarse[v] <= 10 || df_cats$coarse_sediment[v] >=80 && df_cats$concrete[v]  >50 || df_cats$mixed == max(1)) {
 
-       for(y in 1:length(sep_date)) {
+    df_cats$substrate_score[v] <- 0
     
+  } else if (df_cats$fine_sediment[v] == min(1)  && df_cats$coarse_sediment[v]  == min(1)  && df_cats$extra_coarse[v] == min(1)  && df_cats$concrete[v] == max(50)|| df_cats$mixed == min(10)) {
+    df_cats$substrate_score[v] <- 1
+    
+  } else if (df_cats$fine_sediment[v] == min(20) && df_cats$coarse_sediment[v]  == min(10)  && df_cats$extra_coarse[v] == min(10) && df_cats$concrete[v] == max(25) || df_cats$mixed == min(50) ) {
+    df_cats$substrate_score[v] <- 2
+  
+  }
+  
+  
+}
+
+df_cats   
+ ## carry on here with adding mixed variable
+
+  # how large is the site?
+  # thresholds revise in line with life stage coarse sediment = 40% for  
       
-    #then subset date from each site
-    dfx <- subset(data, sampledate == sep_date[y])
-
-    vx <- dfx$variablename %in% vars
-   
-   
-    # list variables
-    # vars <- dfx$variablename[c(5,7,8,9,12,15,17)] ## use names instead of numbers - they change. restart here!!!!
-  
-    # create dataframe from varaibles and percentages
-    data_dat <- as.data.frame(matrix(ncol=2, nrow=8))
-    colnames(data_dat) <- c("variablename", "result")
-    # add mixed level for mixed substrate
-    levels(vars) <- c(levels(vars), "Mixed")
-    vars[8] <- "Mixed"
-    data_dat[,1] <- vars
-    data_dat[1:7,2] <- dfx[vx, "result"][1:7]
-    data_dat[8,2] <- sum(data_dat[-which(data_dat$variablename == c("Percent Concrete/Asphalt","Mixed")),2])
+      # assign score to each variable proportion
     
-    
-    
-# assign score to each variable proportion
-    
-               for(s in 1:length(vars)) {
+               for(v in 2:length(rows)) {
         
                
   
