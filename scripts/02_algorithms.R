@@ -181,30 +181,73 @@ df_cats
 # add score for sites  per life stage
 df_cats <- read.csv("output_data/substrate_scores/02_substrate_categories.csv")
 rownames(df_cats)
-rows <- rownames(df_cats)
-df_cats$fine_sediment[2]
-df_cats$coarse_sediment[2] 
-v=2
-?mutate
-v
-df_cats$concrete[v]  == max(50)
+
+v=10
+
+df_cats$fine_sediment[v]
+df_cats$coarse_sediment[v]
+df_cats$extra_coarse[v]
+df_cats$concrete[v]
+df_cats$mixed[v]
+
+df_cats$fine_sediment[v] <=1 || df_cats$fine_sediment[v] >=80 #&& if true 
+df_cats$coarse_sediment[v]  <=1 #&&
+df_cats$extra_coarse[v] <= 10 || df_cats$extra_coarse[v] >=80 # &&
+df_cats$concrete[v]  > 50 || df_cats$mixed[v] <=13
+
+df_cats$fine_sediment[v] >=1 &&  df_cats$fine_sediment[v] >=20 
+df_cats$coarse_sediment[v]  >=1  &&  df_cats$coarse_sediment[v]  >=20
+df_cats$extra_coarse[v] >= 10  && df_cats$extra_coarse[v] <= 20
+df_cats$concrete[v]  <= 50 && df_cats$concrete[v]  >= 25 || df_cats$mixed[v] <=30 && df_cats$mixed[v] >= 14
+
+df_cats$fine_sediment[v] >=21 &&  df_cats$fine_sediment[v] <=80
+df_cats$coarse_sediment[v]  >=21 ##  &&  df_cats$coarse_sediment[v]  >=20
+df_cats$extra_coarse[v] >= 21  && df_cats$extra_coarse[v] <= 80
+df_cats$concrete[v]  <= 25 || df_cats$mixed[v]  > 31
+
 
 for(v in 2: length(rows)) {
   
-  if(df_cats$fine_sediment[v] ==0 || df_cats$fine_sediment[v] >=80  && df_cats$coarse_sediment[v]  <=1 && df_cats$extra_coarse[v] <= 10 || df_cats$coarse_sediment[v] >=80 && df_cats$concrete[v]  >50 || df_cats$mixed == max(1)) {
-
-    df_cats$substrate_score[v] <- 0
-    
-  } else if (df_cats$fine_sediment[v] == min(1)  && df_cats$coarse_sediment[v]  == min(1)  && df_cats$extra_coarse[v] == min(1)  && df_cats$concrete[v] == max(50)|| df_cats$mixed == min(10)) {
-    df_cats$substrate_score[v] <- 1
-    
-  } else if (df_cats$fine_sediment[v] == min(20) && df_cats$coarse_sediment[v]  == min(10)  && df_cats$extra_coarse[v] == min(10) && df_cats$concrete[v] == max(25) || df_cats$mixed == min(50) ) {
-    df_cats$substrate_score[v] <- 2
-  
+  if(df_cats$fine_sediment[v] <=5 || df_cats$fine_sediment[v] >=80)  {
+    if(df_cats$coarse_sediment[v]  <=5) {
+      if(df_cats$extra_coarse[v] <= 10 || df_cats$extra_coarse[v] >=40) {
+        if(df_cats$concrete[v]  > 50 || df_cats$mixed[v] <=13) {
+          
+          df_cats$substrate_score[v] <- 0
+          
+        } else { if (df_cats$fine_sediment[v] >5 &&  df_cats$fine_sediment[v] >=20) {
+              if(df_cats$coarse_sediment[v]  >5  &&  df_cats$coarse_sediment[v]  >=20) {
+                if(df_cats$extra_coarse[v] >= 10  && df_cats$extra_coarse[v] <= 20) {
+                  if(df_cats$concrete[v]  <= 50 && df_cats$concrete[v]  >= 25 || df_cats$mixed[v] <=30 && df_cats$mixed[v] >= 14) {
+                    
+                    df_cats$substrate_score[v] <- 1
+                  
+                } else { if (df_cats$fine_sediment[v] >=21 &&  df_cats$fine_sediment[v] <=80) {
+                  if(df_cats$coarse_sediment[v]  >=21){
+                    if(df_cats$extra_coarse[v] >= 21  && df_cats$extra_coarse[v] <= 40) {
+                      if(df_cats$concrete[v]  <= 25 || df_cats$mixed[v]  > 31) {
+                        df_cats$substrate_score[v] <- 2
+                        
+                      }
+                    }
+                  }
+                }  
+              }
+          }
+        }
+      }
+    }
   }
-  
-  
+  }
 }
+
+     
+}     
+   
+
+  
+    
+  
 
 df_cats   
  ## carry on here with adding mixed variable
