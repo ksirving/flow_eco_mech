@@ -184,65 +184,36 @@ rownames(df_cats)
 
 v=10
 
-df_cats$fine_sediment[v]
-df_cats$coarse_sediment[v]
-df_cats$extra_coarse[v]
-df_cats$concrete[v]
-df_cats$mixed[v]
 
-df_cats$fine_sediment[v] <=1 || df_cats$fine_sediment[v] >=80 #&& if true 
-df_cats$coarse_sediment[v]  <=1 #&&
-df_cats$extra_coarse[v] <= 10 || df_cats$extra_coarse[v] >=80 # &&
-df_cats$concrete[v]  > 50 || df_cats$mixed[v] <=13
-
-df_cats$fine_sediment[v] >=1 &&  df_cats$fine_sediment[v] >=20 
-df_cats$coarse_sediment[v]  >=1  &&  df_cats$coarse_sediment[v]  >=20
-df_cats$extra_coarse[v] >= 10  && df_cats$extra_coarse[v] <= 20
-df_cats$concrete[v]  <= 50 && df_cats$concrete[v]  >= 25 || df_cats$mixed[v] <=30 && df_cats$mixed[v] >= 14
-
-df_cats$fine_sediment[v] >=21 &&  df_cats$fine_sediment[v] <=80
-df_cats$coarse_sediment[v]  >=21 ##  &&  df_cats$coarse_sediment[v]  >=20
-df_cats$extra_coarse[v] >= 21  && df_cats$extra_coarse[v] <= 80
-df_cats$concrete[v]  <= 25 || df_cats$mixed[v]  > 31
-
+# only concentrate on concrete and  mixed sediment - although juvenile would be sand, not mixed or gravel
 
 for(v in 2: length(rows)) {
   
-  if(df_cats$fine_sediment[v] <=5 || df_cats$fine_sediment[v] >=80)  {
-    if(df_cats$coarse_sediment[v]  <=5) {
-      if(df_cats$extra_coarse[v] <= 10 || df_cats$extra_coarse[v] >=40) {
-        if(df_cats$concrete[v]  > 50 || df_cats$mixed[v] <=13) {
+  
+        if(df_cats$concrete[v]  > 50 || df_cats$mixed[v] <=13) { # concrete more than 50, mixed substrate less than 13
           
           df_cats$substrate_score[v] <- 0
           
-        } else { if (df_cats$fine_sediment[v] >5 &&  df_cats$fine_sediment[v] >=20) {
-              if(df_cats$coarse_sediment[v]  >5  &&  df_cats$coarse_sediment[v]  >=20) {
-                if(df_cats$extra_coarse[v] >= 10  && df_cats$extra_coarse[v] <= 20) {
-                  if(df_cats$concrete[v]  <= 50 && df_cats$concrete[v]  >= 25 || df_cats$mixed[v] <=30 && df_cats$mixed[v] >= 14) {
+        } else { if(df_cats$concrete[v]  <= 50 && df_cats$concrete[v]  >= 25 || df_cats$mixed[v] <=30 && df_cats$mixed[v] >= 14) {
                     
                     df_cats$substrate_score[v] <- 1
                   
-                } else { if (df_cats$fine_sediment[v] >=21 &&  df_cats$fine_sediment[v] <=80) {
-                  if(df_cats$coarse_sediment[v]  >=21){
-                    if(df_cats$extra_coarse[v] >= 21  && df_cats$extra_coarse[v] <= 40) {
-                      if(df_cats$concrete[v]  <= 25 || df_cats$mixed[v]  > 31) {
+                } else { if(df_cats$concrete[v]  <= 25 || df_cats$mixed[v]  > 31) {
+                        
                         df_cats$substrate_score[v] <- 2
                         
-                      }
+                      } else {
+                        
+                        df_cats$substrate_score[v] <- NA
+                            
+                           }
+                        }
                     }
-                  }
-                }  
-              }
-          }
-        }
-      }
-    }
-  }
-  }
-}
+                }
+                
 
      
-}     
+     
    
 
   
@@ -445,7 +416,16 @@ h_sites <- high_temps$LAR_sites
 
 highs <- subset(lar_data, LAR_sites )
 
-
+# breeding - 22-25 (SMEA)
+# adults - <28
+# fry/eggs - 18-24
+# juvenile - 15-22 (to avoid warmth) Feeney and Swift
+# survival - <30
+# 
+# breeding - 0 (<15 >28), 1 (15-18, 26-27), 2 (22-25)
+# fry/eggs - 0 (<10 >30), 1 (10-17, 25-30), 2 (18-24)
+# juvenile - 0 (<5 >28), 1 (5-14, 23-28), 2 (15-22)
+# adults - 0 (>28), 1 (22-28), 2 (<22)
 
 
 
