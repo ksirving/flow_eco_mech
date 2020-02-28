@@ -253,6 +253,8 @@ range(saiki$Temp)
 smea_2003 <- read.csv("output_data/00_SMEA_depth_adult_2003.csv")
 smea_2004 <- read.csv("output_data/00_SMEA_depth_adult_2004.csv")
 smea <- read.csv("output_data/00_SMEA_depth_adult.csv")
+wulf <- read.csv("output_data/00_Wulff_2017_depth_abundance.csv")
+
 smea$Depth
 smea$Depth
 # < 15 = 0
