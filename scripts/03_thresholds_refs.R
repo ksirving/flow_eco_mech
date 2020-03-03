@@ -48,16 +48,74 @@ range(saiki$Temp)
 
 # adult
 # upload data
-smea_2003 <- read.csv("output_data/00_SMEA_depth_adult_2003.csv")
-smea_2004 <- read.csv("output_data/00_SMEA_depth_adult_2004.csv")
+# smea_2003 <- read.csv("output_data/00_SMEA_depth_adult_2003.csv")
+# smea_2004 <- read.csv("output_data/00_SMEA_depth_adult_2004.csv")
 smea <- read.csv("output_data/00_SMEA_depth_adult.csv")
 wulff <- read.csv("output_data/00_Wulff_depth_abundance.csv")
-thomp <- read.csv("output_data/00_Thompson_all_data_clean.csv")
+thomp <- read.csv("output_data/00_Thompson_all_data_clean.csv") # bottom velocity
 
-
+wulff
+thomp
+smea
 smea$Depth
 smea$Depth
-# < 15 = 0
+range(wulff$Depth_cm) # adult 20 - 120cm
+plot(wulff$Number~wulff$Depth_cm)
+?lm
+lm(wulff$Number~wulff$Depth_cm)
+hist(wulff$Depth_cm)
+quantile(wulff$Depth_cm)
+# 0%    25%    50%    75%   100% 
+# 20.00  35.75  43.00  50.00 120.00 
+names(wulff)
+ab_depth <- wulff[,c(9,10)]
+
+library(tidyverse)
+ab_depth
+sum(ab_depth$Number)
+
+dep_freq <- ab_depth %>% 
+  uncount(Number)
+str(dep_freq)
+
+hist(dep_freq$Depth_cm)
+quantile(dep_freq$Depth_cm)
+# 0%  25%  50%  75% 100% 
+# 20   38   46   50  120 
+
+
+names(thomp)
+range(thomp$Depth_m) # 0.10 0.33
+plot(thomp$ab_mean~thomp$Depth_m)
+
+ab_depth_th <- thomp[,6:7]
+ab_depth_th
+dep_freq_th <- ab_depth_th %>%
+  uncount(ab_mean)
+dep_freq_th
+hist(dep_freq_th$Depth_m)
+quantile(dep_freq_th$Depth_m)
+
+# 0%  25%  50%  75% 100% 
+# 0.10 0.18 0.19 0.26 0.33 
+
+smea_ab_03 <- read.csv("output_data/00_SMEA_adult_depth_2003_abundance.csv")
+smea_ab_04 <- read.csv("output_data/00_SMEA_adult_depth_2004_abundance.csv")
+
+smea_ab_03
+
+smea_ab <- cbind(smea_ab_04[,c(2,6,7)], smea_ab_03[,c(2,9)])
+smea_ab$all_sites_2004 <-  smea_ab[,2] + smea_ab[,3]
+smea_ab$abundance <- smea_ab$all_sites_ab + smea_ab$all_sites_2004
+
+ab_depth_sm <- smea_ab[-16, c(4,7)]
+dep_freq_sm <- ab_depth_sm %>% 
+  uncount(abundance)
+dep_freq_sm 
+plot(dep_freq_sm$Depth)
+quantile(dep_freq_sm$Depth) ## over 30 used more
+
+
 
 # brown <- read.csv("output_data/00_Brown_2000_abundance_env_vars.csv") # p/a data perhaps not reliable/useful
 
