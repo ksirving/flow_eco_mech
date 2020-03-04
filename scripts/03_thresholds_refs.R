@@ -1,4 +1,5 @@
 ## finding thrsholds 
+library(tidyverse)
 
 ## temperature
 
@@ -8,16 +9,13 @@ setwd("/Users/katieirving/Documents/git/flow_eco_mech")
 
 envicraft <- read.csv("output_data/00_Envicraft_2010_Temp_abundance.csv")
 sawa <- read.csv("output_data/00_SAWA_2014_env_hab_abundance.csv")
-saiki <- read.csv("input_data/Saiki_2000_temp_life_stage.csv")
+# saiki <- read.csv("input_data/Saiki_2000_temp_life_stage.csv")
+saiki <- read.csv("input_data/abundance_env_vars_saiki_2000.csv")
 
 envicraft
 sawa <- sawa[, c(2,3,13, 15)]
 sawa
-names(saiki)
-colnames(saiki)[6:13] <- c("Fish", "SL", "TL", "Weight", "Sex", "Life_stage", "Spawning", "Temp")
-dim(saiki)
-sum(is.na(saiki)) # 87
-saiki <- na.omit(saiki)
+
 
 ## general - <22c
 ## can survive 38c
@@ -25,6 +23,23 @@ saiki <- na.omit(saiki)
 # h.	0 – 80mm : 0+ yrs., SL 81 – 120mm : 1+ yrs, and SL 121mm+ : 2+ yrs. (sawa 2014, saiki 2000)
 
 range(sawa$Temp)
+
+names(sawa)
+ab_temp <- sawa[,c(3,4)]
+
+
+ab_temp <- na.omit(ab_temp)
+sum(ab_temp$abundance)
+
+tem_freq <- ab_temp %>% 
+  uncount(abundance)
+str(tem_freq)
+tem_freq
+hist(tem_freq$Temp) # 
+quantile(tem_freq$Temp) ## higher than others but extremes the same
+# 0%  25%  50%  75% 100% 
+# 20.2 23.9 26.1 28.3 28.3 
+
 # 18.0 28.3 - backed up by others e.g. less than 30 degrees
 # min 15.9 degrees - envicraft
 # saiki may have some for life stage
@@ -43,6 +58,9 @@ range(saiki$Temp)
 # juvenile - 0 (<5 >28), 1 (5-14, 23-28), 2 (15-22)
 # adults - 0 (>28), 1 (22-28), 2 (<22)
 
+quantile(ad_saiki_temp$Temp) # from df created below
+#0%    25%    50%    75%   100% 
+# 6.930 10.800 16.800 20.765 28.610 
 
 ### depth ##################
 
@@ -54,23 +72,44 @@ smea <- read.csv("output_data/00_SMEA_depth_adult.csv")
 wulff <- read.csv("output_data/00_Wulff_depth_abundance.csv")
 thomp <- read.csv("output_data/00_Thompson_all_data_clean.csv") # bottom velocity
 
-wulff
-thomp
-smea
-smea$Depth
-smea$Depth
+
+## clean, subset into life stage and variables
+head(saiki)
+colnames(saiki)[6:15] <- c("Fish", "SL", "TL", "Weight", "Sex", "Life_stage", "Spawning", "Temp", "Depth_m", "Current_m_sec")
+subset(saiki, Life_stage == "Larvae") #16.51
+subset(saiki, Life_stage == "Juvenile")
+
+ad_saiki0 <- subset(saiki, Life_stage ==c("0+ adult"))
+ad_saiki1 <- subset(saiki, Life_stage ==c("1+ adult"))
+ad_saiki2 <- subset(saiki, Life_stage ==c("2+ adult"))
+
+ad_saiki <- rbind(ad_saiki0, ad_saiki1, ad_saiki2)
+ad_saiki_sp <- subset(ad_saiki, Spawning =="N")
+
+ad_saiki_temp <- ad_saiki_sp[, c(1:13)]
+ad_saiki_dep <- ad_saiki_sp[, c(1:12, 14)]
+ad_saiki_vel <- ad_saiki_sp[, c(1:12, 15)]
+sum(is.na(ad_saiki_dep)) # 405
+ad_saiki_dep <- na.omit(ad_saiki_dep)
+sum(is.na(ad_saiki_temp)) # 79
+ad_saiki_temp <- na.omit(ad_saiki_temp)
+sum(is.na(ad_saiki_vel)) # 408
+ad_saiki_vel <- na.omit(ad_saiki_vel)
+
+hist(ad_saiki_dep$Depth_m)
+quantile(ad_saiki_dep$Depth_m)
+# 0%  25%  50%  75% 100% 
+# 0.04 0.22 0.30 0.41 1.20 
+
+#### Wulff
 range(wulff$Depth_cm) # adult 20 - 120cm
-plot(wulff$Number~wulff$Depth_cm)
-?lm
-lm(wulff$Number~wulff$Depth_cm)
 hist(wulff$Depth_cm)
 quantile(wulff$Depth_cm)
-# 0%    25%    50%    75%   100% 
-# 20.00  35.75  43.00  50.00 120.00 
+ 
 names(wulff)
 ab_depth <- wulff[,c(9,10)]
 
-library(tidyverse)
+
 ab_depth
 sum(ab_depth$Number)
 
@@ -83,7 +122,7 @@ quantile(dep_freq$Depth_cm)
 # 0%  25%  50%  75% 100% 
 # 20   38   46   50  120 
 
-
+### thompson
 names(thomp)
 range(thomp$Depth_m) # 0.10 0.33
 plot(thomp$ab_mean~thomp$Depth_m)
@@ -121,9 +160,80 @@ quantile(dep_freq_sm$Depth) ## over 30 used more
 
 ## juveniles 
 
-# 25-45 cm
 
+subset(saiki, Life_stage == "Juvenile") # 0.2 - 0.39
+
+# 25-45 cm - SMEA
+# backed up by saiki & 
+
+smea_03 <- read.csv("output_data/00_SMEA_juvenile_depth_2003_abundance.csv")
+smea_04 <- read.csv("output_data/00_SMEA_juvenile_depth_2004_abundance.csv")
+smea_04
+smea_ab <- cbind(smea_04[,c(2,6,7)], smea_03[,c(2,10)])
+smea_ab
+smea_ab$all_sites_2004 <-  smea_ab[,2] + smea_ab[,3]
+smea_ab$abundance <- smea_ab$all_sites_ab + smea_ab$all_sites_2004
+
+ab_depth_sm <- smea_ab[-15, c(4,7)]
+ab_depth_sm
+dep_freq_sm <- ab_depth_sm %>% 
+  uncount(abundance)
+dep_freq_sm 
+plot(dep_freq_sm$Depth)
+quantile(dep_freq_sm$Depth) ## over 11 used more
 
 # larvae
 
-# 5-10
+subset(saiki, Life_stage == "Larvae") #16.51
+
+# 5-10 - feeney and swift
+
+## spawning
+
+##### velocity
+## saiki - Current_m_sec - same?
+## Velocity_0.6_ms used - mid column??
+
+quantile(ad_saiki_vel$Current_m_sec) # need to convert?
+# 0%      25%      50%      75%     100% 
+# 0.000000 0.130683 0.310642 0.450088 1.243787  
+thomp_vel <- thomp[,c(6, 13)]
+
+smea_03 <- read.csv("output_data/00_SMEA_adult_velocity_2003_abundance.csv")
+smea_04 <- read.csv("output_data/00_SMEA_adult_velocity_2004_abundance.csv")
+vel_17 <- read.csv("output_data/00_Wulff_2017_velocity_abundance.csv")
+vel_16 <- read.csv("output_data/00_Wulff_2016_velocity_abundance.csv")
+vel_15 <- read.csv("output_data/00_Wulff_2015_velocity_abundance.csv")
+
+
+vel_15 <- vel_15[, c(9,11)] %>%
+  na.omit(vel_15[, c(9,11)])
+
+vel_16 <- vel_16[, c(10,12)] %>%
+  na.omit(vel_16[, c(10,12)])
+
+
+vel_17 <- vel_17[, c(6,9)] %>%
+  na.omit(vel_17[, c(6,9)])
+
+names(vel_15)[1] <- "Count"
+names(vel_16)
+names(vel_17)
+
+wulff_vel <- rbind(vel_15, vel_16, vel_17)
+vel_freq_wf
+vel_freq_wf <- wulff_vel %>%
+  uncount(Count)
+hist(vel_freq_wf$Velocity_0.6_ms )
+quantile(vel_freq_wf$Velocity_0.6_ms )
+# 0%    25%    50%    75%   100% 
+# 0.1330 0.5500 0.6700 0.8875 1.5700 
+
+
+
+
+
+
+
+
+

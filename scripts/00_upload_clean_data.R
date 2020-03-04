@@ -318,7 +318,7 @@ dep_juv_03$Highway_60_ab <- round(dep_juv_03$Highway_60/100*dep_juv_03[15,3])
 dep_juv_03$Riverside_Dr_ab <- round(dep_juv_03$Riverside_Dr/100*dep_juv_03[15,4])
 dep_juv_03$all_sites_ab <- round(dep_juv_03$all_sites/100*dep_juv_03[15,5])
 
-#  change autocorrected date to deoth category and character
+#  change autocorrected date to depth category and character
 dep_juv_03$Depth <- as.character(dep_juv_03$Depth)
 dep_juv_03[2,1] <- paste("6-10")
 dep_juv_03[3,1] <- paste("11-15")
@@ -329,8 +329,9 @@ dep_juv_04
 
 colnames(dep_juv_04) [2:3] <- c("july_Highway60", "Aug_Highway60_Mission")
 dep_juv_04$july_Highway60_ab <- round(dep_juv_04$july_Highway60/100*dep_juv_04[15,2])
-dep_juv_04$Aug_Highway60_Mission_ab <- round(dep_juv_04$Aug_Highway60_Mission/100*dep_juv_04[16,3])
-dep_juv_04$total <- round(dep_juv_04$total/100*dep_juv_04[16,3])
+dep_juv_04$Aug_Highway60_Mission_ab <- round(dep_juv_04$Aug_Highway60_Mission/100*dep_juv_04[15,3])
+
+dep_juv_04$total_ab <- round(dep_juv_04$total/100*dep_juv_04[15,4])
 
 dep_juv_04$Depth <- as.character(dep_juv_04$Depth)
 dep_juv_04[2,1] <- paste("6-10")
@@ -1054,5 +1055,6 @@ head(substrate)
 write.csv(depth, "output_data/00_Wulff_2017_depth_abundance.csv")
 write.csv(substrate, "output_data/00_Wulff_2017_substrate_abundance.csv")
 write.csv(velocity, "output_data/00_Wulff_2017_velocity_abundance.csv")
+
 
 
