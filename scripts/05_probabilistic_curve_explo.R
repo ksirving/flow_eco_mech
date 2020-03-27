@@ -48,8 +48,8 @@ smea[3,1] <- paste("11-15")
 ## how to relate variance to probability
 
 
-
-
+# https://www.displayr.com/how-to-calculate-an-average-value-from-categorical-data/
+#https://www.southampton.ac.uk/passs/confidence_in_the_police/multivariate_analysis/simple_linear_regression_several_categories.page
 
 
 
