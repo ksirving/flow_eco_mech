@@ -22,3 +22,35 @@ head(saiki)
 colnames(saiki)[6:15] <- c("Fish", "SL", "TL", "Weight", "Sex", "Life_stage", "Spawning", "Temp", "Depth_m", "Current_m_sec")
 subset(saiki, Life_stage == "Larvae") #16.51
 subset(saiki, Life_stage == "Juvenile")
+
+# workflow - sep for each variable & life stage
+#1 - decide on category for data
+#2 - decide on trust in source of data
+
+# 3.	Single field-based manipulations (often not completely controlled)
+# a.	Binned results 
+# b.	Continuous response curves
+
+## any categorized field data. SMEA is a good candidate for this approach as
+# 1 - categorised
+# 2 - includes "absences" - i.e. habitat utlization 
+
+head(smea)
+str(smea)
+
+# format to character and change names
+smea$Depth <- as.character(smea$Depth)
+smea[2,1] <- paste("6-10")
+smea[3,1] <- paste("11-15")
+
+## how to calculate mean & variance of categorised data?
+## how to calulate threshold
+## how to relate variance to probability
+
+
+
+
+
+
+
+
