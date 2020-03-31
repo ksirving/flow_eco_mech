@@ -191,8 +191,8 @@ write.csv(smea_perc, "output_data/00_smea_total_percentage.csv")
  
 dep_ad_03 <- dep_ad[, 1:5]
 dep_ad_04 <- dep_ad[,c(1,6:8)]
-
-install.packages("glue")
+dep_ad_03
+# install.packages("glue")
 library(glue)
 
 #  2003
@@ -206,7 +206,7 @@ dep_ad_03$all_sites_ab <- round(dep_ad_03$all_sites/100*dep_ad_03[16,5])
 
 #  change autocorrected date to deoth category and character
 dep_ad_03$Depth <- as.character(dep_ad_03$Depth)
-dep_ad_03[2,1] <- paste("6-10")
+dep_ad_03[2,1] <- paste("06-10")
 dep_ad_03[3,1] <- paste("11-15")
 dep_ad_03
 
@@ -219,7 +219,7 @@ dep_ad_04$Aug_Highway60_Mission_ab <- round(dep_ad_04$Aug_Highway60_Mission/100*
 dep_ad_04$total <- round(dep_ad_04$total/100*dep_ad_04[16,3])
 
 dep_ad_04$Depth <- as.character(dep_ad_04$Depth)
-dep_ad_04[2,1] <- paste("6-10")
+dep_ad_04[2,1] <- paste("06-10")
 dep_ad_04[3,1] <- paste("11-15")
 
 # save 
