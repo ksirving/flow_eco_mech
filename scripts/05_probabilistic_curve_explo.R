@@ -183,7 +183,7 @@ pr_glm <- glm(presence~Depth, data=all_smea,family=binomial(link = "logit"))
 # pr_glm$residuals
 # pr_glm$linear.predictors
 # sd(pr_glm$residuals)
-
+summary(pr_glm)
 
 ## get probability of occurecne from GLM
 ## create depth values - new data
@@ -197,6 +197,8 @@ lines(xdepth, ydepth)
 # length(ydepth)
 # xdepth
 # ydepth
+library(ResourceSelection)
+hoslem.test(all_smea$presence, fitted(pr_glm))
 
 ## plot probability values to find threshold
 prob_occs <- predict(pr_glm, list(Depth = xdepth), type="response")
@@ -233,6 +235,23 @@ abline(0.5,0)
 
 all_smea$presence
 all_smea
+
+## get probability of occurecne from GLM
+## create depth values - new data
+range(all_smea$Depth_mid) # 2.5 71.0 - 71+ do not know max value
+xdepth <- seq(0,50,0.1)
+## prediction
+ydepth <- predict(pr_glm_mid, list(Depth_mid = xdepth), type="response")
+## plot data - logistica curve
+plot(all_smea$Depth_mid, all_smea$presence, pch = 16, xlab = "Depth (m)", ylab = "Presence")
+lines(xdepth, ydepth)
+abline(0.5,0)
+
+all_smea$presence
+all_smea
+
+library(ResourceSelection)
+hoslem.test(all_data$presence, fitted(ad_dep_glm))
 
 #####################################
 
@@ -321,7 +340,7 @@ saiki_adult_depth <- select(saiki_adult, Site, Date, Depth)
 saiki_adult_depth
 dim(saiki_adult_depth) 
 ## apply weights
-saiki_adult_depth$weight <- ifelse(saiki_adult_depth$Site =="SGRA" | saiki_adult_depth$Site == "SGRB", 2 , 3)
+saiki_adult_depth$weight <- ifelse(saiki_adult_depth$Site =="SGRA" | saiki_adult_depth$Site == "SGRB", 5 , 10)
 saiki_adult_depth <- na.omit(saiki_adult_depth) # 348 NAs removed
 # subset(saiki_adult_depth, Site =="SGRB")
 # sum(is.na(saiki_adult_depth$Depth..m.))
@@ -346,7 +365,7 @@ colnames(psu_df)
 psu_df$Depth<- ran_dep
 psu_df$Site <- "pseudo_site"
 psu_df$Date <- "pseudo_date"
-psu_df$weight <- 3
+psu_df$weight <- 10
 
 ## combine datasets
 all_data <- rbind(saiki_adult_depth, psu_df)
@@ -374,6 +393,9 @@ summary(ad_dep_glm_zero$fitted.values)
 # Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 # 0.6051  0.9082  0.9608  0.9410  0.9918  1.0000 
 summary(ad_dep_glm)
+install.packages("ResourceSelection")
+library(ResourceSelection)
+hoslem.test(all_data$presence, fitted(ad_dep_glm))
 ## plot predictions
 
 range(all_data$Depth)
@@ -461,7 +483,7 @@ saiki_adult_depth <- select(saiki_adult, Site, Date, Depth)
 saiki_adult_depth
 dim(saiki_adult_depth) 
 ## apply weights
-saiki_adult_depth$weight <- ifelse(saiki_adult_depth$Site =="SGRA" | saiki_adult_depth$Site == "SGRB", 2 , 3)
+saiki_adult_depth$weight <- ifelse(saiki_adult_depth$Site =="SGRA" | saiki_adult_depth$Site == "SGRB", 5 , 10)
 saiki_adult_depth <- na.omit(saiki_adult_depth) # 348 NAs removed
 
 
@@ -500,19 +522,19 @@ saiki_adult_depth$dataset <- "Saiki"
 ## extract only columns needed and format depth & add weighting
 wulff <- wulff[,c(9:10)]
 wulff$Depth <- wulff$Depth_cm/100
-wulff$weight <- 3
+wulff$weight <- 10
 wulff$dataset <- "Wulff"
 head(wulff)
 
 thomp <- thomp[,c(1:2,7)]
-thomp$weight <- 2
+thomp$weight <- 7
 thomp$dataset <- "Thompson"
 thomp
 
 sawap <- sawap[,c(2:3,5)]
 sawap$Depth <- sawap$Max_depth_cm/100
 sawap$dataset <- "SAWA"
-sawap$weight <- 3
+sawap$weight <- 10
 sawap
 #### all data merge
 
@@ -543,21 +565,21 @@ dim(all_data) ## 501
 
 ## glm with all data 
 ## add absences
-range(all_data$Depth) # 0.04 70.50
+range(all_data$Depth) # 0.04 1.2
 set.seed(678)
 # ?set.seed
 x <- seq(0,1.2, 0.01)
 ## absences
-ran_dep <- sample(x,50)
+ran_dep <- sample(x,100)
 ran_dep
 
-psu_df <- data.frame(matrix(ncol=3, nrow=50))
+psu_df <- data.frame(matrix(ncol=3, nrow=100))
 colnames(psu_df) <- colnames(all_data)
 # colnames(all_data)
 # colnames(psu_df)
 psu_df$Depth<- ran_dep
 psu_df$dataset <- "psuedo"
-psu_df$weight <- 3
+psu_df$weight <- 10
 colnames(psu_df) <- colnames(all_data)
 
 ## combine datasets
@@ -592,11 +614,18 @@ summary(ad_dep_glm$fitted.values) #
 # 0.5281  0.8815  0.9079  0.8976  0.9289  0.9592 
 
 summary(ad_dep_glm_zero$fitted.values)
+library(ResourceSelection)
+
 # Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 # 0.6051  0.9082  0.9608  0.9410  0.9918  1.0000 
 summary(ad_dep_glm)
 summary(ad_dep_glm_ds)
 summary(ad_dep_glm_zero)
+
+library(ResourceSelection)
+hoslem.test(all_data$presence, fitted(ad_dep_glm))
+hoslem.test(all_data$presence, fitted(ad_dep_glm_zero))
+
 ## plot predictions
 all_data$Depth
 range(all_data$Depth)
@@ -620,9 +649,9 @@ length(ydepthz)
 
 ## glm with sawa data for fun!!!
 
-head(sawa)
+head(sawa_dep)
 sawa_dep <- sawa[, c(5,13,14,15)]
-sawa_dep$Depth <- sawa_dep$Depth/100
+sawa_dep$Depth <- sawa_dep$Max_depth_cm/100
 
 ## add presence/absence
 sawa_dep
@@ -640,6 +669,8 @@ summary(sawa_glm$fitted.values) #
 # .2198  0.2621  0.2902  0.2895  0.3049  0.4301 
 
 summary(sawa_glm)
+
+hoslem.test(sawa_dep$presence, fitted(sawa_glm))
 
 ## plot predictions
 sawa_dep$Depth
@@ -663,7 +694,7 @@ summary(sawa_glm_t$fitted.values) #
 # 0.05507 0.14341 0.25545 0.28947 0.43758 0.65370 
 
 summary(sawa_glm_t)
-
+hoslem.test(sawa_dep$presence, fitted(sawa_glm_t))
 ## plot predictions
 sawa_dep$Depth
 range(sawa_dep$Depth)
@@ -679,5 +710,9 @@ plot(sawa_dep$Temp, sawa_dep$presence, pch = 16, xlab = "Temp", ylab = "Presence
 lines(xtemp, ytemp)
 length(xdepth)
 length(ydepth)
+
+#### just plot data
+
+plot(all_data$Depth,all_data$presence)
 
 
