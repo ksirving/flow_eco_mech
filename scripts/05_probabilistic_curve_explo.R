@@ -277,6 +277,12 @@ all_smea
 
 # b.	Continuous data – plot percent mortality/occurrence vs. physical variable
 
+
+library(tidyverse)
+library(dplyr)
+
+setwd("/Users/katieirving/Documents/git/flow_eco_mech")
+
 wulff <- read.csv("output_data/00_Wulff_depth_abundance.csv")
 thomp <- read.csv("output_data/00_Thompson_all_data_clean.csv") # bottom velocity
 saiki <- read.csv("input_data/abundance_env_vars_saiki_2000.csv") ## santa ana / san gabriel
@@ -315,7 +321,7 @@ saiki_adult_depth <- select(saiki_adult, Site, Date, Depth)
 saiki_adult_depth
 dim(saiki_adult_depth) 
 ## apply weights
-saiki_adult_depth$weight <- ifelse(saiki_adult_depth$Site =="SGRA" | saiki_adult_depth$Site == "SGRB", 5 , 10)
+saiki_adult_depth$weight <- ifelse(saiki_adult_depth$Site =="SGRA" | saiki_adult_depth$Site == "SGRB", 2 , 3)
 saiki_adult_depth <- na.omit(saiki_adult_depth) # 348 NAs removed
 # subset(saiki_adult_depth, Site =="SGRB")
 # sum(is.na(saiki_adult_depth$Depth..m.))
@@ -340,7 +346,7 @@ colnames(psu_df)
 psu_df$Depth<- ran_dep
 psu_df$Site <- "pseudo_site"
 psu_df$Date <- "pseudo_date"
-psu_df$weight <- 1
+psu_df$weight <- 3
 
 ## combine datasets
 all_data <- rbind(saiki_adult_depth, psu_df)
@@ -420,3 +426,258 @@ length(ydepth)
 
 
 ### combine data
+
+library(tidyverse)
+library(dplyr)
+
+setwd("/Users/katieirving/Documents/git/flow_eco_mech")
+
+
+wulff <- read.csv("output_data/00_Wulff_depth_abundance.csv")
+thomp <- read.csv("output_data/00_Thompson_all_data_clean.csv") # bottom velocity
+saiki <- read.csv("input_data/abundance_env_vars_saiki_2000.csv") ## santa ana / san gabriel
+# envicraft <- read.csv("output_data/00_Envicraft_2010_Temp_abundance.csv")
+sawa <- read.csv("output_data/00_SAWA_2014_env_hab_abundance.csv")
+
+
+dim(saiki) # 715 
+
+adults <- droplevels(unique(saiki$Life.Stage)[1:3])
+adults
+# saiki_juv <- subset(saiki, Life.Stage == "Juvenile")
+# saiki_juv
+## extract adults that aren't spawning (in spawning condition)
+
+saiki_adult <- filter(saiki, Life.Stage %in% adults & Spawning..Y.N. == "N") 
+dim(saiki_adult) ## 687
+
+# clean data
+saiki_adult$Site <- ifelse(saiki_adult$Site=="MWD8", paste("MWDB"), paste(saiki_adult$Site))
+saiki_adult$Site
+colnames(saiki_adult)[14] <- "Depth"
+
+## extract depth 
+saiki_adult_depth <- select(saiki_adult, Site, Date, Depth)
+saiki_adult_depth
+dim(saiki_adult_depth) 
+## apply weights
+saiki_adult_depth$weight <- ifelse(saiki_adult_depth$Site =="SGRA" | saiki_adult_depth$Site == "SGRB", 2 , 3)
+saiki_adult_depth <- na.omit(saiki_adult_depth) # 348 NAs removed
+
+
+
+
+head(wulff) ## cm has coordinates
+## do not know number of passes for electrofishing, seining also used. aim of study to compare 
+## methods so assume ok data
+unique(wulff$Section) ## santa ana river
+# weighting = 1
+
+head(thomp) # m
+# 3 pass electrofishing/removal method & capture probability applied
+# santa ana river
+# no coordinates - may be able to cllect with published map and clever GIS work
+# mean depth of cross sections
+# weighting = 0.7 
+
+head(sawa)
+dim(sawa)
+## has max depth & edge depth
+## santa ana river
+## no coordinates but could work them out from map
+## 1 pass seine
+## has absences
+## weighting 1
+# which(is.na(sawa)) ## 0+ fish
+# sum(sawa$abundance)
+# ab <- na.omit(sawa$abundance)
+# sum(ab)
+sawap <- na.omit(sawa)
+## remove absences for now - do separate glm later for curiosity
+sawap # cm
+head(saiki_adult_depth) # m
+saiki_adult_depth$dataset <- "Saiki"
+## extract only columns needed and format depth & add weighting
+wulff <- wulff[,c(9:10)]
+wulff$Depth <- wulff$Depth_cm/100
+wulff$weight <- 3
+wulff$dataset <- "Wulff"
+head(wulff)
+
+thomp <- thomp[,c(1:2,7)]
+thomp$weight <- 2
+thomp$dataset <- "Thompson"
+thomp
+
+sawap <- sawap[,c(2:3,5)]
+sawap$Depth <- sawap$Max_depth_cm/100
+sawap$dataset <- "SAWA"
+sawap$weight <- 3
+sawap
+#### all data merge
+
+# column names - only really need depth and weight
+head(saiki_adult_depth)
+saiki_adult_depthw <- saiki_adult_depth[, c(3:4,5)]
+
+head(wulff)
+wulffw <- wulff[, c(3:4,5)]
+head(thomp)
+thomp <- thomp[, c(3:4,5)]
+sawap
+sawap <- sawap[, c(4,6,5)]
+
+colnames(saiki_adult_depthw)
+colnames(wulffw)
+colnames(thomp)
+colnames(sawap)
+colnames(thomp) <- colnames(wulffw)
+colnames(sawap) <- colnames(wulffw)
+
+
+## combine data
+
+all_data <- rbind(saiki_adult_depthw, wulffw, thomp,sawap)
+head(all_data)
+dim(all_data) ## 501
+
+## glm with all data 
+## add absences
+range(all_data$Depth) # 0.04 70.50
+set.seed(678)
+# ?set.seed
+x <- seq(0,1.2, 0.01)
+## absences
+ran_dep <- sample(x,50)
+ran_dep
+
+psu_df <- data.frame(matrix(ncol=3, nrow=50))
+colnames(psu_df) <- colnames(all_data)
+# colnames(all_data)
+# colnames(psu_df)
+psu_df$Depth<- ran_dep
+psu_df$dataset <- "psuedo"
+psu_df$weight <- 3
+colnames(psu_df) <- colnames(all_data)
+
+## combine datasets
+all_data <- rbind(all_data, psu_df)
+
+
+## add presence/absence
+all_data$presence <- ifelse(all_data$dataset == "psuedo", 0, 1)
+all_data$presence <- as.integer(all_data$presence)
+all_data$weight <- as.integer(all_data$weight)
+all_data
+tail(all_data)
+# head(all_data)
+str(all_data)
+# unique(all_data$presence)
+
+###################
+## glm
+
+ad_dep_glm <- glm(presence~Depth, data=all_data, family=binomial, weights=weight)
+
+# ad_dep_glm_ds <- glm(presence~Depth + dataset, data=all_data, family=binomial, weights = weight)
+# 
+# unique(all_data$dataset) 
+# Warning message:
+#   glm.fit: algorithm did not converge
+
+ad_dep_glm_zero <- glm(presence~Depth-1, data=all_data, family=binomial, weights=weight)
+
+summary(ad_dep_glm$fitted.values) # 
+# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+# 0.5281  0.8815  0.9079  0.8976  0.9289  0.9592 
+
+summary(ad_dep_glm_zero$fitted.values)
+# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+# 0.6051  0.9082  0.9608  0.9410  0.9918  1.0000 
+summary(ad_dep_glm)
+summary(ad_dep_glm_ds)
+summary(ad_dep_glm_zero)
+## plot predictions
+all_data$Depth
+range(all_data$Depth)
+# create range of depth values
+xdepth  <- seq(0,1.5, 0.0005)
+
+ydepth <- predict(ad_dep_glm, list(Depth = xdepth), type="response")
+plot(all_data$Depth, all_data$presence, pch = 16, xlab = "Depth (m)", ylab = "Presence")
+## 
+
+lines(xdepth, ydepth)
+length(xdepth)
+length(ydepth)
+
+ydepthz <- predict(ad_dep_glm_zero, list(Depth = xdepth), type="response")
+plot(all_data$Depth, all_data$presence, pch = 16, xlab = "Depth (m)", ylab = "Presence")
+lines(xdepth, ydepthz)
+length(xdepth)
+length(ydepthz)
+
+
+## glm with sawa data for fun!!!
+
+head(sawa)
+sawa_dep <- sawa[, c(5,13,14,15)]
+sawa_dep$Depth <- sawa_dep$Depth/100
+
+## add presence/absence
+sawa_dep
+sawa_dep$presence <- ifelse(is.na(sawa_dep$abundance), 0, 1)
+sawa_dep$presence <- as.integer(sawa_dep$presence)
+
+colnames(sawa_dep)[1] <- "Depth"
+
+####################
+# GLM
+sawa_glm <- glm(presence~Depth, data=sawa_dep, family=binomial)
+
+summary(sawa_glm$fitted.values) # 
+# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+# .2198  0.2621  0.2902  0.2895  0.3049  0.4301 
+
+summary(sawa_glm)
+
+## plot predictions
+sawa_dep$Depth
+range(sawa_dep$Depth)
+# create range of depth values
+xdepth  <- seq(0,1.5, 0.0005)
+
+ydepth <- predict(sawa_glm, list(Depth = xdepth), type="response")
+plot(sawa_dep$Depth, sawa_dep$presence, pch = 16, xlab = "Depth (m)", ylab = "Presence")
+## 
+
+lines(xdepth, ydepth)
+length(xdepth)
+length(ydepth)
+
+# GLM with temp
+sawa_glm_t <- glm(presence~Depth*Temp, data=sawa_dep, family=binomial)
+sawa_glm_t <- glm(presence~Temp, data=sawa_dep, family=binomial)
+summary(sawa_glm_t$fitted.values) # 
+# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+# 0.05507 0.14341 0.25545 0.28947 0.43758 0.65370 
+
+summary(sawa_glm_t)
+
+## plot predictions
+sawa_dep$Depth
+range(sawa_dep$Depth)
+range(sawa_dep$Temp)
+# create range of depth values
+xdepth  <- seq(0,1.5, 0.0005)
+xtemp <- seq(15,30, 0.01)
+
+ytemp <- predict(sawa_glm_t, list(Temp = xtemp), type="response")
+plot(sawa_dep$Temp, sawa_dep$presence, pch = 16, xlab = "Temp", ylab = "Presence")
+## 
+
+lines(xtemp, ytemp)
+length(xdepth)
+length(ydepth)
+
+
