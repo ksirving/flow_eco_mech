@@ -188,7 +188,7 @@ write.csv(smea_perc, "output_data/00_smea_total_percentage.csv")
 # transform percentage into abundance
 #  seapare years
 
- 
+ dep_ad
 dep_ad_03 <- dep_ad[, 1:5]
 dep_ad_04 <- dep_ad[,c(1,6:8)]
 dep_ad_03
