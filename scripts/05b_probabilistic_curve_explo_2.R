@@ -97,6 +97,7 @@ sum(all_df$abundance)
 max(all_df$abundance)
 hist(all_df$Temp)
 
+### this needs a fix
 expectedProportion <- dpois(0:123, lambda = Meantemp)
 expectedFrequency <- expectedProportion * 963
 expectedFrequency
@@ -105,4 +106,20 @@ hist(all_df$Temp, right = FALSE, breaks = seq(0, 110, 5), las = 1, col = "firebr
 
 axis(1, at = seq(5, 30, 5), labels = seq(5,30,5))
 lines(expectedFrequency, lwd = 2)
+
+## depth
+## make data frame to include all datasets so can upload easily
+# temp abundance dataset - also try site
+
+library(tidyverse)
+library(dplyr)
+
+setwd("/Users/katieirving/Documents/git/flow_eco_mech")
+
+
+wulff <- read.csv("output_data/00_Wulff_depth_abundance.csv")
+thomp <- read.csv("output_data/00_Thompson_all_data_clean.csv") # bottom velocity
+saiki <- read.csv("input_data/abundance_env_vars_saiki_2000.csv") ## santa ana / san gabriel
+envicraft <- read.csv("output_data/00_Envicraft_2010_Temp_abundance.csv")
+sawa <- read.csv("output_data/00_SAWA_2014_env_hab_abundance.csv")
 
