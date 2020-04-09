@@ -61,6 +61,9 @@ ab_temp <- sawa[,c(3,4)]
 
 ab_temp <- na.omit(ab_temp)
 sum(ab_temp$abundance)
+head(ab_temp)
+
+
 
 tem_freq <- ab_temp %>% 
   uncount(abundance)
@@ -74,7 +77,7 @@ quantile(tem_freq$Temp) ## higher than others but extremes the same
 # 18.0 28.3 - backed up by others e.g. less than 30 degrees
 # min 15.9 degrees - envicraft
 # saiki may have some for life stage
-range(saiki$Temp)
+range(ad_saiki_temp$Temp)
 ## 6.93 29.24
 
 
@@ -95,14 +98,21 @@ quantile(ad_saiki_temp$Temp) # from df created below
 
 # add together
 t_sk_df <- as.data.frame(ad_saiki_temp$Temp)
-t_sw_df <- as.data.frame(tem_freq$Temp)
 names(t_sk_df) <- "Temp"
+t_sk_df$dataset <- "Saiki"
+t_sw_df <- as.data.frame(tem_freq$Temp)
 names(t_sw_df) <- "Temp"
+t_sw_df$dataset <- "SAWA"
+
+
 all_df <- rbind(t_sk_df, t_sw_df)
 dim(all_df) # 956
+head(all_df)
 
 hist(all_df$Temp)
 quantile(all_df$Temp)
+
+write.csv(all_df, "output_data/03_saiki_sawa_temp_frequency.csv")
 # 0%   25%   50%   75%  100% 
 # 6.93 12.63 20.23 23.90 28.61 
 

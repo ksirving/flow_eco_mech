@@ -36,4 +36,73 @@ saiki <- read.csv("input_data/abundance_env_vars_saiki_2000.csv") ## santa ana /
 envicraft <- read.csv("output_data/00_Envicraft_2010_Temp_abundance.csv")
 sawa <- read.csv("output_data/00_SAWA_2014_env_hab_abundance.csv")
 
+## temperature
+
+sawa <- read.csv("output_data/00_SAWA_2014_env_hab_abundance.csv")
+sawa <- sawa[, c(2,3,13, 15)]
+ab_temp <- sawa[,c(3,4)]
+ab_temp <- na.omit(ab_temp)
+ab_temp$dataset <- "SAWA"
+sum(ab_temp$abundance)
+head(ab_temp)
+# plot(ab_temp$Temp, ab_temp$abundance)
+
+saiki <- read.csv("input_data/abundance_env_vars_saiki_2000.csv") ## santa ana / san gabriel
+dim(saiki) # 715 
+head(saiki)
+adults <- droplevels(unique(saiki$Life.Stage)[1:3])
+adults
+
+## extract adults that aren't spawning (in spawning condition)
+
+saiki_adult <- filter(saiki, Life.Stage %in% adults & Spawning..Y.N. == "N") ## may keep all in
+dim(saiki_adult) ## 687
+
+# clean data
+saiki_adult$Site <- ifelse(saiki_adult$Site=="MWD8", paste("MWDB"), paste(saiki_adult$Site))
+saiki_adult$Site
+colnames(saiki_adult)[13] <- "Temp"
+
+## extract temp 
+saiki_adult_temp <- select(saiki_adult, Site, Date, Temp)
+saiki_adult_temp
+
+## round temp to removes all the 1 abundances
+saiki_adult_temp$Temp <- round(saiki_adult_temp$Temp,digits = 1)
+
+## convert Saiki to abundance
+
+saiki_freq <- as.data.frame(table(saiki_adult_temp$Temp))
+saiki_freq
+colnames(saiki_freq)<- c("Temp", "abundance")
+saiki_freq$dataset <- "Saiki"
+
+## join together
+names(ab_temp)
+names(saiki_freq)
+
+all_df <- rbind(ab_temp, saiki_freq)
+dim(all_df) # 123
+
+plot(all_df$Temp, all_df$abundance) ## many 1's skewing the curve
+str(all_df)
+## format to numbers
+all_df$Temp <- as.numeric(as.character(all_df$Temp))
+## get probability
+
+Meantemp <- mean(all_df$Temp)
+Meantemp
+length(all_df$Temp)
+sum(all_df$abundance)
+max(all_df$abundance)
+hist(all_df$Temp)
+
+expectedProportion <- dpois(0:123, lambda = Meantemp)
+expectedFrequency <- expectedProportion * 963
+expectedFrequency
+
+hist(all_df$Temp, right = FALSE, breaks = seq(0, 110, 5), las = 1, col = "firebrick", xaxt = "n", main = "", xlab = "Temperature")
+
+axis(1, at = seq(5, 30, 5), labels = seq(5,30,5))
+lines(expectedFrequency, lwd = 2)
 
