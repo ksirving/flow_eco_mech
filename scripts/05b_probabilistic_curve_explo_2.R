@@ -57,6 +57,8 @@ saiki_freq$dataset <- "Saiki"
 names(ab_temp)
 names(saiki_freq)
 
+head(ab_temp)
+
 all_df <- rbind(ab_temp, saiki_freq)
 dim(all_df) # 123
 
