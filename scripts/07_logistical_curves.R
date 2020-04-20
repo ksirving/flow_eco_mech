@@ -64,14 +64,19 @@ names(freq_df) <- c("Depth", "Freq")
 str(freq_df)
 
 ### logistic curve
+### binary column for 300 freq
 
+freq_df$f300 <- ifelse(freq_df$Freq >= 300, 1,0)
+head(freq_df)
 
+## model
 freq300_glm <- glm(f300~Depth, data=freq_df,family=binomial(link = "logit"))
 summary(freq300_glm)
+
 # create range of depth values
 
 xdepth  <- seq(0,130, 0.1)
-
+## prediction
 ydepth <- predict(freq300_glm, list(Depth = xdepth), type="response")
 plot(freq_df$Depth, freq_df$f300, pch = 16, xlab = "Depth (m)", ylab = "Presence")
 lines(xdepth, ydepth) ## need to force through 0
@@ -84,10 +89,6 @@ lines(xdepth, ydepthz) ## doesn't work!!!!!
 length(xdepth)
 length(ydepthz)
 
-### binary column for 300 freq
-
-freq_df$f300 <- ifelse(freq_df$Freq >= 300, 1,0)
-head(freq_df)
 ##### density
 
 ## density data
