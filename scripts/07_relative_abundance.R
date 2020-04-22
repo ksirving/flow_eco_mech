@@ -27,10 +27,10 @@ depth_freq <- all_depth %>%
 hist(depth_freq$Depth)
 
 ### relative frequency histogram - percentage
-histogram(depth_freq$Depth)
+
 x <-depth_freq$Depth
 h<-hist(x, breaks=10, col="red", xlab="Depth (cm)",
-        main="Adult Depth")
+        main="Adult Depth", freq=F)
 xfit<-seq(min(x),max(x),length=130)
 yfit<-dnorm(xfit,mean=mean(x),sd=sd(x))
 yfit <- yfit*diff(h$mids[1:2])*length(x)
@@ -73,4 +73,4 @@ legend(locator(1), levels(data.f), fill=colfill)
 
 ## top of peak is 0.030 - what can we relate that to? is it the same for other variables?
 
-
+hist(x)
