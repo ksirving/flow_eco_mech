@@ -217,10 +217,10 @@ saiki_ad<- filter(saiki, Life.Stage %in% adults & Spawning..Y.N. == "Y") ## may 
 dim(saiki_ad) ## 15
 
 ## count frequency in place of abundance (data is presence only)
-saiki_dep <- saiki_ad[, c(14)]
+saiki_dep <- saiki_ad[, c(3,14)]
 saiki_dep <- as.data.frame(table(saiki_dep))
-
-names(saiki_dep) <- c("Depth", "Abundance")
+saiki_dep
+names(saiki_dep) <- c("Site", "Depth", "Abundance")
 saiki_dep$Depth <- as.numeric(as.character(saiki_dep$Depth))
 saiki_dep$Depth <- saiki_dep$Depth*100
 saiki_dep$Dataset <- "Saiki"
@@ -395,24 +395,30 @@ adults <- droplevels(unique(saiki$Life.Stage)[1:3])
 
 saiki_adult <- filter(saiki, Life.Stage %in% adults & Spawning..Y.N. == "N") ## may keep all in
 dim(saiki_adult) ## 687
-names(saiki)
+names(saiki_adult)
 
 colnames(saiki_adult)[15] <- "Velocity"
 
 ## extract velcocity 
-saiki_adult_vel <- select(saiki_adult, Velocity)
+saiki_adult_vel <- select(saiki_adult, Velocity, Site)
 saiki_adult_vel
 
 ## round temp to removes all the 1 abundances and standardise with sawa
 saiki_adult_vel$Velocity<- round(saiki_adult_vel$Velocity,digits = 2)
 
 ## convert Saiki to abundance
-
+saiki_adult_vel <- na.omit(saiki_adult_vel)
 saiki_freq <- as.data.frame(table(saiki_adult_vel$Velocity))
 sum(saiki_freq$Freq) # 337
 colnames(saiki_freq)<- c("Velocity", "Abundance")
 saiki_freq$Dataset <- "Saiki"
+saiki_freq
 
+## keep site in saiki
+saiki_adult_vel$Dataset <- "Saiki"
+hist(saiki_adult_vel$Velocity)
+
+write_csv(saiki_adult_vel, "output_data/05a_saiki_site_adult_velocity.csv")
 ####### Thompson
 
 head(thomp)

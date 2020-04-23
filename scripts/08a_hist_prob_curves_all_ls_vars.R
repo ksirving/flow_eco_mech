@@ -21,9 +21,65 @@ juv_depth_con <- read.csv("output_data/05a_juvenile_depth_continuous.csv")
 juv_depth_cat <- read.csv("output_data/05a_juvenile_depth_categorical.csv")
 sp_depth_cat <- read.csv("output_data/05a_spawning_depth_continuous.csv")
 
-## combine data
+## format spawning
+sp_depth_catx <- sp_depth_cat[,c(4,15)]
+sp_depth_catx$Depth <- sp_depth_catx$Depth..m.*100
+sp_depth_catx$Abundance <- 1
+sp_depth_catx$Dataset <- "Saiki"
+sp_depth_catx<- sp_depth_catx[, 3:5]
+sp_depth_catx$Life_Stage <- "Spawning"
+sp_depth_catx
+## combine data adult
 all_depth <- rbind(ad_depth_con, ad_depth_cat)
+all_depth$Life_Stage <- "Adult"
+head(all_depth)
+all_depth<- all_depth[,-1]
 
+## combine juv depth
+juv_depth <- rbind(juv_depth_cat, juv_depth_con)
+juv_depth$Life_Stage <- "Juvenile"
+juv_depth <- juv_depth[,-1]
+## combine all
+head(juv_depth)
+head(all_depth)
+head(sp_depth_catx)
+all_depthx <- rbind(all_depth, sp_depth_catx, juv_depth)
+all_depthx <- na.omit(all_depthx)
+## uncount data into frequency 
+
+depth_freq <- all_depthx %>% 
+  uncount(Abundance)
+hist(depth_freq$Depth)
+
+##look at different life stages
+
+tx <- depth_freq$Life_Stage == "Adult"
+sx <- depth_freq$Life_Stage == "Juvenile"
+wx <- depth_freq$Life_Stage == "Spawning"
+
+
+depth_freq$Dataset_num[tx] <- 1
+depth_freq$Dataset_num[sx] <- 2
+depth_freq$Dataset_num[wx] <- 3
+sum(is.na(depth_freq))
+
+attach(depth_freq)
+
+# create value labels
+data.f <- factor(Dataset_num, levels= 1:3,
+                 labels = c("Adult", "Juvenile", "Spawning"))
+data.f
+str(Depth)
+as.vector(Depth)
+# plot densities
+sm.density.compare(as.vector(Depth), Dataset_num, xlab="Depth (cm)")
+title(main="Depth Distribution by Life Stage")
+
+# add legend via mouse click
+colfill<-c(2:(2+length(levels(data.f))))
+legend(locator(1), levels(data.f), fill=colfill)
+
+### individual life stages
 ## uncount data into frequency
 
 depth_freq <- all_depth %>% 
@@ -83,53 +139,60 @@ axis(4, at=pretty(range(yfit)))
 ### spawning
 
 ## uncount data into frequency
-sp_depth_cat
-depth_freq <- sp_depth_cat %>% 
-  uncount(abundance)
+sp_depth_catx <- sp_depth_cat[,c(4,15)]
+sp_depth_catx$Depth <- sp_depth_catx$Depth..m.*100
+sp_depth_catx$Abundance <- 1
+sp_depth_catx$Dataset <- "Saiki"
+
+
+depth_freq <- sp_depth_catx %>% 
+  uncount(Abundance)
 hist(depth_freq$Depth)
 
-##look at different data sets
+##look at different sites
 
 ## compare different data sets
 ### get numbers for datasets
-unique(depth_freq$Dataset)
-tx <- depth_freq$Dataset == "Thompson"
-sx <- depth_freq$Dataset == "Saiki"
-wx <- depth_freq$Dataset == "Wulff"
-swx <- depth_freq$Dataset == "SAWA"
-smx <- depth_freq$Dataset == "SMEA"
-
+unique(depth_freq$Site)
+tx <- depth_freq$Site == "MWDA"
+sx <- depth_freq$Site == "MWDB"
+wx <- depth_freq$Site == "SGRA"
+swx <- depth_freq$Site == "SGRB"
+tx
+sx
+wx
+swx
 depth_freq$Dataset_num[tx] <- 1
-depth_freq$Dataset_num[sx] <- 2
-depth_freq$Dataset_num[wx] <- 3
-depth_freq$Dataset_num[swx] <- 4
-depth_freq$Dataset_num[smx] <- 5
+depth_freq$Dataset_num[sx] <- 1
+depth_freq$Dataset_num[wx] <- 2
+depth_freq$Dataset_num[swx] <- 2
 
+depth_freq <- na.omit(depth_freq)
 attach(depth_freq)
 
 # create value labels
-data.f <- factor(Dataset_num, levels= 1:5,
-                 labels = c("Thompson", "Saiki", "Wulff", "SAWA", "SMEA"))
+data.f <- factor(Dataset_num, levels= 1:2,
+                 labels = c("Santa Ana", "San Gabriel"))
 data.f
 str(Depth)
 as.vector(Depth)
 # plot densities
+as.vector(Depth)
 sm.density.compare(as.vector(Depth), Dataset_num, xlab="Depth (cm)")
-title(main="Depth Distribution by Dataset")
+title(main="Depth Distribution by Site (Saiki)")
 
 # add legend via mouse click
 colfill<-c(2:(2+length(levels(data.f))))
 legend(locator(1), levels(data.f), fill=colfill)
 
 ### centered and scaled histogram probability
-mean ## 33.5929
-(71-33.5929)/4
-subset(depth_freq, Scaled_Depth >=2)
+mean ## 34.5
+mean(depth_freq$Depth)
 depth_freq$Scaled_Depth <-scale(depth_freq$Depth, scale=T, center=T)
 scaled_x <- depth_freq$Scaled_Depth
 h <- hist(scaled_x)
 h$counts=(h$counts/sum(h$counts))*100
-plot(h, xlab="Distance from mean Depth", ylab = "Percentage of observations",main = "Adult/Depth: Probability curve")
+plot(h, xlab="Distance from mean Depth", ylab = "Percentage of observations",main = "Spawning/Depth: Probability curve")
 par(new=TRUE)
 xfit<-seq(min(scaled_x),max(scaled_x),length=120)
 yfit<-dnorm(xfit,mean=mean(scaled_x),sd=sd(scaled_x))
@@ -236,18 +299,18 @@ str(freq_df)
 max(freq_df$Freq)
 
 
-freq_df$f140 <- ifelse(freq_df$Freq <=140, 1,0) ## around 95% of observations
+freq_df$f140 <- ifelse(freq_df$Freq >=140, 1,0) ## around 5% of observations
 range(freq_df[which(freq_df$f140==1),"Depth"]) ## depths between 64 & 120
 
 
-freq_df$f300 <- ifelse(freq_df$Freq  <= 300, 1,0) ## around 12.5% of observations
+freq_df$f300 <- ifelse(freq_df$Freq  >= 300, 1,0) ## around 12.5% of observations
 range(freq_df[which(freq_df$f300==1),"Depth"])
 
-freq_df$f493 <- ifelse(freq_df$Freq <= 493 , 1,0) ## around 20.3% of observations
+freq_df$f493 <- ifelse(freq_df$Freq >= 493 , 1,0) ## around 20.3% of observations
 range(freq_df[which(freq_df$f493==1),"Depth"])
 
-freq_df$fmax <- ifelse(freq_df$Freq > 493, 1,0) ## around 20.3% of observations
-range(freq_df[which(freq_df$fmax==1),"Depth"])
+# freq_df$fmax <- ifelse(freq_df$Freq > 493, 1,0) ## around 20.3% of observations
+# range(freq_df[which(freq_df$fmax==1),"Depth"])
 
 freq_df
 
@@ -283,7 +346,7 @@ plot(freq_df$Depth, freq_df$f300, pch = 16, xlab = "Depth (cm)", ylab = "Presenc
 lines(xdepth, ydepth) ## need to force through 0
 
 ydepth <- predict(freq493_glm, list(Depth = xdepth), type="response")
-plot(freq_df$Depth, freq_df$f493, pch = 16, xlab = "Depth (cm)", ylab = "Presence", main="Adult/Depth: 20% Obvs")
+plot(freq_df$Depth, freq_df$f493, pch = 16, xlab = "Depth (cm)", ylab = "Presence", main="Adult/Depth: 46% Obvs")
 lines(xdepth, ydepth) ## need to force through 0
 
 ydepth <- predict(freqmax_glm, list(Depth = xdepth), type="response")
@@ -386,31 +449,10 @@ vel_freq <- ad_vel_con2 %>%
   uncount(Abundance)
 hist(vel_freq$Velocity)
 
-##look at different data sets - need site info
 
 ## compare different data sets
 ### get numbers for datasets
-unique(vel_freq$Dataset)
-sx <- vel_freq$Dataset == "Saiki"
-swx <- vel_freq$Dataset == "SAWA"
 
-temp_freq$Dataset_num[sx] <- 1
-temp_freq$Dataset_num[swx] <- 2
-
-attach(temp_freq)
-
-# create value labels
-data.f <- factor(Dataset_num, levels= 1:2,
-                 labels = c("Saiki", "SAWA"))
-
-
-# plot densities
-sm.density.compare(as.vector(Temp), Dataset_num, xlab="Temp")
-title(main="Temp Distribution by Dataset (Adult)")
-
-# add legend via mouse click
-colfill<-c(2:(2+length(levels(data.f))))
-legend(locator(1), levels(data.f), fill=colfill)
 
 #### curve
 mean(vel_freq$Velocity) ## 0.3422552, -1 = 0.09ms
@@ -431,3 +473,39 @@ axis(4, at=pretty(range(yfit)))
 dnorm(-2, mean=mean(scaled_x),sd=sd(scaled_x))
 
 vel_freq
+
+## check saiki site velocity
+saiki_vel <- read.csv("output_data/05a_saiki_site_adult_velocity.csv")
+saiki_vel
+##look at different data sets - need site info
+unique(saiki_vel$Site)
+ma <- saiki_vel$Site == "MWDA"
+mb <- saiki_vel$Site == "MWDB"
+m8 <- saiki_vel$Site == "MWD8"
+sa <- saiki_vel$Site == "SGRA"
+sb <- saiki_vel$Site == "SGRB"
+
+saiki_vel$Dataset_num[ma] <- 1
+saiki_vel$Dataset_num[mb] <- 1
+saiki_vel$Dataset_num[m8] <- 1
+saiki_vel$Dataset_num[sa] <- 2
+saiki_vel$Dataset_num[sb] <- 2
+
+attach(saiki_vel)
+
+# create value labels
+data.f <- factor(Dataset_num, levels= 1:2,
+                 labels = c("Santa Ana", "San Gabriel"))
+
+
+# plot densities
+sm.density.compare(as.vector(Velocity), Dataset_num, xlab="Velocity")
+title(main="Velocity Distribution by Site (Saiki)")
+
+# add legend via mouse click
+colfill<-c(2:(2+length(levels(data.f))))
+legend(locator(1), levels(data.f), fill=colfill)
+
+
+
+
