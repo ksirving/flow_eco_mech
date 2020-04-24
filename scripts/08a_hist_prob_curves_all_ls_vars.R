@@ -522,20 +522,23 @@ depth_freq <- all_depth %>%
 hist(depth_freq$Depth)
 
 
-### centered and scaled histogram probability
+### centered and scaled histogram probability - simplified and saved high res
 
+jpeg("figures/simple_prob_curve.jpg", width = 800, height = 1000)
 # subset(depth_freq, Scaled_Depth >=2)
 depth_freq$Scaled_Depth <-scale(depth_freq$Depth, scale=T, center=T)
 scaled_x <- depth_freq$Scaled_Depth
 h <- hist(scaled_x, plot=F)
 h$counts=(h$counts/sum(h$counts))*100
-plot(h,lty="white",xlab="Depth (cm)", ylab = "Probability of Suitable Habitat",main = "Adult Santa Ana Sucker")
+plot(h,lty="white",xlab="Depth (cm)", ylab = "Habitat Suitability",main = "")
 par(new=TRUE)
 xfit<-seq(min(scaled_x),max(scaled_x),length=120)
 yfit<-dnorm(xfit,mean=mean(scaled_x),sd=sd(scaled_x))
 #plot the line with no axes or labels
 plot(xfit, yfit, axes=FALSE,xlab="", ylab="", type='l', col='red')
-dnorm(33, mean=mean(scaled_x),sd=sd(scaled_x))
+dev.off()
+
+dnorm(1, mean=mean(scaled_x),sd=sd(scaled_x))
 
 #add these now with axis
 axis(2, at=pretty(range(yfit)))
