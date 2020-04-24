@@ -31,6 +31,7 @@ sp_depth_catx$Life_Stage <- "Spawning"
 sp_depth_catx
 ## combine data adult
 all_depth <- rbind(ad_depth_con, ad_depth_cat)
+
 all_depth$Life_Stage <- "Adult"
 head(all_depth)
 all_depth<- all_depth[,-1]
@@ -123,6 +124,7 @@ legend(locator(1), levels(data.f), fill=colfill)
 mean ## 33.5929
 (71-33.5929)/4
 subset(depth_freq, Scaled_Depth >=2)
+
 depth_freq$Scaled_Depth <-scale(depth_freq$Depth, scale=T, center=T)
 scaled_x <- depth_freq$Scaled_Depth
 h <- hist(scaled_x)
@@ -135,7 +137,8 @@ yfit<-dnorm(xfit,mean=mean(scaled_x),sd=sd(scaled_x))
 plot(xfit, yfit, axes=FALSE, xlab='', ylab='', type='l', col='red' )
 #add these now with axis
 axis(4, at=pretty(range(yfit)))
-
+scaled_x
+dnorm()
 ### spawning
 
 ## uncount data into frequency
@@ -506,6 +509,51 @@ title(main="Velocity Distribution by Site (Saiki)")
 colfill<-c(2:(2+length(levels(data.f))))
 legend(locator(1), levels(data.f), fill=colfill)
 
+## simplified histogram
 
+ad_depth_con <- read.csv("output_data/05a_adult_depth_continuous.csv")
+ad_depth_cat <- read.csv("output_data/05a_adult_depth_categorical.csv")
+
+## uncount data into frequency
+all_depth <- rbind(ad_depth_con, ad_depth_cat)
+
+depth_freq <- all_depth %>% 
+  uncount(Abundance)
+hist(depth_freq$Depth)
+
+
+### centered and scaled histogram probability
+
+# subset(depth_freq, Scaled_Depth >=2)
+depth_freq$Scaled_Depth <-scale(depth_freq$Depth, scale=T, center=T)
+scaled_x <- depth_freq$Scaled_Depth
+h <- hist(scaled_x, plot=F)
+h$counts=(h$counts/sum(h$counts))*100
+plot(h,lty="white",xlab="Depth (cm)", ylab = "Probability of Suitable Habitat",main = "Adult Santa Ana Sucker")
+par(new=TRUE)
+xfit<-seq(min(scaled_x),max(scaled_x),length=120)
+yfit<-dnorm(xfit,mean=mean(scaled_x),sd=sd(scaled_x))
+#plot the line with no axes or labels
+plot(xfit, yfit, axes=FALSE,xlab="", ylab="", type='l', col='red')
+dnorm(33, mean=mean(scaled_x),sd=sd(scaled_x))
+
+#add these now with axis
+axis(2, at=pretty(range(yfit)))
+
+## not scaled check
+# subset(depth_freq, Scaled_Depth >=2)
+
+x <- depth_freq$Depth
+h <- hist(x, plot=F)
+h$counts=(h$counts/sum(h$counts))*100
+plot(h,lty="white",xlab="Depth (cm)", ylab = "Probability of Suitable Habitat",main = "Adult Santa Ana Sucker")
+par(new=TRUE)
+xfit<-seq(min(x),max(x),length=120)
+yfit<-dnorm(xfit,mean=mean(scaled_x),sd=sd(scaled_x))
+#plot the line with no axes or labels
+plot(xfit, yfit, axes=FALSE,xlab="", ylab="", type='l', col='red')
+
+#add these now with axis
+axis(2, at=pretty(range(yfit)))
 
 
