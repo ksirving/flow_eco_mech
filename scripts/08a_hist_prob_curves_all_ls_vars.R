@@ -139,6 +139,7 @@ plot(xfit, yfit, axes=FALSE, xlab='', ylab='', type='l', col='red' )
 axis(4, at=pretty(range(yfit)))
 scaled_x
 dnorm()
+
 ### spawning
 
 ## uncount data into frequency
@@ -146,7 +147,7 @@ sp_depth_catx <- sp_depth_cat[,c(4,15)]
 sp_depth_catx$Depth <- sp_depth_catx$Depth..m.*100
 sp_depth_catx$Abundance <- 1
 sp_depth_catx$Dataset <- "Saiki"
-
+write.csv(sp_depth_catx, "output_data/08a_spawning_depth_abundance.csv")
 
 depth_freq <- sp_depth_catx %>% 
   uncount(Abundance)
@@ -190,7 +191,9 @@ legend(locator(1), levels(data.f), fill=colfill)
 
 ### centered and scaled histogram probability
 mean ## 34.5
+depth_freq <- na.omit(depth_freq)
 mean(depth_freq$Depth)
+
 depth_freq$Scaled_Depth <-scale(depth_freq$Depth, scale=T, center=T)
 scaled_x <- depth_freq$Scaled_Depth
 h <- hist(scaled_x)
@@ -439,15 +442,56 @@ axis(4, at=pretty(range(yfit)))
 # axis(1, at=pretty(seq(0,120,1)))
 min(temp_freq$Temp)
 
+## spawning
+sp_temp_conx <- sp_temp_con[,c(4,14)]
+sp_temp_conx$Temp <- sp_temp_conx$Temp...C.
+sp_temp_conx$Temp...C. <- NULL
+sp_temp_conx$Abundance <- 1
+sp_temp_conx$Dataset <- "Saiki"
+
+sp_temp_conx
+sp_temp_conx <- na.omit(sp_temp_conx)
+write.csv(sp_temp_conx, "output_data/08a_spawning_temp_abundance.csv")
+temp_freq <- sp_temp_conx %>% 
+  uncount(Abundance)
+hist(temp_freq$Temp)
+
+mean(temp_freq$Temp) ## 19.482
+temp_freq$Scaled_Temp <-scale(temp_freq$Temp, scale=T, center=T)
+scaled_x <- temp_freq$Scaled_Temp
+h <- hist(scaled_x)
+h$counts=(h$counts/sum(h$counts))*100
+plot(h,  xlab="Distance from mean Temp", ylab = "Percentage of observations", main = "Spawning/Temp: Probability curve")
+par(new=TRUE)
+xfit<-seq(min(scaled_x),max(scaled_x),length=120)
+yfit<-dnorm(xfit,mean=mean(scaled_x),sd=sd(scaled_x))
+#plot the line with no axes or labels
+plot(xfit, yfit, axes=FALSE, xlab='', ylab='', type='l', col='red' )
+#add these now with axis
+axis(4, at=pretty(range(yfit)))
+# axis(1, at=pretty(seq(0,120,1)))
+min(temp_freq$Temp)
+
 ## velocity
 
 ad_vel_con <- read.csv("output_data/05a_adult_velocity_continuous.csv")
 # ad_vel_cat <- read.csv("output_data/05a_adult_velocity_categorical.csv") ## bottom velocity
 juv_vel_con <- read.csv("output_data/05a_juvenile_velocity_continuous.csv")
 # juv_vel_cat <- read.csv("output_data/05a_juvenile_velocity_categorical.csv") ## bottom velocity
-
+sp_vel_con <- read.csv("output_data/05a_spawning_temperature_continuous.csv")
+sp_vel_conx <- sp_vel_con[,c(4,16)]
+sp_vel_conx$Velocity <- sp_vel_conx$Current..m.sec.
+sp_vel_conx$Current..m.sec. <- NULL
+sp_vel_conx$Abundance <- 1
+sp_vel_conx$Dataset <- "Saiki"
+sp_vel_conx <- na.omit(sp_vel_conx)
+write.csv(sp_vel_conx, "output_data/08a_spawning_velocity_abundance")
+## adult
 ad_vel_con2 <- subset(ad_vel_con, Dataset=="Saiki")
 ad_vel_con2
+
+
+## uncount frequency
 vel_freq <- ad_vel_con2 %>% 
   uncount(Abundance)
 hist(vel_freq$Velocity)
@@ -465,6 +509,35 @@ scaled_x <- vel_freq$Scaled_Vel
 h <- hist(scaled_x)
 h$counts=(h$counts/sum(h$counts))*100
 plot(h,  xlab="Distance from mean Velocity", ylab = "Percentage of observations", main = "Adult/Velocity: Probability curve")
+par(new=TRUE)
+xfit<-seq(min(scaled_x),max(scaled_x),length=120)
+yfit<-dnorm(xfit,mean=mean(scaled_x),sd=sd(scaled_x))
+#plot the line with no axes or labels
+plot(xfit, yfit, axes=FALSE, xlab='', ylab='', type='l', col='red' )
+#add these now with axis
+axis(4, at=pretty(range(yfit)))
+# axis(1, at=pretty(seq(0,120,1)))
+dnorm(-2, mean=mean(scaled_x),sd=sd(scaled_x))
+
+## spawning
+## uncount frequency
+vel_freq <- sp_vel_conx %>% 
+  uncount(Abundance)
+hist(vel_freq$Velocity)
+
+
+## compare different data sets
+### get numbers for datasets
+
+
+#### curve
+mean(vel_freq$Velocity) ## 0.2751097, -1 = 0.09ms
+min(vel_freq$Velocity)
+vel_freq$Scaled_Vel <-scale(vel_freq$Velocity, scale=T, center=T)
+scaled_x <- vel_freq$Scaled_Vel
+h <- hist(scaled_x)
+h$counts=(h$counts/sum(h$counts))*100
+plot(h,  xlab="Distance from mean Velocity", ylab = "Percentage of observations", main = "Spawning/Velocity: Probability curve")
 par(new=TRUE)
 xfit<-seq(min(scaled_x),max(scaled_x),length=120)
 yfit<-dnorm(xfit,mean=mean(scaled_x),sd=sd(scaled_x))
