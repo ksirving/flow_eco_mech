@@ -26,14 +26,14 @@ sp_depth_cat <- read.csv("output_data/05a_spawning_depth_continuous.csv")
 ## combine data adult
 all_depth <- rbind(ad_depth_con, ad_depth_cat)
 
-depth_freq <- all_depthx %>% 
+depth_freq <- all_depth %>% 
   uncount(Abundance)
 hist(depth_freq$Depth)
 
 
 ### centered and scaled histogram probability
 mean ## 33.5929
-(71-33.5929)/4
+
 subset(depth_freq, Scaled_Depth >=2)
 
 depth_freq$Scaled_Depth <-scale(depth_freq$Depth, scale=T, center=T)
@@ -48,5 +48,32 @@ yfit<-dnorm(xfit,mean=mean(scaled_x),sd=sd(scaled_x))
 plot(xfit, yfit, axes=FALSE, xlab='', ylab='', type='l', col='red' )
 #add these now with axis
 axis(4, at=pretty(range(yfit)))
-scaled_x
-dnorm()
+
+## are the values the same? no!
+dnorm(-1, mean=mean(scaled_x),sd=sd(scaled_x)) ## 0.2419707
+pnorm(-1, mean=mean(scaled_x),sd=sd(scaled_x)) ## 0.1586553
+dnorm(0, mean=mean(scaled_x),sd=sd(scaled_x)) ## 0.3989423
+pnorm(0, mean=mean(scaled_x),sd=sd(scaled_x)) ## 0.5
+
+### transform back to raw values
+# dataframe of sclaed and depth data
+
+head(depth_freq)
+
+# depth_freq$Scaled_Depth <-scale(depth_freq$Depth, scale=T, center=T)
+# scaled_x <- depth_freq$Scaled_Depth
+h <- hist(scaled_x, plot=F)
+xfit<-seq(min(scaled_x),max(scaled_x),length=120)
+yfit<-dnorm(xfit,mean=mean(scaled_x),sd=sd(scaled_x))
+## x axis with raw depth values
+xfit_r <- seq(min(depth_freq$Depth), max(depth_freq$Depth), length=120)
+
+## plot curve with raw depth axis
+plot(xfit_r, yfit, axes=FALSE, xlab='', ylab='', type='l', col='', main = "" )
+axis(1, at=pretty(xfit_r))
+par(new=TRUE)
+#plot the line with no axes or labels
+plot(xfit, yfit, axes=FALSE, xlab='', ylab='', type='l', col='red', main = "Adult/Depth: Probability curve" )
+#add these now with axis
+axis(2, at=pretty(range(yfit)))
+
