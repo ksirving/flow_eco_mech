@@ -28,7 +28,14 @@ all_depth <- rbind(ad_depth_con, ad_depth_cat)
 
 depth_freq <- all_depth %>% 
   uncount(Abundance)
-hist(depth_freq$Depth)
+## histogram with curve for slide
+
+# h<- hist(depth_freq$Depth, xlab="Depth (cm)", main="Adult/Depth - Histogram")
+# xfit<-seq(min(x),max(x),length=130)
+# yfit<-dnorm(xfit,mean=mean(x),sd=sd(x))
+# yfit[1]
+# yfit <- yfit*diff(h$mids[1:2])*length(x)
+# lines(xfit, yfit, col="red", lwd=2)
 
 
 ### centered and scaled histogram probability
@@ -60,11 +67,12 @@ pnorm(0, mean=mean(scaled_x),sd=sd(scaled_x)) ## 0.5
 
 head(depth_freq)
 
-# depth_freq$Scaled_Depth <-scale(depth_freq$Depth, scale=T, center=T)
-# scaled_x <- depth_freq$Scaled_Depth
+depth_freq$Scaled_Depth <-scale(depth_freq$Depth, scale=T, center=T)
+scaled_x <- depth_freq$Scaled_Depth
 h <- hist(scaled_x, plot=F)
 xfit<-seq(min(scaled_x),max(scaled_x),length=120)
 yfit<-dnorm(xfit,mean=mean(scaled_x),sd=sd(scaled_x))
+
 ## x axis with raw depth values
 xfit_r <- seq(min(depth_freq$Depth), max(depth_freq$Depth), length=120)
 
@@ -73,7 +81,39 @@ plot(xfit_r, yfit, axes=FALSE, xlab='', ylab='', type='l', col='', main = "" )
 axis(1, at=pretty(xfit_r))
 par(new=TRUE)
 #plot the line with no axes or labels
-plot(xfit, yfit, axes=FALSE, xlab='', ylab='', type='l', col='red', main = "Adult/Depth: Probability curve" )
-#add these now with axis
-axis(2, at=pretty(range(yfit)))
+plot(xfit, yfit, axes=FALSE, xlab='Depth (cm)', ylab='Probability Quantile', type='l', col='red', main = "Adult/Depth: Probability curve" )
 
+#add these now with axis
+# ## get quantiles of yfit (probability)
+quants <- as.vector(quantile(yfit))
+
+axis(2, at=quants[c(1,3:5)], labels=c(0,0.50,0.75,1), las=2)
+#### y axis needs to be 0-1
+
+## plot with 0-0.4 to show the tag
+
+# depth_freq$Scaled_Depth <-scale(depth_freq$Depth, scale=T, center=T)
+# scaled_x <- depth_freq$Scaled_Depth
+h <- hist(scaled_x, plot=F)
+xfit<-seq(min(scaled_x),max(scaled_x),length=120)
+yfit<-dnorm(xfit,mean=mean(scaled_x),sd=sd(scaled_x))
+
+## x axis with raw depth values
+xfit_r <- seq(min(depth_freq$Depth), max(depth_freq$Depth), length=120)
+
+## plot curve with raw depth axis
+plot(xfit_r, yfit, axes=FALSE, xlab='', ylab='', type='l', col='', main = "" )
+axis(1, at=pretty(xfit_r))
+par(new=TRUE)
+#plot the line with no axes or labels
+plot(xfit, yfit, axes=FALSE, xlab='Depth (cm)', ylab='Probability', type='l', col='red', main = "Adult/Depth: Probability curve" )
+
+#add these now with axis
+# ## get quantiles of yfit (probability)
+# quants <- as.vector(quantile(yfit))
+axis(2, at=pretty(range(yfit)))
+#
+
+
+
+       
