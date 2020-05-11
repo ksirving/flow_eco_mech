@@ -74,13 +74,13 @@ str(all_data_freq)
 ## test with r tutorial
 
 x <-all_data_freq$Depth
-h<-hist(x, breaks=10, col="red", xlab="Depth (cm)",
-        main="Histogram with Normal Curve")
+h<-hist(x, breaks=10,lty="white", xlab="Depth (cm)",
+        main="Adult/Depth: Curve")
 xfit<-seq(min(x),max(x),length=130)
 yfit<-dnorm(xfit,mean=mean(x),sd=sd(x))
 yfit[1]
 yfit <- yfit*diff(h$mids[1:2])*length(x)
-lines(xfit, yfit, col="blue", lwd=2)
+lines(xfit, yfit, col="red", lwd=2)
 plot(density(all_data_freq$Depth))
 pnorm(1, mean=mean(x),sd=sd(x))
 dnorm(50, mean=mean(x),sd=sd(x))

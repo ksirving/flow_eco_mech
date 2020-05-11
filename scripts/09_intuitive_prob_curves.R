@@ -107,12 +107,53 @@ axis(1, at=pretty(xfit_r))
 par(new=TRUE)
 #plot the line with no axes or labels
 plot(xfit, yfit, axes=FALSE, xlab='Depth (cm)', ylab='Probability', type='l', col='red', main = "Adult/Depth: Probability curve" )
+## add 1sd shift
+par(new=TRUE)
+
+
+plot(xfit1, yfit, axes=FALSE, xlab='Depth (cm)', ylab='Probability', type='l', col='red', main = "Adult/Depth: Probability curve" )
 
 #add these now with axis
 # ## get quantiles of yfit (probability)
 # quants <- as.vector(quantile(yfit))
 axis(2, at=pretty(range(yfit)))
-#
+
+## add 1sd shift
+## plot with 0-0.4 to show the tag
+
+# depth_freq$Scaled_Depth <-scale(depth_freq$Depth, scale=T, center=T)
+# scaled_x <- depth_freq$Scaled_Depth
+h <- hist(scaled_x, plot=F)
+xfit<-seq(min(scaled_x),max(scaled_x),length=120)
+yfit<-dnorm(xfit,mean=mean(scaled_x),sd=sd(scaled_x))
+
+## x axis with raw depth values
+xfit_r <- seq(min(depth_freq$Depth), max(depth_freq$Depth), length=120)
+
+## plot curve with raw depth axis
+plot(xfit_r, yfit, axes=FALSE, xlab='', ylab='', type='l', col='', main = "" )
+axis(1, at=pretty(xfit_r))
+par(new=TRUE)
+#plot the line with no axes or labels
+plot(xfit, yfit, axes=FALSE, xlab='Depth (cm)', ylab='Probability', type='l', col='red', main = "Adult/Depth: Probability curve" )
+
+axis(2, at=pretty(range(yfit)))
+
+## add 1sd shift
+xfit1 <- xfit+1
+# points(xfit1, yfit, col="red", pch=2)
+lines(xfit1, yfit, col="red",lty=2)
+
+### histogram with freq and only curve
+
+x <-depth_freq$Depth
+h<-hist(x, breaks=10, lty="white", xlab="Depth (cm)",
+        main="Adult/Depth: Curve")
+xfit<-seq(min(x),max(x),length=130)
+yfit<-dnorm(xfit,mean=mean(x),sd=sd(x))
+
+yfit <- yfit*diff(h$mids[1:2])*length(x)
+lines(xfit, yfit, col="red", lwd=2)
 
 ### spawning curve
 sp_depth_cat
