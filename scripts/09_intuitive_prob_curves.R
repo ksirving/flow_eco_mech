@@ -41,7 +41,7 @@ depth_freq <- all_depth %>%
 ### centered and scaled histogram probability
 mean ## 33.5929
 
-subset(depth_freq, Scaled_Depth >=2)
+# subset(depth_freq, Scaled_Depth >=2)
 
 depth_freq$Scaled_Depth <-scale(depth_freq$Depth, scale=T, center=T)
 scaled_x <- depth_freq$Scaled_Depth
