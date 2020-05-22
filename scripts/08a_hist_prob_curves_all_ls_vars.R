@@ -48,6 +48,10 @@ all_depthx <- rbind(all_depth, sp_depth_catx, juv_depth)
 all_depthx <- na.omit(all_depthx)
 ## uncount data into frequency 
 
+## combine data adult
+all_depthx <- rbind(ad_depth_con, ad_depth_cat)
+
+
 depth_freq <- all_depthx %>% 
   uncount(Abundance)
 hist(depth_freq$Depth)
@@ -216,7 +220,7 @@ juv_depth_cat <- read.csv("output_data/05a_juvenile_depth_categorical.csv")
 
 ## combine data
 all_depth <- rbind(juv_depth_con, juv_depth_cat)
-
+unique(all_depth$Dataset)
 ## uncount data into frequency
 
 depth_freq <- all_depth %>% 
