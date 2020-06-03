@@ -19,7 +19,7 @@ ad_depth_con <- read.csv("output_data/05a_adult_depth_continuous.csv")
 ad_depth_cat <- read.csv("output_data/05a_adult_depth_categorical.csv")
 juv_depth_con <- read.csv("output_data/05a_juvenile_depth_continuous.csv")
 juv_depth_cat <- read.csv("output_data/05a_juvenile_depth_categorical.csv")
-sp_depth_cat <- read.csv("output_data/05a_spawning_depth_continuous.csv")
+sp_depth_cat <- read.csv("output_data/08a_spawning_depth_abundance.csv")
 
 ## format spawning
 sp_depth_catx <- sp_depth_cat[,c(4,15)]
