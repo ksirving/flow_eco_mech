@@ -611,3 +611,36 @@ par(new=TRUE)
 
 axis(2, at=pretty(range(yfit)))
 
+## spawning
+
+vel_freq <- sp_vel_con %>% 
+  uncount(Abundance)
+vel_freq <- na.omit(vel_freq)
+mean(vel_freq$Velocity) ## 0.2751097
+min(vel_freq$Velocity)
+dim(vel_freq) ##11
+head(vel_freq)
+unique(vel_freq$Dataset)
+
+## probability curve spawning
+vel_freq$Scaled_Vel <-scale(vel_freq$Velocity, scale=T, center=T)
+scaled_x <- vel_freq$Scaled_Vel
+h <- hist(scaled_x, plot=F)
+xfit<-seq(min(scaled_x),max(scaled_x),length=120)
+yfit<-dnorm(xfit,mean=mean(scaled_x),sd=sd(scaled_x))
+xfit
+## x axis with raw depth values
+xfit_r <- seq(min(vel_freq$Velocity), max(vel_freq$Velocity), length=120)
+xfit_r
+## plot curve with raw depth axis
+plot(xfit_r, yfit, axes=FALSE, xlab='', ylab='', type='l', col='', main = "" )
+axis(1, at=pretty(xfit_r))
+par(new=TRUE)
+#plot the line with no axes or labels
+plot(xfit, yfit, axes=FALSE, xlab='Velocity (m/s)', ylab='Probability', type='l', col='red', main = "Spawning/Velocity: Probability curve" )
+## add 1sd shift
+par(new=TRUE)
+
+#add these now with axis
+
+axis(2, at=pretty(range(yfit)))
