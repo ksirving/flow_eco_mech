@@ -125,6 +125,8 @@ new_data <- new_data %>%
 head(new_data)
 # summarize data by year 
 
+save(new_data, file="output_data/13_depth_probs_2010_2017_TS.RData")
+
 year.sum <- new_data %>% 
   group_by(year) %>%  # group by year
   summarize(mean(prob_fit, na.rm=TRUE))
@@ -264,4 +266,10 @@ new_data_2011_nov29 %>%
        y = "Probability",
        x = "Hour") + theme_bw(base_size = 15)
 
-9*24
+### number of events of low probability
+
+head(new_data)
+#workflow
+
+
+# and high?
