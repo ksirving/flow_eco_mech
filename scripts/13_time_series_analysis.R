@@ -271,5 +271,18 @@ new_data_2011_nov29 %>%
 head(new_data)
 #workflow
 
+## time series per year 
+head(new_data)
 
-# and high?
+
+## plot each month
+new_data %>%
+  ggplot(aes(x = month)) +
+  geom_line(aes( y = prob_fit), color = "darkblue") +
+  geom_hline(yintercept=mean(new_data$prob_fit), linetype="dashed", color="red")+
+  facet_wrap(~ year, ncol = 3) +
+  labs(title = "Habitat suitability by Depth",
+       subtitle = "Data plotted by year (2010-2017)",
+       y = "Probability",
+       x = "Month") + theme_bw(base_size = 15)
+
