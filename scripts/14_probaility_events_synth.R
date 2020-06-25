@@ -267,6 +267,9 @@ consec_days_1$month_year <-  zoo::as.yearmon(consec_days_1$month_year)
            y = "Number of hours per Month",
            x = "Month") #+ theme_bw(base_size = 15)
     
+
+# Duration events ---------------------------------------------------------
+
     
 ##### make data frame that includes all values 0.1-0.3 in 0.01 increments
     
@@ -365,6 +368,9 @@ consec_days_1$month_year <-  zoo::as.yearmon(consec_days_1$month_year)
            x = "Month") #+ theme_bw(base_size = 15)
     
      ## change variables names  - find depth associated
+
+# Frequency of events -----------------------------------------------------
+
     
    ### percentage of time per month under a probability
     # days & hours
