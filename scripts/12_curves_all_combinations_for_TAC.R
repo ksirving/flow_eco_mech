@@ -5,14 +5,14 @@ library(dplyr)
 library(tidyr)
 # library(sm)
 
-# library(devtools)
-# install_github("cran/sm")
+library(devtools)
+install_github("cran/sm")
 library(sm)
 # install.packages("sm")
 
 # install.packages("remotes")
-# library(remotes)
-# install_version("sm", "2.2-5.6")
+library(remotes)
+install_version("sm", "2.2-5.6")
 ## does not work with new r version
 
 setwd("/Users/katieirving/Documents/git/flow_eco_mech")
@@ -288,9 +288,9 @@ swx <- temp_freq$Dataset == "SAWA"
 # depth_freq$Dataset_num[sx] <- 1
 temp_freq$Dataset_num[sx] <- 1
 # depth_freq$Dataset_num[swx] <- 3
-temp_freq$Dataset_num[smx] <- 2
+temp_freq$Dataset_num[swx] <- 2
 # depth_freq$Dataset_num[tx] <- 5
-temp_freq[smx,]
+temp_freq[swx,]
 attach(temp_freq)
 
 # create value labels
