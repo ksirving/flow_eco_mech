@@ -44,7 +44,12 @@ juv_04 <- read.csv("output_data/00_SMEA_juvenile_velocity_2004_abundance.csv")
 
 ## continuous
 
-wulff <- read.csv("output_data/00_Wulff_depth_abundance.csv")
+wulff15 <- read.csv("output_data/00_Wulff_2015_depth_abundance.csv")
+wulff16 <- read.csv("output_data/00_Wulff_2016_depth_abundance.csv")
+wulff17 <- read.csv("output_data/00_Wulff_2017_depth_abundance.csv")
+head(wulff15)
+## wulff data 2015 & 2016
+
 thomp <- read.csv("output_data/00_Thompson_all_data_clean.csv") # bottom velocity
 saiki <- read.csv("input_data/abundance_env_vars_saiki_2000.csv") ## santa ana / san gabriel
 sawa <- read.csv("output_data/00_SAWA_2014_env_hab_abundance.csv")
@@ -54,8 +59,19 @@ dep_ad_03 <- read.csv("output_data/00_SMEA_adult_depth_2003_abundance.csv")
 dep_ad_04 <- read.csv("output_data/00_SMEA_adult_depth_2004_abundance.csv")
 
 ## check data
-
 head(wulff) ## cm
+wulff15 <- wulff15 %>%
+  separate(Date, c( "month", "day", "year"))
+wulff15$year <- 2015
+
+wulff16 <- wulff16 %>%
+  separate(Date, c( "month", "day", "year"))
+unique(wulff15$year)
+
+wulff17 <- wulff17 %>%
+  separate(Date, c( "month", "day", "year"))
+unique(wulff17$year)
+
 head(thomp) ## meters - mean
 head(saiki) ## meters
 head(sawa) ## cm
@@ -71,22 +87,38 @@ head(sawa) ## cm
 # 6 28.3       111    SAWA
 # 7 23.3         9    SAWA
 
-names(wulff)
-wulff_dep <- wulff[, c(10,9)]
-names(wulff_dep) <- c("Depth", "Abundance")
-wulff_dep$Dataset <- "Wulff"
-head(wulff_dep)
+names(wulff17)
+dim(wulff)
+wulff_dep15 <- wulff15[, c(12,11, 7)]
+names(wulff_dep15) <- c("Depth", "Abundance", "Year")
+wulff_dep15$Dataset <- "Wulff"
+head(wulff_dep15)
 
-names(thomp)
-thomp_dep <- thomp[, c(7,6)]
-names(thomp_dep) <- c("Depth", "Abundance")
-thomp_dep$Depth <- thomp_dep$Depth*100
-thomp_dep$Dataset <- "Thompson"
-head(thomp_dep)
+wulff_dep16 <- wulff16[, c(13,12, 10)]
+names(wulff_dep16) <- c("Depth", "Abundance", "Year")
+wulff_dep16$Dataset <- "Wulff"
+head(wulff_dep16)
+
+wulff_dep17 <- wulff17[, c(10,8, 6)]
+names(wulff_dep17) <- c("Depth", "Abundance", "Year")
+wulff_dep17$Dataset <- "Wulff"
+head(wulff_dep17)
+
+wulff_dep_all <- rbind(wulff_dep15, wulff_dep16, wulff_dep17)
+wulff_dep <- rbind(wulff_dep15, wulff_dep16)
+unique(wulff_dep$Year)
+write.csv(wulff_dep, "output_data/05a_wulff_depth_2016_2016.csv")
+
+# names(thomp)
+# thomp_dep <- thomp[, c(7,6)]
+# names(thomp_dep) <- c("Depth", "Abundance")
+# thomp_dep$Depth <- thomp_dep$Depth*100
+# thomp_dep$Dataset <- "Thompson"
+# head(thomp_dep)
 
 names(saiki)
 ## sunset adults only
-adults <- droplevels(unique(saiki$Life.Stage)[1:3])
+adults <- unique(saiki$Life.Stage)[1:3]
 saiki_ad<- filter(saiki, Life.Stage %in% adults & Spawning..Y.N. == "N") ## may keep all in
 dim(saiki_ad) ## 687
 
@@ -109,14 +141,16 @@ sawa_dep$Depth <- round(sawa_dep$Depth, digits=0)
 head(sawa_dep)
 
 ## join together 
+names(wulff_dep_all)
+wulff_dep_all$Year <- NULL
 
-con_dep <- rbind(wulff_dep, thomp_dep, saiki_dep,sawa_dep)
+con_dep <- rbind(wulff_dep_all, saiki_dep,sawa_dep)
 dim(con_dep) ## 227
 head(con_dep)
 
 ## save dataset 
 
-write.csv(con_dep, "output_data/05a_adult_depth_continuous.csv")
+write.csv(con_dep, "output_data/05a_adult_depth_continuous_updated.csv")
 
 ## categorical
 dep_ad_03
@@ -362,26 +396,30 @@ head(vel_17)
 names(vel_17)
 
 vel_15x <- vel_15[,c(10,11,9)]
+
 names(vel_15x) <- c("Vel_fish", "Vel_0.6", "Abundance")
 cor.test(vel_15x$Vel_fish, vel_15x$Vel_0.6, method="pearson")
-
+vel_15x$year <- 2015
 
 vel_16x <- vel_16[,c(11,12,10)]
 names(vel_16x) <- c("Vel_fish", "Vel_0.6", "Abundance")
 cor.test(vel_16x$Vel_fish, vel_16x$Vel_0.6, method="pearson")
+vel_16x$year <- 2016
 
 vel_17x <- vel_17[,c(8,9,6)]
 names(vel_17x) <- c("Vel_fish", "Vel_0.6", "Abundance")
 cor.test(vel_17x$Vel_fish, vel_17x$Vel_0.6, method="pearson")
 ## moderately correlated
+vel_17x$year <- 2017
 
 ## join datasets
 
 all_wulff <- rbind(vel_15x, vel_16x, vel_17x)
 all_wulff$Dataset <- "Wulff"
-
+write.csv(all_wulff, "output_data/05a_velocity_wulff_2015_2016_both_vels.csv")
 write.csv(all_wulff, "output_data/05a_velocity_wulff_all_years_both_vels.csv")
-
+test <- read.csv("output_data/05a_velocity_wulff_all_years_both_vels.csv")
+head(test)
 ## separate vell_0.6 to add to toher dataset
 
 all_wulff06 <- all_wulff[,c(-1)]
