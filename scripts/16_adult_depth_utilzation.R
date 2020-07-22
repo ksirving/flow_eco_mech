@@ -140,7 +140,6 @@ all_stuff
 plot(all_stuff$fish_prob,all_stuff$habitat_prop)
 abline(coef = c(0,0.585))
 
-e
 
 # Ivlevs eletivity index (Jacobs 1974)
 
@@ -169,27 +168,36 @@ plot(all_stuff$habitat_mid, all_stuff$Ivlevs_index, ylab="Ivlevs Electivity Inde
 
 
 ## turn into presence/absence based on ivlev values - 0.0 = habitat used in proportion
+## zero ivlevs is where no depth or fish were measured. removed for model
 
-all_stuff$Ivlevs00 <- ifelse(all_stuff$Ivlevs_index >0.0, 1,0)
+
+all_stuff$Ivlevs00 <- ifelse(all_stuff$Ivlevs_index >=0.0, 1,0)
 all_stuff$Ivlevs00
+
+all_stuff <- subset(all_stuff, !Ivlevs_index == 0)
+# which(all_stuff$Ivlevs_index==0)
+
 
 ## model glm
 library(mgcv)
 Ivlevs00_glm <- glm(Ivlevs00~habitat_mid, data=all_stuff,family=binomial(link = "logit"))
-summary(Ivlevs00_glm)
+summary(Ivlevs00_glm) # p value 0.4
+
 Ivlevs00_gam <- gam(Ivlevs00~s(habitat_mid), family=binomial, data=all_stuff)
 summary(Ivlevs00_gam)
+mean(summary(Ivlevs00_gam)$s.table[,4]) ## 0.6296681 , 0.02040539
+
 xdepth  <- seq(0,120, 0.1)
 
 AIC(Ivlevs00_gam,Ivlevs00_glm)
 
-1-(Ivlevs00_glm$deviance/Ivlevs00_glm$null.deviance) ## 26.9%
+1-(Ivlevs00_glm$deviance/Ivlevs00_glm$null.deviance) ## 21.1%
 
 ydepth <- predict(Ivlevs00_glm, list(habitat_mid = xdepth), type="response")
 plot(all_stuff$habitat_mid, all_stuff$Ivlevs00, pch = 16, xlab = "Depth (cm)", ylab = "Probability of occurence")
 lines(xdepth, ydepth) ## need to force through 0
 
-1-(Ivlevs00_gam$deviance/Ivlevs00_gam$null.deviance) ## 79.9%
+1-(Ivlevs00_gam$deviance/Ivlevs00_gam$null.deviance) ## 79.6%
 
 ydepth <- predict(Ivlevs00_gam, list(habitat_mid = xdepth), type="response")
 plot(all_stuff$habitat_mid, all_stuff$Ivlevs00, pch = 16, xlab = "Depth (cm)", ylab = "Probability of occurence")
@@ -350,6 +358,9 @@ plot(all_stuff$habitat_mid, all_stuff$Ivlevs_index, ylab="Ivlevs Electivity Inde
 all_stuff$Ivlevs00 <- ifelse(all_stuff$Ivlevs_index >=0.0, 1,0)
 all_stuff$Ivlevs00
 
+all_stuff <- subset(all_stuff, !Ivlevs_index == 0)
+# which(all_stuff$Ivlevs_index==0)
+
 ## model quadratic
 library(mgcv)
 
@@ -358,22 +369,23 @@ Ivlevs00_lm <- lm(Ivlevs00~habitat_mid, data=all_stuff)
 Ivlevs00_glm <- glm(Ivlevs00~habitat_mid, data=all_stuff,family=binomial(link = "logit"))
 Ivlevs00_gam <- gam(Ivlevs00~s(habitat_mid), family=binomial, data=all_stuff)
 Ivlevs00_quad <- lm(Ivlevs00 ~poly(habitat_mid, 2, raw=T), data=all_stuff)
-summary(Ivlevs00_gam) ## most explained variance
+summary(Ivlevs00_gam) ## most explained variance 44%
+mean(summary(Ivlevs00_gam)$s.table[,4]) ## 0.02040539
 summary(Ivlevs00_lm)
 summary(Ivlevs00_quad)
 summary(Ivlevs00_glm)
 
 AIC(Ivlevs00_gam,Ivlevs00_quad)
 
-1-(Ivlevs00_glm$deviance/Ivlevs00_glm$null.deviance) ## 26.9%
+1-(Ivlevs00_glm$deviance/Ivlevs00_glm$null.deviance) ## 17.1%
 xvel  <- seq(0,2, 0.01)
 
 yvel <- predict(Ivlevs00_gam, list(habitat_mid = xvel), type="response")
-plot(all_stuff$habitat_mid, all_stuff$Ivlevs00, pch = 16, xlab = "Velocity (m/s)", ylab = "Probability of occurence")
+plot(all_stuff$habitat_mid, all_stuff$Ivlevs00, pch = 16, xlab = "Velocity (m/s)", ylab = "Probability of occurrence")
 lines(xvel, yvel) ## need to force through 0
 
 # yvel <- predict(Ivlevs00_lm, list(habitat_mid = xvel), type="response")
-# plot(all_stuff$habitat_mid, all_stuff$Ivlevs00, pch = 16, xlab = "Velocity (m/s)", ylab = "Probability of occurence")
+# plot(all_stuff$habitat_mid, all_stuff$Ivlevs00, pch = 16, xlab = "Velocity (m/s)", ylab = "Probability of occurrence")
 # lines(xvel, yvel) ## need to force through 0
 # 
 # yvel <- predict(Ivlevs00_quad, list(habitat_mid = xvel), type="response")
