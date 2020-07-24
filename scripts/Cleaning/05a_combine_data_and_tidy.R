@@ -418,18 +418,19 @@ all_wulff <- rbind(vel_15x, vel_16x, vel_17x)
 all_wulff$Dataset <- "Wulff"
 write.csv(all_wulff, "output_data/05a_velocity_wulff_2015_2016_both_vels.csv")
 write.csv(all_wulff, "output_data/05a_velocity_wulff_all_years_both_vels.csv")
-test <- read.csv("output_data/05a_velocity_wulff_all_years_both_vels.csv")
-head(test)
+all_wulff <- read.csv("output_data/05a_velocity_wulff_all_years_both_vels.csv")
+head(all_wulff)
+dim(all_wulff)
 ## separate vell_0.6 to add to toher dataset
 
-all_wulff06 <- all_wulff[,c(-1)]
+all_wulff06 <- all_wulff[,-c(1,2)]
 head(all_wulff06)
 names(all_wulff06)[1] <- "Velocity"
 
 ## Saiki
 
 head(saiki)
-adults <- droplevels(unique(saiki$Life.Stage)[1:3])
+adults <- unique(saiki$Life.Stage)[1:3]
 
 saiki_adult <- filter(saiki, Life.Stage %in% adults & Spawning..Y.N. == "N") ## may keep all in
 dim(saiki_adult) ## 687
@@ -450,8 +451,9 @@ saiki_freq <- as.data.frame(table(saiki_adult_vel$Velocity))
 sum(saiki_freq$Freq) # 337
 colnames(saiki_freq)<- c("Velocity", "Abundance")
 saiki_freq$Dataset <- "Saiki"
-saiki_freq
-
+saiki_freq$Velocity <- as.numeric(as.character(saiki_freq$Velocity))
+head(saiki_freq)
+head(saiki_adult_vel)
 ## keep site in saiki
 saiki_adult_vel$Dataset <- "Saiki"
 hist(saiki_adult_vel$Velocity)
@@ -466,8 +468,8 @@ names(thompx) <- c("Velocity", "Abundance")
 thompx$Dataset <- "Thompson"
 
 ## combine
-
-all_vel_con <- rbind(saiki_freq , thompx, all_wulff06 )
+str(saiki_freq)
+all_vel_con <- rbind(saiki_freq , all_wulff06 )
 head(all_vel_con )
 plot(all_vel_con$Velocity,all_vel_con$Abundance)
 str(all_vel_con)
@@ -477,7 +479,7 @@ all_vel_con$Velocity <- as.numeric(as.character(all_vel_con$Velocity))
 ## saiki = current
 ## Thompson = mid column velocity
 
-write.csv(all_vel_con, "output_data/05a_adult_velocity_continuous.csv")
+write.csv(all_vel_con, "output_data/05a_adult_velocity_continuous_updated.csv")
 hist(all_vel_con$Velocity)
 ## categorical
 

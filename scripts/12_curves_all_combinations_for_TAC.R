@@ -18,7 +18,7 @@ install.packages("sm")
 setwd("/Users/katieirving/Documents/git/flow_eco_mech")
 
 ## depth
-ad_depth_con <- read.csv("output_data/05a_adult_depth_continuous_updated.csv") ## all wulff and thompson removed - remove SAWA?
+ad_depth_con <- read.csv("output_data/05a_adult_depth_continuous_updated.csv") ## all wulff incl and thompson removed - remove SAWA?
 ad_depth_cat <- read.csv("output_data/05a_adult_depth_categorical.csv")
 juv_depth_con <- read.csv("output_data/05a_juvenile_depth_continuous.csv")
 juv_depth_cat <- read.csv("output_data/05a_juvenile_depth_categorical.csv")
