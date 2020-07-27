@@ -49,13 +49,12 @@ unique(depth_freq$Dataset)
 
 sx <- depth_freq$Dataset == "Saiki"
 wx <- depth_freq$Dataset == "Wulff"
-# swx <- depth_freq$Dataset == "SAWA"
 smx <- depth_freq$Dataset == "SMEA"
 
 depth_freq$Dataset_num[sx] <- 1
 depth_freq$Dataset_num[wx] <- 2
 depth_freq$Dataset_num[smx] <- 3
-# depth_freq$Dataset_num[smx] <- 4
+
 
 attach(depth_freq)
 
@@ -65,7 +64,7 @@ data.f <- factor(Dataset_num, levels= 1:3,
 
 # plot densities
 sm.density.compare(as.vector(Depth), Dataset_num, xlab="Depth (cm)")
-title(main="Depth Distribution by Dataset")
+title(main="Adult/Depth Distribution by Dataset")
 
 # add legend via mouse click
 colfill<-c(2:(2+length(levels(data.f))))
@@ -450,7 +449,7 @@ data.f <- factor(Dataset_num, levels= 1:2,
 
 # plot densities
 sm.density.compare(as.vector(Depth), Dataset_num, xlab="Depth (cm)")
-title(main="Depth Distribution by Dataset")
+title(main="Juvenile/Depth Distribution by Dataset")
 
 # add legend via mouse click
 colfill<-c(2:(2+length(levels(data.f))))
