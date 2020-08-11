@@ -1,5 +1,6 @@
+# Juvenile depth ----------------------------------------------------------
 ## Depth curves - model and application
-## adult 
+## Juvenile
 
 ## produces probability curves for depth, and application to sample node data (time series) for adult and Juvenile
 ## also data distributions 
@@ -22,62 +23,65 @@ library(data.table)
 setwd("/Users/katieirving/Documents/git/flow_eco_mech")
 
 ## depth
-ad_depth_con <- read.csv("output_data/05a_adult_depth_continuous_updated.csv") ## all wulff incl and thompson removed - remove SAWA?
-ad_depth_cat <- read.csv("output_data/05a_adult_depth_categorical.csv")
+juv_depth_con <- read.csv("output_data/05a_juvenile_depth_continuous.csv")
+juv_depth_cat <- read.csv("output_data/05a_juvenile_depth_categorical.csv")
 
+## Juvenile depth - 2 datasets, 
+
+all_depth <- rbind(juv_depth_con, juv_depth_cat)
+
+## data distribution 
 # ad_depth_red <- subset(ad_depth_con, !Dataset=="Thompson")
-all_depth <- rbind(ad_depth_con, ad_depth_cat)
+all_depth <- rbind(juv_depth_con, juv_depth_cat)
 
-unique(all_depth$Dataset) # 4 datasets, 
+unique(all_depth$Dataset) # 2 datasets, observations (n=257)
 
 depth_freq <- all_depth %>% 
   uncount(Abundance)
-# hist(depth_freq$Depth)
+hist(depth_freq$Depth)
+mean(depth_freq$Depth) ## 36.55253
+dim(depth_freq) ## 257
+head(depth_freq)
 
-depth_freq <- subset(depth_freq, !Dataset=="SAWA")
-dim(depth_freq) ## 1376
 
-
-# Adult data distribution -------------------------------------------------------
+# Data distribution -------------------------------------------------------
 
 
 # ## compare different data sets
+# ### get numbers for datasets
 unique(depth_freq$Dataset)
 
 sx <- depth_freq$Dataset == "Saiki"
-wx <- depth_freq$Dataset == "Wulff"
 smx <- depth_freq$Dataset == "SMEA"
 
 depth_freq$Dataset_num[sx] <- 1
-depth_freq$Dataset_num[wx] <- 2
-depth_freq$Dataset_num[smx] <- 3
-
+depth_freq$Dataset_num[smx] <- 2
 
 attach(depth_freq)
 
 # create value labels
-data.f <- factor(Dataset_num, levels= 1:3,
-                 labels = c( "Saiki", "Wulff", "SMEA"))
+data.f <- factor(Dataset_num, levels= 1:2,
+                 labels = c( "Saiki", "SMEA"))
 
 # plot densities
 sm.density.compare(as.vector(Depth), Dataset_num, xlab="Depth (cm)")
-title(main="Adult/Depth Distribution by Dataset")
+title(main="Juvenile/Depth Distribution by Dataset")
 
 # add legend via mouse click
 colfill<-c(2:(2+length(levels(data.f))))
 legend(locator(1), levels(data.f), fill=colfill)
 
 
-# Adult model build -------------------------------------------------------
+# Juvenile model build -------------------------------------------------------
 
 ## check data
-unique(depth_freq$Dataset) ## 3 datasets, 1376
-mean(depth_freq$Depth) ## 44.4
+unique(depth_freq$Dataset) ## 2 datasets, 257
+mean(depth_freq$Depth) ## 36.5
 
 ## histogram with normal curve
 x <-depth_freq$Depth
 h<-hist(x, breaks=10, col="red", xlab="Depth (cm)",
-        main="Adult/Depth Histogram with Normal Curve")
+        main="Juvenile/Depth Histogram with Normal Curve")
 xfit<-seq(min(x),max(x),length=130)
 yfit<-dnorm(xfit,mean=mean(x),sd=sd(x))
 yfit <- yfit*diff(h$mids[1:2])*length(x)
@@ -99,7 +103,7 @@ plot(xfit_r, yfit, axes=FALSE, xlab='', ylab='', type='l', col='', main = "" )
 axis(1, at=pretty(xfit_r))
 par(new=TRUE)
 #plot the line with no axes or labels
-plot(xfit, yfit, axes=FALSE, xlab='Depth (cm)', ylab='Probability', type='l', col='red', main = "Adult/Depth: Probability curve" )
+plot(xfit, yfit, axes=FALSE, xlab='Depth (cm)', ylab='Probability', type='l', col='red', main = "Juvenile/Depth: Probability curve" )
 #add these now with axis
 par(new=TRUE)
 axis(2, at=pretty(range(yfit)))
@@ -110,15 +114,16 @@ fitdata <- data.frame(matrix(ncol=2, nrow=length(yfit)))
 fitdata[,1] <- xfit_r
 fitdata[,2] <- yfit
 colnames(fitdata) <- c("depth_fit", "prob_fit")
-head(fitdata)
+# head(fitdata)
 
-write.csv(fitdata, "output_data/adult_depth_prob_curve_data.csv")
+write.csv(fitdata, "output_data/juvenile_depth_prob_curve_data.csv")
 
 # Combine with hydraulic data -------------------------------------------
 
 ## upload hydraulic data
 
 hydraul <- read.csv("input_data/demo_ts_F57C.csv")
+fitdata <- read.csv("output_data/juvenile_depth_prob_curve_data.csv")
 ## select columns
 hyd_dep <- hydraul[,c(1:3,9)]
 colnames(hyd_dep)[4] <-"depth_ft"
@@ -127,7 +132,7 @@ colnames(hyd_dep)[4] <-"depth_ft"
 hyd_dep$depth_cm <- (hyd_dep$depth_ft*0.3048)*100
 # head(hyd_dep)
 range(hyd_dep$depth_cm)
-plot(hyd_dep$Q, hyd_dep$depth_cm,  main = "Adult: Depth ~ Q", xlab="Q (cfs)", ylab="Depth (cm)")
+plot(hyd_dep$Q, hyd_dep$depth_cm,  main = "F57C: Depth ~ Q", xlab="Q (cfs)", ylab="Depth (cm)")
 
 
 ## add date_num and plot time series - use numbers for now
@@ -149,36 +154,37 @@ all_data <- merge(hyd_dep, fitdata, by.x="depth_cm_round", by.y="depth_fit_round
 # all_data[which(is.na(all_data)),]
 # sum(is.na(all_data)) # 474
 # head(all_data)
-
+head(all_data)
 ## missing values - anything under 4cm as not in suitability curve
 ## replace NA of probability with min probability of dataset
 
 all_data[which(all_data$depth_cm_round < min(na.omit(all_data$depth_fit))),"prob_fit"] <- min(na.omit(all_data$prob_fit))
-# sum(is.na(all_data)) # 426
+# sum(is.na(all_data)) # 196
 
 ## remove rows with probabilities above the max hydraulic value
 all_data <- filter(all_data, depth_cm_round <= max(hyd_dep$depth_cm_round))
-# sum(is.na(all_data)) # 48
+# sum(is.na(all_data)) # 160
 
-save(all_data, file="output_data/F1_F57C_adult_depth_discharge_probability_time_series_all_columns.RData")
+save(all_data, file="output_data/F1_F57C_juvenile_depth_discharge_probability_time_series_all_columns.RData")
 
+names(all_data)
 ## keep columns dpeth, datetime, Q date_num & prob_fit
-all_data <- all_data[, c(1,2,3,7,9)]
-# sum(is.na(all_data)) # 0
+all_data <- all_data[, c(1,2,3,7,10)]
+# sum(is.na(all_data))
 
 ## remove duplicate date_num (date time) and order
 
 all_data <- all_data[!duplicated(all_data$date_num),]
 new_data <- all_data[order(all_data$date_num),]
 
-save(new_data, file="output_data/F1_F57C_adult_depth_discharge_probability_time_series_red_columns.RData")
+save(new_data, file="output_data/F1_F57C_juvenile_depth_discharge_probability_time_series_red_columns.RData")
 
 # format probability time series ------------------------------------------
 
 ## look at data using lubridate etc
 
 names(new_data)
-## format date time
+
 new_data$DateTime<-as.POSIXct(new_data$DateTime,
                               format = "%Y-%m-%d %H:%M",
                               tz = "America/Los_Angeles")
@@ -200,18 +206,17 @@ new_data <- new_data %>%
 
 head(new_data)
 
-save(new_data, file="output_data/F1_F57C_depth_adult_discharge_probs_2010_2017_TS.RData")
+save(new_data, file="output_data/F1_F57C_depth_juvenile_discharge_probs_2010_2017_TS.RData")
 
 
 # probability as a function of discharge -----------------------------------
 
-
-load( file="output_data/F1_F57C_depth_adult_discharge_probs_2010_2017_TS.RData")
+load(file="output_data/F1_F57C_depth_juvenile_discharge_probs_2010_2017_TS.RData")
 head(new_data)
 
 ## plot
 range(new_data$Q) ## 0.00 998.845 
-
+range(new_data$prob_fit)
 ## smooth spline the curve to get exact value of discharge at a given probability
 spl <- smooth.spline(new_data$prob_fit ~ new_data$Q)
 
@@ -220,7 +225,7 @@ spl <- smooth.spline(new_data$prob_fit ~ new_data$Q)
 peak <- filter(new_data, prob_fit == max(prob_fit)) #%>%
 peakQ <- select(peak, Q)
 peakQ  <- peakQ[1,1]
-peakQ ## 411.6
+peakQ
 
 ## function for each probability
 
@@ -230,7 +235,7 @@ newx1a <- uniroot(function(x) predict(spl, x, deriv = 0)$y - newy1a,
 
 newy1b <- 0.1
 newx1b <- try(uniroot(function(x) predict(spl, x, deriv = 0)$y - newy1b,
-                  interval = c(peakQ, max(new_data$Q)))$root, silent=T)
+                      interval = c(peakQ, max(new_data$Q)))$root, silent=T)
 ## if no 2nd value, return an NA
 newx1b <- ifelse(exists("newx1b"), newx1b, NA )
 
@@ -253,13 +258,14 @@ newx3b <- try(uniroot(function(x) predict(spl, x, deriv = 0)$y - newy3b,
                       interval = c(peakQ, max(new_data$Q)))$root, silent=T)
 ## if no 2nd value, return an NA
 newx3b <- ifelse(exists("newx3b"), newx3b, NA )
+
 # thresholds <- as.data.frame(matrix(ncol=2, nrow=6))
 # colnames(thresholds) <- c("newy", "newx")
 # thresholds$newy <- c("0.1", "0.1", "0.2", "0.2", "0.3", "0.3")
 # thresholds$newx <- c(newx1a,newx1b, newx2a,newx2b, newx3a,newx3b)
 # thresholds
 
-plot(new_data$Q, new_data$prob_fit, type="n", main = "Adult/Depth: Probability according to Q", xlab="Q (cfs)", ylab="Probability")
+plot(new_data$Q, new_data$prob_fit, type="n", main = "Juvenile/Depth: Probability according to Q", xlab="Q (cfs)", ylab="Probability")
 lines(spl, col="black")
 points(newx2a, newy2a, col="red", pch=19) # 0.2
 points(newx2b, newy2b, col="red", pch=19) # 0.2
@@ -268,6 +274,11 @@ points(newx1b, newy1b, col="green", pch=19) # 0.1
 points(newx3a, newy3a, col="blue", pch=19) # 0.3 - lower limit
 points(newx3b, newy3b, col="blue", pch=19) # 0.3 - upper limit
 
+### plot discharge over time
+
+# create year_month column       
+new_datax <- new_data %>% unite(month_year, year:month, sep="-", remove=F) 
+head(new_datax)
 ### plot discharge over time
 
 # create year_month column       
@@ -297,7 +308,9 @@ ggplot(new_datax_2016) +
   # theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
   # scale_x_continuous(breaks=as.numeric(new_datax$month_year), labels=format(new_datax$month_year,"%b %Y")) +
   geom_hline(yintercept=newx2a, linetype="dashed", color="red")+
+  geom_hline(yintercept=newx2b, linetype="dashed", color="red")+
   # geom_hline(yintercept=newx1a, linetype="dashed", color="green")+
+  # geom_hline(yintercept=newx1b, linetype="dashed", color="green")+
   # geom_hline(yintercept=newx3a, linetype="dashed", color="blue")+
   # geom_hline(yintercept=newx3b, linetype="dashed", color="blue")+
   # facet_wrap(~month, scales="free_x", nrow=4) +
@@ -318,9 +331,10 @@ ggplot(new_datax_2016_summer) +
   # theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
   # scale_x_continuous(breaks=as.numeric(new_datax$month_year), labels=format(new_datax$month_year,"%b %Y")) +
   geom_hline(yintercept=newx2a, linetype="dashed", color="red")+
-  # geom_hline(yintercept=newx1a, linetype="dashed", color="green")+
-  # geom_hline(yintercept=newx3a, linetype="dashed", color="blue")+
-  # geom_hline(yintercept=newx3b, linetype="dashed", color="blue")+
+  geom_hline(yintercept=newx2b, linetype="dashed", color="red")+
+  geom_hline(yintercept=newx1a, linetype="dashed", color="green")+
+  geom_hline(yintercept=newx3a, linetype="dashed", color="blue")+
+  geom_hline(yintercept=newx3b, linetype="dashed", color="blue")+
   # facet_wrap(~month, scales="free_x", nrow=4) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
   labs(title = "Discharge over time",
@@ -332,9 +346,10 @@ ggplot(new_datax_2016_winter) +
   # theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
   # scale_x_continuous(breaks=as.numeric(new_datax$month_year), labels=format(new_datax$month_year,"%b %Y")) +
   geom_hline(yintercept=newx2a, linetype="dashed", color="red")+
-  # geom_hline(yintercept=newx1a, linetype="dashed", color="green")+
-  # geom_hline(yintercept=newx3a, linetype="dashed", color="blue")+
-  # geom_hline(yintercept=newx3b, linetype="dashed", color="blue")+
+  geom_hline(yintercept=newx2b, linetype="dashed", color="red")+
+  geom_hline(yintercept=newx1a, linetype="dashed", color="green")+
+  geom_hline(yintercept=newx3a, linetype="dashed", color="blue")+
+  geom_hline(yintercept=newx3b, linetype="dashed", color="blue")+
   # facet_wrap(~month, scales="free_x", nrow=4) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
   labs(title = "Discharge over time",
@@ -344,85 +359,42 @@ ggplot(new_datax_2016_winter) +
 
 # Statistics on Q probability - total amount of time ----------------------
 
-## percentage of time above threshold - annual
+## percentage of time below threshold - annual
 length(new_datax_2016$DateTime)
+total_0.2 <- sum(new_datax_2016$Q >= newx2a & new_datax_2016$Q <= newx2b)/length(new_datax_2016$DateTime)*100
+total_0.2 # 0.6726977 %
 
-newx2b
-if(is.na(newx2b)){
-  total_0.2 <- sum(new_datax_2016$Q >= newx2a)/length(new_datax_2016$DateTime)*100
-} else {
-  total_0.2 <- sum(new_datax_2016$Q >= newx2a & new_datax_2016$Q <= newx2b)/length(new_datax_2016$DateTime)*100
-}
-total_0.2
+total_0.1 <- sum(new_datax_2016$Q >= newx1a & new_datax_2016$Q <= newx1b)/length(new_datax_2016$DateTime)*100
+total_0.1 # 34.96868 %
 
-if(is.na(newx1b)){
-  total_0.1 <- sum(new_datax_2016$Q >= newx1a)/length(new_datax_2016$DateTime)*100
-} else {
-  total_0.1 <- sum(new_datax_2016$Q >= newx1a & new_datax_2016$Q <= newx1b)/length(new_datax_2016$DateTime)*100
-}
-total_0.1
+total_0.3 <- sum(new_datax_2016$Q >= newx3a & new_datax_2016$Q <= newx3b)/length(new_datax_2016$DateTime)*100
+total_0.3 ## 0.3479471 %
 
-if(is.na(newx3b)){
-  total_0.3 <- sum(new_datax_2016$Q >= newx3a)/length(new_datax_2016$DateTime)*100
-} else {
-  total_0.3 <- sum(new_datax_2016$Q >= newx3a & new_datax_2016$Q <= newx3b)/length(new_datax_2016$DateTime)*100
-}
-total_0.3
+## percentage of time below threshold - summer
+length(new_datax_2016_summer$DateTime)
+total_0.2 <- sum(new_datax_2016_summer$Q >= newx2a & new_datax_2016_summer$Q <= newx2b)/length(new_datax_2016_summer$DateTime)*100
+total_0.2 # 0 %
 
+total_0.1 <- sum(new_datax_2016_summer$Q >= newx1a & new_datax_2016_summer$Q <= newx1b)/length(new_datax_2016_summer$DateTime)*100
+total_0.1 # 48.28915 %
 
-# percentage of time seasoal ----------------------------------------------
+total_0.3 <- sum(new_datax_2016_summer$Q >= newx3a & new_datax_2016_summer$Q <= newx3b)/length(new_datax_2016_summer$DateTime)*100
+total_0.3 ## 0 %
 
+length(new_datax_2016_winter$DateTime)
+total_0.2 <- sum(new_datax_2016_winter$Q >= newx2a & new_datax_2016_winter$Q <= newx2b)/length(new_datax_2016_winter$DateTime)*100
+total_0.2 # 1.378 %
 
-## percentage of time above threshold - summer
+total_0.1 <- sum(new_datax_2016_winter$Q >= newx1a & new_datax_2016_winter$Q <= newx1b)/length(new_datax_2016_winter$DateTime)*100
+total_0.1 # 21.00261 %
 
-if(is.na(newx2b)){
-  total_0.2 <- sum(new_datax_2016_summer$Q >= newx2a)/length(new_datax_2016_summer$DateTime)*100
-} else {
-  total_0.2 <- sum(new_datax_2016_summer$Q >= newx2a & new_datax_2016_summer$Q <= newx2b)/length(new_datax_2016_summer$DateTime)*100
-}
-total_0.2
-
-if(is.na(newx1b)){
-  total_0.1 <- sum(new_datax_2016_summer$Q >= newx1a)/length(new_datax_2016_summer$DateTime)*100
-} else {
-  total_0.1 <- sum(new_datax_2016_summer$Q >= newx1a & new_datax_2016_summer$Q <= newx1b)/length(new_datax_2016_summer$DateTime)*100
-}
-total_0.1
-
-if(is.na(newx3b)){
-  total_0.3 <- sum(new_datax_2016_summer$Q >= newx3a)/length(new_datax_2016_summer$DateTime)*100
-} else {
-  total_0.3 <- sum(new_datax_2016_summer$Q >= newx3a & new_datax_2016_summer$Q <= newx3b)/length(new_datax_2016_summer$DateTime)*100
-}
-total_0.3
-
-## percentage of time below threshold - winter
-if(is.na(newx2b)){
-  total_0.2 <- sum(new_datax_2016_winter$Q >= newx2a)/length(new_datax_2016_winter$DateTime)*100
-} else {
-  total_0.2 <- sum(new_datax_2016_winter$Q >= newx2a & new_datax_2016_winter$Q <= newx2b)/length(new_datax_2016_winter$DateTime)*100
-}
-total_0.2
-
-if(is.na(newx1b)){
-  total_0.1 <- sum(new_datax_2016_winter$Q >= newx1a)/length(new_datax_2016_winter$DateTime)*100
-} else {
-  total_0.1 <- sum(new_datax_2016_winter$Q >= newx1a & new_datax_2016_winter$Q <= newx1b)/length(new_datax_2016_winter$DateTime)*100
-}
-total_0.1
-
-if(is.na(newx3b)){
-  total_0.3 <- sum(new_datax_2016_winter$Q >= newx3a)/length(new_datax_2016_winter$DateTime)*100
-} else {
-  total_0.3 <- sum(new_datax_2016_winter$Q >= newx3a & new_datax_2016_winter$Q <= newx3b)/length(new_datax_2016_winter$DateTime)*100
-}
-total_0.3
+total_0.3 <- sum(new_datax_2016_winter$Q >= newx3a & new_datax_2016_winter$Q <= newx3b)/length(new_datax_2016_winter$DateTime)*100
+total_0.3 ## 0.7127584 %
 
 
-# dataframe for stats -----------------------------------------------------
 
+# make dataframe for all years --------------------------------------------
 
-## make dataframe for all years 
 
 head(new_datax)
 names(new_datax)
@@ -439,24 +411,24 @@ new_datax <- new_datax %>%
 time_stats <- new_datax %>%
   dplyr::group_by(year) %>%
   dplyr::mutate(ann_total_0.2 = if(is.na(newx2b)){
-     sum(Q >= newx2a)/length(DateTime)*100
+    sum(Q >= newx2a)/length(DateTime)*100
   } else {
-     sum(Q >= newx2a & Q <= newx2b)/length(DateTime)*100
+    sum(Q >= newx2a & Q <= newx2b)/length(DateTime)*100
   }) %>%
   dplyr::mutate(ann_total_0.1 = if(is.na(newx1b)){
-     sum(Q >= newx1a)/length(DateTime)*100
+    sum(Q >= newx1a)/length(DateTime)*100
   } else {
     sum(Q >= newx1a & Q <= newx1b)/length(DateTime)*100
   }) %>%
   dplyr::mutate(ann_total_0.3 = if(is.na(newx3b)){
     sum(Q >= newx3a)/length(DateTime)*100
   } else {
-     sum(Q >= newx3a & Q <= newx3b)/length(DateTime)*100
+    sum(Q >= newx3a & Q <= newx3b)/length(DateTime)*100
   })  %>%
   ungroup() %>%
   dplyr::group_by(year, season) %>%
   dplyr::mutate(seas_total_0.2 = if(is.na(newx2b)){
-     sum(Q >= newx2a)/length(DateTime)*100
+    sum(Q >= newx2a)/length(DateTime)*100
   } else {
     sum(Q >= newx2a & Q <= newx2b)/length(DateTime)*100
   }) %>%
@@ -468,7 +440,7 @@ time_stats <- new_datax %>%
   dplyr::mutate(seas_total_0.3 = if(is.na(newx3b)){
     sum(nQ >= newx3a)/length(DateTime)*100
   } else {
-     sum(Q >= newx3a & Q <= newx3b)/length(DateTime)*100
+    sum(Q >= newx3a & Q <= newx3b)/length(DateTime)*100
   }) %>%
   distinct(year, ann_total_0.2,ann_total_0.1,ann_total_0.3, seas_total_0.2, seas_total_0.1, seas_total_0.3)
 
@@ -533,11 +505,11 @@ ggplot(melt_time_summer, aes(x = year, y=value)) +
        y = "Percentage of time",
        x = "Year") #+ theme_bw(base_size = 15)
 
-## add depth to figures
 
 # Number of days above discharge ------------------------------------------
 # need number of days discharge is above the limits outlined above - counted per month
-## packages
+
+## RESTART R HERE!!!!!!!
 
 library(tidyverse)
 library(tidyr)
@@ -549,13 +521,9 @@ library(gridExtra) # tile several plots next to each other
 library(scales)
 library(data.table)
 
+load(file="output_data/F1_F57C_depth_juvenile_discharge_probs_2010_2017_TS.RData")
 
-load( file="output_data/F1_F57C_depth_adult_discharge_probs_2010_2017_TS.RData")
-head(new_data)
-
-## define thresholds again
-# range(new_data$Q) ## 0.00 998.845 
-
+# define thresholds again
 ## smooth spline the curve to get exact value of discharge at a given probability
 spl <- smooth.spline(new_data$prob_fit ~ new_data$Q)
 
@@ -564,7 +532,7 @@ spl <- smooth.spline(new_data$prob_fit ~ new_data$Q)
 peak <- filter(new_data, prob_fit == max(prob_fit)) #%>%
 peakQ <- select(peak, Q)
 peakQ  <- peakQ[1,1]
-peakQ ## 411.6
+peakQ ## 258.57
 
 ## function for each probability
 
@@ -598,6 +566,7 @@ newx3b <- try(uniroot(function(x) predict(spl, x, deriv = 0)$y - newy3b,
 ## if no 2nd value, return an NA
 newx3b <- ifelse(exists("newx3b"), newx3b, NA )
 
+
 # all columns based on different probabilities
 ## count number events within each threshold with a running total - max total is the number of consequative events (hours)
 ## order by datetime
@@ -609,8 +578,8 @@ new_data <- new_data %>%
   group_by(month, day, year, ID01 = data.table::rleid(Q >= newx1a)) %>%
   mutate(probability_0.1 = if_else(Q >= newx1a, row_number(), 0L)) %>% 
   ungroup() %>%
-  group_by(month, day, year, ID02 = data.table::rleid(Q >= newx2a)) %>%
-  mutate(probability_0.2 = if_else(Q >= newx2a, row_number(), 0L)) %>% 
+  group_by(month, day, year, ID02 = data.table::rleid(Q >= newx2a & Q <= newx2b)) %>%
+  mutate(probability_0.2 = if_else(Q >= newx2a & Q <= newx2b, row_number(), 0L)) %>%  
   ungroup() %>%
   group_by(month, day, year, ID03 = data.table::rleid(Q >= newx3a & Q <= newx3b)) %>%
   mutate(probability_0.3 = if_else(Q >= newx3a & Q <= newx3b, row_number(), 0L)) #%>% 
@@ -695,8 +664,7 @@ summer <- c(5:10) ## summer months
 
 total_days <- total_days %>%
   mutate(season = ifelse(month %in% winter, "winter", "summer") )
-
-# ## melt data
+## melt data
 
 melt_days<-reshape2::melt(total_days, id=c("month_year", "year", "month", "season"))
 melt_days <- rename(melt_days, Probability_Threshold = variable,
@@ -738,3 +706,4 @@ ggplot(melt_days, aes(x =month_year, y=n_days)) +
        y = "Number of days per Month",
        x = "Month") #+ theme_bw(base_size = 15)
 
+save(melt_days, file="output_data/juvenile_depth_number_of_days_3_probs.RData")
