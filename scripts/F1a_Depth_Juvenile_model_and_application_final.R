@@ -410,39 +410,39 @@ new_datax <- new_datax %>%
 
 time_stats <- new_datax %>%
   dplyr::group_by(year) %>%
-  dplyr::mutate(ann_total_0.2 = if(is.na(newx2b)){
+  dplyr::mutate(Medium = if(is.na(newx2b)){
     sum(Q >= newx2a)/length(DateTime)*100
   } else {
     sum(Q >= newx2a & Q <= newx2b)/length(DateTime)*100
   }) %>%
-  dplyr::mutate(ann_total_0.1 = if(is.na(newx1b)){
+  dplyr::mutate(Low = if(is.na(newx1b)){
     sum(Q >= newx1a)/length(DateTime)*100
   } else {
     sum(Q >= newx1a & Q <= newx1b)/length(DateTime)*100
   }) %>%
-  dplyr::mutate(ann_total_0.3 = if(is.na(newx3b)){
+  dplyr::mutate(High = if(is.na(newx3b)){
     sum(Q >= newx3a)/length(DateTime)*100
   } else {
     sum(Q >= newx3a & Q <= newx3b)/length(DateTime)*100
   })  %>%
   ungroup() %>%
   dplyr::group_by(year, season) %>%
-  dplyr::mutate(seas_total_0.2 = if(is.na(newx2b)){
+  dplyr::mutate(Medium.Seasonal = if(is.na(newx2b)){
     sum(Q >= newx2a)/length(DateTime)*100
   } else {
     sum(Q >= newx2a & Q <= newx2b)/length(DateTime)*100
   }) %>%
-  dplyr::mutate(seas_total_0.1 = if(is.na(newx1b)){
+  dplyr::mutate(Low.Seasonal = if(is.na(newx1b)){
     sum(Q >= newx1a)/length(DateTime)*100
   } else {
     sum(Q >= newx1a & Q <= newx1b)/length(DateTime)*100
   }) %>%
-  dplyr::mutate(seas_total_0.3 = if(is.na(newx3b)){
+  dplyr::mutate(High.Seasonal = if(is.na(newx3b)){
     sum(nQ >= newx3a)/length(DateTime)*100
   } else {
     sum(Q >= newx3a & Q <= newx3b)/length(DateTime)*100
   }) %>%
-  distinct(year, ann_total_0.2,ann_total_0.1,ann_total_0.3, seas_total_0.2, seas_total_0.1, seas_total_0.3)
+  distinct(year, Low , Medium , High , Low.Seasonal, Medium.Seasonal, High.Seasonal)
 
 
 time_stats
@@ -468,6 +468,9 @@ melt_time_seas
 ## plot for annual stats - need probs in order
 ggplot(melt_time_ann, aes(x = year, y=value)) +
   geom_line(aes( group = Probability_Threshold, color = Probability_Threshold)) +
+  scale_y_continuous("Percentage of time", limits= c(0,100)) +
+  scale_color_manual(breaks = c("Low", "Medium", "High"),
+                     values=c( "green", "red", "blue")) +
   theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
   # scale_x_continuous(breaks=as.numeric(total_days$month_year), labels=format(total_days$month_year,"%b %Y")) +
   # facet_wrap(~year, scales="free_x", nrow=2) +
@@ -483,7 +486,10 @@ melt_time_winter
 
 ggplot(melt_time_winter, aes(x = year, y=value)) +
   geom_line(aes( group = c(), color = Probability_Threshold)) +
+  scale_y_continuous("Percentage of time", limits= c(0,100)) +
   theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
+  scale_color_manual(breaks = c("Low.Seasonal", "Medium.Seasonal", "High.Seasonal"),
+                     values=c( "green", "red", "blue")) +
   # scale_x_continuous(breaks=as.numeric(total_days$month_year), labels=format(total_days$month_year,"%b %Y")) +
   # facet_wrap(~year, scales="free_x", nrow=2) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
@@ -497,6 +503,9 @@ melt_time_summer <- filter(melt_time_seas, season == "summer")
 
 ggplot(melt_time_summer, aes(x = year, y=value)) +
   geom_line(aes( group = c(), color = Probability_Threshold)) +
+  scale_y_continuous("Percentage of time", limits= c(0,100)) +
+  scale_color_manual(breaks = c("Low.Seasonal", "Medium.Seasonal", "High.Seasonal"),
+                     values=c( "green", "red", "blue")) +
   theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
   # scale_x_continuous(breaks=as.numeric(total_days$month_year), labels=format(total_days$month_year,"%b %Y")) +
   # facet_wrap(~year, scales="free_x", nrow=2) +
