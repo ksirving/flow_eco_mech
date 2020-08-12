@@ -25,6 +25,11 @@ ad_vel_con <- read.csv("output_data/05a_adult_velocity_continuous_updated.csv")
 # dim(ad_vel_con) ## 343
 # unique(ad_vel_con$Dataset) ## 2 datasets
 
+all_vel <- ad_vel_con
+
+vel_freq <- all_vel %>% 
+  uncount(Abundance)
+vel_freq <- na.omit(vel_freq)
 
 # Adult Data distribution -------------------------------------------------------
 
@@ -59,20 +64,7 @@ legend(locator(1), levels(data.f), fill=colfill)
 
 # Adult model build -------------------------------------------------------
 
-## need to predict outside of the velocity range from the curve. upload hydraulic data first to get the values. 
-## on the upper end of the curve e.g. 2.0 m/s so will be a low probability anyway
-
-## upload hydraulic data
-hydraul <- read.csv("input_data/demo_ts_F57C.csv")
-
-## select columns
-names(hydraul)
-hyd_vel <- hydraul[,c(1:3,8)]
-colnames(hyd_vel)[4] <-"vel_ft"
-hyd_vel$date_num <- seq(1,length(hyd_vel$DateTime), 1)
-
-## convert unit from feet to meters
-hyd_vel$vel_cm <- (hyd_vel$vel_ft*0.3048)
+## need to predict outside of the velocity range from the curve. 
 
 # check data
 unique(vel_freq$Dataset)
@@ -87,7 +79,7 @@ xfit<-seq(min(scaled_x),max(scaled_x),length=1000)
 yfit<-dnorm(xfit,mean=mean(scaled_x),sd=sd(scaled_x))
 
 ## x axis with raw velocity values
-xfit_r <- seq(min(vel_freq$Velocity), max(hyd_vel$vel_cm), length=1000)
+xfit_r <- seq(min(vel_freq$Velocity), max(vel_freq$Velocity), length=1000)
 ## plot curve with raw depth axis
 plot(xfit_r, yfit, axes=FALSE, xlab='', ylab='', type='l', col='', main = "" )
 axis(1, at=pretty(xfit_r))
@@ -108,26 +100,53 @@ colnames(fitdata) <- c("velocity_fit", "prob_fit")
 
 # Combine with hydraulic data -------------------------------------------
 
-range(hyd_vel$vel_cm) ## 0.000000 2.091465
+## upload hydraulic data
+hydraul <- read.csv("input_data/demo_ts_F57C.csv")
 
+## select columns
+names(hydraul)
+hyd_vel <- hydraul[,c(1:3,8)]
+colnames(hyd_vel)[4] <-"vel_ft"
+hyd_vel$date_num <- seq(1,length(hyd_vel$DateTime), 1)
+plot(hyd_vel$Q, hyd_vel$vel_ms,  main = "F57C: Velocity ~ Q", xlab="Q (cfs)", ylab="Velocity (m/s)")
+
+## convert unit from feet to meters
+hyd_vel$vel_ms <- (hyd_vel$vel_ft*0.3048)
+
+range(hyd_vel$vel_ms) ## 0.000000 2.091465
+range(fitdata$velocity_fit) ## 0.00 1.73
 ## round the depths - don't need the high resolution
 
-hyd_vel$vel_cm_round <- round(hyd_vel$vel_cm, digits=2 )
+hyd_vel$vel_ms_round <- round(hyd_vel$vel_ms, digits=2 )
 fitdata$vel_fit_round <- round(fitdata$velocity_fit, digits=2)
 
 
-plot(hyd_vel$date_num, hyd_vel$vel_cm_round, type="n")
-lines(hyd_vel$date_num, hyd_vel$vel_cm_round)
+plot(hyd_vel$date_num, hyd_vel$vel_ms_round, type="n")
+lines(hyd_vel$date_num, hyd_vel$vel_ms_round)
 
 ## merge node data and probabilities
-all_data <- merge(hyd_vel, fitdata, by.x="vel_cm_round", by.y="vel_fit_round", all=T)
+all_data <- merge(hyd_vel, fitdata, by.x="vel_ms_round", by.y="vel_fit_round", all=T)
+sum(is.na(all_data)) ## 3562
+names(all_data)
+## missing values - anything over 1.73 as not in suitability curve
+## replace NA of probability with min probability of dataset
+
+all_data[which(all_data$vel_ms_round > max(na.omit(all_data$velocity_fit))),"prob_fit"] <- min(na.omit(all_data$prob_fit))
+sum(is.na(all_data)) # 18581
+
+## remove rows with probabilities above the max hydraulic value
+all_data <- filter(all_data, vel_ms_round <= max(hyd_vel$vel_ms_round))
+sum(is.na(all_data)) # 2675 - no NAs in prob_fit - all present
+# nas <- which(is.na(all_data$velocity_fit))
+# nas <- which(is.na(all_data$DateTime))
+# nas
 
 save(all_data, file="output_data/F2_F57C_adult_velocity_discharge_probability_time_series_all_columns.RData")
 names(all_data)
-## keep columns dpeth, datetime, Q date_num & prob_fit
+## keep columns velocity, datetime, Q date_num & prob_fit
 all_data <- all_data[, c(1,2,3,6,7,9)]
-# sum(is.na(all_data))
-all_data <- na.omit(all_data)
+sum(is.na(all_data)) # 1192
+all_data <- na.omit(all_data) ## remaining NAs are dattime etc so can remove
 
 ## remove duplicate date_num (date time) and order
 
@@ -173,42 +192,59 @@ head(new_data)
 
 ## plot
 range(new_data$Q) ## 0.00 998.84
-range(new_data$prob_fit) ## 0.0007002178 0.3989406559
+range(new_data$prob_fit) ## 0.0006865544 0.3989288644
 
 ## smooth spline the curve to get exact value of discharge at a given probability
 spl <- smooth.spline(new_data$prob_fit ~ new_data$Q)
 
 ## find peak of prob v Q
 
+## find peak of prob v Q
+
 peak <- filter(new_data, prob_fit == max(prob_fit)) #%>%
 peakQ <- select(peak, Q)
 peakQ  <- peakQ[1,1]
+peakQ ## 1.98
 
-## function for each probability - gets the related Q from each probability
+## function for each probability
+
+newy1a <- 0.1
+newx1a <- uniroot(function(x) predict(spl, x, deriv = 0)$y - newy1a,
+                  interval = c(min(new_data$Q), peakQ))$root
+newx1a <- ifelse(exists("newx1a"), newx1a, NA )
+
+newy1b <- 0.1
+newx1b <- try(uniroot(function(x) predict(spl, x, deriv = 0)$y - newy1b,
+                      interval = c(peakQ, max(new_data$Q)))$root, silent=T)
+## if no 2nd value, return an NA
+newx1b <- ifelse(exists("newx1b"), newx1b, NA )
+
 newy2a <- 0.2
 newx2a <- uniroot(function(x) predict(spl, x, deriv = 0)$y - newy2a,
                   interval = c(min(new_data$Q), peakQ))$root
 
 newy2b <- 0.2
-newx2b <- uniroot(function(x) predict(spl, x, deriv = 0)$y - newy2b,
-                  interval = c(peakQ, max(new_data$Q)))$root
-
-newy1a <- 0.1
-newx1a <- uniroot(function(x) predict(spl, x, deriv = 0)$y - newy1a,
-                  interval = c(min(new_data$Q), peakQ))$root
-
-newy1b <- 0.1
-newx1b <- uniroot(function(x) predict(spl, x, deriv = 0)$y - newy1b,
-                  interval = c(peakQ, max(new_data$Q)))$root
+newx2b <- try(uniroot(function(x) predict(spl, x, deriv = 0)$y - newy2b, 
+                      interval = c(peakQ, max(new_data$Q)))$root, silent=T)
+## if no 2nd value, return an NA
+newx2b <- ifelse(exists("newx2b"), newx2b, NA )
 
 newy3a <- 0.3
 newx3a <- uniroot(function(x) predict(spl, x, deriv = 0)$y - newy3a,
-                 interval = c(min(new_data$Q), peakQ))$root
+                  interval = c(min(new_data$Q), peakQ))$root
 
 newy3b <- 0.3
-newx3b <- uniroot(function(x) predict(spl, x, deriv = 0)$y - newy3b,
-                  interval = c(peakQ, max(new_data$Q)))$root
+newx3b <- try(uniroot(function(x) predict(spl, x, deriv = 0)$y - newy3b,
+                      interval = c(peakQ, max(new_data$Q)))$root, silent=T)
+## if no 2nd value, return an NA
+newx3b <- ifelse(exists("newx3b"), newx3b, NA )
 
+
+# thresholds <- as.data.frame(matrix(ncol=2, nrow=6))
+# colnames(thresholds) <- c("newy", "newx")
+# thresholds$newy <- c("0.1", "0.1", "0.2", "0.2", "0.3", "0.3")
+# thresholds$newx <- c(newx1a,newx1b, newx2a,newx2b, newx3a,newx3b)
+# thresholds
 
 plot(new_data$Q, new_data$prob_fit, type="n", main = "Adult/Velocity: Probability according to Q", xlab="Q (cfs)", ylab="Probability")
 lines(spl, col="black")
@@ -250,11 +286,11 @@ ggplot(new_datax_2016) +
   # scale_x_continuous(breaks=as.numeric(new_datax$month_year), labels=format(new_datax$month_year,"%b %Y")) +
   geom_hline(yintercept=newx2a, linetype="dashed", color="red")+
   geom_hline(yintercept=newx2b, linetype="dashed", color="red")+
-  geom_hline(yintercept=newx1a, linetype="dashed", color="green")+
-  geom_hline(yintercept=newx1b, linetype="dashed", color="green")+
-  geom_hline(yintercept=newx3a, linetype="dashed", color="blue")+
-  geom_hline(yintercept=newx3b, linetype="dashed", color="blue")+
-  # facet_wrap(~month, scales="free_x", nrow=4) +
+  # geom_hline(yintercept=newx1a, linetype="dashed", color="green")+
+  # # geom_hline(yintercept=newx1b, linetype="dashed", color="green")+
+  # geom_hline(yintercept=newx3a, linetype="dashed", color="blue")+
+  # geom_hline(yintercept=newx3b, linetype="dashed", color="blue")+
+  # # facet_wrap(~month, scales="free_x", nrow=4) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
   labs(title = "Discharge over time",
        y = "Discharge",
@@ -272,9 +308,10 @@ ggplot(new_datax_2016_summer) +
   # theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
   # scale_x_continuous(breaks=as.numeric(new_datax$month_year), labels=format(new_datax$month_year,"%b %Y")) +
   geom_hline(yintercept=newx2b, linetype="dashed", color="red")+
-  geom_hline(yintercept=newx1b, linetype="dashed", color="green")+
-  geom_hline(yintercept=newx3a, linetype="dashed", color="blue")+
-  geom_hline(yintercept=newx3b, linetype="dashed", color="blue")+
+  geom_hline(yintercept=newx2a, linetype="dashed", color="red")+
+  # geom_hline(yintercept=newx1b, linetype="dashed", color="green")+
+  # geom_hline(yintercept=newx3a, linetype="dashed", color="blue")+
+  # geom_hline(yintercept=newx3b, linetype="dashed", color="blue")+
   # facet_wrap(~month, scales="free_x", nrow=4) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
   labs(title = "Discharge over time",
@@ -330,6 +367,10 @@ total_0.1 # 21.00261 %
 total_0.3 <- sum(new_datax_2016_winter$Q >= newx3a & new_datax_2016_winter$Q <= newx3b)/length(new_datax_2016_winter$DateTime)*100
 total_0.3 ## 0.7127584 %
 
+
+# Make dataframe for time stats -------------------------------------------
+
+
 ## make dataframe for all years 
 
 head(new_datax)
@@ -346,17 +387,48 @@ new_datax <- new_datax %>%
 
 time_stats <- new_datax %>%
   dplyr::group_by(year) %>%
-  dplyr::mutate(ann_total_0.2 = sum(Q >= newx2a & Q <= newx2b)/length(DateTime)*100) %>%
-  dplyr::mutate(ann_total_0.1 = sum(Q >= newx1a & Q <= newx1b)/length(DateTime)*100) %>%
-  dplyr::mutate(ann_total_0.3 = sum(Q >= newx3a & Q <= newx3b)/length(DateTime)*100) %>%
+  dplyr::mutate(ann_total_0.2 = if(is.na(newx2b)){
+    sum(Q >= newx2a)/length(DateTime)*100
+  } else {
+    sum(Q >= newx2a & Q <= newx2b)/length(DateTime)*100
+  }) %>%
+  dplyr::mutate(ann_total_0.1 = if(is.na(newx1b)){
+    sum(Q >= newx1a)/length(DateTime)*100
+  } else {
+    if (is.na(newx1a)) {
+      sum(Q <= newx1b)/length(DateTime)*100
+    } else {
+      sum(Q >= newx1a & Q <= newx1b)/length(DateTime)*100
+  }}) %>%
+  
+  dplyr::mutate(ann_total_0.3 = if(is.na(newx3b)){
+    sum(Q >= newx3a)/length(DateTime)*100
+  } else {
+    sum(Q >= newx3a & Q <= newx3b)/length(DateTime)*100
+  })  %>%
   ungroup() %>%
   dplyr::group_by(year, season) %>%
-  dplyr::mutate(seas_total_0.2 = sum(Q >= newx2a & Q <= newx2b)/length(DateTime)*100) %>%
-  dplyr::mutate(seas_total_0.1 = sum(Q >= newx1a & Q <= newx1b)/length(DateTime)*100) %>%
-  dplyr::mutate(seas_total_0.3 = sum(Q >= newx3a & Q <= newx3b)/length(DateTime)*100) %>%
+  dplyr::mutate(seas_total_0.2 = if(is.na(newx2b)){
+    sum(Q >= newx2a)/length(DateTime)*100
+  } else {
+    sum(Q >= newx2a & Q <= newx2b)/length(DateTime)*100
+  }) %>%
+  dplyr::mutate(seas_total_0.1 = if(is.na(newx1b)){
+    sum(Q >= newx1a)/length(DateTime)*100
+  } else {
+    if (is.na(newx1a)) {
+      sum(Q <= newx1b)/length(DateTime)*100
+    } else {
+      sum(Q >= newx1a & Q <= newx1b)/length(DateTime)*100
+    }}) %>%
+  dplyr::mutate(seas_total_0.3 = if(is.na(newx3b)){
+    sum(nQ >= newx3a)/length(DateTime)*100
+  } else {
+    sum(Q >= newx3a & Q <= newx3b)/length(DateTime)*100
+  }) %>%
   distinct(year, ann_total_0.2,ann_total_0.1,ann_total_0.3, seas_total_0.2, seas_total_0.1, seas_total_0.3)
-  
-  
+
+
 time_stats
 
 ## melt
@@ -367,12 +439,14 @@ melt_time <- rename(melt_time, Probability_Threshold = variable)
 ann_stats <- unique(melt_time$Probability_Threshold)[1:3]
 melt_time_ann <- melt_time %>% filter(Probability_Threshold %in% ann_stats ) %>%
   select(-season) %>% distinct()
-# head(melt_time_ann)
+head(melt_time_ann)
+# melt_time_ann <- na.omit(melt_time_ann)
 # melt_time_ann
 
 ## subset seasonal stats
 seas_stats <- unique(melt_time$Probability_Threshold)[4:6]
 melt_time_seas <- filter(melt_time, Probability_Threshold %in% seas_stats )
+# melt_time_seas<- na.omit(melt_time_seas)
 head(melt_time_seas)
 melt_time_seas
 
@@ -380,12 +454,13 @@ melt_time_seas
 ## plot for annual stats - need probs in order
 ggplot(melt_time_ann, aes(x = year, y=value)) +
   geom_line(aes( group = Probability_Threshold, color = Probability_Threshold)) +
+  scale_y_continuous("Percentage of time", limits= c(0,100)) +
   theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
   # scale_x_continuous(breaks=as.numeric(total_days$month_year), labels=format(total_days$month_year,"%b %Y")) +
   # facet_wrap(~year, scales="free_x", nrow=2) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "Time under discharge limit in relation to velocity (Annual)",
-       y = "Percentage of time",
+  labs(title = "Time within discharge limit in relation to Velocity (Annual)",
+       # y = "Percentage of time",
        x = "Year") #+ theme_bw(base_size = 15)
 
 ## plot for winter stats - need probs in order
@@ -395,12 +470,13 @@ melt_time_winter
 
 ggplot(melt_time_winter, aes(x = year, y=value)) +
   geom_line(aes( group = c(), color = Probability_Threshold)) +
+  scale_y_continuous("Percentage of time", limits= c(0,100)) +
   theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
   # scale_x_continuous(breaks=as.numeric(total_days$month_year), labels=format(total_days$month_year,"%b %Y")) +
   # facet_wrap(~year, scales="free_x", nrow=2) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "Time under discharge limit in relation to velocity (Winter)",
-       y = "Percentage of time",
+  labs(title = "Time within discharge limit in relation to Velocity (Winter)",
+       # y = "Percentage of time",
        x = "Year") #+ theme_bw(base_size = 15)
 
 ## plot for summer stats - need probs in order
@@ -409,67 +485,104 @@ melt_time_summer <- filter(melt_time_seas, season == "summer")
 
 ggplot(melt_time_summer, aes(x = year, y=value)) +
   geom_line(aes( group = c(), color = Probability_Threshold)) +
+  scale_y_continuous("Percentage of time", limits= c(0,100)) +
   theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
   # scale_x_continuous(breaks=as.numeric(total_days$month_year), labels=format(total_days$month_year,"%b %Y")) +
   # facet_wrap(~year, scales="free_x", nrow=2) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "Time under discharge limit in relation to velocity (Summer)",
-       y = "Percentage of time",
+  labs(title = "Time within discharge limit in relation to Velocity (Summer)",
+       # y = "Percentage of time",
        x = "Year") #+ theme_bw(base_size = 15)
-
 
 # Number of days above discharge ------------------------------------------
 # need number of days discharge is above the limits outlined above - counted per month
 
-load(file="output_data/F1_F57C_velocity_adult_discharge_probs_2010_2017_TS.RData")
+
+
+library(tidyverse)
+library(tidyr)
+library(sm)
+library(lubridate) # work with dates
+library(dplyr)     # data manipulation (filter, summarize, mutate)
+library(ggplot2)   # graphics
+library(gridExtra) # tile several plots next to each other
+library(scales)
+library(data.table)
+
+
+load(file="output_data/F2_F57C_velocity_adult_discharge_probs_2010_2017_TS.RData")
 
 # all columns based on different probabilities
 new_data <- new_data %>%
-  group_by(month, year, ID = data.table::rleid(Q >= newx1a & Q <= newx1b)) %>%
-  mutate(probability_0.1 = if_else(Q >= newx1a & Q <= newx1b, row_number(), 0L)) %>% 
+  group_by(month, day, year, ID01 = data.table::rleid(Q <= newx1b)) %>%
+  mutate(probability_0.1 = if_else(Q <= newx1b, row_number(), 0L)) %>% 
   ungroup() %>%
-  group_by(month, year, ID = data.table::rleid(Q >= newx2a & Q <= newx2b)) %>%
+  group_by(month, day, year, ID02 = data.table::rleid(Q >= newx2a & Q <= newx2b)) %>%
   mutate(probability_0.2 = if_else(Q >= newx2a & Q <= newx2b, row_number(), 0L)) %>% 
   ungroup() %>%
-  group_by(month, year, ID = data.table::rleid(Q >= newx3a & Q <= newx3a)) %>%
-  mutate(probability_0.3 = if_else(Q >= newx3a & Q <= newx3a, row_number(), 0L)) #%>% 
-
-## need a way to count max, until it restarts from zero, then count the other max values
-new_data %>% group_by(month, year) %>% summarise(sum(probability_0.1==24))
-
-# d1 %>%   group_by(UserID, ItemName, days = c(0, cumsum(diff(Date) != 1))) %>%   
-#   summarise(ConsecutiveDays=n(),             StartDate = first(Date))%>%   select(-days)
+  group_by(month, day, year, ID03 = data.table::rleid(Q >= newx3a & Q <= newx3b)) %>%
+  mutate(probability_0.3 = if_else(Q >= newx3a & Q <= newx3b, row_number(), 0L)) #%>%
 
 ## melt data frame so that each probability column are all in one row 
-## select only columns needed
+## select only columns needed - Q, month, year, day all IDs and probs
 names(new_data)
-head(new_data)
-new_datax <- new_data[, c(3,7,8,11:14)] # all probs
+
+new_datax <- new_data[, c(3,7, 8, 9, 11:16)] # all probs
+names(new_datax)
 
 ## melt
-melt_data<-reshape2::melt(new_datax, id=c("ID", "month", "year", "Q"))
-melt_data <- rename(melt_data, Probability_Threshold = variable)
+melt_data<-reshape2::melt(new_datax, id=c("ID01", "ID02", "ID03", "day", "month", "year", "Q"))
+melt_data <- rename(melt_data, Probability_Threshold = variable, 
+                    consec_hours = value)
+tail(melt_data)
 head(melt_data)
-
 # melt_data_2016 <- filter(melt_data, year==2016)
 # melt_data_2016
 
 ## groups data by year, month and ID & threshold
-## counts the number of days in each month probability is within the velocity of each threshold - days are not necessarily conseq
-total_days <- melt_data %>% 
-  group_by(ID, month, year, Probability_Threshold) %>%
-  summarise(n_days = sum(value==24)) # %>%
-  # rename(max_Consec_Hours=`sum(value)`) %>%
-  # mutate(max_Consec_Hours/24) %>%
-  # rename(duration_dayss=`max_Consec_Hours/24`) 
+## counts the number of days in each month probability is within the depth of each threshold - days are not necessarily conseq
+## each threshold separately
 
+## count how many full days i.e. 24 hours
+total_days01 <- melt_data %>% 
+  filter(Probability_Threshold == "probability_0.1") %>% 
+  group_by(ID01, day, month, year) %>%
+  summarise(n_hours = max(consec_hours))  %>%
+  mutate(n_days01 = ifelse(n_hours >= 23, 1, 0)) # %>%
 
-# ## count number of events - below 20% and for 1 day - per month as well as number of times per month (hours) that the prob goes below zero
-# total_days <- conseq_ID20 %>%
-#   group_by(month, year, Probability_Threshold) %>%
-#   # select(-max_Consec_Hours) %>%
-#   summarize(n_days = sum(max_Consec_Days)) %>% ## total number of days per month (not always consequtive)
-#   arrange(year)
+## count the number of days in each month
+total_days_per_month01 <- total_days01 %>%
+  group_by(month, year) %>%
+  summarise(days_per_month01 = sum(n_days01))
+
+# total_days_per_month01
+
+total_days02 <- melt_data %>% 
+  filter(Probability_Threshold == "probability_0.2") %>% 
+  group_by(ID01, day, month, year) %>%
+  summarise(n_hours = max(consec_hours))  %>%
+  mutate(n_days02 = ifelse(n_hours >= 23, 1, 0)) # %>%
+
+total_days_per_month02 <- total_days02 %>%
+  group_by(month, year) %>%
+  summarise(days_per_month02 = sum(n_days02))
+
+# total_days_per_month02
+
+total_days03 <- melt_data %>% 
+  filter(Probability_Threshold == "probability_0.3") %>% 
+  group_by(ID01, day, month, year) %>%
+  summarise(n_hours = max(consec_hours))  %>%
+  mutate(n_days03 = ifelse(n_hours >= 23, 1, 0)) # %>%
+
+total_days_per_month03 <- total_days03 %>%
+  group_by(month, year) %>%
+  summarise(days_per_month03 = sum(n_days03))
+
+# total_days_per_month03
+
+## combine all thresholds
+total_days <- cbind( total_days_per_month02,total_days_per_month01[,3], total_days_per_month03[,3])
 
 # create year_month column       
 total_days <- ungroup(total_days) %>%
@@ -477,21 +590,62 @@ total_days <- ungroup(total_days) %>%
 
 ## convert month year to date format
 total_days$month_year <-  zoo::as.yearmon(total_days$month_year)
+total_days
 
-##  plot - number of days - 
+## change names of columns
+total_days <- rename(total_days, Probability_0.1 = days_per_month01, Probability_0.2 = days_per_month02, Probability_0.3 = days_per_month03)
 
-ggplot(total_days, aes(x =month_year, y=n_days)) +
+## define seasons
+winter <- c(1,2,3,4,11,12) ## winter months
+summer <- c(5:10) ## summer months
+
+total_days <- total_days %>%
+  mutate(season = ifelse(month %in% winter, "winter", "summer") )
+
+# ## melt data
+
+melt_days<-reshape2::melt(total_days, id=c("month_year", "year", "month", "season"))
+melt_days <- rename(melt_days, Probability_Threshold = variable,
+                    n_days = value)
+
+head(melt_days)
+
+##  plot - number of days 
+
+ggplot(melt_days, aes(x =month_year, y=n_days)) +
   geom_line(aes( group = Probability_Threshold, color = Probability_Threshold)) +
+  scale_y_continuous("Number of days per Month", limits= c(0,30)) +
   theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
-  scale_x_continuous(breaks=as.numeric(total_days$month_year), labels=format(total_days$month_year,"%b %Y")) +
-  facet_wrap(~year, scales="free_x", nrow=2) +
+  scale_x_continuous(breaks=as.numeric(melt_days$month_year), labels=format(melt_days$month_year,"%b %Y")) +
+  # facet_wrap(~year, scales="free_x", nrow=2) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "Number of days under discharge limit in relation to velocity",
-       y = "Number of days per Month",
+  labs(title = "Number of days within discharge limit in relation to Velocity",
+       # y = "Number of days per Month",
        x = "Month") #+ theme_bw(base_size = 15)
 
+## number of days separated per year
 
+ggplot(melt_days, aes(x =month_year, y=n_days)) +
+  geom_line(aes( group = Probability_Threshold, color = Probability_Threshold)) +
+  scale_y_continuous("Number of days per Month", limits= c(0,30)) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
+  scale_x_continuous(breaks=as.numeric(melt_days$month_year), labels=format(melt_days$month_year,"%b %Y")) +
+  facet_wrap(~year, scales="free_x", nrow=2) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  labs(title = "Number of days within discharge limit in relation to Depth",
+       # y = "Number of days per Month",
+       x = "Month") #+ theme_bw(base_size = 15)
 
+## number of days separated per season
 
-
+ggplot(melt_days, aes(x =month_year, y=n_days)) +
+  geom_line(aes( group = Probability_Threshold, color = Probability_Threshold)) +
+  scale_y_continuous("Number of days per Month", limits= c(0,30)) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
+  scale_x_continuous(breaks=as.numeric(melt_days$month_year), labels=format(melt_days$month_year,"%b %Y")) +
+  facet_wrap(~season, scales="free_x", nrow=2) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  labs(title = "Number of days within discharge limit in relation to Depth",
+       # y = "Number of days per Month",
+       x = "Month") #+ theme_bw(base_size = 15)
 

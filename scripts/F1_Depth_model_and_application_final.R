@@ -127,7 +127,7 @@ colnames(hyd_dep)[4] <-"depth_ft"
 hyd_dep$depth_cm <- (hyd_dep$depth_ft*0.3048)*100
 # head(hyd_dep)
 range(hyd_dep$depth_cm)
-plot(hyd_dep$Q, hyd_dep$depth_cm,  main = "Adult: Depth ~ Q", xlab="Q (cfs)", ylab="Depth (cm)")
+plot(hyd_dep$Q, hyd_dep$depth_cm,  main = "F57C: Depth ~ Q", xlab="Q (cfs)", ylab="Depth (cm)")
 
 
 ## add date_num and plot time series - use numbers for now
