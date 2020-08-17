@@ -230,40 +230,39 @@ peakQ
 ## function for each probability
 
 newy1a <- 0.1
-newx1a <- uniroot(function(x) predict(spl, x, deriv = 0)$y - newy1a,
-                  interval = c(min(new_data$Q), peakQ))$root
+newx1a <- try(uniroot(function(x) predict(spl, x, deriv = 0)$y - newy1a,
+                      interval = c(min(new_data$Q), peakQ))$root, silent=T)
+## if no value, return an NA
+newx1a <- ifelse(class(newx1a) == "try-error",  NA, newx1a)
 
 newy1b <- 0.1
 newx1b <- try(uniroot(function(x) predict(spl, x, deriv = 0)$y - newy1b,
                       interval = c(peakQ, max(new_data$Q)))$root, silent=T)
-## if no 2nd value, return an NA
-newx1b <- ifelse(exists("newx1b"), newx1b, NA )
+## if no value, return an NA
+newx1b <- ifelse(class(newx1b) == "try-error",  NA, newx1b)
 
 newy2a <- 0.2
-newx2a <- uniroot(function(x) predict(spl, x, deriv = 0)$y - newy2a,
-                  interval = c(min(new_data$Q), peakQ))$root
+newx2a <- try(uniroot(function(x) predict(spl, x, deriv = 0)$y - newy2a,
+                      interval = c(min(new_data$Q), peakQ))$root, silent=T)
+newx2a <- ifelse(class(newx2a) == "try-error",  NA, newx2a)
 
 newy2b <- 0.2
 newx2b <- try(uniroot(function(x) predict(spl, x, deriv = 0)$y - newy2b, 
                       interval = c(peakQ, max(new_data$Q)))$root, silent=T)
 ## if no 2nd value, return an NA
-newx2b <- ifelse(exists("newx2b"), newx2b, NA )
+newx2b <- ifelse(class(newx2b) == "try-error",  NA, newx2b)
 
 newy3a <- 0.3
-newx3a <- uniroot(function(x) predict(spl, x, deriv = 0)$y - newy3a,
-                  interval = c(min(new_data$Q), peakQ))$root
+newx3a <- try(uniroot(function(x) predict(spl, x, deriv = 0)$y - newy3a,
+                      interval = c(min(new_data$Q), peakQ))$root, silent=T)
+newx3a <- ifelse(class(newx3a) == "try-error",  NA, newx3a)
 
 newy3b <- 0.3
 newx3b <- try(uniroot(function(x) predict(spl, x, deriv = 0)$y - newy3b,
                       interval = c(peakQ, max(new_data$Q)))$root, silent=T)
 ## if no 2nd value, return an NA
-newx3b <- ifelse(exists("newx3b"), newx3b, NA )
+newx3b <- ifelse(class(newx3b) == "try-error",  NA, newx3b)
 
-# thresholds <- as.data.frame(matrix(ncol=2, nrow=6))
-# colnames(thresholds) <- c("newy", "newx")
-# thresholds$newy <- c("0.1", "0.1", "0.2", "0.2", "0.3", "0.3")
-# thresholds$newx <- c(newx1a,newx1b, newx2a,newx2b, newx3a,newx3b)
-# thresholds
 
 plot(new_data$Q, new_data$prob_fit, type="n", main = "Juvenile/Depth: Probability according to Q", xlab="Q (cfs)", ylab="Probability")
 lines(spl, col="black")
@@ -357,44 +356,11 @@ ggplot(new_datax_2016_winter) +
        x = "Time") #+ theme_bw(base_size = 15)
 
 
-# Statistics on Q probability - total amount of time ----------------------
 
-## percentage of time below threshold - annual
-length(new_datax_2016$DateTime)
-total_0.2 <- sum(new_datax_2016$Q >= newx2a & new_datax_2016$Q <= newx2b)/length(new_datax_2016$DateTime)*100
-total_0.2 # 0.6726977 %
-
-total_0.1 <- sum(new_datax_2016$Q >= newx1a & new_datax_2016$Q <= newx1b)/length(new_datax_2016$DateTime)*100
-total_0.1 # 34.96868 %
-
-total_0.3 <- sum(new_datax_2016$Q >= newx3a & new_datax_2016$Q <= newx3b)/length(new_datax_2016$DateTime)*100
-total_0.3 ## 0.3479471 %
-
-## percentage of time below threshold - summer
-length(new_datax_2016_summer$DateTime)
-total_0.2 <- sum(new_datax_2016_summer$Q >= newx2a & new_datax_2016_summer$Q <= newx2b)/length(new_datax_2016_summer$DateTime)*100
-total_0.2 # 0 %
-
-total_0.1 <- sum(new_datax_2016_summer$Q >= newx1a & new_datax_2016_summer$Q <= newx1b)/length(new_datax_2016_summer$DateTime)*100
-total_0.1 # 48.28915 %
-
-total_0.3 <- sum(new_datax_2016_summer$Q >= newx3a & new_datax_2016_summer$Q <= newx3b)/length(new_datax_2016_summer$DateTime)*100
-total_0.3 ## 0 %
-
-length(new_datax_2016_winter$DateTime)
-total_0.2 <- sum(new_datax_2016_winter$Q >= newx2a & new_datax_2016_winter$Q <= newx2b)/length(new_datax_2016_winter$DateTime)*100
-total_0.2 # 1.378 %
-
-total_0.1 <- sum(new_datax_2016_winter$Q >= newx1a & new_datax_2016_winter$Q <= newx1b)/length(new_datax_2016_winter$DateTime)*100
-total_0.1 # 21.00261 %
-
-total_0.3 <- sum(new_datax_2016_winter$Q >= newx3a & new_datax_2016_winter$Q <= newx3b)/length(new_datax_2016_winter$DateTime)*100
-total_0.3 ## 0.7127584 %
 
 
 
 # make dataframe for all years --------------------------------------------
-
 
 head(new_datax)
 names(new_datax)
@@ -541,75 +507,122 @@ spl <- smooth.spline(new_data$prob_fit ~ new_data$Q)
 peak <- filter(new_data, prob_fit == max(prob_fit)) #%>%
 peakQ <- select(peak, Q)
 peakQ  <- peakQ[1,1]
-peakQ ## 258.57
+peakQ ## 258.6
 
 ## function for each probability
-
 newy1a <- 0.1
-newx1a <- uniroot(function(x) predict(spl, x, deriv = 0)$y - newy1a,
-                  interval = c(min(new_data$Q), peakQ))$root
+newx1a <- try(uniroot(function(x) predict(spl, x, deriv = 0)$y - newy1a,
+                      interval = c(min(new_data$Q), peakQ))$root, silent=T)
+## if no value, return an NA
+newx1a <- ifelse(class(newx1a) == "try-error",  NA, newx1a)
 
 newy1b <- 0.1
 newx1b <- try(uniroot(function(x) predict(spl, x, deriv = 0)$y - newy1b,
                       interval = c(peakQ, max(new_data$Q)))$root, silent=T)
-## if no 2nd value, return an NA
-newx1b <- ifelse(exists("newx1b"), newx1b, NA )
+## if no value, return an NA
+newx1b <- ifelse(class(newx1b) == "try-error",  NA, newx1b)
 
 newy2a <- 0.2
-newx2a <- uniroot(function(x) predict(spl, x, deriv = 0)$y - newy2a,
-                  interval = c(min(new_data$Q), peakQ))$root
+newx2a <- try(uniroot(function(x) predict(spl, x, deriv = 0)$y - newy2a,
+                      interval = c(min(new_data$Q), peakQ))$root, silent=T)
+newx2a <- ifelse(class(newx2a) == "try-error",  NA, newx2a)
 
 newy2b <- 0.2
 newx2b <- try(uniroot(function(x) predict(spl, x, deriv = 0)$y - newy2b, 
                       interval = c(peakQ, max(new_data$Q)))$root, silent=T)
 ## if no 2nd value, return an NA
-newx2b <- ifelse(exists("newx2b"), newx2b, NA )
+newx2b <- ifelse(class(newx2b) == "try-error",  NA, newx2b)
 
 newy3a <- 0.3
-newx3a <- uniroot(function(x) predict(spl, x, deriv = 0)$y - newy3a,
-                  interval = c(min(new_data$Q), peakQ))$root
+newx3a <- try(uniroot(function(x) predict(spl, x, deriv = 0)$y - newy3a,
+                      interval = c(min(new_data$Q), peakQ))$root, silent=T)
+newx3a <- ifelse(class(newx3a) == "try-error",  NA, newx3a)
 
 newy3b <- 0.3
 newx3b <- try(uniroot(function(x) predict(spl, x, deriv = 0)$y - newy3b,
                       interval = c(peakQ, max(new_data$Q)))$root, silent=T)
 ## if no 2nd value, return an NA
-newx3b <- ifelse(exists("newx3b"), newx3b, NA )
+newx3b <- ifelse(class(newx3b) == "try-error",  NA, newx3b)
 
 
 # all columns based on different probabilities
-## count number events within each threshold with a running total - max total is the number of consequative events (hours)
+## count number events within each threshold with a running total - max total is the number of consequative 
+# events (hours) per day. if else statements to consider the thresholds newx1a/b etc
 ## order by datetime
 
 new_data <- arrange(new_data, date_num)
 
-## need universal solution to this when there's no "b"
-new_data <- new_data %>%
-  group_by(month, day, year, ID01 = data.table::rleid(Q >= newx1a)) %>%
-  mutate(probability_0.1 = if_else(Q >= newx1a, row_number(), 0L)) %>% 
-  ungroup() %>%
-  group_by(month, day, year, ID02 = data.table::rleid(Q >= newx2a & Q <= newx2b)) %>%
-  mutate(probability_0.2 = if_else(Q >= newx2a & Q <= newx2b, row_number(), 0L)) %>%  
-  ungroup() %>%
-  group_by(month, day, year, ID03 = data.table::rleid(Q >= newx3a & Q <= newx3b)) %>%
-  mutate(probability_0.3 = if_else(Q >= newx3a & Q <= newx3b, row_number(), 0L)) #%>% 
+nas <- ifelse(!is.na(newx1a) && !is.na(newx1b), print("Both"), print("one"))
 
+if(nas == "Both") {
+  new_data <- new_data %>%
+    ungroup() %>%
+    group_by(month, day, year, ID01 = data.table::rleid(Q >= newx1a & Q <= newx1b)) %>%
+    mutate(Low = if_else(Q >= newx1a & Q <= newx1b, row_number(), 0L))
+} else if (is.na(newx1a)) {
+  new_data <- new_data %>%
+    ungroup() %>%
+    group_by(month, day, year, ID01 = data.table::rleid(Q >= newx1b)) %>%
+    mutate(Low = if_else(Q >= newx1b, row_number(), 0L)) 
+} else {
+  new_data <- new_data %>%
+    ungroup() %>%
+    group_by(month, day, year, ID01 = data.table::rleid(Q >= newx1a)) %>%
+    mutate(Low = if_else(Q >= newx1a, row_number(), 0L)) 
+}
 
+nas <- ifelse(!is.na(newx2a) && !is.na(newx2b), print("Both"), print("one"))
+
+if(nas == "Both") {
+  new_data <- new_data %>%
+    ungroup() %>%
+    group_by(month, day, year, ID02 = data.table::rleid(Q >= newx2a & Q <= newx2b)) %>%
+    mutate(Medium = if_else(Q >= newx2a & Q <= newx2b, row_number(), 0L))
+} else if (is.na(newx2a)) {
+  new_data <- new_data %>%
+    ungroup() %>%
+    group_by(month, day, year, ID02 = data.table::rleid(Q >= newx2b)) %>%
+    mutate(Medium = if_else(Q >= newx2b, row_number(), 0L)) 
+} else {
+  new_data <- new_data %>%
+    ungroup() %>%
+    group_by(month, day, year, ID02 = data.table::rleid(Q >= newx2a)) %>%
+    mutate(Medium = if_else(Q >= newx2a, row_number(), 0L)) 
+}
+
+nas <- ifelse(!is.na(newx3a) && !is.na(newx3b), print("Both"), print("one"))
+
+if(nas == "Both") {
+  new_data <- new_data %>%
+    ungroup() %>%
+    group_by(month, day, year, ID03 = data.table::rleid(Q >= newx3a & Q <= newx3b)) %>%
+    mutate(High = if_else(Q >= newx3a & Q <= newx3b, row_number(), 0L))
+} else if (is.na(newx3a)) {
+  new_data <- new_data %>%
+    ungroup() %>%
+    group_by(month, day, year, ID03 = data.table::rleid(Q >= newx3b)) %>%
+    mutate(High = if_else(Q >= newx3b, row_number(), 0L)) 
+} else {
+  new_data <- new_data %>%
+    ungroup() %>%
+    group_by(month, day, year, ID03 = data.table::rleid(Q >= newx3a)) %>%
+    mutate(High = if_else(Q >= newx2a, row_number(), 0L)) 
+}
+head(new_data)
+names(new_data)
 
 ## melt data frame so that each probability column are all in one row 
 ## select only columns needed - Q, month, year, day all IDs and probs
 # names(new_data)
 
-new_datax <- new_data[, c(3,6,7, 8, 10:15)] # all probs
+new_datax <- select(new_data, c(Q, month, year, day, ID01, Low, ID02, Medium, ID03, High) )# all probs
 names(new_datax)
 
 ## melt
 melt_data<-reshape2::melt(new_datax, id=c("ID01", "ID02", "ID03", "day", "month", "year", "Q"))
 melt_data <- rename(melt_data, Probability_Threshold = variable, 
                     consec_hours = value)
-tail(melt_data)
-head(melt_data)
-# melt_data_2016 <- filter(melt_data, year==2016)
-# melt_data_2016
+
 
 ## groups data by year, month and ID & threshold
 ## counts the number of days in each month probability is within the depth of each threshold - days are not necessarily conseq
@@ -617,44 +630,44 @@ head(melt_data)
 
 ## count how many full days i.e. 24 hours
 total_days01 <- melt_data %>% 
-  filter(Probability_Threshold == "probability_0.1") %>% 
+  filter(Probability_Threshold == "Low") %>% 
   group_by(ID01, day, month, year) %>%
   summarise(n_hours = max(consec_hours))  %>%
-  mutate(n_days01 = ifelse(n_hours >= 23, 1, 0)) # %>%
-
+  mutate(n_days_low = ifelse(n_hours >= 23, 1, 0)) # %>%
+# total_days01
 ## count the number of days in each month
 total_days_per_month01 <- total_days01 %>%
   group_by(month, year) %>%
-  summarise(days_per_month01 = sum(n_days01))
+  summarise(days_per_month_low = sum(n_days_low))
 
 # total_days_per_month01
 
 total_days02 <- melt_data %>% 
-  filter(Probability_Threshold == "probability_0.2") %>% 
-  group_by(ID01, day, month, year) %>%
+  filter(Probability_Threshold == "Medium") %>% 
+  group_by(ID02, day, month, year) %>%
   summarise(n_hours = max(consec_hours))  %>%
-  mutate(n_days02 = ifelse(n_hours >= 23, 1, 0)) # %>%
+  mutate(n_days_medium = ifelse(n_hours >= 23, 1, 0)) # %>%
 
 total_days_per_month02 <- total_days02 %>%
   group_by(month, year) %>%
-  summarise(days_per_month02 = sum(n_days02))
+  summarise(days_per_month_medium = sum(n_days_medium))
 
 # total_days_per_month02
 
 total_days03 <- melt_data %>% 
-  filter(Probability_Threshold == "probability_0.3") %>% 
-  group_by(ID01, day, month, year) %>%
+  filter(Probability_Threshold == "High") %>% 
+  group_by(ID03, day, month, year) %>%
   summarise(n_hours = max(consec_hours))  %>%
-  mutate(n_days03 = ifelse(n_hours >= 23, 1, 0)) # %>%
+  mutate(n_days_high = ifelse(n_hours >= 23, 1, 0)) # %>%
 
 total_days_per_month03 <- total_days03 %>%
   group_by(month, year) %>%
-  summarise(days_per_month03 = sum(n_days03))
+  summarise(days_per_month_high = sum(n_days_high))
 
 # total_days_per_month03
 
 ## combine all thresholds
-total_days <- cbind( total_days_per_month02,total_days_per_month01[,3], total_days_per_month03[,3])
+total_days <- cbind( total_days_per_month01,total_days_per_month02[,3], total_days_per_month03[,3])
 
 # create year_month column       
 total_days <- ungroup(total_days) %>%
@@ -665,7 +678,7 @@ total_days$month_year <-  zoo::as.yearmon(total_days$month_year)
 total_days
 
 ## change names of columns
-total_days <- rename(total_days, Probability_0.1 = days_per_month01, Probability_0.2 = days_per_month02, Probability_0.3 = days_per_month03)
+total_days <- rename(total_days, Low = days_per_month_low, Medium = days_per_month_medium, High = days_per_month_high)
 
 ## define seasons
 winter <- c(1,2,3,4,11,12) ## winter months
@@ -673,7 +686,8 @@ summer <- c(5:10) ## summer months
 
 total_days <- total_days %>%
   mutate(season = ifelse(month %in% winter, "winter", "summer") )
-## melt data
+
+# ## melt data
 
 melt_days<-reshape2::melt(total_days, id=c("month_year", "year", "month", "season"))
 melt_days <- rename(melt_days, Probability_Threshold = variable,
@@ -685,6 +699,8 @@ head(melt_days)
 
 ggplot(melt_days, aes(x =month_year, y=n_days)) +
   geom_line(aes( group = Probability_Threshold, color = Probability_Threshold)) +
+  scale_color_manual(breaks = c("Low", "Medium", "High"),
+                     values=c( "green", "red", "blue")) +
   theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
   scale_x_continuous(breaks=as.numeric(melt_days$month_year), labels=format(melt_days$month_year,"%b %Y")) +
   # facet_wrap(~year, scales="free_x", nrow=2) +
@@ -697,6 +713,8 @@ ggplot(melt_days, aes(x =month_year, y=n_days)) +
 
 ggplot(melt_days, aes(x =month_year, y=n_days)) +
   geom_line(aes( group = Probability_Threshold, color = Probability_Threshold)) +
+  scale_color_manual(breaks = c("Low", "Medium", "High"),
+                     values=c( "green", "red", "blue")) +
   theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
   scale_x_continuous(breaks=as.numeric(melt_days$month_year), labels=format(melt_days$month_year,"%b %Y")) +
   facet_wrap(~year, scales="free_x", nrow=2) +
@@ -707,6 +725,8 @@ ggplot(melt_days, aes(x =month_year, y=n_days)) +
 
 ggplot(melt_days, aes(x =month_year, y=n_days)) +
   geom_line(aes( group = Probability_Threshold, color = Probability_Threshold)) +
+  scale_color_manual(breaks = c("Low", "Medium", "High"),
+                     values=c( "green", "red", "blue")) +
   theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
   scale_x_continuous(breaks=as.numeric(melt_days$month_year), labels=format(melt_days$month_year,"%b %Y")) +
   facet_wrap(~season, scales="free_x", nrow=2) +
