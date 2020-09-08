@@ -70,6 +70,14 @@ legend(locator(1), levels(data.f), fill=colfill)
 
 # Adult model build -------------------------------------------------------
 
+## validation
+library(boot)
+
+set.seed(231241)
+mean_df <- function(dataset, i) median(dataset[i, "Depth"])
+res <- boot(depth_freq, mean_df, 1000)
+res
+
 ## check data
 unique(depth_freq$Dataset) ## 3 datasets, 1376
 mean(depth_freq$Depth) ## 44.4
@@ -190,11 +198,10 @@ head(all_data)
 # all_data[which(is.na(all_data)),]
 sum(is.na(all_data)) # 241566
 # head(all_data)
+# range(na.omit(all_data$prob_fit))
 
 ## missing values - anything under 4cm as not in suitability curve
 ## replace NA of probability with min probability of dataset
-
-all_data[which(all_data$depth_cm_round < min(na.omit(all_data$depth_fit))),"prob_fit"]
 
 all_data[which(all_data$depth_cm_round < min(na.omit(all_data$depth_fit))),"prob_fit"] <- min(na.omit(all_data$prob_fit))
 sum(is.na(all_data)) # 120972
@@ -419,7 +426,7 @@ newx3bR <- ifelse(class(newx3bR) == "try-error",  NA, newx3bR)
 #        x = "Q (cfs)") #+ theme_bw(base_size = 15)
 
 
-ggplot(new_data)
+# ggplot(new_data)
 
 plot(new_dataM$Q, new_dataM$prob_fit, type="n", main = "Adult/Depth: Probability according to Q", xlab="Q (cfs)", ylab="Probability")
 lines(splM, col="black")
@@ -443,7 +450,7 @@ points(newx1aR, newy1aR, col="green", pch=19) # 0.1
 points(newx1bR, newy1bR, col="green", pch=19) # 0.1
 points(newx3aR, newy3aR, col="blue", pch=19) # 0.3 - lower limit
 points(newx3bR, newy3bR, col="blue", pch=19) # 0.3 - upper limit
-
+## add legend!!!
 
 ### plot discharge over time
 
