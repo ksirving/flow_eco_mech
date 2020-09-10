@@ -70,6 +70,7 @@ legend(locator(1), levels(data.f), fill=colfill)
 unique(vel_freq$Dataset)
 mean(vel_freq$Velocity) ## 0.6121954
 dim(vel_freq) ## 1167
+range(vel_freq$Velocity)
 
 ## probability curve
 vel_freq$Scaled_Vel <-scale(vel_freq$Velocity, scale=T, center=T)
@@ -115,7 +116,7 @@ hyd_vel$vel_ms <- (hyd_vel$vel_ft*0.3048)
 
 range(hyd_vel$vel_ms) ## 0.000000 2.091465
 range(fitdata$velocity_fit) ## 0.00 1.73
-## round the depths - don't need the high resolution
+## round the values - don't need the high resolution
 
 hyd_vel$vel_ms_round <- round(hyd_vel$vel_ms, digits=2 )
 fitdata$vel_fit_round <- round(fitdata$velocity_fit, digits=2)
@@ -129,7 +130,7 @@ all_data <- merge(hyd_vel, fitdata, by.x="vel_ms_round", by.y="vel_fit_round", a
 sum(is.na(all_data)) ## 3562
 names(all_data)
 ## missing values - anything over 1.73 as not in suitability curve
-## replace NA of probability with min probability of dataset
+## replace NA of probability with max probability of dataset
 
 all_data[which(all_data$vel_ms_round > max(na.omit(all_data$velocity_fit))),"prob_fit"] <- min(na.omit(all_data$prob_fit))
 sum(is.na(all_data)) # 18581
