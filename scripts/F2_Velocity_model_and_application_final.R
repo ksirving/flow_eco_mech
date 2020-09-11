@@ -299,41 +299,6 @@ ggplot(new_datax_2016) +
        y = "Discharge",
        x = "Time") #+ theme_bw(base_size = 15)
 
-## plot each season of year - just winter & summer for now
-
-winter <- c(1,2,3,4,11,12) ## winter months
-summer <- c(5:10) ## summer months
-new_datax_2016_winter <- filter(new_datax_2016, month %in% winter)
-new_datax_2016_summer <- filter(new_datax_2016, month %in% summer)
-
-ggplot(new_datax_2016_summer) +
-  geom_line(aes(x =DateTime, y=Q)) +
-  # theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
-  # scale_x_continuous(breaks=as.numeric(new_datax$month_year), labels=format(new_datax$month_year,"%b %Y")) +
-  geom_hline(yintercept=newx2b, linetype="dashed", color="red")+
-  geom_hline(yintercept=newx2a, linetype="dashed", color="red")+
-  # geom_hline(yintercept=newx1b, linetype="dashed", color="green")+
-  # geom_hline(yintercept=newx3a, linetype="dashed", color="blue")+
-  # geom_hline(yintercept=newx3b, linetype="dashed", color="blue")+
-  # facet_wrap(~month, scales="free_x", nrow=4) +
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "Discharge over time",
-       y = "Discharge",
-       x = "Time") #+ theme_bw(base_size = 15)
-
-ggplot(new_datax_2016_winter) +
-  geom_line(aes(x =DateTime, y=Q)) +
-  # theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
-  # scale_x_continuous(breaks=as.numeric(new_datax$month_year), labels=format(new_datax$month_year,"%b %Y")) +
-  geom_hline(yintercept=newx2b, linetype="dashed", color="red")+
-  geom_hline(yintercept=newx1b, linetype="dashed", color="green")+
-  geom_hline(yintercept=newx3a, linetype="dashed", color="blue")+
-  geom_hline(yintercept=newx3b, linetype="dashed", color="blue")+
-  # facet_wrap(~month, scales="free_x", nrow=4) +
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "Discharge over time",
-       y = "Discharge",
-       x = "Time") #+ theme_bw(base_size = 15)
 
 
 # Make dataframe for time stats -------------------------------------------
