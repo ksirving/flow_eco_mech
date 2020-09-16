@@ -56,7 +56,7 @@ tail(data.f)
 
 # plot densities
 sm.density.compare(as.vector(Temp), Dataset_num, xlab="Temperature (Celsius)")
-title(main="Temperature Distribution by Dataset")
+title(main="Adult/Temperature")
 
 # add legend via mouse click
 colfill<-c(2:(2+length(levels(data.f))))
@@ -80,17 +80,22 @@ yfit<-dnorm(xfit,mean=mean(scaled_x),sd=sd(scaled_x))
 xfit_r <- seq(min(temp_freq$Temp), max(temp_freq$Temp), length=120)
 
 ## plot curve with raw depth axis
+
+png("figures/Final_curves/Temperature/F3_SAS_Adult_temperature_Prob_curve.png", width = 700, height = 700)
+
 plot(xfit_r, yfit, axes=FALSE, xlab='', ylab='', type='l', col='', main = "" )
-axis(1, at=pretty(xfit_r))
+axis(1, at=pretty(xfit_r), cex.axis=2)
 par(new=TRUE)
 #plot the line with no axes or labels
-plot(xfit, yfit, axes=FALSE, xlab='Temperature (Celsius)', ylab='Probability', type='l', col='red', main = "Adult/Temperature: Probability curve" )
+plot(xfit, yfit, axes=FALSE, xlab='Temperature (Celsius)', ylab='Probability', type='l', col='red', main = "Adult/Temperature",
+     cex.main = 2, cex.axis=2, cex.lab=2)
 ## add 1sd shift
 par(new=TRUE)
 
 #add these now with axis
 
-axis(2, at=pretty(range(yfit)))
+axis(2, at=pretty(range(yfit)), cex.axis=2)
+dev.off()
 
 head(ad_temp_con)
 
@@ -121,16 +126,19 @@ yfit<-dnorm(xfit,mean=mean(scaled_x),sd=sd(scaled_x))
 ## x axis with raw depth values
 xfit_r <- seq(min(temp_freq$Temp), max(temp_freq$Temp), length=120)
 
+png("figures/Final_curves/Temperature/F3_SAS_juvenile_temperature_Prob_curve.png", width = 700, height = 700)
 ## plot curve with raw depth axis
 plot(xfit_r, yfit, axes=FALSE, xlab='', ylab='', type='l', col='', main = "" )
-axis(1, at=pretty(xfit_r))
+axis(1, at=pretty(xfit_r), cex.axis=2)
 par(new=TRUE)
 #plot the line with no axes or labels
-plot(xfit, yfit, axes=FALSE, xlab='Temperature (Celsius)', ylab='Probability', type='l', col='red', main = "Juvenile/Temperature: Probability curve" )
+plot(xfit, yfit, axes=FALSE, xlab='Temperature (Celsius)', ylab='Probability', type='l', col='red', main = "Juvenile/Temperature",
+     cex.main = 2, cex.axis=2, cex.lab=2)
 ## add 1sd shift
 par(new=TRUE)
 
 #add these now with axis
 
-axis(2, at=pretty(range(yfit)))
+axis(2, at=pretty(range(yfit)), cex.axis=2)
 
+dev.off()

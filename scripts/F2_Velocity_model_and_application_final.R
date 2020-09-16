@@ -55,7 +55,7 @@ data.f <- factor(Dataset_num, levels= 1:2,
 data.f
 # plot densities
 sm.density.compare(as.vector(Velocity), Dataset_num, xlab="Velocity m/s")
-title(main="SAS: Adult/Velocity")
+title(main="Adult/Velocity")
 
 # add legend via mouse click
 colfill<-c(2:(2+length(levels(data.f))))
@@ -83,16 +83,20 @@ yfit<-dnorm(xfit,mean=mean(scaled_x),sd=sd(scaled_x))
 xfit_r <- seq(min(vel_freq$Velocity), max(vel_freq$Velocity), length=1000)
 
 ## plot curve with raw depth axis
-png("figures/Final_curves/Velocity/F2_SAS_Adult_velocity_Prob_curve.png", width = 500, height = 500)
+png("figures/Final_curves/Velocity/F2_SAS_Adult_velocity_Prob_curve.png", width = 700, height = 700)
 
 plot(xfit_r, yfit, axes=FALSE, xlab='', ylab='', type='l', col='', main = "" )
-axis(1, at=pretty(xfit_r))
+axis(1, at=pretty(xfit_r), cex.axis=2)
 par(new=TRUE)
 #plot the line with no axes or labels
-plot(xfit, yfit, axes=FALSE, xlab='Velocity (m/s)', ylab='Probability', type='l', col='red', main = "Adult/Velocity: Probability curve" )
+plot(xfit, yfit, axes=FALSE, xlab='Velocity (m/s)', ylab='Probability', type='l', col='red', main = "Adult/Velocity",
+     cex.main = 2, cex.axis=2, cex.lab=2)
+## add 1sd shift
 par(new=TRUE)
+
 #add these now with axis
-axis(2, at=pretty(range(yfit)))
+
+axis(2, at=pretty(range(yfit)), cex.axis=2)
 dev.off()
 ## data frame with probabilities and depth
 

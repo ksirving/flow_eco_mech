@@ -64,7 +64,7 @@ data.f <- factor(Dataset_num, levels= 1:2,
 
 # plot densities
 sm.density.compare(as.vector(Depth), Dataset_num, xlab="Depth (cm)")
-title(main="SAS: Juvenile/Depth")
+title(main="Juvenile/Depth")
 
 # add legend via mouse click
 colfill<-c(2:(2+length(levels(data.f))))
@@ -99,16 +99,18 @@ yfit<-dnorm(xfit,mean=mean(scaled_x),sd=sd(scaled_x))
 xfit_r <- seq(min(depth_freq$Depth), max(depth_freq$Depth), length=120)
 
 ## plot curve with raw depth axis
-png("figures/Final_curves/Depth/F1a_SAS_Juvenile_depth_Prob_curve.png", width = 500, height = 500)
+help(par)
+png("figures/Final_curves/Depth/F1a_SAS_Juvenile_depth_Prob_curve.png", width = 700, height = 700)
 
 plot(xfit_r, yfit, axes=FALSE, xlab='', ylab='', type='l', col='', main = "" )
-axis(1, at=pretty(xfit_r))
+axis(1, at=pretty(xfit_r), cex.axis=2)
 par(new=TRUE)
 #plot the line with no axes or labels
-plot(xfit, yfit, axes=FALSE, xlab='Depth (cm)', ylab='Probability', type='l', col='red', main = "SAS: Juvenile/Depth" )
+plot(xfit, yfit, axes=FALSE, xlab='Depth (cm)', ylab='Probability', type='l', col='red', main = "Juvenile/Depth",
+     cex.main = 2, cex.axis=2, cex.lab=2)
 #add these now with axis
 par(new=TRUE)
-axis(2, at=pretty(range(yfit)))
+axis(2, at=pretty(range(yfit)), cex.axis=2)
 
 dev.off()
 
