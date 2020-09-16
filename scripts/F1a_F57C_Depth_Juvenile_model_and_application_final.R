@@ -64,7 +64,7 @@ data.f <- factor(Dataset_num, levels= 1:2,
 
 # plot densities
 sm.density.compare(as.vector(Depth), Dataset_num, xlab="Depth (cm)")
-title(main="Juvenile/Depth Distribution by Dataset")
+title(main="SAS: Juvenile/Depth")
 
 # add legend via mouse click
 colfill<-c(2:(2+length(levels(data.f))))
@@ -97,15 +97,20 @@ xfit<-seq(min(scaled_x),max(scaled_x),length=120)
 yfit<-dnorm(xfit,mean=mean(scaled_x),sd=sd(scaled_x))
 ## x axis with raw depth values
 xfit_r <- seq(min(depth_freq$Depth), max(depth_freq$Depth), length=120)
+
 ## plot curve with raw depth axis
+png("figures/Final_curves/Depth/F1a_SAS_Juvenile_depth_Prob_curve.png", width = 500, height = 500)
+
 plot(xfit_r, yfit, axes=FALSE, xlab='', ylab='', type='l', col='', main = "" )
 axis(1, at=pretty(xfit_r))
 par(new=TRUE)
 #plot the line with no axes or labels
-plot(xfit, yfit, axes=FALSE, xlab='Depth (cm)', ylab='Probability', type='l', col='red', main = "Juvenile/Depth: Probability curve" )
+plot(xfit, yfit, axes=FALSE, xlab='Depth (cm)', ylab='Probability', type='l', col='red', main = "SAS: Juvenile/Depth" )
 #add these now with axis
 par(new=TRUE)
 axis(2, at=pretty(range(yfit)))
+
+dev.off()
 
 ## data frame with probabilities and depth - to combine with hydraulic data
 
@@ -173,6 +178,7 @@ ggplot(hyd_dep, aes(x = Q, y=value)) +
        x = "Q (cfs)") #+ theme_bw(base_size = 15)
 
 dev.off()
+
 ## plot time series
 png("figures/Application_curves/nodes/F57C_Depth_TS.png", width = 500, height = 600)
 

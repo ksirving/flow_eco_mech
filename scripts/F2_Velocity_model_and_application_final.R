@@ -55,7 +55,7 @@ data.f <- factor(Dataset_num, levels= 1:2,
 data.f
 # plot densities
 sm.density.compare(as.vector(Velocity), Dataset_num, xlab="Velocity m/s")
-title(main="Adult Velocity Distribution by Dataset")
+title(main="SAS: Adult/Velocity")
 
 # add legend via mouse click
 colfill<-c(2:(2+length(levels(data.f))))
@@ -81,7 +81,10 @@ yfit<-dnorm(xfit,mean=mean(scaled_x),sd=sd(scaled_x))
 
 ## x axis with raw velocity values
 xfit_r <- seq(min(vel_freq$Velocity), max(vel_freq$Velocity), length=1000)
+
 ## plot curve with raw depth axis
+png("figures/Final_curves/Velocity/F2_SAS_Adult_velocity_Prob_curve.png", width = 500, height = 500)
+
 plot(xfit_r, yfit, axes=FALSE, xlab='', ylab='', type='l', col='', main = "" )
 axis(1, at=pretty(xfit_r))
 par(new=TRUE)
@@ -90,7 +93,7 @@ plot(xfit, yfit, axes=FALSE, xlab='Velocity (m/s)', ylab='Probability', type='l'
 par(new=TRUE)
 #add these now with axis
 axis(2, at=pretty(range(yfit)))
-
+dev.off()
 ## data frame with probabilities and depth
 
 fitdata <- data.frame(matrix(ncol=2, nrow=length(yfit)))
@@ -98,93 +101,126 @@ fitdata[,1] <- xfit_r
 fitdata[,2] <- yfit
 colnames(fitdata) <- c("velocity_fit", "prob_fit")
 
+write.csv(fitdata, "output_data/adult_velocity_prob_curve_data.csv")
 
 # Combine with hydraulic data -------------------------------------------
 
 ## upload hydraulic data
-hydraul <- read.csv("input_data/demo_ts_F57C.csv")
+
+## soft bottom reaches
+
+F57C <- read.csv("input_data/HecRas/hydraulic_ts_F57C.csv")
+# LA8 <- read.csv("input_data/HecRas/hydraulic_ts_LA8.csv")
+# LA11 <- read.csv("input_data/HecRas/hydraulic_ts_LA11.csv")
+# LA20 <- read.csv("input_data/HecRas/hydraulic_ts_LA20_2.csv")
+
+## go through script one at a time
+
+hydraul <- F57C[,-1]
 
 ## select columns
-names(hydraul)
-hyd_vel <- hydraul[,c(1:3,8)]
-colnames(hyd_vel)[4] <-"vel_ft"
-hyd_vel$date_num <- seq(1,length(hyd_vel$DateTime), 1)
-plot(hyd_vel$Q, hyd_vel$vel_ms,  main = "F57C: Velocity ~ Q", xlab="Q (cfs)", ylab="Velocity (m/s)")
 
-## convert unit from feet to meters
-hyd_vel$vel_ms <- (hyd_vel$vel_ft*0.3048)
+hyd_vel <- hydraul[,c(1:3,4,8, 12)]
+colnames(hyd_vel) <-c("DateTime", "node", "Q", "vel_ft_LOB", "vel_ft_MC", "vel_ft_ROB")
 
-range(hyd_vel$vel_ms) ## 0.000000 2.091465
-range(fitdata$velocity_fit) ## 0.00 1.73
-## round the values - don't need the high resolution
+# nas <- which(complete.cases(hyd_dep) == FALSE)
+## select column
 
-hyd_vel$vel_ms_round <- round(hyd_vel$vel_ms, digits=2 )
-fitdata$vel_fit_round <- round(fitdata$velocity_fit, digits=2)
+hyd_vel <- hyd_vel %>%
+  mutate(vel_m_LOB = (vel_ft_LOB*0.3048),
+         vel_m_MC = (vel_ft_MC*0.3048),
+         vel_m_ROB = (vel_ft_ROB*0.3048)) %>%
+  select(-contains("ft")) %>%
+  mutate(date_num = seq(1,length(DateTime), 1))
 
 
-plot(hyd_vel$date_num, hyd_vel$vel_ms_round, type="n")
-lines(hyd_vel$date_num, hyd_vel$vel_ms_round)
+hyd_vel<-reshape2::melt(hyd_vel, id=c("DateTime","Q", "node", "date_num"))
+head(hyd_vel)
 
-## merge node data and probabilities
-all_data <- merge(hyd_vel, fitdata, by.x="vel_ms_round", by.y="vel_fit_round", all=T)
-sum(is.na(all_data)) ## 3562
-names(all_data)
-## missing values - anything over 1.73 as not in suitability curve
-## replace NA of probability with max probability of dataset
+labels <- c(vel_m_LOB = "Left Over Bank", vel_m_MC = "Main Channel", vel_m_ROB = "Right Over Bank")
 
-all_data[which(all_data$vel_ms_round > max(na.omit(all_data$velocity_fit))),"prob_fit"] <- min(na.omit(all_data$prob_fit))
-sum(is.na(all_data)) # 18581
+png("figures/Application_curves/nodes/F57C_Velocity_Q.png", width = 500, height = 600)
 
-## remove rows with probabilities above the max hydraulic value
-all_data <- filter(all_data, vel_ms_round <= max(hyd_vel$vel_ms_round))
-sum(is.na(all_data)) # 2675 - no NAs in prob_fit - all present
-# nas <- which(is.na(all_data$velocity_fit))
-# nas <- which(is.na(all_data$DateTime))
-# nas
+ggplot(hyd_vel, aes(x = Q, y=value)) +
+  geom_line(aes( group = variable, lty = variable)) +
+  scale_linetype_manual(values= c("dotted", "solid", "dashed"),
+                        breaks=c("vel_m_LOB", "vel_m_MC", "vel_m_ROB"))+
+  facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
+  labs(title = "F57C: Velocity ~ Q",
+       y = "Velocity (m/s)",
+       x = "Q (cfs)") #+ theme_bw(base_size = 15)
 
-save(all_data, file="output_data/F2_F57C_adult_velocity_discharge_probability_time_series_all_columns.RData")
+dev.off()
+
+## plot time series
+
+png("figures/Application_curves/nodes/F57C_Velocity_TS.png", width = 500, height = 600)
+
+ggplot(hyd_vel, aes(x = date_num, y=value)) +
+  geom_line(aes( group = variable, lty = variable)) +
+  scale_linetype_manual(values= c("dotted", "solid", "dashed"),
+                        breaks=c("vel_m_LOB", "vel_m_MC", "vel_m_ROB"))+
+  facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
+  labs(title = "F57C: Velocity ~ Q",
+       y = "Velocity (m/s)",
+       x = "Q (cfs)") #+ theme_bw(base_size = 15)
+
+dev.off()
+
+## merge datasets with spline function
+
+head(hyd_vel)
+head(fitdata)
+
+## use smooth spline to predict on new data set
+new_values <-smooth.spline(fitdata$velocity_fit, fitdata$prob_fit)
+
+all_data <- hyd_vel %>%
+  group_by(variable) %>%
+  mutate(prob_fit = predict(new_values, value)$y) %>%
+  rename(vel_m = value)
+
+all_data
+
+nas <- which(complete.cases(all_data) == FALSE)
+nas #0
+
+
+save(all_data, file="output_data/F2_F57C_SAS_adult_velocity_discharge_probability_time_series_all_columns.RData")
 names(all_data)
 ## keep columns velocity, datetime, Q date_num & prob_fit
-all_data <- all_data[, c(1,2,3,6,7,9)]
-sum(is.na(all_data)) # 1192
-all_data <- na.omit(all_data) ## remaining NAs are dattime etc so can remove
-
-## remove duplicate date_num (date time) and order
-
-all_data <- all_data[!duplicated(all_data$date_num),]
 new_data <- all_data[order(all_data$date_num),]
 
-save(new_data, file="output_data/F2_F57C_adult_velocity_discharge_probability_time_series_red_columns.RData")
+save(new_data, file="output_data/F2_F57C_SAS_adult_velocity_discharge_probability_time_series_red_columns.RData")
 
 
 # format probability time series ------------------------------------------
 
 ## look at data using lubridate etc
 
-names(new_data)
+## look at data using lubridate etc
 
+names(new_data)
+## format date time
 new_data$DateTime<-as.POSIXct(new_data$DateTime,
                               format = "%Y-%m-%d %H:%M",
-                              tz = "America/Los_Angeles")
+                              tz = "GMT")
 
 ## create year, month, day and hour columns
 
 new_data <- new_data %>%
-  mutate(month = month(DateTime))
-
-new_data <- new_data %>%
-  mutate(year = year(DateTime))
-
-new_data <- new_data %>%
-  mutate(day = day(DateTime))
-
-new_data <- new_data %>%
+  mutate(month = month(DateTime)) %>%
+  mutate(year = year(DateTime)) %>%
+  mutate(day = day(DateTime)) %>%
   mutate(hour = hour(DateTime))
+
 
 
 head(new_data)
 
-save(new_data, file="output_data/F2_F57C_velocity_adult_discharge_probs_2010_2017_TS.RData")
+save(new_data, file="output_data/F2_F57C_SAS_velocity_adult_discharge_probs_2010_2017_TS.RData")
 
 
 # probability as a function of discharge -----------------------------------
@@ -192,393 +228,425 @@ load(file="output_data/F2_F57C_velocity_adult_discharge_probs_2010_2017_TS.RData
 head(new_data)
 
 ## plot
-range(new_data$Q) ## 0.00 998.84
-range(new_data$prob_fit) ## 0.0006865544 0.3989288644
+range(new_data$Q) ## 26.22926 41750.16797 
+range(new_data$prob_fit) ## -0.03673522  0.39894228
 
-## smooth spline the curve to get exact value of discharge at a given probability
-spl <- smooth.spline(new_data$prob_fit ~ new_data$Q)
+## bind shallow and deeper depths by 0.1 - 10cm & 120cm
+## change all prob_fit lower than 0.1 to 0.1
+# new_data[which(new_data$prob_fit <  0.1),"prob_fit"] <- 0.1
 
-## find peak of prob v Q
+peak <- new_data %>%
+  group_by(variable) %>%
+  filter(prob_fit == max(prob_fit)) #%>%
 
-## find peak of prob v Q
 
-peak <- filter(new_data, prob_fit == max(prob_fit)) #%>%
-peakQ <- select(peak, Q)
-peakQ  <- peakQ[1,1]
-peakQ ## 1.98
+peakQM <- filter(peak, variable=="vel_m_MC")
+peakQM  <- max(peakQM$Q)
+peakQM ## 1001.679
 
-## function for each probability
+peakQL <- filter(peak, variable=="vel_m_LOB")
+peakQL  <- max(peakQL$Q) ## 
+peakQL ## 26.22926
 
-newy1a <- 0.1
-newx1a <- try(uniroot(function(x) predict(spl, x, deriv = 0)$y - newy1a,
-                      interval = c(min(new_data$Q), peakQ))$root, silent=T)
-## if no value, return an NA
-newx1a <- ifelse(class(newx1a) == "try-error",  NA, newx1a)
+peakQR <- filter(peak, variable=="vel_m_ROB")
+peakQR  <- max(peakQR$Q) ## 
+peakQR ## 13946.75
 
-newy1b <- 0.1
-newx1b <- try(uniroot(function(x) predict(spl, x, deriv = 0)$y - newy1b,
-                      interval = c(peakQ, max(new_data$Q)))$root, silent=T)
-## if no value, return an NA
-newx1b <- ifelse(class(newx1b) == "try-error",  NA, newx1b)
+## filter data by cross section position
 
-newy2a <- 0.2
-newx2a <- try(uniroot(function(x) predict(spl, x, deriv = 0)$y - newy2a,
-                      interval = c(min(new_data$Q), peakQ))$root, silent=T)
-newx2a <- ifelse(class(newx2a) == "try-error",  NA, newx2a)
+new_dataM <- filter(new_data, variable == "vel_m_MC")
+new_dataL <- filter(new_data, variable == "vel_m_LOB")
+new_dataR <- filter(new_data, variable == "vel_m_ROB")
 
-newy2b <- 0.2
-newx2b <- try(uniroot(function(x) predict(spl, x, deriv = 0)$y - newy2b, 
-                      interval = c(peakQ, max(new_data$Q)))$root, silent=T)
-## if no 2nd value, return an NA
-newx2b <- ifelse(class(newx2b) == "try-error",  NA, newx2b)
+## Main channel curves
 
-newy3a <- 0.3
-newx3a <- try(uniroot(function(x) predict(spl, x, deriv = 0)$y - newy3a,
-                      interval = c(min(new_data$Q), peakQ))$root, silent=T)
-newx3a <- ifelse(class(newx3a) == "try-error",  NA, newx3a)
+MC_curve <- spline(new_dataM$Q, new_dataM$prob_fit,
+                   xmin = min(new_dataM$Q), xmax = max(new_dataM$Q), ties = mean)
 
-newy3b <- 0.3
-newx3b <- try(uniroot(function(x) predict(spl, x, deriv = 0)$y - newy3b,
-                      interval = c(peakQ, max(new_data$Q)))$root, silent=T)
-## if no 2nd value, return an NA
-newx3b <- ifelse(class(newx3b) == "try-error",  NA, newx3b)
+MC_curve_lower <- spline(new_dataM$Q, new_dataM$prob_fit,
+                         xmin = min(new_dataM$Q), xmax = peakQM, ties = mean)
+MC_curve_upper <- spline(new_dataM$Q, new_dataM$prob_fit,
+                         xmin = peakQM, xmax = max(new_dataM$Q), ties = mean)
 
-# thresholds <- as.data.frame(matrix(ncol=2, nrow=6))
-# colnames(thresholds) <- c("newy", "newx")
-# thresholds$newy <- c("0.1", "0.1", "0.2", "0.2", "0.3", "0.3")
-# thresholds$newx <- c(newx1a,newx1b, newx2a,newx2b, newx3a,newx3b)
-# thresholds
+## main channel values
+newx1a <- approx(x = MC_curve_lower$y, y = MC_curve_lower$x, xout = 0.1)$y
+# newx1a <- min(MC_curve_lower$x)
+newx1a
 
-plot(new_data$Q, new_data$prob_fit, type="n", main = "Adult/Velocity: Probability according to Q", xlab="Q (cfs)", ylab="Probability")
-lines(spl, col="black")
-points(newx2a, newy2a, col="red", pch=19) # 0.2
-points(newx2b, newy2b, col="red", pch=19) # 0.2
-points(newx1a, newy1a, col="green", pch=19) # 0.1
-points(newx1b, newy1b, col="green", pch=19) # 0.1
-points(newx3a, newy3a, col="blue", pch=19) # 0.3 - lower limit
-points(newx3b, newy3b, col="blue", pch=19) # 0.3 - upper limit
+newx1b <- approx(x = MC_curve_upper$y, y = MC_curve_upper$x, xout = 0.1)$y
+newx1b ## change to max Q for time series to adhere to 0.1 bound
+# newx1b <- max(MC_curve_upper$x)
 
-### plot discharge over time
+newx2a <- approx(x = MC_curve_lower$y, y = MC_curve_lower$x, xout = 0.2)$y
+newx2a
+
+newx2b <- approx(x = MC_curve_upper$y, y = MC_curve_upper$x, xout = 0.2)$y
+newx2b
+
+newx3a <- approx(x = MC_curve_lower$y, y = MC_curve_lower$x, xout = 0.3)$y
+newx3a
+
+newx3b <- approx(x = MC_curve_upper$y, y = MC_curve_upper$x, xout = 0.3)$y
+newx3b
+
+## LOB curves
+
+LOB_curve <- spline(new_dataL$Q, new_dataL$prob_fit,
+                    xmin = min(new_dataL$Q), xmax = max(new_dataL$Q), ties = mean)
+
+LOB_curve_lower <- spline(new_dataL$Q, new_dataL$prob_fit,
+                          xmin = min(new_dataL$Q), xmax = peakQL, ties = mean)
+LOB_curve_upper <- spline(new_dataL$Q, new_dataL$prob_fit,
+                          xmin = peakQL, xmax = max(new_dataL$Q), ties = mean)
+
+newx1aL <- approx(x = LOB_curve_lower$y, y = LOB_curve_lower$x, xout = 0.1)$y
+newx1aL <- min(LOB_curve_lower$x)
+newx1aL
+newx1bL <- approx(x = LOB_curve_upper$y, y = LOB_curve_upper$x, xout = 0.1)$y
+newx1bL
+# newx1bL <- max(LOB_curve_upper$x)
+
+newx2aL <- approx(x = LOB_curve_lower$y, y = LOB_curve_lower$x, xout = 0.2)$y
+newx2aL <- min(LOB_curve_lower$x)
+
+newx2bL <- approx(x = LOB_curve_upper$y, y = LOB_curve_upper$x, xout = 0.2)$y
+newx2bL
+
+newx3aL <- approx(x = LOB_curve_lower$y, y = LOB_curve_lower$x, xout = 0.3)$y
+newx3aL <- NA
+
+newx3bL <- approx(x = LOB_curve_upper$y, y = LOB_curve_upper$x, xout = 0.3)$y
+newx3bL
+
+## ROB curves
+
+ROB_curve <- spline(new_dataR$Q, new_dataR$prob_fit,
+                    xmin = min(new_dataR$Q), xmax = max(new_dataR$Q), ties = mean)
+
+ROB_curve_lower <- spline(new_dataR$Q, new_dataR$prob_fit,
+                          xmin = min(new_dataR$Q), xmax = peakQR, ties = mean)
+ROB_curve_upper <- spline(new_dataR$Q, new_dataR$prob_fit,
+                          xmin = peakQR, xmax = max(new_dataR$Q), ties = mean)
+
+## main channel values
+newx1aR <- approx(x = ROB_curve_lower$y, y = ROB_curve_lower$x, xout = 0.1)$y
+# newx1aR <- min(ROB_curve_lower$x)
+newx1aR
+
+newx1bR <- approx(x = ROB_curve_upper$y, y = ROB_curve_upper$x, xout = 0.1)$y
+newx1bR
+# newx1bR <- max(ROB_curve_upper$x)
+
+newx2aR <- approx(x = ROB_curve_lower$y, y = ROB_curve_lower$x, xout = 0.2)$y
+newx2aR
+
+newx2bR <- approx(x = ROB_curve_upper$y, y = ROB_curve_upper$x, xout = 0.2)$y
+newx2bR
+
+newx3aR <- approx(x = ROB_curve_lower$y, y = ROB_curve_lower$x, xout = 0.3)$y
+newx3aR
+
+newx3bR <- approx(x = ROB_curve_upper$y, y = ROB_curve_upper$x, xout = 0.3)$y
+newx3bR
+
+## df for Q limits
+
+limits <- as.data.frame(matrix(ncol=3, nrow=6)) %>%
+  rename(LOB = V1, MC = V2, ROB = V3) 
+rownames(limits)<-c("Low_Prob_Lower", "Low_Prob_Upper", "Med_Prob_Lower",
+                    "Med_Prob_Upper", "High_Prob_Lower", "High_Prob_Upper")
+
+limits$LOB <- c(newx1aL, newx1bL, newx2aL, newx2bL, newx3aL, newx3bL)
+limits$MC <- c(newx1a, newx1b, newx2a, newx2b, newx3a, newx3b)
+limits$ROB <- c(newx1aR, newx1bR, newx2aR, newx2bR, newx3aR, newx3bR)
+
+limits
+# plot discharge points ---------------------------------------------------
+unique(new_data$variable)
+
+labels <- c(vel_m_LOB = "Left Over Bank", vel_m_MC = "Main Channel", vel_m_ROB = "Right Over Bank")
+
+png("figures/Application_curves/Depth/F57C_adult_velocity_prob_Q_thresholds.png", width = 500, height = 600)
+
+ggplot(new_data, aes(x = Q, y=prob_fit)) +
+  geom_line(aes(group = variable, lty = variable)) +
+  scale_linetype_manual(values= c("dotted", "solid", "dashed"))+
+                        # name="Cross\nSection\nPosition",
+                        # breaks=c("vel_m_LOB", "vel_m_MC", "vel_m_ROB"),
+                        #   labels = c("LOB", "MC", "ROB")) +
+  
+  facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
+  # geom_point(data = subset(new_data, variable =="vel_m_MC"), aes(y=0.1, x=newx1a), color="green") +
+  geom_point(data = subset(new_data, variable =="vel_m_MC"), aes(y=0.1, x=newx1b), color="green") +
+  geom_point(data = subset(new_data, variable =="vel_m_MC"), aes(y=0.2, x=newx2a), color="red") +
+  geom_point(data = subset(new_data, variable =="vel_m_MC"), aes(y=0.2, x=newx2b), color="red") +
+  geom_point(data = subset(new_data, variable =="vel_m_MC"), aes(y=0.3, x=newx3a), color="blue") +
+  geom_point(data = subset(new_data, variable =="vel_m_MC"), aes(y=0.3, x=newx3b), color="blue") +
+
+  geom_point(data = subset(new_data, variable =="vel_m_LOB"), aes(y=0.1, x=newx1aL), color="green") +
+  geom_point(data = subset(new_data, variable =="vel_m_LOB"), aes(y=0.1, x=newx1bL), color="green") +
+  geom_point(data = subset(new_data, variable =="vel_m_LOB"), aes(y=0.2, x=newx2aL), color="red") +
+  # geom_point(data = subset(new_data, variable =="vel_m_LOB"), aes(y=0.2, x=newx2bL), color="red") +
+  # geom_point(data = subset(new_data, variable =="vel_m_LOB"), aes(y=0.3, x=newx3aL), color="blue") +
+  # geom_point(data = subset(new_data, variable =="vel_m_LOB"), aes(y=0.3, x=newx3bL), color="blue") +
+
+  geom_point(data = subset(new_data, variable =="vel_m_ROB"), aes(y=0.1, x=newx1aR), color="green") +
+  geom_point(data = subset(new_data, variable =="vel_m_ROB"), aes(y=0.1, x=newx1bR), color="green") +
+  geom_point(data = subset(new_data, variable =="vel_m_ROB"), aes(y=0.2, x=newx2aR), color="red") +
+  geom_point(data = subset(new_data, variable =="vel_m_ROB"), aes(y=0.2, x=newx2bR), color="red") +
+  geom_point(data = subset(new_data, variable =="vel_m_ROB"), aes(y=0.3, x=newx3aR), color="blue") +
+  geom_point(data = subset(new_data, variable =="vel_m_ROB"), aes(y=0.3, x=newx3bR), color="blue") +
+
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
+  labs(title = "F57C: Adult/Velocity: Probability ~ Q",
+       y = "Probability",
+       x = "Q (cfs)") #+ theme_bw(base_size = 15)
+
+dev.off()
+
+write.csv(limits, "output_data/F2_F57C_Adult_Velocity_Q_limits.csv")
 
 # create year_month column       
-new_datax <- new_data %>% unite(month_year, year:month, sep="-", remove=F) 
-head(new_datax)
+new_dataMx <- new_dataM %>% unite(month_year, year:month, sep="-", remove=F) 
+head(new_dataMx)
+
+# create year_month column       
+new_dataLx <- new_dataL %>% unite(month_year, year:month, sep="-", remove=F) 
+head(new_dataLx)
+
+# create year_month column       
+new_dataRx <- new_dataR %>% unite(month_year, year:month, sep="-", remove=F) 
+head(new_dataRx)
 
 # discharge time series plots with probability lines ----------------------
 
-##  plot time series of discharge - 0.2 prob line
-
-ggplot(new_datax) +
-  geom_line(aes(x =DateTime, y=Q)) +
-  # theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
-  # scale_x_continuous(breaks=as.numeric(new_datax$month_year), labels=format(new_datax$month_year,"%b %Y")) +
-  geom_hline(yintercept=newx2a, linetype="dashed", color="red")+
-  geom_hline(yintercept=newx2b, linetype="dashed", color="red")+
-  facet_wrap(~year, scales="free_x", nrow=4) +
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "Discharge over time",
-       y = "Discharge",
-       x = "Time") #+ theme_bw(base_size = 15)
-
-##  plot time series of discharge - subset to one year
-new_datax_2016 <- filter(new_datax, year==2016)
-
-ggplot(new_datax_2016) +
-  geom_line(aes(x =DateTime, y=Q)) +
-  # theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
-  # scale_x_continuous(breaks=as.numeric(new_datax$month_year), labels=format(new_datax$month_year,"%b %Y")) +
-  geom_hline(yintercept=newx2a, linetype="dashed", color="red")+
-  geom_hline(yintercept=newx2b, linetype="dashed", color="red")+
-  # geom_hline(yintercept=newx1a, linetype="dashed", color="green")+
-  # # geom_hline(yintercept=newx1b, linetype="dashed", color="green")+
-  # geom_hline(yintercept=newx3a, linetype="dashed", color="blue")+
-  # geom_hline(yintercept=newx3b, linetype="dashed", color="blue")+
-  # # facet_wrap(~month, scales="free_x", nrow=4) +
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "Discharge over time",
-       y = "Discharge",
-       x = "Time") #+ theme_bw(base_size = 15)
-
-
-
-# Make dataframe for time stats -------------------------------------------
-
+# ##  plot time series of discharge - 0.2 prob line
+# 
+# ggplot(new_datax) +
+#   geom_line(aes(x =DateTime, y=Q)) +
+#   # theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
+#   # scale_x_continuous(breaks=as.numeric(new_datax$month_year), labels=format(new_datax$month_year,"%b %Y")) +
+#   geom_hline(yintercept=newx2a, linetype="dashed", color="red")+
+#   geom_hline(yintercept=newx2b, linetype="dashed", color="red")+
+#   facet_wrap(~year, scales="free_x", nrow=4) +
+#   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+#   labs(title = "Discharge over time",
+#        y = "Discharge",
+#        x = "Time") #+ theme_bw(base_size = 15)
 
 ## make dataframe for all years 
 
-head(new_datax)
-names(new_datax)
+## define critical period or season for adult as all year is critical
+## define seasons/critical period
 
-## define seasons
 winter <- c(1,2,3,4,11,12) ## winter months
 summer <- c(5:10) ## summer months
 
-new_datax <- new_datax %>%
+new_dataMx <- new_dataMx %>%
   mutate(season = ifelse(month %in% winter, "winter", "summer") )
+
+new_dataLx <- new_dataRx %>%
+  mutate(season = ifelse(month %in% winter, "winter", "summer") )
+
+new_dataRx <- new_dataRx %>%
+  mutate(season = ifelse(month %in% winter, "winter", "summer") )
+
 
 ## produces percentage of time for each year and season within year for each threshold
 
-time_stats <- new_datax %>%
+# sum(is.na(new_dataMx))
+limits
+time_statsm <- new_dataMx %>%
   dplyr::group_by(year) %>%
-  dplyr::mutate(Medium = if(is.na(newx2b)){
-    sum(Q >= newx2a)/length(DateTime)*100
-  } else {
-    sum(Q >= newx2a & Q <= newx2b)/length(DateTime)*100
-  }) %>%
-  dplyr::mutate(Low = if(is.na(newx1b)){
-    sum(Q >= newx1a)/length(DateTime)*100
-  } else {
-    if (is.na(newx1a)) {
-      sum(Q <= newx1b)/length(DateTime)*100
-    } else {
-      sum(Q >= newx1a & Q <= newx1b)/length(DateTime)*100
-  }}) %>%
-  
-  dplyr::mutate(High = if(is.na(newx3b)){
-    sum(Q >= newx3a)/length(DateTime)*100
-  } else {
-    sum(Q >= newx3a & Q <= newx3b)/length(DateTime)*100
-  })  %>%
+  dplyr::mutate(Low = sum(Q <= newx1b)/length(DateTime)*100) %>%
+  dplyr::mutate(Medium = sum(Q >= newx2a & Q <= newx2b)/length(DateTime)*100) %>%
+  dplyr::mutate(High = sum(Q >= newx3a & Q <= newx3b)/length(DateTime)*100) %>%
   ungroup() %>%
   dplyr::group_by(year, season) %>%
-  dplyr::mutate(Medium.Seasonal = if(is.na(newx2b)){
-    sum(Q >= newx2a)/length(DateTime)*100
-  } else {
-    sum(Q >= newx2a & Q <= newx2b)/length(DateTime)*100
-  }) %>%
-  dplyr::mutate(Low.Seasonal = if(is.na(newx1b)){
-    sum(Q >= newx1a)/length(DateTime)*100
-  } else {
-    if (is.na(newx1a)) {
-      sum(Q <= newx1b)/length(DateTime)*100
-    } else {
-      sum(Q >= newx1a & Q <= newx1b)/length(DateTime)*100
-    }}) %>%
-  dplyr::mutate(High.Seasonal = if(is.na(newx3b)){
-    sum(nQ >= newx3a)/length(DateTime)*100
-  } else {
-    sum(Q >= newx3a & Q <= newx3b)/length(DateTime)*100
-  }) %>%
-  distinct(year, Low , Medium , High , Low.Seasonal, Medium.Seasonal, High.Seasonal)
+  dplyr::mutate(Low.Seasonal = sum(Q <= newx1b)/length(DateTime)*100) %>%
+  dplyr::mutate(Medium.Seasonal = sum(Q >= newx2a & Q <= newx2b)/length(DateTime)*100) %>%
+  dplyr::mutate(High.Seasonal = sum(Q >= newx3a & Q <= newx3b)/length(DateTime)*100) %>%
+  distinct(year, Low , Medium , High , Low.Seasonal, Medium.Seasonal, High.Seasonal) %>%
+  mutate(position="MC")
+
+time_statsm 
+
+time_statsl <- new_dataLx %>%
+  dplyr::group_by(year) %>%
+  dplyr::mutate(Low = sum(Q <= newx1bL & Q <= newx1bL)/length(DateTime)*100) %>%
+  dplyr::mutate(Medium = sum(Q >= newx2aL & Q <= newx2bL)/length(DateTime)*100) %>%
+  dplyr::mutate(High = sum(Q >= newx3aL & Q <= newx3bL)/length(DateTime)*100) %>%
+  ungroup() %>%
+  dplyr::group_by(year, season) %>%
+  dplyr::mutate(Low.Seasonal = sum(Q >= newx1aL & Q <= newx1bL)/length(DateTime)*100) %>%
+  dplyr::mutate(Medium.Seasonal = sum(Q >= newx2aL & Q <= newx2bL)/length(DateTime)*100) %>%
+  dplyr::mutate(High.Seasonal = sum(Q >= newx3aL & Q <= newx3bL)/length(DateTime)*100) %>%
+  distinct(year, Low , Medium , High , Low.Seasonal, Medium.Seasonal, High.Seasonal) %>%
+  mutate(position="LOB")
+
+time_statsl
 
 
-time_stats
+time_statsr <- new_dataRx %>%
+  dplyr::group_by(year) %>%
+  dplyr::mutate(Low = sum(Q >= newx1aR & Q <= newx1bR)/length(DateTime)*100) %>%
+  dplyr::mutate(Medium = sum(Q >= newx2aR & Q <= newx2bR)/length(DateTime)*100) %>%
+  dplyr::mutate(High = sum(Q >= newx3aR & Q <= newx3bR)/length(DateTime)*100) %>%
+  ungroup() %>%
+  dplyr::group_by(year, season) %>%
+  dplyr::mutate(Low.Seasonal = sum(Q >= newx1aR & Q <= newx1bR)/length(DateTime)*100) %>%
+  dplyr::mutate(Medium.Seasonal = sum(Q >= newx2aR & Q <= newx2bR)/length(DateTime)*100) %>%
+  dplyr::mutate(High.Seasonal = sum(Q >= newx3aR & Q <= newx3bR)/length(DateTime)*100) %>%
+  distinct(year, Low , Medium , High , Low.Seasonal, Medium.Seasonal, High.Seasonal) %>%
+  mutate(position="ROB")
+
+time_statsr
+
+
+time_stats <- rbind(time_statsm, time_statsl, time_statsr)
 
 ## melt
-melt_time<-reshape2::melt(time_stats, id=c("year","season"))
+melt_time<-reshape2::melt(time_stats, id=c("year","season", "position"))
 melt_time <- rename(melt_time, Probability_Threshold = variable)
+head(melt_time)
+unique(melt_time$position)
+write.csv(melt_time, "output_data/F2_F57C_adult_velocity_time_stats.csv")
 
 ## subset annual stats
 ann_stats <- unique(melt_time$Probability_Threshold)[1:3]
 melt_time_ann <- melt_time %>% filter(Probability_Threshold %in% ann_stats ) %>%
   select(-season) %>% distinct()
-head(melt_time_ann)
-# melt_time_ann <- na.omit(melt_time_ann)
-# melt_time_ann
 
 ## subset seasonal stats
 seas_stats <- unique(melt_time$Probability_Threshold)[4:6]
 melt_time_seas <- filter(melt_time, Probability_Threshold %in% seas_stats )
-# melt_time_seas<- na.omit(melt_time_seas)
-head(melt_time_seas)
 melt_time_seas
-
-
 ## plot for annual stats - need probs in order
+limits
+png("figures/Application_curves/Velocity/F57C_adult_velocity_perc_time_above_threshold_annual.png", width = 500, height = 600)
+
 ggplot(melt_time_ann, aes(x = year, y=value)) +
-  geom_line(aes( group = Probability_Threshold, color = Probability_Threshold)) +
-  scale_color_manual(breaks = c("Low", "Medium", "High"),
-                     values=c( "green", "red", "blue")) +
-  scale_y_continuous("Percentage of time", limits= c(0,100)) +
+  geom_line(aes( group =c(), color = Probability_Threshold)) +
+  scale_color_manual(name = "Probability Threshold", breaks = c("Low", "Medium", "High"),
+                     values=c( "green", "red", "blue"),
+                     labels = c("Low", "Medium", "High")) +
   theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
   # scale_x_continuous(breaks=as.numeric(total_days$month_year), labels=format(total_days$month_year,"%b %Y")) +
-  # facet_wrap(~year, scales="free_x", nrow=2) +
+  facet_wrap(~position, scales="free_x", nrow=3) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "Time within discharge limit in relation to Velocity (Annual)",
-       # y = "Percentage of time",
+  labs(title = "F57C: Time within discharge limit in relation to Velocity (Annual)",
+       y = "Time (%)",
        x = "Year") #+ theme_bw(base_size = 15)
-
+dev.off()
 ## plot for winter stats - need probs in order
 
 melt_time_winter <- filter(melt_time_seas, season == "winter")
-melt_time_winter
+unique(melt_time_winter$season)
+
+png("figures/Application_curves/Velocity/F57C_adult_velocity_perc_time_above_threshold_winter.png", width = 500, height = 600)
 
 ggplot(melt_time_winter, aes(x = year, y=value)) +
   geom_line(aes( group = c(), color = Probability_Threshold)) +
-  scale_color_manual(breaks = c("Low.Seasonal", "Medium.Seasonal", "High.Seasonal"),
-                     values=c( "green", "red", "blue")) +
-  scale_y_continuous("Percentage of time", limits= c(0,100)) +
+  scale_color_manual(name = "Probability Threshold", breaks = c("Low.Seasonal", "Medium.Seasonal", "High.Seasonal"),
+                     values=c( "green", "red", "blue"),
+                     labels = c("Low", "Medium", "High")) +
   theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
   # scale_x_continuous(breaks=as.numeric(total_days$month_year), labels=format(total_days$month_year,"%b %Y")) +
-  # facet_wrap(~year, scales="free_x", nrow=2) +
+  facet_wrap(~position, scales="free_x", nrow=3) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "Time within discharge limit in relation to Velocity (Winter)",
-       # y = "Percentage of time",
+  labs(title = "F57C: Time within discharge limit in relation to Velocity (Winter)",
+       y = "Time (%)",
        x = "Year") #+ theme_bw(base_size = 15)
-
+dev.off()
 ## plot for summer stats - need probs in order
 
 melt_time_summer <- filter(melt_time_seas, season == "summer")
 
+png("figures/Application_curves/Velocity/F57C_adult_velocity_perc_time_above_threshold_critical.png", width = 500, height = 600)
+
 ggplot(melt_time_summer, aes(x = year, y=value)) +
   geom_line(aes( group = c(), color = Probability_Threshold)) +
-  scale_color_manual(breaks = c("Low.Seasonal", "Medium.Seasonal", "High.Seasonal"),
-                     values=c( "green", "red", "blue")) +
-  scale_y_continuous("Percentage of time", limits= c(0,100)) +
+  scale_color_manual(name = "Probability Threshold", breaks = c("Low.Seasonal", "Medium.Seasonal", "High.Seasonal"),
+                     values=c( "green", "red", "blue"),
+                     labels = c("Low", "Medium", "High")) +
   theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
   # scale_x_continuous(breaks=as.numeric(total_days$month_year), labels=format(total_days$month_year,"%b %Y")) +
-  # facet_wrap(~year, scales="free_x", nrow=2) +
+  facet_wrap(~position, scales="free_x", nrow=3) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "Time within discharge limit in relation to Velocity (Summer)",
-       # y = "Percentage of time",
+  labs(title = "F57C: Time within discharge limit in relation to Velocity (Summer)",
+       y = "Time (%)",
        x = "Year") #+ theme_bw(base_size = 15)
 
+dev.off()
+
 # Number of days above discharge ------------------------------------------
-# need number of days discharge is above the limits outlined above - counted per month
-
-
-
-library(tidyverse)
-library(tidyr)
-library(sm)
-library(lubridate) # work with dates
-library(dplyr)     # data manipulation (filter, summarize, mutate)
-library(ggplot2)   # graphics
-library(gridExtra) # tile several plots next to each other
-library(scales)
-library(data.table)
-
-
-load(file="output_data/F2_F57C_velocity_adult_discharge_probs_2010_2017_TS.RData")
-
-## define thresholds again
-# range(new_data$Q) ## 0.00 998.845 
-
-## smooth spline the curve to get exact value of discharge at a given probability
-spl <- smooth.spline(new_data$prob_fit ~ new_data$Q)
-
-## find peak of prob v Q
-
-peak <- filter(new_data, prob_fit == max(prob_fit)) #%>%
-peakQ <- select(peak, Q)
-peakQ  <- peakQ[1,1]
-peakQ ## 1.98
-
-## function for each probability
-newy1a <- 0.1
-newx1a <- try(uniroot(function(x) predict(spl, x, deriv = 0)$y - newy1a,
-                      interval = c(min(new_data$Q), peakQ))$root, silent=T)
-## if no value, return an NA
-newx1a <- ifelse(class(newx1a) == "try-error",  NA, newx1a)
-
-newy1b <- 0.1
-newx1b <- try(uniroot(function(x) predict(spl, x, deriv = 0)$y - newy1b,
-                      interval = c(peakQ, max(new_data$Q)))$root, silent=T)
-## if no value, return an NA
-newx1b <- ifelse(class(newx1b) == "try-error",  NA, newx1b)
-
-newy2a <- 0.2
-newx2a <- try(uniroot(function(x) predict(spl, x, deriv = 0)$y - newy2a,
-                      interval = c(min(new_data$Q), peakQ))$root, silent=T)
-newx2a <- ifelse(class(newx2a) == "try-error",  NA, newx2a)
-
-newy2b <- 0.2
-newx2b <- try(uniroot(function(x) predict(spl, x, deriv = 0)$y - newy2b, 
-                      interval = c(peakQ, max(new_data$Q)))$root, silent=T)
-## if no 2nd value, return an NA
-newx2b <- ifelse(class(newx2b) == "try-error",  NA, newx2b)
-
-newy3a <- 0.3
-newx3a <- try(uniroot(function(x) predict(spl, x, deriv = 0)$y - newy3a,
-                      interval = c(min(new_data$Q), peakQ))$root, silent=T)
-newx3a <- ifelse(class(newx3a) == "try-error",  NA, newx3a)
-
-newy3b <- 0.3
-newx3b <- try(uniroot(function(x) predict(spl, x, deriv = 0)$y - newy3b,
-                      interval = c(peakQ, max(new_data$Q)))$root, silent=T)
-## if no 2nd value, return an NA
-newx3b <- ifelse(class(newx3b) == "try-error",  NA, newx3b)
-
 
 # all columns based on different probabilities
 ## count number events within each threshold with a running total - max total is the number of consequative 
 # events (hours) per day. if else statements to consider the thresholds newx1a/b etc
 ## order by datetime
+limits
 
-new_data <- arrange(new_data, date_num)
+new_dataM <- new_dataM %>%
+  ungroup() %>%
+  group_by(month, day, year, ID01 = data.table::rleid(Q <= newx1b)) %>%
+  mutate(Low = if_else( Q <= newx1b, row_number(), 0L)) %>%
+  ungroup() %>%
+  group_by(month, day, year, ID02 = data.table::rleid(Q >= newx2a & Q <= newx2b)) %>%
+  mutate(Medium = if_else(Q >= newx2a & Q <= newx2b, row_number(), 0L)) %>%
+  ungroup() %>%
+  group_by(month, day, year, ID03 = data.table::rleid(Q >= newx3a & Q <= newx3b)) %>%
+  mutate(High = if_else(Q >= newx3a & Q <= newx3b, row_number(), 0L))
 
-nas <- ifelse(!is.na(newx1a) && !is.na(newx1b), print("Both"), print("one"))
+new_dataM <- mutate(new_dataM, position="MC")
 
-if(nas == "Both") {
-  new_data <- new_data %>%
-    ungroup() %>%
-    group_by(month, day, year, ID01 = data.table::rleid(Q >= newx1a & Q <= newx1b)) %>%
-    mutate(Low = if_else(Q >= newx1a & Q <= newx1b, row_number(), 0L))
-} else if (is.na(newx1a)) {
-  new_data <- new_data %>%
-    ungroup() %>%
-    group_by(month, day, year, ID01 = data.table::rleid(Q >= newx1b)) %>%
-    mutate(Low = if_else(Q <= newx1b, row_number(), 0L)) 
-} else {
-  new_data <- new_data %>%
-    ungroup() %>%
-    group_by(month, day, year, ID01 = data.table::rleid(Q >= newx1a)) %>%
-    mutate(Low = if_else(Q >= newx1a, row_number(), 0L)) 
-}
+new_dataL <- new_dataL %>%
+  ungroup() %>%
+  group_by(month, day, year, ID01 = data.table::rleid(Q >= newx1aL & Q <= newx1bL)) %>%
+  mutate(Low = if_else(Q >= newx1aL & Q <= newx1bL, row_number(), 0L)) %>%
+  ungroup() %>%
+  group_by(month, day, year, ID02 = data.table::rleid(Q >= newx2aL & Q <= newx2bL)) %>%
+  mutate(Medium = if_else(Q >= newx2aL & Q <= newx2bL, row_number(), 0L)) %>%
+  ungroup() %>%
+  group_by(month, day, year, ID03 = data.table::rleid(Q >= newx3aL & Q <= newx3bL)) %>%
+  mutate(High = if_else(Q >= newx3aL & Q <= newx3bL, row_number(), 0L))
 
-nas <- ifelse(!is.na(newx2a) && !is.na(newx2b), print("Both"), print("one"))
+new_dataL <- mutate(new_dataL, position="LOB")
 
-if(nas == "Both") {
-  new_data <- new_data %>%
-    ungroup() %>%
-    group_by(month, day, year, ID02 = data.table::rleid(Q >= newx2a & Q <= newx2b)) %>%
-    mutate(Medium = if_else(Q >= newx2a & Q <= newx2b, row_number(), 0L))
-} else if (is.na(newx2a)) {
-  new_data <- new_data %>%
-    ungroup() %>%
-    group_by(month, day, year, ID02 = data.table::rleid(Q >= newx2b)) %>%
-    mutate(Medium = if_else(Q <= newx2b, row_number(), 0L)) 
-} else {
-  new_data <- new_data %>%
-    ungroup() %>%
-    group_by(month, day, year, ID02 = data.table::rleid(Q >= newx2a)) %>%
-    mutate(Medium = if_else(Q >= newx2a, row_number(), 0L)) 
-}
+new_dataR <- new_dataR %>%
+  ungroup() %>%
+  group_by(month, day, year, ID01 = data.table::rleid(Q >= newx1aR & Q <= newx1bR)) %>%
+  mutate(Low = if_else(Q >= newx1aR & Q <= newx1bR, row_number(), 0L)) %>%
+  ungroup() %>%
+  group_by(month, day, year, ID02 = data.table::rleid(Q >= newx2aR & Q <= newx2bR)) %>%
+  mutate(Medium = if_else(Q >= newx2aR & Q <= newx2bR, row_number(), 0L)) %>%
+  ungroup() %>%
+  group_by(month, day, year, ID03 = data.table::rleid(Q >= newx3aR & Q <= newx3bR)) %>%
+  mutate(High = if_else(Q >= newx3aR & Q <= newx3bR, row_number(), 0L))
 
-nas <- ifelse(!is.na(newx3a) && !is.na(newx3b), print("Both"), print("one"))
+new_dataR <- mutate(new_dataR, position="ROB")
 
-if(nas == "Both") {
-  new_data <- new_data %>%
-    ungroup() %>%
-    group_by(month, day, year, ID03 = data.table::rleid(Q >= newx3a & Q <= newx3b)) %>%
-    mutate(High = if_else(Q >= newx3a & Q <= newx3b, row_number(), 0L))
-} else if (is.na(newx3a)) {
-  new_data <- new_data %>%
-    ungroup() %>%
-    group_by(month, day, year, ID03 = data.table::rleid(Q >= newx3b)) %>%
-    mutate(High = if_else(Q <= newx3b, row_number(), 0L)) 
-} else {
-  new_data <- new_data %>%
-    ungroup() %>%
-    group_by(month, day, year, ID03 = data.table::rleid(Q >= newx3a)) %>%
-    mutate(High = if_else(Q >= newx2a, row_number(), 0L)) 
-}
-head(new_data)
-names(new_data)
 
 ## melt data frame so that each probability column are all in one row 
 ## select only columns needed - Q, month, year, day all IDs and probs
 # names(new_data)
 
-new_datax <- select(new_data, c(Q, month, year, day, ID01, Low, ID02, Medium, ID03, High) )# all probs
-names(new_datax)
-
+new_dataMx <- select(new_dataM, c(Q, month, year, day, ID01, Low, ID02, Medium, ID03, High, position, DateTime) )# all probs
+names(new_dataMx)
+new_dataLx <- select(new_dataL, c(Q, month, year, day, ID01, Low, ID02, Medium, ID03, High, position, DateTime) )# all probs
+names(new_dataLx)
+new_dataRx <- select(new_dataR, c(Q, month, year, day, ID01, Low, ID02, Medium, ID03, High, position, DateTime) )# all probs
+names(new_dataRx)
+## has some values but just becuase of the fake thresholds
+# range(new_dataRx$Medium)
+new_datax <- rbind(new_dataMx, new_dataLx, new_dataRx)
+new_datax
 ## melt
-melt_data<-reshape2::melt(new_datax, id=c("ID01", "ID02", "ID03", "day", "month", "year", "Q"))
+melt_data<-reshape2::melt(new_datax, id=c("ID01", "ID02", "ID03", "day", "month", "year", "Q", "position"))
 melt_data <- rename(melt_data, Probability_Threshold = variable, 
                     consec_hours = value)
 
-
+melt_data
 ## groups data by year, month and ID & threshold
 ## counts the number of days in each month probability is within the depth of each threshold - days are not necessarily conseq
 ## each threshold separately
@@ -586,105 +654,134 @@ melt_data <- rename(melt_data, Probability_Threshold = variable,
 ## count how many full days i.e. 24 hours
 total_days01 <- melt_data %>% 
   filter(Probability_Threshold == "Low") %>% 
-  group_by(ID01, day, month, year) %>%
+  group_by(ID01, day, month, year, position) %>%
   summarise(n_hours = max(consec_hours))  %>%
-  mutate(n_days_low = ifelse(n_hours >= 23, 1, 0)) # %>%
-# total_days01
+  mutate(n_days_low = ifelse(n_hours >= 24, 1, 0)) # %>%
+total_days01
 ## count the number of days in each month
 total_days_per_month01 <- total_days01 %>%
-  group_by(month, year) %>%
+  group_by(month, year, position) %>%
   summarise(days_per_month_low = sum(n_days_low))
 
-# total_days_per_month01
+total_days_per_month01
 
 total_days02 <- melt_data %>% 
   filter(Probability_Threshold == "Medium") %>% 
-  group_by(ID02, day, month, year) %>%
+  group_by(ID02, day, month, year, position) %>%
   summarise(n_hours = max(consec_hours))  %>%
-  mutate(n_days_medium = ifelse(n_hours >= 23, 1, 0)) # %>%
+  mutate(n_days_medium = ifelse(n_hours >= 24, 1, 0)) # %>%
 
 total_days_per_month02 <- total_days02 %>%
-  group_by(month, year) %>%
+  group_by(month, year, position) %>%
   summarise(days_per_month_medium = sum(n_days_medium))
 
 # total_days_per_month02
 
 total_days03 <- melt_data %>% 
   filter(Probability_Threshold == "High") %>% 
-  group_by(ID03, day, month, year) %>%
+  group_by(ID03, day, month, year, position) %>%
   summarise(n_hours = max(consec_hours))  %>%
-  mutate(n_days_high = ifelse(n_hours >= 23, 1, 0)) # %>%
+  mutate(n_days_high = ifelse(n_hours >= 24, 1, 0)) # %>%
 
 total_days_per_month03 <- total_days03 %>%
-  group_by(month, year) %>%
+  group_by(month, year, position) %>%
   summarise(days_per_month_high = sum(n_days_high))
 
-# total_days_per_month03
+total_days_per_month03
 
 ## combine all thresholds
-total_days <- cbind( total_days_per_month01,total_days_per_month02[,3], total_days_per_month03[,3])
+total_days <- cbind( total_days_per_month01,total_days_per_month02[,4], total_days_per_month03[,4])
+head(total_days)
 
-# create year_month column       
+write.csv(total_days, "output_data/F2_F57C_adult_velocity_total_days.csv")
+
+# # create year_month column       
 total_days <- ungroup(total_days) %>%
-  unite(month_year, year:month, sep="-", remove=F) 
+  unite(month_year, year:month, sep="-", remove=F)
+
 
 ## convert month year to date format
+library(zoo)
 total_days$month_year <-  zoo::as.yearmon(total_days$month_year)
-total_days
+total_days$month_year <- as.Date(total_days$month_year)
 
 ## change names of columns
 total_days <- rename(total_days, Low = days_per_month_low, Medium = days_per_month_medium, High = days_per_month_high)
 
-## define seasons
+# total_hours <- rename(total_hours, Low = n_days_low, Medium = n_days_medium, High = n_days_high)
+
+## define seasons/critical period
 winter <- c(1,2,3,4,11,12) ## winter months
 summer <- c(5:10) ## summer months
 
 total_days <- total_days %>%
   mutate(season = ifelse(month %in% winter, "winter", "summer") )
 
+
 # ## melt data
 
-melt_days<-reshape2::melt(total_days, id=c("month_year", "year", "month", "season"))
+melt_days<-reshape2::melt(total_days, id=c("month_year", "year", "month", "season", "position"))
 melt_days <- rename(melt_days, Probability_Threshold = variable,
                     n_days = value)
 
 head(melt_days)
-##  plot - number of days 
+
+## save df
+write.csv(melt_days, "output_data/F2_F57C_adult_velocity_total_days_long.csv")
+
+
+# melt_daysx <- filter(melt_days, position=="MC")
+library(scales)
+
+## plot all ts
+png("figures/Application_curves/Velocity/F57C_adult_velocity_lob_rob_mc_no_days_within_Q.png", width = 500, height = 600)
 
 ggplot(melt_days, aes(x =month_year, y=n_days)) +
   geom_line(aes( group = Probability_Threshold, color = Probability_Threshold)) +
-  scale_y_continuous("Number of days per Month", limits= c(0,30)) +
-  theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
-  scale_x_continuous(breaks=as.numeric(melt_days$month_year), labels=format(melt_days$month_year,"%b %Y")) +
-  # facet_wrap(~year, scales="free_x", nrow=2) +
+  scale_color_manual(name="Probability Threshold",breaks = c("Low", "Medium", "High"),
+                     values=c( "green", "red", "blue")) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 0.5)) +
+  scale_x_date(breaks=pretty_breaks(), labels = date_format("%b %Y")) +
+  scale_y_continuous(limits=c(0,31)) +
+  # scale_x_continuous(breaks=as.numeric(melt_days$month_year), labels=format(melt_days$month_year,"%b %Y")) +
+  facet_wrap(~position, nrow=3) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "Number of days within discharge limit in relation to Velocity",
-       # y = "Number of days per Month",
-       x = "Month") #+ theme_bw(base_size = 15)
-
-## number of days separated per year
+  labs(title = "F57C: Number of days within discharge limit in relation to Velocity",
+       y = "Number of days per Month",
+       x = "Year") #+ theme_bw(base_size = 15)
+dev.off()
+## plot by year
+png("figures/Application_curves/Velocity/F57C_adult_velocity_lob_rob_mc_no_days_within_Q_by_year.png", width = 500, height = 600)
 
 ggplot(melt_days, aes(x =month_year, y=n_days)) +
   geom_line(aes( group = Probability_Threshold, color = Probability_Threshold)) +
-  scale_y_continuous("Number of days per Month", limits= c(0,30)) +
-  theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
-  scale_x_continuous(breaks=as.numeric(melt_days$month_year), labels=format(melt_days$month_year,"%b %Y")) +
-  facet_wrap(~year, scales="free_x", nrow=2) +
+  scale_color_manual(name="Probability Threshold", breaks = c("Low", "Medium", "High"),
+                     values=c( "green", "red", "blue")) +
+  theme(axis.text.x = element_text(angle = 0, vjust = 1)) +
+  scale_x_date(breaks=pretty_breaks(),labels = date_format("%b")) +
+  scale_y_continuous(limits=c(0,31)) +
+  # scale_x_continuous(breaks=as.numeric(month_year), labels=format(month_year,"%b")) +
+  facet_wrap(~year+position, scale="free_x", nrow=4) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "Number of days within discharge limit in relation to Depth",
-       # y = "Number of days per Month",
+  labs(title = "F57C: Number of days within discharge limit in relation to Velocity",
+       y = "Number of days per Month",
        x = "Month") #+ theme_bw(base_size = 15)
-
-## number of days separated per season
+dev.off()
+## plot by season/critical period
+png("figures/Application_curves/VelocityF57C_adult_velocity_lob_rob_mc_no_days_within_Q_by_season.png", width = 500, height = 600)
 
 ggplot(melt_days, aes(x =month_year, y=n_days)) +
   geom_line(aes( group = Probability_Threshold, color = Probability_Threshold)) +
-  scale_y_continuous("Number of days per Month", limits= c(0,30)) +
-  theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
-  scale_x_continuous(breaks=as.numeric(melt_days$month_year), labels=format(melt_days$month_year,"%b %Y")) +
-  facet_wrap(~season, scales="free_x", nrow=2) +
+  scale_color_manual(name="Probability Threshold",breaks = c("Low", "Medium", "High"),
+                     values=c( "green", "red", "blue")) +
+  theme(axis.text.x = element_text(angle = 0, vjust = 1)) +
+  scale_x_date(breaks=pretty_breaks(),labels = date_format("%Y")) +
+  scale_y_continuous(limits=c(0,31)) +
+  # scale_x_continuous(breaks=as.numeric(melt_days$month_year), labels=format(melt_days$month_year,"%Y")) +
+  facet_wrap(~season +position, scales="free", nrow=2) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "Number of days within discharge limit in relation to Depth",
-       # y = "Number of days per Month",
-       x = "Month") #+ theme_bw(base_size = 15)
+  labs(title = "F57C: Number of days within discharge limit in relation to Velocity",
+       y = "Number of days per Month",
+       x = "Year") #+ theme_bw(base_size = 15)
+dev.off()
 

@@ -61,11 +61,11 @@ data.f <- factor(Dataset_num, levels= 1:3,
 
 # plot densities
 sm.density.compare(as.vector(Depth), Dataset_num, xlab="Depth (cm)")
-title(main="Adult/Depth Distribution by Dataset")
+title(main="SAS: Adult/Depth")
 
 # add legend via mouse click
 colfill<-c(2:(2+length(levels(data.f))))
-legend(locator(1), levels(data.f), fill=colfill)
+legend(locator(1),levels(data.f), fill=colfill)
 
 
 # Adult model build -------------------------------------------------------
@@ -102,15 +102,18 @@ xfit<-seq(min(scaled_x),max(scaled_x),length=120)
 yfit<-dnorm(xfit,mean=mean(scaled_x),sd=sd(scaled_x))
 ## x axis with raw depth values
 xfit_r <- seq(min(depth_freq$Depth), max(depth_freq$Depth), length=120)
+
 ## plot curve with raw depth axis
+png("figures/Final_curves/Depth/F1_SAS_Adult_depth_Prob_curve_3_datasets.png", width = 500, height = 500)
 plot(xfit_r, yfit, axes=FALSE, xlab='', ylab='', type='l', col='', main = "" )
 axis(1, at=pretty(xfit_r))
 par(new=TRUE)
 #plot the line with no axes or labels
-plot(xfit, yfit, axes=FALSE, xlab='Depth (cm)', ylab='Probability', type='l', col='red', main = "Adult/Depth: Probability curve" )
+plot(xfit, yfit, axes=FALSE, xlab='Depth (cm)', ylab='Probability', type='l', col='red', main = "SAS: Adult/Depth" )
 #add these now with axis
 par(new=TRUE)
 axis(2, at=pretty(range(yfit)))
+dev.off()
 
 ## data frame with probabilities and depth - to combine with hydraulic data
 
