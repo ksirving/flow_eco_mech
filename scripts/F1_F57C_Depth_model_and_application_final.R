@@ -162,10 +162,7 @@ hyd_dep <- hyd_dep %>%
   select(-contains("ft")) %>%
   mutate(date_num = seq(1,length(DateTime), 1))
 
-# range(hyd_dep$Q) # 26.22926 41750.16797
-# range(hyd_dep$depth_cm_MC) # 6.491416 433.772285
-# range(hyd_dep$depth_cm_LOB) #13.79327 349.89604
-# head(hyd_dep)
+
 # ## melt channel position data
 # 
 hyd_dep<-reshape2::melt(hyd_dep, id=c("DateTime","Q", "node", "date_num"))
@@ -472,7 +469,7 @@ summer <- c(5:10) ## summer months
 new_dataMx <- new_dataMx %>%
   mutate(season = ifelse(month %in% winter, "winter", "summer") )
 
-new_dataLx <- new_dataRx %>%
+new_dataLx <- new_dataLx %>%
   mutate(season = ifelse(month %in% winter, "winter", "summer") )
 
 new_dataRx <- new_dataRx %>%

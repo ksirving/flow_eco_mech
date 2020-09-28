@@ -235,9 +235,8 @@ head(new_data)
 range(new_data$Q) ## 26.22926 41750.16797 
 range(new_data$prob_fit) ## -0.03673522  0.39894228
 
-## bind shallow and deeper depths by 0.1 - 10cm & 120cm
-## change all prob_fit lower than 0.1 to 0.1
-# new_data[which(new_data$prob_fit <  0.1),"prob_fit"] <- 0.1
+## change all negative prob_fit  to 0
+new_data[which(new_data$prob_fit <  0),"prob_fit"] <- 0
 
 peak <- new_data %>%
   group_by(variable) %>%
@@ -304,17 +303,18 @@ LOB_curve_upper <- spline(new_dataL$Q, new_dataL$prob_fit,
                           xmin = peakQL, xmax = max(new_dataL$Q), ties = mean)
 
 newx1aL <- approx(x = LOB_curve_lower$y, y = LOB_curve_lower$x, xout = 0.1)$y
-newx1aL <- min(LOB_curve_lower$x)
-newx1aL
+# newx1aL <- min(LOB_curve_lower$x)
+newx1aL <- NA
+
 newx1bL <- approx(x = LOB_curve_upper$y, y = LOB_curve_upper$x, xout = 0.1)$y
 newx1bL
 # newx1bL <- max(LOB_curve_upper$x)
 
 newx2aL <- approx(x = LOB_curve_lower$y, y = LOB_curve_lower$x, xout = 0.2)$y
-newx2aL <- min(LOB_curve_lower$x)
+newx2aL <- NA
 
 newx2bL <- approx(x = LOB_curve_upper$y, y = LOB_curve_upper$x, xout = 0.2)$y
-newx2bL
+newx2bL 
 
 newx3aL <- approx(x = LOB_curve_lower$y, y = LOB_curve_lower$x, xout = 0.3)$y
 newx3aL <- NA
@@ -386,14 +386,14 @@ ggplot(new_data, aes(x = Q, y=prob_fit)) +
   geom_point(data = subset(new_data, variable =="vel_m_MC"), aes(y=0.2, x=newx2b), color="red") +
   geom_point(data = subset(new_data, variable =="vel_m_MC"), aes(y=0.3, x=newx3a), color="blue") +
   geom_point(data = subset(new_data, variable =="vel_m_MC"), aes(y=0.3, x=newx3b), color="blue") +
-
-  geom_point(data = subset(new_data, variable =="vel_m_LOB"), aes(y=0.1, x=newx1aL), color="green") +
+  # 
+  # geom_point(data = subset(new_data, variable =="vel_m_LOB"), aes(y=0.1, x=newx1aL), color="green") +
   geom_point(data = subset(new_data, variable =="vel_m_LOB"), aes(y=0.1, x=newx1bL), color="green") +
-  geom_point(data = subset(new_data, variable =="vel_m_LOB"), aes(y=0.2, x=newx2aL), color="red") +
+  # geom_point(data = subset(new_data, variable =="vel_m_LOB"), aes(y=0.2, x=newx2aL), color="red") +
   # geom_point(data = subset(new_data, variable =="vel_m_LOB"), aes(y=0.2, x=newx2bL), color="red") +
   # geom_point(data = subset(new_data, variable =="vel_m_LOB"), aes(y=0.3, x=newx3aL), color="blue") +
   # geom_point(data = subset(new_data, variable =="vel_m_LOB"), aes(y=0.3, x=newx3bL), color="blue") +
-
+  # 
   geom_point(data = subset(new_data, variable =="vel_m_ROB"), aes(y=0.1, x=newx1aR), color="green") +
   geom_point(data = subset(new_data, variable =="vel_m_ROB"), aes(y=0.1, x=newx1bR), color="green") +
   geom_point(data = subset(new_data, variable =="vel_m_ROB"), aes(y=0.2, x=newx2aR), color="red") +
@@ -407,7 +407,7 @@ ggplot(new_data, aes(x = Q, y=prob_fit)) +
        x = "Q (cfs)") #+ theme_bw(base_size = 15)
 
 dev.off()
-
+newx2aL
 write.csv(limits, "output_data/F2_F57C_Adult_Velocity_Q_limits.csv")
 
 # create year_month column       
@@ -443,17 +443,17 @@ head(new_dataRx)
 ## define critical period or season for adult as all year is critical
 ## define seasons/critical period
 
-winter <- c(1,2,3,4,11,12) ## winter months
-summer <- c(5:10) ## summer months
+non_critical <- c(1,2,8:12) 
+critical <- c(3:7) 
 
 new_dataMx <- new_dataMx %>%
-  mutate(season = ifelse(month %in% winter, "winter", "summer") )
+  mutate(season = ifelse(month %in% non_critical, "non_critical", "critical") )
 
 new_dataLx <- new_dataRx %>%
-  mutate(season = ifelse(month %in% winter, "winter", "summer") )
+  mutate(season = ifelse(month %in% non_critical, "non_critical", "critical") )
 
 new_dataRx <- new_dataRx %>%
-  mutate(season = ifelse(month %in% winter, "winter", "summer") )
+  mutate(season = ifelse(month %in% non_critical, "non_critical", "critical") )
 
 
 ## produces percentage of time for each year and season within year for each threshold
@@ -477,12 +477,12 @@ time_statsm
 
 time_statsl <- new_dataLx %>%
   dplyr::group_by(year) %>%
-  dplyr::mutate(Low = sum(Q <= newx1bL & Q <= newx1bL)/length(DateTime)*100) %>%
+  dplyr::mutate(Low = sum(Q <= newx1bL)/length(DateTime)*100) %>%
   dplyr::mutate(Medium = sum(Q >= newx2aL & Q <= newx2bL)/length(DateTime)*100) %>%
   dplyr::mutate(High = sum(Q >= newx3aL & Q <= newx3bL)/length(DateTime)*100) %>%
   ungroup() %>%
   dplyr::group_by(year, season) %>%
-  dplyr::mutate(Low.Seasonal = sum(Q >= newx1aL & Q <= newx1bL)/length(DateTime)*100) %>%
+  dplyr::mutate(Low.Seasonal = sum(Q <= newx1bL)/length(DateTime)*100) %>%
   dplyr::mutate(Medium.Seasonal = sum(Q >= newx2aL & Q <= newx2bL)/length(DateTime)*100) %>%
   dplyr::mutate(High.Seasonal = sum(Q >= newx3aL & Q <= newx3bL)/length(DateTime)*100) %>%
   distinct(year, Low , Medium , High , Low.Seasonal, Medium.Seasonal, High.Seasonal) %>%
@@ -544,7 +544,7 @@ ggplot(melt_time_ann, aes(x = year, y=value)) +
 dev.off()
 ## plot for winter stats - need probs in order
 
-melt_time_winter <- filter(melt_time_seas, season == "winter")
+melt_time_winter <- filter(melt_time_seas, season == "non_critical")
 unique(melt_time_winter$season)
 
 png("figures/Application_curves/Velocity/F57C_adult_velocity_perc_time_above_threshold_winter.png", width = 500, height = 600)
@@ -558,13 +558,14 @@ ggplot(melt_time_winter, aes(x = year, y=value)) +
   # scale_x_continuous(breaks=as.numeric(total_days$month_year), labels=format(total_days$month_year,"%b %Y")) +
   facet_wrap(~position, scales="free_x", nrow=3) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "F57C: Time within discharge limit in relation to Velocity (Winter)",
+  labs(title = "F57C: Time within discharge limit in relation to Velocity (Non_critical)",
        y = "Time (%)",
        x = "Year") #+ theme_bw(base_size = 15)
+
 dev.off()
 ## plot for summer stats - need probs in order
 
-melt_time_summer <- filter(melt_time_seas, season == "summer")
+melt_time_summer <- filter(melt_time_seas, season == "critical")
 
 png("figures/Application_curves/Velocity/F57C_adult_velocity_perc_time_above_threshold_critical.png", width = 500, height = 600)
 
@@ -577,7 +578,7 @@ ggplot(melt_time_summer, aes(x = year, y=value)) +
   # scale_x_continuous(breaks=as.numeric(total_days$month_year), labels=format(total_days$month_year,"%b %Y")) +
   facet_wrap(~position, scales="free_x", nrow=3) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "F57C: Time within discharge limit in relation to Velocity (Summer)",
+  labs(title = "F57C: Time within discharge limit in relation to Velocity (Critical)",
        y = "Time (%)",
        x = "Year") #+ theme_bw(base_size = 15)
 
@@ -606,8 +607,8 @@ new_dataM <- mutate(new_dataM, position="MC")
 
 new_dataL <- new_dataL %>%
   ungroup() %>%
-  group_by(month, day, year, ID01 = data.table::rleid(Q >= newx1aL & Q <= newx1bL)) %>%
-  mutate(Low = if_else(Q >= newx1aL & Q <= newx1bL, row_number(), 0L)) %>%
+  group_by(month, day, year, ID01 = data.table::rleid(Q <= newx1bL)) %>%
+  mutate(Low = if_else(Q <= newx1bL, row_number(), 0L)) %>%
   ungroup() %>%
   group_by(month, day, year, ID02 = data.table::rleid(Q >= newx2aL & Q <= newx2bL)) %>%
   mutate(Medium = if_else(Q >= newx2aL & Q <= newx2bL, row_number(), 0L)) %>%
@@ -645,6 +646,7 @@ names(new_dataRx)
 # range(new_dataRx$Medium)
 new_datax <- rbind(new_dataMx, new_dataLx, new_dataRx)
 new_datax
+
 ## melt
 melt_data<-reshape2::melt(new_datax, id=c("ID01", "ID02", "ID03", "day", "month", "year", "Q", "position"))
 melt_data <- rename(melt_data, Probability_Threshold = variable, 
@@ -715,11 +717,11 @@ total_days <- rename(total_days, Low = days_per_month_low, Medium = days_per_mon
 # total_hours <- rename(total_hours, Low = n_days_low, Medium = n_days_medium, High = n_days_high)
 
 ## define seasons/critical period
-winter <- c(1,2,3,4,11,12) ## winter months
-summer <- c(5:10) ## summer months
+non_critical <- c(1,2,8:12) 
+critical <- c(3:7) 
 
 total_days <- total_days %>%
-  mutate(season = ifelse(month %in% winter, "winter", "summer") )
+  mutate(season = ifelse(month %in% non_critical, "non_critical", "critical") )
 
 
 # ## melt data
@@ -754,6 +756,7 @@ ggplot(melt_days, aes(x =month_year, y=n_days)) +
        y = "Number of days per Month",
        x = "Year") #+ theme_bw(base_size = 15)
 dev.off()
+
 ## plot by year
 png("figures/Application_curves/Velocity/F57C_adult_velocity_lob_rob_mc_no_days_within_Q_by_year.png", width = 500, height = 600)
 
@@ -771,6 +774,7 @@ ggplot(melt_days, aes(x =month_year, y=n_days)) +
        y = "Number of days per Month",
        x = "Month") #+ theme_bw(base_size = 15)
 dev.off()
+
 ## plot by season/critical period
 png("figures/Application_curves/VelocityF57C_adult_velocity_lob_rob_mc_no_days_within_Q_by_season.png", width = 500, height = 600)
 

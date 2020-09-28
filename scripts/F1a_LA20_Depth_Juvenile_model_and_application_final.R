@@ -53,14 +53,13 @@ hyd_dep <- hyd_dep %>%
   select(-contains("ft")) %>%
   mutate(date_num = seq(1,length(DateTime), 1))
 hyd_dep
-# range(hyd_dep$Q) # 26.22926 41750.16797
-# range(hyd_dep$depth_cm_MC) # 6.491416 433.772285
-# range(hyd_dep$depth_cm_LOB) #13.79327 349.89604
-# head(hyd_dep)
+
+
+#  Node figures -----------------------------------------------------------
+
+## only needed once per node
+
 # ## melt channel position data
-# 
-hyd_dep<-reshape2::melt(hyd_dep, id=c("DateTime","Q", "node", "date_num"))
-head(hyd_dep)
 
 labels <- c(depth_cm_LOB = "Left Over Bank", depth_cm_MC = "Main Channel", depth_cm_ROB = "Right Over Bank")
 png("figures/Application_curves/nodes/LA20_Depth_Q.png", width = 500, height = 600)
@@ -76,6 +75,7 @@ ggplot(hyd_dep, aes(x = Q, y=value)) +
        x = "Q (cfs)") #+ theme_bw(base_size = 15)
 
 dev.off()
+
 ## plot time series
 png("figures/Application_curves/nodes/LA20_Depth_TS.png", width = 500, height = 600)
 
@@ -89,7 +89,13 @@ ggplot(hyd_dep, aes(x = date_num, y=value)) +
        y = "Depth (cm)",
        x = "Date") #+ theme_bw(base_size = 15)
 dev.off()
+
+
+# Merge datasets ----------------------------------------------------------
+
 ## merge datasets with spline function
+
+hyd_dep<-reshape2::melt(hyd_dep, id=c("DateTime","Q", "node", "date_num"))
 
 head(hyd_dep)
 head(fitdata)
@@ -107,11 +113,9 @@ all_data
 nas <- which(complete.cases(all_data) == FALSE)
 nas #0
 
-
-
 save(all_data, file="output_data/F1_LA20_juvenile_depth_discharge_probability_time_series_all_columns.RData")
-# load("output_data/F1_LA20_juvenile_depth_discharge_probability_time_series_all_columns.RData")
-## keep columns dpeth, datetime, Q date_num & prob_fit
+
+## in order of datenum
 
 new_data <- all_data[order(all_data$date_num),]
 
@@ -148,12 +152,12 @@ load( file="output_data/F1_LA20_depth_juvenile_discharge_probs_2010_2017_TS.RDat
 head(new_data)
 
 ## plot
-range(new_data$Q) ## 26.22926 41750.16797 
-range(new_data$prob_fit) ## -0.004518105  0.398942010
+range(new_data$Q) 
+range(new_data$prob_fit) ## -5.50634  0.39894
 
 ## bind shallow and deeper depths by 0.1 - 10cm & 120cm
 ## change all prob_fit lower than 0.1 to 0.1
-# new_data[which(new_data$prob_fit <  0.1),"prob_fit"] <- 0.1
+new_data[which(new_data$prob_fit <  0.1),"prob_fit"] <- 0.1
 
 peak <- new_data %>%
   group_by(variable) %>%
@@ -162,15 +166,15 @@ peak <- new_data %>%
 
 peakQM <- filter(peak, variable=="depth_cm_MC")
 peakQM  <- max(peakQM$Q)
-peakQM ## 990.5882
+peakQM ##  28466.28
 
 peakQL <- filter(peak, variable=="depth_cm_LOB")
 peakQL  <- max(peakQL$Q) ## 
-peakQL ## 1258.077
+peakQL ##  2704.036
 
 peakQR <- filter(peak, variable=="depth_cm_ROB")
 peakQR  <- max(peakQR$Q) ## 
-peakQR ## 4635.898
+peakQR ##  8093.933
 
 ## filter data by cross section position
 
@@ -190,23 +194,23 @@ MC_curve_upper <- spline(new_dataM$Q, new_dataM$prob_fit,
 
 ## main channel values
 newx1a <- approx(x = MC_curve_lower$y, y = MC_curve_lower$x, xout = 0.1)$y
-# newx1a <- min(MC_curve_lower$x)
-newx1a
+newx1a <- min(MC_curve_lower$x)
+
 newx1b <- approx(x = MC_curve_upper$y, y = MC_curve_upper$x, xout = 0.1)$y
 newx1b ## change to max Q for time series to adhere to 0.1 bound
-# newx1b <- max(MC_curve_upper$x)
+newx1b <- max(MC_curve_upper$x)
 
 newx2a <- approx(x = MC_curve_lower$y, y = MC_curve_lower$x, xout = 0.2)$y
-newx2a
+newx2a <- NA
 
 newx2b <- approx(x = MC_curve_upper$y, y = MC_curve_upper$x, xout = 0.2)$y
-newx2b
+newx2b <- NA
 
 newx3a <- approx(x = MC_curve_lower$y, y = MC_curve_lower$x, xout = 0.3)$y
-newx3a
+newx3a <- NA
 
 newx3b <- approx(x = MC_curve_upper$y, y = MC_curve_upper$x, xout = 0.3)$y
-newx3b
+newx3b <- NA
 
 ## LOB curves
 
@@ -219,11 +223,11 @@ LOB_curve_upper <- spline(new_dataL$Q, new_dataL$prob_fit,
                           xmin = peakQL, xmax = max(new_dataL$Q), ties = mean)
 
 newx1aL <- approx(x = LOB_curve_lower$y, y = LOB_curve_lower$x, xout = 0.1)$y
-# newx1aL <- min(LOB_curve_lower$x)
+newx1aL <- min(LOB_curve_lower$x)
 newx1aL
 newx1bL <- approx(x = LOB_curve_upper$y, y = LOB_curve_upper$x, xout = 0.1)$y
+newx1bL <- max(LOB_curve_upper$x)
 newx1bL
-# newx1bL <- max(LOB_curve_upper$x)
 
 newx2aL <- approx(x = LOB_curve_lower$y, y = LOB_curve_lower$x, xout = 0.2)$y
 newx2aL
@@ -249,11 +253,11 @@ ROB_curve_upper <- spline(new_dataR$Q, new_dataR$prob_fit,
 
 ## main channel values
 newx1aR <- approx(x = ROB_curve_lower$y, y = ROB_curve_lower$x, xout = 0.1)$y
-# newx1aR <- min(ROB_curve_lower$x)
+newx1aR <- min(ROB_curve_lower$x)
 
 newx1bR <- approx(x = ROB_curve_upper$y, y = ROB_curve_upper$x, xout = 0.1)$y
 newx1bR
-# newx1bR <- max(ROB_curve_upper$x)
+newx1bR <- max(ROB_curve_upper$x)
 
 newx2aR <- approx(x = ROB_curve_lower$y, y = ROB_curve_lower$x, xout = 0.2)$y
 newx2aR
@@ -297,18 +301,18 @@ ggplot(new_data, aes(x = Q, y=prob_fit)) +
   facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
   geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.1, x=newx1a), color="green") +
   geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.1, x=newx1b), color="green") +
-  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.2, x=newx2a), color="red") +
-  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.2, x=newx2b), color="red") +
-  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.3, x=newx3a), color="blue") +
-  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.3, x=newx3b), color="blue") +
-  
+  # geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.2, x=newx2a), color="red") +
+  # geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.2, x=newx2b), color="red") +
+  # geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.3, x=newx3a), color="blue") +
+  # geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.3, x=newx3b), color="blue") +
+
   geom_point(data = subset(new_data, variable =="depth_cm_LOB"), aes(y=0.1, x=newx1aL), color="green") +
   geom_point(data = subset(new_data, variable =="depth_cm_LOB"), aes(y=0.1, x=newx1bL), color="green") +
   geom_point(data = subset(new_data, variable =="depth_cm_LOB"), aes(y=0.2, x=newx2aL), color="red") +
   geom_point(data = subset(new_data, variable =="depth_cm_LOB"), aes(y=0.2, x=newx2bL), color="red") +
   geom_point(data = subset(new_data, variable =="depth_cm_LOB"), aes(y=0.3, x=newx3aL), color="blue") +
   geom_point(data = subset(new_data, variable =="depth_cm_LOB"), aes(y=0.3, x=newx3bL), color="blue") +
-  
+
   geom_point(data = subset(new_data, variable =="depth_cm_ROB"), aes(y=0.1, x=newx1aR), color="green") +
   geom_point(data = subset(new_data, variable =="depth_cm_ROB"), aes(y=0.1, x=newx1bR), color="green") +
   geom_point(data = subset(new_data, variable =="depth_cm_ROB"), aes(y=0.2, x=newx2aR), color="red") +
@@ -383,7 +387,7 @@ time_statsm <- new_dataMx %>%
   ungroup() %>%
   dplyr::group_by(year, season) %>%
   dplyr::mutate(Low.Seasonal = sum(Q >= newx1a & Q <= newx1b)/length(DateTime)*100) %>%
-  dplyr::mutate(Medium.Seasonal = sum(Q >= newx1a & Q <= newx2b)/length(DateTime)*100) %>%
+  dplyr::mutate(Medium.Seasonal = sum(Q >= newx2a & Q <= newx2b)/length(DateTime)*100) %>%
   dplyr::mutate(High.Seasonal = sum(Q >= newx3a & Q <= newx3b)/length(DateTime)*100) %>%
   distinct(year, Low , Medium , High , Low.Seasonal, Medium.Seasonal, High.Seasonal) %>%
   mutate(position="MC")
@@ -419,6 +423,7 @@ time_statsr <- new_dataRx %>%
   mutate(position="ROB")
 
 time_statsr
+
 
 
 time_stats <- rbind(time_statsm, time_statsl, time_statsr)
@@ -507,10 +512,10 @@ dev.off()
 new_dataM <- new_dataM %>%
   ungroup() %>%
   group_by(month, day, year, ID01 = data.table::rleid(Q >= newx1a & Q <= newx1b)) %>%
-  mutate(Low = if_else(Q <= newx1b, row_number(), 0L)) %>%
+  mutate(Low = if_else(Q >= newx1a  & Q <= newx1b, row_number(), 0L)) %>%
   ungroup() %>%
   group_by(month, day, year, ID02 = data.table::rleid(Q >= newx2a & Q <= newx2b)) %>%
-  mutate(Medium = if_else(Q <= newx2b, row_number(), 0L)) %>%
+  mutate(Medium = if_else(Q >= newx2a & Q <= newx2b, row_number(), 0L)) %>%
   ungroup() %>%
   group_by(month, day, year, ID03 = data.table::rleid(Q >= newx3a & Q <= newx3b)) %>%
   mutate(High = if_else(Q >= newx3a & Q <= newx3b, row_number(), 0L))
@@ -519,8 +524,8 @@ new_dataM <- mutate(new_dataM, position="MC")
 
 new_dataL <- new_dataL %>%
   ungroup() %>%
-  group_by(month, day, year, ID01 = data.table::rleid(Q <= newx1bL)) %>%
-  mutate(Low = if_else(Q <= newx1bL, row_number(), 0L)) %>%
+  group_by(month, day, year, ID01 = data.table::rleid(Q >= newx1aL & Q <= newx1bL)) %>%
+  mutate(Low = if_else(Q >= newx1aL & Q <= newx1bL, row_number(), 0L)) %>%
   ungroup() %>%
   group_by(month, day, year, ID02 = data.table::rleid(Q >= newx2aL & Q <= newx2bL)) %>%
   mutate(Medium = if_else(Q >= newx2aL & Q <= newx2bL, row_number(), 0L)) %>%
@@ -648,8 +653,6 @@ head(melt_days)
 ## save df
 write.csv(melt_days, "output_data/F1_LA20_juvenile_total_days_long.csv")
 
-
-melt_daysx <- filter(melt_days, position=="MC")
 library(scales)
 
 ## plot all ts

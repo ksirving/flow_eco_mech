@@ -99,7 +99,7 @@ yfit<-dnorm(xfit,mean=mean(scaled_x),sd=sd(scaled_x))
 xfit_r <- seq(min(depth_freq$Depth), max(depth_freq$Depth), length=120)
 
 ## plot curve with raw depth axis
-help(par)
+
 png("figures/Final_curves/Depth/F1a_SAS_Juvenile_depth_Prob_curve.png", width = 700, height = 700)
 
 plot(xfit_r, yfit, axes=FALSE, xlab='', ylab='', type='l', col='', main = "" )
@@ -157,47 +157,58 @@ hyd_dep <- hyd_dep %>%
   select(-contains("ft")) %>%
   mutate(date_num = seq(1,length(DateTime), 1))
 hyd_dep
-# range(hyd_dep$Q) # 26.22926 41750.16797
-# range(hyd_dep$depth_cm_MC) # 6.491416 433.772285
-# range(hyd_dep$depth_cm_LOB) #13.79327 349.89604
-# head(hyd_dep)
+
+
+# Node figures ------------------------------------------------------------
+
+## only needed once per node
+
 # ## melt channel position data
 # 
-hyd_dep<-reshape2::melt(hyd_dep, id=c("DateTime","Q", "node", "date_num"))
-head(hyd_dep)
-
-labels <- c(depth_cm_LOB = "Left Over Bank", depth_cm_MC = "Main Channel", depth_cm_ROB = "Right Over Bank")
-png("figures/Application_curves/nodes/F57C_Depth_Q.png", width = 500, height = 600)
-
-ggplot(hyd_dep, aes(x = Q, y=value)) +
-  geom_line(aes( group = variable, lty = variable)) +
-  scale_linetype_manual(values= c("dotted", "solid", "dashed"),
-                        breaks=c("depth_cm_LOB", "depth_cm_MC", "depth_cm_ROB"))+
-  facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
-  labs(title = "F57C: Depth ~ Q",
-       y = "Depth (cm)",
-       x = "Q (cfs)") #+ theme_bw(base_size = 15)
-
-dev.off()
+# hyd_dep<-reshape2::melt(hyd_dep, id=c("DateTime","Q", "node", "date_num"))
+# head(hyd_dep)
+# 
+# labels <- c(depth_cm_LOB = "Left Over Bank", depth_cm_MC = "Main Channel", depth_cm_ROB = "Right Over Bank")
+# png("figures/Application_curves/nodes/F57C_Depth_Q.png", width = 500, height = 600)
+# 
+# ggplot(hyd_dep, aes(x = Q, y=value)) +
+#   geom_line(aes( group = variable, lty = variable)) +
+#   scale_linetype_manual(values= c("dotted", "solid", "dashed"),
+#                         breaks=c("depth_cm_LOB", "depth_cm_MC", "depth_cm_ROB"))+
+#   facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
+#   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
+#   labs(title = "F57C: Depth ~ Q",
+#        y = "Depth (cm)",
+#        x = "Q (cfs)") #+ theme_bw(base_size = 15)
+# 
+# dev.off()
 
 ## plot time series
-png("figures/Application_curves/nodes/F57C_Depth_TS.png", width = 500, height = 600)
+# png("figures/Application_curves/nodes/F57C_Depth_TS.png", width = 500, height = 600)
+# 
+# ggplot(hyd_dep, aes(x = date_num, y=value)) +
+#   geom_line(aes( group = variable, lty = variable)) +
+#   scale_linetype_manual(values= c("dotted", "solid", "dashed"),
+#                         breaks=c("depth_cm_LOB", "depth_cm_MC", "depth_cm_ROB"))+
+#   facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
+#   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
+#   labs(title = "F57C: Depth ~ Time Series",
+#        y = "Depth (cm)",
+#        x = "Date") #+ theme_bw(base_size = 15)
+# dev.off()
 
-ggplot(hyd_dep, aes(x = date_num, y=value)) +
-  geom_line(aes( group = variable, lty = variable)) +
-  scale_linetype_manual(values= c("dotted", "solid", "dashed"),
-                        breaks=c("depth_cm_LOB", "depth_cm_MC", "depth_cm_ROB"))+
-  facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
-  labs(title = "F57C: Depth ~ Time Series",
-       y = "Depth (cm)",
-       x = "Date") #+ theme_bw(base_size = 15)
-dev.off()
+
+# Merge datasets ----------------------------------------------------------
+
 ## merge datasets with spline function
 
 head(hyd_dep)
 head(fitdata)
+
+## make hydraulic data long
+
+hyd_dep<-reshape2::melt(hyd_dep, id=c("DateTime","Q", "node", "date_num"))
+head(hyd_dep)
 
 ## use smooth spline to predict on new data set
 new_values <-smooth.spline(fitdata$depth_fit, fitdata$prob_fit)
@@ -212,22 +223,18 @@ all_data
 nas <- which(complete.cases(all_data) == FALSE)
 nas #0
 
-
-
 save(all_data, file="output_data/F1_F57C_juvenile_depth_discharge_probability_time_series_all_columns.RData")
-# load("output_data/F1_F57C_juvenile_depth_discharge_probability_time_series_all_columns.RData")
-## keep columns dpeth, datetime, Q date_num & prob_fit
 
+## order by datenum
 new_data <- all_data[order(all_data$date_num),]
 
-
+## save out
 save(new_data, file="output_data/F1_F57C_juvenile_depth_discharge_probability_time_series_red_columns.RData")
 
 # format probability time series ------------------------------------------
 
-## look at data using lubridate etc
+## format data using lubridate etc
 
-names(new_data)
 ## format date time
 new_data$DateTime<-as.POSIXct(new_data$DateTime,
                               format = "%Y-%m-%d %H:%M",
@@ -242,23 +249,21 @@ new_data <- new_data %>%
   mutate(hour = hour(DateTime))
 
 
-
 save(new_data, file="output_data/F1_F57C_depth_juvenile_discharge_probs_2010_2017_TS.RData")
 
 
 # probability as a function of discharge -----------------------------------
-
 
 load( file="output_data/F1_F57C_depth_juvenile_discharge_probs_2010_2017_TS.RData")
 head(new_data)
 
 ## plot
 range(new_data$Q) ## 26.22926 41750.16797 
-range(new_data$prob_fit) ## -0.004518105  0.398942010
+range(new_data$prob_fit) ## -3.8149127  0.3989423
 
 ## bind shallow and deeper depths by 0.1 - 10cm & 120cm
 ## change all prob_fit lower than 0.1 to 0.1
-# new_data[which(new_data$prob_fit <  0.1),"prob_fit"] <- 0.1
+new_data[which(new_data$prob_fit <  0.1),"prob_fit"] <- 0.1
 
 peak <- new_data %>%
   group_by(variable) %>%
@@ -267,15 +272,15 @@ peak <- new_data %>%
 
 peakQM <- filter(peak, variable=="depth_cm_MC")
 peakQM  <- max(peakQM$Q)
-peakQM ## 990.5882
+peakQM ## 698.6811
 
 peakQL <- filter(peak, variable=="depth_cm_LOB")
 peakQL  <- max(peakQL$Q) ## 
-peakQL ## 1258.077
+peakQL ## 882.4209
 
 peakQR <- filter(peak, variable=="depth_cm_ROB")
 peakQR  <- max(peakQR$Q) ## 
-peakQR ## 4635.898
+peakQR ## 3809.697
 
 ## filter data by cross section position
 
@@ -295,11 +300,11 @@ MC_curve_upper <- spline(new_dataM$Q, new_dataM$prob_fit,
 
 ## main channel values
 newx1a <- approx(x = MC_curve_lower$y, y = MC_curve_lower$x, xout = 0.1)$y
-# newx1a <- min(MC_curve_lower$x)
-newx1a
+newx1a <- min(MC_curve_lower$x)
+
 newx1b <- approx(x = MC_curve_upper$y, y = MC_curve_upper$x, xout = 0.1)$y
 newx1b ## change to max Q for time series to adhere to 0.1 bound
-# newx1b <- max(MC_curve_upper$x)
+newx1b <- max(MC_curve_upper$x)
 
 newx2a <- approx(x = MC_curve_lower$y, y = MC_curve_lower$x, xout = 0.2)$y
 newx2a
@@ -324,11 +329,11 @@ LOB_curve_upper <- spline(new_dataL$Q, new_dataL$prob_fit,
                           xmin = peakQL, xmax = max(new_dataL$Q), ties = mean)
 
 newx1aL <- approx(x = LOB_curve_lower$y, y = LOB_curve_lower$x, xout = 0.1)$y
-# newx1aL <- min(LOB_curve_lower$x)
+newx1aL <- min(LOB_curve_lower$x)
 newx1aL
 newx1bL <- approx(x = LOB_curve_upper$y, y = LOB_curve_upper$x, xout = 0.1)$y
+newx1bL <- max(LOB_curve_upper$x)
 newx1bL
-# newx1bL <- max(LOB_curve_upper$x)
 
 newx2aL <- approx(x = LOB_curve_lower$y, y = LOB_curve_lower$x, xout = 0.2)$y
 newx2aL
@@ -354,11 +359,11 @@ ROB_curve_upper <- spline(new_dataR$Q, new_dataR$prob_fit,
 
 ## main channel values
 newx1aR <- approx(x = ROB_curve_lower$y, y = ROB_curve_lower$x, xout = 0.1)$y
-# newx1aR <- min(ROB_curve_lower$x)
+newx1aR <- min(ROB_curve_lower$x)
 
 newx1bR <- approx(x = ROB_curve_upper$y, y = ROB_curve_upper$x, xout = 0.1)$y
 newx1bR
-# newx1bR <- max(ROB_curve_upper$x)
+newx1bR <- max(ROB_curve_upper$x)
 
 newx2aR <- approx(x = ROB_curve_lower$y, y = ROB_curve_lower$x, xout = 0.2)$y
 newx2aR
@@ -497,7 +502,7 @@ time_statsm
 
 time_statsl <- new_dataLx %>%
   dplyr::group_by(year) %>%
-  dplyr::mutate(Low = sum(Q <= newx1bL)/length(DateTime)*100) %>%
+  dplyr::mutate(Low = sum(Q >= newx1aL & Q <= newx1bL )/length(DateTime)*100) %>%
   dplyr::mutate(Medium = sum(Q >= newx2aL & Q <= newx2bL)/length(DateTime)*100) %>%
   dplyr::mutate(High = sum(Q >= newx3aL & Q <= newx3bL)/length(DateTime)*100) %>%
   ungroup() %>%
@@ -624,8 +629,8 @@ new_dataM <- mutate(new_dataM, position="MC")
 
 new_dataL <- new_dataL %>%
   ungroup() %>%
-  group_by(month, day, year, ID01 = data.table::rleid(Q <= newx1bL)) %>%
-  mutate(Low = if_else(Q <= newx1bL, row_number(), 0L)) %>%
+  group_by(month, day, year, ID01 = data.table::rleid(Q >= newx1aL & Q <= newx1bL)) %>%
+  mutate(Low = if_else(Q >= newx1aL & Q <= newx1bL, row_number(), 0L)) %>%
   ungroup() %>%
   group_by(month, day, year, ID02 = data.table::rleid(Q >= newx2aL & Q <= newx2bL)) %>%
   mutate(Medium = if_else(Q >= newx2aL & Q <= newx2bL, row_number(), 0L)) %>%
@@ -751,8 +756,6 @@ head(melt_days)
 ## save df
 write.csv(melt_days, "output_data/F1_F57C_juvenile_total_days_long.csv")
 
-
-melt_daysx <- filter(melt_days, position=="MC")
 library(scales)
 
 ## plot all ts
