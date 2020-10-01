@@ -443,7 +443,7 @@ head(new_dataRx)
 ## define critical period or season for adult as all year is critical
 ## define seasons/critical period
 
-non_critical <- c(1,2,8:12) 
+non_critical <- c(1,2,8:1210:12) 
 critical <- c(3:7) 
 
 new_dataMx <- new_dataMx %>%

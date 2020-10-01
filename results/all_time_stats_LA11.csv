@@ -1,0 +1,1783 @@
+,year,TimePeriod,position,Probability_Threshold,TimePercentage,Species,Life_Stage,Hydraulic,Node
+1,2010,Annual,MC,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+2,2010,Annual,MC,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+3,2011,Annual,MC,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+4,2011,Annual,MC,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+5,2012,Annual,MC,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+6,2012,Annual,MC,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+7,2013,Annual,MC,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+8,2013,Annual,MC,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+9,2014,Annual,MC,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+10,2014,Annual,MC,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+11,2015,Annual,MC,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+12,2015,Annual,MC,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+13,2016,Annual,MC,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+14,2016,Annual,MC,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+15,2017,Annual,MC,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+16,2017,Annual,MC,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+17,2010,Annual,LOB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+18,2010,Annual,LOB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+19,2011,Annual,LOB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+20,2011,Annual,LOB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+21,2012,Annual,LOB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+22,2012,Annual,LOB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+23,2013,Annual,LOB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+24,2013,Annual,LOB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+25,2014,Annual,LOB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+26,2014,Annual,LOB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+27,2015,Annual,LOB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+28,2015,Annual,LOB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+29,2016,Annual,LOB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+30,2016,Annual,LOB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+31,2017,Annual,LOB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+32,2017,Annual,LOB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+33,2010,Annual,ROB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+34,2010,Annual,ROB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+35,2011,Annual,ROB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+36,2011,Annual,ROB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+37,2012,Annual,ROB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+38,2012,Annual,ROB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+39,2013,Annual,ROB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+40,2013,Annual,ROB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+41,2014,Annual,ROB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+42,2014,Annual,ROB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+43,2015,Annual,ROB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+44,2015,Annual,ROB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+45,2016,Annual,ROB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+46,2016,Annual,ROB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+47,2017,Annual,ROB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+48,2017,Annual,ROB,Low,100,Santa Ana Sucker,Adult,Depth,LA11
+49,2010,Annual,MC,Medium,11.41821477,Santa Ana Sucker,Adult,Depth,LA11
+50,2010,Annual,MC,Medium,11.41821477,Santa Ana Sucker,Adult,Depth,LA11
+51,2011,Annual,MC,Medium,5.502283105,Santa Ana Sucker,Adult,Depth,LA11
+52,2011,Annual,MC,Medium,5.502283105,Santa Ana Sucker,Adult,Depth,LA11
+53,2012,Annual,MC,Medium,2.219945355,Santa Ana Sucker,Adult,Depth,LA11
+54,2012,Annual,MC,Medium,2.219945355,Santa Ana Sucker,Adult,Depth,LA11
+55,2013,Annual,MC,Medium,1.312785388,Santa Ana Sucker,Adult,Depth,LA11
+56,2013,Annual,MC,Medium,1.312785388,Santa Ana Sucker,Adult,Depth,LA11
+57,2014,Annual,MC,Medium,1.255707763,Santa Ana Sucker,Adult,Depth,LA11
+58,2014,Annual,MC,Medium,1.255707763,Santa Ana Sucker,Adult,Depth,LA11
+59,2015,Annual,MC,Medium,1.278538813,Santa Ana Sucker,Adult,Depth,LA11
+60,2015,Annual,MC,Medium,1.278538813,Santa Ana Sucker,Adult,Depth,LA11
+61,2016,Annual,MC,Medium,1.673497268,Santa Ana Sucker,Adult,Depth,LA11
+62,2016,Annual,MC,Medium,1.673497268,Santa Ana Sucker,Adult,Depth,LA11
+63,2017,Annual,MC,Medium,3.174603175,Santa Ana Sucker,Adult,Depth,LA11
+64,2017,Annual,MC,Medium,3.174603175,Santa Ana Sucker,Adult,Depth,LA11
+65,2010,Annual,LOB,Medium,7.15903942,Santa Ana Sucker,Adult,Depth,LA11
+66,2010,Annual,LOB,Medium,7.15903942,Santa Ana Sucker,Adult,Depth,LA11
+67,2011,Annual,LOB,Medium,1.609589041,Santa Ana Sucker,Adult,Depth,LA11
+68,2011,Annual,LOB,Medium,1.609589041,Santa Ana Sucker,Adult,Depth,LA11
+69,2012,Annual,LOB,Medium,1.43442623,Santa Ana Sucker,Adult,Depth,LA11
+70,2012,Annual,LOB,Medium,1.43442623,Santa Ana Sucker,Adult,Depth,LA11
+71,2013,Annual,LOB,Medium,0.730593607,Santa Ana Sucker,Adult,Depth,LA11
+72,2013,Annual,LOB,Medium,0.730593607,Santa Ana Sucker,Adult,Depth,LA11
+73,2014,Annual,LOB,Medium,0.924657534,Santa Ana Sucker,Adult,Depth,LA11
+74,2014,Annual,LOB,Medium,0.924657534,Santa Ana Sucker,Adult,Depth,LA11
+75,2015,Annual,LOB,Medium,0.810502283,Santa Ana Sucker,Adult,Depth,LA11
+76,2015,Annual,LOB,Medium,0.810502283,Santa Ana Sucker,Adult,Depth,LA11
+77,2016,Annual,LOB,Medium,1.058743169,Santa Ana Sucker,Adult,Depth,LA11
+78,2016,Annual,LOB,Medium,1.058743169,Santa Ana Sucker,Adult,Depth,LA11
+79,2017,Annual,LOB,Medium,2.396214896,Santa Ana Sucker,Adult,Depth,LA11
+80,2017,Annual,LOB,Medium,2.396214896,Santa Ana Sucker,Adult,Depth,LA11
+81,2010,Annual,ROB,Medium,3.942002719,Santa Ana Sucker,Adult,Depth,LA11
+82,2010,Annual,ROB,Medium,3.942002719,Santa Ana Sucker,Adult,Depth,LA11
+83,2011,Annual,ROB,Medium,0.742009132,Santa Ana Sucker,Adult,Depth,LA11
+84,2011,Annual,ROB,Medium,0.742009132,Santa Ana Sucker,Adult,Depth,LA11
+85,2012,Annual,ROB,Medium,0.591985428,Santa Ana Sucker,Adult,Depth,LA11
+86,2012,Annual,ROB,Medium,0.591985428,Santa Ana Sucker,Adult,Depth,LA11
+87,2013,Annual,ROB,Medium,0.194063927,Santa Ana Sucker,Adult,Depth,LA11
+88,2013,Annual,ROB,Medium,0.194063927,Santa Ana Sucker,Adult,Depth,LA11
+89,2014,Annual,ROB,Medium,0.410958904,Santa Ana Sucker,Adult,Depth,LA11
+90,2014,Annual,ROB,Medium,0.410958904,Santa Ana Sucker,Adult,Depth,LA11
+91,2015,Annual,ROB,Medium,0.296803653,Santa Ana Sucker,Adult,Depth,LA11
+92,2015,Annual,ROB,Medium,0.296803653,Santa Ana Sucker,Adult,Depth,LA11
+93,2016,Annual,ROB,Medium,0.500910747,Santa Ana Sucker,Adult,Depth,LA11
+94,2016,Annual,ROB,Medium,0.500910747,Santa Ana Sucker,Adult,Depth,LA11
+95,2017,Annual,ROB,Medium,0.9004884,Santa Ana Sucker,Adult,Depth,LA11
+96,2017,Annual,ROB,Medium,0.9004884,Santa Ana Sucker,Adult,Depth,LA11
+97,2010,Annual,MC,High,7.476212053,Santa Ana Sucker,Adult,Depth,LA11
+98,2010,Annual,MC,High,7.476212053,Santa Ana Sucker,Adult,Depth,LA11
+99,2011,Annual,MC,High,2.317351598,Santa Ana Sucker,Adult,Depth,LA11
+100,2011,Annual,MC,High,2.317351598,Santa Ana Sucker,Adult,Depth,LA11
+101,2012,Annual,MC,High,1.138433515,Santa Ana Sucker,Adult,Depth,LA11
+102,2012,Annual,MC,High,1.138433515,Santa Ana Sucker,Adult,Depth,LA11
+103,2013,Annual,MC,High,0.707762557,Santa Ana Sucker,Adult,Depth,LA11
+104,2013,Annual,MC,High,0.707762557,Santa Ana Sucker,Adult,Depth,LA11
+105,2014,Annual,MC,High,0.890410959,Santa Ana Sucker,Adult,Depth,LA11
+106,2014,Annual,MC,High,0.890410959,Santa Ana Sucker,Adult,Depth,LA11
+107,2015,Annual,MC,High,0.810502283,Santa Ana Sucker,Adult,Depth,LA11
+108,2015,Annual,MC,High,0.810502283,Santa Ana Sucker,Adult,Depth,LA11
+109,2016,Annual,MC,High,0.887978142,Santa Ana Sucker,Adult,Depth,LA11
+110,2016,Annual,MC,High,0.887978142,Santa Ana Sucker,Adult,Depth,LA11
+111,2017,Annual,MC,High,1.73992674,Santa Ana Sucker,Adult,Depth,LA11
+112,2017,Annual,MC,High,1.73992674,Santa Ana Sucker,Adult,Depth,LA11
+113,2010,Annual,LOB,High,4.077933847,Santa Ana Sucker,Adult,Depth,LA11
+114,2010,Annual,LOB,High,4.077933847,Santa Ana Sucker,Adult,Depth,LA11
+115,2011,Annual,LOB,High,0.924657534,Santa Ana Sucker,Adult,Depth,LA11
+116,2011,Annual,LOB,High,0.924657534,Santa Ana Sucker,Adult,Depth,LA11
+117,2012,Annual,LOB,High,0.842440801,Santa Ana Sucker,Adult,Depth,LA11
+118,2012,Annual,LOB,High,0.842440801,Santa Ana Sucker,Adult,Depth,LA11
+119,2013,Annual,LOB,High,0.445205479,Santa Ana Sucker,Adult,Depth,LA11
+120,2013,Annual,LOB,High,0.445205479,Santa Ana Sucker,Adult,Depth,LA11
+121,2014,Annual,LOB,High,0.582191781,Santa Ana Sucker,Adult,Depth,LA11
+122,2014,Annual,LOB,High,0.582191781,Santa Ana Sucker,Adult,Depth,LA11
+123,2015,Annual,LOB,High,0.410958904,Santa Ana Sucker,Adult,Depth,LA11
+124,2015,Annual,LOB,High,0.410958904,Santa Ana Sucker,Adult,Depth,LA11
+125,2016,Annual,LOB,High,0.671675774,Santa Ana Sucker,Adult,Depth,LA11
+126,2016,Annual,LOB,High,0.671675774,Santa Ana Sucker,Adult,Depth,LA11
+127,2017,Annual,LOB,High,1.373626374,Santa Ana Sucker,Adult,Depth,LA11
+128,2017,Annual,LOB,High,1.373626374,Santa Ana Sucker,Adult,Depth,LA11
+129,2010,Annual,ROB,High,2.899864069,Santa Ana Sucker,Adult,Depth,LA11
+130,2010,Annual,ROB,High,2.899864069,Santa Ana Sucker,Adult,Depth,LA11
+131,2011,Annual,ROB,High,0.525114155,Santa Ana Sucker,Adult,Depth,LA11
+132,2011,Annual,ROB,High,0.525114155,Santa Ana Sucker,Adult,Depth,LA11
+133,2012,Annual,ROB,High,0.35291439,Santa Ana Sucker,Adult,Depth,LA11
+134,2012,Annual,ROB,High,0.35291439,Santa Ana Sucker,Adult,Depth,LA11
+135,2013,Annual,ROB,High,0.148401826,Santa Ana Sucker,Adult,Depth,LA11
+136,2013,Annual,ROB,High,0.148401826,Santa Ana Sucker,Adult,Depth,LA11
+137,2014,Annual,ROB,High,0.251141553,Santa Ana Sucker,Adult,Depth,LA11
+138,2014,Annual,ROB,High,0.251141553,Santa Ana Sucker,Adult,Depth,LA11
+139,2015,Annual,ROB,High,0.182648402,Santa Ana Sucker,Adult,Depth,LA11
+140,2015,Annual,ROB,High,0.182648402,Santa Ana Sucker,Adult,Depth,LA11
+141,2016,Annual,ROB,High,0.341530055,Santa Ana Sucker,Adult,Depth,LA11
+142,2016,Annual,ROB,High,0.341530055,Santa Ana Sucker,Adult,Depth,LA11
+143,2017,Annual,ROB,High,0.595238095,Santa Ana Sucker,Adult,Depth,LA11
+144,2017,Annual,ROB,High,0.595238095,Santa Ana Sucker,Adult,Depth,LA11
+145,2010,critical,MC,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+146,2010,non_critical,MC,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+147,2011,non_critical,MC,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+148,2011,critical,MC,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+149,2012,non_critical,MC,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+150,2012,critical,MC,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+151,2013,non_critical,MC,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+152,2013,critical,MC,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+153,2014,non_critical,MC,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+154,2014,critical,MC,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+155,2015,non_critical,MC,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+156,2015,critical,MC,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+157,2016,non_critical,MC,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+158,2016,critical,MC,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+159,2017,non_critical,MC,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+160,2017,critical,MC,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+161,2010,critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+162,2010,non_critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+163,2011,non_critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+164,2011,critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+165,2012,non_critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+166,2012,critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+167,2013,non_critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+168,2013,critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+169,2014,non_critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+170,2014,critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+171,2015,non_critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+172,2015,critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+173,2016,non_critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+174,2016,critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+175,2017,non_critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+176,2017,critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+177,2010,critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+178,2010,non_critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+179,2011,non_critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+180,2011,critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+181,2012,non_critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+182,2012,critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+183,2013,non_critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+184,2013,critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+185,2014,non_critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+186,2014,critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+187,2015,non_critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+188,2015,critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+189,2016,non_critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+190,2016,critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+191,2017,non_critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+192,2017,critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Adult,Depth,LA11
+193,2010,critical,MC,Medium.Seasonal,10.22880215,Santa Ana Sucker,Adult,Depth,LA11
+194,2010,non_critical,MC,Medium.Seasonal,12.02185792,Santa Ana Sucker,Adult,Depth,LA11
+195,2011,non_critical,MC,Medium.Seasonal,10.54327808,Santa Ana Sucker,Adult,Depth,LA11
+196,2011,critical,MC,Medium.Seasonal,0.543478261,Santa Ana Sucker,Adult,Depth,LA11
+197,2012,non_critical,MC,Medium.Seasonal,4.34981685,Santa Ana Sucker,Adult,Depth,LA11
+198,2012,critical,MC,Medium.Seasonal,0.113224638,Santa Ana Sucker,Adult,Depth,LA11
+199,2013,non_critical,MC,Medium.Seasonal,2.186924494,Santa Ana Sucker,Adult,Depth,LA11
+200,2013,critical,MC,Medium.Seasonal,0.452898551,Santa Ana Sucker,Adult,Depth,LA11
+201,2014,non_critical,MC,Medium.Seasonal,2.532228361,Santa Ana Sucker,Adult,Depth,LA11
+202,2014,critical,MC,Medium.Seasonal,0,Santa Ana Sucker,Adult,Depth,LA11
+203,2015,non_critical,MC,Medium.Seasonal,2.186924494,Santa Ana Sucker,Adult,Depth,LA11
+204,2015,critical,MC,Medium.Seasonal,0.384963768,Santa Ana Sucker,Adult,Depth,LA11
+205,2016,non_critical,MC,Medium.Seasonal,2.724358974,Santa Ana Sucker,Adult,Depth,LA11
+206,2016,critical,MC,Medium.Seasonal,0.634057971,Santa Ana Sucker,Adult,Depth,LA11
+207,2017,non_critical,MC,Medium.Seasonal,6.979166667,Santa Ana Sucker,Adult,Depth,LA11
+208,2017,critical,MC,Medium.Seasonal,0.190631808,Santa Ana Sucker,Adult,Depth,LA11
+209,2010,critical,LOB,Medium.Seasonal,4.172274563,Santa Ana Sucker,Adult,Depth,LA11
+210,2010,non_critical,LOB,Medium.Seasonal,8.674863388,Santa Ana Sucker,Adult,Depth,LA11
+211,2011,non_critical,LOB,Medium.Seasonal,2.923572744,Santa Ana Sucker,Adult,Depth,LA11
+212,2011,critical,LOB,Medium.Seasonal,0.317028986,Santa Ana Sucker,Adult,Depth,LA11
+213,2012,non_critical,LOB,Medium.Seasonal,2.793040293,Santa Ana Sucker,Adult,Depth,LA11
+214,2012,critical,LOB,Medium.Seasonal,0.09057971,Santa Ana Sucker,Adult,Depth,LA11
+215,2013,non_critical,LOB,Medium.Seasonal,1.174033149,Santa Ana Sucker,Adult,Depth,LA11
+216,2013,critical,LOB,Medium.Seasonal,0.294384058,Santa Ana Sucker,Adult,Depth,LA11
+217,2014,non_critical,LOB,Medium.Seasonal,1.864640884,Santa Ana Sucker,Adult,Depth,LA11
+218,2014,critical,LOB,Medium.Seasonal,0,Santa Ana Sucker,Adult,Depth,LA11
+219,2015,non_critical,LOB,Medium.Seasonal,1.427255985,Santa Ana Sucker,Adult,Depth,LA11
+220,2015,critical,LOB,Medium.Seasonal,0.203804348,Santa Ana Sucker,Adult,Depth,LA11
+221,2016,non_critical,LOB,Medium.Seasonal,1.90018315,Santa Ana Sucker,Adult,Depth,LA11
+222,2016,critical,LOB,Medium.Seasonal,0.226449275,Santa Ana Sucker,Adult,Depth,LA11
+223,2017,non_critical,LOB,Medium.Seasonal,5.416666667,Santa Ana Sucker,Adult,Depth,LA11
+224,2017,critical,LOB,Medium.Seasonal,0.027233115,Santa Ana Sucker,Adult,Depth,LA11
+225,2010,critical,ROB,Medium.Seasonal,0.67294751,Santa Ana Sucker,Adult,Depth,LA11
+226,2010,non_critical,ROB,Medium.Seasonal,5.601092896,Santa Ana Sucker,Adult,Depth,LA11
+227,2011,non_critical,ROB,Medium.Seasonal,1.335174954,Santa Ana Sucker,Adult,Depth,LA11
+228,2011,critical,ROB,Medium.Seasonal,0.158514493,Santa Ana Sucker,Adult,Depth,LA11
+229,2012,non_critical,ROB,Medium.Seasonal,1.19047619,Santa Ana Sucker,Adult,Depth,LA11
+230,2012,critical,ROB,Medium.Seasonal,0,Santa Ana Sucker,Adult,Depth,LA11
+231,2013,non_critical,ROB,Medium.Seasonal,0.299263352,Santa Ana Sucker,Adult,Depth,LA11
+232,2013,critical,ROB,Medium.Seasonal,0.09057971,Santa Ana Sucker,Adult,Depth,LA11
+233,2014,non_critical,ROB,Medium.Seasonal,0.805709024,Santa Ana Sucker,Adult,Depth,LA11
+234,2014,critical,ROB,Medium.Seasonal,0.022644928,Santa Ana Sucker,Adult,Depth,LA11
+235,2015,non_critical,ROB,Medium.Seasonal,0.552486188,Santa Ana Sucker,Adult,Depth,LA11
+236,2015,critical,ROB,Medium.Seasonal,0.045289855,Santa Ana Sucker,Adult,Depth,LA11
+237,2016,non_critical,ROB,Medium.Seasonal,0.984432234,Santa Ana Sucker,Adult,Depth,LA11
+238,2016,critical,ROB,Medium.Seasonal,0.022644928,Santa Ana Sucker,Adult,Depth,LA11
+239,2017,non_critical,ROB,Medium.Seasonal,2.048611111,Santa Ana Sucker,Adult,Depth,LA11
+240,2017,critical,ROB,Medium.Seasonal,0,Santa Ana Sucker,Adult,Depth,LA11
+241,2010,critical,MC,High.Seasonal,4.576043069,Santa Ana Sucker,Adult,Depth,LA11
+242,2010,non_critical,MC,High.Seasonal,8.948087432,Santa Ana Sucker,Adult,Depth,LA11
+243,2011,non_critical,MC,High.Seasonal,4.327808471,Santa Ana Sucker,Adult,Depth,LA11
+244,2011,critical,MC,High.Seasonal,0.339673913,Santa Ana Sucker,Adult,Depth,LA11
+245,2012,non_critical,MC,High.Seasonal,2.174908425,Santa Ana Sucker,Adult,Depth,LA11
+246,2012,critical,MC,High.Seasonal,0.113224638,Santa Ana Sucker,Adult,Depth,LA11
+247,2013,non_critical,MC,High.Seasonal,1.174033149,Santa Ana Sucker,Adult,Depth,LA11
+248,2013,critical,MC,High.Seasonal,0.249094203,Santa Ana Sucker,Adult,Depth,LA11
+249,2014,non_critical,MC,High.Seasonal,1.79558011,Santa Ana Sucker,Adult,Depth,LA11
+250,2014,critical,MC,High.Seasonal,0,Santa Ana Sucker,Adult,Depth,LA11
+251,2015,non_critical,MC,High.Seasonal,1.38121547,Santa Ana Sucker,Adult,Depth,LA11
+252,2015,critical,MC,High.Seasonal,0.249094203,Santa Ana Sucker,Adult,Depth,LA11
+253,2016,non_critical,MC,High.Seasonal,1.373626374,Santa Ana Sucker,Adult,Depth,LA11
+254,2016,critical,MC,High.Seasonal,0.407608696,Santa Ana Sucker,Adult,Depth,LA11
+255,2017,non_critical,MC,High.Seasonal,3.888888889,Santa Ana Sucker,Adult,Depth,LA11
+256,2017,critical,MC,High.Seasonal,0.054466231,Santa Ana Sucker,Adult,Depth,LA11
+257,2010,critical,LOB,High.Seasonal,1.749663526,Santa Ana Sucker,Adult,Depth,LA11
+258,2010,non_critical,LOB,High.Seasonal,5.259562842,Santa Ana Sucker,Adult,Depth,LA11
+259,2011,non_critical,LOB,High.Seasonal,1.680478821,Santa Ana Sucker,Adult,Depth,LA11
+260,2011,critical,LOB,High.Seasonal,0.18115942,Santa Ana Sucker,Adult,Depth,LA11
+261,2012,non_critical,LOB,High.Seasonal,1.648351648,Santa Ana Sucker,Adult,Depth,LA11
+262,2012,critical,LOB,High.Seasonal,0.045289855,Santa Ana Sucker,Adult,Depth,LA11
+263,2013,non_critical,LOB,High.Seasonal,0.667587477,Santa Ana Sucker,Adult,Depth,LA11
+264,2013,critical,LOB,High.Seasonal,0.226449275,Santa Ana Sucker,Adult,Depth,LA11
+265,2014,non_critical,LOB,High.Seasonal,1.174033149,Santa Ana Sucker,Adult,Depth,LA11
+266,2014,critical,LOB,High.Seasonal,0,Santa Ana Sucker,Adult,Depth,LA11
+267,2015,non_critical,LOB,High.Seasonal,0.759668508,Santa Ana Sucker,Adult,Depth,LA11
+268,2015,critical,LOB,High.Seasonal,0.067934783,Santa Ana Sucker,Adult,Depth,LA11
+269,2016,non_critical,LOB,High.Seasonal,1.259157509,Santa Ana Sucker,Adult,Depth,LA11
+270,2016,critical,LOB,High.Seasonal,0.09057971,Santa Ana Sucker,Adult,Depth,LA11
+271,2017,non_critical,LOB,High.Seasonal,3.125,Santa Ana Sucker,Adult,Depth,LA11
+272,2017,critical,LOB,High.Seasonal,0,Santa Ana Sucker,Adult,Depth,LA11
+273,2010,critical,ROB,High.Seasonal,0.403768506,Santa Ana Sucker,Adult,Depth,LA11
+274,2010,non_critical,ROB,High.Seasonal,4.166666667,Santa Ana Sucker,Adult,Depth,LA11
+275,2011,non_critical,ROB,High.Seasonal,0.920810313,Santa Ana Sucker,Adult,Depth,LA11
+276,2011,critical,ROB,High.Seasonal,0.135869565,Santa Ana Sucker,Adult,Depth,LA11
+277,2012,non_critical,ROB,High.Seasonal,0.70970696,Santa Ana Sucker,Adult,Depth,LA11
+278,2012,critical,ROB,High.Seasonal,0,Santa Ana Sucker,Adult,Depth,LA11
+279,2013,non_critical,ROB,High.Seasonal,0.230202578,Santa Ana Sucker,Adult,Depth,LA11
+280,2013,critical,ROB,High.Seasonal,0.067934783,Santa Ana Sucker,Adult,Depth,LA11
+281,2014,non_critical,ROB,High.Seasonal,0.483425414,Santa Ana Sucker,Adult,Depth,LA11
+282,2014,critical,ROB,High.Seasonal,0.022644928,Santa Ana Sucker,Adult,Depth,LA11
+283,2015,non_critical,ROB,High.Seasonal,0.32228361,Santa Ana Sucker,Adult,Depth,LA11
+284,2015,critical,ROB,High.Seasonal,0.045289855,Santa Ana Sucker,Adult,Depth,LA11
+285,2016,non_critical,ROB,High.Seasonal,0.686813187,Santa Ana Sucker,Adult,Depth,LA11
+286,2016,critical,ROB,High.Seasonal,0,Santa Ana Sucker,Adult,Depth,LA11
+287,2017,non_critical,ROB,High.Seasonal,1.354166667,Santa Ana Sucker,Adult,Depth,LA11
+288,2017,critical,ROB,High.Seasonal,0,Santa Ana Sucker,Adult,Depth,LA11
+289,2010,Annual,MC,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+290,2011,Annual,MC,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+291,2011,Annual,MC,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+292,2012,Annual,MC,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+293,2012,Annual,MC,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+294,2013,Annual,MC,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+295,2013,Annual,MC,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+296,2014,Annual,MC,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+297,2014,Annual,MC,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+298,2015,Annual,MC,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+299,2015,Annual,MC,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+300,2016,Annual,MC,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+301,2016,Annual,MC,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+302,2017,Annual,MC,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+303,2017,Annual,MC,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+304,2010,Annual,LOB,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+305,2011,Annual,LOB,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+306,2011,Annual,LOB,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+307,2012,Annual,LOB,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+308,2012,Annual,LOB,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+309,2013,Annual,LOB,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+310,2013,Annual,LOB,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+311,2014,Annual,LOB,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+312,2014,Annual,LOB,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+313,2015,Annual,LOB,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+314,2015,Annual,LOB,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+315,2016,Annual,LOB,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+316,2016,Annual,LOB,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+317,2017,Annual,LOB,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+318,2017,Annual,LOB,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+319,2010,Annual,ROB,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+320,2011,Annual,ROB,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+321,2011,Annual,ROB,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+322,2012,Annual,ROB,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+323,2012,Annual,ROB,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+324,2013,Annual,ROB,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+325,2013,Annual,ROB,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+326,2014,Annual,ROB,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+327,2014,Annual,ROB,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+328,2015,Annual,ROB,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+329,2015,Annual,ROB,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+330,2016,Annual,ROB,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+331,2016,Annual,ROB,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+332,2017,Annual,ROB,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+333,2017,Annual,ROB,Low,100,Santa Ana Sucker,Juvenile,Depth,LA11
+334,2010,Annual,MC,Medium,13.6384232,Santa Ana Sucker,Juvenile,Depth,LA11
+335,2011,Annual,MC,Medium,7.146118721,Santa Ana Sucker,Juvenile,Depth,LA11
+336,2011,Annual,MC,Medium,7.146118721,Santa Ana Sucker,Juvenile,Depth,LA11
+337,2012,Annual,MC,Medium,2.834699454,Santa Ana Sucker,Juvenile,Depth,LA11
+338,2012,Annual,MC,Medium,2.834699454,Santa Ana Sucker,Juvenile,Depth,LA11
+339,2013,Annual,MC,Medium,1.632420091,Santa Ana Sucker,Juvenile,Depth,LA11
+340,2013,Annual,MC,Medium,1.632420091,Santa Ana Sucker,Juvenile,Depth,LA11
+341,2014,Annual,MC,Medium,1.335616438,Santa Ana Sucker,Juvenile,Depth,LA11
+342,2014,Annual,MC,Medium,1.335616438,Santa Ana Sucker,Juvenile,Depth,LA11
+343,2015,Annual,MC,Medium,1.586757991,Santa Ana Sucker,Juvenile,Depth,LA11
+344,2015,Annual,MC,Medium,1.586757991,Santa Ana Sucker,Juvenile,Depth,LA11
+345,2016,Annual,MC,Medium,1.992258652,Santa Ana Sucker,Juvenile,Depth,LA11
+346,2016,Annual,MC,Medium,1.992258652,Santa Ana Sucker,Juvenile,Depth,LA11
+347,2017,Annual,MC,Medium,3.632478632,Santa Ana Sucker,Juvenile,Depth,LA11
+348,2017,Annual,MC,Medium,3.632478632,Santa Ana Sucker,Juvenile,Depth,LA11
+349,2010,Annual,LOB,Medium,9.651110104,Santa Ana Sucker,Juvenile,Depth,LA11
+350,2011,Annual,LOB,Medium,2.751141553,Santa Ana Sucker,Juvenile,Depth,LA11
+351,2011,Annual,LOB,Medium,2.751141553,Santa Ana Sucker,Juvenile,Depth,LA11
+352,2012,Annual,LOB,Medium,1.639344262,Santa Ana Sucker,Juvenile,Depth,LA11
+353,2012,Annual,LOB,Medium,1.639344262,Santa Ana Sucker,Juvenile,Depth,LA11
+354,2013,Annual,LOB,Medium,0.901826484,Santa Ana Sucker,Juvenile,Depth,LA11
+355,2013,Annual,LOB,Medium,0.901826484,Santa Ana Sucker,Juvenile,Depth,LA11
+356,2014,Annual,LOB,Medium,1.107305936,Santa Ana Sucker,Juvenile,Depth,LA11
+357,2014,Annual,LOB,Medium,1.107305936,Santa Ana Sucker,Juvenile,Depth,LA11
+358,2015,Annual,LOB,Medium,1.02739726,Santa Ana Sucker,Juvenile,Depth,LA11
+359,2015,Annual,LOB,Medium,1.02739726,Santa Ana Sucker,Juvenile,Depth,LA11
+360,2016,Annual,LOB,Medium,1.229508197,Santa Ana Sucker,Juvenile,Depth,LA11
+361,2016,Annual,LOB,Medium,1.229508197,Santa Ana Sucker,Juvenile,Depth,LA11
+362,2017,Annual,LOB,Medium,2.457264957,Santa Ana Sucker,Juvenile,Depth,LA11
+363,2017,Annual,LOB,Medium,2.457264957,Santa Ana Sucker,Juvenile,Depth,LA11
+364,2010,Annual,ROB,Medium,4.349796103,Santa Ana Sucker,Juvenile,Depth,LA11
+365,2011,Annual,ROB,Medium,0.821917808,Santa Ana Sucker,Juvenile,Depth,LA11
+366,2011,Annual,ROB,Medium,0.821917808,Santa Ana Sucker,Juvenile,Depth,LA11
+367,2012,Annual,ROB,Medium,0.637522769,Santa Ana Sucker,Juvenile,Depth,LA11
+368,2012,Annual,ROB,Medium,0.637522769,Santa Ana Sucker,Juvenile,Depth,LA11
+369,2013,Annual,ROB,Medium,0.285388128,Santa Ana Sucker,Juvenile,Depth,LA11
+370,2013,Annual,ROB,Medium,0.285388128,Santa Ana Sucker,Juvenile,Depth,LA11
+371,2014,Annual,ROB,Medium,0.410958904,Santa Ana Sucker,Juvenile,Depth,LA11
+372,2014,Annual,ROB,Medium,0.410958904,Santa Ana Sucker,Juvenile,Depth,LA11
+373,2015,Annual,ROB,Medium,0.365296804,Santa Ana Sucker,Juvenile,Depth,LA11
+374,2015,Annual,ROB,Medium,0.365296804,Santa Ana Sucker,Juvenile,Depth,LA11
+375,2016,Annual,ROB,Medium,0.614754098,Santa Ana Sucker,Juvenile,Depth,LA11
+376,2016,Annual,ROB,Medium,0.614754098,Santa Ana Sucker,Juvenile,Depth,LA11
+377,2017,Annual,ROB,Medium,0.976800977,Santa Ana Sucker,Juvenile,Depth,LA11
+378,2017,Annual,ROB,Medium,0.976800977,Santa Ana Sucker,Juvenile,Depth,LA11
+379,2010,Annual,MC,High,7.612143181,Santa Ana Sucker,Juvenile,Depth,LA11
+380,2011,Annual,MC,High,4.257990868,Santa Ana Sucker,Juvenile,Depth,LA11
+381,2011,Annual,MC,High,4.257990868,Santa Ana Sucker,Juvenile,Depth,LA11
+382,2012,Annual,MC,High,1.411657559,Santa Ana Sucker,Juvenile,Depth,LA11
+383,2012,Annual,MC,High,1.411657559,Santa Ana Sucker,Juvenile,Depth,LA11
+384,2013,Annual,MC,High,0.821917808,Santa Ana Sucker,Juvenile,Depth,LA11
+385,2013,Annual,MC,High,0.821917808,Santa Ana Sucker,Juvenile,Depth,LA11
+386,2014,Annual,MC,High,0.742009132,Santa Ana Sucker,Juvenile,Depth,LA11
+387,2014,Annual,MC,High,0.742009132,Santa Ana Sucker,Juvenile,Depth,LA11
+388,2015,Annual,MC,High,0.936073059,Santa Ana Sucker,Juvenile,Depth,LA11
+389,2015,Annual,MC,High,0.936073059,Santa Ana Sucker,Juvenile,Depth,LA11
+390,2016,Annual,MC,High,1.001821494,Santa Ana Sucker,Juvenile,Depth,LA11
+391,2016,Annual,MC,High,1.001821494,Santa Ana Sucker,Juvenile,Depth,LA11
+392,2017,Annual,MC,High,2.014652015,Santa Ana Sucker,Juvenile,Depth,LA11
+393,2017,Annual,MC,High,2.014652015,Santa Ana Sucker,Juvenile,Depth,LA11
+394,2010,Annual,LOB,High,4.213864975,Santa Ana Sucker,Juvenile,Depth,LA11
+395,2011,Annual,LOB,High,1.02739726,Santa Ana Sucker,Juvenile,Depth,LA11
+396,2011,Annual,LOB,High,1.02739726,Santa Ana Sucker,Juvenile,Depth,LA11
+397,2012,Annual,LOB,High,0.956284153,Santa Ana Sucker,Juvenile,Depth,LA11
+398,2012,Annual,LOB,High,0.956284153,Santa Ana Sucker,Juvenile,Depth,LA11
+399,2013,Annual,LOB,High,0.525114155,Santa Ana Sucker,Juvenile,Depth,LA11
+400,2013,Annual,LOB,High,0.525114155,Santa Ana Sucker,Juvenile,Depth,LA11
+401,2014,Annual,LOB,High,0.627853881,Santa Ana Sucker,Juvenile,Depth,LA11
+402,2014,Annual,LOB,High,0.627853881,Santa Ana Sucker,Juvenile,Depth,LA11
+403,2015,Annual,LOB,High,0.51369863,Santa Ana Sucker,Juvenile,Depth,LA11
+404,2015,Annual,LOB,High,0.51369863,Santa Ana Sucker,Juvenile,Depth,LA11
+405,2016,Annual,LOB,High,0.660291439,Santa Ana Sucker,Juvenile,Depth,LA11
+406,2016,Annual,LOB,High,0.660291439,Santa Ana Sucker,Juvenile,Depth,LA11
+407,2017,Annual,LOB,High,1.572039072,Santa Ana Sucker,Juvenile,Depth,LA11
+408,2017,Annual,LOB,High,1.572039072,Santa Ana Sucker,Juvenile,Depth,LA11
+409,2010,Annual,ROB,High,2.53738106,Santa Ana Sucker,Juvenile,Depth,LA11
+410,2011,Annual,ROB,High,0.547945205,Santa Ana Sucker,Juvenile,Depth,LA11
+411,2011,Annual,ROB,High,0.547945205,Santa Ana Sucker,Juvenile,Depth,LA11
+412,2012,Annual,ROB,High,0.341530055,Santa Ana Sucker,Juvenile,Depth,LA11
+413,2012,Annual,ROB,High,0.341530055,Santa Ana Sucker,Juvenile,Depth,LA11
+414,2013,Annual,ROB,High,0.136986301,Santa Ana Sucker,Juvenile,Depth,LA11
+415,2013,Annual,ROB,High,0.136986301,Santa Ana Sucker,Juvenile,Depth,LA11
+416,2014,Annual,ROB,High,0.239726027,Santa Ana Sucker,Juvenile,Depth,LA11
+417,2014,Annual,ROB,High,0.239726027,Santa Ana Sucker,Juvenile,Depth,LA11
+418,2015,Annual,ROB,High,0.262557078,Santa Ana Sucker,Juvenile,Depth,LA11
+419,2015,Annual,ROB,High,0.262557078,Santa Ana Sucker,Juvenile,Depth,LA11
+420,2016,Annual,ROB,High,0.341530055,Santa Ana Sucker,Juvenile,Depth,LA11
+421,2016,Annual,ROB,High,0.341530055,Santa Ana Sucker,Juvenile,Depth,LA11
+422,2017,Annual,ROB,High,0.625763126,Santa Ana Sucker,Juvenile,Depth,LA11
+423,2017,Annual,ROB,High,0.625763126,Santa Ana Sucker,Juvenile,Depth,LA11
+424,2010,non_critical,MC,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+425,2011,non_critical,MC,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+426,2011,critical,MC,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+427,2012,non_critical,MC,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+428,2012,critical,MC,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+429,2013,non_critical,MC,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+430,2013,critical,MC,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+431,2014,non_critical,MC,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+432,2014,critical,MC,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+433,2015,non_critical,MC,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+434,2015,critical,MC,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+435,2016,non_critical,MC,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+436,2016,critical,MC,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+437,2017,non_critical,MC,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+438,2017,critical,MC,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+439,2010,non_critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+440,2011,non_critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+441,2011,critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+442,2012,non_critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+443,2012,critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+444,2013,non_critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+445,2013,critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+446,2014,non_critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+447,2014,critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+448,2015,non_critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+449,2015,critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+450,2016,non_critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+451,2016,critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+452,2017,non_critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+453,2017,critical,LOB,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+454,2010,non_critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+455,2011,non_critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+456,2011,critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+457,2012,non_critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+458,2012,critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+459,2013,non_critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+460,2013,critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+461,2014,non_critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+462,2014,critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+463,2015,non_critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+464,2015,critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+465,2016,non_critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+466,2016,critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+467,2017,non_critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+468,2017,critical,ROB,Low.Seasonal,100,Santa Ana Sucker,Juvenile,Depth,LA11
+469,2010,non_critical,MC,Medium.Seasonal,13.6384232,Santa Ana Sucker,Juvenile,Depth,LA11
+470,2011,non_critical,MC,Medium.Seasonal,3.105345912,Santa Ana Sucker,Juvenile,Depth,LA11
+471,2011,critical,MC,Medium.Seasonal,12.74509804,Santa Ana Sucker,Juvenile,Depth,LA11
+472,2012,non_critical,MC,Medium.Seasonal,3.658059468,Santa Ana Sucker,Juvenile,Depth,LA11
+473,2012,critical,MC,Medium.Seasonal,1.688453159,Santa Ana Sucker,Juvenile,Depth,LA11
+474,2013,non_critical,MC,Medium.Seasonal,2.181603774,Santa Ana Sucker,Juvenile,Depth,LA11
+475,2013,critical,MC,Medium.Seasonal,0.871459695,Santa Ana Sucker,Juvenile,Depth,LA11
+476,2014,non_critical,MC,Medium.Seasonal,1.749213836,Santa Ana Sucker,Juvenile,Depth,LA11
+477,2014,critical,MC,Medium.Seasonal,0.762527233,Santa Ana Sucker,Juvenile,Depth,LA11
+478,2015,non_critical,MC,Medium.Seasonal,1.827830189,Santa Ana Sucker,Juvenile,Depth,LA11
+479,2015,critical,MC,Medium.Seasonal,1.252723312,Santa Ana Sucker,Juvenile,Depth,LA11
+480,2016,non_critical,MC,Medium.Seasonal,2.30829421,Santa Ana Sucker,Juvenile,Depth,LA11
+481,2016,critical,MC,Medium.Seasonal,1.552287582,Santa Ana Sucker,Juvenile,Depth,LA11
+482,2017,non_critical,MC,Medium.Seasonal,7.118055556,Santa Ana Sucker,Juvenile,Depth,LA11
+483,2017,critical,MC,Medium.Seasonal,0.89869281,Santa Ana Sucker,Juvenile,Depth,LA11
+484,2010,non_critical,LOB,Medium.Seasonal,9.651110104,Santa Ana Sucker,Juvenile,Depth,LA11
+485,2011,non_critical,LOB,Medium.Seasonal,1.572327044,Santa Ana Sucker,Juvenile,Depth,LA11
+486,2011,critical,LOB,Medium.Seasonal,4.38453159,Santa Ana Sucker,Juvenile,Depth,LA11
+487,2012,non_critical,LOB,Medium.Seasonal,2.112676056,Santa Ana Sucker,Juvenile,Depth,LA11
+488,2012,critical,LOB,Medium.Seasonal,0.980392157,Santa Ana Sucker,Juvenile,Depth,LA11
+489,2013,non_critical,LOB,Medium.Seasonal,1.198899371,Santa Ana Sucker,Juvenile,Depth,LA11
+490,2013,critical,LOB,Medium.Seasonal,0.490196078,Santa Ana Sucker,Juvenile,Depth,LA11
+491,2014,non_critical,LOB,Medium.Seasonal,1.454402516,Santa Ana Sucker,Juvenile,Depth,LA11
+492,2014,critical,LOB,Medium.Seasonal,0.626361656,Santa Ana Sucker,Juvenile,Depth,LA11
+493,2015,non_critical,LOB,Medium.Seasonal,1.159591195,Santa Ana Sucker,Juvenile,Depth,LA11
+494,2015,critical,LOB,Medium.Seasonal,0.84422658,Santa Ana Sucker,Juvenile,Depth,LA11
+495,2016,non_critical,LOB,Medium.Seasonal,1.525821596,Santa Ana Sucker,Juvenile,Depth,LA11
+496,2016,critical,LOB,Medium.Seasonal,0.816993464,Santa Ana Sucker,Juvenile,Depth,LA11
+497,2017,non_critical,LOB,Medium.Seasonal,5.138888889,Santa Ana Sucker,Juvenile,Depth,LA11
+498,2017,critical,LOB,Medium.Seasonal,0.354030501,Santa Ana Sucker,Juvenile,Depth,LA11
+499,2010,non_critical,ROB,Medium.Seasonal,4.349796103,Santa Ana Sucker,Juvenile,Depth,LA11
+500,2011,non_critical,ROB,Medium.Seasonal,0.923742138,Santa Ana Sucker,Juvenile,Depth,LA11
+501,2011,critical,ROB,Medium.Seasonal,0.680827887,Santa Ana Sucker,Juvenile,Depth,LA11
+502,2012,non_critical,ROB,Medium.Seasonal,0.665101721,Santa Ana Sucker,Juvenile,Depth,LA11
+503,2012,critical,ROB,Medium.Seasonal,0.59912854,Santa Ana Sucker,Juvenile,Depth,LA11
+504,2013,non_critical,ROB,Medium.Seasonal,0.314465409,Santa Ana Sucker,Juvenile,Depth,LA11
+505,2013,critical,ROB,Medium.Seasonal,0.245098039,Santa Ana Sucker,Juvenile,Depth,LA11
+506,2014,non_critical,ROB,Medium.Seasonal,0.60927673,Santa Ana Sucker,Juvenile,Depth,LA11
+507,2014,critical,ROB,Medium.Seasonal,0.136165577,Santa Ana Sucker,Juvenile,Depth,LA11
+508,2015,non_critical,ROB,Medium.Seasonal,0.373427673,Santa Ana Sucker,Juvenile,Depth,LA11
+509,2015,critical,ROB,Medium.Seasonal,0.354030501,Santa Ana Sucker,Juvenile,Depth,LA11
+510,2016,non_critical,ROB,Medium.Seasonal,0.899843505,Santa Ana Sucker,Juvenile,Depth,LA11
+511,2016,critical,ROB,Medium.Seasonal,0.217864924,Santa Ana Sucker,Juvenile,Depth,LA11
+512,2017,non_critical,ROB,Medium.Seasonal,2.1875,Santa Ana Sucker,Juvenile,Depth,LA11
+513,2017,critical,ROB,Medium.Seasonal,0.027233115,Santa Ana Sucker,Juvenile,Depth,LA11
+514,2010,non_critical,MC,High.Seasonal,7.612143181,Santa Ana Sucker,Juvenile,Depth,LA11
+515,2011,non_critical,MC,High.Seasonal,1.41509434,Santa Ana Sucker,Juvenile,Depth,LA11
+516,2011,critical,MC,High.Seasonal,8.197167756,Santa Ana Sucker,Juvenile,Depth,LA11
+517,2012,non_critical,MC,High.Seasonal,1.741001565,Santa Ana Sucker,Juvenile,Depth,LA11
+518,2012,critical,MC,High.Seasonal,0.953159041,Santa Ana Sucker,Juvenile,Depth,LA11
+519,2013,non_critical,MC,High.Seasonal,1.198899371,Santa Ana Sucker,Juvenile,Depth,LA11
+520,2013,critical,MC,High.Seasonal,0.29956427,Santa Ana Sucker,Juvenile,Depth,LA11
+521,2014,non_critical,MC,High.Seasonal,1.061320755,Santa Ana Sucker,Juvenile,Depth,LA11
+522,2014,critical,MC,High.Seasonal,0.29956427,Santa Ana Sucker,Juvenile,Depth,LA11
+523,2015,non_critical,MC,High.Seasonal,1.159591195,Santa Ana Sucker,Juvenile,Depth,LA11
+524,2015,critical,MC,High.Seasonal,0.626361656,Santa Ana Sucker,Juvenile,Depth,LA11
+525,2016,non_critical,MC,High.Seasonal,1.075899844,Santa Ana Sucker,Juvenile,Depth,LA11
+526,2016,critical,MC,High.Seasonal,0.89869281,Santa Ana Sucker,Juvenile,Depth,LA11
+527,2017,non_critical,MC,High.Seasonal,3.923611111,Santa Ana Sucker,Juvenile,Depth,LA11
+528,2017,critical,MC,High.Seasonal,0.517429194,Santa Ana Sucker,Juvenile,Depth,LA11
+529,2010,non_critical,LOB,High.Seasonal,4.213864975,Santa Ana Sucker,Juvenile,Depth,LA11
+530,2011,non_critical,LOB,High.Seasonal,0.943396226,Santa Ana Sucker,Juvenile,Depth,LA11
+531,2011,critical,LOB,High.Seasonal,1.14379085,Santa Ana Sucker,Juvenile,Depth,LA11
+532,2012,non_critical,LOB,High.Seasonal,1.251956182,Santa Ana Sucker,Juvenile,Depth,LA11
+533,2012,critical,LOB,High.Seasonal,0.544662309,Santa Ana Sucker,Juvenile,Depth,LA11
+534,2013,non_critical,LOB,High.Seasonal,0.687893082,Santa Ana Sucker,Juvenile,Depth,LA11
+535,2013,critical,LOB,High.Seasonal,0.29956427,Santa Ana Sucker,Juvenile,Depth,LA11
+536,2014,non_critical,LOB,High.Seasonal,0.80581761,Santa Ana Sucker,Juvenile,Depth,LA11
+537,2014,critical,LOB,High.Seasonal,0.381263617,Santa Ana Sucker,Juvenile,Depth,LA11
+538,2015,non_critical,LOB,High.Seasonal,0.530660377,Santa Ana Sucker,Juvenile,Depth,LA11
+539,2015,critical,LOB,High.Seasonal,0.490196078,Santa Ana Sucker,Juvenile,Depth,LA11
+540,2016,non_critical,LOB,High.Seasonal,0.938967136,Santa Ana Sucker,Juvenile,Depth,LA11
+541,2016,critical,LOB,High.Seasonal,0.272331155,Santa Ana Sucker,Juvenile,Depth,LA11
+542,2017,non_critical,LOB,High.Seasonal,3.298611111,Santa Ana Sucker,Juvenile,Depth,LA11
+543,2017,critical,LOB,High.Seasonal,0.217864924,Santa Ana Sucker,Juvenile,Depth,LA11
+544,2010,non_critical,ROB,High.Seasonal,2.53738106,Santa Ana Sucker,Juvenile,Depth,LA11
+545,2011,non_critical,ROB,High.Seasonal,0.628930818,Santa Ana Sucker,Juvenile,Depth,LA11
+546,2011,critical,ROB,High.Seasonal,0.435729847,Santa Ana Sucker,Juvenile,Depth,LA11
+547,2012,non_critical,ROB,High.Seasonal,0.312989045,Santa Ana Sucker,Juvenile,Depth,LA11
+548,2012,critical,ROB,High.Seasonal,0.381263617,Santa Ana Sucker,Juvenile,Depth,LA11
+549,2013,non_critical,ROB,High.Seasonal,0.157232704,Santa Ana Sucker,Juvenile,Depth,LA11
+550,2013,critical,ROB,High.Seasonal,0.108932462,Santa Ana Sucker,Juvenile,Depth,LA11
+551,2014,non_critical,ROB,High.Seasonal,0.353773585,Santa Ana Sucker,Juvenile,Depth,LA11
+552,2014,critical,ROB,High.Seasonal,0.081699346,Santa Ana Sucker,Juvenile,Depth,LA11
+553,2015,non_critical,ROB,High.Seasonal,0.294811321,Santa Ana Sucker,Juvenile,Depth,LA11
+554,2015,critical,ROB,High.Seasonal,0.217864924,Santa Ana Sucker,Juvenile,Depth,LA11
+555,2016,non_critical,ROB,High.Seasonal,0.469483568,Santa Ana Sucker,Juvenile,Depth,LA11
+556,2016,critical,ROB,High.Seasonal,0.163398693,Santa Ana Sucker,Juvenile,Depth,LA11
+557,2017,non_critical,ROB,High.Seasonal,1.423611111,Santa Ana Sucker,Juvenile,Depth,LA11
+558,2017,critical,ROB,High.Seasonal,0,Santa Ana Sucker,Juvenile,Depth,LA11
+559,2010,Annual,MC,Low,0.498414137,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+560,2011,Annual,MC,Low,0.764840183,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+561,2011,Annual,MC,Low,0.764840183,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+562,2012,Annual,MC,Low,1.411657559,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+563,2012,Annual,MC,Low,1.411657559,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+564,2013,Annual,MC,Low,0.171232877,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+565,2013,Annual,MC,Low,0.171232877,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+566,2014,Annual,MC,Low,3.652968037,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+567,2014,Annual,MC,Low,3.652968037,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+568,2015,Annual,MC,Low,15.86757991,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+569,2015,Annual,MC,Low,15.86757991,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+570,2016,Annual,MC,Low,25.70582878,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+571,2016,Annual,MC,Low,25.70582878,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+572,2017,Annual,MC,Low,23.64163614,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+573,2017,Annual,MC,Low,23.64163614,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+574,2010,Annual,LOB,Low,8.608971454,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+575,2011,Annual,LOB,Low,4.840182648,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+576,2011,Annual,LOB,Low,4.840182648,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+577,2012,Annual,LOB,Low,1.639344262,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+578,2012,Annual,LOB,Low,1.639344262,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+579,2013,Annual,LOB,Low,0.95890411,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+580,2013,Annual,LOB,Low,0.95890411,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+581,2014,Annual,LOB,Low,0.776255708,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+582,2014,Annual,LOB,Low,0.776255708,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+583,2015,Annual,LOB,Low,0.901826484,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+584,2015,Annual,LOB,Low,0.901826484,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+585,2016,Annual,LOB,Low,1.275045537,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+586,2016,Annual,LOB,Low,1.275045537,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+587,2017,Annual,LOB,Low,1.984126984,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+588,2017,Annual,LOB,Low,1.984126984,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+589,2010,Annual,ROB,Low,11.46352515,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+590,2011,Annual,ROB,Low,2.511415525,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+591,2011,Annual,ROB,Low,2.511415525,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+592,2012,Annual,ROB,Low,1.775956284,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+593,2012,Annual,ROB,Low,1.775956284,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+594,2013,Annual,ROB,Low,0.95890411,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+595,2013,Annual,ROB,Low,0.95890411,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+596,2014,Annual,ROB,Low,1.221461187,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+597,2014,Annual,ROB,Low,1.221461187,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+598,2015,Annual,ROB,Low,1.130136986,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+599,2015,Annual,ROB,Low,1.130136986,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+600,2016,Annual,ROB,Low,1.423041894,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+601,2016,Annual,ROB,Low,1.423041894,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+602,2017,Annual,ROB,Low,2.823565324,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+603,2017,Annual,ROB,Low,2.823565324,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+604,2010,Annual,MC,Medium,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+605,2011,Annual,MC,Medium,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+606,2011,Annual,MC,Medium,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+607,2012,Annual,MC,Medium,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+608,2012,Annual,MC,Medium,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+609,2013,Annual,MC,Medium,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+610,2013,Annual,MC,Medium,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+611,2014,Annual,MC,Medium,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+612,2014,Annual,MC,Medium,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+613,2015,Annual,MC,Medium,0.0456621,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+614,2015,Annual,MC,Medium,0.0456621,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+615,2016,Annual,MC,Medium,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+616,2016,Annual,MC,Medium,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+617,2017,Annual,MC,Medium,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+618,2017,Annual,MC,Medium,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+619,2010,Annual,LOB,Medium,5.845038514,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+620,2011,Annual,LOB,Medium,4.04109589,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+621,2011,Annual,LOB,Medium,4.04109589,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+622,2012,Annual,LOB,Medium,1.070127505,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+623,2012,Annual,LOB,Medium,1.070127505,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+624,2013,Annual,LOB,Medium,0.582191781,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+625,2013,Annual,LOB,Medium,0.582191781,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+626,2014,Annual,LOB,Medium,0.479452055,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+627,2014,Annual,LOB,Medium,0.479452055,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+628,2015,Annual,LOB,Medium,0.605022831,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+629,2015,Annual,LOB,Medium,0.605022831,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+630,2016,Annual,LOB,Medium,0.808287796,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+631,2016,Annual,LOB,Medium,0.808287796,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+632,2017,Annual,LOB,Medium,1.266788767,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+633,2017,Annual,LOB,Medium,1.266788767,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+634,2010,Annual,ROB,Medium,5.256003625,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+635,2011,Annual,ROB,Medium,1.267123288,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+636,2011,Annual,ROB,Medium,1.267123288,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+637,2012,Annual,ROB,Medium,1.172586521,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+638,2012,Annual,ROB,Medium,1.172586521,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+639,2013,Annual,ROB,Medium,0.650684932,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+640,2013,Annual,ROB,Medium,0.650684932,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+641,2014,Annual,ROB,Medium,0.764840183,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+642,2014,Annual,ROB,Medium,0.764840183,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+643,2015,Annual,ROB,Medium,0.673515982,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+644,2015,Annual,ROB,Medium,0.673515982,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+645,2016,Annual,ROB,Medium,0.922131148,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+646,2016,Annual,ROB,Medium,0.922131148,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+647,2017,Annual,ROB,Medium,1.923076923,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+648,2017,Annual,ROB,Medium,1.923076923,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+649,2010,Annual,MC,High,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+650,2011,Annual,MC,High,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+651,2011,Annual,MC,High,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+652,2012,Annual,MC,High,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+653,2012,Annual,MC,High,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+654,2013,Annual,MC,High,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+655,2013,Annual,MC,High,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+656,2014,Annual,MC,High,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+657,2014,Annual,MC,High,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+658,2015,Annual,MC,High,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+659,2015,Annual,MC,High,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+660,2016,Annual,MC,High,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+661,2016,Annual,MC,High,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+662,2017,Annual,MC,High,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+663,2017,Annual,MC,High,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+664,2010,Annual,LOB,High,1.223380154,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+665,2011,Annual,LOB,High,1.929223744,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+666,2011,Annual,LOB,High,1.929223744,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+667,2012,Annual,LOB,High,0.443989071,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+668,2012,Annual,LOB,High,0.443989071,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+669,2013,Annual,LOB,High,0.194063927,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+670,2013,Annual,LOB,High,0.194063927,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+671,2014,Annual,LOB,High,0.136986301,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+672,2014,Annual,LOB,High,0.136986301,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+673,2015,Annual,LOB,High,0.251141553,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+674,2015,Annual,LOB,High,0.251141553,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+675,2016,Annual,LOB,High,0.227686703,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+676,2016,Annual,LOB,High,0.227686703,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+677,2017,Annual,LOB,High,0.671550672,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+678,2017,Annual,LOB,High,0.671550672,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+679,2010,Annual,ROB,High,2.673312188,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+680,2011,Annual,ROB,High,0.821917808,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+681,2011,Annual,ROB,High,0.821917808,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+682,2012,Annual,ROB,High,0.717213115,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+683,2012,Annual,ROB,High,0.717213115,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+684,2013,Annual,ROB,High,0.376712329,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+685,2013,Annual,ROB,High,0.376712329,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+686,2014,Annual,ROB,High,0.51369863,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+687,2014,Annual,ROB,High,0.51369863,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+688,2015,Annual,ROB,High,0.422374429,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+689,2015,Annual,ROB,High,0.422374429,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+690,2016,Annual,ROB,High,0.455373406,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+691,2016,Annual,ROB,High,0.455373406,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+692,2017,Annual,ROB,High,1.205738706,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+693,2017,Annual,ROB,High,1.205738706,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+694,2010,non_critical,MC,Low.Seasonal,0.498414137,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+695,2011,non_critical,MC,Low.Seasonal,0.530660377,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+696,2011,critical,MC,Low.Seasonal,1.089324619,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+697,2012,non_critical,MC,Low.Seasonal,0.860719875,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+698,2012,critical,MC,Low.Seasonal,2.178649237,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+699,2013,non_critical,MC,Low.Seasonal,0.294811321,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+700,2013,critical,MC,Low.Seasonal,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+701,2014,non_critical,MC,Low.Seasonal,4.618710692,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+702,2014,critical,MC,Low.Seasonal,2.314814815,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+703,2015,non_critical,MC,Low.Seasonal,17.11871069,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+704,2015,critical,MC,Low.Seasonal,14.13398693,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+705,2016,non_critical,MC,Low.Seasonal,23.63067293,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+706,2016,critical,MC,Low.Seasonal,28.59477124,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+707,2017,non_critical,MC,Low.Seasonal,16.66666667,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+708,2017,critical,MC,Low.Seasonal,29.11220044,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+709,2010,non_critical,LOB,Low.Seasonal,8.608971454,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+710,2011,non_critical,LOB,Low.Seasonal,1.650943396,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+711,2011,critical,LOB,Low.Seasonal,9.259259259,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+712,2012,non_critical,LOB,Low.Seasonal,2.05399061,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+713,2012,critical,LOB,Low.Seasonal,1.062091503,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+714,2013,non_critical,LOB,Low.Seasonal,1.336477987,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+715,2013,critical,LOB,Low.Seasonal,0.435729847,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+716,2014,non_critical,LOB,Low.Seasonal,1.100628931,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+717,2014,critical,LOB,Low.Seasonal,0.326797386,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+718,2015,non_critical,LOB,Low.Seasonal,1.061320755,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+719,2015,critical,LOB,Low.Seasonal,0.680827887,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+720,2016,non_critical,LOB,Low.Seasonal,1.42801252,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+721,2016,critical,LOB,Low.Seasonal,1.062091503,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+722,2017,non_critical,LOB,Low.Seasonal,3.819444444,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+723,2017,critical,LOB,Low.Seasonal,0.544662309,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+724,2010,non_critical,ROB,Low.Seasonal,11.46352515,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+725,2011,non_critical,ROB,Low.Seasonal,2.004716981,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+726,2011,critical,ROB,Low.Seasonal,3.213507625,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+727,2012,non_critical,ROB,Low.Seasonal,2.171361502,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+728,2012,critical,ROB,Low.Seasonal,1.225490196,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+729,2013,non_critical,ROB,Low.Seasonal,1.257861635,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+730,2013,critical,ROB,Low.Seasonal,0.544662309,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+731,2014,non_critical,ROB,Low.Seasonal,1.670597484,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+732,2014,critical,ROB,Low.Seasonal,0.59912854,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+733,2015,non_critical,ROB,Low.Seasonal,1.218553459,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+734,2015,critical,ROB,Low.Seasonal,1.007625272,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+735,2016,non_critical,ROB,Low.Seasonal,1.877934272,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+736,2016,critical,ROB,Low.Seasonal,0.789760349,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+737,2017,non_critical,ROB,Low.Seasonal,6.006944444,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+738,2017,critical,ROB,Low.Seasonal,0.326797386,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+739,2010,non_critical,MC,Medium.Seasonal,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+740,2011,non_critical,MC,Medium.Seasonal,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+741,2011,critical,MC,Medium.Seasonal,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+742,2012,non_critical,MC,Medium.Seasonal,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+743,2012,critical,MC,Medium.Seasonal,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+744,2013,non_critical,MC,Medium.Seasonal,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+745,2013,critical,MC,Medium.Seasonal,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+746,2014,non_critical,MC,Medium.Seasonal,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+747,2014,critical,MC,Medium.Seasonal,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+748,2015,non_critical,MC,Medium.Seasonal,0.078616352,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+749,2015,critical,MC,Medium.Seasonal,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+750,2016,non_critical,MC,Medium.Seasonal,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+751,2016,critical,MC,Medium.Seasonal,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+752,2017,non_critical,MC,Medium.Seasonal,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+753,2017,critical,MC,Medium.Seasonal,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+754,2010,non_critical,LOB,Medium.Seasonal,5.845038514,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+755,2011,non_critical,LOB,Medium.Seasonal,1.120283019,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+756,2011,critical,LOB,Medium.Seasonal,8.088235294,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+757,2012,non_critical,LOB,Medium.Seasonal,1.291079812,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+758,2012,critical,LOB,Medium.Seasonal,0.762527233,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+759,2013,non_critical,LOB,Medium.Seasonal,0.884433962,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+760,2013,critical,LOB,Medium.Seasonal,0.163398693,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+761,2014,non_critical,LOB,Medium.Seasonal,0.70754717,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+762,2014,critical,LOB,Medium.Seasonal,0.163398693,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+763,2015,non_critical,LOB,Medium.Seasonal,0.727201258,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+764,2015,critical,LOB,Medium.Seasonal,0.435729847,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+765,2016,non_critical,LOB,Medium.Seasonal,0.899843505,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+766,2016,critical,LOB,Medium.Seasonal,0.680827887,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+767,2017,non_critical,LOB,Medium.Seasonal,2.430555556,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+768,2017,critical,LOB,Medium.Seasonal,0.354030501,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+769,2010,non_critical,ROB,Medium.Seasonal,5.256003625,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+770,2011,non_critical,ROB,Medium.Seasonal,1.120283019,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+771,2011,critical,ROB,Medium.Seasonal,1.470588235,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+772,2012,non_critical,ROB,Medium.Seasonal,1.486697966,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+773,2012,critical,ROB,Medium.Seasonal,0.735294118,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+774,2013,non_critical,ROB,Medium.Seasonal,0.845125786,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+775,2013,critical,ROB,Medium.Seasonal,0.381263617,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+776,2014,non_critical,ROB,Medium.Seasonal,0.963050314,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+777,2014,critical,ROB,Medium.Seasonal,0.490196078,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+778,2015,non_critical,ROB,Medium.Seasonal,0.727201258,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+779,2015,critical,ROB,Medium.Seasonal,0.59912854,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+780,2016,non_critical,ROB,Medium.Seasonal,1.271517997,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+781,2016,critical,ROB,Medium.Seasonal,0.435729847,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+782,2017,non_critical,ROB,Medium.Seasonal,3.993055556,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+783,2017,critical,ROB,Medium.Seasonal,0.29956427,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+784,2010,non_critical,MC,High.Seasonal,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+785,2011,non_critical,MC,High.Seasonal,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+786,2011,critical,MC,High.Seasonal,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+787,2012,non_critical,MC,High.Seasonal,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+788,2012,critical,MC,High.Seasonal,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+789,2013,non_critical,MC,High.Seasonal,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+790,2013,critical,MC,High.Seasonal,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+791,2014,non_critical,MC,High.Seasonal,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+792,2014,critical,MC,High.Seasonal,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+793,2015,non_critical,MC,High.Seasonal,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+794,2015,critical,MC,High.Seasonal,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+795,2016,non_critical,MC,High.Seasonal,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+796,2016,critical,MC,High.Seasonal,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+797,2017,non_critical,MC,High.Seasonal,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+798,2017,critical,MC,High.Seasonal,0,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+799,2010,non_critical,LOB,High.Seasonal,1.223380154,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+800,2011,non_critical,LOB,High.Seasonal,0.452044025,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+801,2011,critical,LOB,High.Seasonal,3.976034858,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+802,2012,non_critical,LOB,High.Seasonal,0.508607199,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+803,2012,critical,LOB,High.Seasonal,0.354030501,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+804,2013,non_critical,LOB,High.Seasonal,0.294811321,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+805,2013,critical,LOB,High.Seasonal,0.054466231,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+806,2014,non_critical,LOB,High.Seasonal,0.216194969,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+807,2014,critical,LOB,High.Seasonal,0.027233115,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+808,2015,non_critical,LOB,High.Seasonal,0.334119497,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+809,2015,critical,LOB,High.Seasonal,0.136165577,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+810,2016,non_critical,LOB,High.Seasonal,0.254303599,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+811,2016,critical,LOB,High.Seasonal,0.190631808,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+812,2017,non_critical,LOB,High.Seasonal,1.180555556,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+813,2017,critical,LOB,High.Seasonal,0.272331155,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+814,2010,non_critical,ROB,High.Seasonal,2.673312188,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+815,2011,non_critical,ROB,High.Seasonal,0.746855346,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+816,2011,critical,ROB,High.Seasonal,0.925925926,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+817,2012,non_critical,ROB,High.Seasonal,0.88028169,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+818,2012,critical,ROB,High.Seasonal,0.490196078,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+819,2013,non_critical,ROB,High.Seasonal,0.530660377,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+820,2013,critical,ROB,High.Seasonal,0.163398693,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+821,2014,non_critical,ROB,High.Seasonal,0.648584906,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+822,2014,critical,ROB,High.Seasonal,0.326797386,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+823,2015,non_critical,ROB,High.Seasonal,0.452044025,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+824,2015,critical,ROB,High.Seasonal,0.381263617,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+825,2016,non_critical,ROB,High.Seasonal,0.625978091,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+826,2016,critical,ROB,High.Seasonal,0.217864924,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+827,2017,non_critical,ROB,High.Seasonal,2.5,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+828,2017,critical,ROB,High.Seasonal,0.190631808,Santa Ana Sucker,Adult/Juvenile,Velocity,LA11
+829,2010,Annual,MC,Low,98.95786135,Typha Spp,Adult,Depth,LA11
+830,2011,Annual,MC,Low,99.543379,Typha Spp,Adult,Depth,LA11
+831,2011,Annual,MC,Low,99.543379,Typha Spp,Adult,Depth,LA11
+832,2012,Annual,MC,Low,99.78369763,Typha Spp,Adult,Depth,LA11
+833,2012,Annual,MC,Low,99.78369763,Typha Spp,Adult,Depth,LA11
+834,2013,Annual,MC,Low,99.9543379,Typha Spp,Adult,Depth,LA11
+835,2013,Annual,MC,Low,99.9543379,Typha Spp,Adult,Depth,LA11
+836,2014,Annual,MC,Low,99.66894977,Typha Spp,Adult,Depth,LA11
+837,2014,Annual,MC,Low,99.66894977,Typha Spp,Adult,Depth,LA11
+838,2015,Annual,MC,Low,100,Typha Spp,Adult,Depth,LA11
+839,2015,Annual,MC,Low,100,Typha Spp,Adult,Depth,LA11
+840,2016,Annual,MC,Low,99.65846995,Typha Spp,Adult,Depth,LA11
+841,2016,Annual,MC,Low,99.65846995,Typha Spp,Adult,Depth,LA11
+842,2017,Annual,MC,Low,99.51159951,Typha Spp,Adult,Depth,LA11
+843,2017,Annual,MC,Low,99.51159951,Typha Spp,Adult,Depth,LA11
+844,2010,Annual,LOB,Low,19.66470322,Typha Spp,Adult,Depth,LA11
+845,2011,Annual,LOB,Low,8.447488584,Typha Spp,Adult,Depth,LA11
+846,2011,Annual,LOB,Low,8.447488584,Typha Spp,Adult,Depth,LA11
+847,2012,Annual,LOB,Low,3.825136612,Typha Spp,Adult,Depth,LA11
+848,2012,Annual,LOB,Low,3.825136612,Typha Spp,Adult,Depth,LA11
+849,2013,Annual,LOB,Low,2.077625571,Typha Spp,Adult,Depth,LA11
+850,2013,Annual,LOB,Low,2.077625571,Typha Spp,Adult,Depth,LA11
+851,2014,Annual,LOB,Low,2.043378995,Typha Spp,Adult,Depth,LA11
+852,2014,Annual,LOB,Low,2.043378995,Typha Spp,Adult,Depth,LA11
+853,2015,Annual,LOB,Low,1.997716895,Typha Spp,Adult,Depth,LA11
+854,2015,Annual,LOB,Low,1.997716895,Typha Spp,Adult,Depth,LA11
+855,2016,Annual,LOB,Low,2.880236794,Typha Spp,Adult,Depth,LA11
+856,2016,Annual,LOB,Low,2.880236794,Typha Spp,Adult,Depth,LA11
+857,2017,Annual,LOB,Low,5.326617827,Typha Spp,Adult,Depth,LA11
+858,2017,Annual,LOB,Low,5.326617827,Typha Spp,Adult,Depth,LA11
+859,2010,Annual,ROB,Low,99.90937925,Typha Spp,Adult,Depth,LA11
+860,2011,Annual,ROB,Low,99.8630137,Typha Spp,Adult,Depth,LA11
+861,2011,Annual,ROB,Low,99.8630137,Typha Spp,Adult,Depth,LA11
+862,2012,Annual,ROB,Low,99.95446266,Typha Spp,Adult,Depth,LA11
+863,2012,Annual,ROB,Low,99.95446266,Typha Spp,Adult,Depth,LA11
+864,2013,Annual,ROB,Low,100,Typha Spp,Adult,Depth,LA11
+865,2013,Annual,ROB,Low,100,Typha Spp,Adult,Depth,LA11
+866,2014,Annual,ROB,Low,99.88584475,Typha Spp,Adult,Depth,LA11
+867,2014,Annual,ROB,Low,99.88584475,Typha Spp,Adult,Depth,LA11
+868,2015,Annual,ROB,Low,100,Typha Spp,Adult,Depth,LA11
+869,2015,Annual,ROB,Low,100,Typha Spp,Adult,Depth,LA11
+870,2016,Annual,ROB,Low,99.88615665,Typha Spp,Adult,Depth,LA11
+871,2016,Annual,ROB,Low,99.88615665,Typha Spp,Adult,Depth,LA11
+872,2017,Annual,ROB,Low,99.8015873,Typha Spp,Adult,Depth,LA11
+873,2017,Annual,ROB,Low,99.8015873,Typha Spp,Adult,Depth,LA11
+874,2010,Annual,MC,Medium,97.41730856,Typha Spp,Adult,Depth,LA11
+875,2011,Annual,MC,Medium,97.48858447,Typha Spp,Adult,Depth,LA11
+876,2011,Annual,MC,Medium,97.48858447,Typha Spp,Adult,Depth,LA11
+877,2012,Annual,MC,Medium,92.82786885,Typha Spp,Adult,Depth,LA11
+878,2012,Annual,MC,Medium,92.82786885,Typha Spp,Adult,Depth,LA11
+879,2013,Annual,MC,Medium,98.27625571,Typha Spp,Adult,Depth,LA11
+880,2013,Annual,MC,Medium,98.27625571,Typha Spp,Adult,Depth,LA11
+881,2014,Annual,MC,Medium,85.77625571,Typha Spp,Adult,Depth,LA11
+882,2014,Annual,MC,Medium,85.77625571,Typha Spp,Adult,Depth,LA11
+883,2015,Annual,MC,Medium,71.39269406,Typha Spp,Adult,Depth,LA11
+884,2015,Annual,MC,Medium,71.39269406,Typha Spp,Adult,Depth,LA11
+885,2016,Annual,MC,Medium,60.09790528,Typha Spp,Adult,Depth,LA11
+886,2016,Annual,MC,Medium,60.09790528,Typha Spp,Adult,Depth,LA11
+887,2017,Annual,MC,Medium,66.65140415,Typha Spp,Adult,Depth,LA11
+888,2017,Annual,MC,Medium,66.65140415,Typha Spp,Adult,Depth,LA11
+889,2010,Annual,LOB,Medium,13.04938831,Typha Spp,Adult,Depth,LA11
+890,2011,Annual,LOB,Medium,3.515981735,Typha Spp,Adult,Depth,LA11
+891,2011,Annual,LOB,Medium,3.515981735,Typha Spp,Adult,Depth,LA11
+892,2012,Annual,LOB,Medium,2.094717668,Typha Spp,Adult,Depth,LA11
+893,2012,Annual,LOB,Medium,2.094717668,Typha Spp,Adult,Depth,LA11
+894,2013,Annual,LOB,Medium,1.130136986,Typha Spp,Adult,Depth,LA11
+895,2013,Annual,LOB,Medium,1.130136986,Typha Spp,Adult,Depth,LA11
+896,2014,Annual,LOB,Medium,1.461187215,Typha Spp,Adult,Depth,LA11
+897,2014,Annual,LOB,Medium,1.461187215,Typha Spp,Adult,Depth,LA11
+898,2015,Annual,LOB,Medium,1.221461187,Typha Spp,Adult,Depth,LA11
+899,2015,Annual,LOB,Medium,1.221461187,Typha Spp,Adult,Depth,LA11
+900,2016,Annual,LOB,Medium,1.673497268,Typha Spp,Adult,Depth,LA11
+901,2016,Annual,LOB,Medium,1.673497268,Typha Spp,Adult,Depth,LA11
+902,2017,Annual,LOB,Medium,3.281440781,Typha Spp,Adult,Depth,LA11
+903,2017,Annual,LOB,Medium,3.281440781,Typha Spp,Adult,Depth,LA11
+904,2010,Annual,ROB,Medium,7.476212053,Typha Spp,Adult,Depth,LA11
+905,2011,Annual,ROB,Medium,1.700913242,Typha Spp,Adult,Depth,LA11
+906,2011,Annual,ROB,Medium,1.700913242,Typha Spp,Adult,Depth,LA11
+907,2012,Annual,ROB,Medium,1.377504554,Typha Spp,Adult,Depth,LA11
+908,2012,Annual,ROB,Medium,1.377504554,Typha Spp,Adult,Depth,LA11
+909,2013,Annual,ROB,Medium,0.662100457,Typha Spp,Adult,Depth,LA11
+910,2013,Annual,ROB,Medium,0.662100457,Typha Spp,Adult,Depth,LA11
+911,2014,Annual,ROB,Medium,1.02739726,Typha Spp,Adult,Depth,LA11
+912,2014,Annual,ROB,Medium,1.02739726,Typha Spp,Adult,Depth,LA11
+913,2015,Annual,ROB,Medium,0.616438356,Typha Spp,Adult,Depth,LA11
+914,2015,Annual,ROB,Medium,0.616438356,Typha Spp,Adult,Depth,LA11
+915,2016,Annual,ROB,Medium,1.138433515,Typha Spp,Adult,Depth,LA11
+916,2016,Annual,ROB,Medium,1.138433515,Typha Spp,Adult,Depth,LA11
+917,2017,Annual,ROB,Medium,2.136752137,Typha Spp,Adult,Depth,LA11
+918,2017,Annual,ROB,Medium,2.136752137,Typha Spp,Adult,Depth,LA11
+919,2010,Annual,MC,High,10.19483462,Typha Spp,Adult,Depth,LA11
+920,2011,Annual,MC,High,3.367579909,Typha Spp,Adult,Depth,LA11
+921,2011,Annual,MC,High,3.367579909,Typha Spp,Adult,Depth,LA11
+922,2012,Annual,MC,High,1.775956284,Typha Spp,Adult,Depth,LA11
+923,2012,Annual,MC,High,1.775956284,Typha Spp,Adult,Depth,LA11
+924,2013,Annual,MC,High,0.993150685,Typha Spp,Adult,Depth,LA11
+925,2013,Annual,MC,High,0.993150685,Typha Spp,Adult,Depth,LA11
+926,2014,Annual,MC,High,1.198630137,Typha Spp,Adult,Depth,LA11
+927,2014,Annual,MC,High,1.198630137,Typha Spp,Adult,Depth,LA11
+928,2015,Annual,MC,High,1.118721461,Typha Spp,Adult,Depth,LA11
+929,2015,Annual,MC,High,1.118721461,Typha Spp,Adult,Depth,LA11
+930,2016,Annual,MC,High,1.354735883,Typha Spp,Adult,Depth,LA11
+931,2016,Annual,MC,High,1.354735883,Typha Spp,Adult,Depth,LA11
+932,2017,Annual,MC,High,2.747252747,Typha Spp,Adult,Depth,LA11
+933,2017,Annual,MC,High,2.747252747,Typha Spp,Adult,Depth,LA11
+934,2010,Annual,LOB,High,6.796556411,Typha Spp,Adult,Depth,LA11
+935,2011,Annual,LOB,High,1.438356164,Typha Spp,Adult,Depth,LA11
+936,2011,Annual,LOB,High,1.438356164,Typha Spp,Adult,Depth,LA11
+937,2012,Annual,LOB,High,1.297814208,Typha Spp,Adult,Depth,LA11
+938,2012,Annual,LOB,High,1.297814208,Typha Spp,Adult,Depth,LA11
+939,2013,Annual,LOB,High,0.605022831,Typha Spp,Adult,Depth,LA11
+940,2013,Annual,LOB,High,0.605022831,Typha Spp,Adult,Depth,LA11
+941,2014,Annual,LOB,High,0.844748858,Typha Spp,Adult,Depth,LA11
+942,2014,Annual,LOB,High,0.844748858,Typha Spp,Adult,Depth,LA11
+943,2015,Annual,LOB,High,0.616438356,Typha Spp,Adult,Depth,LA11
+944,2015,Annual,LOB,High,0.616438356,Typha Spp,Adult,Depth,LA11
+945,2016,Annual,LOB,High,0.990437158,Typha Spp,Adult,Depth,LA11
+946,2016,Annual,LOB,High,0.990437158,Typha Spp,Adult,Depth,LA11
+947,2017,Annual,LOB,High,1.907814408,Typha Spp,Adult,Depth,LA11
+948,2017,Annual,LOB,High,1.907814408,Typha Spp,Adult,Depth,LA11
+949,2010,Annual,ROB,High,3.57951971,Typha Spp,Adult,Depth,LA11
+950,2011,Annual,ROB,High,0.719178082,Typha Spp,Adult,Depth,LA11
+951,2011,Annual,ROB,High,0.719178082,Typha Spp,Adult,Depth,LA11
+952,2012,Annual,ROB,High,0.443989071,Typha Spp,Adult,Depth,LA11
+953,2012,Annual,ROB,High,0.443989071,Typha Spp,Adult,Depth,LA11
+954,2013,Annual,ROB,High,0.194063927,Typha Spp,Adult,Depth,LA11
+955,2013,Annual,ROB,High,0.194063927,Typha Spp,Adult,Depth,LA11
+956,2014,Annual,ROB,High,0.376712329,Typha Spp,Adult,Depth,LA11
+957,2014,Annual,ROB,High,0.376712329,Typha Spp,Adult,Depth,LA11
+958,2015,Annual,ROB,High,0.194063927,Typha Spp,Adult,Depth,LA11
+959,2015,Annual,ROB,High,0.194063927,Typha Spp,Adult,Depth,LA11
+960,2016,Annual,ROB,High,0.489526412,Typha Spp,Adult,Depth,LA11
+961,2016,Annual,ROB,High,0.489526412,Typha Spp,Adult,Depth,LA11
+962,2017,Annual,ROB,High,0.808913309,Typha Spp,Adult,Depth,LA11
+963,2017,Annual,ROB,High,0.808913309,Typha Spp,Adult,Depth,LA11
+964,2010,non_critical,MC,Low.Seasonal,98.95786135,Typha Spp,Adult,Depth,LA11
+965,2011,non_critical,MC,Low.Seasonal,99.08424908,Typha Spp,Adult,Depth,LA11
+966,2011,critical,MC,Low.Seasonal,100,Typha Spp,Adult,Depth,LA11
+967,2012,non_critical,MC,Low.Seasonal,99.70400729,Typha Spp,Adult,Depth,LA11
+968,2012,critical,MC,Low.Seasonal,99.86338798,Typha Spp,Adult,Depth,LA11
+969,2013,non_critical,MC,Low.Seasonal,99.90842491,Typha Spp,Adult,Depth,LA11
+970,2013,critical,MC,Low.Seasonal,100,Typha Spp,Adult,Depth,LA11
+971,2014,non_critical,MC,Low.Seasonal,99.33608059,Typha Spp,Adult,Depth,LA11
+972,2014,critical,MC,Low.Seasonal,100,Typha Spp,Adult,Depth,LA11
+973,2015,non_critical,MC,Low.Seasonal,100,Typha Spp,Adult,Depth,LA11
+974,2015,critical,MC,Low.Seasonal,100,Typha Spp,Adult,Depth,LA11
+975,2016,non_critical,MC,Low.Seasonal,99.31693989,Typha Spp,Adult,Depth,LA11
+976,2016,critical,MC,Low.Seasonal,100,Typha Spp,Adult,Depth,LA11
+977,2017,non_critical,MC,Low.Seasonal,98.51851852,Typha Spp,Adult,Depth,LA11
+978,2017,critical,MC,Low.Seasonal,100,Typha Spp,Adult,Depth,LA11
+979,2010,non_critical,LOB,Low.Seasonal,19.66470322,Typha Spp,Adult,Depth,LA11
+980,2011,non_critical,LOB,Low.Seasonal,12.15659341,Typha Spp,Adult,Depth,LA11
+981,2011,critical,LOB,Low.Seasonal,4.758652095,Typha Spp,Adult,Depth,LA11
+982,2012,non_critical,LOB,Low.Seasonal,6.580145719,Typha Spp,Adult,Depth,LA11
+983,2012,critical,LOB,Low.Seasonal,1.070127505,Typha Spp,Adult,Depth,LA11
+984,2013,non_critical,LOB,Low.Seasonal,3.64010989,Typha Spp,Adult,Depth,LA11
+985,2013,critical,LOB,Low.Seasonal,0.523679417,Typha Spp,Adult,Depth,LA11
+986,2014,non_critical,LOB,Low.Seasonal,3.846153846,Typha Spp,Adult,Depth,LA11
+987,2014,critical,LOB,Low.Seasonal,0.250455373,Typha Spp,Adult,Depth,LA11
+988,2015,non_critical,LOB,Low.Seasonal,3.47985348,Typha Spp,Adult,Depth,LA11
+989,2015,critical,LOB,Low.Seasonal,0.523679417,Typha Spp,Adult,Depth,LA11
+990,2016,non_critical,LOB,Low.Seasonal,4.849726776,Typha Spp,Adult,Depth,LA11
+991,2016,critical,LOB,Low.Seasonal,0.910746812,Typha Spp,Adult,Depth,LA11
+992,2017,non_critical,LOB,Low.Seasonal,15.41666667,Typha Spp,Adult,Depth,LA11
+993,2017,critical,LOB,Low.Seasonal,0.364298725,Typha Spp,Adult,Depth,LA11
+994,2010,non_critical,ROB,Low.Seasonal,99.90937925,Typha Spp,Adult,Depth,LA11
+995,2011,non_critical,ROB,Low.Seasonal,99.72527473,Typha Spp,Adult,Depth,LA11
+996,2011,critical,ROB,Low.Seasonal,100,Typha Spp,Adult,Depth,LA11
+997,2012,non_critical,ROB,Low.Seasonal,99.95446266,Typha Spp,Adult,Depth,LA11
+998,2012,critical,ROB,Low.Seasonal,99.95446266,Typha Spp,Adult,Depth,LA11
+999,2013,non_critical,ROB,Low.Seasonal,100,Typha Spp,Adult,Depth,LA11
+1000,2013,critical,ROB,Low.Seasonal,100,Typha Spp,Adult,Depth,LA11
+1001,2014,non_critical,ROB,Low.Seasonal,99.77106227,Typha Spp,Adult,Depth,LA11
+1002,2014,critical,ROB,Low.Seasonal,100,Typha Spp,Adult,Depth,LA11
+1003,2015,non_critical,ROB,Low.Seasonal,100,Typha Spp,Adult,Depth,LA11
+1004,2015,critical,ROB,Low.Seasonal,100,Typha Spp,Adult,Depth,LA11
+1005,2016,non_critical,ROB,Low.Seasonal,99.7723133,Typha Spp,Adult,Depth,LA11
+1006,2016,critical,ROB,Low.Seasonal,100,Typha Spp,Adult,Depth,LA11
+1007,2017,non_critical,ROB,Low.Seasonal,99.39814815,Typha Spp,Adult,Depth,LA11
+1008,2017,critical,ROB,Low.Seasonal,100,Typha Spp,Adult,Depth,LA11
+1009,2010,non_critical,MC,Medium.Seasonal,97.41730856,Typha Spp,Adult,Depth,LA11
+1010,2011,non_critical,MC,Medium.Seasonal,97.91666667,Typha Spp,Adult,Depth,LA11
+1011,2011,critical,MC,Medium.Seasonal,97.06284153,Typha Spp,Adult,Depth,LA11
+1012,2012,non_critical,MC,Medium.Seasonal,94.37613843,Typha Spp,Adult,Depth,LA11
+1013,2012,critical,MC,Medium.Seasonal,91.27959927,Typha Spp,Adult,Depth,LA11
+1014,2013,non_critical,MC,Medium.Seasonal,97.13827839,Typha Spp,Adult,Depth,LA11
+1015,2013,critical,MC,Medium.Seasonal,99.40801457,Typha Spp,Adult,Depth,LA11
+1016,2014,non_critical,MC,Medium.Seasonal,86.85897436,Typha Spp,Adult,Depth,LA11
+1017,2014,critical,MC,Medium.Seasonal,84.69945355,Typha Spp,Adult,Depth,LA11
+1018,2015,non_critical,MC,Medium.Seasonal,75.93864469,Typha Spp,Adult,Depth,LA11
+1019,2015,critical,MC,Medium.Seasonal,66.8715847,Typha Spp,Adult,Depth,LA11
+1020,2016,non_critical,MC,Medium.Seasonal,70.15027322,Typha Spp,Adult,Depth,LA11
+1021,2016,critical,MC,Medium.Seasonal,50.04553734,Typha Spp,Adult,Depth,LA11
+1022,2017,non_critical,MC,Medium.Seasonal,94.90740741,Typha Spp,Adult,Depth,LA11
+1023,2017,critical,MC,Medium.Seasonal,52.75500911,Typha Spp,Adult,Depth,LA11
+1024,2010,non_critical,LOB,Medium.Seasonal,13.04938831,Typha Spp,Adult,Depth,LA11
+1025,2011,non_critical,LOB,Medium.Seasonal,6.616300366,Typha Spp,Adult,Depth,LA11
+1026,2011,critical,LOB,Medium.Seasonal,0.432604736,Typha Spp,Adult,Depth,LA11
+1027,2012,non_critical,LOB,Medium.Seasonal,3.529143898,Typha Spp,Adult,Depth,LA11
+1028,2012,critical,LOB,Medium.Seasonal,0.660291439,Typha Spp,Adult,Depth,LA11
+1029,2013,non_critical,LOB,Medium.Seasonal,1.923076923,Typha Spp,Adult,Depth,LA11
+1030,2013,critical,LOB,Medium.Seasonal,0.341530055,Typha Spp,Adult,Depth,LA11
+1031,2014,non_critical,LOB,Medium.Seasonal,2.815934066,Typha Spp,Adult,Depth,LA11
+1032,2014,critical,LOB,Medium.Seasonal,0.113843352,Typha Spp,Adult,Depth,LA11
+1033,2015,non_critical,LOB,Medium.Seasonal,2.174908425,Typha Spp,Adult,Depth,LA11
+1034,2015,critical,LOB,Medium.Seasonal,0.273224044,Typha Spp,Adult,Depth,LA11
+1035,2016,non_critical,LOB,Medium.Seasonal,2.891621129,Typha Spp,Adult,Depth,LA11
+1036,2016,critical,LOB,Medium.Seasonal,0.455373406,Typha Spp,Adult,Depth,LA11
+1037,2017,non_critical,LOB,Medium.Seasonal,9.675925926,Typha Spp,Adult,Depth,LA11
+1038,2017,critical,LOB,Medium.Seasonal,0.136612022,Typha Spp,Adult,Depth,LA11
+1039,2010,non_critical,ROB,Medium.Seasonal,7.476212053,Typha Spp,Adult,Depth,LA11
+1040,2011,non_critical,ROB,Medium.Seasonal,3.205128205,Typha Spp,Adult,Depth,LA11
+1041,2011,critical,ROB,Medium.Seasonal,0.204918033,Typha Spp,Adult,Depth,LA11
+1042,2012,non_critical,ROB,Medium.Seasonal,2.276867031,Typha Spp,Adult,Depth,LA11
+1043,2012,critical,ROB,Medium.Seasonal,0.478142077,Typha Spp,Adult,Depth,LA11
+1044,2013,non_critical,ROB,Medium.Seasonal,1.098901099,Typha Spp,Adult,Depth,LA11
+1045,2013,critical,ROB,Medium.Seasonal,0.227686703,Typha Spp,Adult,Depth,LA11
+1046,2014,non_critical,ROB,Medium.Seasonal,1.991758242,Typha Spp,Adult,Depth,LA11
+1047,2014,critical,ROB,Medium.Seasonal,0.068306011,Typha Spp,Adult,Depth,LA11
+1048,2015,non_critical,ROB,Medium.Seasonal,1.121794872,Typha Spp,Adult,Depth,LA11
+1049,2015,critical,ROB,Medium.Seasonal,0.113843352,Typha Spp,Adult,Depth,LA11
+1050,2016,non_critical,ROB,Medium.Seasonal,2.18579235,Typha Spp,Adult,Depth,LA11
+1051,2016,critical,ROB,Medium.Seasonal,0.091074681,Typha Spp,Adult,Depth,LA11
+1052,2017,non_critical,ROB,Medium.Seasonal,6.388888889,Typha Spp,Adult,Depth,LA11
+1053,2017,critical,ROB,Medium.Seasonal,0.045537341,Typha Spp,Adult,Depth,LA11
+1054,2010,non_critical,MC,High.Seasonal,10.19483462,Typha Spp,Adult,Depth,LA11
+1055,2011,non_critical,MC,High.Seasonal,6.341575092,Typha Spp,Adult,Depth,LA11
+1056,2011,critical,MC,High.Seasonal,0.409836066,Typha Spp,Adult,Depth,LA11
+1057,2012,non_critical,MC,High.Seasonal,3.096539162,Typha Spp,Adult,Depth,LA11
+1058,2012,critical,MC,High.Seasonal,0.455373406,Typha Spp,Adult,Depth,LA11
+1059,2013,non_critical,MC,High.Seasonal,1.717032967,Typha Spp,Adult,Depth,LA11
+1060,2013,critical,MC,High.Seasonal,0.273224044,Typha Spp,Adult,Depth,LA11
+1061,2014,non_critical,MC,High.Seasonal,2.312271062,Typha Spp,Adult,Depth,LA11
+1062,2014,critical,MC,High.Seasonal,0.091074681,Typha Spp,Adult,Depth,LA11
+1063,2015,non_critical,MC,High.Seasonal,2.014652015,Typha Spp,Adult,Depth,LA11
+1064,2015,critical,MC,High.Seasonal,0.227686703,Typha Spp,Adult,Depth,LA11
+1065,2016,non_critical,MC,High.Seasonal,2.20856102,Typha Spp,Adult,Depth,LA11
+1066,2016,critical,MC,High.Seasonal,0.500910747,Typha Spp,Adult,Depth,LA11
+1067,2017,non_critical,MC,High.Seasonal,8.009259259,Typha Spp,Adult,Depth,LA11
+1068,2017,critical,MC,High.Seasonal,0.159380692,Typha Spp,Adult,Depth,LA11
+1069,2010,non_critical,LOB,High.Seasonal,6.796556411,Typha Spp,Adult,Depth,LA11
+1070,2011,non_critical,LOB,High.Seasonal,2.678571429,Typha Spp,Adult,Depth,LA11
+1071,2011,critical,LOB,High.Seasonal,0.204918033,Typha Spp,Adult,Depth,LA11
+1072,2012,non_critical,LOB,High.Seasonal,2.117486339,Typha Spp,Adult,Depth,LA11
+1073,2012,critical,LOB,High.Seasonal,0.478142077,Typha Spp,Adult,Depth,LA11
+1074,2013,non_critical,LOB,High.Seasonal,0.984432234,Typha Spp,Adult,Depth,LA11
+1075,2013,critical,LOB,High.Seasonal,0.227686703,Typha Spp,Adult,Depth,LA11
+1076,2014,non_critical,LOB,High.Seasonal,1.625457875,Typha Spp,Adult,Depth,LA11
+1077,2014,critical,LOB,High.Seasonal,0.068306011,Typha Spp,Adult,Depth,LA11
+1078,2015,non_critical,LOB,High.Seasonal,1.121794872,Typha Spp,Adult,Depth,LA11
+1079,2015,critical,LOB,High.Seasonal,0.113843352,Typha Spp,Adult,Depth,LA11
+1080,2016,non_critical,LOB,High.Seasonal,1.889799636,Typha Spp,Adult,Depth,LA11
+1081,2016,critical,LOB,High.Seasonal,0.091074681,Typha Spp,Adult,Depth,LA11
+1082,2017,non_critical,LOB,High.Seasonal,5.694444444,Typha Spp,Adult,Depth,LA11
+1083,2017,critical,LOB,High.Seasonal,0.045537341,Typha Spp,Adult,Depth,LA11
+1084,2010,non_critical,ROB,High.Seasonal,3.57951971,Typha Spp,Adult,Depth,LA11
+1085,2011,non_critical,ROB,High.Seasonal,1.396520147,Typha Spp,Adult,Depth,LA11
+1086,2011,critical,ROB,High.Seasonal,0.045537341,Typha Spp,Adult,Depth,LA11
+1087,2012,non_critical,ROB,High.Seasonal,0.614754098,Typha Spp,Adult,Depth,LA11
+1088,2012,critical,ROB,High.Seasonal,0.273224044,Typha Spp,Adult,Depth,LA11
+1089,2013,non_critical,ROB,High.Seasonal,0.297619048,Typha Spp,Adult,Depth,LA11
+1090,2013,critical,ROB,High.Seasonal,0.091074681,Typha Spp,Adult,Depth,LA11
+1091,2014,non_critical,ROB,High.Seasonal,0.732600733,Typha Spp,Adult,Depth,LA11
+1092,2014,critical,ROB,High.Seasonal,0.02276867,Typha Spp,Adult,Depth,LA11
+1093,2015,non_critical,ROB,High.Seasonal,0.343406593,Typha Spp,Adult,Depth,LA11
+1094,2015,critical,ROB,High.Seasonal,0.045537341,Typha Spp,Adult,Depth,LA11
+1095,2016,non_critical,ROB,High.Seasonal,0.956284153,Typha Spp,Adult,Depth,LA11
+1096,2016,critical,ROB,High.Seasonal,0.02276867,Typha Spp,Adult,Depth,LA11
+1097,2017,non_critical,ROB,High.Seasonal,2.453703704,Typha Spp,Adult,Depth,LA11
+1098,2017,critical,ROB,High.Seasonal,0,Typha Spp,Adult,Depth,LA11
+1099,2010,Annual,MC,Low,86.58812868,Typha Spp,Seedling,Depth,LA11
+1100,2011,Annual,MC,Low,96.07305936,Typha Spp,Seedling,Depth,LA11
+1101,2011,Annual,MC,Low,96.07305936,Typha Spp,Seedling,Depth,LA11
+1102,2012,Annual,MC,Low,97.79143898,Typha Spp,Seedling,Depth,LA11
+1103,2012,Annual,MC,Low,97.79143898,Typha Spp,Seedling,Depth,LA11
+1104,2013,Annual,MC,Low,98.84703196,Typha Spp,Seedling,Depth,LA11
+1105,2013,Annual,MC,Low,98.84703196,Typha Spp,Seedling,Depth,LA11
+1106,2014,Annual,MC,Low,98.33333333,Typha Spp,Seedling,Depth,LA11
+1107,2014,Annual,MC,Low,98.33333333,Typha Spp,Seedling,Depth,LA11
+1108,2015,Annual,MC,Low,98.74429224,Typha Spp,Seedling,Depth,LA11
+1109,2015,Annual,MC,Low,98.74429224,Typha Spp,Seedling,Depth,LA11
+1110,2016,Annual,MC,Low,98.09881603,Typha Spp,Seedling,Depth,LA11
+1111,2016,Annual,MC,Low,98.09881603,Typha Spp,Seedling,Depth,LA11
+1112,2017,Annual,MC,Low,96.41330891,Typha Spp,Seedling,Depth,LA11
+1113,2017,Annual,MC,Low,96.41330891,Typha Spp,Seedling,Depth,LA11
+1114,2010,Annual,LOB,Low,92.52378795,Typha Spp,Seedling,Depth,LA11
+1115,2011,Annual,LOB,Low,98.20776256,Typha Spp,Seedling,Depth,LA11
+1116,2011,Annual,LOB,Low,98.20776256,Typha Spp,Seedling,Depth,LA11
+1117,2012,Annual,LOB,Low,98.62249545,Typha Spp,Seedling,Depth,LA11
+1118,2012,Annual,LOB,Low,98.62249545,Typha Spp,Seedling,Depth,LA11
+1119,2013,Annual,LOB,Low,99.39497717,Typha Spp,Seedling,Depth,LA11
+1120,2013,Annual,LOB,Low,99.39497717,Typha Spp,Seedling,Depth,LA11
+1121,2014,Annual,LOB,Low,98.88127854,Typha Spp,Seedling,Depth,LA11
+1122,2014,Annual,LOB,Low,98.88127854,Typha Spp,Seedling,Depth,LA11
+1123,2015,Annual,LOB,Low,99.41780822,Typha Spp,Seedling,Depth,LA11
+1124,2015,Annual,LOB,Low,99.41780822,Typha Spp,Seedling,Depth,LA11
+1125,2016,Annual,LOB,Low,98.72495446,Typha Spp,Seedling,Depth,LA11
+1126,2016,Annual,LOB,Low,98.72495446,Typha Spp,Seedling,Depth,LA11
+1127,2017,Annual,LOB,Low,97.75641026,Typha Spp,Seedling,Depth,LA11
+1128,2017,Annual,LOB,Low,97.75641026,Typha Spp,Seedling,Depth,LA11
+1129,2010,Annual,ROB,Low,96.14861803,Typha Spp,Seedling,Depth,LA11
+1130,2011,Annual,ROB,Low,98.99543379,Typha Spp,Seedling,Depth,LA11
+1131,2011,Annual,ROB,Low,98.99543379,Typha Spp,Seedling,Depth,LA11
+1132,2012,Annual,ROB,Low,99.49908925,Typha Spp,Seedling,Depth,LA11
+1133,2012,Annual,ROB,Low,99.49908925,Typha Spp,Seedling,Depth,LA11
+1134,2013,Annual,ROB,Low,99.79452055,Typha Spp,Seedling,Depth,LA11
+1135,2013,Annual,ROB,Low,99.79452055,Typha Spp,Seedling,Depth,LA11
+1136,2014,Annual,ROB,Low,99.44063927,Typha Spp,Seedling,Depth,LA11
+1137,2014,Annual,ROB,Low,99.44063927,Typha Spp,Seedling,Depth,LA11
+1138,2015,Annual,ROB,Low,99.8173516,Typha Spp,Seedling,Depth,LA11
+1139,2015,Annual,ROB,Low,99.8173516,Typha Spp,Seedling,Depth,LA11
+1140,2016,Annual,ROB,Low,99.31693989,Typha Spp,Seedling,Depth,LA11
+1141,2016,Annual,ROB,Low,99.31693989,Typha Spp,Seedling,Depth,LA11
+1142,2017,Annual,ROB,Low,98.97741148,Typha Spp,Seedling,Depth,LA11
+1143,2017,Annual,ROB,Low,98.97741148,Typha Spp,Seedling,Depth,LA11
+1144,2010,Annual,MC,Medium,82.60081559,Typha Spp,Seedling,Depth,LA11
+1145,2011,Annual,MC,Medium,92.2260274,Typha Spp,Seedling,Depth,LA11
+1146,2011,Annual,MC,Medium,92.2260274,Typha Spp,Seedling,Depth,LA11
+1147,2012,Annual,MC,Medium,96.58469945,Typha Spp,Seedling,Depth,LA11
+1148,2012,Annual,MC,Medium,96.58469945,Typha Spp,Seedling,Depth,LA11
+1149,2013,Annual,MC,Medium,98.13926941,Typha Spp,Seedling,Depth,LA11
+1150,2013,Annual,MC,Medium,98.13926941,Typha Spp,Seedling,Depth,LA11
+1151,2014,Annual,MC,Medium,97.88812785,Typha Spp,Seedling,Depth,LA11
+1152,2014,Annual,MC,Medium,97.88812785,Typha Spp,Seedling,Depth,LA11
+1153,2015,Annual,MC,Medium,98.20776256,Typha Spp,Seedling,Depth,LA11
+1154,2015,Annual,MC,Medium,98.20776256,Typha Spp,Seedling,Depth,LA11
+1155,2016,Annual,MC,Medium,97.21083789,Typha Spp,Seedling,Depth,LA11
+1156,2016,Annual,MC,Medium,97.21083789,Typha Spp,Seedling,Depth,LA11
+1157,2017,Annual,MC,Medium,95.02442002,Typha Spp,Seedling,Depth,LA11
+1158,2017,Annual,MC,Medium,95.02442002,Typha Spp,Seedling,Depth,LA11
+1159,2010,Annual,LOB,Medium,88.49116448,Typha Spp,Seedling,Depth,LA11
+1160,2011,Annual,LOB,Medium,97.37442922,Typha Spp,Seedling,Depth,LA11
+1161,2011,Annual,LOB,Medium,97.37442922,Typha Spp,Seedling,Depth,LA11
+1162,2012,Annual,LOB,Medium,98.00774135,Typha Spp,Seedling,Depth,LA11
+1163,2012,Annual,LOB,Medium,98.00774135,Typha Spp,Seedling,Depth,LA11
+1164,2013,Annual,LOB,Medium,99.04109589,Typha Spp,Seedling,Depth,LA11
+1165,2013,Annual,LOB,Medium,99.04109589,Typha Spp,Seedling,Depth,LA11
+1166,2014,Annual,LOB,Medium,98.48173516,Typha Spp,Seedling,Depth,LA11
+1167,2014,Annual,LOB,Medium,98.48173516,Typha Spp,Seedling,Depth,LA11
+1168,2015,Annual,LOB,Medium,98.98401826,Typha Spp,Seedling,Depth,LA11
+1169,2015,Annual,LOB,Medium,98.98401826,Typha Spp,Seedling,Depth,LA11
+1170,2016,Annual,LOB,Medium,98.23542805,Typha Spp,Seedling,Depth,LA11
+1171,2016,Annual,LOB,Medium,98.23542805,Typha Spp,Seedling,Depth,LA11
+1172,2017,Annual,LOB,Medium,96.74908425,Typha Spp,Seedling,Depth,LA11
+1173,2017,Annual,LOB,Medium,96.74908425,Typha Spp,Seedling,Depth,LA11
+1174,2010,Annual,ROB,Medium,95.06116901,Typha Spp,Seedling,Depth,LA11
+1175,2011,Annual,ROB,Medium,98.78995434,Typha Spp,Seedling,Depth,LA11
+1176,2011,Annual,ROB,Medium,98.78995434,Typha Spp,Seedling,Depth,LA11
+1177,2012,Annual,ROB,Medium,99.18032787,Typha Spp,Seedling,Depth,LA11
+1178,2012,Annual,ROB,Medium,99.18032787,Typha Spp,Seedling,Depth,LA11
+1179,2013,Annual,ROB,Medium,99.71461187,Typha Spp,Seedling,Depth,LA11
+1180,2013,Annual,ROB,Medium,99.71461187,Typha Spp,Seedling,Depth,LA11
+1181,2014,Annual,ROB,Medium,99.29223744,Typha Spp,Seedling,Depth,LA11
+1182,2014,Annual,ROB,Medium,99.29223744,Typha Spp,Seedling,Depth,LA11
+1183,2015,Annual,ROB,Medium,99.65753425,Typha Spp,Seedling,Depth,LA11
+1184,2015,Annual,ROB,Medium,99.65753425,Typha Spp,Seedling,Depth,LA11
+1185,2016,Annual,ROB,Medium,99.11202186,Typha Spp,Seedling,Depth,LA11
+1186,2016,Annual,ROB,Medium,99.11202186,Typha Spp,Seedling,Depth,LA11
+1187,2017,Annual,ROB,Medium,98.62637363,Typha Spp,Seedling,Depth,LA11
+1188,2017,Annual,ROB,Medium,98.62637363,Typha Spp,Seedling,Depth,LA11
+1189,2010,Annual,MC,High,0,Typha Spp,Seedling,Depth,LA11
+1190,2011,Annual,MC,High,0,Typha Spp,Seedling,Depth,LA11
+1191,2011,Annual,MC,High,0,Typha Spp,Seedling,Depth,LA11
+1192,2012,Annual,MC,High,0,Typha Spp,Seedling,Depth,LA11
+1193,2012,Annual,MC,High,0,Typha Spp,Seedling,Depth,LA11
+1194,2013,Annual,MC,High,0,Typha Spp,Seedling,Depth,LA11
+1195,2013,Annual,MC,High,0,Typha Spp,Seedling,Depth,LA11
+1196,2014,Annual,MC,High,0,Typha Spp,Seedling,Depth,LA11
+1197,2014,Annual,MC,High,0,Typha Spp,Seedling,Depth,LA11
+1198,2015,Annual,MC,High,0,Typha Spp,Seedling,Depth,LA11
+1199,2015,Annual,MC,High,0,Typha Spp,Seedling,Depth,LA11
+1200,2016,Annual,MC,High,0,Typha Spp,Seedling,Depth,LA11
+1201,2016,Annual,MC,High,0,Typha Spp,Seedling,Depth,LA11
+1202,2017,Annual,MC,High,0,Typha Spp,Seedling,Depth,LA11
+1203,2017,Annual,MC,High,0,Typha Spp,Seedling,Depth,LA11
+1204,2010,Annual,LOB,High,0,Typha Spp,Seedling,Depth,LA11
+1205,2011,Annual,LOB,High,0,Typha Spp,Seedling,Depth,LA11
+1206,2011,Annual,LOB,High,0,Typha Spp,Seedling,Depth,LA11
+1207,2012,Annual,LOB,High,0,Typha Spp,Seedling,Depth,LA11
+1208,2012,Annual,LOB,High,0,Typha Spp,Seedling,Depth,LA11
+1209,2013,Annual,LOB,High,0,Typha Spp,Seedling,Depth,LA11
+1210,2013,Annual,LOB,High,0,Typha Spp,Seedling,Depth,LA11
+1211,2014,Annual,LOB,High,0,Typha Spp,Seedling,Depth,LA11
+1212,2014,Annual,LOB,High,0,Typha Spp,Seedling,Depth,LA11
+1213,2015,Annual,LOB,High,0,Typha Spp,Seedling,Depth,LA11
+1214,2015,Annual,LOB,High,0,Typha Spp,Seedling,Depth,LA11
+1215,2016,Annual,LOB,High,0,Typha Spp,Seedling,Depth,LA11
+1216,2016,Annual,LOB,High,0,Typha Spp,Seedling,Depth,LA11
+1217,2017,Annual,LOB,High,0,Typha Spp,Seedling,Depth,LA11
+1218,2017,Annual,LOB,High,0,Typha Spp,Seedling,Depth,LA11
+1219,2010,Annual,ROB,High,0,Typha Spp,Seedling,Depth,LA11
+1220,2011,Annual,ROB,High,0,Typha Spp,Seedling,Depth,LA11
+1221,2011,Annual,ROB,High,0,Typha Spp,Seedling,Depth,LA11
+1222,2012,Annual,ROB,High,0,Typha Spp,Seedling,Depth,LA11
+1223,2012,Annual,ROB,High,0,Typha Spp,Seedling,Depth,LA11
+1224,2013,Annual,ROB,High,0,Typha Spp,Seedling,Depth,LA11
+1225,2013,Annual,ROB,High,0,Typha Spp,Seedling,Depth,LA11
+1226,2014,Annual,ROB,High,0,Typha Spp,Seedling,Depth,LA11
+1227,2014,Annual,ROB,High,0,Typha Spp,Seedling,Depth,LA11
+1228,2015,Annual,ROB,High,0,Typha Spp,Seedling,Depth,LA11
+1229,2015,Annual,ROB,High,0,Typha Spp,Seedling,Depth,LA11
+1230,2016,Annual,ROB,High,0,Typha Spp,Seedling,Depth,LA11
+1231,2016,Annual,ROB,High,0,Typha Spp,Seedling,Depth,LA11
+1232,2017,Annual,ROB,High,0,Typha Spp,Seedling,Depth,LA11
+1233,2017,Annual,ROB,High,0,Typha Spp,Seedling,Depth,LA11
+1234,2010,non_critical,MC,Low.Seasonal,86.58812868,Typha Spp,Seedling,Depth,LA11
+1235,2011,non_critical,MC,Low.Seasonal,92.55952381,Typha Spp,Seedling,Depth,LA11
+1236,2011,critical,MC,Low.Seasonal,99.56739526,Typha Spp,Seedling,Depth,LA11
+1237,2012,non_critical,MC,Low.Seasonal,96.31147541,Typha Spp,Seedling,Depth,LA11
+1238,2012,critical,MC,Low.Seasonal,99.27140255,Typha Spp,Seedling,Depth,LA11
+1239,2013,non_critical,MC,Low.Seasonal,98.03113553,Typha Spp,Seedling,Depth,LA11
+1240,2013,critical,MC,Low.Seasonal,99.65846995,Typha Spp,Seedling,Depth,LA11
+1241,2014,non_critical,MC,Low.Seasonal,96.77197802,Typha Spp,Seedling,Depth,LA11
+1242,2014,critical,MC,Low.Seasonal,99.88615665,Typha Spp,Seedling,Depth,LA11
+1243,2015,non_critical,MC,Low.Seasonal,97.75641026,Typha Spp,Seedling,Depth,LA11
+1244,2015,critical,MC,Low.Seasonal,99.72677596,Typha Spp,Seedling,Depth,LA11
+1245,2016,non_critical,MC,Low.Seasonal,96.65300546,Typha Spp,Seedling,Depth,LA11
+1246,2016,critical,MC,Low.Seasonal,99.54462659,Typha Spp,Seedling,Depth,LA11
+1247,2017,non_critical,MC,Low.Seasonal,89.39814815,Typha Spp,Seedling,Depth,LA11
+1248,2017,critical,MC,Low.Seasonal,99.86338798,Typha Spp,Seedling,Depth,LA11
+1249,2010,non_critical,LOB,Low.Seasonal,92.52378795,Typha Spp,Seedling,Depth,LA11
+1250,2011,non_critical,LOB,Low.Seasonal,96.58882784,Typha Spp,Seedling,Depth,LA11
+1251,2011,critical,LOB,Low.Seasonal,99.81785064,Typha Spp,Seedling,Depth,LA11
+1252,2012,non_critical,LOB,Low.Seasonal,97.76867031,Typha Spp,Seedling,Depth,LA11
+1253,2012,critical,LOB,Low.Seasonal,99.47632058,Typha Spp,Seedling,Depth,LA11
+1254,2013,non_critical,LOB,Low.Seasonal,99.01556777,Typha Spp,Seedling,Depth,LA11
+1255,2013,critical,LOB,Low.Seasonal,99.7723133,Typha Spp,Seedling,Depth,LA11
+1256,2014,non_critical,LOB,Low.Seasonal,97.82509158,Typha Spp,Seedling,Depth,LA11
+1257,2014,critical,LOB,Low.Seasonal,99.93169399,Typha Spp,Seedling,Depth,LA11
+1258,2015,non_critical,LOB,Low.Seasonal,98.94688645,Typha Spp,Seedling,Depth,LA11
+1259,2015,critical,LOB,Low.Seasonal,99.88615665,Typha Spp,Seedling,Depth,LA11
+1260,2016,non_critical,LOB,Low.Seasonal,97.54098361,Typha Spp,Seedling,Depth,LA11
+1261,2016,critical,LOB,Low.Seasonal,99.90892532,Typha Spp,Seedling,Depth,LA11
+1262,2017,non_critical,LOB,Low.Seasonal,93.28703704,Typha Spp,Seedling,Depth,LA11
+1263,2017,critical,LOB,Low.Seasonal,99.95446266,Typha Spp,Seedling,Depth,LA11
+1264,2010,non_critical,ROB,Low.Seasonal,96.14861803,Typha Spp,Seedling,Depth,LA11
+1265,2011,non_critical,ROB,Low.Seasonal,98.03113553,Typha Spp,Seedling,Depth,LA11
+1266,2011,critical,ROB,Low.Seasonal,99.95446266,Typha Spp,Seedling,Depth,LA11
+1267,2012,non_critical,ROB,Low.Seasonal,99.29417122,Typha Spp,Seedling,Depth,LA11
+1268,2012,critical,ROB,Low.Seasonal,99.70400729,Typha Spp,Seedling,Depth,LA11
+1269,2013,non_critical,ROB,Low.Seasonal,99.65659341,Typha Spp,Seedling,Depth,LA11
+1270,2013,critical,ROB,Low.Seasonal,99.93169399,Typha Spp,Seedling,Depth,LA11
+1271,2014,non_critical,ROB,Low.Seasonal,98.9010989,Typha Spp,Seedling,Depth,LA11
+1272,2014,critical,ROB,Low.Seasonal,99.97723133,Typha Spp,Seedling,Depth,LA11
+1273,2015,non_critical,ROB,Low.Seasonal,99.67948718,Typha Spp,Seedling,Depth,LA11
+1274,2015,critical,ROB,Low.Seasonal,99.95446266,Typha Spp,Seedling,Depth,LA11
+1275,2016,non_critical,ROB,Low.Seasonal,98.63387978,Typha Spp,Seedling,Depth,LA11
+1276,2016,critical,ROB,Low.Seasonal,100,Typha Spp,Seedling,Depth,LA11
+1277,2017,non_critical,ROB,Low.Seasonal,96.89814815,Typha Spp,Seedling,Depth,LA11
+1278,2017,critical,ROB,Low.Seasonal,100,Typha Spp,Seedling,Depth,LA11
+1279,2010,non_critical,MC,Medium.Seasonal,82.60081559,Typha Spp,Seedling,Depth,LA11
+1280,2011,non_critical,MC,Medium.Seasonal,88.23260073,Typha Spp,Seedling,Depth,LA11
+1281,2011,critical,MC,Medium.Seasonal,96.19763206,Typha Spp,Seedling,Depth,LA11
+1282,2012,non_critical,MC,Medium.Seasonal,94.10291439,Typha Spp,Seedling,Depth,LA11
+1283,2012,critical,MC,Medium.Seasonal,99.06648452,Typha Spp,Seedling,Depth,LA11
+1284,2013,non_critical,MC,Medium.Seasonal,96.74908425,Typha Spp,Seedling,Depth,LA11
+1285,2013,critical,MC,Medium.Seasonal,99.52185792,Typha Spp,Seedling,Depth,LA11
+1286,2014,non_critical,MC,Medium.Seasonal,96.01648352,Typha Spp,Seedling,Depth,LA11
+1287,2014,critical,MC,Medium.Seasonal,99.74954463,Typha Spp,Seedling,Depth,LA11
+1288,2015,non_critical,MC,Medium.Seasonal,96.90934066,Typha Spp,Seedling,Depth,LA11
+1289,2015,critical,MC,Medium.Seasonal,99.49908925,Typha Spp,Seedling,Depth,LA11
+1290,2016,non_critical,MC,Medium.Seasonal,95.24134791,Typha Spp,Seedling,Depth,LA11
+1291,2016,critical,MC,Medium.Seasonal,99.18032787,Typha Spp,Seedling,Depth,LA11
+1292,2017,non_critical,MC,Medium.Seasonal,85.55555556,Typha Spp,Seedling,Depth,LA11
+1293,2017,critical,MC,Medium.Seasonal,99.68123862,Typha Spp,Seedling,Depth,LA11
+1294,2010,non_critical,LOB,Medium.Seasonal,88.49116448,Typha Spp,Seedling,Depth,LA11
+1295,2011,non_critical,LOB,Medium.Seasonal,95.1007326,Typha Spp,Seedling,Depth,LA11
+1296,2011,critical,LOB,Medium.Seasonal,99.63570128,Typha Spp,Seedling,Depth,LA11
+1297,2012,non_critical,LOB,Medium.Seasonal,96.67577413,Typha Spp,Seedling,Depth,LA11
+1298,2012,critical,LOB,Medium.Seasonal,99.33970856,Typha Spp,Seedling,Depth,LA11
+1299,2013,non_critical,LOB,Medium.Seasonal,98.37454212,Typha Spp,Seedling,Depth,LA11
+1300,2013,critical,LOB,Medium.Seasonal,99.70400729,Typha Spp,Seedling,Depth,LA11
+1301,2014,non_critical,LOB,Medium.Seasonal,97.06959707,Typha Spp,Seedling,Depth,LA11
+1302,2014,critical,LOB,Medium.Seasonal,99.88615665,Typha Spp,Seedling,Depth,LA11
+1303,2015,non_critical,LOB,Medium.Seasonal,98.19139194,Typha Spp,Seedling,Depth,LA11
+1304,2015,critical,LOB,Medium.Seasonal,99.7723133,Typha Spp,Seedling,Depth,LA11
+1305,2016,non_critical,LOB,Medium.Seasonal,96.8579235,Typha Spp,Seedling,Depth,LA11
+1306,2016,critical,LOB,Medium.Seasonal,99.6129326,Typha Spp,Seedling,Depth,LA11
+1307,2017,non_critical,LOB,Medium.Seasonal,90.37037037,Typha Spp,Seedling,Depth,LA11
+1308,2017,critical,LOB,Medium.Seasonal,99.88615665,Typha Spp,Seedling,Depth,LA11
+1309,2010,non_critical,ROB,Medium.Seasonal,95.06116901,Typha Spp,Seedling,Depth,LA11
+1310,2011,non_critical,ROB,Medium.Seasonal,97.61904762,Typha Spp,Seedling,Depth,LA11
+1311,2011,critical,ROB,Medium.Seasonal,99.95446266,Typha Spp,Seedling,Depth,LA11
+1312,2012,non_critical,ROB,Medium.Seasonal,98.72495446,Typha Spp,Seedling,Depth,LA11
+1313,2012,critical,ROB,Medium.Seasonal,99.63570128,Typha Spp,Seedling,Depth,LA11
+1314,2013,non_critical,ROB,Medium.Seasonal,99.54212454,Typha Spp,Seedling,Depth,LA11
+1315,2013,critical,ROB,Medium.Seasonal,99.88615665,Typha Spp,Seedling,Depth,LA11
+1316,2014,non_critical,ROB,Medium.Seasonal,98.60347985,Typha Spp,Seedling,Depth,LA11
+1317,2014,critical,ROB,Medium.Seasonal,99.97723133,Typha Spp,Seedling,Depth,LA11
+1318,2015,non_critical,ROB,Medium.Seasonal,99.35897436,Typha Spp,Seedling,Depth,LA11
+1319,2015,critical,ROB,Medium.Seasonal,99.95446266,Typha Spp,Seedling,Depth,LA11
+1320,2016,non_critical,ROB,Medium.Seasonal,98.24681239,Typha Spp,Seedling,Depth,LA11
+1321,2016,critical,ROB,Medium.Seasonal,99.97723133,Typha Spp,Seedling,Depth,LA11
+1322,2017,non_critical,ROB,Medium.Seasonal,95.83333333,Typha Spp,Seedling,Depth,LA11
+1323,2017,critical,ROB,Medium.Seasonal,100,Typha Spp,Seedling,Depth,LA11
+1324,2010,non_critical,MC,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1325,2011,non_critical,MC,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1326,2011,critical,MC,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1327,2012,non_critical,MC,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1328,2012,critical,MC,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1329,2013,non_critical,MC,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1330,2013,critical,MC,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1331,2014,non_critical,MC,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1332,2014,critical,MC,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1333,2015,non_critical,MC,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1334,2015,critical,MC,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1335,2016,non_critical,MC,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1336,2016,critical,MC,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1337,2017,non_critical,MC,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1338,2017,critical,MC,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1339,2010,non_critical,LOB,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1340,2011,non_critical,LOB,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1341,2011,critical,LOB,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1342,2012,non_critical,LOB,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1343,2012,critical,LOB,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1344,2013,non_critical,LOB,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1345,2013,critical,LOB,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1346,2014,non_critical,LOB,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1347,2014,critical,LOB,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1348,2015,non_critical,LOB,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1349,2015,critical,LOB,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1350,2016,non_critical,LOB,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1351,2016,critical,LOB,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1352,2017,non_critical,LOB,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1353,2017,critical,LOB,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1354,2010,non_critical,ROB,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1355,2011,non_critical,ROB,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1356,2011,critical,ROB,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1357,2012,non_critical,ROB,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1358,2012,critical,ROB,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1359,2013,non_critical,ROB,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1360,2013,critical,ROB,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1361,2014,non_critical,ROB,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1362,2014,critical,ROB,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1363,2015,non_critical,ROB,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1364,2015,critical,ROB,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1365,2016,non_critical,ROB,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1366,2016,critical,ROB,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1367,2017,non_critical,ROB,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1368,2017,critical,ROB,High.Seasonal,0,Typha Spp,Seedling,Depth,LA11
+1369,2010,Annual,MC,Low,0,Typha Spp,Seedling,Velocity,LA11
+1370,2011,Annual,MC,Low,0.034246575,Typha Spp,Seedling,Velocity,LA11
+1371,2011,Annual,MC,Low,0.034246575,Typha Spp,Seedling,Velocity,LA11
+1372,2012,Annual,MC,Low,0.091074681,Typha Spp,Seedling,Velocity,LA11
+1373,2012,Annual,MC,Low,0.091074681,Typha Spp,Seedling,Velocity,LA11
+1374,2013,Annual,MC,Low,0,Typha Spp,Seedling,Velocity,LA11
+1375,2013,Annual,MC,Low,0,Typha Spp,Seedling,Velocity,LA11
+1376,2014,Annual,MC,Low,0.228310502,Typha Spp,Seedling,Velocity,LA11
+1377,2014,Annual,MC,Low,0.228310502,Typha Spp,Seedling,Velocity,LA11
+1378,2015,Annual,MC,Low,0.296803653,Typha Spp,Seedling,Velocity,LA11
+1379,2015,Annual,MC,Low,0.296803653,Typha Spp,Seedling,Velocity,LA11
+1380,2016,Annual,MC,Low,0,Typha Spp,Seedling,Velocity,LA11
+1381,2016,Annual,MC,Low,0,Typha Spp,Seedling,Velocity,LA11
+1382,2017,Annual,MC,Low,0,Typha Spp,Seedling,Velocity,LA11
+1383,2017,Annual,MC,Low,0,Typha Spp,Seedling,Velocity,LA11
+1384,2010,Annual,LOB,Low,91.43633892,Typha Spp,Seedling,Velocity,LA11
+1385,2011,Annual,LOB,Low,97.83105023,Typha Spp,Seedling,Velocity,LA11
+1386,2011,Annual,LOB,Low,97.83105023,Typha Spp,Seedling,Velocity,LA11
+1387,2012,Annual,LOB,Low,98.38342441,Typha Spp,Seedling,Velocity,LA11
+1388,2012,Annual,LOB,Low,98.38342441,Typha Spp,Seedling,Velocity,LA11
+1389,2013,Annual,LOB,Low,99.24657534,Typha Spp,Seedling,Velocity,LA11
+1390,2013,Annual,LOB,Low,99.24657534,Typha Spp,Seedling,Velocity,LA11
+1391,2014,Annual,LOB,Low,98.72146119,Typha Spp,Seedling,Velocity,LA11
+1392,2014,Annual,LOB,Low,98.72146119,Typha Spp,Seedling,Velocity,LA11
+1393,2015,Annual,LOB,Low,99.18949772,Typha Spp,Seedling,Velocity,LA11
+1394,2015,Annual,LOB,Low,99.18949772,Typha Spp,Seedling,Velocity,LA11
+1395,2016,Annual,LOB,Low,98.56557377,Typha Spp,Seedling,Velocity,LA11
+1396,2016,Annual,LOB,Low,98.56557377,Typha Spp,Seedling,Velocity,LA11
+1397,2017,Annual,LOB,Low,97.19169719,Typha Spp,Seedling,Velocity,LA11
+1398,2017,Annual,LOB,Low,97.19169719,Typha Spp,Seedling,Velocity,LA11
+1399,2010,Annual,ROB,Low,98.50475759,Typha Spp,Seedling,Velocity,LA11
+1400,2011,Annual,ROB,Low,99.48630137,Typha Spp,Seedling,Velocity,LA11
+1401,2011,Annual,ROB,Low,99.48630137,Typha Spp,Seedling,Velocity,LA11
+1402,2012,Annual,ROB,Low,99.73816029,Typha Spp,Seedling,Velocity,LA11
+1403,2012,Annual,ROB,Low,99.73816029,Typha Spp,Seedling,Velocity,LA11
+1404,2013,Annual,ROB,Low,99.93150685,Typha Spp,Seedling,Velocity,LA11
+1405,2013,Annual,ROB,Low,99.93150685,Typha Spp,Seedling,Velocity,LA11
+1406,2014,Annual,ROB,Low,99.6347032,Typha Spp,Seedling,Velocity,LA11
+1407,2014,Annual,ROB,Low,99.6347032,Typha Spp,Seedling,Velocity,LA11
+1408,2015,Annual,ROB,Low,99.98858447,Typha Spp,Seedling,Velocity,LA11
+1409,2015,Annual,ROB,Low,99.98858447,Typha Spp,Seedling,Velocity,LA11
+1410,2016,Annual,ROB,Low,99.6129326,Typha Spp,Seedling,Velocity,LA11
+1411,2016,Annual,ROB,Low,99.6129326,Typha Spp,Seedling,Velocity,LA11
+1412,2017,Annual,ROB,Low,99.46581197,Typha Spp,Seedling,Velocity,LA11
+1413,2017,Annual,ROB,Low,99.46581197,Typha Spp,Seedling,Velocity,LA11
+1414,2010,Annual,MC,Medium,0,Typha Spp,Seedling,Velocity,LA11
+1415,2011,Annual,MC,Medium,0,Typha Spp,Seedling,Velocity,LA11
+1416,2011,Annual,MC,Medium,0,Typha Spp,Seedling,Velocity,LA11
+1417,2012,Annual,MC,Medium,0,Typha Spp,Seedling,Velocity,LA11
+1418,2012,Annual,MC,Medium,0,Typha Spp,Seedling,Velocity,LA11
+1419,2013,Annual,MC,Medium,0,Typha Spp,Seedling,Velocity,LA11
+1420,2013,Annual,MC,Medium,0,Typha Spp,Seedling,Velocity,LA11
+1421,2014,Annual,MC,Medium,0,Typha Spp,Seedling,Velocity,LA11
+1422,2014,Annual,MC,Medium,0,Typha Spp,Seedling,Velocity,LA11
+1423,2015,Annual,MC,Medium,0,Typha Spp,Seedling,Velocity,LA11
+1424,2015,Annual,MC,Medium,0,Typha Spp,Seedling,Velocity,LA11
+1425,2016,Annual,MC,Medium,0,Typha Spp,Seedling,Velocity,LA11
+1426,2016,Annual,MC,Medium,0,Typha Spp,Seedling,Velocity,LA11
+1427,2017,Annual,MC,Medium,0,Typha Spp,Seedling,Velocity,LA11
+1428,2017,Annual,MC,Medium,0,Typha Spp,Seedling,Velocity,LA11
+1429,2010,Annual,LOB,Medium,86.54281831,Typha Spp,Seedling,Velocity,LA11
+1430,2011,Annual,LOB,Medium,95.81050228,Typha Spp,Seedling,Velocity,LA11
+1431,2011,Annual,LOB,Medium,95.81050228,Typha Spp,Seedling,Velocity,LA11
+1432,2012,Annual,LOB,Medium,97.74590164,Typha Spp,Seedling,Velocity,LA11
+1433,2012,Annual,LOB,Medium,97.74590164,Typha Spp,Seedling,Velocity,LA11
+1434,2013,Annual,LOB,Medium,98.82420091,Typha Spp,Seedling,Velocity,LA11
+1435,2013,Annual,LOB,Medium,98.82420091,Typha Spp,Seedling,Velocity,LA11
+1436,2014,Annual,LOB,Medium,98.28767123,Typha Spp,Seedling,Velocity,LA11
+1437,2014,Annual,LOB,Medium,98.28767123,Typha Spp,Seedling,Velocity,LA11
+1438,2015,Annual,LOB,Medium,98.73287671,Typha Spp,Seedling,Velocity,LA11
+1439,2015,Annual,LOB,Medium,98.73287671,Typha Spp,Seedling,Velocity,LA11
+1440,2016,Annual,LOB,Medium,98.05327869,Typha Spp,Seedling,Velocity,LA11
+1441,2016,Annual,LOB,Medium,98.05327869,Typha Spp,Seedling,Velocity,LA11
+1442,2017,Annual,LOB,Medium,96.32173382,Typha Spp,Seedling,Velocity,LA11
+1443,2017,Annual,LOB,Medium,96.32173382,Typha Spp,Seedling,Velocity,LA11
+1444,2010,Annual,ROB,Medium,92.4331672,Typha Spp,Seedling,Velocity,LA11
+1445,2011,Annual,ROB,Medium,98.15068493,Typha Spp,Seedling,Velocity,LA11
+1446,2011,Annual,ROB,Medium,98.15068493,Typha Spp,Seedling,Velocity,LA11
+1447,2012,Annual,ROB,Medium,98.58834244,Typha Spp,Seedling,Velocity,LA11
+1448,2012,Annual,ROB,Medium,98.58834244,Typha Spp,Seedling,Velocity,LA11
+1449,2013,Annual,ROB,Medium,99.34931507,Typha Spp,Seedling,Velocity,LA11
+1450,2013,Annual,ROB,Medium,99.34931507,Typha Spp,Seedling,Velocity,LA11
+1451,2014,Annual,ROB,Medium,98.85844749,Typha Spp,Seedling,Velocity,LA11
+1452,2014,Annual,ROB,Medium,98.85844749,Typha Spp,Seedling,Velocity,LA11
+1453,2015,Annual,ROB,Medium,99.38356164,Typha Spp,Seedling,Velocity,LA11
+1454,2015,Annual,ROB,Medium,99.38356164,Typha Spp,Seedling,Velocity,LA11
+1455,2016,Annual,ROB,Medium,98.72495446,Typha Spp,Seedling,Velocity,LA11
+1456,2016,Annual,ROB,Medium,98.72495446,Typha Spp,Seedling,Velocity,LA11
+1457,2017,Annual,ROB,Medium,97.68009768,Typha Spp,Seedling,Velocity,LA11
+1458,2017,Annual,ROB,Medium,97.68009768,Typha Spp,Seedling,Velocity,LA11
+1459,2010,Annual,MC,High,0,Typha Spp,Seedling,Velocity,LA11
+1460,2011,Annual,MC,High,0,Typha Spp,Seedling,Velocity,LA11
+1461,2011,Annual,MC,High,0,Typha Spp,Seedling,Velocity,LA11
+1462,2012,Annual,MC,High,0,Typha Spp,Seedling,Velocity,LA11
+1463,2012,Annual,MC,High,0,Typha Spp,Seedling,Velocity,LA11
+1464,2013,Annual,MC,High,0,Typha Spp,Seedling,Velocity,LA11
+1465,2013,Annual,MC,High,0,Typha Spp,Seedling,Velocity,LA11
+1466,2014,Annual,MC,High,0,Typha Spp,Seedling,Velocity,LA11
+1467,2014,Annual,MC,High,0,Typha Spp,Seedling,Velocity,LA11
+1468,2015,Annual,MC,High,0,Typha Spp,Seedling,Velocity,LA11
+1469,2015,Annual,MC,High,0,Typha Spp,Seedling,Velocity,LA11
+1470,2016,Annual,MC,High,0,Typha Spp,Seedling,Velocity,LA11
+1471,2016,Annual,MC,High,0,Typha Spp,Seedling,Velocity,LA11
+1472,2017,Annual,MC,High,0,Typha Spp,Seedling,Velocity,LA11
+1473,2017,Annual,MC,High,0,Typha Spp,Seedling,Velocity,LA11
+1474,2010,Annual,LOB,High,83.50702311,Typha Spp,Seedling,Velocity,LA11
+1475,2011,Annual,LOB,High,93.01369863,Typha Spp,Seedling,Velocity,LA11
+1476,2011,Annual,LOB,High,93.01369863,Typha Spp,Seedling,Velocity,LA11
+1477,2012,Annual,LOB,High,96.82377049,Typha Spp,Seedling,Velocity,LA11
+1478,2012,Annual,LOB,High,96.82377049,Typha Spp,Seedling,Velocity,LA11
+1479,2013,Annual,LOB,High,98.32191781,Typha Spp,Seedling,Velocity,LA11
+1480,2013,Annual,LOB,High,98.32191781,Typha Spp,Seedling,Velocity,LA11
+1481,2014,Annual,LOB,High,97.97945205,Typha Spp,Seedling,Velocity,LA11
+1482,2014,Annual,LOB,High,97.97945205,Typha Spp,Seedling,Velocity,LA11
+1483,2015,Annual,LOB,High,98.37899543,Typha Spp,Seedling,Velocity,LA11
+1484,2015,Annual,LOB,High,98.37899543,Typha Spp,Seedling,Velocity,LA11
+1485,2016,Annual,LOB,High,97.37021858,Typha Spp,Seedling,Velocity,LA11
+1486,2016,Annual,LOB,High,97.37021858,Typha Spp,Seedling,Velocity,LA11
+1487,2017,Annual,LOB,High,95.36019536,Typha Spp,Seedling,Velocity,LA11
+1488,2017,Annual,LOB,High,95.36019536,Typha Spp,Seedling,Velocity,LA11
+1489,2010,Annual,ROB,High,86.95061169,Typha Spp,Seedling,Velocity,LA11
+1490,2011,Annual,ROB,High,96.65525114,Typha Spp,Seedling,Velocity,LA11
+1491,2011,Annual,ROB,High,96.65525114,Typha Spp,Seedling,Velocity,LA11
+1492,2012,Annual,ROB,High,97.928051,Typha Spp,Seedling,Velocity,LA11
+1493,2012,Annual,ROB,High,97.928051,Typha Spp,Seedling,Velocity,LA11
+1494,2013,Annual,ROB,High,98.94977169,Typha Spp,Seedling,Velocity,LA11
+1495,2013,Annual,ROB,High,98.94977169,Typha Spp,Seedling,Velocity,LA11
+1496,2014,Annual,ROB,High,98.39041096,Typha Spp,Seedling,Velocity,LA11
+1497,2014,Annual,ROB,High,98.39041096,Typha Spp,Seedling,Velocity,LA11
+1498,2015,Annual,ROB,High,98.84703196,Typha Spp,Seedling,Velocity,LA11
+1499,2015,Annual,ROB,High,98.84703196,Typha Spp,Seedling,Velocity,LA11
+1500,2016,Annual,ROB,High,98.17850638,Typha Spp,Seedling,Velocity,LA11
+1501,2016,Annual,ROB,High,98.17850638,Typha Spp,Seedling,Velocity,LA11
+1502,2017,Annual,ROB,High,96.62698413,Typha Spp,Seedling,Velocity,LA11
+1503,2017,Annual,ROB,High,96.62698413,Typha Spp,Seedling,Velocity,LA11
+1504,2010,non_critical,MC,Low.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1505,2011,non_critical,MC,Low.Seasonal,0.068681319,Typha Spp,Seedling,Velocity,LA11
+1506,2011,critical,MC,Low.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1507,2012,non_critical,MC,Low.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1508,2012,critical,MC,Low.Seasonal,0.182149362,Typha Spp,Seedling,Velocity,LA11
+1509,2013,non_critical,MC,Low.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1510,2013,critical,MC,Low.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1511,2014,non_critical,MC,Low.Seasonal,0.457875458,Typha Spp,Seedling,Velocity,LA11
+1512,2014,critical,MC,Low.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1513,2015,non_critical,MC,Low.Seasonal,0.595238095,Typha Spp,Seedling,Velocity,LA11
+1514,2015,critical,MC,Low.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1515,2016,non_critical,MC,Low.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1516,2016,critical,MC,Low.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1517,2017,non_critical,MC,Low.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1518,2017,critical,MC,Low.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1519,2010,non_critical,LOB,Low.Seasonal,91.43633892,Typha Spp,Seedling,Velocity,LA11
+1520,2011,non_critical,LOB,Low.Seasonal,95.90201465,Typha Spp,Seedling,Velocity,LA11
+1521,2011,critical,LOB,Low.Seasonal,99.74954463,Typha Spp,Seedling,Velocity,LA11
+1522,2012,non_critical,LOB,Low.Seasonal,97.33606557,Typha Spp,Seedling,Velocity,LA11
+1523,2012,critical,LOB,Low.Seasonal,99.43078324,Typha Spp,Seedling,Velocity,LA11
+1524,2013,non_critical,LOB,Low.Seasonal,98.74084249,Typha Spp,Seedling,Velocity,LA11
+1525,2013,critical,LOB,Low.Seasonal,99.74954463,Typha Spp,Seedling,Velocity,LA11
+1526,2014,non_critical,LOB,Low.Seasonal,97.50457875,Typha Spp,Seedling,Velocity,LA11
+1527,2014,critical,LOB,Low.Seasonal,99.93169399,Typha Spp,Seedling,Velocity,LA11
+1528,2015,non_critical,LOB,Low.Seasonal,98.53479853,Typha Spp,Seedling,Velocity,LA11
+1529,2015,critical,LOB,Low.Seasonal,99.84061931,Typha Spp,Seedling,Velocity,LA11
+1530,2016,non_critical,LOB,Low.Seasonal,97.33606557,Typha Spp,Seedling,Velocity,LA11
+1531,2016,critical,LOB,Low.Seasonal,99.79508197,Typha Spp,Seedling,Velocity,LA11
+1532,2017,non_critical,LOB,Low.Seasonal,91.62037037,Typha Spp,Seedling,Velocity,LA11
+1533,2017,critical,LOB,Low.Seasonal,99.93169399,Typha Spp,Seedling,Velocity,LA11
+1534,2010,non_critical,ROB,Low.Seasonal,98.50475759,Typha Spp,Seedling,Velocity,LA11
+1535,2011,non_critical,ROB,Low.Seasonal,98.96978022,Typha Spp,Seedling,Velocity,LA11
+1536,2011,critical,ROB,Low.Seasonal,100,Typha Spp,Seedling,Velocity,LA11
+1537,2012,non_critical,ROB,Low.Seasonal,99.63570128,Typha Spp,Seedling,Velocity,LA11
+1538,2012,critical,ROB,Low.Seasonal,99.84061931,Typha Spp,Seedling,Velocity,LA11
+1539,2013,non_critical,ROB,Low.Seasonal,99.86263736,Typha Spp,Seedling,Velocity,LA11
+1540,2013,critical,ROB,Low.Seasonal,100,Typha Spp,Seedling,Velocity,LA11
+1541,2014,non_critical,ROB,Low.Seasonal,99.26739927,Typha Spp,Seedling,Velocity,LA11
+1542,2014,critical,ROB,Low.Seasonal,100,Typha Spp,Seedling,Velocity,LA11
+1543,2015,non_critical,ROB,Low.Seasonal,99.97710623,Typha Spp,Seedling,Velocity,LA11
+1544,2015,critical,ROB,Low.Seasonal,100,Typha Spp,Seedling,Velocity,LA11
+1545,2016,non_critical,ROB,Low.Seasonal,99.22586521,Typha Spp,Seedling,Velocity,LA11
+1546,2016,critical,ROB,Low.Seasonal,100,Typha Spp,Seedling,Velocity,LA11
+1547,2017,non_critical,ROB,Low.Seasonal,98.37962963,Typha Spp,Seedling,Velocity,LA11
+1548,2017,critical,ROB,Low.Seasonal,100,Typha Spp,Seedling,Velocity,LA11
+1549,2010,non_critical,MC,Medium.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1550,2011,non_critical,MC,Medium.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1551,2011,critical,MC,Medium.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1552,2012,non_critical,MC,Medium.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1553,2012,critical,MC,Medium.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1554,2013,non_critical,MC,Medium.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1555,2013,critical,MC,Medium.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1556,2014,non_critical,MC,Medium.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1557,2014,critical,MC,Medium.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1558,2015,non_critical,MC,Medium.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1559,2015,critical,MC,Medium.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1560,2016,non_critical,MC,Medium.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1561,2016,critical,MC,Medium.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1562,2017,non_critical,MC,Medium.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1563,2017,critical,MC,Medium.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1564,2010,non_critical,LOB,Medium.Seasonal,86.54281831,Typha Spp,Seedling,Velocity,LA11
+1565,2011,non_critical,LOB,Medium.Seasonal,92.03296703,Typha Spp,Seedling,Velocity,LA11
+1566,2011,critical,LOB,Medium.Seasonal,99.56739526,Typha Spp,Seedling,Velocity,LA11
+1567,2012,non_critical,LOB,Medium.Seasonal,96.22040073,Typha Spp,Seedling,Velocity,LA11
+1568,2012,critical,LOB,Medium.Seasonal,99.27140255,Typha Spp,Seedling,Velocity,LA11
+1569,2013,non_critical,LOB,Medium.Seasonal,97.98534799,Typha Spp,Seedling,Velocity,LA11
+1570,2013,critical,LOB,Medium.Seasonal,99.65846995,Typha Spp,Seedling,Velocity,LA11
+1571,2014,non_critical,LOB,Medium.Seasonal,96.68040293,Typha Spp,Seedling,Velocity,LA11
+1572,2014,critical,LOB,Medium.Seasonal,99.88615665,Typha Spp,Seedling,Velocity,LA11
+1573,2015,non_critical,LOB,Medium.Seasonal,97.73351648,Typha Spp,Seedling,Velocity,LA11
+1574,2015,critical,LOB,Medium.Seasonal,99.72677596,Typha Spp,Seedling,Velocity,LA11
+1575,2016,non_critical,LOB,Medium.Seasonal,96.60746812,Typha Spp,Seedling,Velocity,LA11
+1576,2016,critical,LOB,Medium.Seasonal,99.49908925,Typha Spp,Seedling,Velocity,LA11
+1577,2017,non_critical,LOB,Medium.Seasonal,89.12037037,Typha Spp,Seedling,Velocity,LA11
+1578,2017,critical,LOB,Medium.Seasonal,99.86338798,Typha Spp,Seedling,Velocity,LA11
+1579,2010,non_critical,ROB,Medium.Seasonal,92.4331672,Typha Spp,Seedling,Velocity,LA11
+1580,2011,non_critical,ROB,Medium.Seasonal,96.49725275,Typha Spp,Seedling,Velocity,LA11
+1581,2011,critical,ROB,Medium.Seasonal,99.79508197,Typha Spp,Seedling,Velocity,LA11
+1582,2012,non_critical,ROB,Medium.Seasonal,97.7003643,Typha Spp,Seedling,Velocity,LA11
+1583,2012,critical,ROB,Medium.Seasonal,99.47632058,Typha Spp,Seedling,Velocity,LA11
+1584,2013,non_critical,ROB,Medium.Seasonal,98.92399267,Typha Spp,Seedling,Velocity,LA11
+1585,2013,critical,ROB,Medium.Seasonal,99.7723133,Typha Spp,Seedling,Velocity,LA11
+1586,2014,non_critical,ROB,Medium.Seasonal,97.77930403,Typha Spp,Seedling,Velocity,LA11
+1587,2014,critical,ROB,Medium.Seasonal,99.93169399,Typha Spp,Seedling,Velocity,LA11
+1588,2015,non_critical,ROB,Medium.Seasonal,98.87820513,Typha Spp,Seedling,Velocity,LA11
+1589,2015,critical,ROB,Medium.Seasonal,99.88615665,Typha Spp,Seedling,Velocity,LA11
+1590,2016,non_critical,ROB,Medium.Seasonal,97.54098361,Typha Spp,Seedling,Velocity,LA11
+1591,2016,critical,ROB,Medium.Seasonal,99.90892532,Typha Spp,Seedling,Velocity,LA11
+1592,2017,non_critical,ROB,Medium.Seasonal,93.05555556,Typha Spp,Seedling,Velocity,LA11
+1593,2017,critical,ROB,Medium.Seasonal,99.95446266,Typha Spp,Seedling,Velocity,LA11
+1594,2010,non_critical,MC,High.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1595,2011,non_critical,MC,High.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1596,2011,critical,MC,High.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1597,2012,non_critical,MC,High.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1598,2012,critical,MC,High.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1599,2013,non_critical,MC,High.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1600,2013,critical,MC,High.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1601,2014,non_critical,MC,High.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1602,2014,critical,MC,High.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1603,2015,non_critical,MC,High.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1604,2015,critical,MC,High.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1605,2016,non_critical,MC,High.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1606,2016,critical,MC,High.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1607,2017,non_critical,MC,High.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1608,2017,critical,MC,High.Seasonal,0,Typha Spp,Seedling,Velocity,LA11
+1609,2010,non_critical,LOB,High.Seasonal,83.50702311,Typha Spp,Seedling,Velocity,LA11
+1610,2011,non_critical,LOB,High.Seasonal,88.8507326,Typha Spp,Seedling,Velocity,LA11
+1611,2011,critical,LOB,High.Seasonal,97.15391621,Typha Spp,Seedling,Velocity,LA11
+1612,2012,non_critical,LOB,High.Seasonal,94.53551913,Typha Spp,Seedling,Velocity,LA11
+1613,2012,critical,LOB,High.Seasonal,99.11202186,Typha Spp,Seedling,Velocity,LA11
+1614,2013,non_critical,LOB,High.Seasonal,97.09249084,Typha Spp,Seedling,Velocity,LA11
+1615,2013,critical,LOB,High.Seasonal,99.54462659,Typha Spp,Seedling,Velocity,LA11
+1616,2014,non_critical,LOB,High.Seasonal,96.15384615,Typha Spp,Seedling,Velocity,LA11
+1617,2014,critical,LOB,High.Seasonal,99.79508197,Typha Spp,Seedling,Velocity,LA11
+1618,2015,non_critical,LOB,High.Seasonal,97.16117216,Typha Spp,Seedling,Velocity,LA11
+1619,2015,critical,LOB,High.Seasonal,99.59016393,Typha Spp,Seedling,Velocity,LA11
+1620,2016,non_critical,LOB,High.Seasonal,95.51457195,Typha Spp,Seedling,Velocity,LA11
+1621,2016,critical,LOB,High.Seasonal,99.22586521,Typha Spp,Seedling,Velocity,LA11
+1622,2017,non_critical,LOB,High.Seasonal,86.48148148,Typha Spp,Seedling,Velocity,LA11
+1623,2017,critical,LOB,High.Seasonal,99.72677596,Typha Spp,Seedling,Velocity,LA11
+1624,2010,non_critical,ROB,High.Seasonal,86.95061169,Typha Spp,Seedling,Velocity,LA11
+1625,2011,non_critical,ROB,High.Seasonal,93.70421245,Typha Spp,Seedling,Velocity,LA11
+1626,2011,critical,ROB,High.Seasonal,99.59016393,Typha Spp,Seedling,Velocity,LA11
+1627,2012,non_critical,ROB,High.Seasonal,96.56193078,Typha Spp,Seedling,Velocity,LA11
+1628,2012,critical,ROB,High.Seasonal,99.29417122,Typha Spp,Seedling,Velocity,LA11
+1629,2013,non_critical,ROB,High.Seasonal,98.21428571,Typha Spp,Seedling,Velocity,LA11
+1630,2013,critical,ROB,High.Seasonal,99.68123862,Typha Spp,Seedling,Velocity,LA11
+1631,2014,non_critical,ROB,High.Seasonal,96.88644689,Typha Spp,Seedling,Velocity,LA11
+1632,2014,critical,ROB,High.Seasonal,99.88615665,Typha Spp,Seedling,Velocity,LA11
+1633,2015,non_critical,ROB,High.Seasonal,97.96245421,Typha Spp,Seedling,Velocity,LA11
+1634,2015,critical,ROB,High.Seasonal,99.72677596,Typha Spp,Seedling,Velocity,LA11
+1635,2016,non_critical,ROB,High.Seasonal,96.78961749,Typha Spp,Seedling,Velocity,LA11
+1636,2016,critical,ROB,High.Seasonal,99.56739526,Typha Spp,Seedling,Velocity,LA11
+1637,2017,non_critical,ROB,High.Seasonal,90,Typha Spp,Seedling,Velocity,LA11
+1638,2017,critical,ROB,High.Seasonal,99.88615665,Typha Spp,Seedling,Velocity,LA11
+1639,2010,Annual,MC,>18cm,22.60987766,Steelhead,Migration (IN),Depth,LA11
+1640,2011,Annual,MC,>18cm,9.53196347,Steelhead,Migration (IN),Depth,LA11
+1641,2012,Annual,MC,>18cm,4.428506375,Steelhead,Migration (IN),Depth,LA11
+1642,2013,Annual,MC,>18cm,2.363013699,Steelhead,Migration (IN),Depth,LA11
+1643,2014,Annual,MC,>18cm,2.408675799,Steelhead,Migration (IN),Depth,LA11
+1644,2015,Annual,MC,>18cm,2.214611872,Steelhead,Migration (IN),Depth,LA11
+1645,2016,Annual,MC,>18cm,3.267304189,Steelhead,Migration (IN),Depth,LA11
+1646,2017,Annual,MC,>18cm,6.288156288,Steelhead,Migration (IN),Depth,LA11
+1647,2010,Annual,LOB,>18cm,13.41187132,Steelhead,Migration (IN),Depth,LA11
+1648,2011,Annual,LOB,>18cm,3.812785388,Steelhead,Migration (IN),Depth,LA11
+1649,2012,Annual,LOB,>18cm,2.174408015,Steelhead,Migration (IN),Depth,LA11
+1650,2013,Annual,LOB,>18cm,1.152968037,Steelhead,Migration (IN),Depth,LA11
+1651,2014,Annual,LOB,>18cm,1.655251142,Steelhead,Migration (IN),Depth,LA11
+1652,2015,Annual,LOB,>18cm,1.221461187,Steelhead,Migration (IN),Depth,LA11
+1653,2016,Annual,LOB,>18cm,1.901183971,Steelhead,Migration (IN),Depth,LA11
+1654,2017,Annual,LOB,>18cm,3.540903541,Steelhead,Migration (IN),Depth,LA11
+1655,2010,Annual,ROB,>18cm,5.799728138,Steelhead,Migration (IN),Depth,LA11
+1656,2011,Annual,ROB,>18cm,1.324200913,Steelhead,Migration (IN),Depth,LA11
+1657,2012,Annual,ROB,>18cm,0.887978142,Steelhead,Migration (IN),Depth,LA11
+1658,2013,Annual,ROB,>18cm,0.365296804,Steelhead,Migration (IN),Depth,LA11
+1659,2014,Annual,ROB,>18cm,0.753424658,Steelhead,Migration (IN),Depth,LA11
+1660,2015,Annual,ROB,>18cm,0.376712329,Steelhead,Migration (IN),Depth,LA11
+1661,2016,Annual,ROB,>18cm,0.979052823,Steelhead,Migration (IN),Depth,LA11
+1662,2017,Annual,ROB,>18cm,1.602564103,Steelhead,Migration (IN),Depth,LA11
+1663,2010,non_critical,MC,>18cm,12.44019139,Steelhead,Migration (IN),Depth,LA11
+1664,2011,non_critical,MC,>18cm,2.260348584,Steelhead,Migration (IN),Depth,LA11
+1665,2012,non_critical,MC,>18cm,2.34204793,Steelhead,Migration (IN),Depth,LA11
+1666,2013,non_critical,MC,>18cm,0.953159041,Steelhead,Migration (IN),Depth,LA11
+1667,2014,non_critical,MC,>18cm,0.708061002,Steelhead,Migration (IN),Depth,LA11
+1668,2015,non_critical,MC,>18cm,0.571895425,Steelhead,Migration (IN),Depth,LA11
+1669,2016,non_critical,MC,>18cm,1.497821351,Steelhead,Migration (IN),Depth,LA11
+1670,2017,non_critical,MC,>18cm,0,Steelhead,Migration (IN),Depth,LA11
+1671,2010,non_critical,LOB,>18cm,4.784688995,Steelhead,Migration (IN),Depth,LA11
+1672,2011,non_critical,LOB,>18cm,1.14379085,Steelhead,Migration (IN),Depth,LA11
+1673,2012,non_critical,LOB,>18cm,1.334422658,Steelhead,Migration (IN),Depth,LA11
+1674,2013,non_critical,LOB,>18cm,0.517429194,Steelhead,Migration (IN),Depth,LA11
+1675,2014,non_critical,LOB,>18cm,0.517429194,Steelhead,Migration (IN),Depth,LA11
+1676,2015,non_critical,LOB,>18cm,0.190631808,Steelhead,Migration (IN),Depth,LA11
+1677,2016,non_critical,LOB,>18cm,0.735294118,Steelhead,Migration (IN),Depth,LA11
+1678,2017,non_critical,LOB,>18cm,0,Steelhead,Migration (IN),Depth,LA11
+1679,2010,non_critical,ROB,>18cm,1.503759398,Steelhead,Migration (IN),Depth,LA11
+1680,2011,non_critical,ROB,>18cm,0.571895425,Steelhead,Migration (IN),Depth,LA11
+1681,2012,non_critical,ROB,>18cm,0.326797386,Steelhead,Migration (IN),Depth,LA11
+1682,2013,non_critical,ROB,>18cm,0.054466231,Steelhead,Migration (IN),Depth,LA11
+1683,2014,non_critical,ROB,>18cm,0.217864924,Steelhead,Migration (IN),Depth,LA11
+1684,2015,non_critical,ROB,>18cm,0.027233115,Steelhead,Migration (IN),Depth,LA11
+1685,2016,non_critical,ROB,>18cm,0.272331155,Steelhead,Migration (IN),Depth,LA11
+1686,2017,non_critical,ROB,>18cm,0,Steelhead,Migration (IN),Depth,LA11
+1687,2010,critical,MC,>18cm,42.60752688,Steelhead,Migration (IN),Depth,LA11
+1688,2011,critical,MC,>18cm,14.77987421,Steelhead,Migration (IN),Depth,LA11
+1689,2012,critical,MC,>18cm,5.927230047,Steelhead,Migration (IN),Depth,LA11
+1690,2013,critical,MC,>18cm,3.380503145,Steelhead,Migration (IN),Depth,LA11
+1691,2014,critical,MC,>18cm,3.636006289,Steelhead,Migration (IN),Depth,LA11
+1692,2015,critical,MC,>18cm,3.400157233,Steelhead,Migration (IN),Depth,LA11
+1693,2016,critical,MC,>18cm,4.538341158,Steelhead,Migration (IN),Depth,LA11
+1694,2017,critical,MC,>18cm,9.484346225,Steelhead,Migration (IN),Depth,LA11
+1695,2010,critical,LOB,>18cm,30.37634409,Steelhead,Migration (IN),Depth,LA11
+1696,2011,critical,LOB,>18cm,5.738993711,Steelhead,Migration (IN),Depth,LA11
+1697,2012,critical,LOB,>18cm,2.777777778,Steelhead,Migration (IN),Depth,LA11
+1698,2013,critical,LOB,>18cm,1.61163522,Steelhead,Migration (IN),Depth,LA11
+1699,2014,critical,LOB,>18cm,2.476415094,Steelhead,Migration (IN),Depth,LA11
+1700,2015,critical,LOB,>18cm,1.965408805,Steelhead,Migration (IN),Depth,LA11
+1701,2016,critical,LOB,>18cm,2.738654147,Steelhead,Migration (IN),Depth,LA11
+1702,2017,critical,LOB,>18cm,5.340699816,Steelhead,Migration (IN),Depth,LA11
+1703,2010,critical,ROB,>18cm,14.24731183,Steelhead,Migration (IN),Depth,LA11
+1704,2011,critical,ROB,>18cm,1.867138365,Steelhead,Migration (IN),Depth,LA11
+1705,2012,critical,ROB,>18cm,1.291079812,Steelhead,Migration (IN),Depth,LA11
+1706,2013,critical,ROB,>18cm,0.589622642,Steelhead,Migration (IN),Depth,LA11
+1707,2014,critical,ROB,>18cm,1.139937107,Steelhead,Migration (IN),Depth,LA11
+1708,2015,critical,ROB,>18cm,0.628930818,Steelhead,Migration (IN),Depth,LA11
+1709,2016,critical,ROB,>18cm,1.486697966,Steelhead,Migration (IN),Depth,LA11
+1710,2017,critical,ROB,>18cm,2.417127072,Steelhead,Migration (IN),Depth,LA11
+1711,2010,Annual,MC,<3.1m/s,99.72813774,Steelhead,Migration (IN),Velocity,LA11
+1712,2011,Annual,MC,<3.1m/s,99.71461187,Steelhead,Migration (IN),Velocity,LA11
+1713,2012,Annual,MC,<3.1m/s,99.92030965,Steelhead,Migration (IN),Velocity,LA11
+1714,2013,Annual,MC,<3.1m/s,99.97716895,Steelhead,Migration (IN),Velocity,LA11
+1715,2014,Annual,MC,<3.1m/s,99.80593607,Steelhead,Migration (IN),Velocity,LA11
+1716,2015,Annual,MC,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1717,2016,Annual,MC,<3.1m/s,99.82923497,Steelhead,Migration (IN),Velocity,LA11
+1718,2017,Annual,MC,<3.1m/s,99.75579976,Steelhead,Migration (IN),Velocity,LA11
+1719,2010,Annual,LOB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1720,2011,Annual,LOB,<3.1m/s,99.98858447,Steelhead,Migration (IN),Velocity,LA11
+1721,2012,Annual,LOB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1722,2013,Annual,LOB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1723,2014,Annual,LOB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1724,2015,Annual,LOB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1725,2016,Annual,LOB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1726,2017,Annual,LOB,<3.1m/s,99.98473748,Steelhead,Migration (IN),Velocity,LA11
+1727,2010,Annual,ROB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1728,2011,Annual,ROB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1729,2012,Annual,ROB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1730,2013,Annual,ROB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1731,2014,Annual,ROB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1732,2015,Annual,ROB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1733,2016,Annual,ROB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1734,2017,Annual,ROB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1735,2010,non_critical,MC,<3.1m/s,99.8632946,Steelhead,Migration (IN),Velocity,LA11
+1736,2011,non_critical,MC,<3.1m/s,99.86383442,Steelhead,Migration (IN),Velocity,LA11
+1737,2012,non_critical,MC,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1738,2013,non_critical,MC,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1739,2014,non_critical,MC,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1740,2015,non_critical,MC,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1741,2016,non_critical,MC,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1742,2017,non_critical,MC,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1743,2010,non_critical,LOB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1744,2011,non_critical,LOB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1745,2012,non_critical,LOB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1746,2013,non_critical,LOB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1747,2014,non_critical,LOB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1748,2015,non_critical,LOB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1749,2016,non_critical,LOB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1750,2017,non_critical,LOB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1751,2010,non_critical,ROB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1752,2011,non_critical,ROB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1753,2012,non_critical,ROB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1754,2013,non_critical,ROB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1755,2014,non_critical,ROB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1756,2015,non_critical,ROB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1757,2016,non_critical,ROB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1758,2017,non_critical,ROB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1759,2010,critical,MC,<3.1m/s,99.46236559,Steelhead,Migration (IN),Velocity,LA11
+1760,2011,critical,MC,<3.1m/s,99.60691824,Steelhead,Migration (IN),Velocity,LA11
+1761,2012,critical,MC,<3.1m/s,99.86306729,Steelhead,Migration (IN),Velocity,LA11
+1762,2013,critical,MC,<3.1m/s,99.96069182,Steelhead,Migration (IN),Velocity,LA11
+1763,2014,critical,MC,<3.1m/s,99.6658805,Steelhead,Migration (IN),Velocity,LA11
+1764,2015,critical,MC,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1765,2016,critical,MC,<3.1m/s,99.70657277,Steelhead,Migration (IN),Velocity,LA11
+1766,2017,critical,MC,<3.1m/s,99.63167587,Steelhead,Migration (IN),Velocity,LA11
+1767,2010,critical,LOB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1768,2011,critical,LOB,<3.1m/s,99.98034591,Steelhead,Migration (IN),Velocity,LA11
+1769,2012,critical,LOB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1770,2013,critical,LOB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1771,2014,critical,LOB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1772,2015,critical,LOB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1773,2016,critical,LOB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1774,2017,critical,LOB,<3.1m/s,99.97697974,Steelhead,Migration (IN),Velocity,LA11
+1775,2010,critical,ROB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1776,2011,critical,ROB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1777,2012,critical,ROB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1778,2013,critical,ROB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1779,2014,critical,ROB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1780,2015,critical,ROB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1781,2016,critical,ROB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
+1782,2017,critical,ROB,<3.1m/s,100,Steelhead,Migration (IN),Velocity,LA11
