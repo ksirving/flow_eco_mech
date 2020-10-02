@@ -102,7 +102,9 @@ MC_curve <- spline(new_dataM$Q, new_dataM$value,
                    xmin = min(new_dataM$Q), xmax = max(new_dataM$Q), ties = mean)
 ## main channel values
 newx1a <- approx(x = MC_curve$y, y = MC_curve$x, xout = 18)$y
-newx1a
+newx2a <- NA
+newx3a <- NA
+
 
 ## LOB curve
 LOB_curve <- spline(new_dataL$Q, new_dataL$value,
@@ -110,6 +112,8 @@ LOB_curve <- spline(new_dataL$Q, new_dataL$value,
 ## LOB values
 newx1aL <- approx(x = LOB_curve$y, y = LOB_curve$x, xout = 18)$y
 newx1aL
+newx2aL <- NA
+newx3aL <- NA
 
 ## ROB curve
 ROB_curve <- spline(new_dataR$Q, new_dataR$value,
@@ -117,6 +121,30 @@ ROB_curve <- spline(new_dataR$Q, new_dataR$value,
 ## ROB values
 newx1aR <- approx(x = ROB_curve$y, y = ROB_curve$x, xout = 18)$y
 newx1aR
+newx2aR <- NA
+newx3aR <- NA
+
+limits <- as.data.frame(matrix(ncol=3, nrow=12)) %>%
+  rename(LOB = V1, MC = V2, ROB = V3) 
+rownames(limits)<-c("Low_Prob_1", "Low_Prob_2", "Low_Prob_3", "Low_Prob_4",
+                    "Med_Prob_1", "Med_Prob_2", "Med_Prob_3", "Med_Prob_4",
+                    "High_Prob_1", "High_Prob_2", "High_Prob_3", "High_Prob_4")
+
+limits$LOB <- c(newx1aL[1], newx1aL[2],newx1aL[3],newx1aL[4], 
+                newx2aL[1], newx2aL[2],newx2aL[3], newx2aL[4],  
+                newx3aL[1], newx3aL[2],newx3aL[3], newx3aL[4])
+
+limits$MC <- c(newx1a[1], newx1a[2],newx1a[3], newx1aL[4],
+               newx2a[1], newx2a[2],newx2a[3], newx2a[4], 
+               newx3a[1], newx3a[2],newx3a[3],newx3a[4])
+
+limits$ROB <- c(newx1aR[1], newx1aR[2],newx1aR[3], newx1aR[4], 
+                newx2aR[1], newx2aR[2],newx2aR[3], newx2aR[4],
+                newx3aR[1], newx3aR[2],newx3aR[3], newx3aR[4])
+
+limits
+
+write.csv(limits, "output_data/F5_LA11_migration_IN_depth_Q_limits.csv")
 
 ## plot with thresholds
 labels <- c(depth_cm_LOB = "Left Over Bank", depth_cm_MC = "Main Channel", depth_cm_ROB = "Right Over Bank")
@@ -377,6 +405,8 @@ max(new_dataR$value)
 ## main channel values
 newx1a <- approx(x = MC_curve$y, y = MC_curve$x, xout = 3.1)$y ## does not go up to 3.1, use max value instead
 newx1a
+newx2a <- NA
+newx3a <- NA
 
 ## LOB curve
 LOB_curve <- spline(new_dataL$Q, new_dataL$value,
@@ -384,14 +414,39 @@ LOB_curve <- spline(new_dataL$Q, new_dataL$value,
 ## LOB values
 newx1aL <- approx(x = LOB_curve$y, y = LOB_curve$x, xout = 3.1)$y
 newx1aL
-
+newx2aL <- NA
+newx3aL <- NA
 ## ROB curve
 ROB_curve <- spline(new_dataR$Q, new_dataR$value,
                     xmin = min(new_dataR$Q), xmax = max(new_dataR$Q), ties = mean)
 ## ROB values
 newx1aR <- approx(x = ROB_curve$y, y = ROB_curve$x, xout = max(new_dataR$value))$y ## also does not go to 3.1
 newx1aR
+newx2aR <- NA
+newx3aR <- NA
 
+
+limits <- as.data.frame(matrix(ncol=3, nrow=12)) %>%
+  rename(LOB = V1, MC = V2, ROB = V3) 
+rownames(limits)<-c("Low_Prob_1", "Low_Prob_2", "Low_Prob_3", "Low_Prob_4",
+                    "Med_Prob_1", "Med_Prob_2", "Med_Prob_3", "Med_Prob_4",
+                    "High_Prob_1", "High_Prob_2", "High_Prob_3", "High_Prob_4")
+
+limits$LOB <- c(newx1aL[1], newx1aL[2],newx1aL[3],newx1aL[4], 
+                newx2aL[1], newx2aL[2],newx2aL[3], newx2aL[4],  
+                newx3aL[1], newx3aL[2],newx3aL[3], newx3aL[4])
+
+limits$MC <- c(newx1a[1], newx1a[2],newx1a[3], newx1aL[4],
+               newx2a[1], newx2a[2],newx2a[3], newx2a[4], 
+               newx3a[1], newx3a[2],newx3a[3],newx3a[4])
+
+limits$ROB <- c(newx1aR[1], newx1aR[2],newx1aR[3], newx1aR[4], 
+                newx2aR[1], newx2aR[2],newx2aR[3], newx2aR[4],
+                newx3aR[1], newx3aR[2],newx3aR[3], newx3aR[4])
+
+limits
+
+write.csv(limits, "output_data/F5_LA11_migration_IN_velocity_Q_limits.csv")
 ## plot with thresholds
 labels <- c(vel_m_LOB = "Left Over Bank", vel_m_MC = "Main Channel", vel_m_ROB = "Right Over Bank")
 
