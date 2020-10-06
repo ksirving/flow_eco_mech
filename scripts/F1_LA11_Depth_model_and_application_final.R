@@ -932,7 +932,6 @@ dev.off()
 
 # all columns based on different probabilities
 ## count number events within each threshold with a running total - max total is the number of consequative 
-# events (hours) per day. if else statements to consider the thresholds newx1a/b etc
 ## order by datetime
 
 new_dataM <- new_dataM %>%
