@@ -38,11 +38,11 @@ ggqqplot(depth$max_biomass_percent)
 log(depth$max_biomass_percent+1)
 depth_lm <- lm( max_biomass_percent~ depth_cm, data=depth)
 
-summary(depth_lm) # p-value: 0.04156
+summary(depth_lm) # p-value: 0.01694
 
 depth_gam <- gam(max_biomass_percent ~ depth_cm, data=depth)
 summary(depth_gam)
-## Deviance explained = 68.7%
+## Deviance explained = 71.2%
 
 depth_lmq <- lm(max_biomass_percent ~ depth_cm + I(depth_cm^2), data=depth)
 summary(depth_lmq) ## p-value: 0.02099
@@ -61,7 +61,7 @@ summary(depth_lmq) ## p-value: 0.0003203
 ## best model 
 
 depth_lmq <- lm(max_biomass_percent ~ depth_cm + I(depth_cm^2), data=depth)
-summary(depth_lmq) ## p-value: 0.02099
+summary(depth_lmq) ## 0.010316, Adjusted R-squared:  0.9305 
 
 plot(depth_lmq)
 
