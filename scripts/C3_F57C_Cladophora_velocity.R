@@ -37,6 +37,8 @@ dfa <- as.data.frame(abs_velo25) %>%
   
 df <- rbind(dfp, dfa)
 head(df)
+mean(df$Velocity)
+dim(df)
 
 summary(glm(Occurrence~Velocity, data=df, family="binomial"))
 

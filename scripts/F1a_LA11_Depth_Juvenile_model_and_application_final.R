@@ -130,15 +130,14 @@ new_data$DateTime<-as.POSIXct(new_data$DateTime,
                               format = "%Y-%m-%d %H:%M",
                               tz = "GMT")
 
-## create year, month, day and hour columns
+## create year, month, day and hour columns and add water year
 
 new_data <- new_data %>%
   mutate(month = month(DateTime)) %>%
   mutate(year = year(DateTime)) %>%
   mutate(day = day(DateTime)) %>%
-  mutate(hour = hour(DateTime))
-
-
+  mutate(hour = hour(DateTime)) %>%
+  mutate(water_year = ifelse(month == 10 | month == 11 | month == 12, year, year-1))
 
 save(new_data, file="output_data/F1_LA11_depth_juvenile_discharge_probs_2010_2017_TS.RData")
 
@@ -233,7 +232,7 @@ limits$LOB <- c(newx1aL[1], newx1aL[2],newx1aL[3],newx1aL[4],
                 newx2aL[1], newx2aL[2],newx2aL[3], newx2aL[4],  
                 newx3aL[1], newx3aL[2],newx3aL[3], newx3aL[4])
 
-limits$MC <- c(newx1a[1], newx1a[2],newx1a[3], newx1aL[4],
+limits$MC <- c(newx1a[1], newx1a[2],newx1a[3], newx1a[4],
                newx2a[1], newx2a[2],newx2a[3], newx2a[4], 
                newx3a[1], newx3a[2],newx3a[3],newx3a[4])
 
@@ -307,15 +306,15 @@ dev.off()
 ### plot discharge over time
 
 # create year_month column       
-new_dataMx <- new_dataM %>% unite(month_year, year:month, sep="-", remove=F) 
+new_dataMx <- new_dataM %>% unite(month_year, water_year:month, sep="-", remove=F) 
 head(new_dataMx)
 
 # create year_month column       
-new_dataLx <- new_dataL %>% unite(month_year, year:month, sep="-", remove=F) 
+new_dataLx <- new_dataL %>% unite(month_year, water_year:month, sep="-", remove=F) 
 head(new_dataLx)
 
 # create year_month column       
-new_dataRx <- new_dataR %>% unite(month_year, year:month, sep="-", remove=F) 
+new_dataRx <- new_dataR %>% unite(month_year, water_year:month, sep="-", remove=F) 
 head(new_dataRx)
 
 # discharge time series plots with probability lines ----------------------
@@ -500,14 +499,13 @@ high_threshM
 
 ###### calculate amount of time
 
-
 time_statsm <- new_dataMx %>%
-  dplyr::group_by(year) %>%
+  dplyr::group_by(water_year) %>%
   dplyr::mutate(Low = sum(eval(low_threshM))/length(DateTime)*100) %>%
   dplyr::mutate(Medium = sum(eval(med_threshM))/length(DateTime)*100) %>%
   dplyr::mutate(High = sum(eval(high_threshM))/length(DateTime)*100) %>%
   ungroup() %>%
-  dplyr::group_by(year, season) %>%
+  dplyr::group_by(water_year, season) %>%
   dplyr::mutate(Low.Seasonal = sum(eval(low_threshM))/length(DateTime)*100) %>%
   dplyr::mutate(Medium.Seasonal = sum(eval(med_threshM))/length(DateTime)*100) %>%
   dplyr::mutate(High.Seasonal = sum(eval(high_threshM))/length(DateTime)*100) %>%
@@ -666,12 +664,12 @@ high_threshL
 ###### calculate amount of time
 
 time_statsl <- new_dataLx %>%
-  dplyr::group_by(year) %>%
+  dplyr::group_by(water_year) %>%
   dplyr::mutate(Low = sum(eval(low_threshL))/length(DateTime)*100) %>%
   dplyr::mutate(Medium = sum(eval(med_threshL))/length(DateTime)*100) %>%
   dplyr::mutate(High = sum(eval(high_threshL))/length(DateTime)*100) %>%
   ungroup() %>%
-  dplyr::group_by(year, season) %>%
+  dplyr::group_by(water_year, season) %>%
   dplyr::mutate(Low.Seasonal = sum(eval(low_threshL))/length(DateTime)*100) %>%
   dplyr::mutate(Medium.Seasonal = sum(eval(med_threshL))/length(DateTime)*100) %>%
   dplyr::mutate(High.Seasonal = sum(eval(high_threshL))/length(DateTime)*100) %>%
@@ -827,14 +825,13 @@ if(is.na(newx3aR[1])) {
 high_threshR
 
 ###### calculate amount of time
-
 time_statsr <- new_dataRx %>%
-  dplyr::group_by(year) %>%
+  dplyr::group_by(water_year) %>%
   dplyr::mutate(Low = sum(eval(low_threshR))/length(DateTime)*100) %>%
   dplyr::mutate(Medium = sum(eval(med_threshR))/length(DateTime)*100) %>%
   dplyr::mutate(High = sum(eval(high_threshR))/length(DateTime)*100) %>%
   ungroup() %>%
-  dplyr::group_by(year, season) %>%
+  dplyr::group_by(water_year, season) %>%
   dplyr::mutate(Low.Seasonal = sum(eval(low_threshR))/length(DateTime)*100) %>%
   dplyr::mutate(Medium.Seasonal = sum(eval(med_threshR))/length(DateTime)*100) %>%
   dplyr::mutate(High.Seasonal = sum(eval(high_threshR))/length(DateTime)*100) %>%
@@ -846,7 +843,7 @@ time_statsr
 time_stats <- rbind(time_statsm, time_statsl, time_statsr)
 
 ## melt
-melt_time<-reshape2::melt(time_stats, id=c("year","season", "position"))
+melt_time<-reshape2::melt(time_stats, id=c("year","season", "position", "water_year"))
 melt_time <- rename(melt_time, Probability_Threshold = variable)
 head(melt_time)
 unique(melt_time$position)
@@ -855,17 +852,17 @@ write.csv(melt_time, "output_data/F1_LA11_juvenile_depth_time_stats.csv")
 ## subset annual stats
 ann_stats <- unique(melt_time$Probability_Threshold)[1:3]
 melt_time_ann <- melt_time %>% filter(Probability_Threshold %in% ann_stats ) %>%
-  select(-season) %>% distinct()
+  select(-season, -year) %>% distinct()
 
 ## subset seasonal stats
 seas_stats <- unique(melt_time$Probability_Threshold)[4:6]
 melt_time_seas <- filter(melt_time, Probability_Threshold %in% seas_stats )
-melt_time_seas
+
 ## plot for annual stats - need probs in order
 
 png("figures/Application_curves/Depth/LA11_juvenile_depth_perc_time_above_threshold_annual.png", width = 500, height = 600)
 
-ggplot(melt_time_ann, aes(x = year, y=value)) +
+ggplot(melt_time_ann, aes(x = water_year, y=value)) +
   geom_line(aes( group =c(), color = Probability_Threshold)) +
   scale_color_manual(name = "Probability Threshold", breaks = c("Low", "Medium", "High"),
                      values=c( "green", "red", "blue"),
@@ -885,7 +882,7 @@ unique(melt_time_winter$season)
 
 png("figures/Application_curves/Depth/LA11_juvenile_depth_perc_time_above_threshold_non_critical.png", width = 500, height = 600)
 
-ggplot(melt_time_winter, aes(x = year, y=value)) +
+ggplot(melt_time_winter, aes(x = water_year, y=value)) +
   geom_line(aes( group = c(), color = Probability_Threshold)) +
   scale_color_manual(name = "Probability Threshold", breaks = c("Low.Seasonal", "Medium.Seasonal", "High.Seasonal"),
                      values=c( "green", "red", "blue"),
@@ -904,7 +901,7 @@ melt_time_summer <- filter(melt_time_seas, season == "critical")
 
 png("figures/Application_curves/Depth/LA11_juvenile_depth_perc_time_above_threshold_critical.png", width = 500, height = 600)
 
-ggplot(melt_time_summer, aes(x = year, y=value)) +
+ggplot(melt_time_summer, aes(x = water_year, y=value)) +
   geom_line(aes( group = c(), color = Probability_Threshold)) +
   scale_color_manual(name = "Probability Threshold", breaks = c("Low.Seasonal", "Medium.Seasonal", "High.Seasonal"),
                      values=c( "green", "red", "blue"),
@@ -928,60 +925,58 @@ dev.off()
 
 new_dataM <- new_dataM %>%
   ungroup() %>%
-  group_by(month, day, year, ID01 = data.table::rleid(eval(low_threshM))) %>%
+  group_by(month, day, water_year, ID01 = data.table::rleid(eval(low_threshM))) %>%
   mutate(Low = if_else(eval(low_threshM), row_number(), 0L)) %>%
   ungroup() %>%
-  group_by(month, day, year, ID02 = data.table::rleid(eval(med_threshM))) %>%
+  group_by(month, day, water_year, ID02 = data.table::rleid(eval(med_threshM))) %>%
   mutate(Medium = if_else(eval(med_threshM), row_number(), 0L)) %>%
   ungroup() %>%
-  group_by(month, day, year, ID03 = data.table::rleid(eval(high_threshM))) %>%
+  group_by(month, day, water_year, ID03 = data.table::rleid(eval(high_threshM))) %>%
   mutate(High = if_else(eval(high_threshM), row_number(), 0L))
 
 new_dataM <- mutate(new_dataM, position="MC")
 
 new_dataL <- new_dataL %>%
   ungroup() %>%
-  group_by(month, day, year, ID01 = data.table::rleid(eval(low_threshL))) %>%
+  group_by(month, day, water_year, ID01 = data.table::rleid(eval(low_threshL))) %>%
   mutate(Low = if_else(eval(low_threshL), row_number(), 0L)) %>%
   ungroup() %>%
-  group_by(month, day, year, ID02 = data.table::rleid(eval(med_threshL))) %>%
+  group_by(month, day, water_year, ID02 = data.table::rleid(eval(med_threshL))) %>%
   mutate(Medium = if_else(eval(med_threshL), row_number(), 0L)) %>%
   ungroup() %>%
-  group_by(month, day, year, ID03 = data.table::rleid(eval(high_threshL))) %>%
+  group_by(month, day, water_year, ID03 = data.table::rleid(eval(high_threshL))) %>%
   mutate(High = if_else(eval(high_threshL), row_number(), 0L))
 
 new_dataL <- mutate(new_dataL, position="LOB")
 
 new_dataR <- new_dataR %>%
   ungroup() %>%
-  group_by(month, day, year, ID01 = data.table::rleid(eval(low_threshR))) %>%
+  group_by(month, day, water_year, ID01 = data.table::rleid(eval(low_threshR))) %>%
   mutate(Low = if_else(eval(low_threshR), row_number(), 0L)) %>%
   ungroup() %>%
-  group_by(month, day, year, ID02 = data.table::rleid(eval(med_threshR))) %>%
+  group_by(month, day, water_year, ID02 = data.table::rleid(eval(med_threshR))) %>%
   mutate(Medium = if_else(eval(med_threshR), row_number(), 0L)) %>%
   ungroup() %>%
-  group_by(month, day, year, ID03 = data.table::rleid(eval(high_threshR))) %>%
+  group_by(month, day, water_year, ID03 = data.table::rleid(eval(high_threshR))) %>%
   mutate(High = if_else(eval(high_threshR), row_number(), 0L))
 
 new_dataR <- mutate(new_dataR, position="ROB")
-
 ## melt data frame so that each probability column are all in one row 
 ## select only columns needed - Q, month, year, day all IDs and probs
 # names(new_data)
 
-new_dataMx <- select(new_dataM, c(Q, month, year, day, ID01, Low, ID02, Medium, ID03, High, position, DateTime) )# all probs
+new_dataMx <- select(new_dataM, c(Q, month, water_year, day, ID01, Low, ID02, Medium, ID03, High, position, DateTime) )# all probs
 names(new_dataMx)
-new_dataLx <- select(new_dataL, c(Q, month, year, day, ID01, Low, ID02, Medium, ID03, High, position, DateTime) )# all probs
+new_dataLx <- select(new_dataL, c(Q, month, water_year, day, ID01, Low, ID02, Medium, ID03, High, position, DateTime) )# all probs
 names(new_dataLx)
-new_dataRx <- select(new_dataR, c(Q, month, year, day, ID01, Low, ID02, Medium, ID03, High, position, DateTime) )# all probs
+new_dataRx <- select(new_dataR, c(Q, month, water_year, day, ID01, Low, ID02, Medium, ID03, High, position, DateTime) )# all probs
 names(new_dataRx)
-new_dataRx
 ## has some values but just becuase of the fake thresholds
 # range(new_dataRx$Medium)
 new_datax <- rbind(new_dataMx, new_dataLx, new_dataRx)
 
 ## melt
-melt_data<-reshape2::melt(new_datax, id=c("ID01", "ID02", "ID03", "day", "month", "year", "Q", "position"))
+melt_data<-reshape2::melt(new_datax, id=c("ID01", "ID02", "ID03", "day", "month", "water_year", "Q", "position"))
 melt_data <- rename(melt_data, Probability_Threshold = variable, 
                     consec_hours = value)
 
@@ -993,37 +988,37 @@ melt_data
 ## count how many full days i.e. 24 hours
 total_days01 <- melt_data %>% 
   filter(Probability_Threshold == "Low") %>% 
-  group_by(ID01, day, month, year, position) %>%
+  group_by(ID01, day, month, water_year, position) %>%
   summarise(n_hours = max(consec_hours))  %>%
   mutate(n_days_low = ifelse(n_hours >= 24, 1, 0)) # %>%
 total_days01
 ## count the number of days in each month
 total_days_per_month01 <- total_days01 %>%
-  group_by(month, year, position) %>%
+  group_by(month, water_year, position) %>%
   summarise(days_per_month_low = sum(n_days_low))
 
 total_days_per_month01
 
 total_days02 <- melt_data %>% 
   filter(Probability_Threshold == "Medium") %>% 
-  group_by(ID02, day, month, year, position) %>%
+  group_by(ID02, day, month, water_year, position) %>%
   summarise(n_hours = max(consec_hours))  %>%
   mutate(n_days_medium = ifelse(n_hours >= 24, 1, 0)) # %>%
 
 total_days_per_month02 <- total_days02 %>%
-  group_by(month, year, position) %>%
+  group_by(month, water_year, position) %>%
   summarise(days_per_month_medium = sum(n_days_medium))
 
 # total_days_per_month02
 
 total_days03 <- melt_data %>% 
   filter(Probability_Threshold == "High") %>% 
-  group_by(ID03, day, month, year, position) %>%
+  group_by(ID03, day, month, water_year, position) %>%
   summarise(n_hours = max(consec_hours))  %>%
   mutate(n_days_high = ifelse(n_hours >= 24, 1, 0)) # %>%
 
 total_days_per_month03 <- total_days03 %>%
-  group_by(month, year, position) %>%
+  group_by(month, water_year, position) %>%
   summarise(days_per_month_high = sum(n_days_high))
 
 total_days_per_month03
@@ -1036,8 +1031,7 @@ write.csv(total_days, "output_data/F1_LA11_juvenile_total_days.csv")
 
 # # create year_month column       
 total_days <- ungroup(total_days) %>%
-  unite(month_year, year:month, sep="-", remove=F)
-
+  unite(month_year, water_year:month, sep="-", remove=F)
 
 ## convert month year to date format
 library(zoo)
@@ -1060,7 +1054,9 @@ unique(total_days$season)
 str(total_days)
 # ## melt data
 
-melt_days<-reshape2::melt(total_days, id=c("month_year", "year", "month", "season", "position"))
+# ## melt data
+
+melt_days<-reshape2::melt(total_days, id=c("month_year", "water_year", "month", "season", "position"))
 melt_days <- rename(melt_days, Probability_Threshold = variable,
                     n_days = value)
 
@@ -1097,7 +1093,7 @@ ggplot(melt_days, aes(x =month_year, y=n_days)) +
   theme(axis.text.x = element_text(angle = 0, vjust = 1)) +
   scale_x_date(breaks=pretty_breaks(),labels = date_format("%b")) +
   # scale_x_continuous(breaks=as.numeric(month_year), labels=format(month_year,"%b")) +
-  facet_wrap(~year+position, scale="free_x", nrow=4) +
+  facet_wrap(~water_year+position, scale="free_x", nrow=4) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
   labs(title = "LA11: Number of days within discharge limit in relation to Depth",
        y = "Number of days per Month",

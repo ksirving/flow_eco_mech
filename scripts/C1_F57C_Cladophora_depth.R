@@ -27,7 +27,7 @@ depth <- depth %>%
   mutate(max_biomass_percent_log = log(max_biomass_percent+1))
 
 depth
-
+mean(depth$depth_m)
 ## test for normality
 
 shapiro.test(depth$maximum_biomass_g_DW_m..2)

@@ -1,3 +1,4 @@
+## concrete reach
 ## Depth curves - model and application
 ## juvenile 
 
@@ -25,12 +26,17 @@ fitdata <- read.csv("output_data/juvenile_depth_prob_curve_data.csv")
 
 ## soft bottom reaches
 
-# F57C <- read.csv("input_data/HecRas/hydraulic_ts_F57C.csv")
-# LA8 <- read.csv("input_data/HecRas/hydraulic_ts_LA8.csv")
-# LA11 <- read.csv("input_data/HecRas/hydraulic_ts_LA11.csv")
-# LA20 <- read.csv("input_data/HecRas/hydraulic_ts_LA20_2.csv")
-# F37B_Low <- read.csv("input_data/HecRas/hydraulic_ts_F37B_Low.csv")
+# N11101250 <- read.csv("input_data/HecRas/hydraulic_ts_11101250.csv")
+# F34D <- read.csv("input_data/HecRas/hydraulic_ts_F34D.csv")
 F37B_High <- read.csv("input_data/HecRas/hydraulic_ts_F37B_High.csv")
+# F45B <- read.csv("input_data/HecRas/hydraulic_ts_F45B.csv")
+# F300 <- read.csv("input_data/HecRas/hydraulic_ts_F300.csv")
+# F319 <- read.csv("input_data/HecRas/hydraulic_ts_F319.csv")
+# LA13 <- read.csv("input_data/HecRas/hydraulic_ts_LA13.csv")
+# LA14 <- read.csv("input_data/HecRas/hydraulic_ts_LA14.csv")
+# LA20 <- read.csv("input_data/HecRas/hydraulic_ts_LA20.csv")
+
+## go through script one at a time
 
 ## go through script one at a time
 
@@ -56,12 +62,13 @@ hyd_dep <- hyd_dep %>%
 hyd_dep
 
 
+
 #  Node figures -----------------------------------------------------------
 
 ## only needed once per node
+hyd_dep<-reshape2::melt(hyd_dep, id=c("DateTime","Q", "node", "date_num"))
 
 # ## melt channel position data
-hyd_dep<-reshape2::melt(hyd_dep, id=c("DateTime","Q", "node", "date_num"))
 
 labels <- c(depth_cm_LOB = "Left Over Bank", depth_cm_MC = "Main Channel", depth_cm_ROB = "Right Over Bank")
 png("figures/Application_curves/nodes/F37B_High_Depth_Q.png", width = 500, height = 600)
@@ -77,7 +84,6 @@ ggplot(hyd_dep, aes(x = Q, y=value)) +
        x = "Q (cfs)") #+ theme_bw(base_size = 15)
 
 dev.off()
-
 ## plot time series
 png("figures/Application_curves/nodes/F37B_High_Depth_TS.png", width = 500, height = 600)
 
@@ -97,10 +103,10 @@ dev.off()
 
 ## merge datasets with spline function
 
-hyd_dep<-reshape2::melt(hyd_dep, id=c("DateTime","Q", "node", "date_num"))
-
 head(hyd_dep)
 head(fitdata)
+
+hyd_dep <- filter(hyd_dep, variable == "depth_cm_MC")
 
 ## use smooth spline to predict on new data set
 new_values <-smooth.spline(fitdata$depth_fit, fitdata$prob_fit)
@@ -134,15 +140,14 @@ new_data$DateTime<-as.POSIXct(new_data$DateTime,
                               format = "%Y-%m-%d %H:%M",
                               tz = "GMT")
 
-## create year, month, day and hour columns
+## create year, month, day and hour columns and add water year
 
 new_data <- new_data %>%
   mutate(month = month(DateTime)) %>%
   mutate(year = year(DateTime)) %>%
   mutate(day = day(DateTime)) %>%
-  mutate(hour = hour(DateTime))
-
-
+  mutate(hour = hour(DateTime)) %>%
+  mutate(water_year = ifelse(month == 10 | month == 11 | month == 12, year, year-1))
 
 save(new_data, file="output_data/F1_F37B_High_depth_juvenile_discharge_probs_2010_2017_TS.RData")
 
@@ -154,137 +159,57 @@ load( file="output_data/F1_F37B_High_depth_juvenile_discharge_probs_2010_2017_TS
 head(new_data)
 
 ## plot
-range(new_data$Q) 
-range(new_data$prob_fit) ## -1.1529766  0.3989423
+range(new_data$Q) ##59.73752 46292.14062 
+range(new_data$prob_fit) ## -2.1226459  0.3989358
 
 ## bind shallow and deeper depths by 0.1 - 10cm & 120cm
 ## change all prob_fit lower than 0.1 to 0.1
 new_data[which(new_data$prob_fit <  0.1),"prob_fit"] <- 0.1
 
 peak <- new_data %>%
-  group_by(variable) %>%
   filter(prob_fit == max(prob_fit)) #%>%
 
 
 peakQM <- filter(peak, variable=="depth_cm_MC")
 peakQM  <- max(peakQM$Q)
-peakQM ##  148.5637
+peakQM ##  4102.365
 
-peakQL <- filter(peak, variable=="depth_cm_LOB")
-peakQL  <- max(peakQL$Q) ## 
-peakQL ##  799.9093
-
-peakQR <- filter(peak, variable=="depth_cm_ROB")
-peakQR  <- max(peakQR$Q) ## 
-peakQR ##  28.45819
 
 ## filter data by cross section position
 
 new_dataM <- filter(new_data, variable == "depth_cm_MC")
-new_dataL <- filter(new_data, variable == "depth_cm_LOB")
-new_dataR <- filter(new_data, variable == "depth_cm_ROB")
 
 ## Main channel curves
 
-MC_curve <- spline(new_dataM$Q, new_dataM$prob_fit,
-                   xmin = min(new_dataM$Q), xmax = max(new_dataM$Q), ties = mean)
+load(file="root_interpolation_function.Rdata")
 
-MC_curve_lower <- spline(new_dataM$Q, new_dataM$prob_fit,
-                         xmin = min(new_dataM$Q), xmax = peakQM, ties = mean)
-MC_curve_upper <- spline(new_dataM$Q, new_dataM$prob_fit,
-                         xmin = peakQM, xmax = max(new_dataM$Q), ties = mean)
+newx1a <- RootLinearInterpolant(new_dataM$Q, new_dataM$prob_fit, 0.1)
+newx1a <- c(min(new_dataM$Q), max(new_dataM$Q))
+newx1a
 
-## main channel values
-newx1a <- approx(x = MC_curve_lower$y, y = MC_curve_lower$x, xout = 0.1)$y
-newx1a <- min(MC_curve_lower$x)
-
-newx1b <- approx(x = MC_curve_upper$y, y = MC_curve_upper$x, xout = 0.1)$y
-newx1b ## change to max Q for time series to adhere to 0.1 bound
-newx1b <- max(MC_curve_upper$x)
-
-newx2a <- approx(x = MC_curve_lower$y, y = MC_curve_lower$x, xout = 0.2)$y
+newx2a  <- RootLinearInterpolant(new_dataM$Q, new_dataM$prob_fit, 0.2)
 newx2a 
 
-newx2b <- approx(x = MC_curve_upper$y, y = MC_curve_upper$x, xout = 0.2)$y
-newx2b
 
-newx3a <- approx(x = MC_curve_lower$y, y = MC_curve_lower$x, xout = 0.3)$y
-newx3a 
+newx3a <- RootLinearInterpolant(new_dataM$Q, new_dataM$prob_fit, 0.3)
+newx3a
 
-newx3b <- approx(x = MC_curve_upper$y, y = MC_curve_upper$x, xout = 0.3)$y
-newx3b 
 
-## LOB curves
+## MAKE DF OF Q LIMITS
 
-LOB_curve <- spline(new_dataL$Q, new_dataL$prob_fit,
-                    xmin = min(new_dataL$Q), xmax = max(new_dataL$Q), ties = mean)
-
-LOB_curve_lower <- spline(new_dataL$Q, new_dataL$prob_fit,
-                          xmin = min(new_dataL$Q), xmax = peakQL, ties = mean)
-LOB_curve_upper <- spline(new_dataL$Q, new_dataL$prob_fit,
-                          xmin = peakQL, xmax = max(new_dataL$Q), ties = mean)
-
-newx1aL <- approx(x = LOB_curve_lower$y, y = LOB_curve_lower$x, xout = 0.1)$y
-newx1aL <- min(LOB_curve_lower$x)
-newx1aL
-newx1bL <- approx(x = LOB_curve_upper$y, y = LOB_curve_upper$x, xout = 0.1)$y
-newx1bL <- max(LOB_curve_upper$x)
-newx1bL
-
-newx2aL <- approx(x = LOB_curve_lower$y, y = LOB_curve_lower$x, xout = 0.2)$y
-newx2aL
-
-newx2bL <- approx(x = LOB_curve_upper$y, y = LOB_curve_upper$x, xout = 0.2)$y
-newx2bL
-
-newx3aL <- approx(x = LOB_curve_lower$y, y = LOB_curve_lower$x, xout = 0.3)$y
-newx3aL
-
-newx3bL <- approx(x = LOB_curve_upper$y, y = LOB_curve_upper$x, xout = 0.3)$y
-newx3bL
-
-## ROB curves
-
-ROB_curve <- spline(new_dataR$Q, new_dataR$prob_fit,
-                    xmin = min(new_dataR$Q), xmax = max(new_dataR$Q), ties = mean)
-
-ROB_curve_lower <- spline(new_dataR$Q, new_dataR$prob_fit,
-                          xmin = min(new_dataR$Q), xmax = peakQR, ties = mean)
-ROB_curve_upper <- spline(new_dataR$Q, new_dataR$prob_fit,
-                          xmin = peakQR, xmax = max(new_dataR$Q), ties = mean)
-
-## main channel values
-newx1aR <- approx(x = ROB_curve_lower$y, y = ROB_curve_lower$x, xout = 0.1)$y
-newx1aR <- min(ROB_curve_lower$x)
-
-newx1bR <- approx(x = ROB_curve_upper$y, y = ROB_curve_upper$x, xout = 0.1)$y
-newx1bR
-newx1bR <- max(ROB_curve_upper$x)
-
-newx2aR <- approx(x = ROB_curve_lower$y, y = ROB_curve_lower$x, xout = 0.2)$y
-newx2aR
-
-newx2bR <- approx(x = ROB_curve_upper$y, y = ROB_curve_upper$x, xout = 0.2)$y
-newx2bR
-
-newx3aR <- approx(x = ROB_curve_lower$y, y = ROB_curve_lower$x, xout = 0.3)$y
-newx3aR
-
-newx3bR <- approx(x = ROB_curve_upper$y, y = ROB_curve_upper$x, xout = 0.3)$y
-newx3bR
-
-## df for Q limits
-
-limits <- as.data.frame(matrix(ncol=3, nrow=6)) %>%
+limits <- as.data.frame(matrix(ncol=3, nrow=12)) %>%
   rename(LOB = V1, MC = V2, ROB = V3) 
-rownames(limits)<-c("Low_Prob_Lower", "Low_Prob_Upper", "Med_Prob_Lower",
-                    "Med_Prob_Upper", "High_Prob_Lower", "High_Prob_Upper")
+rownames(limits)<-c("Low_Prob_1", "Low_Prob_2", "Low_Prob_3", "Low_Prob_4",
+                    "Med_Prob_1", "Med_Prob_2", "Med_Prob_3", "Med_Prob_4",
+                    "High_Prob_1", "High_Prob_2", "High_Prob_3", "High_Prob_4")
 
-limits$LOB <- c(newx1aL, newx1bL, newx2aL, newx2bL, newx3aL, newx3bL)
-limits$MC <- c(newx1a, newx1b, newx2a, newx2b, newx3a, newx3b)
-limits$ROB <- c(newx1aR, newx1bR, newx2aR, newx2bR, newx3aR, newx3bR)
+
+limits$MC <- c(newx1a[1], newx1a[2],newx1a[3], newx1a[4],
+               newx2a[1], newx2a[2],newx2a[3], newx2a[4], 
+               newx3a[1], newx3a[2],newx3a[3],newx3a[4])
 
 limits
+
 ## note that 0.1 upper/lower limit is max/min Q to adhere to 0.1 bound
 write.csv(limits, "output_data/F1_F37B_High_juvenile_Q_limits.csv")
 
@@ -294,36 +219,27 @@ png("figures/Application_curves/Depth/F37B_High_juvenile_depth_prob_Q_thresholds
 labels <- c(depth_cm_LOB = "Left Over Bank", depth_cm_MC = "Main Channel", depth_cm_ROB = "Right Over Bank")
 
 ggplot(new_data, aes(x = Q, y=prob_fit)) +
-  geom_line(aes(group = variable, lty = variable)) +
-  scale_linetype_manual(values= c("dotted", "solid", "dashed"))+
+  geom_line(aes(x = Q, y=prob_fit)) +
   #                       name="Cross\nSection\nPosition",
   #                       breaks=c("depth_cm_LOB", "depth_cm_MC", "depth_cm_ROB"),
   #                         labels = c("LOB", "MC", "ROB")) +
   
-  facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
-  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.1, x=newx1a), color="green") +
-  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.1, x=newx1b), color="green") +
-  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.2, x=newx2a), color="red") +
-  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.2, x=newx2b), color="red") +
-  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.3, x=newx3a), color="blue") +
-  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.3, x=newx3b), color="blue") +
-  # 
-  geom_point(data = subset(new_data, variable =="depth_cm_LOB"), aes(y=0.1, x=newx1aL), color="green") +
-  geom_point(data = subset(new_data, variable =="depth_cm_LOB"), aes(y=0.1, x=newx1bL), color="green") +
-  geom_point(data = subset(new_data, variable =="depth_cm_LOB"), aes(y=0.2, x=newx2aL), color="red") +
-  geom_point(data = subset(new_data, variable =="depth_cm_LOB"), aes(y=0.2, x=newx2bL), color="red") +
-  geom_point(data = subset(new_data, variable =="depth_cm_LOB"), aes(y=0.3, x=newx3aL), color="blue") +
-  geom_point(data = subset(new_data, variable =="depth_cm_LOB"), aes(y=0.3, x=newx3bL), color="blue") +
-  # 
-  geom_point(data = subset(new_data, variable =="depth_cm_ROB"), aes(y=0.1, x=newx1aR), color="green") +
-  geom_point(data = subset(new_data, variable =="depth_cm_ROB"), aes(y=0.1, x=newx1bR), color="green") +
-  geom_point(data = subset(new_data, variable =="depth_cm_ROB"), aes(y=0.2, x=newx2aR), color="red") +
-  geom_point(data = subset(new_data, variable =="depth_cm_ROB"), aes(y=0.2, x=newx2bR), color="red") +
-  geom_point(data = subset(new_data, variable =="depth_cm_ROB"), aes(y=0.3, x=newx3aR), color="blue") +
-  geom_point(data = subset(new_data, variable =="depth_cm_ROB"), aes(y=0.3, x=newx3bR), color="blue") +
-  # 
+  # facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
+  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.1, x=newx1a[1]), color="green") +
+  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.1, x=newx1a[2]), color="green") +
+  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.1, x=newx1a[3]), color="green") +
+  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.1, x=newx1a[4]), color="green") +
+  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.2, x=newx2a[1]), color="red") +
+  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.2, x=newx2a[2]), color="red") +
+  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.2, x=newx2a[3]), color="red") +
+  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.2, x=newx2a[4]), color="red") +
+  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.3, x=newx3a[1]), color="blue") +
+  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.3, x=newx3a[2]), color="blue") +
+  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.3, x=newx3a[3]), color="blue") +
+  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.3, x=newx3a[4]), color="blue") +
+  
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
-  labs(title = "F37B_High: Adult/Depth: Probability ~ Q",
+  labs(title = "F37B_High: Juvenile/Depth: Probability ~ Q",
        y = "Probability",
        x = "Q (cfs)") #+ theme_bw(base_size = 15)
 
@@ -331,31 +247,8 @@ dev.off()
 ### plot discharge over time
 
 # create year_month column       
-new_dataMx <- new_dataM %>% unite(month_year, year:month, sep="-", remove=F) 
+new_dataMx <- new_dataM %>% unite(month_year, water_year:month, sep="-", remove=F) 
 head(new_dataMx)
-
-# create year_month column       
-new_dataLx <- new_dataL %>% unite(month_year, year:month, sep="-", remove=F) 
-head(new_dataLx)
-
-# create year_month column       
-new_dataRx <- new_dataR %>% unite(month_year, year:month, sep="-", remove=F) 
-head(new_dataRx)
-
-# discharge time series plots with probability lines ----------------------
-
-##  plot time series of discharge - 0.2 prob line
-
-ggplot(new_dataRx) +
-  geom_line(aes(x =DateTime, y=Q)) +
-  # theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
-  # scale_x_continuous(breaks=as.numeric(new_datax$month_year), labels=format(new_datax$month_year,"%b %Y")) +
-  geom_hline(yintercept=newx1aR, linetype="dashed", color="red")+
-  # facet_wrap(~year, scales="free_x", nrow=4) +
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "Discharge over time",
-       y = "Discharge",
-       x = "Time") #+ theme_bw(base_size = 15)
 
 
 # dataframe for stats -----------------------------------------------------
@@ -370,68 +263,172 @@ critical <- c(3:7)
 new_dataMx <- new_dataMx %>%
   mutate(season = ifelse(month %in% non_critical, "non_critical", "critical") )
 
-new_dataLx <- new_dataRx %>%
-  mutate(season = ifelse(month %in% non_critical, "non_critical", "critical") )
+# time stats - mid channel ------------------------------------------------
 
-new_dataRx <- new_dataRx %>%
-  mutate(season = ifelse(month %in% non_critical, "non_critical", "critical") )
+if(is.na(newx1a[1])) {
+  
+  low_threshM <- expression(Q < 0)
+  ## 1a) if 1 threshold value and it's lower than the peak (ascending slope)
+} else if(length(newx1a)==1 && newx1a < peakQM){
+  # sum the amount of time above threshold
+  low_threshM <- expression(Q >= newx1a)
+  
+  ## 1b) if 1 threshold value and it's higher than the peak (descending slope)
+} else if (length(newx1a)==1 && newx1a > peakQM){
+  # sum the amount of time below the threshold
+  low_threshM <- expression(Q <= newx1a)
+  
+  ## 2a) if 2 threshold values and the first one is lower than the peak(positive parabol)
+} else if (length(newx1a)==2 && newx1a[1] < peakQM) { 
+  # sum the amount of time above the first and below the 2nd threshold
+  low_threshM <- expression(Q >= newx1a[1] & Q <= newx1a[2])
+  
+  ## 2b) if 2 threshold values and the first one is higher OR the 2nd one is lower than the peak (negative parabol)
+} else if(length(newx1a)==2 && (newx1a[1] > peakQM || newx1a[2] < peakQM )) {
+  # sum the amount of time below the first and above the 2nd threshold
+  low_threshM <- expression(Q <= newx1a[1] & Q >= newx1a[2])
+  
+  ## 3a) if 3 threshold values and the 3rd one is higher then the peak (begins positive slope)
+} else if (length(newx1a) == 3 && newx1a[3] > peakQM) {
+  # sum the amount of time below the first and above the 2nd threshold and below the 3rd
+  low_threshM <- expression(Q <= newx1a[1] | Q >= newx1a[2] & Q <= newx1a[3])
+  
+  ## 3b) if 3 threshold values and the 1st one is lower then the peak (begins negative slope)
+} else if (length(newx1a) == 3 && newx1a[1] < peakQM) {
+  # sum the amount of time above the first and below the 2nd threshold and above the 3rd
+  low_threshM <- expression(Q >= newx1a[1] & Q <= newx1a[2] | Q >= newx1a[3])
+  
+  ## 4a) if 4 threshold values and all are higher than the peak (begins positive slope)
+} else if (length(newx1a) == 4 && newx1a[1] < peakQM) {
+  # sum the amount of time above the first and below the 2nd threshold or above the 3rd and below 2nd
+  low_threshM <- expression(Q >= newx1a[1] & Q <= newx1a[2] |  Q >= newx1a[3] & Q <= newx1a[4])
+  
+  ## 4b) if 4 threshold values and all are higher than the peak, the 1st one and 2nd are lower, or all are lower  (begins negative slope)
+} else if (length(newx1a) == 4 && (newx1a[1] < peakQM && newx1a[2] < peakQM && newx1a[3] < peakQM && newx1a[4] < peakQM || newx1a[1] > peakQM 
+                                   && newx1a[2] > peakQM && newx1a[3] > peakQM && newx1a[4] > peakQM  || newx1a[2] < peakQM && newx1a[3] > peakQM)) {
+  # sum the amount of time above the first and below the 2nd threshold and above the 3rd
+  low_threshM <- expression(Q <= newx1a[1] & Q >= newx1a[2] |  Q <= newx1a[3] & Q >= newx1a[4])
+}
 
-limits
-## produces percentage of time for each year and season within year for each threshold
+low_threshM
 
-# sum(is.na(new_dataMx))
+### medium threshold
+
+if(is.na(newx2a[1])) {
+  med_threshM <- expression(Q < 0)
+  ## if 1 threshold value and it's lower than the peak (ascending slope)
+} else if(length(newx2a)==1 && newx2a < peakQM){
+  # sum the amount of time above threshold
+  med_threshM <- expression(Q >= newx2a)
+  
+  ## if 1 threshold value and it's higher than the peak (descending slope)
+} else if (length(newx2a)==1 && newx2a > peakQM){
+  # sum the amount of time below the threshold
+  med_threshM <- expression(Q <= newx2a)
+  
+  ## if 2 threshold values and the first one is lower than the peak(positive parabol)
+} else if (length(newx2a)==2 && newx2a[1] < peakQM) { 
+  # sum the amount of time above the first and below the 2nd threshold
+  med_threshM <- expression(Q >= newx2a[1] & Q <= newx2a[2])
+  
+  ## if 2 threshold values and the first one is higher OR the 2nd one is lower than the peak (negative parabol)
+} else if(length(newx2a)==2 && (newx2a[1] > peakQM || newx2a[2] < peakQM) ) {
+  # sum the amount of time below the first and above the 2nd threshold
+  med_threshM <- expression(Q <= newx2a[1] & Q >= newx2a[2])
+  
+  ## if 3 threshold values and the 3rd one is higher then the peak (begins positive slope)
+} else if (length(newx2a) == 3 && newx2a[3] > peakQM) {
+  # sum the amount of time below the first and above the 2nd threshold and below the 3rd
+  med_threshM <- expression(Q <= newx2a[1] | Q >= newx2a[2] & QM <= newx2a[3])
+  
+  ## if 3 threshold values and the 1st one is lower then the peak (begins negative slope)
+} else if (length(newx2a) == 3 && newx2a[1] < peakQM) {
+  # sum the amount of time above the first and below the 2nd threshold and above the 3rd
+  med_threshM <- expression(Q >= newx2a[1] & Q <= newx2a[2] | Q >= newx2a[3])
+  
+  ## 4a) if 4 threshold values and all are higher than the peak (begins positive slope)
+} else if (length(newx2a) == 4 && newx2a[1] < peakQM) {
+  # sum the amount of time above the first and below the 2nd threshold or above the 3rd and below 2nd
+  med_threshM <- expression(Q >= newx2a[1] & Q <= newx2a[2] |  Q >= newx2a[3] & Q <= newx2a[4])
+  
+  ## 4b) if 4 threshold values and all are higher than the peak, the 1st one and 2nd are lower, or all are lower  (begins negative slope)
+} else if (length(newx2a) == 4 && (newx2a[1] < peakQM && newx2a[2] < peakQM && newx2a[3] < peakQM && newx2a[4] < peakQM || newx2a[1] > peakQM 
+                                   && newx2a[2] > peakQM && newx2a[3] > peakQM && newx2a[4] > peakQM  || newx2a[2] < peakQM && newx2a[3] > peakQM)) {
+  # sum the amount of time above the first and below the 2nd threshold and above the 3rd
+  med_threshM <- expression(Q <= newx2a[1] & Q >= newx2a[2] |  Q <= newx2a[3] & Q >= newx2a[4])
+}
+
+med_threshM
+
+###  high threshold
+
+if(is.na(newx3a[1])) {
+  high_threshM <- expression(Q < 0)
+  ## if 1 threshold value and it's lower than the peak (ascending slope)
+} else if(length(newx3a)==1 && newx3a < peakQM){
+  # sum the amount of time above threshold
+  high_threshM <- expression(Q >= newx3a)
+  
+  ## if 1 threshold value and it's higher than the peak (descending slope)
+} else if (length(newx3a)==1 && newx3a > peakQM){
+  # sum the amount of time below the threshold
+  high_threshM <- expression(Q <= newx3a)
+  
+  ## if 2 threshold values and the first one is lower than the peak(positive parabol)
+} else if (length(newx3a)==2 && newx3a[1] < peakQM) { 
+  # sum the amount of time above the first and below the 2nd threshold
+  high_threshM <- expression(Q >= newx3a[1] & Q <= newx3a[2])
+  
+  ## if 2 threshold values and the first one is higher OR the 2nd one is lower than the peak (negative parabol)
+} else if(length(newx3a)==2 && (newx3a[1] > peakQM || newx3a[2] < peakQM) ) {
+  # sum the amount of time below the first and above the 2nd threshold
+  high_threshM <- expression(Q <= newx3a[1] & Q >= newx3a[2])
+  
+  ## if 3 threshold values and the 3rd one is higher then the peak (begins positive slope)
+} else if (length(newx3a) == 3 && newx3a[3] > peakQM) {
+  # sum the amount of time below the first and above the 2nd threshold and below the 3rd
+  high_threshM <- expression(Q <= newx3a[1] | Q >= newx3a[2] & Q <= newx3a[3])
+  
+  ## if 3 threshold values and the 1st one is lower then the peak (begins negative slope)
+} else if (length(newx3a) == 3 && newx3a[1] < peakQM) {
+  # sum the amount of time above the first and below the 2nd threshold and above the 3rd
+  high_threshM <- expression(Q >= newx3a[1] & Q <= newx3a[2] | QM >= newx3a[3])
+  
+  ## 4a) if 4 threshold values and all are higher than the peak (begins positive slope)
+} else if (length(newx3a) == 4 && newx3a[1] < peakQM) {
+  # sum the amount of time above the first and below the 2nd threshold or above the 3rd and below 2nd
+  med_threshM <- expression(Q >= newx3a[1] & Q <= newx3a[2] |  Q >= newx3a[3] & Q <= newx3a[4])
+  
+  ## 4b) if 4 threshold values and all are higher than the peak, the 1st one and 2nd are lower, or all are lower  (begins negative slope)
+} else if (length(newx3a) == 4 && (newx3a[1] < peakQM && newx3a[2] < peakQM && newx3a[3] < peakQM && newx3a[4] < peakQM || newx3a[1] > peakQM 
+                                   && newx3a[2] > peakQM && newx3a[3] > peakQM && newx3a[4] > peakQM  || newx3a[2] < peakQM && newx3a[3] > peakQM)) {
+  # sum the amount of time above the first and below the 2nd threshold and above the 3rd
+  med_threshM <- expression(Q <= newx3a[1] & Q >= newx3a[2] |  Q <= newx3a[3] & Q >= newx3a[4])
+}
+
+high_threshM
+
+###### calculate amount of time
 
 time_statsm <- new_dataMx %>%
-  dplyr::group_by(year) %>%
-  dplyr::mutate(Low = sum(Q >= newx1a & Q <= newx1b)/length(DateTime)*100) %>%
-  dplyr::mutate(Medium = sum(Q >= newx2a & Q <= newx2b)/length(DateTime)*100) %>%
-  dplyr::mutate(High = sum(Q >= newx3a & Q <= newx3b)/length(DateTime)*100) %>%
+  dplyr::group_by(water_year) %>%
+  dplyr::mutate(Low = sum(eval(low_threshM))/length(DateTime)*100) %>%
+  dplyr::mutate(Medium = sum(eval(med_threshM))/length(DateTime)*100) %>%
+  dplyr::mutate(High = sum(eval(high_threshM))/length(DateTime)*100) %>%
   ungroup() %>%
-  dplyr::group_by(year, season) %>%
-  dplyr::mutate(Low.Seasonal = sum(Q >= newx1a & Q <= newx1b)/length(DateTime)*100) %>%
-  dplyr::mutate(Medium.Seasonal = sum(Q >= newx2a & Q <= newx2b)/length(DateTime)*100) %>%
-  dplyr::mutate(High.Seasonal = sum(Q >= newx3a & Q <= newx3b)/length(DateTime)*100) %>%
+  dplyr::group_by(water_year, season) %>%
+  dplyr::mutate(Low.Seasonal = sum(eval(low_threshM))/length(DateTime)*100) %>%
+  dplyr::mutate(Medium.Seasonal = sum(eval(med_threshM))/length(DateTime)*100) %>%
+  dplyr::mutate(High.Seasonal = sum(eval(high_threshM))/length(DateTime)*100) %>%
   distinct(year, Low , Medium , High , Low.Seasonal, Medium.Seasonal, High.Seasonal) %>%
   mutate(position="MC")
 
-time_statsm 
+time_statsm
 
-time_statsl <- new_dataLx %>%
-  dplyr::group_by(year) %>%
-  dplyr::mutate(Low = sum(Q >= newx1aL & Q <= newx1bL)/length(DateTime)*100) %>%
-  dplyr::mutate(Medium = sum(Q >= newx2aL & Q <= newx2bL)/length(DateTime)*100) %>%
-  dplyr::mutate(High = sum(Q >= newx3aL & Q <= newx3bL)/length(DateTime)*100) %>%
-  ungroup() %>%
-  dplyr::group_by(year, season) %>%
-  dplyr::mutate(Low.Seasonal = sum(Q >= newx1aL & Q <= newx1bL)/length(DateTime)*100) %>%
-  dplyr::mutate(Medium.Seasonal = sum(Q >= newx2aL & Q <= newx2bL)/length(DateTime)*100) %>%
-  dplyr::mutate(High.Seasonal = sum(Q >= newx3aL & Q <= newx3bL)/length(DateTime)*100) %>%
-  distinct(year, Low , Medium , High , Low.Seasonal, Medium.Seasonal, High.Seasonal) %>%
-  mutate(position="LOB")
-
-sum(new_dataRx$Q >= newx1aR & new_dataRx$Q <= newx1bR)/length(new_dataRx$DateTime)*100
-
-time_statsr <- new_dataRx %>%
-  dplyr::group_by(year) %>%
-  dplyr::mutate(Low = sum(Q >= newx1aR & Q <= newx1bR)/length(DateTime)*100) %>%
-  dplyr::mutate(Medium = sum(Q >= newx2aR & Q <= newx2bR)/length(DateTime)*100) %>%
-  dplyr::mutate(High = sum(Q >= newx3aR & Q <= newx3bR)/length(DateTime)*100) %>%
-  ungroup() %>%
-  dplyr::group_by(year, season) %>%
-  dplyr::mutate(Low.Seasonal = sum(Q >= newx1aR & Q <= newx1bR)/length(DateTime)*100) %>%
-  dplyr::mutate(Medium.Seasonal = sum(Q >= newx2aR & Q <= newx2bR)/length(DateTime)*100) %>%
-  dplyr::mutate(High.Seasonal = sum(Q >= newx3aR & Q <= newx3bR)/length(DateTime)*100) %>%
-  distinct(year, Low , Medium , High , Low.Seasonal, Medium.Seasonal, High.Seasonal) %>%
-  mutate(position="ROB")
-
-time_statsr
-
-
-
-time_stats <- rbind(time_statsm, time_statsl, time_statsr)
+time_stats <- time_statsm
 
 ## melt
-melt_time<-reshape2::melt(time_stats, id=c("year","season", "position"))
+melt_time<-reshape2::melt(time_stats, id=c("year","season", "position", "water_year"))
 melt_time <- rename(melt_time, Probability_Threshold = variable)
 head(melt_time)
 unique(melt_time$position)
@@ -440,17 +437,17 @@ write.csv(melt_time, "output_data/F1_F37B_High_juvenile_depth_time_stats.csv")
 ## subset annual stats
 ann_stats <- unique(melt_time$Probability_Threshold)[1:3]
 melt_time_ann <- melt_time %>% filter(Probability_Threshold %in% ann_stats ) %>%
-  select(-season) %>% distinct()
+  select(-season, -year) %>% distinct()
 
 ## subset seasonal stats
 seas_stats <- unique(melt_time$Probability_Threshold)[4:6]
 melt_time_seas <- filter(melt_time, Probability_Threshold %in% seas_stats )
-melt_time_seas
+
 ## plot for annual stats - need probs in order
 
 png("figures/Application_curves/Depth/F37B_High_juvenile_depth_perc_time_above_threshold_annual.png", width = 500, height = 600)
 
-ggplot(melt_time_ann, aes(x = year, y=value)) +
+ggplot(melt_time_ann, aes(x = water_year, y=value)) +
   geom_line(aes( group =c(), color = Probability_Threshold)) +
   scale_color_manual(name = "Probability Threshold", breaks = c("Low", "Medium", "High"),
                      values=c( "green", "red", "blue"),
@@ -470,7 +467,7 @@ unique(melt_time_winter$season)
 
 png("figures/Application_curves/Depth/F37B_High_juvenile_depth_perc_time_above_threshold_non_critical.png", width = 500, height = 600)
 
-ggplot(melt_time_winter, aes(x = year, y=value)) +
+ggplot(melt_time_winter, aes(x = water_year, y=value)) +
   geom_line(aes( group = c(), color = Probability_Threshold)) +
   scale_color_manual(name = "Probability Threshold", breaks = c("Low.Seasonal", "Medium.Seasonal", "High.Seasonal"),
                      values=c( "green", "red", "blue"),
@@ -489,7 +486,7 @@ melt_time_summer <- filter(melt_time_seas, season == "critical")
 
 png("figures/Application_curves/Depth/F37B_High_juvenile_depth_perc_time_above_threshold_critical.png", width = 500, height = 600)
 
-ggplot(melt_time_summer, aes(x = year, y=value)) +
+ggplot(melt_time_summer, aes(x = water_year, y=value)) +
   geom_line(aes( group = c(), color = Probability_Threshold)) +
   scale_color_manual(name = "Probability Threshold", breaks = c("Low.Seasonal", "Medium.Seasonal", "High.Seasonal"),
                      values=c( "green", "red", "blue"),
@@ -513,61 +510,30 @@ dev.off()
 
 new_dataM <- new_dataM %>%
   ungroup() %>%
-  group_by(month, day, year, ID01 = data.table::rleid(Q >= newx1a & Q <= newx1b)) %>%
-  mutate(Low = if_else(Q >= newx1a  & Q <= newx1b, row_number(), 0L)) %>%
+  group_by(month, day, water_year, ID01 = data.table::rleid(eval(low_threshM))) %>%
+  mutate(Low = if_else(eval(low_threshM), row_number(), 0L)) %>%
   ungroup() %>%
-  group_by(month, day, year, ID02 = data.table::rleid(Q >= newx2a & Q <= newx2b)) %>%
-  mutate(Medium = if_else(Q >= newx2a & Q <= newx2b, row_number(), 0L)) %>%
+  group_by(month, day, water_year, ID02 = data.table::rleid(eval(med_threshM))) %>%
+  mutate(Medium = if_else(eval(med_threshM), row_number(), 0L)) %>%
   ungroup() %>%
-  group_by(month, day, year, ID03 = data.table::rleid(Q >= newx3a & Q <= newx3b)) %>%
-  mutate(High = if_else(Q >= newx3a & Q <= newx3b, row_number(), 0L))
+  group_by(month, day, water_year, ID03 = data.table::rleid(eval(high_threshM))) %>%
+  mutate(High = if_else(eval(high_threshM), row_number(), 0L))
 
 new_dataM <- mutate(new_dataM, position="MC")
-
-new_dataL <- new_dataL %>%
-  ungroup() %>%
-  group_by(month, day, year, ID01 = data.table::rleid(Q >= newx1aL & Q <= newx1bL)) %>%
-  mutate(Low = if_else(Q >= newx1aL & Q <= newx1bL, row_number(), 0L)) %>%
-  ungroup() %>%
-  group_by(month, day, year, ID02 = data.table::rleid(Q >= newx2aL & Q <= newx2bL)) %>%
-  mutate(Medium = if_else(Q >= newx2aL & Q <= newx2bL, row_number(), 0L)) %>%
-  ungroup() %>%
-  group_by(month, day, year, ID03 = data.table::rleid(Q >= newx3aL & Q <= newx3bL)) %>%
-  mutate(High = if_else(Q >= newx3aL & Q <= newx3bL, row_number(), 0L))
-
-new_dataL <- mutate(new_dataL, position="LOB")
-
-new_dataR <- new_dataR %>%
-  ungroup() %>%
-  group_by(month, day, year, ID01 = data.table::rleid(Q >= newx1aR & Q <= newx1bR)) %>%
-  mutate(Low = if_else(Q >= newx1aR & Q <= newx1bR, row_number(), 0L)) %>%
-  ungroup() %>%
-  group_by(month, day, year, ID02 = data.table::rleid(Q >= newx2aR & Q <= newx2bR)) %>%
-  mutate(Medium = if_else(Q >= newx2aR & Q <= newx2bR, row_number(), 0L)) %>%
-  ungroup() %>%
-  group_by(month, day, year, ID03 = data.table::rleid(Q >= newx3aR & Q <= newx3bR)) %>%
-  mutate(High = if_else(Q >= newx3aR & Q <= newx3bR, row_number(), 0L))
-
-new_dataR <- mutate(new_dataR, position="ROB")
-new_dataR
 
 ## melt data frame so that each probability column are all in one row 
 ## select only columns needed - Q, month, year, day all IDs and probs
 # names(new_data)
 
-new_dataMx <- select(new_dataM, c(Q, month, year, day, ID01, Low, ID02, Medium, ID03, High, position, DateTime) )# all probs
+new_dataMx <- select(new_dataM, c(Q, month, water_year, day, ID01, Low, ID02, Medium, ID03, High, position, DateTime) )# all probs
 names(new_dataMx)
-new_dataLx <- select(new_dataL, c(Q, month, year, day, ID01, Low, ID02, Medium, ID03, High, position, DateTime) )# all probs
-names(new_dataLx)
-new_dataRx <- select(new_dataR, c(Q, month, year, day, ID01, Low, ID02, Medium, ID03, High, position, DateTime) )# all probs
-names(new_dataRx)
-new_dataRx
+
 ## has some values but just becuase of the fake thresholds
 # range(new_dataRx$Medium)
-new_datax <- rbind(new_dataMx, new_dataLx, new_dataRx)
+new_datax <- new_dataMx
 
 ## melt
-melt_data<-reshape2::melt(new_datax, id=c("ID01", "ID02", "ID03", "day", "month", "year", "Q", "position"))
+melt_data<-reshape2::melt(new_datax, id=c("ID01", "ID02", "ID03", "day", "month", "water_year", "Q", "position"))
 melt_data <- rename(melt_data, Probability_Threshold = variable, 
                     consec_hours = value)
 
@@ -579,37 +545,37 @@ melt_data
 ## count how many full days i.e. 24 hours
 total_days01 <- melt_data %>% 
   filter(Probability_Threshold == "Low") %>% 
-  group_by(ID01, day, month, year, position) %>%
+  group_by(ID01, day, month, water_year, position) %>%
   summarise(n_hours = max(consec_hours))  %>%
   mutate(n_days_low = ifelse(n_hours >= 24, 1, 0)) # %>%
 total_days01
 ## count the number of days in each month
 total_days_per_month01 <- total_days01 %>%
-  group_by(month, year, position) %>%
+  group_by(month, water_year, position) %>%
   summarise(days_per_month_low = sum(n_days_low))
 
 total_days_per_month01
 
 total_days02 <- melt_data %>% 
   filter(Probability_Threshold == "Medium") %>% 
-  group_by(ID02, day, month, year, position) %>%
+  group_by(ID02, day, month, water_year, position) %>%
   summarise(n_hours = max(consec_hours))  %>%
   mutate(n_days_medium = ifelse(n_hours >= 24, 1, 0)) # %>%
 
 total_days_per_month02 <- total_days02 %>%
-  group_by(month, year, position) %>%
+  group_by(month, water_year, position) %>%
   summarise(days_per_month_medium = sum(n_days_medium))
 
 # total_days_per_month02
 
 total_days03 <- melt_data %>% 
   filter(Probability_Threshold == "High") %>% 
-  group_by(ID03, day, month, year, position) %>%
+  group_by(ID03, day, month, water_year, position) %>%
   summarise(n_hours = max(consec_hours))  %>%
   mutate(n_days_high = ifelse(n_hours >= 24, 1, 0)) # %>%
 
 total_days_per_month03 <- total_days03 %>%
-  group_by(month, year, position) %>%
+  group_by(month, water_year, position) %>%
   summarise(days_per_month_high = sum(n_days_high))
 
 total_days_per_month03
@@ -622,8 +588,7 @@ write.csv(total_days, "output_data/F1_F37B_High_juvenile_total_days.csv")
 
 # # create year_month column       
 total_days <- ungroup(total_days) %>%
-  unite(month_year, year:month, sep="-", remove=F)
-
+  unite(month_year, water_year:month, sep="-", remove=F)
 
 ## convert month year to date format
 library(zoo)
@@ -646,7 +611,9 @@ unique(total_days$season)
 str(total_days)
 # ## melt data
 
-melt_days<-reshape2::melt(total_days, id=c("month_year", "year", "month", "season", "position"))
+# ## melt data
+
+melt_days<-reshape2::melt(total_days, id=c("month_year", "water_year", "month", "season", "position"))
 melt_days <- rename(melt_days, Probability_Threshold = variable,
                     n_days = value)
 
@@ -683,7 +650,7 @@ ggplot(melt_days, aes(x =month_year, y=n_days)) +
   theme(axis.text.x = element_text(angle = 0, vjust = 1)) +
   scale_x_date(breaks=pretty_breaks(),labels = date_format("%b")) +
   # scale_x_continuous(breaks=as.numeric(month_year), labels=format(month_year,"%b")) +
-  facet_wrap(~year+position, scale="free_x", nrow=4) +
+  facet_wrap(~water_year+position, scale="free_x", nrow=4) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
   labs(title = "F37B_High: Number of days within discharge limit in relation to Depth",
        y = "Number of days per Month",

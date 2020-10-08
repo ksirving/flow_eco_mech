@@ -205,6 +205,8 @@ ggplot(melt_data, aes(x = depth_cm, y=value)) +
   theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
   geom_vline(xintercept = 1.3, linetype="dotted", 
              color = "green", size=1.5) +
+  geom_vline(xintercept = 18, linetype="dotted", 
+             color = "purple", size=1.5) +
   # scale_color_manual( values = c(Toad = "green")) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
   labs(title = "Chubb & Stickleback Probability Curve",
