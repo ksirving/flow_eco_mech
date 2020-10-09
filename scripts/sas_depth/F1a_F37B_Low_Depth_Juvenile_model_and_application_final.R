@@ -1,7 +1,7 @@
-## Velocity curves - model and application
-## adult & Juvenile
+## Depth curves - model and application
+## juvenile 
 
-## produces probability curves for velocity, and application to sample node data (time series) for adult and Juvenile
+## produces probability curves for depth, and application to sample node data (time series) for juvenile and Juvenile
 ## also data distributions 
 
 ## packages
@@ -16,11 +16,8 @@ library(gridExtra) # tile several plots next to each other
 library(scales)
 library(data.table)
 
-## upload data
 
-setwd("/Users/katieirving/Documents/git/flow_eco_mech")
-
-fitdata <- read.csv("output_data/adult_velocity_prob_curve_data.csv")
+fitdata <- read.csv("output_data/juvenile_depth_prob_curve_data.csv")
 
 # Combine with hydraulic data -------------------------------------------
 
@@ -30,95 +27,106 @@ fitdata <- read.csv("output_data/adult_velocity_prob_curve_data.csv")
 
 # F57C <- read.csv("input_data/HecRas/hydraulic_ts_F57C.csv")
 # LA8 <- read.csv("input_data/HecRas/hydraulic_ts_LA8.csv")
-LA11 <- read.csv("input_data/HecRas/hydraulic_ts_LA11.csv")
+# LA11 <- read.csv("input_data/HecRas/hydraulic_ts_LA11.csv")
 # LA20 <- read.csv("input_data/HecRas/hydraulic_ts_LA20_2.csv")
+F37B_Low <- read.csv("input_data/HecRas/hydraulic_ts_F37B_Low.csv")
+# LA2 <- read.csv("input_data/HecRas/hydraulic_ts_LA2.csv")
+# LA3 <- read.csv("input_data/HecRas/hydraulic_ts_LA3.csv")
+# GLEN <- read.csv("input_data/HecRas/hydraulic_ts_GLEN.csv")
 
 ## go through script one at a time
 
-hydraul <- LA11[,-1]
-
+hydraul <- F37B_Low[,-1]
+names(hydraul)
+head(hydraul)
 ## select columns
 
-hyd_vel <- hydraul[,c(1:3,4,8, 12)]
-colnames(hyd_vel) <-c("DateTime", "node", "Q", "vel_ft_LOB", "vel_ft_MC", "vel_ft_ROB")
+hyd_dep <- hydraul[,c(1:3,5,9,13)]
+colnames(hyd_dep) <-c("DateTime", "node", "Q", "depth_ft_LOB", "depth_ft_MC", "depth_ft_ROB")
 
 # nas <- which(complete.cases(hyd_dep) == FALSE)
-## select column
+# hyd_dep[nas,]
 
-hyd_vel <- hyd_vel %>%
-  mutate(vel_m_LOB = (vel_ft_LOB*0.3048),
-         vel_m_MC = (vel_ft_MC*0.3048),
-         vel_m_ROB = (vel_ft_ROB*0.3048)) %>%
+## convert unit from feet to meters
+
+hyd_dep <- hyd_dep %>%
+  mutate(depth_cm_LOB = (depth_ft_LOB*0.3048)*100,
+         depth_cm_MC = (depth_ft_MC*0.3048)*100,
+         depth_cm_ROB = (depth_ft_ROB*0.3048)*100) %>%
   select(-contains("ft")) %>%
   mutate(date_num = seq(1,length(DateTime), 1))
+hyd_dep
 
 
-hyd_vel<-reshape2::melt(hyd_vel, id=c("DateTime","Q", "node", "date_num"))
-head(hyd_vel)
+#  Node figures -----------------------------------------------------------
 
-labels <- c(vel_m_LOB = "Left Over Bank", vel_m_MC = "Main Channel", vel_m_ROB = "Right Over Bank")
+## only needed once per node
 
-png("figures/Application_curves/nodes/LA11_Velocity_Q.png", width = 500, height = 600)
+# ## melt channel position data
 
-ggplot(hyd_vel, aes(x = Q, y=value)) +
+labels <- c(depth_cm_LOB = "Left Over Bank", depth_cm_MC = "Main Channel", depth_cm_ROB = "Right Over Bank")
+png("figures/Application_curves/nodes/F37B_Low_Depth_Q.png", width = 500, height = 600)
+
+ggplot(hyd_dep, aes(x = Q, y=value)) +
   geom_line(aes( group = variable, lty = variable)) +
   scale_linetype_manual(values= c("dotted", "solid", "dashed"),
-                        breaks=c("vel_m_LOB", "vel_m_MC", "vel_m_ROB"))+
+                        breaks=c("depth_cm_LOB", "depth_cm_MC", "depth_cm_ROB"))+
   facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
-  labs(title = "LA11: Velocity ~ Q",
-       y = "Velocity (m/s)",
+  labs(title = "F37B_Low: Depth ~ Q",
+       y = "Depth (cm)",
        x = "Q (cfs)") #+ theme_bw(base_size = 15)
 
 dev.off()
-
 ## plot time series
+png("figures/Application_curves/nodes/F37B_Low_Depth_TS.png", width = 500, height = 600)
 
-png("figures/Application_curves/nodes/LA11_Velocity_TS.png", width = 500, height = 600)
-
-ggplot(hyd_vel, aes(x = date_num, y=value)) +
+ggplot(hyd_dep, aes(x = date_num, y=value)) +
   geom_line(aes( group = variable, lty = variable)) +
   scale_linetype_manual(values= c("dotted", "solid", "dashed"),
-                        breaks=c("vel_m_LOB", "vel_m_MC", "vel_m_ROB"))+
+                        breaks=c("depth_cm_LOB", "depth_cm_MC", "depth_cm_ROB"))+
   facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
-  labs(title = "LA11: Velocity ~ Q",
-       y = "Velocity (m/s)",
-       x = "Q (cfs)") #+ theme_bw(base_size = 15)
-
+  labs(title = "F37B_Low: Depth ~ Time Series",
+       y = "Depth (cm)",
+       x = "Date") #+ theme_bw(base_size = 15)
 dev.off()
+
+
+# Merge datasets ----------------------------------------------------------
 
 ## merge datasets with spline function
 
-head(hyd_vel)
+hyd_dep<-reshape2::melt(hyd_dep, id=c("DateTime","Q", "node", "date_num"))
+
+head(hyd_dep)
 head(fitdata)
 
 ## use smooth spline to predict on new data set
-new_values <-smooth.spline(fitdata$velocity_fit, fitdata$prob_fit)
+new_values <-smooth.spline(fitdata$depth_fit, fitdata$prob_fit)
 
-all_data <- hyd_vel %>%
+all_data <- hyd_dep %>%
   group_by(variable) %>%
   mutate(prob_fit = predict(new_values, value)$y) %>%
-  rename(vel_m = value)
+  rename(depth_cm = value)
 
 all_data
 
 nas <- which(complete.cases(all_data) == FALSE)
 nas #0
 
+save(all_data, file="output_data/F1_F37B_Low_juvenile_depth_discharge_probability_time_series_all_columns.RData")
 
-save(all_data, file="output_data/F2_LA11_SAS_adult_velocity_discharge_probability_time_series_all_columns.RData")
-names(all_data)
-## keep columns velocity, datetime, Q date_num & prob_fit
+## in order of datenum
+
 new_data <- all_data[order(all_data$date_num),]
 
-save(new_data, file="output_data/F2_LA11_SAS_adult_velocity_discharge_probability_time_series_red_columns.RData")
 
+save(new_data, file="output_data/F1_F37B_Low_juvenile_depth_discharge_probability_time_series_red_columns.RData")
 
 # format probability time series ------------------------------------------
 
 ## look at data using lubridate etc
-
 
 names(new_data)
 ## format date time
@@ -126,64 +134,64 @@ new_data$DateTime<-as.POSIXct(new_data$DateTime,
                               format = "%Y-%m-%d %H:%M",
                               tz = "GMT")
 
-## create year, month, day and hour columns
+## create year, month, day and hour columns and add water year
 
 new_data <- new_data %>%
   mutate(month = month(DateTime)) %>%
   mutate(year = year(DateTime)) %>%
   mutate(day = day(DateTime)) %>%
-  mutate(hour = hour(DateTime))
+  mutate(hour = hour(DateTime)) %>%
+  mutate(water_year = ifelse(month == 10 | month == 11 | month == 12, year, year-1))
 
-
-
-head(new_data)
-
-save(new_data, file="output_data/F2_LA11_SAS_velocity_adult_discharge_probs_2010_2017_TS.RData")
+save(new_data, file="output_data/F1_F37B_Low_depth_juvenile_discharge_probs_2010_2017_TS.RData")
 
 
 # probability as a function of discharge -----------------------------------
-load(file="output_data/F2_LA11_velocity_adult_discharge_probs_2010_2017_TS.RData")
+
+
+load( file="output_data/F1_F37B_Low_depth_juvenile_discharge_probs_2010_2017_TS.RData")
 head(new_data)
 
 ## plot
-range(new_data$Q) ## 24.50545 40888.74219
-range(new_data$prob_fit) ## -0.4951386  0.3989409
+range(new_data$Q) ## 26.22926 41750.16797 
+range(new_data$prob_fit) ## -3.2183121  0.3989423
 
-## change all negative prob_fit  to 0
-new_data[which(new_data$prob_fit <  0),"prob_fit"] <- 0
+## bind shallow and deeper depths by 0.1 - 10cm & 120cm
+## change all prob_fit lower than 0.1 to 0.1
+new_data[which(new_data$prob_fit <  0.1),"prob_fit"] <- 0.1
 
 peak <- new_data %>%
   group_by(variable) %>%
   filter(prob_fit == max(prob_fit)) #%>%
 
 
-peakQM <- filter(peak, variable=="vel_m_MC")
+peakQM <- filter(peak, variable=="depth_cm_MC")
 peakQM  <- max(peakQM$Q)
-peakQM ## 24.50545
+peakQM ##  706.7369
 
-peakQL <- filter(peak, variable=="vel_m_LOB")
+peakQL <- filter(peak, variable=="depth_cm_LOB")
 peakQL  <- max(peakQL$Q) ## 
-peakQL ## 499.4943
+peakQL ##  1583.827
 
-peakQR <- filter(peak, variable=="vel_m_ROB")
+peakQR <- filter(peak, variable=="depth_cm_ROB")
 peakQR  <- max(peakQR$Q) ## 
-peakQR ## 1162.968
+peakQR ##  3640.68
 
 ## filter data by cross section position
 
-new_dataM <- filter(new_data, variable == "vel_m_MC")
-new_dataL <- filter(new_data, variable == "vel_m_LOB")
-new_dataR <- filter(new_data, variable == "vel_m_ROB")
+new_dataM <- filter(new_data, variable == "depth_cm_MC")
+new_dataL <- filter(new_data, variable == "depth_cm_LOB")
+new_dataR <- filter(new_data, variable == "depth_cm_ROB")
 
 ## Main channel curves
 
 load(file="root_interpolation_function.Rdata")
 
 newx1a <- RootLinearInterpolant(new_dataM$Q, new_dataM$prob_fit, 0.1)
+newx1a <- c(min(new_dataM$Q), max(new_dataM$Q))
 newx1a
 
-
-newx2a  <- RootLinearInterpolant(new_dataM$Q, new_dataM$prob_fit, 0.20)
+newx2a  <- RootLinearInterpolant(new_dataM$Q, new_dataM$prob_fit, 0.2)
 newx2a 
 
 
@@ -192,10 +200,10 @@ newx3a
 
 ## LOB curves
 newx1aL <- RootLinearInterpolant(new_dataL$Q, new_dataL$prob_fit, 0.1)
-newx1aL
+newx1aL <- c(min(new_dataL$Q), max(new_dataL$Q))
 
 
-newx2aL <- RootLinearInterpolant(new_dataL$Q, new_dataL$prob_fit, 0.20)
+newx2aL <- RootLinearInterpolant(new_dataL$Q, new_dataL$prob_fit,0.2)
 newx2aL 
 
 
@@ -206,10 +214,10 @@ newx3aL
 ## ROB curves
 
 newx1aR <- RootLinearInterpolant(new_dataR$Q, new_dataR$prob_fit, 0.1)
-newx1aR
+newx1aR <- c(min(new_dataR$Q), max(new_dataR$Q))
 
 
-newx2aR <- RootLinearInterpolant(new_dataR$Q, new_dataR$prob_fit, 0.20)
+newx2aR <- RootLinearInterpolant(new_dataR$Q, new_dataR$prob_fit, 0.2)
 newx2aR 
 
 
@@ -228,111 +236,113 @@ limits$LOB <- c(newx1aL[1], newx1aL[2],newx1aL[3],newx1aL[4],
                 newx2aL[1], newx2aL[2],newx2aL[3], newx2aL[4],  
                 newx3aL[1], newx3aL[2],newx3aL[3], newx3aL[4])
 
-limits$MC <- c(newx1a[1], newx1a[2],newx1a[3], newx1aL[4],
+limits$MC <- c(newx1a[1], newx1a[2],newx1a[3], newx1a[4],
                newx2a[1], newx2a[2],newx2a[3], newx2a[4], 
                newx3a[1], newx3a[2],newx3a[3],newx3a[4])
 
 limits$ROB <- c(newx1aR[1], newx1aR[2],newx1aR[3], newx1aR[4], 
                 newx2aR[1], newx2aR[2],newx2aR[3], newx2aR[4],
                 newx3aR[1], newx3aR[2],newx3aR[3], newx3aR[4])
-
 limits
-write.csv(limits, "output_data/F2_LA11_Adult_Velocity_Q_limits.csv")
+
+## note that 0.1 upper/lower limit is max/min Q to adhere to 0.1 bound
+write.csv(limits, "output_data/F1_F37B_Low_juvenile_Q_limits.csv")
+
 # plot discharge points ---------------------------------------------------
 unique(new_data$variable)
-
-labels <- c(vel_m_LOB = "Left Over Bank", vel_m_MC = "Main Channel", vel_m_ROB = "Right Over Bank")
-
-png("figures/Application_curves/Depth/LA11_adult_velocity_prob_Q_thresholds.png", width = 500, height = 600)
+png("figures/Application_curves/Depth/F37B_Low_juvenile_depth_prob_Q_thresholds.png", width = 500, height = 600)
+labels <- c(depth_cm_LOB = "Left Over Bank", depth_cm_MC = "Main Channel", depth_cm_ROB = "Right Over Bank")
 
 ggplot(new_data, aes(x = Q, y=prob_fit)) +
   geom_line(aes(group = variable, lty = variable)) +
   scale_linetype_manual(values= c("dotted", "solid", "dashed"))+
-  # name="Cross\nSection\nPosition",
-  # breaks=c("vel_m_LOB", "vel_m_MC", "vel_m_ROB"),
-  #   labels = c("LOB", "MC", "ROB")) +
+  #                       name="Cross\nSection\nPosition",
+  #                       breaks=c("depth_cm_LOB", "depth_cm_MC", "depth_cm_ROB"),
+  #                         labels = c("LOB", "MC", "ROB")) +
   
   facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
-  geom_point(data = subset(new_data, variable =="vel_m_MC"), aes(y=0.1, x=newx1a[1]), color="green") +
-  geom_point(data = subset(new_data, variable =="vel_m_MC"), aes(y=0.1, x=newx1a[2]), color="green") +
-  geom_point(data = subset(new_data, variable =="vel_m_MC"), aes(y=0.1, x=newx1a[3]), color="green") +
-  geom_point(data = subset(new_data, variable =="vel_m_MC"), aes(y=0.1, x=newx1a[4]), color="green") +
-  geom_point(data = subset(new_data, variable =="vel_m_MC"), aes(y=0.20, x=newx2a[1]), color="red") +
-  geom_point(data = subset(new_data, variable =="vel_m_MC"), aes(y=0.20, x=newx2a[2]), color="red") +
-  geom_point(data = subset(new_data, variable =="vel_m_MC"), aes(y=0.20, x=newx2a[3]), color="red") +
-  geom_point(data = subset(new_data, variable =="vel_m_MC"), aes(y=0.20, x=newx2a[4]), color="red") +
-  geom_point(data = subset(new_data, variable =="vel_m_MC"), aes(y=0.3, x=newx3a[1]), color="blue") +
-  geom_point(data = subset(new_data, variable =="vel_m_MC"), aes(y=0.3, x=newx3a[2]), color="blue") +
-  geom_point(data = subset(new_data, variable =="vel_m_MC"), aes(y=0.3, x=newx3a[3]), color="blue") +
-  geom_point(data = subset(new_data, variable =="vel_m_MC"), aes(y=0.3, x=newx3a[4]), color="blue") +
+  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.1, x=newx1a[1]), color="green") +
+  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.1, x=newx1a[2]), color="green") +
+  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.1, x=newx1a[3]), color="green") +
+  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.1, x=newx1a[4]), color="green") +
+  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.2, x=newx2a[1]), color="red") +
+  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.2, x=newx2a[2]), color="red") +
+  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.2, x=newx2a[3]), color="red") +
+  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.2, x=newx2a[4]), color="red") +
+  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.3, x=newx3a[1]), color="blue") +
+  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.3, x=newx3a[2]), color="blue") +
+  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.3, x=newx3a[3]), color="blue") +
+  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.3, x=newx3a[4]), color="blue") +
   
-  geom_point(data = subset(new_data, variable =="vel_m_LOB"), aes(y=0.1, x=newx1aL[1]), color="green") +
-  geom_point(data = subset(new_data, variable =="vel_m_LOB"), aes(y=0.1, x=newx1aL[2]), color="green") +
-  geom_point(data = subset(new_data, variable =="vel_m_LOB"), aes(y=0.1, x=newx1aL[3]), color="green") +
-  geom_point(data = subset(new_data, variable =="vel_m_LOB"), aes(y=0.1, x=newx1aL[4]), color="green") +
-  geom_point(data = subset(new_data, variable =="vel_m_LOB"), aes(y=0.20, x=newx2aL[1]), color="red") +
-  geom_point(data = subset(new_data, variable =="vel_m_LOB"), aes(y=0.20, x=newx2aL[2]), color="red") +
-  geom_point(data = subset(new_data, variable =="vel_m_LOB"), aes(y=0.20, x=newx2aL[3]), color="red") +
-  geom_point(data = subset(new_data, variable =="vel_m_LOB"), aes(y=0.20, x=newx2aL[4]), color="red") +
-  geom_point(data = subset(new_data, variable =="vel_m_LOB"), aes(y=0.3, x=newx3aL[1]), color="blue") +
-  geom_point(data = subset(new_data, variable =="vel_m_LOB"), aes(y=0.3, x=newx3aL[2]), color="blue") +
-  geom_point(data = subset(new_data, variable =="vel_m_LOB"), aes(y=0.3, x=newx3aL[3]), color="blue") +
-  geom_point(data = subset(new_data, variable =="vel_m_LOB"), aes(y=0.3, x=newx3aL[4]), color="blue") +
+  geom_point(data = subset(new_data, variable =="depth_cm_LOB"), aes(y=0.1, x=newx1aL[1]), color="green") +
+  geom_point(data = subset(new_data, variable =="depth_cm_LOB"), aes(y=0.1, x=newx1aL[2]), color="green") +
+  geom_point(data = subset(new_data, variable =="depth_cm_LOB"), aes(y=0.1, x=newx1aL[3]), color="green") +
+  geom_point(data = subset(new_data, variable =="depth_cm_LOB"), aes(y=0.1, x=newx1aL[4]), color="green") +
+  geom_point(data = subset(new_data, variable =="depth_cm_LOB"), aes(y=0.2, x=newx2aL[1]), color="red") +
+  geom_point(data = subset(new_data, variable =="depth_cm_LOB"), aes(y=0.2, x=newx2aL[2]), color="red") +
+  geom_point(data = subset(new_data, variable =="depth_cm_LOB"), aes(y=0.2, x=newx2aL[3]), color="red") +
+  geom_point(data = subset(new_data, variable =="depth_cm_LOB"), aes(y=0.2, x=newx2aL[4]), color="red") +
+  geom_point(data = subset(new_data, variable =="depth_cm_LOB"), aes(y=0.3, x=newx3aL[1]), color="blue") +
+  geom_point(data = subset(new_data, variable =="depth_cm_LOB"), aes(y=0.3, x=newx3aL[2]), color="blue") +
+  geom_point(data = subset(new_data, variable =="depth_cm_LOB"), aes(y=0.3, x=newx3aL[3]), color="blue") +
+  geom_point(data = subset(new_data, variable =="depth_cm_LOB"), aes(y=0.3, x=newx3aL[4]), color="blue") +
   
-  geom_point(data = subset(new_data, variable =="vel_m_ROB"), aes(y=0.1, x=newx1aR[1]), color="green") +
-  geom_point(data = subset(new_data, variable =="vel_m_ROB"), aes(y=0.1, x=newx1aR[2]), color="green") +
-  geom_point(data = subset(new_data, variable =="vel_m_ROB"), aes(y=0.1, x=newx1aR[3]), color="green") +
-  geom_point(data = subset(new_data, variable =="vel_m_ROB"), aes(y=0.1, x=newx1aR[4]), color="green") +
-  geom_point(data = subset(new_data, variable =="vel_m_ROB"), aes(y=0.20, x=newx2aR[1]), color="red") +
-  geom_point(data = subset(new_data, variable =="vel_m_ROB"), aes(y=0.20, x=newx2aR[2]), color="red") +
-  geom_point(data = subset(new_data, variable =="vel_m_ROB"), aes(y=0.20, x=newx2aR[3]), color="red") +
-  geom_point(data = subset(new_data, variable =="vel_m_ROB"), aes(y=0.20, x=newx2aR[4]), color="red") +
-  geom_point(data = subset(new_data, variable =="vel_m_ROB"), aes(y=0.3, x=newx3aR[1]), color="blue") +
-  geom_point(data = subset(new_data, variable =="vel_m_ROB"), aes(y=0.3, x=newx3aR[2]), color="blue") +
-  geom_point(data = subset(new_data, variable =="vel_m_ROB"), aes(y=0.3, x=newx3aR[3]), color="blue") +
-  geom_point(data = subset(new_data, variable =="vel_m_ROB"), aes(y=0.3, x=newx3aR[4]), color="blue") +
+  geom_point(data = subset(new_data, variable =="depth_cm_ROB"), aes(y=0.1, x=newx1aR[1]), color="green") +
+  geom_point(data = subset(new_data, variable =="depth_cm_ROB"), aes(y=0.1, x=newx1aR[2]), color="green") +
+  geom_point(data = subset(new_data, variable =="depth_cm_ROB"), aes(y=0.1, x=newx1aR[3]), color="green") +
+  geom_point(data = subset(new_data, variable =="depth_cm_ROB"), aes(y=0.1, x=newx1aR[4]), color="green") +
+  geom_point(data = subset(new_data, variable =="depth_cm_ROB"), aes(y=0.2, x=newx2aR[1]), color="red") +
+  geom_point(data = subset(new_data, variable =="depth_cm_ROB"), aes(y=0.2, x=newx2aR[2]), color="red") +
+  geom_point(data = subset(new_data, variable =="depth_cm_ROB"), aes(y=0.2, x=newx2aR[3]), color="red") +
+  geom_point(data = subset(new_data, variable =="depth_cm_ROB"), aes(y=0.2, x=newx2aR[4]), color="red") +
+  geom_point(data = subset(new_data, variable =="depth_cm_ROB"), aes(y=0.3, x=newx3aR[1]), color="blue") +
+  geom_point(data = subset(new_data, variable =="depth_cm_ROB"), aes(y=0.3, x=newx3aR[2]), color="blue") +
+  geom_point(data = subset(new_data, variable =="depth_cm_ROB"), aes(y=0.3, x=newx3aR[3]), color="blue") +
+  geom_point(data = subset(new_data, variable =="depth_cm_ROB"), aes(y=0.3, x=newx3aR[4]), color="blue") +
   
   
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
-  labs(title = "LA11: Velocity: Probability ~ Q",
+  labs(title = "F37B_Low: Juvenile/Depth: Probability ~ Q",
        y = "Probability",
        x = "Q (cfs)") #+ theme_bw(base_size = 15)
 
 dev.off()
+### plot discharge over time
 
 # create year_month column       
-new_dataMx <- new_dataM %>% unite(month_year, year:month, sep="-", remove=F) 
+new_dataMx <- new_dataM %>% unite(month_year, water_year:month, sep="-", remove=F) 
 head(new_dataMx)
 
 # create year_month column       
-new_dataLx <- new_dataL %>% unite(month_year, year:month, sep="-", remove=F) 
+new_dataLx <- new_dataL %>% unite(month_year, water_year:month, sep="-", remove=F) 
 head(new_dataLx)
 
 # create year_month column       
-new_dataRx <- new_dataR %>% unite(month_year, year:month, sep="-", remove=F) 
+new_dataRx <- new_dataR %>% unite(month_year, water_year:month, sep="-", remove=F) 
 head(new_dataRx)
 
 # discharge time series plots with probability lines ----------------------
 
-# ##  plot time series of discharge - 0.2 prob line
-# 
-# ggplot(new_datax) +
-#   geom_line(aes(x =DateTime, y=Q)) +
-#   # theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
-#   # scale_x_continuous(breaks=as.numeric(new_datax$month_year), labels=format(new_datax$month_year,"%b %Y")) +
-#   geom_hline(yintercept=newx2a, linetype="dashed", color="red")+
-#   geom_hline(yintercept=newx2b, linetype="dashed", color="red")+
-#   facet_wrap(~year, scales="free_x", nrow=4) +
-#   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-#   labs(title = "Discharge over time",
-#        y = "Discharge",
-#        x = "Time") #+ theme_bw(base_size = 15)
+##  plot time series of discharge - 0.2 prob line
+
+ggplot(new_dataRx) +
+  geom_line(aes(x =DateTime, y=Q)) +
+  # theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
+  # scale_x_continuous(breaks=as.numeric(new_datax$month_year), labels=format(new_datax$month_year,"%b %Y")) +
+  geom_hline(yintercept=newx1aR, linetype="dashed", color="red")+
+  # facet_wrap(~year, scales="free_x", nrow=4) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  labs(title = "Discharge over time",
+       y = "Discharge",
+       x = "Time") #+ theme_bw(base_size = 15)
+
+
+# dataframe for stats -----------------------------------------------------
 
 ## make dataframe for all years 
 
 ## define critical period or season for adult as all year is critical
 ## define seasons/critical period
-
 non_critical <- c(1,2,8:12) 
 critical <- c(3:7) 
 
@@ -345,10 +355,8 @@ new_dataLx <- new_dataRx %>%
 new_dataRx <- new_dataRx %>%
   mutate(season = ifelse(month %in% non_critical, "non_critical", "critical") )
 
-
+limits
 # time stats - mid channel ------------------------------------------------
-
-### define expression for low threshold 
 
 if(is.na(newx1a[1])) {
   
@@ -495,14 +503,13 @@ high_threshM
 
 ###### calculate amount of time
 
-
 time_statsm <- new_dataMx %>%
-  dplyr::group_by(year) %>%
+  dplyr::group_by(water_year) %>%
   dplyr::mutate(Low = sum(eval(low_threshM))/length(DateTime)*100) %>%
   dplyr::mutate(Medium = sum(eval(med_threshM))/length(DateTime)*100) %>%
   dplyr::mutate(High = sum(eval(high_threshM))/length(DateTime)*100) %>%
   ungroup() %>%
-  dplyr::group_by(year, season) %>%
+  dplyr::group_by(water_year, season) %>%
   dplyr::mutate(Low.Seasonal = sum(eval(low_threshM))/length(DateTime)*100) %>%
   dplyr::mutate(Medium.Seasonal = sum(eval(med_threshM))/length(DateTime)*100) %>%
   dplyr::mutate(High.Seasonal = sum(eval(high_threshM))/length(DateTime)*100) %>%
@@ -661,12 +668,12 @@ high_threshL
 ###### calculate amount of time
 
 time_statsl <- new_dataLx %>%
-  dplyr::group_by(year) %>%
+  dplyr::group_by(water_year) %>%
   dplyr::mutate(Low = sum(eval(low_threshL))/length(DateTime)*100) %>%
   dplyr::mutate(Medium = sum(eval(med_threshL))/length(DateTime)*100) %>%
   dplyr::mutate(High = sum(eval(high_threshL))/length(DateTime)*100) %>%
   ungroup() %>%
-  dplyr::group_by(year, season) %>%
+  dplyr::group_by(water_year, season) %>%
   dplyr::mutate(Low.Seasonal = sum(eval(low_threshL))/length(DateTime)*100) %>%
   dplyr::mutate(Medium.Seasonal = sum(eval(med_threshL))/length(DateTime)*100) %>%
   dplyr::mutate(High.Seasonal = sum(eval(high_threshL))/length(DateTime)*100) %>%
@@ -822,14 +829,13 @@ if(is.na(newx3aR[1])) {
 high_threshR
 
 ###### calculate amount of time
-
 time_statsr <- new_dataRx %>%
-  dplyr::group_by(year) %>%
+  dplyr::group_by(water_year) %>%
   dplyr::mutate(Low = sum(eval(low_threshR))/length(DateTime)*100) %>%
   dplyr::mutate(Medium = sum(eval(med_threshR))/length(DateTime)*100) %>%
   dplyr::mutate(High = sum(eval(high_threshR))/length(DateTime)*100) %>%
   ungroup() %>%
-  dplyr::group_by(year, season) %>%
+  dplyr::group_by(water_year, season) %>%
   dplyr::mutate(Low.Seasonal = sum(eval(low_threshR))/length(DateTime)*100) %>%
   dplyr::mutate(Medium.Seasonal = sum(eval(med_threshR))/length(DateTime)*100) %>%
   dplyr::mutate(High.Seasonal = sum(eval(high_threshR))/length(DateTime)*100) %>%
@@ -838,30 +844,29 @@ time_statsr <- new_dataRx %>%
 
 time_statsr
 
-
 time_stats <- rbind(time_statsm, time_statsl, time_statsr)
 
 ## melt
-melt_time<-reshape2::melt(time_stats, id=c("year","season", "position"))
+melt_time<-reshape2::melt(time_stats, id=c("year","season", "position", "water_year"))
 melt_time <- rename(melt_time, Probability_Threshold = variable)
 head(melt_time)
 unique(melt_time$position)
-write.csv(melt_time, "output_data/F2_LA11_adult_velocity_time_stats.csv")
+write.csv(melt_time, "output_data/F1_F37B_Low_juvenile_depth_time_stats.csv")
 
 ## subset annual stats
 ann_stats <- unique(melt_time$Probability_Threshold)[1:3]
 melt_time_ann <- melt_time %>% filter(Probability_Threshold %in% ann_stats ) %>%
-  select(-season) %>% distinct()
+  select(-season, -year) %>% distinct()
 
 ## subset seasonal stats
 seas_stats <- unique(melt_time$Probability_Threshold)[4:6]
 melt_time_seas <- filter(melt_time, Probability_Threshold %in% seas_stats )
-melt_time_seas
-## plot for annual stats - need probs in order
-limits
-png("figures/Application_curves/Velocity/LA11_adult_velocity_perc_time_above_threshold_annual.png", width = 500, height = 600)
 
-ggplot(melt_time_ann, aes(x = year, y=value)) +
+## plot for annual stats - need probs in order
+
+png("figures/Application_curves/Depth/F37B_Low_juvenile_depth_perc_time_above_threshold_annual.png", width = 500, height = 600)
+
+ggplot(melt_time_ann, aes(x = water_year, y=value)) +
   geom_line(aes( group =c(), color = Probability_Threshold)) +
   scale_color_manual(name = "Probability Threshold", breaks = c("Low", "Medium", "High"),
                      values=c( "green", "red", "blue"),
@@ -870,7 +875,7 @@ ggplot(melt_time_ann, aes(x = year, y=value)) +
   # scale_x_continuous(breaks=as.numeric(total_days$month_year), labels=format(total_days$month_year,"%b %Y")) +
   facet_wrap(~position, scales="free_x", nrow=3) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "LA11: Time within discharge limit in relation to Velocity (Annual)",
+  labs(title = "F37B_Low: Time within discharge limit in relation to Depth (Annual)",
        y = "Time (%)",
        x = "Year") #+ theme_bw(base_size = 15)
 dev.off()
@@ -879,9 +884,9 @@ dev.off()
 melt_time_winter <- filter(melt_time_seas, season == "non_critical")
 unique(melt_time_winter$season)
 
-png("figures/Application_curves/Velocity/LA11_adult_velocity_perc_time_above_threshold_winter.png", width = 500, height = 600)
+png("figures/Application_curves/Depth/F37B_Low_juvenile_depth_perc_time_above_threshold_non_critical.png", width = 500, height = 600)
 
-ggplot(melt_time_winter, aes(x = year, y=value)) +
+ggplot(melt_time_winter, aes(x = water_year, y=value)) +
   geom_line(aes( group = c(), color = Probability_Threshold)) +
   scale_color_manual(name = "Probability Threshold", breaks = c("Low.Seasonal", "Medium.Seasonal", "High.Seasonal"),
                      values=c( "green", "red", "blue"),
@@ -890,18 +895,17 @@ ggplot(melt_time_winter, aes(x = year, y=value)) +
   # scale_x_continuous(breaks=as.numeric(total_days$month_year), labels=format(total_days$month_year,"%b %Y")) +
   facet_wrap(~position, scales="free_x", nrow=3) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "LA11: Time within discharge limit in relation to Velocity (Non_critical)",
+  labs(title = "F37B_Low: Time within discharge limit in relation to Depth (Non_critical)",
        y = "Time (%)",
        x = "Year") #+ theme_bw(base_size = 15)
-
 dev.off()
 ## plot for summer stats - need probs in order
 
 melt_time_summer <- filter(melt_time_seas, season == "critical")
 
-png("figures/Application_curves/Velocity/LA11_adult_velocity_perc_time_above_threshold_critical.png", width = 500, height = 600)
+png("figures/Application_curves/Depth/F37B_Low_juvenile_depth_perc_time_above_threshold_critical.png", width = 500, height = 600)
 
-ggplot(melt_time_summer, aes(x = year, y=value)) +
+ggplot(melt_time_summer, aes(x = water_year, y=value)) +
   geom_line(aes( group = c(), color = Probability_Threshold)) +
   scale_color_manual(name = "Probability Threshold", breaks = c("Low.Seasonal", "Medium.Seasonal", "High.Seasonal"),
                      values=c( "green", "red", "blue"),
@@ -910,7 +914,7 @@ ggplot(melt_time_summer, aes(x = year, y=value)) +
   # scale_x_continuous(breaks=as.numeric(total_days$month_year), labels=format(total_days$month_year,"%b %Y")) +
   facet_wrap(~position, scales="free_x", nrow=3) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "LA11: Time within discharge limit in relation to Velocity (Critical)",
+  labs(title = "F37B_Low: Time within discharge limit in relation to Depth (critical)",
        y = "Time (%)",
        x = "Year") #+ theme_bw(base_size = 15)
 
@@ -922,64 +926,61 @@ dev.off()
 ## count number events within each threshold with a running total - max total is the number of consequative 
 # events (hours) per day. if else statements to consider the thresholds newx1a/b etc
 ## order by datetime
-limits
 
 new_dataM <- new_dataM %>%
   ungroup() %>%
-  group_by(month, day, year, ID01 = data.table::rleid(eval(low_threshM))) %>%
+  group_by(month, day, water_year, ID01 = data.table::rleid(eval(low_threshM))) %>%
   mutate(Low = if_else(eval(low_threshM), row_number(), 0L)) %>%
   ungroup() %>%
-  group_by(month, day, year, ID02 = data.table::rleid(eval(med_threshM))) %>%
+  group_by(month, day, water_year, ID02 = data.table::rleid(eval(med_threshM))) %>%
   mutate(Medium = if_else(eval(med_threshM), row_number(), 0L)) %>%
   ungroup() %>%
-  group_by(month, day, year, ID03 = data.table::rleid(eval(high_threshM))) %>%
+  group_by(month, day, water_year, ID03 = data.table::rleid(eval(high_threshM))) %>%
   mutate(High = if_else(eval(high_threshM), row_number(), 0L))
 
 new_dataM <- mutate(new_dataM, position="MC")
 
 new_dataL <- new_dataL %>%
   ungroup() %>%
-  group_by(month, day, year, ID01 = data.table::rleid(eval(low_threshL))) %>%
+  group_by(month, day, water_year, ID01 = data.table::rleid(eval(low_threshL))) %>%
   mutate(Low = if_else(eval(low_threshL), row_number(), 0L)) %>%
   ungroup() %>%
-  group_by(month, day, year, ID02 = data.table::rleid(eval(med_threshL))) %>%
+  group_by(month, day, water_year, ID02 = data.table::rleid(eval(med_threshL))) %>%
   mutate(Medium = if_else(eval(med_threshL), row_number(), 0L)) %>%
   ungroup() %>%
-  group_by(month, day, year, ID03 = data.table::rleid(eval(high_threshL))) %>%
+  group_by(month, day, water_year, ID03 = data.table::rleid(eval(high_threshL))) %>%
   mutate(High = if_else(eval(high_threshL), row_number(), 0L))
 
 new_dataL <- mutate(new_dataL, position="LOB")
 
 new_dataR <- new_dataR %>%
   ungroup() %>%
-  group_by(month, day, year, ID01 = data.table::rleid(eval(low_threshR))) %>%
+  group_by(month, day, water_year, ID01 = data.table::rleid(eval(low_threshR))) %>%
   mutate(Low = if_else(eval(low_threshR), row_number(), 0L)) %>%
   ungroup() %>%
-  group_by(month, day, year, ID02 = data.table::rleid(eval(med_threshR))) %>%
+  group_by(month, day, water_year, ID02 = data.table::rleid(eval(med_threshR))) %>%
   mutate(Medium = if_else(eval(med_threshR), row_number(), 0L)) %>%
   ungroup() %>%
-  group_by(month, day, year, ID03 = data.table::rleid(eval(high_threshR))) %>%
+  group_by(month, day, water_year, ID03 = data.table::rleid(eval(high_threshR))) %>%
   mutate(High = if_else(eval(high_threshR), row_number(), 0L))
 
 new_dataR <- mutate(new_dataR, position="ROB")
-
 ## melt data frame so that each probability column are all in one row 
 ## select only columns needed - Q, month, year, day all IDs and probs
 # names(new_data)
 
-new_dataMx <- select(new_dataM, c(Q, month, year, day, ID01, Low, ID02, Medium, ID03, High, position, DateTime) )# all probs
+new_dataMx <- select(new_dataM, c(Q, month, water_year, day, ID01, Low, ID02, Medium, ID03, High, position, DateTime) )# all probs
 names(new_dataMx)
-new_dataLx <- select(new_dataL, c(Q, month, year, day, ID01, Low, ID02, Medium, ID03, High, position, DateTime) )# all probs
+new_dataLx <- select(new_dataL, c(Q, month, water_year, day, ID01, Low, ID02, Medium, ID03, High, position, DateTime) )# all probs
 names(new_dataLx)
-new_dataRx <- select(new_dataR, c(Q, month, year, day, ID01, Low, ID02, Medium, ID03, High, position, DateTime) )# all probs
+new_dataRx <- select(new_dataR, c(Q, month, water_year, day, ID01, Low, ID02, Medium, ID03, High, position, DateTime) )# all probs
 names(new_dataRx)
 ## has some values but just becuase of the fake thresholds
 # range(new_dataRx$Medium)
 new_datax <- rbind(new_dataMx, new_dataLx, new_dataRx)
-new_datax
 
 ## melt
-melt_data<-reshape2::melt(new_datax, id=c("ID01", "ID02", "ID03", "day", "month", "year", "Q", "position"))
+melt_data<-reshape2::melt(new_datax, id=c("ID01", "ID02", "ID03", "day", "month", "water_year", "Q", "position"))
 melt_data <- rename(melt_data, Probability_Threshold = variable, 
                     consec_hours = value)
 
@@ -991,37 +992,37 @@ melt_data
 ## count how many full days i.e. 24 hours
 total_days01 <- melt_data %>% 
   filter(Probability_Threshold == "Low") %>% 
-  group_by(ID01, day, month, year, position) %>%
+  group_by(ID01, day, month, water_year, position) %>%
   summarise(n_hours = max(consec_hours))  %>%
   mutate(n_days_low = ifelse(n_hours >= 24, 1, 0)) # %>%
 total_days01
 ## count the number of days in each month
 total_days_per_month01 <- total_days01 %>%
-  group_by(month, year, position) %>%
+  group_by(month, water_year, position) %>%
   summarise(days_per_month_low = sum(n_days_low))
 
 total_days_per_month01
 
 total_days02 <- melt_data %>% 
   filter(Probability_Threshold == "Medium") %>% 
-  group_by(ID02, day, month, year, position) %>%
+  group_by(ID02, day, month, water_year, position) %>%
   summarise(n_hours = max(consec_hours))  %>%
   mutate(n_days_medium = ifelse(n_hours >= 24, 1, 0)) # %>%
 
 total_days_per_month02 <- total_days02 %>%
-  group_by(month, year, position) %>%
+  group_by(month, water_year, position) %>%
   summarise(days_per_month_medium = sum(n_days_medium))
 
 # total_days_per_month02
 
 total_days03 <- melt_data %>% 
   filter(Probability_Threshold == "High") %>% 
-  group_by(ID03, day, month, year, position) %>%
+  group_by(ID03, day, month, water_year, position) %>%
   summarise(n_hours = max(consec_hours))  %>%
   mutate(n_days_high = ifelse(n_hours >= 24, 1, 0)) # %>%
 
 total_days_per_month03 <- total_days03 %>%
-  group_by(month, year, position) %>%
+  group_by(month, water_year, position) %>%
   summarise(days_per_month_high = sum(n_days_high))
 
 total_days_per_month03
@@ -1030,12 +1031,11 @@ total_days_per_month03
 total_days <- cbind( total_days_per_month01,total_days_per_month02[,4], total_days_per_month03[,4])
 head(total_days)
 
-write.csv(total_days, "output_data/F2_LA11_adult_velocity_total_days.csv")
+write.csv(total_days, "output_data/F1_F37B_Low_juvenile_total_days.csv")
 
 # # create year_month column       
 total_days <- ungroup(total_days) %>%
-  unite(month_year, year:month, sep="-", remove=F)
-
+  unite(month_year, water_year:month, sep="-", remove=F)
 
 ## convert month year to date format
 library(zoo)
@@ -1054,24 +1054,25 @@ critical <- c(3:7)
 total_days <- total_days %>%
   mutate(season = ifelse(month %in% non_critical, "non_critical", "critical") )
 
+unique(total_days$season)
+str(total_days)
+# ## melt data
 
 # ## melt data
 
-melt_days<-reshape2::melt(total_days, id=c("month_year", "year", "month", "season", "position"))
+melt_days<-reshape2::melt(total_days, id=c("month_year", "water_year", "month", "season", "position"))
 melt_days <- rename(melt_days, Probability_Threshold = variable,
                     n_days = value)
 
 head(melt_days)
 
 ## save df
-write.csv(melt_days, "output_data/F2_LA11_adult_velocity_total_days_long.csv")
+write.csv(melt_days, "output_data/F1_F37B_Low_juvenile_total_days_long.csv")
 
-
-# melt_daysx <- filter(melt_days, position=="MC")
 library(scales)
 
 ## plot all ts
-png("figures/Application_curves/Velocity/LA11_adult_velocity_lob_rob_mc_no_days_within_Q.png", width = 500, height = 600)
+png("figures/Application_curves/Depth/F37B_Low_juvenile_depth_lob_rob_mc_no_days_within_Q.png", width = 500, height = 600)
 
 ggplot(melt_days, aes(x =month_year, y=n_days)) +
   geom_line(aes( group = Probability_Threshold, color = Probability_Threshold)) +
@@ -1079,17 +1080,15 @@ ggplot(melt_days, aes(x =month_year, y=n_days)) +
                      values=c( "green", "red", "blue")) +
   theme(axis.text.x = element_text(angle = 45, vjust = 0.5)) +
   scale_x_date(breaks=pretty_breaks(), labels = date_format("%b %Y")) +
-  scale_y_continuous(limits=c(0,31)) +
   # scale_x_continuous(breaks=as.numeric(melt_days$month_year), labels=format(melt_days$month_year,"%b %Y")) +
   facet_wrap(~position, nrow=3) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "LA11: Number of days within discharge limit in relation to Velocity",
+  labs(title = "F37B_Low: Number of days within discharge limit in relation to Depth",
        y = "Number of days per Month",
        x = "Year") #+ theme_bw(base_size = 15)
 dev.off()
-
 ## plot by year
-png("figures/Application_curves/Velocity/LA11_adult_velocity_lob_rob_mc_no_days_within_Q_by_year.png", width = 500, height = 600)
+png("figures/Application_curves/Depth/F37B_Low_juvenile_depth_lob_rob_mc_no_days_within_Q_by_year.png", width = 500, height = 600)
 
 ggplot(melt_days, aes(x =month_year, y=n_days)) +
   geom_line(aes( group = Probability_Threshold, color = Probability_Threshold)) +
@@ -1097,17 +1096,15 @@ ggplot(melt_days, aes(x =month_year, y=n_days)) +
                      values=c( "green", "red", "blue")) +
   theme(axis.text.x = element_text(angle = 0, vjust = 1)) +
   scale_x_date(breaks=pretty_breaks(),labels = date_format("%b")) +
-  scale_y_continuous(limits=c(0,31)) +
   # scale_x_continuous(breaks=as.numeric(month_year), labels=format(month_year,"%b")) +
-  facet_wrap(~year+position, scale="free_x", nrow=4) +
+  facet_wrap(~water_year+position, scale="free_x", nrow=4) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "LA11: Number of days within discharge limit in relation to Velocity",
+  labs(title = "F37B_Low: Number of days within discharge limit in relation to Depth",
        y = "Number of days per Month",
        x = "Month") #+ theme_bw(base_size = 15)
 dev.off()
-
 ## plot by season/critical period
-png("figures/Application_curves/Velocity/LA11_adult_velocity_lob_rob_mc_no_days_within_Q_by_season.png", width = 500, height = 600)
+png("figures/Application_curves/Depth/F37B_Low_juvenile_depth_lob_rob_mc_no_days_within_Q_by_season.png", width = 500, height = 600)
 
 ggplot(melt_days, aes(x =month_year, y=n_days)) +
   geom_line(aes( group = Probability_Threshold, color = Probability_Threshold)) +
@@ -1115,11 +1112,10 @@ ggplot(melt_days, aes(x =month_year, y=n_days)) +
                      values=c( "green", "red", "blue")) +
   theme(axis.text.x = element_text(angle = 0, vjust = 1)) +
   scale_x_date(breaks=pretty_breaks(),labels = date_format("%Y")) +
-  scale_y_continuous(limits=c(0,31)) +
   # scale_x_continuous(breaks=as.numeric(melt_days$month_year), labels=format(melt_days$month_year,"%Y")) +
   facet_wrap(~season +position, scales="free", nrow=2) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "LA11: Number of days within discharge limit in relation to Velocity",
+  labs(title = "F37B_Low: Number of days within discharge limit in relation to Depth",
        y = "Number of days per Month",
        x = "Year") #+ theme_bw(base_size = 15)
 dev.off()

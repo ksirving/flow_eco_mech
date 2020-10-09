@@ -1,7 +1,8 @@
-## Depth curves - model and application
-## juvenile 
 
-## produces probability curves for depth, and application to sample node data (time series) for juvenile and Juvenile
+## Depth curves - model and application
+## adult 
+
+## produces probability curves for depth, and application to sample node data (time series) for adult and Juvenile
 ## also data distributions 
 
 ## packages
@@ -16,8 +17,9 @@ library(gridExtra) # tile several plots next to each other
 library(scales)
 library(data.table)
 
+## load curve data
 
-fitdata <- read.csv("output_data/juvenile_depth_prob_curve_data.csv")
+fitdata <- read.csv("output_data/adult_depth_prob_curve_data.csv")
 
 # Combine with hydraulic data -------------------------------------------
 
@@ -28,15 +30,19 @@ fitdata <- read.csv("output_data/juvenile_depth_prob_curve_data.csv")
 # F57C <- read.csv("input_data/HecRas/hydraulic_ts_F57C.csv")
 # LA8 <- read.csv("input_data/HecRas/hydraulic_ts_LA8.csv")
 # LA11 <- read.csv("input_data/HecRas/hydraulic_ts_LA11.csv")
-LA20 <- read.csv("input_data/HecRas/hydraulic_ts_LA20_2.csv")
+# LA20_2 <- read.csv("input_data/HecRas/hydraulic_ts_LA20_2.csv")
 # F37B_Low <- read.csv("input_data/HecRas/hydraulic_ts_F37B_Low.csv")
 # LA2 <- read.csv("input_data/HecRas/hydraulic_ts_LA2.csv")
 # LA3 <- read.csv("input_data/HecRas/hydraulic_ts_LA3.csv")
-# GLEN <- read.csv("input_data/HecRas/hydraulic_ts_GLEN.csv")
+GLEN <- read.csv("input_data/HecRas/hydraulic_ts_GLEN.csv")
+
+## upload hydraulic data
+
+fitdata <- read.csv("output_data/adult_depth_prob_curve_data.csv")
 
 ## go through script one at a time
 
-hydraul <- LA20[,-1]
+hydraul <- GLEN[,-1]
 names(hydraul)
 head(hydraul)
 ## select columns
@@ -47,25 +53,23 @@ colnames(hyd_dep) <-c("DateTime", "node", "Q", "depth_ft_LOB", "depth_ft_MC", "d
 # nas <- which(complete.cases(hyd_dep) == FALSE)
 # hyd_dep[nas,]
 
-## convert unit from feet to meters
+## convert unit from feet to meters 
 
 hyd_dep <- hyd_dep %>%
   mutate(depth_cm_LOB = (depth_ft_LOB*0.3048)*100,
          depth_cm_MC = (depth_ft_MC*0.3048)*100,
          depth_cm_ROB = (depth_ft_ROB*0.3048)*100) %>%
   select(-contains("ft")) %>%
-  mutate(date_num = seq(1,length(DateTime), 1))
-hyd_dep
+  mutate(date_num = seq(1,length(DateTime), 1)) 
 
-
-#  Node figures -----------------------------------------------------------
-
-## only needed once per node
 
 # ## melt channel position data
+# 
+hyd_dep<-reshape2::melt(hyd_dep, id=c("DateTime","Q", "node", "date_num"))
+
 
 labels <- c(depth_cm_LOB = "Left Over Bank", depth_cm_MC = "Main Channel", depth_cm_ROB = "Right Over Bank")
-png("figures/Application_curves/nodes/LA20_Depth_Q.png", width = 500, height = 600)
+png("figures/Application_curves/nodes/GLEN_Depth_Q.png", width = 500, height = 600)
 
 ggplot(hyd_dep, aes(x = Q, y=value)) +
   geom_line(aes( group = variable, lty = variable)) +
@@ -73,13 +77,13 @@ ggplot(hyd_dep, aes(x = Q, y=value)) +
                         breaks=c("depth_cm_LOB", "depth_cm_MC", "depth_cm_ROB"))+
   facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
-  labs(title = "LA20: Depth ~ Q",
+  labs(title = "GLEN: Depth ~ Q",
        y = "Depth (cm)",
        x = "Q (cfs)") #+ theme_bw(base_size = 15)
 
 dev.off()
 ## plot time series
-png("figures/Application_curves/nodes/LA20_Depth_TS.png", width = 500, height = 600)
+png("figures/Application_curves/nodes/GLEN_Depth_TS.png", width = 500, height = 600)
 
 ggplot(hyd_dep, aes(x = date_num, y=value)) +
   geom_line(aes( group = variable, lty = variable)) +
@@ -87,17 +91,11 @@ ggplot(hyd_dep, aes(x = date_num, y=value)) +
                         breaks=c("depth_cm_LOB", "depth_cm_MC", "depth_cm_ROB"))+
   facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
-  labs(title = "LA20: Depth ~ Time Series",
+  labs(title = "GLEN: Depth ~ Time Series",
        y = "Depth (cm)",
        x = "Date") #+ theme_bw(base_size = 15)
 dev.off()
-
-
-# Merge datasets ----------------------------------------------------------
-
 ## merge datasets with spline function
-
-hyd_dep<-reshape2::melt(hyd_dep, id=c("DateTime","Q", "node", "date_num"))
 
 head(hyd_dep)
 head(fitdata)
@@ -115,14 +113,16 @@ all_data
 nas <- which(complete.cases(all_data) == FALSE)
 nas #0
 
-save(all_data, file="output_data/F1_LA20_juvenile_depth_discharge_probability_time_series_all_columns.RData")
 
-## in order of datenum
+
+save(all_data, file="output_data/F1_GLEN_adult_depth_discharge_probability_time_series_all_columns.RData")
+# load("output_data/F1_GLEN_adult_depth_discharge_probability_time_series_all_columns.RData")
+## keep columns dpeth, datetime, Q date_num & prob_fit
 
 new_data <- all_data[order(all_data$date_num),]
 
 
-save(new_data, file="output_data/F1_LA20_juvenile_depth_discharge_probability_time_series_red_columns.RData")
+save(new_data, file="output_data/F1_GLEN_adult_depth_discharge_probability_time_series_red_columns.RData")
 
 # format probability time series ------------------------------------------
 
@@ -143,22 +143,25 @@ new_data <- new_data %>%
   mutate(hour = hour(DateTime)) %>%
   mutate(water_year = ifelse(month == 10 | month == 11 | month == 12, year, year-1))
 
-save(new_data, file="output_data/F1_LA20_depth_juvenile_discharge_probs_2010_2017_TS.RData")
+
+head(new_data)
+save(new_data, file="output_data/F1_GLEN_depth_adult_discharge_probs_2010_2017_TS.RData")
 
 
 # probability as a function of discharge -----------------------------------
 
 
-load( file="output_data/F1_LA20_depth_juvenile_discharge_probs_2010_2017_TS.RData")
+load( file="output_data/F1_GLEN_depth_adult_discharge_probs_2010_2017_TS.RData")
 head(new_data)
 
 ## plot
 range(new_data$Q) ## 26.22926 41750.16797 
-range(new_data$prob_fit) ## -3.2183121  0.3989423
+range(new_data$prob_fit) ## -0.004518105  0.398942010
 
 ## bind shallow and deeper depths by 0.1 - 10cm & 120cm
 ## change all prob_fit lower than 0.1 to 0.1
 new_data[which(new_data$prob_fit <  0.1),"prob_fit"] <- 0.1
+
 
 peak <- new_data %>%
   group_by(variable) %>%
@@ -167,15 +170,16 @@ peak <- new_data %>%
 
 peakQM <- filter(peak, variable=="depth_cm_MC")
 peakQM  <- max(peakQM$Q)
-peakQM ##  706.7369
+peakQM ## 990.5882
 
 peakQL <- filter(peak, variable=="depth_cm_LOB")
 peakQL  <- max(peakQL$Q) ## 
-peakQL ##  1583.827
+peakQL ## 1258.077
 
 peakQR <- filter(peak, variable=="depth_cm_ROB")
 peakQR  <- max(peakQR$Q) ## 
-peakQR ##  3640.68
+peakQR ## 4635.898
+
 
 ## filter data by cross section position
 
@@ -246,12 +250,11 @@ limits$ROB <- c(newx1aR[1], newx1aR[2],newx1aR[3], newx1aR[4],
 limits
 
 ## note that 0.1 upper/lower limit is max/min Q to adhere to 0.1 bound
-write.csv(limits, "output_data/F1_LA20_juvenile_Q_limits.csv")
+write.csv(limits, "output_data/F1_GLEN_Q_limits.csv")
 
 # plot discharge points ---------------------------------------------------
-unique(new_data$variable)
-png("figures/Application_curves/Depth/LA20_juvenile_depth_prob_Q_thresholds.png", width = 500, height = 600)
-labels <- c(depth_cm_LOB = "Left Over Bank", depth_cm_MC = "Main Channel", depth_cm_ROB = "Right Over Bank")
+
+png("figures/Application_curves/Depth/GLEN_adult_depth_prob_Q_thresholds.png", width = 500, height = 600)
 
 ggplot(new_data, aes(x = Q, y=prob_fit)) +
   geom_line(aes(group = variable, lty = variable)) +
@@ -300,9 +303,8 @@ ggplot(new_data, aes(x = Q, y=prob_fit)) +
   geom_point(data = subset(new_data, variable =="depth_cm_ROB"), aes(y=0.3, x=newx3aR[3]), color="blue") +
   geom_point(data = subset(new_data, variable =="depth_cm_ROB"), aes(y=0.3, x=newx3aR[4]), color="blue") +
   
-  
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
-  labs(title = "LA20: Juvenile/Depth: Probability ~ Q",
+  labs(title = "GLEN: Adult/Depth: Probability ~ Q",
        y = "Probability",
        x = "Q (cfs)") #+ theme_bw(base_size = 15)
 
@@ -342,21 +344,20 @@ ggplot(new_dataRx) +
 ## make dataframe for all years 
 
 ## define critical period or season for adult as all year is critical
-## define seasons/critical period
-non_critical <- c(1,2,8:12) 
-critical <- c(3:7) 
+winter <- c(1,2,3,4,11,12) ## winter months
+summer <- c(5:10) ## summer months
 
 new_dataMx <- new_dataMx %>%
-  mutate(season = ifelse(month %in% non_critical, "non_critical", "critical") )
+  mutate(season = ifelse(month %in% winter, "winter", "summer") )
 
-new_dataLx <- new_dataRx %>%
-  mutate(season = ifelse(month %in% non_critical, "non_critical", "critical") )
+new_dataLx <- new_dataLx %>%
+  mutate(season = ifelse(month %in% winter, "winter", "summer") )
 
 new_dataRx <- new_dataRx %>%
-  mutate(season = ifelse(month %in% non_critical, "non_critical", "critical") )
+  mutate(season = ifelse(month %in% winter, "winter", "summer") )
 
-limits
-# time stats - mid channel ------------------------------------------------
+
+## produces percentage of time for each year and season within year for each threshold
 
 if(is.na(newx1a[1])) {
   
@@ -502,6 +503,7 @@ if(is.na(newx3a[1])) {
 high_threshM
 
 ###### calculate amount of time
+
 
 time_statsm <- new_dataMx %>%
   dplyr::group_by(water_year) %>%
@@ -829,6 +831,7 @@ if(is.na(newx3aR[1])) {
 high_threshR
 
 ###### calculate amount of time
+
 time_statsr <- new_dataRx %>%
   dplyr::group_by(water_year) %>%
   dplyr::mutate(Low = sum(eval(low_threshR))/length(DateTime)*100) %>%
@@ -844,6 +847,7 @@ time_statsr <- new_dataRx %>%
 
 time_statsr
 
+
 time_stats <- rbind(time_statsm, time_statsl, time_statsr)
 
 ## melt
@@ -851,7 +855,7 @@ melt_time<-reshape2::melt(time_stats, id=c("year","season", "position", "water_y
 melt_time <- rename(melt_time, Probability_Threshold = variable)
 head(melt_time)
 unique(melt_time$position)
-write.csv(melt_time, "output_data/F1_LA20_juvenile_depth_time_stats.csv")
+write.csv(melt_time, "output_data/F1_GLEN_adult_depth_time_stats.csv")
 
 ## subset annual stats
 ann_stats <- unique(melt_time$Probability_Threshold)[1:3]
@@ -864,7 +868,7 @@ melt_time_seas <- filter(melt_time, Probability_Threshold %in% seas_stats )
 
 ## plot for annual stats - need probs in order
 
-png("figures/Application_curves/Depth/LA20_juvenile_depth_perc_time_above_threshold_annual.png", width = 500, height = 600)
+png("figures/Application_curves/Depth/GLEN_adult_depth_perc_time_above_threshold_annual.png", width = 500, height = 600)
 
 ggplot(melt_time_ann, aes(x = water_year, y=value)) +
   geom_line(aes( group =c(), color = Probability_Threshold)) +
@@ -875,16 +879,16 @@ ggplot(melt_time_ann, aes(x = water_year, y=value)) +
   # scale_x_continuous(breaks=as.numeric(total_days$month_year), labels=format(total_days$month_year,"%b %Y")) +
   facet_wrap(~position, scales="free_x", nrow=3) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "LA20: Time within discharge limit in relation to Depth (Annual)",
+  labs(title = "GLEN: Time within discharge limit in relation to Depth (Annual)",
        y = "Time (%)",
        x = "Year") #+ theme_bw(base_size = 15)
 dev.off()
 ## plot for winter stats - need probs in order
 
-melt_time_winter <- filter(melt_time_seas, season == "non_critical")
-unique(melt_time_winter$season)
+melt_time_winter <- filter(melt_time_seas, season == "winter")
+unique(melt_time_winter$Probability_Threshold)
 
-png("figures/Application_curves/Depth/LA20_juvenile_depth_perc_time_above_threshold_non_critical.png", width = 500, height = 600)
+png("figures/Application_curves/Depth/GLEN_adult_depth_perc_time_above_threshold_winter.png", width = 500, height = 600)
 
 ggplot(melt_time_winter, aes(x = water_year, y=value)) +
   geom_line(aes( group = c(), color = Probability_Threshold)) +
@@ -895,15 +899,15 @@ ggplot(melt_time_winter, aes(x = water_year, y=value)) +
   # scale_x_continuous(breaks=as.numeric(total_days$month_year), labels=format(total_days$month_year,"%b %Y")) +
   facet_wrap(~position, scales="free_x", nrow=3) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "LA20: Time within discharge limit in relation to Depth (Non_critical)",
+  labs(title = "GLEN: Time within discharge limit in relation to Depth (Winter)",
        y = "Time (%)",
        x = "Year") #+ theme_bw(base_size = 15)
 dev.off()
 ## plot for summer stats - need probs in order
 
-melt_time_summer <- filter(melt_time_seas, season == "critical")
+melt_time_summer <- filter(melt_time_seas, season == "summer")
 
-png("figures/Application_curves/Depth/LA20_juvenile_depth_perc_time_above_threshold_critical.png", width = 500, height = 600)
+png("figures/Application_curves/Depth/GLEN_adult_depth_perc_time_above_threshold_summer.png", width = 500, height = 600)
 
 ggplot(melt_time_summer, aes(x = water_year, y=value)) +
   geom_line(aes( group = c(), color = Probability_Threshold)) +
@@ -914,13 +918,14 @@ ggplot(melt_time_summer, aes(x = water_year, y=value)) +
   # scale_x_continuous(breaks=as.numeric(total_days$month_year), labels=format(total_days$month_year,"%b %Y")) +
   facet_wrap(~position, scales="free_x", nrow=3) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "LA20: Time within discharge limit in relation to Depth (critical)",
+  labs(title = "GLEN: Time within discharge limit in relation to Depth (Summer)",
        y = "Time (%)",
        x = "Year") #+ theme_bw(base_size = 15)
 
 dev.off()
 
 # Number of days above discharge ------------------------------------------
+
 
 # all columns based on different probabilities
 ## count number events within each threshold with a running total - max total is the number of consequative 
@@ -965,6 +970,7 @@ new_dataR <- new_dataR %>%
   mutate(High = if_else(eval(high_threshR), row_number(), 0L))
 
 new_dataR <- mutate(new_dataR, position="ROB")
+
 ## melt data frame so that each probability column are all in one row 
 ## select only columns needed - Q, month, year, day all IDs and probs
 # names(new_data)
@@ -1031,11 +1037,12 @@ total_days_per_month03
 total_days <- cbind( total_days_per_month01,total_days_per_month02[,4], total_days_per_month03[,4])
 head(total_days)
 
-write.csv(total_days, "output_data/F1_LA20_juvenile_total_days.csv")
+write.csv(total_days, "output_data/F1_GLEN_total_days.csv")
 
 # # create year_month column       
 total_days <- ungroup(total_days) %>%
   unite(month_year, water_year:month, sep="-", remove=F)
+
 
 ## convert month year to date format
 library(zoo)
@@ -1047,16 +1054,13 @@ total_days <- rename(total_days, Low = days_per_month_low, Medium = days_per_mon
 
 # total_hours <- rename(total_hours, Low = n_days_low, Medium = n_days_medium, High = n_days_high)
 
-## define seasons/critical period
-non_critical <- c(1,2,8:12) 
-critical <- c(3:7) 
+## define seasons
+winter <- c(1,2,3,4,11,12) ## winter months
+summer <- c(5:10) ## summer months
 
 total_days <- total_days %>%
-  mutate(season = ifelse(month %in% non_critical, "non_critical", "critical") )
+  mutate(season = ifelse(month %in% winter, "winter", "summer") )
 
-unique(total_days$season)
-str(total_days)
-# ## melt data
 
 # ## melt data
 
@@ -1067,12 +1071,14 @@ melt_days <- rename(melt_days, Probability_Threshold = variable,
 head(melt_days)
 
 ## save df
-write.csv(melt_days, "output_data/F1_LA20_juvenile_total_days_long.csv")
+write.csv(melt_days, "output_data/F1_GLEN_total_days_long.csv")
 
+
+melt_daysx <- filter(melt_days, position=="MC")
 library(scales)
 
 ## plot all ts
-png("figures/Application_curves/Depth/LA20_juvenile_depth_lob_rob_mc_no_days_within_Q.png", width = 500, height = 600)
+png("figures/Application_curves/Depth/GLEN_adult_depth_lob_rob_mc_no_days_within_Q.png", width = 500, height = 600)
 
 ggplot(melt_days, aes(x =month_year, y=n_days)) +
   geom_line(aes( group = Probability_Threshold, color = Probability_Threshold)) +
@@ -1083,12 +1089,12 @@ ggplot(melt_days, aes(x =month_year, y=n_days)) +
   # scale_x_continuous(breaks=as.numeric(melt_days$month_year), labels=format(melt_days$month_year,"%b %Y")) +
   facet_wrap(~position, nrow=3) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "LA20: Number of days within discharge limit in relation to Depth",
+  labs(title = "GLEN: Number of days within discharge limit in relation to Depth",
        y = "Number of days per Month",
        x = "Year") #+ theme_bw(base_size = 15)
 dev.off()
 ## plot by year
-png("figures/Application_curves/Depth/LA20_juvenile_depth_lob_rob_mc_no_days_within_Q_by_year.png", width = 500, height = 600)
+png("figures/Application_curves/Depth/GLEN_adult_depth_lob_rob_mc_no_days_within_Q_by_year.png", width = 500, height = 600)
 
 ggplot(melt_days, aes(x =month_year, y=n_days)) +
   geom_line(aes( group = Probability_Threshold, color = Probability_Threshold)) +
@@ -1099,12 +1105,12 @@ ggplot(melt_days, aes(x =month_year, y=n_days)) +
   # scale_x_continuous(breaks=as.numeric(month_year), labels=format(month_year,"%b")) +
   facet_wrap(~water_year+position, scale="free_x", nrow=4) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "LA20: Number of days within discharge limit in relation to Depth",
+  labs(title = "GLEN: Number of days within discharge limit in relation to Depth: Mid Channel",
        y = "Number of days per Month",
        x = "Month") #+ theme_bw(base_size = 15)
 dev.off()
 ## plot by season/critical period
-png("figures/Application_curves/Depth/LA20_juvenile_depth_lob_rob_mc_no_days_within_Q_by_season.png", width = 500, height = 600)
+png("figures/Application_curves/Depth/GLEN_adult_depth_lob_rob_mc_no_days_within_Q_by_season.png", width = 500, height = 600)
 
 ggplot(melt_days, aes(x =month_year, y=n_days)) +
   geom_line(aes( group = Probability_Threshold, color = Probability_Threshold)) +
@@ -1115,7 +1121,7 @@ ggplot(melt_days, aes(x =month_year, y=n_days)) +
   # scale_x_continuous(breaks=as.numeric(melt_days$month_year), labels=format(melt_days$month_year,"%Y")) +
   facet_wrap(~season +position, scales="free", nrow=2) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "LA20: Number of days within discharge limit in relation to Depth",
+  labs(title = "GLEN: Number of days within discharge limit in relation to Depth",
        y = "Number of days per Month",
        x = "Year") #+ theme_bw(base_size = 15)
 dev.off()

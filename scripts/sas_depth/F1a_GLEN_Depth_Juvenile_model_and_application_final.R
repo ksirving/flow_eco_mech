@@ -29,11 +29,13 @@ fitdata <- read.csv("output_data/juvenile_depth_prob_curve_data.csv")
 # LA8 <- read.csv("input_data/HecRas/hydraulic_ts_LA8.csv")
 # LA11 <- read.csv("input_data/HecRas/hydraulic_ts_LA11.csv")
 # LA20 <- read.csv("input_data/HecRas/hydraulic_ts_LA20_2.csv")
-F37B_Low <- read.csv("input_data/HecRas/hydraulic_ts_F37B_Low.csv")
-
+# F37B_Low <- read.csv("input_data/HecRas/hydraulic_ts_F37B_Low.csv")
+# LA2 <- read.csv("input_data/HecRas/hydraulic_ts_LA2.csv")
+# LA3 <- read.csv("input_data/HecRas/hydraulic_ts_LA3.csv")
+GLEN <- read.csv("input_data/HecRas/hydraulic_ts_GLEN.csv")
 ## go through script one at a time
 
-hydraul <- F37B_Low[,-1]
+hydraul <- GLEN[,-1]
 names(hydraul)
 head(hydraul)
 ## select columns
@@ -62,7 +64,7 @@ hyd_dep
 # ## melt channel position data
 
 labels <- c(depth_cm_LOB = "Left Over Bank", depth_cm_MC = "Main Channel", depth_cm_ROB = "Right Over Bank")
-png("figures/Application_curves/nodes/F37B_Low_Depth_Q.png", width = 500, height = 600)
+png("figures/Application_curves/nodes/GLEN_Depth_Q.png", width = 500, height = 600)
 
 ggplot(hyd_dep, aes(x = Q, y=value)) +
   geom_line(aes( group = variable, lty = variable)) +
@@ -70,13 +72,13 @@ ggplot(hyd_dep, aes(x = Q, y=value)) +
                         breaks=c("depth_cm_LOB", "depth_cm_MC", "depth_cm_ROB"))+
   facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
-  labs(title = "F37B_Low: Depth ~ Q",
+  labs(title = "GLEN: Depth ~ Q",
        y = "Depth (cm)",
        x = "Q (cfs)") #+ theme_bw(base_size = 15)
 
 dev.off()
 ## plot time series
-png("figures/Application_curves/nodes/F37B_Low_Depth_TS.png", width = 500, height = 600)
+png("figures/Application_curves/nodes/GLEN_Depth_TS.png", width = 500, height = 600)
 
 ggplot(hyd_dep, aes(x = date_num, y=value)) +
   geom_line(aes( group = variable, lty = variable)) +
@@ -84,7 +86,7 @@ ggplot(hyd_dep, aes(x = date_num, y=value)) +
                         breaks=c("depth_cm_LOB", "depth_cm_MC", "depth_cm_ROB"))+
   facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
-  labs(title = "F37B_Low: Depth ~ Time Series",
+  labs(title = "GLEN: Depth ~ Time Series",
        y = "Depth (cm)",
        x = "Date") #+ theme_bw(base_size = 15)
 dev.off()
@@ -112,14 +114,14 @@ all_data
 nas <- which(complete.cases(all_data) == FALSE)
 nas #0
 
-save(all_data, file="output_data/F1_F37B_Low_juvenile_depth_discharge_probability_time_series_all_columns.RData")
+save(all_data, file="output_data/F1_GLEN_juvenile_depth_discharge_probability_time_series_all_columns.RData")
 
 ## in order of datenum
 
 new_data <- all_data[order(all_data$date_num),]
 
 
-save(new_data, file="output_data/F1_F37B_Low_juvenile_depth_discharge_probability_time_series_red_columns.RData")
+save(new_data, file="output_data/F1_GLEN_juvenile_depth_discharge_probability_time_series_red_columns.RData")
 
 # format probability time series ------------------------------------------
 
@@ -140,13 +142,13 @@ new_data <- new_data %>%
   mutate(hour = hour(DateTime)) %>%
   mutate(water_year = ifelse(month == 10 | month == 11 | month == 12, year, year-1))
 
-save(new_data, file="output_data/F1_F37B_Low_depth_juvenile_discharge_probs_2010_2017_TS.RData")
+save(new_data, file="output_data/F1_GLEN_depth_juvenile_discharge_probs_2010_2017_TS.RData")
 
 
 # probability as a function of discharge -----------------------------------
 
 
-load( file="output_data/F1_F37B_Low_depth_juvenile_discharge_probs_2010_2017_TS.RData")
+load( file="output_data/F1_GLEN_depth_juvenile_discharge_probs_2010_2017_TS.RData")
 head(new_data)
 
 ## plot
@@ -233,7 +235,7 @@ limits$LOB <- c(newx1aL[1], newx1aL[2],newx1aL[3],newx1aL[4],
                 newx2aL[1], newx2aL[2],newx2aL[3], newx2aL[4],  
                 newx3aL[1], newx3aL[2],newx3aL[3], newx3aL[4])
 
-limits$MC <- c(newx1a[1], newx1a[2],newx1a[3], newx1aL[4],
+limits$MC <- c(newx1a[1], newx1a[2],newx1a[3], newx1a[4],
                newx2a[1], newx2a[2],newx2a[3], newx2a[4], 
                newx3a[1], newx3a[2],newx3a[3],newx3a[4])
 
@@ -243,11 +245,11 @@ limits$ROB <- c(newx1aR[1], newx1aR[2],newx1aR[3], newx1aR[4],
 limits
 
 ## note that 0.1 upper/lower limit is max/min Q to adhere to 0.1 bound
-write.csv(limits, "output_data/F1_F37B_Low_juvenile_Q_limits.csv")
+write.csv(limits, "output_data/F1_GLEN_juvenile_Q_limits.csv")
 
 # plot discharge points ---------------------------------------------------
 unique(new_data$variable)
-png("figures/Application_curves/Depth/F37B_Low_juvenile_depth_prob_Q_thresholds.png", width = 500, height = 600)
+png("figures/Application_curves/Depth/GLEN_juvenile_depth_prob_Q_thresholds.png", width = 500, height = 600)
 labels <- c(depth_cm_LOB = "Left Over Bank", depth_cm_MC = "Main Channel", depth_cm_ROB = "Right Over Bank")
 
 ggplot(new_data, aes(x = Q, y=prob_fit)) +
@@ -299,7 +301,7 @@ ggplot(new_data, aes(x = Q, y=prob_fit)) +
   
   
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
-  labs(title = "F37B_Low: Juvenile/Depth: Probability ~ Q",
+  labs(title = "GLEN: Juvenile/Depth: Probability ~ Q",
        y = "Probability",
        x = "Q (cfs)") #+ theme_bw(base_size = 15)
 
@@ -848,7 +850,7 @@ melt_time<-reshape2::melt(time_stats, id=c("year","season", "position", "water_y
 melt_time <- rename(melt_time, Probability_Threshold = variable)
 head(melt_time)
 unique(melt_time$position)
-write.csv(melt_time, "output_data/F1_F37B_Low_juvenile_depth_time_stats.csv")
+write.csv(melt_time, "output_data/F1_GLEN_juvenile_depth_time_stats.csv")
 
 ## subset annual stats
 ann_stats <- unique(melt_time$Probability_Threshold)[1:3]
@@ -861,7 +863,7 @@ melt_time_seas <- filter(melt_time, Probability_Threshold %in% seas_stats )
 
 ## plot for annual stats - need probs in order
 
-png("figures/Application_curves/Depth/F37B_Low_juvenile_depth_perc_time_above_threshold_annual.png", width = 500, height = 600)
+png("figures/Application_curves/Depth/GLEN_juvenile_depth_perc_time_above_threshold_annual.png", width = 500, height = 600)
 
 ggplot(melt_time_ann, aes(x = water_year, y=value)) +
   geom_line(aes( group =c(), color = Probability_Threshold)) +
@@ -872,7 +874,7 @@ ggplot(melt_time_ann, aes(x = water_year, y=value)) +
   # scale_x_continuous(breaks=as.numeric(total_days$month_year), labels=format(total_days$month_year,"%b %Y")) +
   facet_wrap(~position, scales="free_x", nrow=3) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "F37B_Low: Time within discharge limit in relation to Depth (Annual)",
+  labs(title = "GLEN: Time within discharge limit in relation to Depth (Annual)",
        y = "Time (%)",
        x = "Year") #+ theme_bw(base_size = 15)
 dev.off()
@@ -881,7 +883,7 @@ dev.off()
 melt_time_winter <- filter(melt_time_seas, season == "non_critical")
 unique(melt_time_winter$season)
 
-png("figures/Application_curves/Depth/F37B_Low_juvenile_depth_perc_time_above_threshold_non_critical.png", width = 500, height = 600)
+png("figures/Application_curves/Depth/GLEN_juvenile_depth_perc_time_above_threshold_non_critical.png", width = 500, height = 600)
 
 ggplot(melt_time_winter, aes(x = water_year, y=value)) +
   geom_line(aes( group = c(), color = Probability_Threshold)) +
@@ -892,7 +894,7 @@ ggplot(melt_time_winter, aes(x = water_year, y=value)) +
   # scale_x_continuous(breaks=as.numeric(total_days$month_year), labels=format(total_days$month_year,"%b %Y")) +
   facet_wrap(~position, scales="free_x", nrow=3) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "F37B_Low: Time within discharge limit in relation to Depth (Non_critical)",
+  labs(title = "GLEN: Time within discharge limit in relation to Depth (Non_critical)",
        y = "Time (%)",
        x = "Year") #+ theme_bw(base_size = 15)
 dev.off()
@@ -900,7 +902,7 @@ dev.off()
 
 melt_time_summer <- filter(melt_time_seas, season == "critical")
 
-png("figures/Application_curves/Depth/F37B_Low_juvenile_depth_perc_time_above_threshold_critical.png", width = 500, height = 600)
+png("figures/Application_curves/Depth/GLEN_juvenile_depth_perc_time_above_threshold_critical.png", width = 500, height = 600)
 
 ggplot(melt_time_summer, aes(x = water_year, y=value)) +
   geom_line(aes( group = c(), color = Probability_Threshold)) +
@@ -911,7 +913,7 @@ ggplot(melt_time_summer, aes(x = water_year, y=value)) +
   # scale_x_continuous(breaks=as.numeric(total_days$month_year), labels=format(total_days$month_year,"%b %Y")) +
   facet_wrap(~position, scales="free_x", nrow=3) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "F37B_Low: Time within discharge limit in relation to Depth (critical)",
+  labs(title = "GLEN: Time within discharge limit in relation to Depth (critical)",
        y = "Time (%)",
        x = "Year") #+ theme_bw(base_size = 15)
 
@@ -1028,7 +1030,7 @@ total_days_per_month03
 total_days <- cbind( total_days_per_month01,total_days_per_month02[,4], total_days_per_month03[,4])
 head(total_days)
 
-write.csv(total_days, "output_data/F1_F37B_Low_juvenile_total_days.csv")
+write.csv(total_days, "output_data/F1_GLEN_juvenile_total_days.csv")
 
 # # create year_month column       
 total_days <- ungroup(total_days) %>%
@@ -1064,12 +1066,12 @@ melt_days <- rename(melt_days, Probability_Threshold = variable,
 head(melt_days)
 
 ## save df
-write.csv(melt_days, "output_data/F1_F37B_Low_juvenile_total_days_long.csv")
+write.csv(melt_days, "output_data/F1_GLEN_juvenile_total_days_long.csv")
 
 library(scales)
 
 ## plot all ts
-png("figures/Application_curves/Depth/F37B_Low_juvenile_depth_lob_rob_mc_no_days_within_Q.png", width = 500, height = 600)
+png("figures/Application_curves/Depth/GLEN_juvenile_depth_lob_rob_mc_no_days_within_Q.png", width = 500, height = 600)
 
 ggplot(melt_days, aes(x =month_year, y=n_days)) +
   geom_line(aes( group = Probability_Threshold, color = Probability_Threshold)) +
@@ -1080,12 +1082,12 @@ ggplot(melt_days, aes(x =month_year, y=n_days)) +
   # scale_x_continuous(breaks=as.numeric(melt_days$month_year), labels=format(melt_days$month_year,"%b %Y")) +
   facet_wrap(~position, nrow=3) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "F37B_Low: Number of days within discharge limit in relation to Depth",
+  labs(title = "GLEN: Number of days within discharge limit in relation to Depth",
        y = "Number of days per Month",
        x = "Year") #+ theme_bw(base_size = 15)
 dev.off()
 ## plot by year
-png("figures/Application_curves/Depth/F37B_Low_juvenile_depth_lob_rob_mc_no_days_within_Q_by_year.png", width = 500, height = 600)
+png("figures/Application_curves/Depth/GLEN_juvenile_depth_lob_rob_mc_no_days_within_Q_by_year.png", width = 500, height = 600)
 
 ggplot(melt_days, aes(x =month_year, y=n_days)) +
   geom_line(aes( group = Probability_Threshold, color = Probability_Threshold)) +
@@ -1094,14 +1096,14 @@ ggplot(melt_days, aes(x =month_year, y=n_days)) +
   theme(axis.text.x = element_text(angle = 0, vjust = 1)) +
   scale_x_date(breaks=pretty_breaks(),labels = date_format("%b")) +
   # scale_x_continuous(breaks=as.numeric(month_year), labels=format(month_year,"%b")) +
-  facet_wrap(~year+position, scale="free_x", nrow=4) +
+  facet_wrap(~water_year+position, scale="free_x", nrow=4) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "F37B_Low: Number of days within discharge limit in relation to Depth",
+  labs(title = "GLEN: Number of days within discharge limit in relation to Depth",
        y = "Number of days per Month",
        x = "Month") #+ theme_bw(base_size = 15)
 dev.off()
 ## plot by season/critical period
-png("figures/Application_curves/Depth/F37B_Low_juvenile_depth_lob_rob_mc_no_days_within_Q_by_season.png", width = 500, height = 600)
+png("figures/Application_curves/Depth/GLEN_juvenile_depth_lob_rob_mc_no_days_within_Q_by_season.png", width = 500, height = 600)
 
 ggplot(melt_days, aes(x =month_year, y=n_days)) +
   geom_line(aes( group = Probability_Threshold, color = Probability_Threshold)) +
@@ -1112,7 +1114,7 @@ ggplot(melt_days, aes(x =month_year, y=n_days)) +
   # scale_x_continuous(breaks=as.numeric(melt_days$month_year), labels=format(melt_days$month_year,"%Y")) +
   facet_wrap(~season +position, scales="free", nrow=2) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "F37B_Low: Number of days within discharge limit in relation to Depth",
+  labs(title = "GLEN: Number of days within discharge limit in relation to Depth",
        y = "Number of days per Month",
        x = "Year") #+ theme_bw(base_size = 15)
 dev.off()

@@ -1,3 +1,4 @@
+
 ## Depth curves - model and application
 ## adult 
 
@@ -16,137 +17,32 @@ library(gridExtra) # tile several plots next to each other
 library(scales)
 library(data.table)
 
+## load curve data
 
-# upload species data - only need this once -------------------------------
-
-## upload data
-
-setwd("/Users/katieirving/Documents/git/flow_eco_mech")
-
-## depth
-ad_depth_con <- read.csv("output_data/05a_adult_depth_continuous_updated.csv") ## all wulff incl and thompson removed - remove SAWA?
-ad_depth_cat <- read.csv("output_data/05a_adult_depth_categorical.csv")
-
-# ad_depth_red <- subset(ad_depth_con, !Dataset=="Thompson")
-all_depth <- rbind(ad_depth_con, ad_depth_cat)
-
-unique(all_depth$Dataset) # 4 datasets, 
-
-depth_freq <- all_depth %>% 
-  uncount(Abundance)
-# hist(depth_freq$Depth)
-
-depth_freq <- subset(depth_freq, !Dataset=="SAWA")
-dim(depth_freq) ## 1376
-
-
-# Adult data distribution -------------------------------------------------------
-
-
-# ## compare different data sets
-unique(depth_freq$Dataset)
-
-sx <- depth_freq$Dataset == "Saiki"
-wx <- depth_freq$Dataset == "Wulff"
-smx <- depth_freq$Dataset == "SMEA"
-
-depth_freq$Dataset_num[sx] <- 1
-depth_freq$Dataset_num[wx] <- 2
-depth_freq$Dataset_num[smx] <- 3
-
-
-attach(depth_freq)
-
-# create value labels
-data.f <- factor(Dataset_num, levels= 1:3,
-                 labels = c( "Saiki", "Wulff", "SMEA"))
-
-# plot densities
-sm.density.compare(as.vector(Depth), Dataset_num, xlab="Depth (cm)")
-title(main="Adult/Depth")
-
-# add legend via mouse click
-colfill<-c(2:(2+length(levels(data.f))))
-legend(locator(1),levels(data.f), fill=colfill)
-
-
-# Adult model build -------------------------------------------------------
-
-# ## validation
-# library(boot)
-# 
-# set.seed(231241)
-# mean_df <- function(dataset, i) median(dataset[i, "Depth"])
-# res <- boot(depth_freq, mean_df, 1000)
-# res
-
-## check data
-unique(depth_freq$Dataset) ## 3 datasets, 1376
-mean(depth_freq$Depth) ## 44.4
-
-## histogram with normal curve
-x <-depth_freq$Depth
-h<-hist(x, breaks=10, col="red", xlab="Depth (cm)",
-        main="Adult/Depth Histogram with Normal Curve")
-xfit<-seq(min(x),max(x),length=130)
-yfit<-dnorm(xfit,mean=mean(x),sd=sd(x))
-yfit <- yfit*diff(h$mids[1:2])*length(x)
-lines(xfit, yfit, col="blue", lwd=2)
-# plot(density(depth_freq$Depth))
-
-
-## probability curve - histogram scaled and centered depth, then transformed back to raw depth
-
-depth_freq$Scaled_Depth <-scale(depth_freq$Depth, scale=T, center=T)
-scaled_x <- depth_freq$Scaled_Depth
-h <- hist(scaled_x, plot=F)
-xfit<-seq(min(scaled_x),max(scaled_x),length=120)
-yfit<-dnorm(xfit,mean=mean(scaled_x),sd=sd(scaled_x))
-## x axis with raw depth values
-xfit_r <- seq(min(depth_freq$Depth), max(depth_freq$Depth), length=120)
-
-## plot curve with raw depth axis
-png("figures/Final_curves/Depth/F1_SAS_Adult_depth_Prob_curve_3_datasets.png", width = 700, height = 700)
-plot(xfit_r, yfit, axes=FALSE, xlab='', ylab='', type='l', col='', main = "" )
-axis(1, at=pretty(xfit_r), cex.axis=2)
-par(new=TRUE)
-#plot the line with no axes or labels
-plot(xfit, yfit, axes=FALSE, xlab='Depth (cm)', ylab='Probability', type='l', col='red', main = "Adult/Depth",
-     cex.main = 2, cex.axis=2, cex.lab=2)
-## add 1sd shift
-par(new=TRUE)
-
-#add these now with axis
-
-axis(2, at=pretty(range(yfit)), cex.axis=2)
-dev.off()
-
-## data frame with probabilities and depth - to combine with hydraulic data
-
-fitdata <- data.frame(matrix(ncol=2, nrow=length(yfit)))
-fitdata[,1] <- xfit_r
-fitdata[,2] <- yfit
-colnames(fitdata) <- c("depth_fit", "prob_fit")
-head(fitdata)
-
-write.csv(fitdata, "output_data/adult_depth_prob_curve_data.csv")
+fitdata <- read.csv("output_data/adult_depth_prob_curve_data.csv")
 
 # Combine with hydraulic data -------------------------------------------
 
 ## upload hydraulic data
 
-fitdata <- read.csv("output_data/adult_depth_prob_curve_data.csv")
-
 ## soft bottom reaches
 
-F57C <- read.csv("input_data/HecRas/hydraulic_ts_F57C.csv")
-# LA8 <- read.csv("input_data/HecRas/hydraulic_ts_LA8.csv")
+# F57C <- read.csv("input_data/HecRas/hydraulic_ts_F57C.csv")
+LA8 <- read.csv("input_data/HecRas/hydraulic_ts_LA8.csv")
 # LA11 <- read.csv("input_data/HecRas/hydraulic_ts_LA11.csv")
 # LA20 <- read.csv("input_data/HecRas/hydraulic_ts_LA20_2.csv")
+# F37B_Low <- read.csv("input_data/HecRas/hydraulic_ts_F37B_Low.csv")
+# LA2 <- read.csv("input_data/HecRas/hydraulic_ts_LA2.csv")
+# LA3 <- read.csv("input_data/HecRas/hydraulic_ts_LA3.csv")
+# GLEN <- read.csv("input_data/HecRas/hydraulic_ts_GLEN.csv")
+
+## upload hydraulic data
+
+fitdata <- read.csv("output_data/adult_depth_prob_curve_data.csv")
 
 ## go through script one at a time
 
-hydraul <- F57C[,-1]
+hydraul <- LA8[,-1]
 names(hydraul)
 head(hydraul)
 ## select columns
@@ -173,21 +69,21 @@ hyd_dep<-reshape2::melt(hyd_dep, id=c("DateTime","Q", "node", "date_num"))
 
 
 labels <- c(depth_cm_LOB = "Left Over Bank", depth_cm_MC = "Main Channel", depth_cm_ROB = "Right Over Bank")
-png("figures/Application_curves/nodes/F57C_Depth_Q.png", width = 500, height = 600)
+png("figures/Application_curves/nodes/LA8_Depth_Q.png", width = 500, height = 600)
 
 ggplot(hyd_dep, aes(x = Q, y=value)) +
   geom_line(aes( group = variable, lty = variable)) +
   scale_linetype_manual(values= c("dotted", "solid", "dashed"),
-  breaks=c("depth_cm_LOB", "depth_cm_MC", "depth_cm_ROB"))+
+                        breaks=c("depth_cm_LOB", "depth_cm_MC", "depth_cm_ROB"))+
   facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
-  labs(title = "F57C: Depth ~ Q",
+  labs(title = "LA8: Depth ~ Q",
        y = "Depth (cm)",
        x = "Q (cfs)") #+ theme_bw(base_size = 15)
 
 dev.off()
 ## plot time series
-png("figures/Application_curves/nodes/F57C_Depth_TS.png", width = 500, height = 600)
+png("figures/Application_curves/nodes/LA8_Depth_TS.png", width = 500, height = 600)
 
 ggplot(hyd_dep, aes(x = date_num, y=value)) +
   geom_line(aes( group = variable, lty = variable)) +
@@ -195,7 +91,7 @@ ggplot(hyd_dep, aes(x = date_num, y=value)) +
                         breaks=c("depth_cm_LOB", "depth_cm_MC", "depth_cm_ROB"))+
   facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
-  labs(title = "F57C: Depth ~ Time Series",
+  labs(title = "LA8: Depth ~ Time Series",
        y = "Depth (cm)",
        x = "Date") #+ theme_bw(base_size = 15)
 dev.off()
@@ -211,7 +107,7 @@ all_data <- hyd_dep %>%
   group_by(variable) %>%
   mutate(prob_fit = predict(new_values, value)$y) %>%
   rename(depth_cm = value)
-      
+
 all_data
 
 nas <- which(complete.cases(all_data) == FALSE)
@@ -219,14 +115,14 @@ nas #0
 
 
 
-save(all_data, file="output_data/F1_F57C_adult_depth_discharge_probability_time_series_all_columns.RData")
-# load("output_data/F1_F57C_adult_depth_discharge_probability_time_series_all_columns.RData")
+save(all_data, file="output_data/F1_LA8_adult_depth_discharge_probability_time_series_all_columns.RData")
+# load("output_data/F1_LA8_adult_depth_discharge_probability_time_series_all_columns.RData")
 ## keep columns dpeth, datetime, Q date_num & prob_fit
 
 new_data <- all_data[order(all_data$date_num),]
 
 
-save(new_data, file="output_data/F1_F57C_adult_depth_discharge_probability_time_series_red_columns.RData")
+save(new_data, file="output_data/F1_LA8_adult_depth_discharge_probability_time_series_red_columns.RData")
 
 # format probability time series ------------------------------------------
 
@@ -249,13 +145,13 @@ new_data <- new_data %>%
 
 
 head(new_data)
-save(new_data, file="output_data/F1_F57C_depth_adult_discharge_probs_2010_2017_TS.RData")
+save(new_data, file="output_data/F1_LA8_depth_adult_discharge_probs_2010_2017_TS.RData")
 
 
 # probability as a function of discharge -----------------------------------
 
 
-load( file="output_data/F1_F57C_depth_adult_discharge_probs_2010_2017_TS.RData")
+load( file="output_data/F1_LA8_depth_adult_discharge_probs_2010_2017_TS.RData")
 head(new_data)
 
 ## plot
@@ -354,11 +250,11 @@ limits$ROB <- c(newx1aR[1], newx1aR[2],newx1aR[3], newx1aR[4],
 limits
 
 ## note that 0.1 upper/lower limit is max/min Q to adhere to 0.1 bound
-write.csv(limits, "output_data/F1_F57C_Q_limits.csv")
+write.csv(limits, "output_data/F1_LA8_Q_limits.csv")
 
 # plot discharge points ---------------------------------------------------
 
-png("figures/Application_curves/Depth/F57C_adult_depth_prob_Q_thresholds.png", width = 500, height = 600)
+png("figures/Application_curves/Depth/LA8_adult_depth_prob_Q_thresholds.png", width = 500, height = 600)
 
 ggplot(new_data, aes(x = Q, y=prob_fit)) +
   geom_line(aes(group = variable, lty = variable)) +
@@ -366,7 +262,7 @@ ggplot(new_data, aes(x = Q, y=prob_fit)) +
   #                       name="Cross\nSection\nPosition",
   #                       breaks=c("depth_cm_LOB", "depth_cm_MC", "depth_cm_ROB"),
   #                         labels = c("LOB", "MC", "ROB")) +
-
+  
   facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
   geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.1, x=newx1a[1]), color="green") +
   geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.1, x=newx1a[2]), color="green") +
@@ -408,7 +304,7 @@ ggplot(new_data, aes(x = Q, y=prob_fit)) +
   geom_point(data = subset(new_data, variable =="depth_cm_ROB"), aes(y=0.3, x=newx3aR[4]), color="blue") +
   
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
-  labs(title = "F57C: Adult/Depth: Probability ~ Q",
+  labs(title = "LA8: Adult/Depth: Probability ~ Q",
        y = "Probability",
        x = "Q (cfs)") #+ theme_bw(base_size = 15)
 
@@ -959,7 +855,7 @@ melt_time<-reshape2::melt(time_stats, id=c("year","season", "position", "water_y
 melt_time <- rename(melt_time, Probability_Threshold = variable)
 head(melt_time)
 unique(melt_time$position)
-write.csv(melt_time, "output_data/F1_F57C_adult_depth_time_stats.csv")
+write.csv(melt_time, "output_data/F1_LA8_adult_depth_time_stats.csv")
 
 ## subset annual stats
 ann_stats <- unique(melt_time$Probability_Threshold)[1:3]
@@ -972,7 +868,7 @@ melt_time_seas <- filter(melt_time, Probability_Threshold %in% seas_stats )
 
 ## plot for annual stats - need probs in order
 
-png("figures/Application_curves/Depth/F57C_adult_depth_perc_time_above_threshold_annual.png", width = 500, height = 600)
+png("figures/Application_curves/Depth/LA8_adult_depth_perc_time_above_threshold_annual.png", width = 500, height = 600)
 
 ggplot(melt_time_ann, aes(x = water_year, y=value)) +
   geom_line(aes( group =c(), color = Probability_Threshold)) +
@@ -983,7 +879,7 @@ ggplot(melt_time_ann, aes(x = water_year, y=value)) +
   # scale_x_continuous(breaks=as.numeric(total_days$month_year), labels=format(total_days$month_year,"%b %Y")) +
   facet_wrap(~position, scales="free_x", nrow=3) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "F57C: Time within discharge limit in relation to Depth (Annual)",
+  labs(title = "LA8: Time within discharge limit in relation to Depth (Annual)",
        y = "Time (%)",
        x = "Year") #+ theme_bw(base_size = 15)
 dev.off()
@@ -992,7 +888,7 @@ dev.off()
 melt_time_winter <- filter(melt_time_seas, season == "winter")
 unique(melt_time_winter$Probability_Threshold)
 
-png("figures/Application_curves/Depth/F57C_adult_depth_perc_time_above_threshold_winter.png", width = 500, height = 600)
+png("figures/Application_curves/Depth/LA8_adult_depth_perc_time_above_threshold_winter.png", width = 500, height = 600)
 
 ggplot(melt_time_winter, aes(x = water_year, y=value)) +
   geom_line(aes( group = c(), color = Probability_Threshold)) +
@@ -1003,7 +899,7 @@ ggplot(melt_time_winter, aes(x = water_year, y=value)) +
   # scale_x_continuous(breaks=as.numeric(total_days$month_year), labels=format(total_days$month_year,"%b %Y")) +
   facet_wrap(~position, scales="free_x", nrow=3) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "F57C: Time within discharge limit in relation to Depth (Winter)",
+  labs(title = "LA8: Time within discharge limit in relation to Depth (Winter)",
        y = "Time (%)",
        x = "Year") #+ theme_bw(base_size = 15)
 dev.off()
@@ -1011,7 +907,7 @@ dev.off()
 
 melt_time_summer <- filter(melt_time_seas, season == "summer")
 
-png("figures/Application_curves/Depth/F57C_adult_depth_perc_time_above_threshold_summer.png", width = 500, height = 600)
+png("figures/Application_curves/Depth/LA8_adult_depth_perc_time_above_threshold_summer.png", width = 500, height = 600)
 
 ggplot(melt_time_summer, aes(x = water_year, y=value)) +
   geom_line(aes( group = c(), color = Probability_Threshold)) +
@@ -1022,7 +918,7 @@ ggplot(melt_time_summer, aes(x = water_year, y=value)) +
   # scale_x_continuous(breaks=as.numeric(total_days$month_year), labels=format(total_days$month_year,"%b %Y")) +
   facet_wrap(~position, scales="free_x", nrow=3) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "F57C: Time within discharge limit in relation to Depth (Summer)",
+  labs(title = "LA8: Time within discharge limit in relation to Depth (Summer)",
        y = "Time (%)",
        x = "Year") #+ theme_bw(base_size = 15)
 
@@ -1074,7 +970,7 @@ new_dataR <- new_dataR %>%
   mutate(High = if_else(eval(high_threshR), row_number(), 0L))
 
 new_dataR <- mutate(new_dataR, position="ROB")
-    
+
 ## melt data frame so that each probability column are all in one row 
 ## select only columns needed - Q, month, year, day all IDs and probs
 # names(new_data)
@@ -1141,7 +1037,7 @@ total_days_per_month03
 total_days <- cbind( total_days_per_month01,total_days_per_month02[,4], total_days_per_month03[,4])
 head(total_days)
 
-write.csv(total_days, "output_data/F1_F57C_total_days.csv")
+write.csv(total_days, "output_data/F1_LA8_total_days.csv")
 
 # # create year_month column       
 total_days <- ungroup(total_days) %>%
@@ -1175,14 +1071,14 @@ melt_days <- rename(melt_days, Probability_Threshold = variable,
 head(melt_days)
 
 ## save df
-write.csv(melt_days, "output_data/F1_F57C_total_days_long.csv")
+write.csv(melt_days, "output_data/F1_LA8_total_days_long.csv")
 
 
 melt_daysx <- filter(melt_days, position=="MC")
 library(scales)
-  
+
 ## plot all ts
-png("figures/Application_curves/Depth/F57C_adult_depth_lob_rob_mc_no_days_within_Q.png", width = 500, height = 600)
+png("figures/Application_curves/Depth/LA8_adult_depth_lob_rob_mc_no_days_within_Q.png", width = 500, height = 600)
 
 ggplot(melt_days, aes(x =month_year, y=n_days)) +
   geom_line(aes( group = Probability_Threshold, color = Probability_Threshold)) +
@@ -1193,12 +1089,12 @@ ggplot(melt_days, aes(x =month_year, y=n_days)) +
   # scale_x_continuous(breaks=as.numeric(melt_days$month_year), labels=format(melt_days$month_year,"%b %Y")) +
   facet_wrap(~position, nrow=3) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "F57C: Number of days within discharge limit in relation to Depth",
+  labs(title = "LA8: Number of days within discharge limit in relation to Depth",
        y = "Number of days per Month",
        x = "Year") #+ theme_bw(base_size = 15)
 dev.off()
 ## plot by year
-png("figures/Application_curves/Depth/F57C_adult_depth_lob_rob_mc_no_days_within_Q_by_year.png", width = 500, height = 600)
+png("figures/Application_curves/Depth/LA8_adult_depth_lob_rob_mc_no_days_within_Q_by_year.png", width = 500, height = 600)
 
 ggplot(melt_days, aes(x =month_year, y=n_days)) +
   geom_line(aes( group = Probability_Threshold, color = Probability_Threshold)) +
@@ -1209,12 +1105,12 @@ ggplot(melt_days, aes(x =month_year, y=n_days)) +
   # scale_x_continuous(breaks=as.numeric(month_year), labels=format(month_year,"%b")) +
   facet_wrap(~water_year+position, scale="free_x", nrow=4) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "F57C: Number of days within discharge limit in relation to Depth: Mid Channel",
+  labs(title = "LA8: Number of days within discharge limit in relation to Depth: Mid Channel",
        y = "Number of days per Month",
        x = "Month") #+ theme_bw(base_size = 15)
 dev.off()
 ## plot by season/critical period
-png("figures/Application_curves/Depth/F57C_adult_depth_lob_rob_mc_no_days_within_Q_by_season.png", width = 500, height = 600)
+png("figures/Application_curves/Depth/LA8_adult_depth_lob_rob_mc_no_days_within_Q_by_season.png", width = 500, height = 600)
 
 ggplot(melt_days, aes(x =month_year, y=n_days)) +
   geom_line(aes( group = Probability_Threshold, color = Probability_Threshold)) +
@@ -1225,7 +1121,7 @@ ggplot(melt_days, aes(x =month_year, y=n_days)) +
   # scale_x_continuous(breaks=as.numeric(melt_days$month_year), labels=format(melt_days$month_year,"%Y")) +
   facet_wrap(~season +position, scales="free", nrow=2) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  labs(title = "F57C: Number of days within discharge limit in relation to Depth",
+  labs(title = "LA8: Number of days within discharge limit in relation to Depth",
        y = "Number of days per Month",
        x = "Year") #+ theme_bw(base_size = 15)
 dev.off()
