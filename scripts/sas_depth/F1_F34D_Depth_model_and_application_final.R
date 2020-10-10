@@ -15,15 +15,12 @@ library(data.table)
 fitdata <- read.csv("output_data/adult_depth_prob_curve_data.csv")
 
 
-# N11101250 <- read.csv("input_data/HecRas/hydraulic_ts_11101250.csv")
 F34D <- read.csv("input_data/HecRas/hydraulic_ts_F34D.csv")
 # F37B_High <- read.csv("input_data/HecRas/hydraulic_ts_F37B_High.csv")
 # F45B <- read.csv("input_data/HecRas/hydraulic_ts_F45B.csv")
-# F300 <- read.csv("input_data/HecRas/hydraulic_ts_F300.csv")
 # F319 <- read.csv("input_data/HecRas/hydraulic_ts_F319.csv")
 # LA13 <- read.csv("input_data/HecRas/hydraulic_ts_LA13.csv")
-# LA14 <- read.csv("input_data/HecRas/hydraulic_ts_LA14.csv")
-# LA20 <- read.csv("input_data/HecRas/hydraulic_ts_LA20.csv")
+# LA1 <- read.csv("input_data/HecRas/hydraulic_ts_LA1.csv")
 
 hydraul <- F34D[,-1]
 names(hydraul)

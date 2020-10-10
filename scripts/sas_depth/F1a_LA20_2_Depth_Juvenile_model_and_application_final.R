@@ -32,13 +32,31 @@ LA20_2 <- read.csv("input_data/HecRas/hydraulic_ts_LA20_2.csv")
 # F37B_Low <- read.csv("input_data/HecRas/hydraulic_ts_F37B_Low.csv")
 # LA2 <- read.csv("input_data/HecRas/hydraulic_ts_LA2.csv")
 # LA3 <- read.csv("input_data/HecRas/hydraulic_ts_LA3.csv")
+#LA14 <- read.csv("input_data/HecRas/hydraulic_ts_LA14.csv")
+# F300 <- read.csv("input_data/HecRas/hydraulic_ts_F300.csv")
 # GLEN <- read.csv("input_data/HecRas/hydraulic_ts_GLEN.csv")
+# LA20 <- read.csv("input_data/HecRas/hydraulic_ts_LA20.csv")
+
+# N11101250 <- read.csv("input_data/HecRas/hydraulic_ts_11101250.csv")
+F34D <- read.csv("input_data/HecRas/hydraulic_ts_F34D.csv") ## not soft - just for dates
 
 ## go through script one at a time
+
+N11101250 <- N11101250[-1,]
+N11101250 <- N11101250 %>%
+  mutate(Q_ts.datetime = F34D$Q_ts.datetime)
+
+## LA20_2
+LA20_2 <- LA20_2[-1,]
+LA20_2 <- LA20_2 %>%
+  mutate(Q_ts.datetime = F34D$Q_ts.datetime)
+
+# write.csv(LA20_2, "input_data/HecRas/hydraulic_ts_LA20_2.csv")
 
 hydraul <- LA20_2[,-1]
 names(hydraul)
 head(hydraul)
+
 ## select columns
 
 hyd_dep <- hydraul[,c(1:3,5,9,13)]
@@ -142,7 +160,7 @@ new_data <- new_data %>%
   mutate(day = day(DateTime)) %>%
   mutate(hour = hour(DateTime)) %>%
   mutate(water_year = ifelse(month == 10 | month == 11 | month == 12, year, year-1))
-
+head(new_data)
 save(new_data, file="output_data/F1_LA20_2_depth_juvenile_discharge_probs_2010_2017_TS.RData")
 
 

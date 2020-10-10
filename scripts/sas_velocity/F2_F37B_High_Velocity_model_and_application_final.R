@@ -28,23 +28,19 @@ fitdata <- read.csv("output_data/adult_velocity_prob_curve_data.csv")
 
 ## soft bottom reaches
 
-# N11101250 <- read.csv("input_data/HecRas/hydraulic_ts_11101250.csv")
 # F34D <- read.csv("input_data/HecRas/hydraulic_ts_F34D.csv")
 F37B_High <- read.csv("input_data/HecRas/hydraulic_ts_F37B_High.csv")
 # F45B <- read.csv("input_data/HecRas/hydraulic_ts_F45B.csv")
-# F300 <- read.csv("input_data/HecRas/hydraulic_ts_F300.csv")
 # F319 <- read.csv("input_data/HecRas/hydraulic_ts_F319.csv")
 # LA13 <- read.csv("input_data/HecRas/hydraulic_ts_LA13.csv")
-# LA14 <- read.csv("input_data/HecRas/hydraulic_ts_LA14.csv")
-# LA20 <- read.csv("input_data/HecRas/hydraulic_ts_LA20.csv")
 # LA1 <- read.csv("input_data/HecRas/hydraulic_ts_LA1.csv")
+
 
 ## go through script one at a time
 
 hydraul <- F37B_High[,-1]
-
 ## select columns
-
+head(hydraul)
 hyd_vel <- hydraul[,c(1:3,4,8, 12)]
 colnames(hyd_vel) <-c("DateTime", "node", "Q", "vel_ft_LOB", "vel_ft_MC", "vel_ft_ROB")
 
@@ -98,14 +94,11 @@ dev.off()
 
 head(hyd_vel)
 head(fitdata)
-
 hyd_vel <- filter(hyd_vel, variable == "vel_m_MC")
-
 ## use smooth spline to predict on new data set
 new_values <-smooth.spline(fitdata$velocity_fit, fitdata$prob_fit)
 
 all_data <- hyd_vel %>%
-  group_by(variable) %>%
   mutate(prob_fit = predict(new_values, value)$y) %>%
   rename(vel_m = value)
 
@@ -177,7 +170,6 @@ peakQM
 
 new_dataM <- filter(new_data, variable == "vel_m_MC")
 
-
 ## Main channel curves
 
 load(file="root_interpolation_function.Rdata")
@@ -193,8 +185,6 @@ newx3a <- RootLinearInterpolant(new_dataM$Q, new_dataM$prob_fit, 0.3)
 newx3a
 
 
-## MAKE DF OF Q LIMITS
-
 limits <- as.data.frame(matrix(ncol=3, nrow=12)) %>%
   rename(LOB = V1, MC = V2, ROB = V3) 
 rownames(limits)<-c("Low_Prob_1", "Low_Prob_2", "Low_Prob_3", "Low_Prob_4",
@@ -207,6 +197,7 @@ limits$MC <- c(newx1a[1], newx1a[2],newx1a[3], newx1a[4],
                newx3a[1], newx3a[2],newx3a[3],newx3a[4])
 
 limits
+
 write.csv(limits, "output_data/F2_F37B_High_Adult_Velocity_Q_limits.csv")
 # plot discharge points ---------------------------------------------------
 unique(new_data$variable)
@@ -236,7 +227,7 @@ ggplot(new_data, aes(x = Q, y=prob_fit)) +
   geom_point(data = subset(new_data, variable =="vel_m_MC"), aes(y=0.3, x=newx3a[3]), color="blue") +
   geom_point(data = subset(new_data, variable =="vel_m_MC"), aes(y=0.3, x=newx3a[4]), color="blue") +
   
-  
+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
   labs(title = "F37B_High: Adult/Velocity: Probability ~ Q",
        y = "Probability",
@@ -247,7 +238,7 @@ dev.off()
 
 
 # create year_month column       
-new_dataMx <- new_dataM %>% unite(month_year, water_year:month, sep="-", remove=F) 
+new_dataMx <- new_dataM %>% unite(month_year, year:month, sep="-", remove=F) 
 head(new_dataMx)
 
 
@@ -264,8 +255,6 @@ new_dataMx <- new_dataMx %>%
   mutate(season = ifelse(month %in% non_critical, "non_critical", "critical") )
 
 
-
-# time stats - mid channel ------------------------------------------------
 
 if(is.na(newx1a[1])) {
   
@@ -290,14 +279,16 @@ if(is.na(newx1a[1])) {
   # sum the amount of time below the first and above the 2nd threshold
   low_threshM <- expression(Q <= newx1a[1] & Q >= newx1a[2])
   
-  ## 3a) if 3 threshold values and the 3rd one is higher then the peak (begins positive slope)
-} else if (length(newx1a) == 3 && newx1a[3] > peakQM) {
-  # sum the amount of time below the first and above the 2nd threshold and below the 3rd
+  ## if 3 threshold values and the 1st one is lower then the peak (begins negative slope)
+} else if (length(newx1a) == 3 && (newx1a[1] < peakQM && newx1a[2] < peakQM && newx1a[3] > peakQM) ||
+           (newx1a[1] > peakQM && newx1a[2] > peakQM && newx1a[3] > peakQM)) {
+  # sum the amount of time above the first and below the 2nd threshold and above the 3rd
   low_threshM <- expression(Q <= newx1a[1] | Q >= newx1a[2] & Q <= newx1a[3])
   
-  ## 3b) if 3 threshold values and the 1st one is lower then the peak (begins negative slope)
-} else if (length(newx1a) == 3 && newx1a[1] < peakQM) {
-  # sum the amount of time above the first and below the 2nd threshold and above the 3rd
+  ## if 3 threshold values and the 3rd one is higher then the peak (begins positive slope)
+} else if (length(newx1a) == 3 && (newx1a[1] < peakQM && newx1a[2] > peakQM && newx1a[3] > peakQM) ||
+           (newx1a[1] > peakQM && newx1a[2] > peakQM && newx1a[3] < peakQM)) {
+  # sum the amount of time below the first and above the 2nd threshold and below the 3rd
   low_threshM <- expression(Q >= newx1a[1] & Q <= newx1a[2] | Q >= newx1a[3])
   
   ## 4a) if 4 threshold values and all are higher than the peak (begins positive slope)
@@ -306,13 +297,14 @@ if(is.na(newx1a[1])) {
   low_threshM <- expression(Q >= newx1a[1] & Q <= newx1a[2] |  Q >= newx1a[3] & Q <= newx1a[4])
   
   ## 4b) if 4 threshold values and all are higher than the peak, the 1st one and 2nd are lower, or all are lower  (begins negative slope)
-} else if (length(newx1a) == 4 && (newx1a[1] < peakQM && newx1a[2] < peakQM && newx1a[3] < peakQM && newx1a[4] < peakQM || newx1a[1] > peakQM 
-                                   && newx1a[2] > peakQM && newx1a[3] > peakQM && newx1a[4] > peakQM  || newx1a[2] < peakQM && newx1a[3] > peakQM)) {
+} else if (length(newx1a) == 4 && (newx1a[1] < peakQM && newx1a[2] < peakQM && newx1a[3] < peakQM && newx1a[4] < peakQM) || (newx1a[1] > peakQM 
+                                                                                                                             && newx1a[2] > peakQM && newx1a[3] > peakQM && newx1a[4] > peakQM)  || (newx1a[2] < peakQM && newx1a[3] > peakQM)) {
   # sum the amount of time above the first and below the 2nd threshold and above the 3rd
   low_threshM <- expression(Q <= newx1a[1] & Q >= newx1a[2] |  Q <= newx1a[3] & Q >= newx1a[4])
 }
 
 low_threshM
+newx1a
 
 ### medium threshold
 
@@ -338,14 +330,16 @@ if(is.na(newx2a[1])) {
   # sum the amount of time below the first and above the 2nd threshold
   med_threshM <- expression(Q <= newx2a[1] & Q >= newx2a[2])
   
-  ## if 3 threshold values and the 3rd one is higher then the peak (begins positive slope)
-} else if (length(newx2a) == 3 && newx2a[3] > peakQM) {
-  # sum the amount of time below the first and above the 2nd threshold and below the 3rd
-  med_threshM <- expression(Q <= newx2a[1] | Q >= newx2a[2] & QM <= newx2a[3])
-  
   ## if 3 threshold values and the 1st one is lower then the peak (begins negative slope)
-} else if (length(newx2a) == 3 && newx2a[1] < peakQM) {
+} else if (length(newx2a) == 3 && (newx2a[1] < peakQM && newx2a[2] < peakQM && newx2a[3] > peakQM) ||
+           (newx2a[1] > peakQM && newx2a[2] > peakQM && newx2a[3] > peakQM)) {
   # sum the amount of time above the first and below the 2nd threshold and above the 3rd
+  med_threshM <- expression(Q <= newx2a[1] | Q >= newx2a[2] & Q <= newx2a[3])
+  
+  ## if 3 threshold values and the 3rd one is higher then the peak (begins positive slope)
+} else if (length(newx2a) == 3 && (newx2a[1] < peakQM && newx2a[2] > peakQM && newx2a[3] > peakQM) ||
+           (newx2a[1] > peakQM && newx2a[2] > peakQM && newx2a[3] < peakQM)) {
+  # sum the amount of time below the first and above the 2nd threshold and below the 3rd
   med_threshM <- expression(Q >= newx2a[1] & Q <= newx2a[2] | Q >= newx2a[3])
   
   ## 4a) if 4 threshold values and all are higher than the peak (begins positive slope)
@@ -354,8 +348,8 @@ if(is.na(newx2a[1])) {
   med_threshM <- expression(Q >= newx2a[1] & Q <= newx2a[2] |  Q >= newx2a[3] & Q <= newx2a[4])
   
   ## 4b) if 4 threshold values and all are higher than the peak, the 1st one and 2nd are lower, or all are lower  (begins negative slope)
-} else if (length(newx2a) == 4 && (newx2a[1] < peakQM && newx2a[2] < peakQM && newx2a[3] < peakQM && newx2a[4] < peakQM || newx2a[1] > peakQM 
-                                   && newx2a[2] > peakQM && newx2a[3] > peakQM && newx2a[4] > peakQM  || newx2a[2] < peakQM && newx2a[3] > peakQM)) {
+} else if (length(newx2a) == 4 && (newx2a[1] < peakQM && newx2a[2] < peakQM && newx2a[3] < peakQM && newx2a[4] < peakQM) || (newx2a[1] > peakQM 
+                                                                                                                             && newx2a[2] > peakQM && newx2a[3] > peakQM && newx2a[4] > peakQM)  || (newx2a[2] < peakQM && newx2a[3] > peakQM)) {
   # sum the amount of time above the first and below the 2nd threshold and above the 3rd
   med_threshM <- expression(Q <= newx2a[1] & Q >= newx2a[2] |  Q <= newx2a[3] & Q >= newx2a[4])
 }
@@ -386,29 +380,31 @@ if(is.na(newx3a[1])) {
   # sum the amount of time below the first and above the 2nd threshold
   high_threshM <- expression(Q <= newx3a[1] & Q >= newx3a[2])
   
-  ## if 3 threshold values and the 3rd one is higher then the peak (begins positive slope)
-} else if (length(newx3a) == 3 && newx3a[3] > peakQM) {
-  # sum the amount of time below the first and above the 2nd threshold and below the 3rd
+  ## if 3 threshold values (begins negative slope)
+} else if (length(newx3a) == 3 && (newx3a[1] < peakQM && newx3a[2] < peakQM && newx3a[3] > peakQM) ||
+           (newx3a[1] > peakQM && newx3a[2] > peakQM && newx3a[3] > peakQM)) {
+  # sum the amount of time above the first and below the 2nd threshold and above the 3rd
   high_threshM <- expression(Q <= newx3a[1] | Q >= newx3a[2] & Q <= newx3a[3])
   
-  ## if 3 threshold values and the 1st one is lower then the peak (begins negative slope)
-} else if (length(newx3a) == 3 && newx3a[1] < peakQM) {
-  # sum the amount of time above the first and below the 2nd threshold and above the 3rd
-  high_threshM <- expression(Q >= newx3a[1] & Q <= newx3a[2] | QM >= newx3a[3])
+  ## if 3 threshold values  (begins positive slope)
+} else if (length(newx3a) == 3 && (newx3a[1] < peakQM && newx3a[2] > peakQM && newx3a[3] > peakQM) ||
+           (newx3a[1] > peakQM && newx3a[2] > peakQM && newx3a[3] < peakQM)) {
+  # sum the amount of time below the first and above the 2nd threshold and below the 3rd
+  high_threshM <- expression(Q >= newx3a[1] & Q <= newx3a[2] | Q >= newx3a[3])
   
   ## 4a) if 4 threshold values and all are higher than the peak (begins positive slope)
 } else if (length(newx3a) == 4 && newx3a[1] < peakQM) {
   # sum the amount of time above the first and below the 2nd threshold or above the 3rd and below 2nd
-  med_threshM <- expression(Q >= newx3a[1] & Q <= newx3a[2] |  Q >= newx3a[3] & Q <= newx3a[4])
+  high_threshM <- expression(Q >= newx3a[1] & Q <= newx3a[2] |  Q >= newx3a[3] & Q <= newx3a[4])
   
   ## 4b) if 4 threshold values and all are higher than the peak, the 1st one and 2nd are lower, or all are lower  (begins negative slope)
-} else if (length(newx3a) == 4 && (newx3a[1] < peakQM && newx3a[2] < peakQM && newx3a[3] < peakQM && newx3a[4] < peakQM || newx3a[1] > peakQM 
-                                   && newx3a[2] > peakQM && newx3a[3] > peakQM && newx3a[4] > peakQM  || newx3a[2] < peakQM && newx3a[3] > peakQM)) {
+} else if (length(newx3a) == 4 && (newx3a[1] < peakQM && newx3a[2] < peakQM && newx3a[3] < peakQM && newx3a[4] < peakQM) || (newx3a[1] > peakQM 
+                                                                                                                             && newx3a[2] > peakQM && newx3a[3] > peakQM && newx3a[4] > peakQM)  || (newx3a[2] < peakQM && newx3a[3] > peakQM)) {
   # sum the amount of time above the first and below the 2nd threshold and above the 3rd
-  med_threshM <- expression(Q <= newx3a[1] & Q >= newx3a[2] |  Q <= newx3a[3] & Q >= newx3a[4])
+  high_threshM <- expression(Q <= newx3a[1] & Q >= newx3a[2] |  Q <= newx3a[3] & Q >= newx3a[4])
 }
 
-high_threshM
+
 
 ###### calculate amount of time
 
@@ -426,7 +422,6 @@ time_statsm <- new_dataMx %>%
   mutate(position="MC")
 
 time_statsm
-
 
 
 time_stats <- time_statsm
@@ -459,7 +454,6 @@ ggplot(melt_time_ann, aes(x = water_year, y=value)) +
   theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
   # scale_x_continuous(breaks=as.numeric(total_days$month_year), labels=format(total_days$month_year,"%b %Y")) +
   facet_wrap(~position, scales="free_x", nrow=3) +
-  scale_y_continuous(limits = c(0,100)) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
   labs(title = "F37B_High: Time within discharge limit in relation to Velocity (Annual)",
        y = "Time (%)",
@@ -480,7 +474,6 @@ ggplot(melt_time_winter, aes(x = water_year, y=value)) +
   theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
   # scale_x_continuous(breaks=as.numeric(total_days$month_year), labels=format(total_days$month_year,"%b %Y")) +
   facet_wrap(~position, scales="free_x", nrow=3) +
-  scale_y_continuous(limits = c(0,100)) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
   labs(title = "F37B_High: Time within discharge limit in relation to Velocity (Non_critical)",
        y = "Time (%)",
@@ -501,7 +494,6 @@ ggplot(melt_time_summer, aes(x = water_year, y=value)) +
   theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
   # scale_x_continuous(breaks=as.numeric(total_days$month_year), labels=format(total_days$month_year,"%b %Y")) +
   facet_wrap(~position, scales="free_x", nrow=3) +
-  scale_y_continuous(limits = c(0,100)) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
   labs(title = "F37B_High: Time within discharge limit in relation to Velocity (Critical)",
        y = "Time (%)",
@@ -529,17 +521,11 @@ new_dataM <- new_dataM %>%
   mutate(High = if_else(eval(high_threshM), row_number(), 0L))
 
 new_dataM <- mutate(new_dataM, position="MC")
-
-
-## melt data frame so that each probability column are all in one row 
+# melt data frame so that each probability column are all in one row 
 ## select only columns needed - Q, month, year, day all IDs and probs
 # names(new_data)
 
 new_datax <- select(new_dataM, c(Q, month, water_year, day, ID01, Low, ID02, Medium, ID03, High, position, DateTime) )# all probs
-names(new_datax)
-
-## has some values but just becuase of the fake thresholds
-# range(new_dataRx$Medium)
 
 
 ## melt
@@ -673,7 +659,7 @@ ggplot(melt_days, aes(x =month_year, y=n_days)) +
 dev.off()
 
 ## plot by season/critical period
-png("figures/Application_curves/VelocityF37B_High_adult_velocity_lob_rob_mc_no_days_within_Q_by_season.png", width = 500, height = 600)
+png("figures/Application_curves/Velocity/F37B_High_adult_velocity_lob_rob_mc_no_days_within_Q_by_season.png", width = 500, height = 600)
 
 ggplot(melt_days, aes(x =month_year, y=n_days)) +
   geom_line(aes( group = Probability_Threshold, color = Probability_Threshold)) +
