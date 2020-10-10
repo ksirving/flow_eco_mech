@@ -45,9 +45,6 @@ LA20_2 <- LA20_2[-1,]
 LA20_2 <- LA20_2 %>%
   mutate(Q_ts.datetime = F34D$Q_ts.datetime)
 
-
-
-
 head(F57C)
 names(F57C)
 ## convert lb sq ft to n m-2 = lb sq ft/0.020885
@@ -264,7 +261,7 @@ total_days_per_month01 <- total_days01 %>%
 
 total_days_per_month01
 
-write.csv(total_days_per_year01, "output_data/C3_F57C_total_days_clad_shear.csv")
+write.csv(total_days_per_month01, "output_data/C3_F57C_total_days_clad_shear.csv")
 
 
 
