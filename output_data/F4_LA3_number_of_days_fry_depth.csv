@@ -23,7 +23,7 @@
 "22",2010,"MC","non_critical",10,0
 "23",2010,"MC","non_critical",11,0
 "24",2010,"MC","non_critical",12,0
-"25",2010,"ROB","critcal",3,1
+"25",2010,"ROB","critcal",3,0
 "26",2010,"ROB","critcal",4,0
 "27",2010,"ROB","critcal",5,0
 "28",2010,"ROB","critcal",6,0
@@ -34,7 +34,7 @@
 "33",2010,"ROB","non_critical",9,0
 "34",2010,"ROB","non_critical",10,0
 "35",2010,"ROB","non_critical",11,0
-"36",2010,"ROB","non_critical",12,2
+"36",2010,"ROB","non_critical",12,0
 "37",2011,"LOB","critcal",3,0
 "38",2011,"LOB","critcal",4,0
 "39",2011,"LOB","critcal",5,0
@@ -128,7 +128,7 @@
 "127",2013,"MC","non_critical",2,0
 "128",2013,"MC","non_critical",8,0
 "129",2013,"MC","non_critical",9,0
-"130",2013,"MC","non_critical",10,0
+"130",2013,"MC","non_critical",10,NA
 "131",2013,"MC","non_critical",11,0
 "132",2013,"MC","non_critical",12,0
 "133",2013,"ROB","critcal",3,0

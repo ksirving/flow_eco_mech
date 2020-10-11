@@ -15,12 +15,12 @@ library(data.table)
 
 ## upload hydraulic data
 
-F57C <- read.csv("input_data/HecRas/hydraulic_ts_F57C.csv")
+# F57C <- read.csv("input_data/HecRas/hydraulic_ts_F57C.csv")
 # LA8 <- read.csv("input_data/HecRas/hydraulic_ts_LA8.csv")
 # LA11 <- read.csv("input_data/HecRas/hydraulic_ts_LA11.csv")
 # LA20_2 <- read.csv("input_data/HecRas/hydraulic_ts_LA20_2.csv")
 # F37B_Low <- read.csv("input_data/HecRas/hydraulic_ts_F37B_Low.csv")
-# LA2 <- read.csv("input_data/HecRas/hydraulic_ts_LA2.csv")
+LA2 <- read.csv("input_data/HecRas/hydraulic_ts_LA2.csv")
 # LA3 <- read.csv("input_data/HecRas/hydraulic_ts_LA3.csv")
 # LA14 <- read.csv("input_data/HecRas/hydraulic_ts_LA14.csv")
 # F300 <- read.csv("input_data/HecRas/hydraulic_ts_F300.csv")
@@ -41,7 +41,7 @@ LA20_2 <- LA20_2[-1,]
 LA20_2 <- LA20_2 %>%
   mutate(Q_ts.datetime = F34D$Q_ts.datetime)
 
-hydraul <- F57C[,-1]
+hydraul <- LA2[,-1]
 head(hydraul)
 
 ## change names and transform ft to cm
@@ -176,12 +176,12 @@ limits$MC <- c(newx1a, newx2a)
 limits$ROB <- c(newx1aR, newx2aR)
 limits
 
-write.csv(limits, "output_data/F4_F57C_sas_fry_depth_Q_limits.csv")
+write.csv(limits, "output_data/F4_LA2_sas_fry_depth_Q_limits.csv")
 
 ## plot with thresholds
 labels <- c(depth_cm_LOB = "Left Over Bank", depth_cm_MC = "Main Channel", depth_cm_ROB = "Right Over Bank")
 
-png("figures/Application_curves/Depth/F57C_SAS_Fry_depth_Q.png", width = 500, height = 600)
+png("figures/Application_curves/Depth/LA2_SAS_Fry_depth_Q.png", width = 500, height = 600)
 
 ggplot(hyd_dep, aes(x = Q, y=value)) +
   geom_line(aes( group = variable, lty = variable)) +
@@ -198,7 +198,7 @@ ggplot(hyd_dep, aes(x = Q, y=value)) +
   geom_point(data = subset(hyd_dep, variable =="depth_cm_ROB"), aes(y=10, x=newx2aR), color="green") +
   
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
-  labs(title = "F57C: Depth ~ Q",
+  labs(title = "LA2: Depth ~ Q",
        y = "Depth (cm)",
        x = "Q (cfs)") #+ theme_bw(base_size = 15)
 
@@ -239,7 +239,7 @@ time_statsr <- new_dataR %>%
 time_stats <- rbind(time_statsm, time_statsl, time_statsr)
 
 time_stats
-write.csv(time_stats, "output_data/F4_F57C_time_stats_fry_depth.csv")
+write.csv(time_stats, "output_data/F4_LA2_time_stats_fry_depth.csv")
 
 # Number of days within Q limits ------------------------------------------
 
@@ -297,7 +297,7 @@ total_days_per_month01 <- total_days01 %>%
 
 total_days_per_month01
 
-write.csv(total_days_per_month01, "output_data/F4_F57C_number_of_days_fry_depth.csv")
+write.csv(total_days_per_month01, "output_data/F4_LA2_number_of_days_fry_depth.csv")
 
 
 
@@ -378,13 +378,13 @@ limits$ROB <- c(newx1aR, newx2aR)
 limits
 
 ## note that 0.1 upper/lower limit is max/min Q to adhere to 0.1 bound
-write.csv(limits, "output_data/F1_F57C_fry_velocity_Q_limits.csv")
+write.csv(limits, "output_data/F1_LA2_fry_velocity_Q_limits.csv")
 
 
 ## plot with thresholds
 labels <- c(depth_cm_LOB = "Left Over Bank", depth_cm_MC = "Main Channel", depth_cm_ROB = "Right Over Bank")
 
-png("figures/Application_curves/Depth/F57C_SAS_Fry_velocity_Q.png", width = 500, height = 600)
+png("figures/Application_curves/Depth/LA2_SAS_Fry_velocity_Q.png", width = 500, height = 600)
 
 ggplot(hyd_vel, aes(x = Q, y=value)) +
   geom_line(aes( group = variable, lty = variable)) +
@@ -397,7 +397,7 @@ ggplot(hyd_vel, aes(x = Q, y=value)) +
   geom_point(data = subset(hyd_vel, variable =="vel_m_ROB"), aes(y=0.15, x=newx1aR), color="green") +
   
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
-  labs(title = "F57C: Velocity ~ Q",
+  labs(title = "LA2: Velocity ~ Q",
        y = "Velocity (m/s)",
        x = "Q (cfs)") #+ theme_bw(base_size = 15)
 
@@ -439,7 +439,7 @@ time_statsr <- new_dataR %>%
 time_stats <- rbind(time_statsm, time_statsl, time_statsr)
 
 time_stats
-write.csv(time_stats, "output_data/F4_F57C_time_stats_fry_velocity.csv")
+write.csv(time_stats, "output_data/F4_LA2_time_stats_fry_velocity.csv")
 
 
 ## velocity
@@ -496,5 +496,5 @@ total_days_per_month01 <- total_days01 %>%
 
 total_days_per_month01
 
-write.csv(total_days_per_month01, "output_data/F4_F57C_number_of_days_fry_velocity.csv")
+write.csv(total_days_per_month01, "output_data/F4_LA2_number_of_days_fry_velocity.csv")
 
