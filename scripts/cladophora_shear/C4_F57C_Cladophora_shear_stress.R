@@ -263,7 +263,7 @@ new_datax
 melt_data<-reshape2::melt(new_datax, id=c("ID", "day", "month", "year", "Q", "water_year", "position", "season"))
 melt_data <- melt_data %>% rename(consec_hours = value) %>%
   select(-variable)
-
+melt_data
 ## groups data by year, month and ID & threshold
 ## counts the number of days in each month probability is within the depth of each threshold - days are not necessarily conseq
 ## each threshold separately

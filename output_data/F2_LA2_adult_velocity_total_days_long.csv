@@ -269,7 +269,7 @@
 "268",2015-01-01,2015,1,"non_critical","LOB","Medium",0
 "269",2015-01-01,2015,1,"non_critical","MC","Medium",0
 "270",2015-01-01,2015,1,"non_critical","ROB","Medium",0
-"271",2016-01-01,2016,1,"non_critical","LOB","Medium",1
+"271",2016-01-01,2016,1,"non_critical","LOB","Medium",3
 "272",2016-01-01,2016,1,"non_critical","MC","Medium",0
 "273",2016-01-01,2016,1,"non_critical","ROB","Medium",1
 "274",2010-02-01,2010,2,"non_critical","LOB","Medium",1
@@ -290,7 +290,7 @@
 "289",2015-02-01,2015,2,"non_critical","LOB","Medium",0
 "290",2015-02-01,2015,2,"non_critical","MC","Medium",0
 "291",2015-02-01,2015,2,"non_critical","ROB","Medium",0
-"292",2016-02-01,2016,2,"non_critical","LOB","Medium",3
+"292",2016-02-01,2016,2,"non_critical","LOB","Medium",4
 "293",2016-02-01,2016,2,"non_critical","MC","Medium",1
 "294",2016-02-01,2016,2,"non_critical","ROB","Medium",0
 "295",2010-03-01,2010,3,"critical","LOB","Medium",6
@@ -482,7 +482,7 @@
 "481",2016-11-01,2016,11,"non_critical","LOB","Medium",0
 "482",2016-11-01,2016,11,"non_critical","MC","Medium",0
 "483",2016-11-01,2016,11,"non_critical","ROB","Medium",0
-"484",2010-12-01,2010,12,"non_critical","LOB","Medium",5
+"484",2010-12-01,2010,12,"non_critical","LOB","Medium",7
 "485",2010-12-01,2010,12,"non_critical","MC","Medium",3
 "486",2010-12-01,2010,12,"non_critical","ROB","Medium",0
 "487",2011-12-01,2011,12,"non_critical","LOB","Medium",0
@@ -500,7 +500,7 @@
 "499",2015-12-01,2015,12,"non_critical","LOB","Medium",0
 "500",2015-12-01,2015,12,"non_critical","MC","Medium",1
 "501",2015-12-01,2015,12,"non_critical","ROB","Medium",0
-"502",2016-12-01,2016,12,"non_critical","LOB","Medium",0
+"502",2016-12-01,2016,12,"non_critical","LOB","Medium",1
 "503",2016-12-01,2016,12,"non_critical","MC","Medium",0
 "504",2016-12-01,2016,12,"non_critical","ROB","Medium",0
 "505",2010-01-01,2010,1,"non_critical","LOB","High",0
@@ -521,7 +521,7 @@
 "520",2015-01-01,2015,1,"non_critical","LOB","High",0
 "521",2015-01-01,2015,1,"non_critical","MC","High",0
 "522",2015-01-01,2015,1,"non_critical","ROB","High",0
-"523",2016-01-01,2016,1,"non_critical","LOB","High",0
+"523",2016-01-01,2016,1,"non_critical","LOB","High",1
 "524",2016-01-01,2016,1,"non_critical","MC","High",0
 "525",2016-01-01,2016,1,"non_critical","ROB","High",0
 "526",2010-02-01,2010,2,"non_critical","LOB","High",0
@@ -734,7 +734,7 @@
 "733",2016-11-01,2016,11,"non_critical","LOB","High",0
 "734",2016-11-01,2016,11,"non_critical","MC","High",0
 "735",2016-11-01,2016,11,"non_critical","ROB","High",0
-"736",2010-12-01,2010,12,"non_critical","LOB","High",1
+"736",2010-12-01,2010,12,"non_critical","LOB","High",3
 "737",2010-12-01,2010,12,"non_critical","MC","High",2
 "738",2010-12-01,2010,12,"non_critical","ROB","High",0
 "739",2011-12-01,2011,12,"non_critical","LOB","High",0

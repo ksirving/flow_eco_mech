@@ -1,0 +1,19 @@
+Node,Willow (Adult),Willow (Germination),Willow (Seedling),SAS (Fry),SAS (Adult),SAS (Juvenile),Cladophora,Typha (Adult),Typha (Seedling),Steelhead (Smolt),Steelhead (Migration)
+F300,Low,Low,High,Low,High,High,High,High,Partial,Low,High
+F319,Low,Low,High,Low,High,Partial,High,Partial,Partial,Low,Low
+F34D,Low,Low,High,Low,High,Partial,High,Partial,Partial,Low,Low
+F37BHigh,Low,Low,Partial,Low,Partial,Partial,High,High,Partial,Low,Low
+F37BLow,Low,Low,High,Low,Partial,Partial,High,High,Partial,Low,Low
+F45B,Low,Low,High,Low,Partial,Partial,High,High,Partial,Low,Low
+F57C,Low,Low,High,Low,Partial,Partial,High,High,Partial,High,Low
+GLEN,Low,High,High,Low,High,Partial,High,Partial,Partial,High,Low
+LA1,Low,Low,High,Low,Partial,Partial,High,Partial,Partial,Low,Low
+LA11,Low,Low,High,Low,Partial,Partial,High,Partial,Partial,Low,Low
+LA13,Low,Low,High,Low,Partial,Partial,High,Partial,Partial,Low,Low
+LA14,Low,Low,High,Low,Partial,Partial,High,Partial,Partial,Low,Low
+LA2,Low,Low,High,Low,Partial,Partial,High,High,Partial,High,High
+LA201,Low,Low,High,Low,Partial,Partial,High,High,Partial,Low,Low
+LA202,Low,Low,High,Low,High,Partial,High,High,Partial,Low,Low
+LA3,Low,Low,High,Low,High,High,High,High,Partial,High,High
+LA8,Low,Low,High,Low,High,Partial,High,Partial,Partial,Low,High
+N11101250,Low,Low,High,Low,Partial,High,High,High,Partial,Low,Low
