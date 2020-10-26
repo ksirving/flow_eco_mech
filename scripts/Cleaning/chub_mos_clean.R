@@ -22,7 +22,7 @@ dim(micro_use)
 micro_usex
 micro_use$Species <- gsub("Santa Ana sucker", "Santa Ana Sucker", micro_use$Species)
 fish <- unique(micro_use$Species)[c(2,5)]
-
+fish
 #  look at sucker sites
 
 micro_suck <- subset(micro_use, Species %in% fish)
@@ -36,7 +36,8 @@ unique(micro_suck$coord_code) # present at all sites
 
 names(micro_suck)
 
-depth <- micro_suck[,c(1:3,5,6,7,12,13,17,27)]
+depth <- micro_suck[,c(1:3,5,6,7,12,13,17,18,27)]
+
 names(depth)
 # save 
 
@@ -76,7 +77,7 @@ unique(micro_suck$coord_code) # present at all sites
 names(micro_suck)
 
 names(depth)
-depth <- micro_suck[,c(1,2,7,4,5,12,13,17,27)]
+depth <- micro_suck[,c(1,2,7,4,5,12,13,17,18,27)]
 head(depth)
 
 # save 
@@ -94,11 +95,11 @@ head(depth2015)
 head(depth2016)
 
 depth2015 <- depth2015 %>%
-  select(Species:Depth_cm) %>%
+  select(Species:Velocity_0.6_ms) %>%
   rename(Count = Number)
 
 depth2016 <- depth2016 %>%
-  select(Species:Depth_cm) 
+  select(Species:Velocity_0.6_ms) 
 
 depth <- rbind(depth2016, depth2015)
 
@@ -110,7 +111,7 @@ depth_chub <- depth %>% filter( Species == "Arroyo Chub") %>%
 dim(depth_chub) ## 253
 head(depth_chub)
 
-write.csv(depth_chub, "output_data/00_Wulff_Chub_depth_abundance.csv")
+write.csv(depth_chub, "output_data/00_Wulff_Chub_depth_velocity_abundance.csv")
 
 ## make curve
 all_depth <- depth_chub

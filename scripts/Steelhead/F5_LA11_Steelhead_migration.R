@@ -127,7 +127,7 @@ if(min(MC_curve$y)>18) {
 } else {
   newx1a <- approx(x = MC_curve$y, y = MC_curve$x, xout = 18)$y
 }
-
+newx1a
 ## LOB curve
 LOB_curve <- spline(new_dataL$Q, new_dataL$value,
                     xmin = min(new_dataL$Q), xmax = max(new_dataL$Q), ties = mean)
@@ -147,6 +147,16 @@ if(min(ROB_curve$y)>18) {
 } else {
   newx1aR <- approx(x = ROB_curve$y, y = ROB_curve$x, xout = 18)$y
 }
+
+limits <- as.data.frame(matrix(nrow=1, ncol=3)) %>%
+  rename(LOB = V1, MC = V2, ROB = V3) 
+
+limits$LOB <- newx1aL
+limits$MC <- newx1a
+limits$ROB <- newx1aR
+
+limits
+write.csv(limits, "output_data/F5_LA11_migration_depth_Q_limits.csv")
 
 ## plot with thresholds
 labels <- c(depth_cm_LOB = "Left Over Bank", depth_cm_MC = "Main Channel", depth_cm_ROB = "Right Over Bank")
@@ -383,6 +393,16 @@ if(max(ROB_curve$y)<3.1) {
 } else {
   newx2aR <- approx(x = ROB_curve$y, y = ROB_curve$x, xout = 3.1)$y
 }
+
+limits <- as.data.frame(matrix(nrow=2, ncol=3)) %>%
+  rename(LOB = V1, MC = V2, ROB = V3) 
+
+limits$LOB <- c(newx1aL, newx2aL)
+limits$MC <- c(newx1a, newx2a)
+limits$ROB <- c(newx1aR, newx2aR)
+
+limits
+write.csv(limits, "output_data/F5_LA11_migration_velocity_Q_limits.csv")
 
 ## plot with thresholds
 labels <- c(vel_m_LOB = "Left Over Bank", vel_m_MC = "Main Channel", vel_m_ROB = "Right Over Bank")
@@ -1023,7 +1043,7 @@ melt_days <- rename(melt_days, Annual = variable,
 head(melt_days)
 
 ## save df
-write.csv(melt_days, "output_data/F5_LA11_migration_in_velocity_total_days_long.csv")
+write.csv(melt_days, "output_data/F5_LA11_smolts_velocity_total_days_long.csv")
 
 # 
 # melt_daysx <- filter(melt_days, position=="MC")

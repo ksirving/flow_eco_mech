@@ -22,7 +22,7 @@ library(data.table)
 ## upload hydraulic data
 
 fitdata <- read.csv("output_data/adult_depth_prob_curve_data.csv")
-
+fitdata 
 ## soft bottom reaches
 
 F57C <- read.csv("input_data/HecRas/hydraulic_ts_F57C.csv")

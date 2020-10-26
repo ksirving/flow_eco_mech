@@ -1,19 +1,20 @@
-Node,Willow (Adult),Willow (Germination),Willow (Seedling),SAS (Fry),SAS (Adult),SAS (Juvenile),Cladophora,Typha (Adult),Typha (Seedling),Steelhead (Smolt),Steelhead (Migration)
-F300,Low,Low,High,Low,High,High,High,High,Partial,Low,High
-F319,Low,Low,High,Low,High,Partial,High,Partial,Partial,Low,Low
-F34D,Low,Low,High,Low,High,Partial,High,Partial,Partial,Low,Low
-F37BHigh,Low,Low,Partial,Low,Partial,Partial,High,High,Partial,Low,Low
-F37BLow,Low,Low,High,Low,Partial,Partial,High,High,Partial,Low,Low
-F45B,Low,Low,High,Low,Partial,Partial,High,High,Partial,Low,Low
-F57C,Low,Low,High,Low,Partial,Partial,High,High,Partial,High,Low
-GLEN,Low,High,High,Low,High,Partial,High,Partial,Partial,High,Low
-LA1,Low,Low,High,Low,Partial,Partial,High,Partial,Partial,Low,Low
-LA11,Low,Low,High,Low,Partial,Partial,High,Partial,Partial,Low,Low
-LA13,Low,Low,High,Low,Partial,Partial,High,Partial,Partial,Low,Low
-LA14,Low,Low,High,Low,Partial,Partial,High,Partial,Partial,Low,Low
-LA2,Low,Low,High,Low,Partial,Partial,High,High,Partial,High,High
-LA201,Low,Low,High,Low,Partial,Partial,High,High,Partial,Low,Low
-LA202,Low,Low,High,Low,High,Partial,High,High,Partial,Low,Low
-LA3,Low,Low,High,Low,High,High,High,High,Partial,High,High
-LA8,Low,Low,High,Low,High,Partial,High,Partial,Partial,Low,High
-N11101250,Low,Low,High,Low,Partial,High,High,High,Partial,Low,Low
+Reach,Node,Willow (Adult),Willow (Germination),Willow (Seedling),SAS (Fry),SAS (Adult),SAS (Juvenile),Cladophora,Typha (Adult),Typha (Seedling),Steelhead (Smolt),Steelhead (Migration)
+LAR 8 - Above Burbank,F300,Low,Low,High,Low,High,High,High,High,Partial,Low,High
+LAR 2 - Below Compton Creek,F319,Low,Low,High,Low,High,Partial,High,Partial,Partial,Low,Low
+LAR 4 - Above Rio Hondo,F34D,Low,Low,High,Low,High,Partial,High,Partial,Partial,Low,Low
+Compton Creek,F37BHigh,Low,Low,High,Low,Partial,Partial,High,High,Partial,Low,Low
+Compton Creek,F37BLow,Low,Low,High,Low,Partial,Partial,High,High,Partial,Low,Low
+Rio Hondo 1 - Below Spreading Grounds,F45B,Low,Low,High,Low,Partial,Partial,High,High,Partial,Low,Low
+LAR 5 - Glendale Narrows,F57C,Low,Low,High,Low,Partial,Partial,High,High,Partial,High,Low
+LAR 5 - Glendale Narrows,GLEN,Low,High,High,Low,High,Partial,High,Partial,Partial,High,Low
+LAR 1 - Tidal Reach,LA1,Low,Low,High,Low,Partial,Partial,High,Partial,Partial,Low,Low
+LAR 5 - Glendale Narrows,LA11,Low,Low,High,Low,Partial,Partial,High,Partial,Partial,Low,Low
+LAR 6 - Above Glendale WRP,LA13,Low,Low,High,Low,Partial,Partial,High,Partial,Partial,Low,Low
+LAR 7 - Below Burbank,LA14,Low,Low,High,Low,Partial,Partial,High,Partial,Partial,Low,Low
+LAR 1 - Tidal Reach,LA2,Low,Low,High,Low,Partial,Partial,High,High,Partial,High,High
+LAR 10 - Upstream Reach,LA201,Low,Low,High,Low,Partial,Partial,High,High,Partial,Low,Low
+LAR 10 - Upstream Reach,LA202,Low,Low,High,Low,High,Partial,High,High,Partial,Low,Low
+LAR 3 - Below Rio Hondo,LA3,Low,Low,High,Low,High,High,High,High,Partial,High,High
+LAR 4 - Above Rio Hondo,LA8,Low,Low,High,Low,High,Partial,High,Partial,Partial,Low,High
+Rio Hondo 2 - Above Spreading Grounds,11101250,Low,Low,High,Low,Partial,High,High,High,Partial,Low,Low
+Representative Habitat,,Riparian,Riparian,Riparian,Cold water fish,Cold water fish,Cold water fish,Wading,Freshwater Marsh,Freshwater Marsh,Migration,Migration
