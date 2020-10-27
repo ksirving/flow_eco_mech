@@ -53,24 +53,24 @@ head(hyd_dep)
 hyd_dep<-reshape2::melt(hyd_dep, id=c("DateTime","Q", "node", "date_num"))
 
 hyd_dep <- hyd_dep %>% 
-  filter(variable == "depth_cm_LOB") %>%
+  # filter(variable == "depth_cm_LOB") %>%
   rename(depth_cm = value)
 
 labels <- c(depth_cm_LOB = "Left Over Bank", depth_cm_MC = "Main Channel", depth_cm_ROB = "Right Over Bank")
-png("figures/Application_curves/nodes/LA11_Depth_Q_main_channel.png", width = 800, height = 800)
-
-ggplot(hyd_dep, aes(x = Q, y=depth_cm)) +
-  geom_line(aes( group = variable, lty = variable)) +
-  # scale_linetype_manual(values= c("dotted", "solid", "dashed"),
-  #                       breaks=c("depth_cm_LOB", "depth_cm_MC", "depth_cm_ROB"))+
-  # facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
-  theme(text = element_text(size=30))+
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
-  labs(title = "Glendale Narrows (LA11): Depth ~ Q",
-       y = "Depth (cm)",
-       x = "Q (cfs)") #+ theme_bw(base_size = 15)
-
-dev.off()
+# png("figures/Application_curves/nodes/LA11_Depth_Q_high_thresh.png", width = 800, height = 800)
+# 
+# ggplot(hyd_dep, aes(x = Q, y=depth_cm)) +
+#   geom_line(aes( group = variable, lty = variable)) +
+#   # scale_linetype_manual(values= c("dotted", "solid", "dashed"),
+#   #                       breaks=c("depth_cm_LOB", "depth_cm_MC", "depth_cm_ROB"))+
+#   facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
+#   theme(text = element_text(size=30))+
+#   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
+#   labs(title = "Glendale Narrows (LA11): Depth ~ Q",
+#        y = "Depth (cm)",
+#        x = "Q (cfs)") #+ theme_bw(base_size = 15)
+# 
+# dev.off()
 
 
 ### Prob v Q
@@ -90,19 +90,20 @@ new_data <- hyd_dep %>%
 
 range(new_data$prob_fit)
 
-png("figures/Application_curves/Depth/LA11_adult_patch_depth_prob_Q_thresholds_main_channel.png", width = 800, height = 800)
-labels <- c(depth_cm_LOB = "Left Over Bank", depth_cm_MC = "Main Channel", depth_cm_ROB = "Right Over Bank")
-
-ggplot(new_data, aes(x = Q, y=prob_fit)) +
-  geom_line(aes(group = variable, lty = variable)) +
-  # scale_linetype_manual(values= c("dotted", "solid", "dashed"))
-  theme(text = element_text(size=30))+
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
-  labs(title = "Glendale Narrows (LA11): Probability ~ Q",
-       y = "Probability of Occurrence",
-       x = "Q (cfs)") #+ theme_bw(base_size = 15)
-
-dev.off()
+# png("figures/Application_curves/Depth/LA11_adult_patch_depth_prob_Q_thresholds_high_thresh.png", width = 800, height = 800)
+# labels <- c(depth_cm_LOB = "Left Over Bank", depth_cm_MC = "Main Channel", depth_cm_ROB = "Right Over Bank")
+# 
+# ggplot(new_data, aes(x = Q, y=prob_fit)) +
+#   geom_line(aes(group = variable, lty = variable)) +
+#   # scale_linetype_manual(values= c("dotted", "solid", "dashed"))
+#   facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
+#   theme(text = element_text(size=30))+
+#   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
+#   labs(title = "Glendale Narrows (LA11): Probability ~ Q",
+#        y = "Probability of Occurrence",
+#        x = "Q (cfs)") #+ theme_bw(base_size = 15)
+# 
+# dev.off()
 
 ## depth and flow limits
 
@@ -111,25 +112,49 @@ head(new_data)
 
 load(file="root_interpolation_function.Rdata")
 
+new_dataM <- filter(new_data, variable == "depth_cm_MC")
+new_dataL <- filter(new_data, variable == "depth_cm_LOB")
+new_dataR <- filter(new_data, variable == "depth_cm_ROB")
 
-q_limit <- RootLinearInterpolant(new_data$Q, new_data$prob_fit, 0.75)
-q_limit[1]
 
-depth_limit <- RootLinearInterpolant(new_data$depth_cm, new_data$prob_fit, 0.75)
-depth_limit
+
+q_limit_MC <- RootLinearInterpolant(new_dataM$Q, new_dataM$prob_fit, 0.75)
+q_limit_MC
+
+depth_limit_MC <- RootLinearInterpolant(new_dataM$depth_cm, new_dataM$prob_fit, 0.75)
+depth_limit_MC
+
+q_limit_LOB <- RootLinearInterpolant(new_dataL$Q, new_dataL$prob_fit, 0.75)
+q_limit_LOB
+
+depth_limit_LOB <- RootLinearInterpolant(new_dataL$depth_cm, new_dataL$prob_fit, 0.75)
+depth_limit_LOB
+
+q_limit_ROB <- RootLinearInterpolant(new_dataR$Q, new_dataR$prob_fit, 0.75)
+q_limit_ROB
+
+depth_limit_ROB <- RootLinearInterpolant(new_dataR$depth_cm, new_dataR$prob_fit, 0.75)
+depth_limit_ROB
 
 
 ### figures
 
-png("figures/Application_curves/nodes/LA11_Depth_Q_main_channel_depth_limits.png", width = 800, height = 800)
+png("figures/Application_curves/nodes/LA11_Depth_Q_high_thresh_depth_limits.png", width = 800, height = 800)
 
 ggplot(hyd_dep, aes(x = Q, y=depth_cm)) +
   geom_line(aes( group = variable, lty = variable)) +
   # scale_linetype_manual(values= c("dotted", "solid", "dashed"),
   #                       breaks=c("depth_cm_LOB", "depth_cm_MC", "depth_cm_ROB"))+
-  # facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
-  geom_point(aes(y=depth_limit[1], x=q_limit[1]), color = "blue", size = 5) +
-  geom_point(aes(y=depth_limit[2], x=q_limit[2]), color = "blue", size = 5) +
+  facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
+  geom_point(data = subset(hyd_dep, variable =="depth_cm_MC"), aes(y=depth_limit_MC[1], x=q_limit_MC[1]), color="blue", size = 5) +
+  geom_point(data = subset(hyd_dep, variable =="depth_cm_MC"), aes(y=depth_limit_MC[2], x=q_limit_MC[2]), color="blue", size = 5) +
+  
+  geom_point(data = subset(hyd_dep, variable =="depth_cm_LOB"), aes(y=depth_limit_LOB[1], x=q_limit_LOB[1]), color="blue", size = 5) +
+  geom_point(data = subset(hyd_dep, variable =="depth_cm_LOB"), aes(y=depth_limit_LOB[2], x=q_limit_LOB[2]), color="blue", size = 5) +
+  
+  geom_point(data = subset(hyd_dep, variable =="depth_cm_ROB"), aes(y=depth_limit_ROB[1], x=q_limit_ROB[1]), color="blue", size = 5) +
+  geom_point(data = subset(hyd_dep, variable =="depth_cm_ROB"), aes(y=depth_limit_ROB[2], x=q_limit_ROB[2]), color="blue", size = 5) +
+  
   theme(text = element_text(size=30))+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
   labs(title = "Glendale Narrows (LA11): Depth ~ Q",
@@ -138,14 +163,24 @@ ggplot(hyd_dep, aes(x = Q, y=depth_cm)) +
 
 dev.off()
 
-png("figures/Application_curves/Depth/LA11_adult_patch_depth_prob_Q_thresholds_main_channel_Q_limits.png", width =800, height = 800)
+png("figures/Application_curves/Depth/LA11_adult_patch_depth_prob_Q_thresholds_high_thresh_Q_limits.png", width =800, height = 800)
 labels <- c(depth_cm_LOB = "Left Over Bank", depth_cm_MC = "Main Channel", depth_cm_ROB = "Right Over Bank")
 
 ggplot(new_data, aes(x = Q, y=prob_fit)) +
   geom_line(aes(group = variable, lty = variable)) +
   # scale_linetype_manual(values= c("dotted", "solid", "dashed"))
-  geom_point(aes(y=0.75, x=q_limit[1]), color = "blue", size = 5) +
-  geom_point(aes(y=0.75, x=q_limit[2]), color = "blue", size = 5) +
+  facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
+  
+  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.75, x=q_limit_MC[1]), color="blue", size = 5) +
+  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.75, x=q_limit_MC[2]), color="blue", size = 5) +
+  
+  geom_point(data = subset(new_data, variable =="depth_cm_LOB"), aes(y=0.75, x=q_limit_LOB[1]), color="blue", size = 5) +
+  geom_point(data = subset(new_data, variable =="depth_cm_LOB"), aes(y=0.75, x=q_limit_LOB[2]), color="blue", size = 5) +
+  
+  geom_point(data = subset(new_data, variable =="depth_cm_ROB"), aes(y=0.75, x=q_limit_ROB[1]), color="blue", size = 5) +
+  geom_point(data = subset(new_data, variable =="depth_cm_ROB"), aes(y=0.75, x=q_limit_ROB[2]), color="blue", size = 5) +
+  
+
   theme(text = element_text(size=30))+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
   labs(title = "Glendale Narrows (LA11): Probability ~ Q",
@@ -154,14 +189,24 @@ ggplot(new_data, aes(x = Q, y=prob_fit)) +
 
 dev.off()
 
-Q_df <- as.data.frame(matrix(q_limit))
-Q_df <- Q_df %>%
-  rename(Q = V1)
-D_df <- as.data.frame(matrix(depth_limit))
+Q_dfM <- as.data.frame(matrix(q_limit_MC))
+Q_dfM <- Q_dfM %>%
+  rename(Q_MC = V1)
+
+Q_dfL <- as.data.frame(matrix(q_limit_LOB))
+Q_dfL <- Q_dfL %>%
+  rename(Q_LOB = V1)
+
+Q_dfR <- as.data.frame(matrix(q_limit_ROB))
+Q_dfR <- Q_dfR %>%
+  rename(Q_ROB = V1)
+
+
+D_df <- as.data.frame(matrix(depth_limit_MC))
 D_df <- D_df %>%
   rename(Depth = V1)
 
-df <- cbind(Q_df, D_df)
+df <- cbind(Q_dfM, Q_dfL, Q_dfR, D_df)
 df
 
 write.csv(df, "results/limits/LA11_typha_adult_patch_Q_depth_limits.csv")
@@ -211,24 +256,24 @@ head(hyd_dep)
 hyd_dep<-reshape2::melt(hyd_dep, id=c("DateTime","Q", "node", "date_num"))
 
 hyd_dep <- hyd_dep %>% 
-  filter(variable == "depth_cm_LOB") %>%
+  # filter(variable == "depth_cm_LOB") %>%
   rename(depth_cm = value)
 
 labels <- c(depth_cm_LOB = "Left Over Bank", depth_cm_MC = "Main Channel", depth_cm_ROB = "Right Over Bank")
-png("figures/Application_curves/nodes/LA20_Depth_Q_main_channel.png", width = 800, height = 800)
-
-ggplot(hyd_dep, aes(x = Q, y=depth_cm)) +
-  geom_line(aes( group = variable, lty = variable)) +
-  # scale_linetype_manual(values= c("dotted", "solid", "dashed"),
-  #                       breaks=c("depth_cm_LOB", "depth_cm_MC", "depth_cm_ROB"))+
-  # facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
-  theme(text = element_text(size=30))+
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
-  labs(title = "Sepulveda (LA20): Depth ~ Q",
-       y = "Depth (cm)",
-       x = "Q (cfs)") #+ theme_bw(base_size = 15)
-
-dev.off()
+# png("figures/Application_curves/nodes/LA20_Depth_Q_main_channel.png", width = 800, height = 800)
+# 
+# ggplot(hyd_dep, aes(x = Q, y=depth_cm)) +
+#   geom_line(aes( group = variable, lty = variable)) +
+#   # scale_linetype_manual(values= c("dotted", "solid", "dashed"),
+#   #                       breaks=c("depth_cm_LOB", "depth_cm_MC", "depth_cm_ROB"))+
+#   facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
+#   theme(text = element_text(size=30))+
+#   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
+#   labs(title = "Sepulveda (LA20): Depth ~ Q",
+#        y = "Depth (cm)",
+#        x = "Q (cfs)") #+ theme_bw(base_size = 15)
+# 
+# dev.off()
 
 
 ### Prob v Q
@@ -247,20 +292,20 @@ new_data <- hyd_dep %>%
   mutate(prob_fit = ifelse(prob_fit<=0, 0, prob_fit)) ## predicts negative percentages - cut off at 0 for quick fix
 
 range(new_data$prob_fit)
-
-png("figures/Application_curves/Depth/LA20_adult_patch_depth_prob_Q_thresholds_main_channel.png", width = 800, height = 800)
-labels <- c(depth_cm_LOB = "Left Over Bank", depth_cm_MC = "Main Channel", depth_cm_ROB = "Right Over Bank")
-
-ggplot(new_data, aes(x = Q, y=prob_fit)) +
-  geom_line(aes(group = variable, lty = variable)) +
-  # scale_linetype_manual(values= c("dotted", "solid", "dashed"))
-  theme(text = element_text(size=30))+
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
-  labs(title = "Sepulveda (LA20): Probability ~ Q",
-       y = "Probability of Occurrence",
-       x = "Q (cfs)") #+ theme_bw(base_size = 15)
-
-dev.off()
+# 
+# png("figures/Application_curves/Depth/LA20_adult_patch_depth_prob_Q_thresholds_main_channel.png", width = 800, height = 800)
+# labels <- c(depth_cm_LOB = "Left Over Bank", depth_cm_MC = "Main Channel", depth_cm_ROB = "Right Over Bank")
+# 
+# ggplot(new_data, aes(x = Q, y=prob_fit)) +
+#   geom_line(aes(group = variable, lty = variable)) +
+#   # scale_linetype_manual(values= c("dotted", "solid", "dashed"))
+#   theme(text = element_text(size=30))+
+#   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
+#   labs(title = "Sepulveda (LA20): Probability ~ Q",
+#        y = "Probability of Occurrence",
+#        x = "Q (cfs)") #+ theme_bw(base_size = 15)
+# 
+# dev.off()
 
 ## depth and flow limits
 
@@ -270,24 +315,52 @@ head(new_data)
 load(file="root_interpolation_function.Rdata")
 
 
-q_limit <- RootLinearInterpolant(new_data$Q, new_data$prob_fit, 0.75)
-q_limit[1]
+new_dataM <- filter(new_data, variable == "depth_cm_MC")
+new_dataL <- filter(new_data, variable == "depth_cm_LOB")
+new_dataR <- filter(new_data, variable == "depth_cm_ROB")
+head(new_dataM)
 
-depth_limit <- RootLinearInterpolant(new_data$depth_cm, new_data$prob_fit, 0.75)
-depth_limit
+
+q_limit_MC <- RootLinearInterpolant(new_dataM$Q, new_dataM$prob_fit, 0.75)
+q_limit_MC
+
+depth_limit_MC <- RootLinearInterpolant(new_dataM$depth_cm, new_dataM$prob_fit, 0.75)
+depth_limit_MC
+
+q_limit_LOB <- RootLinearInterpolant(new_dataL$Q, new_dataL$prob_fit, 0.75)
+q_limit_LOB
+
+depth_limit_LOB <- RootLinearInterpolant(new_dataL$depth_cm, new_dataL$prob_fit, 0.75)
+depth_limit_LOB
+
+q_limit_ROB <- RootLinearInterpolant(new_dataR$Q, new_dataR$prob_fit, 0.75)
+q_limit_ROB
+
+depth_limit_ROB <- RootLinearInterpolant(new_dataR$depth_cm, new_dataR$prob_fit, 0.75)
+depth_limit_ROB
+
 
 
 ### figures
 
-png("figures/Application_curves/nodes/LA20_Depth_Q_main_channel_depth_limits.png", width = 800, height = 800)
+png("figures/Application_curves/nodes/LA20_Depth_Q_high_thresh_depth_limits.png", width = 800, height = 800)
 
 ggplot(hyd_dep, aes(x = Q, y=depth_cm)) +
   geom_line(aes( group = variable, lty = variable)) +
   # scale_linetype_manual(values= c("dotted", "solid", "dashed"),
   #                       breaks=c("depth_cm_LOB", "depth_cm_MC", "depth_cm_ROB"))+
-  # facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
-  geom_point(aes(y=depth_limit[1], x=q_limit[1]), color = "blue", size = 5) +
-  geom_point(aes(y=depth_limit[2], x=q_limit[2]), color = "blue", size = 5) +
+  facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
+
+  
+  geom_point(data = subset(hyd_dep, variable =="depth_cm_MC"), aes(y=depth_limit_MC[1], x=q_limit_MC[1]), color="blue", size = 5) +
+  geom_point(data = subset(hyd_dep, variable =="depth_cm_MC"), aes(y=depth_limit_MC[2], x=q_limit_MC[2]), color="blue", size = 5) +
+  
+  geom_point(data = subset(hyd_dep, variable =="depth_cm_LOB"), aes(y=depth_limit_LOB[1], x=q_limit_LOB[1]), color="blue", size = 5) +
+  geom_point(data = subset(hyd_dep, variable =="depth_cm_LOB"), aes(y=depth_limit_LOB[2], x=q_limit_LOB[2]), color="blue", size = 5) +
+  
+  geom_point(data = subset(hyd_dep, variable =="depth_cm_ROB"), aes(y=depth_limit_ROB[1], x=q_limit_ROB[1]), color="blue", size = 5) +
+  geom_point(data = subset(hyd_dep, variable =="depth_cm_ROB"), aes(y=depth_limit_ROB[2], x=q_limit_ROB[2]), color="blue", size = 5) +
+  
   theme(text = element_text(size=30))+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
   labs(title = "Sepulveda (LA20): Depth ~ Q",
@@ -296,14 +369,24 @@ ggplot(hyd_dep, aes(x = Q, y=depth_cm)) +
 
 dev.off()
 
-png("figures/Application_curves/Depth/LA20_adult_patch_depth_prob_Q_thresholds_main_channel_Q_limits.png", width =800, height = 800)
+png("figures/Application_curves/Depth/LA20_adult_patch_depth_prob_Q_thresholds_high_thresh_Q_limits.png", width =800, height = 800)
 labels <- c(depth_cm_LOB = "Left Over Bank", depth_cm_MC = "Main Channel", depth_cm_ROB = "Right Over Bank")
 
 ggplot(new_data, aes(x = Q, y=prob_fit)) +
   geom_line(aes(group = variable, lty = variable)) +
   # scale_linetype_manual(values= c("dotted", "solid", "dashed"))
-  geom_point(aes(y=0.75, x=q_limit[1]), color = "blue", size = 5) +
-  geom_point(aes(y=0.75, x=q_limit[2]), color = "blue", size = 5) +
+  facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
+  
+  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.75, x=q_limit_MC[1]), color="blue", size = 5) +
+  geom_point(data = subset(new_data, variable =="depth_cm_MC"), aes(y=0.75, x=q_limit_MC[2]), color="blue", size = 5) +
+  
+  geom_point(data = subset(new_data, variable =="depth_cm_LOB"), aes(y=0.75, x=q_limit_LOB[1]), color="blue", size = 5) +
+  geom_point(data = subset(new_data, variable =="depth_cm_LOB"), aes(y=0.75, x=q_limit_LOB[2]), color="blue", size = 5) +
+  
+  geom_point(data = subset(new_data, variable =="depth_cm_ROB"), aes(y=0.75, x=q_limit_ROB[1]), color="blue", size = 5) +
+  geom_point(data = subset(new_data, variable =="depth_cm_ROB"), aes(y=0.75, x=q_limit_ROB[2]), color="blue", size = 5) +
+  
+  
   theme(text = element_text(size=30))+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
   labs(title = "Sepulveda (LA20): Probability ~ Q",

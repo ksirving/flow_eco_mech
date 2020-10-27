@@ -206,6 +206,23 @@ new_dataR <- filter(new_data, variable == "vel_m_ROB")
 
 load(file="root_interpolation_function.Rdata")
 
+q_limit_MC <- RootLinearInterpolant(new_dataM$Q, new_dataM$prob_fit, 0.25)
+q_limit_MC
+
+vel_limit_MC <- RootLinearInterpolant(new_dataM$vel_m, new_dataM$prob_fit, 0.25)
+vel_limit_MC
+
+q_limit_LOB <- RootLinearInterpolant(new_dataL$Q, new_dataL$prob_fit, 0.3)
+q_limit_LOB
+
+vel_limit_LOB <- RootLinearInterpolant(new_dataL$vel_m, new_dataL$prob_fit, 0.3)
+vel_limit_LOB
+
+q_limit_ROB <- RootLinearInterpolant(new_dataR$Q, new_dataR$prob_fit, 0.3)
+q_limit_ROB
+
+vel_limit_ROB <- RootLinearInterpolant(new_dataR$vel_m, new_dataR$prob_fit, 0.3)
+vel_limit_ROB
 
 newx1a <- RootLinearInterpolant(new_dataM$Q, new_dataM$prob_fit, 0.1)
 newx1a

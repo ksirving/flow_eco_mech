@@ -207,6 +207,25 @@ new_dataR <- filter(new_data, variable == "depth_cm_ROB")
 
 load(file="root_interpolation_function.Rdata")
 
+q_limit_MC <- RootLinearInterpolant(new_dataM$Q, new_dataM$prob_fit, 0.3)
+q_limit_MC
+
+depth_limit_MC <- RootLinearInterpolant(new_dataM$depth_cm, new_dataM$prob_fit, 0.3)
+depth_limit_MC
+
+q_limit_LOB <- RootLinearInterpolant(new_dataL$Q, new_dataL$prob_fit, 0.3)
+q_limit_LOB
+
+depth_limit_LOB <- RootLinearInterpolant(new_dataL$depth_cm, new_dataL$prob_fit, 0.3)
+depth_limit_LOB
+
+q_limit_ROB <- RootLinearInterpolant(new_dataR$Q, new_dataR$prob_fit, 0.3)
+q_limit_ROB
+
+depth_limit_ROB <- RootLinearInterpolant(new_dataR$depth_cm, new_dataR$prob_fit, 0.3)
+depth_limit_ROB
+
+
 
 newx1a <- RootLinearInterpolant(new_dataM$Q, new_dataM$prob_fit, 0.1)
 newx1a <- c(min(new_dataM$Q), max(new_dataM$Q))
