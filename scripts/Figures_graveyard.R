@@ -1,4 +1,124 @@
 ### figures graveyard
+## plot time series
+png("figures/Application_curves/nodes/F57C_Depth_TS.png", width = 500, height = 600)
+
+ggplot(hyd_dep, aes(x = date_num, y=value)) +
+  geom_line(aes( group = variable, lty = variable)) +
+  scale_linetype_manual(values= c("dotted", "solid", "dashed"),
+                        breaks=c("depth_cm_LOB", "depth_cm_MC", "depth_cm_ROB"))+
+  facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
+  labs(title = "F57C: Depth ~ Time Series",
+       y = "Depth (cm)",
+       x = "Date") #+ theme_bw(base_size = 15)
+dev.off()
+
+## plot for annual stats - need probs in order
+
+png("figures/Application_curves/Depth/F57C_adult_depth_perc_time_above_threshold_annual.png", width = 500, height = 600)
+
+ggplot(melt_time_ann, aes(x = water_year, y=value)) +
+  geom_line(aes( group =c(), color = Probability_Threshold)) +
+  scale_color_manual(name = "Probability Threshold", breaks = c("Low", "Medium", "High"),
+                     values=c( "green", "red", "blue"),
+                     labels = c("Low", "Medium", "High")) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
+  # scale_x_continuous(breaks=as.numeric(total_days$month_year), labels=format(total_days$month_year,"%b %Y")) +
+  facet_wrap(~position, scales="free_x", nrow=3) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  labs(title = "F57C: Time within discharge limit in relation to Depth (Annual)",
+       y = "Time (%)",
+       x = "Year") #+ theme_bw(base_size = 15)
+dev.off()
+## plot for winter stats - need probs in order
+
+melt_time_winter <- filter(melt_time_seas, season == "winter")
+unique(melt_time_winter$Probability_Threshold)
+
+png("figures/Application_curves/Depth/F57C_adult_depth_perc_time_above_threshold_winter.png", width = 500, height = 600)
+
+ggplot(melt_time_winter, aes(x = water_year, y=value)) +
+  geom_line(aes( group = c(), color = Probability_Threshold)) +
+  scale_color_manual(name = "Probability Threshold", breaks = c("Low.Seasonal", "Medium.Seasonal", "High.Seasonal"),
+                     values=c( "green", "red", "blue"),
+                     labels = c("Low", "Medium", "High")) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
+  # scale_x_continuous(breaks=as.numeric(total_days$month_year), labels=format(total_days$month_year,"%b %Y")) +
+  facet_wrap(~position, scales="free_x", nrow=3) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  labs(title = "F57C: Time within discharge limit in relation to Depth (Winter)",
+       y = "Time (%)",
+       x = "Year") #+ theme_bw(base_size = 15)
+dev.off()
+## plot for summer stats - need probs in order
+
+melt_time_summer <- filter(melt_time_seas, season == "summer")
+
+png("figures/Application_curves/Depth/F57C_adult_depth_perc_time_above_threshold_summer.png", width = 500, height = 600)
+
+ggplot(melt_time_summer, aes(x = water_year, y=value)) +
+  geom_line(aes( group = c(), color = Probability_Threshold)) +
+  scale_color_manual(name = "Probability Threshold", breaks = c("Low.Seasonal", "Medium.Seasonal", "High.Seasonal"),
+                     values=c( "green", "red", "blue"),
+                     labels = c("Low", "Medium", "High")) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 1)) +
+  # scale_x_continuous(breaks=as.numeric(total_days$month_year), labels=format(total_days$month_year,"%b %Y")) +
+  facet_wrap(~position, scales="free_x", nrow=3) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  labs(title = "F57C: Time within discharge limit in relation to Depth (Summer)",
+       y = "Time (%)",
+       x = "Year") #+ theme_bw(base_size = 15)
+
+dev.off()
+
+## plot all ts
+png("figures/Application_curves/Depth/F57C_adult_depth_lob_rob_mc_no_days_within_Q.png", width = 500, height = 600)
+
+ggplot(melt_days, aes(x =month_year, y=n_days)) +
+  geom_line(aes( group = Probability_Threshold, color = Probability_Threshold)) +
+  scale_color_manual(name="Probability Threshold",breaks = c("Low", "Medium", "High"),
+                     values=c( "green", "red", "blue")) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 0.5)) +
+  scale_x_date(breaks=pretty_breaks(), labels = date_format("%b %Y")) +
+  # scale_x_continuous(breaks=as.numeric(melt_days$month_year), labels=format(melt_days$month_year,"%b %Y")) +
+  facet_wrap(~position, nrow=3) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  labs(title = "F57C: Number of days within discharge limit in relation to Depth",
+       y = "Number of days per Month",
+       x = "Year") #+ theme_bw(base_size = 15)
+dev.off()
+## plot by year
+png("figures/Application_curves/Depth/F57C_adult_depth_lob_rob_mc_no_days_within_Q_by_year.png", width = 500, height = 600)
+
+ggplot(melt_days, aes(x =month_year, y=n_days)) +
+  geom_line(aes( group = Probability_Threshold, color = Probability_Threshold)) +
+  scale_color_manual(name="Probability Threshold", breaks = c("Low", "Medium", "High"),
+                     values=c( "green", "red", "blue")) +
+  theme(axis.text.x = element_text(angle = 0, vjust = 1)) +
+  scale_x_date(breaks=pretty_breaks(),labels = date_format("%b")) +
+  # scale_x_continuous(breaks=as.numeric(month_year), labels=format(month_year,"%b")) +
+  facet_wrap(~water_year+position, scale="free_x", nrow=4) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  labs(title = "F57C: Number of days within discharge limit in relation to Depth: Mid Channel",
+       y = "Number of days per Month",
+       x = "Month") #+ theme_bw(base_size = 15)
+dev.off()
+## plot by season/critical period
+png("figures/Application_curves/Depth/F57C_adult_depth_lob_rob_mc_no_days_within_Q_by_season.png", width = 500, height = 600)
+
+ggplot(melt_days, aes(x =month_year, y=n_days)) +
+  geom_line(aes( group = Probability_Threshold, color = Probability_Threshold)) +
+  scale_color_manual(name="Probability Threshold",breaks = c("Low", "Medium", "High"),
+                     values=c( "green", "red", "blue")) +
+  theme(axis.text.x = element_text(angle = 0, vjust = 1)) +
+  scale_x_date(breaks=pretty_breaks(),labels = date_format("%Y")) +
+  # scale_x_continuous(breaks=as.numeric(melt_days$month_year), labels=format(melt_days$month_year,"%Y")) +
+  facet_wrap(~season +position, scales="free", nrow=2) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  labs(title = "F57C: Number of days within discharge limit in relation to Depth",
+       y = "Number of days per Month",
+       x = "Year") #+ theme_bw(base_size = 15)
+dev.off()
 
 ##  plot time series of discharge - subset to one year
 new_datax_2016 <- filter(new_dataMx, year==2016)
