@@ -111,7 +111,7 @@ for(n in 1: length(h)) {
     rename(depth_cm = value)
 
   ## save out
-  save(all_data, file=paste("output_data/F1_", NodeName, "_juvenile_depth_discharge_probability.RData", sep=""))
+  save(all_data, file=paste("output_data/F1_", NodeName, "_SAS_juvenile_depth_discharge_probability.RData", sep=""))
   
   
   # format probability time series ------------------------------------------
@@ -132,7 +132,7 @@ for(n in 1: length(h)) {
     mutate(hour = hour(DateTime)) %>%
     mutate(water_year = ifelse(month == 10 | month == 11 | month == 12, year, year-1))
   
-  save(all_data, file=paste("output_data/F1_", NodeName, "_depth_juvenile_discharge_probs_2010_2017_TS.RData", sep=""))
+  save(all_data, file=paste("output_data/F1_", NodeName, "_SAS_depth_juvenile_discharge_probs_2010_2017_TS.RData", sep=""))
   
   ### define dataframes for 2nd loop
   
@@ -169,7 +169,8 @@ for(n in 1: length(h)) {
       filter(prob_fit == max(prob_fit)) #%>%
     
     peakQ  <- max(peak$Q)
-    
+    min_limit <- filter(new_data, depth_cm >= 0.1)
+    min_limit <- min(min_limit$Q)
     
     ## Main channel curves
     
@@ -207,16 +208,17 @@ for(n in 1: length(h)) {
                     newx3a[1], newx3a[2],newx3a[3],newx3a[4])
     
     # create year_month column       
-    new_datax <- new_data %>% unite(month_year, water_year:month, sep="-", remove=F) 
+    new_datax <- new_data %>% unite(month_year, c(water_year,month), sep="-", remove=F) 
     
     # dataframe for stats -----------------------------------------------------
     
-    ## define critical period or season for juvenile as all year is critical
-    winter <- c(1,2,3,4,11,12) ## winter months
-    summer <- c(5:10) ## summer months
+    ## define critical period
+    non_critical <- c(1,2,8:12) 
+    critical <- c(3:7) 
     
     new_datax <- new_datax %>%
-      mutate(season = ifelse(month %in% winter, "winter", "summer") )
+      mutate(season = ifelse(month %in% non_critical, "non_critical", "critical") )
+    
     
     ## define equation for roots
     ## produces percentage of time for each year and season within year for each threshold
@@ -278,7 +280,7 @@ for(n in 1: length(h)) {
   
   all_data[which(all_data$prob_fit <  0.1),"prob_fit"] <- 0.1
   
-  file_name = paste("figures/Application_curves/Depth/", NodeName, "_juvenile_depth_prob_Q_thresholds.png", sep ="")
+  file_name = paste("figures/Application_curves/Depth/", NodeName, "_SAS_juvenile_depth_prob_Q_thresholds.png", sep ="")
   
   png(file_name, width = 500, height = 600)
   
@@ -404,12 +406,12 @@ for(n in 1: length(h)) {
   total_days <- rename(total_days, Low = days_per_month_low, Medium = days_per_month_medium, High = days_per_month_high)
   
   ## define seasons
-  winter <- c(1,2,3,4,11,12) ## winter months
-  summer <- c(5:10) ## summer months
+  non_critical <- c(1,2,8:12) 
+  critical <- c(3:7) 
   
   total_days <- total_days %>%
-    mutate(season = ifelse(month %in% winter, "winter", "summer") )
-  
+    mutate(season = ifelse(month %in% non_critical, "non_critical", "critical") )
+
   # ## melt data
   
   melt_days<-reshape2::melt(total_days, id=c("month_year", "water_year", "month", "season", "position", "Node"))

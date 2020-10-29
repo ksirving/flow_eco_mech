@@ -1,3 +1,3 @@
-"","MC"
-"Low_Prob",62.577335357666
-"Med_Prob",118.106507143786
+"","LOB","MC","ROB","Species","Life_Stage","Hydraulic","Node"
+"1",0,62.577335357666,0,"SAS","Fry","Depth","F319"
+"2",0,118.106507143786,0,"SAS","Fry","Depth","F319"

@@ -74,7 +74,7 @@ hyd_dep <- hyd_dep %>%
   mutate(year = year(DateTime))%>%
   mutate(day = day(DateTime))%>%
   mutate(hour = hour(DateTime)) %>%
-  mutate(season = ifelse(month == 3 | month == 4 | month == 5 | month == 6 | month == 7, paste("critcal"), paste("non_critical")))%>%
+  mutate(season = ifelse(month == 3 | month == 4 | month == 5 | month == 6 | month == 7, paste("critical"), paste("non_critical")))%>%
   mutate(water_year = ifelse(month == 10 | month == 11 | month == 12, year, year-1))
 
 ## rules for fry 
