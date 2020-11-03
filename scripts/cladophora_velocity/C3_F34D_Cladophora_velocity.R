@@ -41,6 +41,7 @@ dim(df)
 
 summary(clad_vel_mod <- glm(Occurrence~Velocity, data=df, family="binomial"))
 clad_vel_mod
+save(clad_vel_mod, file="clad_vel_mod.RData")
 
 ## soft bottom reaches
 
