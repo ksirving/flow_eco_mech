@@ -14,12 +14,14 @@ library(data.table)
 
 
 ## upload hydraulic data
-
+setwd("/Users/katieirving/Documents/git/flow_eco_mech")
 ## upload hydraulic data
 setwd("input_data/HecRas")
 
 h <- list.files(pattern="hydraulic")
 length(h) ## 18
+h
+n=16
 
 ## set wd back to main
 setwd("/Users/katieirving/Documents/git/flow_eco_mech")
@@ -28,7 +30,7 @@ for(n in 1: length(h)) {
   
   NodeData <- read.csv(file=paste("input_data/HecRas/", h[n], sep=""))
   F34D <- read.csv("input_data/HecRas/hydraulic_ts_F34D.csv") ## for dates
-  
+  head(NodeData)
   ## format hydraulic data
   
   NodeData <- NodeData %>%
@@ -85,8 +87,7 @@ for(n in 1: length(h)) {
     mutate(season = ifelse(month == 12 | month == 1 | month == 2 | month == 3 | month == 4| month == 5 | month == 6, 
                            paste("critical"), paste("non_critical") )) %>%    
     mutate(water_year = ifelse(month == 10 | month == 11 | month == 12, year, year-1))
-  
-  
+
   ## save out
   save(all_data, file=paste("output_data/F5_", NodeName, "_Steelhead_depth_Migration_discharge_probs_2010_2017_TS.RData", sep=""))
   
@@ -104,7 +105,7 @@ for(n in 1: length(h)) {
   
   ## define positions
   positions <- unique(all_data$variable)
-  
+  p=2
   # probability as a function of discharge -----------------------------------
   
   for(p in 1:length(positions)) {
@@ -115,7 +116,7 @@ for(n in 1: length(h)) {
     ## define position
     PositionName <- str_split(positions[p], "_", 3)[[1]]
     PositionName <- PositionName[3]
-    
+    PositionName
     
     ## get roots
     curve <- spline(new_data$Q, new_data$value,
@@ -128,8 +129,11 @@ for(n in 1: length(h)) {
     } else {
       newx1a <- approx(x = curve$y, y = curve$x, xout = 18)$y
     }
-    
-    
+    newx1a
+
+    range(new_data$value)
+    range(new_data$Q)
+
     
     ## MAKE DF OF Q LIMITS
     limits[,p] <- c(newx1a)
@@ -146,10 +150,10 @@ for(n in 1: length(h)) {
     ###### calculate amount of time
     time_stats <- new_data %>%
       dplyr::group_by(water_year, season) %>%
-      dplyr::mutate(Seasonal = sum(Q >= newx1a)/length(DateTime)*100) %>%
+      dplyr::mutate(Seasonal = sum(Q <= newx1a)/length(DateTime)*100) %>%
       distinct(water_year,  Seasonal) %>%
       mutate(position= paste(PositionName), Node = NodeName)
-    
+
     
     time_statsx <- rbind(time_statsx, time_stats)
     
@@ -186,13 +190,13 @@ for(n in 1: length(h)) {
     
     facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
     # geom_point(data = subset(all_data, variable =="depth_cm_MC"), aes(y=0.1, x=limits[1,2]), color="green") +
-    geom_point(data = subset(hyd_dep, variable =="depth_cm_MC"), aes(y=3, x=limits[1,2]), color="green") +
+    geom_point(data = subset(hyd_dep, variable =="depth_cm_MC"), aes(y=18, x=limits[1,2]), color="green") +
     # geom_point(data = subset(hyd_dep, variable =="depth_cm_MC"), aes(y=10, x=limits[1,2]), color="green") +
     
-    geom_point(data = subset(hyd_dep, variable =="depth_cm_LOB"), aes(y=3, x=limits[1,1]), color="green") +
+    geom_point(data = subset(hyd_dep, variable =="depth_cm_LOB"), aes(y=18, x=limits[1,1]), color="green") +
     # geom_point(data = subset(hyd_dep, variable =="depth_cm_LOB"), aes(y=10, x=limits[1,1]), color="green") +
     
-    geom_point(data = subset(hyd_dep, variable =="depth_cm_ROB"), aes(y=3, x=limits[1,3]), color="green") +
+    geom_point(data = subset(hyd_dep, variable =="depth_cm_ROB"), aes(y=18, x=limits[1,3]), color="green") +
     # geom_point(data = subset(hyd_dep, variable =="depth_cm_ROB"), aes(y=10, x=limits[1,3]), color="green") +
     
     theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
@@ -261,7 +265,7 @@ for(n in 1: length(h)) {
   
 } ## end 1st loop
 
-
+n=1
 # Velocity ----------------------------------------------------------------
 
 setwd("/Users/katieirving/Documents/git/flow_eco_mech")
@@ -347,7 +351,7 @@ for(n in 1: length(h)) {
   
   ## define positions
   positions <- unique(all_data$variable)
-  
+
   # probability as a function of discharge -----------------------------------
   
   for(p in 1:length(positions)) {
@@ -358,7 +362,7 @@ for(n in 1: length(h)) {
     ## define position
     PositionName <- str_split(positions[p], "_", 3)[[1]]
     PositionName <- PositionName[3]
-    
+
     
     ## get roots
     curve <- spline(new_data$Q, new_data$value,
@@ -370,11 +374,10 @@ for(n in 1: length(h)) {
     } else if(min(curve$y)>0) {
       newx1a <- min(curve$x)
     } else {
-      newx1a <- approx(x = curve$y, y = curve$x, xout = 0.01)$y
+      newx1a <- approx(x = curve$y, y = curve$x, xout = 0.0001)$y
     }
-    
 
-    
+
     if(min(curve$y) ==0 && max(curve$y) ==0) {
       newx2a <- 0
     } else  if(max(curve$y)<3.1) {
@@ -382,8 +385,7 @@ for(n in 1: length(h)) {
     } else {
       newx2a <- approx(x = curve$y, y = curve$x, xout = 3.1)$y
     }
-    
-    
+
     
     ## MAKE DF OF Q LIMITS
     limits[,p] <- c(newx1a, newx2a)
@@ -394,14 +396,14 @@ for(n in 1: length(h)) {
     # dataframe for stats -----------------------------------------------------
     
     ## define critical period or season for juvenile as all year is critical
-    
+    # Q >= newx1a & 
     ###### calculate amount of time
     time_stats <- new_data %>%
       dplyr::group_by(water_year, season) %>%
-      dplyr::mutate(Seasonal = sum(Q >= newx1a & Q <= newx2a)/length(DateTime)*100) %>%
+      dplyr::mutate(Seasonal = sum(Q <= newx2a)/length(DateTime)*100) %>%
       distinct(water_year,  Seasonal) %>%
       mutate(position= paste(PositionName), Node = NodeName)
-    
+
     
     time_statsx <- rbind(time_statsx, time_stats)
     
@@ -861,7 +863,7 @@ for(n in 1: length(h)) {
     } else if(min(curve$y)>0) {
       newx1a <- min(curve$x)
     } else {
-      newx1a <- approx(x = curve$y, y = curve$x, xout = 0.01)$y
+      newx1a <- approx(x = curve$y, y = curve$x, xout = 0.0001)$y
     }
     
     
