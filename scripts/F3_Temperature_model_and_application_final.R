@@ -16,14 +16,13 @@ library(gridExtra) # tile several plots next to each other
 library(scales)
 library(data.table)
 
-
+setwd("/Users/katieirving/Documents/git/flow_eco_mech")
 ## temperature
-ad_temp_con <- read.csv("output_data/05a_adult_temperature_continuous.csv")
-juv_temp_con <- read.csv("output_data/05a_juvenile_temperature_continuous.csv")
+ad_temp_con <- read.csv("output_data/Old_data/05a_adult_temperature_continuous.csv")
+juv_temp_con <- read.csv("output_data/Old_data/05a_juvenile_temperature_continuous.csv")
 
 
 # Data distribution -------------------------------------------------------
-
 
 all_temp <- ad_temp_con
 
@@ -99,6 +98,14 @@ dev.off()
 
 head(ad_temp_con)
 
+fitdata <- data.frame(matrix(ncol=2, nrow=length(yfit)))
+fitdata[,1] <- xfit_r
+fitdata[,2] <- yfit
+colnames(fitdata) <- c("temp_fit", "prob_fit")
+head(fitdata)
+
+write.csv(fitdata, "output_data/adult_temp_prob_curve_data.csv")
+
 
 # Juvenile ----------------------------------------------------------------
 
@@ -142,3 +149,12 @@ par(new=TRUE)
 axis(2, at=pretty(range(yfit)), cex.axis=2)
 
 dev.off()
+
+fitdata <- data.frame(matrix(ncol=2, nrow=length(yfit)))
+fitdata[,1] <- xfit_r
+fitdata[,2] <- yfit
+colnames(fitdata) <- c("temp_fit", "prob_fit")
+head(fitdata)
+
+write.csv(fitdata, "output_data/juvenile_temp_prob_curve_data.csv")
+
