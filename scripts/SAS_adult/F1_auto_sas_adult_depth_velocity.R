@@ -27,7 +27,7 @@ load(file="expression_Q_limit_function.RData")
 # Combine with hydraulic data -------------------------------------------
 
 ## upload habitat curve data
-fitdata <- read.csv("output_data/adult_depth_prob_curve_data.csv")
+fitdata <- read.csv("/Users/katieirving/Documents/git/flow_eco_mech/output_data/Old_data/adult_depth_prob_curve_data.csv")
 
 ## upload hydraulic data
 setwd("input_data/HecRas")

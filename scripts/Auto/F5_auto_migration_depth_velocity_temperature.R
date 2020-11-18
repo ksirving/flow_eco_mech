@@ -21,7 +21,7 @@ setwd("input_data/HecRas")
 h <- list.files(pattern="hydraulic")
 length(h) ## 18
 h
-n=16
+n=10
 
 ## set wd back to main
 setwd("/Users/katieirving/Documents/git/flow_eco_mech")
@@ -150,10 +150,10 @@ for(n in 1: length(h)) {
     ###### calculate amount of time
     time_stats <- new_data %>%
       dplyr::group_by(water_year, season) %>%
-      dplyr::mutate(Seasonal = sum(Q >= newx1a)/length(DateTime)*100) %>%
+      dplyr::mutate(Seasonal = sum(Q <= newx1a)/length(DateTime)*100) %>%
       distinct(water_year,  Seasonal) %>%
       mutate(position= paste(PositionName), Node = NodeName)
-
+    time_stats
     
     time_statsx <- rbind(time_statsx, time_stats)
     

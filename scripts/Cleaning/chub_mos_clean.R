@@ -161,3 +161,23 @@ dev.off()
 
 min(depth_freq$Depth) ## 0
 
+
+# linear model exploration ------------------------------------------------
+
+chub <- read.csv("output_data/Old_data/00_Wulff_Chub_depth_velocity_abundance.csv")
+
+chubLM <- lm(Abundance~Depth, data = chub)
+summary(chubLM)
+plot(chub$Depth, chub$Abundance)
+
+ggplot(data = chub, mapping = aes(x = Depth, y = Abundance))+
+  geom_point(size = 4)+
+  geom_smooth(method = "lm")+
+  labs(y = "Abundance", x = "Depth (cm)")+
+  theme_classic()+
+  theme(axis.text = element_text(size = 20), axis.title = element_text(size = 20))
+
+chubQLM <- lm(Abundance~poly(Depth,2), data = chub)
+summary(chubQLM)
+
+
