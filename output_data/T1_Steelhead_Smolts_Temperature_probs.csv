@@ -21,7 +21,7 @@
 "20","F37B.Soft",0,15,"MeanTemp","Steelhead","Smolts"
 "21","F45B",0,19,"MaxTemp","Steelhead","Smolts"
 "22","F45B",0,19,"MeanMaxTemp","Steelhead","Smolts"
-"23","F45B",0,19,"MinTemp","Steelhead","Smolts"
+"23","F45B",1,18,"MinTemp","Steelhead","Smolts"
 "24","F45B",0,19,"MeanTemp","Steelhead","Smolts"
 "25","F57C",0,11,"MaxTemp","Steelhead","Smolts"
 "26","F57C",0,11,"MeanMaxTemp","Steelhead","Smolts"

@@ -39,7 +39,7 @@ for(n in 1: length(tp)) {
   # 
   
   all_data_max <- TempData %>%
-    mutate(Thresh = ifelse(Mean_Temp >= 15 & Mean_Temp <= 30, "Suitable", "Unsuitable")) %>%
+    mutate(Thresh = ifelse(Max_Temp >= 15 & Max_Temp <= 30, "Suitable", "Unsuitable")) %>%
     mutate(Suitable = sum(Thresh == "Suitable"), Unsuitable = sum(Thresh == "Unsuitable")) %>%
     select(Node, Suitable, Unsuitable) %>%
     mutate(Metric = "MaxTemp") %>%
@@ -48,7 +48,7 @@ for(n in 1: length(tp)) {
   
   all_data_max_mean <- TempData %>%
     # group_by(variable) %>%
-    mutate(Thresh = ifelse(Mean_Temp >= 15 & Mean_Temp <= 30, "Suitable", "Unsuitable")) %>%
+    mutate(Thresh = ifelse(Mean_Max_Temp >= 15 & Mean_Max_Temp <= 30, "Suitable", "Unsuitable")) %>%
     mutate(Suitable = sum(Thresh == "Suitable"), Unsuitable = sum(Thresh == "Unsuitable")) %>%
     select(Node, Suitable, Unsuitable) %>%
     mutate(Metric = "MeanMaxTemp") %>%
@@ -56,7 +56,7 @@ for(n in 1: length(tp)) {
   
   all_data_min <- TempData %>%
     # group_by(variable) %>%
-    mutate(Thresh = ifelse(Mean_Temp >= 15 & Mean_Temp <= 30, "Suitable", "Unsuitable")) %>%
+    mutate(Thresh = ifelse(Min_Temp >= 15 & Min_Temp <= 30, "Suitable", "Unsuitable")) %>%
     mutate(Suitable = sum(Thresh == "Suitable"), Unsuitable = sum(Thresh == "Unsuitable")) %>%
     select(Node, Suitable, Unsuitable) %>%
     mutate(Metric = "MinTemp") %>%

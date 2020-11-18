@@ -1,0 +1,18 @@
+,Cladophora Adult,,,SAS Adult,,,SAS Juvenile,,,SAS Fry,,,Steelhead Migration,,,Steelhead Smolts,,,Typha Germination,,
+Node,MinTemp,MaxTemp,MeanTemp,MinTemp,MaxTemp,MeanTemp,MinTemp,MaxTemp,MeanTemp,MinTemp,MaxTemp,MeanTemp,MinTemp,MaxTemp,MeanTemp,MinTemp,MaxTemp,MeanTemp,MinTemp,MaxTemp,MeanTemp
+F300,High,Low,High,High,Low,Partial,High,Low,Partial,High,Low,Low,Low,Low,Low,Low,Low,Low,Partial,Low,High
+F319,High,Low,High,High,Low,Partial,High,Low,Partial,High,Low,Low,Low,Low,Low,Low,Low,Low,Partial,Low,High
+F34D,High,Low,High,High,Low,Partial,High,Low,Partial,High,Low,Low,Low,Low,Low,Low,Low,Low,Partial,Low,High
+F37B.Hard,High,High,High,High,Partial,High,High,Partial,High,High,Partial,High,Low,Low,Low,Low,Low,Low,Partial,High,High
+F37B.Soft,High,High,High,High,Partial,High,High,Partial,High,High,Partial,High,Low,Low,Low,Low,Low,Low,Partial,High,High
+F45B,Partial,High,High,Partial,Partial,High,High,Partial,High,High,Low,High,Low,Low,Low,Low,Low,Low,Low,High,Partial
+F57C,High,Low,High,High,Low,Partial,High,Low,Partial,High,Low,Partial,Low,Low,Low,Low,Low,Low,Low,Low,High
+GLEN,High,Low,High,High,Low,Partial,High,Low,Partial,High,Low,Partial,Low,Low,Low,Low,Low,Low,Low,Low,High
+LA202,High,Partial,High,Partial,Partial,Partial,Partial,Low,Partial,Low,Low,Low,Low,Low,Low,Low,Low,Low,High,Partial,High
+LA11,High,Low,High,High,Low,Partial,High,Low,Partial,High,Low,Partial,Low,Low,Low,Low,Low,Low,Low,Low,High
+LA13,High,Low,High,High,Low,Partial,High,Low,Partial,High,Low,Partial,Low,Low,Low,Low,Low,Low,Low,Low,High
+LA14,High,Low,High,High,Low,Partial,High,Low,Partial,High,Low,Partial,Low,Low,Low,Low,Low,Low,Low,Low,High
+LA2,High,Low,High,High,Low,Partial,High,Low,Partial,High,Low,Low,Low,Low,Low,Low,Low,Low,Partial,Low,High
+LA20,High,High,High,High,Partial,Partial,Partial,Partial,Partial,Partial,Low,Partial,Low,Low,Low,Low,Low,Low,High,High,High
+LA3,High,Low,High,High,Low,Partial,High,Low,Partial,High,Low,Low,Low,Low,Low,Low,Low,Low,Partial,Low,High
+LA8,High,Low,High,High,Low,Partial,Partial,Low,Partial,High,Low,Low,Low,Low,Low,Low,Low,Low,High,Low,High

@@ -29,9 +29,6 @@ for(n in 1: length(tp)) {
   TempData <- read.csv(file=paste("input_data/LAR_WaterTemperature/", tp[n], sep=""))
   TempData
   
-  ### species data
-  fitdata <- read.csv("output_data/adult_temp_prob_curve_data.csv")
-  
   ## predict 
   # all_data <- hyd_dep %>%
   #   mutate(prob_fit = predict(clad_depth_mod, newdata = hyd_dep, type="response")) %>%
@@ -39,7 +36,7 @@ for(n in 1: length(tp)) {
   # 
   
   all_data_max <- TempData %>%
-    mutate(Thresh = ifelse(Mean_Temp >= 20 & Mean_Temp <= 30, "Suitable", "Unsuitable")) %>%
+    mutate(Thresh = ifelse(Max_Temp >= 20 & Max_Temp <= 30, "Suitable", "Unsuitable")) %>%
     mutate(Suitable = sum(Thresh == "Suitable"), Unsuitable = sum(Thresh == "Unsuitable")) %>%
     select(Node, Suitable, Unsuitable) %>%
     mutate(Metric = "MaxTemp") %>%
@@ -48,7 +45,7 @@ for(n in 1: length(tp)) {
   
   all_data_max_mean <- TempData %>%
     # group_by(variable) %>%
-    mutate(Thresh = ifelse(Mean_Temp >= 20 & Mean_Temp <= 30, "Suitable", "Unsuitable")) %>%
+    mutate(Thresh = ifelse(Mean_Max_Temp >= 20 & Mean_Max_Temp <= 30, "Suitable", "Unsuitable")) %>%
     mutate(Suitable = sum(Thresh == "Suitable"), Unsuitable = sum(Thresh == "Unsuitable")) %>%
     select(Node, Suitable, Unsuitable) %>%
     mutate(Metric = "MeanMaxTemp") %>%
@@ -56,7 +53,7 @@ for(n in 1: length(tp)) {
   
   all_data_min <- TempData %>%
     # group_by(variable) %>%
-    mutate(Thresh = ifelse(Mean_Temp >= 20 & Mean_Temp <= 30, "Suitable", "Unsuitable")) %>%
+    mutate(Thresh = ifelse(Min_Temp >= 20 & Min_Temp <= 30, "Suitable", "Unsuitable")) %>%
     mutate(Suitable = sum(Thresh == "Suitable"), Unsuitable = sum(Thresh == "Unsuitable")) %>%
     select(Node, Suitable, Unsuitable) %>%
     mutate(Metric = "MinTemp") %>%

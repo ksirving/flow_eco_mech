@@ -2,8 +2,8 @@
 
 library(tidyverse)
 library(tidyr)
-
-setwd("output_data")
+getwd()
+setwd("/Users/katieirving/Documents/git/flow_eco_mech/output_data")
 tp <- list.files(pattern="T1")
 tp
 
@@ -48,7 +48,7 @@ for(p in 1: length(probs)) {
 
 # SASJuvMean <- SASJuvMean %>%
 #   mutate(Species = "SAS", LifeStage = "Juvenile")
-
+SASJuvMean
 
 write.csv(SASJuvMean, "/Users/katieirving/Documents/git/flow_eco_mech/results/S2_SAS_Juvenile_MeanTemp_suitability.csv")
 SASJuv
@@ -85,8 +85,8 @@ for(p in 1: length(probs)) {
 # SASJuvMean <- SASJuvMean %>%
 #   mutate(Species = "SAS", LifeStage = "Juvenile")
 
-
-write.csv(SASJuvMean, "/Users/katieirving/Documents/git/flow_eco_mech/results/S2_SAS_Juvenile_MaxTemp_suitability.csv")
+SASJuvMax
+write.csv(SASJuvMax, "/Users/katieirving/Documents/git/flow_eco_mech/results/S2_SAS_Juvenile_MaxTemp_suitability.csv")
 
 SASJuvMin <- SASJuv %>% 
   filter(Metric == "MinTemp") %>%
@@ -120,7 +120,7 @@ for(p in 1: length(probs)) {
 # SASJuvMean <- SASJuvMean %>%
 #   mutate(Species = "SAS", LifeStage = "Juvenile")
 
-
+SASJuvMin
 write.csv(SASJuvMin, "/Users/katieirving/Documents/git/flow_eco_mech/results/S2_SAS_Juvenile_MinTemp_suitability.csv")
 
 
@@ -157,7 +157,7 @@ for(p in 1: length(probs)) {
 
 # SASAdMean <- SASAdMean %>%
 #   mutate(Species = "SAS", LifeStage = "Adenile")
-
+SASAdMean
 
 write.csv(SASAdMean, "/Users/katieirving/Documents/git/flow_eco_mech/results/S2_SAS_Adult_MeanTemp_suitability.csv")
 SASAd
@@ -193,9 +193,9 @@ for(p in 1: length(probs)) {
 
 # SASAdMean <- SASAdMean %>%
 #   mutate(Species = "SAS", LifeStage = "Adenile")
+SASAdMax
 
-
-write.csv(SASAdMean, "/Users/katieirving/Documents/git/flow_eco_mech/results/S2_SAS_Adult_MaxTemp_suitability.csv")
+write.csv(SASAdMax, "/Users/katieirving/Documents/git/flow_eco_mech/results/S2_SAS_Adult_MaxTemp_suitability.csv")
 
 SASAdMin <- SASAd %>% 
   filter(Metric == "MinTemp") %>%
@@ -228,7 +228,7 @@ for(p in 1: length(probs)) {
 
 # SASAdMean <- SASAdMean %>%
 #   mutate(Species = "SAS", LifeStage = "Adenile")
-
+SASAdMin
 
 write.csv(SASAdMin, "/Users/katieirving/Documents/git/flow_eco_mech/results/S2_SAS_Adult_MinTemp_suitability.csv")
 
@@ -236,7 +236,7 @@ write.csv(SASAdMin, "/Users/katieirving/Documents/git/flow_eco_mech/results/S2_S
 # Others (all with thresholds) ---------------------------------------------------------------------
 tp
 tp <- tp[-c(2,4)]
-s = 1
+s = 2
 NoWeeks <- SASJuv #
 NoWeeks$Node_Metric <- paste(NoWeeks$Node, "_", NoWeeks$Metric, sep="")
 
@@ -279,7 +279,7 @@ for(s in 1:length(tp)) {
     
   }
   
-  
+  SASAdMean
   write.csv(SASAdMean, paste("/Users/katieirving/Documents/git/flow_eco_mech/results/S2_", Species, LifeStage, "_MeanTemp_suitability.csv", sep=""))
   
   
@@ -309,6 +309,7 @@ for(s in 1:length(tp)) {
     }
     
   }
+  SASAdMax
   
   write.csv(SASAdMax, paste("/Users/katieirving/Documents/git/flow_eco_mech/results/S2_", Species, LifeStage, "_MaxTemp_suitability.csv", sep=""))
   
@@ -339,7 +340,7 @@ for(s in 1:length(tp)) {
     
   }
   
-  write.csv(SASAdMin, paste("/Users/katieirving/Documents/git/flow_eco_mech/results/S2_", Species, LifeStage, "_MinTemp_suitability.csv", sep=""))
+  write.csv(SASAdMin, paste("/Users/katieirving/Documents/git/flow_eco_mech/results/S2_", Species, "_",LifeStage, "_MinTemp_suitability.csv", sep=""))
   
   
   
@@ -348,7 +349,7 @@ for(s in 1:length(tp)) {
 
 
 #  calculate overall suitbaility ------------------------------------------
-
+getwd()
 
 
 
