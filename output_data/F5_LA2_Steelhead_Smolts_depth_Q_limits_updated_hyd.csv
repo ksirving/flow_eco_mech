@@ -1,0 +1,5 @@
+"","V1","V2","V3","Type","Species","Life_Stage","Hydraulic","Node"
+"1",2099.29062385861,62.577335357666,1204.75595152294,"Q_limit1","Steelhead","Smolts","Depth","LA2"
+"2",2099.29062385861,62.577335357666,1204.75595152294,"Q_limit2","Steelhead","Smolts","Depth","LA2"
+"3",12,12,12,"Hydraulic_limit1","Steelhead","Smolts","Depth","LA2"
+"4",12,12,12,"Hydraulic_limit2","Steelhead","Smolts","Depth","LA2"

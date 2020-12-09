@@ -1,0 +1,5 @@
+"","V1","V2","V3","Type","Species","Life_Stage","Hydraulic","Node"
+"1",7802.6004965111,0.451428117796126,7488.56438836457,"Q_limit1","SAS","Fry","Depth","LA202"
+"2",8152.94346703512,4.72514703172307,7517.05238724005,"Q_limit2","SAS","Fry","Depth","LA202"
+"3",3,3,3,"Hydraulic_limit1","SAS","Fry","Depth","LA202"
+"4",10,10,10,"Hydraulic_limit2","SAS","Fry","Depth","LA202"
