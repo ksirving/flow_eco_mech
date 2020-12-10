@@ -1,0 +1,5 @@
+"","V1","V2","V3","Type","Species","Life_Stage","Hydraulic","Node"
+"1",545.706285368723,25.233164765791,545.706285368723,"Q_limit1","Steelhead","Migration_Prolonged","Depth","F300"
+"2",545.706285368723,25.233164765791,545.706285368723,"Q_limit2","Steelhead","Migration_Prolonged","Depth","F300"
+"3",23,23,23,"Hydraulic_limit1","Steelhead","Migration_Prolonged","Depth","F300"
+"4",23,23,23,"Hydraulic_limit2","Steelhead","Migration_Prolonged","Depth","F300"

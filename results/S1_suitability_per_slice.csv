@@ -629,132 +629,132 @@
 "628","Annual","ROB","LA8","SAS","Adult","Velocity","Soft","Low",98.9041095890411
 "629","Annual","ROB","LA8","SAS","Adult","Velocity","Soft","Medium",98.9041095890411
 "630","Annual","ROB","LA8","SAS","Adult","Velocity","Soft","High",98.9041095890411
-"631","summer","LOB","11101250","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",0.226449275362319
-"632","summer","LOB","11101250","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",0.226449275362319
-"633","summer","LOB","11101250","Santa Ana Sucker","Juvenile","Velocity","Soft","High",0.226449275362319
-"634","summer","MC","11101250","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",26.2514156285391
-"635","summer","MC","11101250","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",26.2514156285391
-"636","summer","MC","11101250","Santa Ana Sucker","Juvenile","Velocity","Soft","High",26.2514156285391
-"637","summer","ROB","11101250","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",0.226449275362319
-"638","summer","ROB","11101250","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",0.226449275362319
-"639","summer","ROB","11101250","Santa Ana Sucker","Juvenile","Velocity","Soft","High",0.226449275362319
-"640","summer","LOB","F300","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",2.40090600226501
-"641","summer","LOB","F300","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",2.40090600226501
-"642","summer","LOB","F300","Santa Ana Sucker","Juvenile","Velocity","Soft","High",2.40090600226501
-"643","summer","MC","F300","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",99.6376811594203
-"644","summer","MC","F300","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",99.6376811594203
-"645","summer","MC","F300","Santa Ana Sucker","Juvenile","Velocity","Soft","High",99.6376811594203
-"646","summer","ROB","F300","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",2.40090600226501
-"647","summer","ROB","F300","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",2.40090600226501
-"648","summer","ROB","F300","Santa Ana Sucker","Juvenile","Velocity","Soft","High",2.40090600226501
-"649","summer","MC","F319","Santa Ana Sucker","Juvenile","Velocity","Concrete","Low",99.9773550724638
-"650","summer","MC","F319","Santa Ana Sucker","Juvenile","Velocity","Concrete","Medium",99.9773550724638
-"651","summer","MC","F319","Santa Ana Sucker","Juvenile","Velocity","Concrete","High",99.9773550724638
-"652","summer","MC","F34D","Santa Ana Sucker","Juvenile","Velocity","Concrete","Low",99.9773550724638
-"653","summer","MC","F34D","Santa Ana Sucker","Juvenile","Velocity","Concrete","Medium",99.9773550724638
-"654","summer","MC","F34D","Santa Ana Sucker","Juvenile","Velocity","Concrete","High",99.9773550724638
-"655","summer","MC","F37BHigh","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",2.31030577576444
-"656","summer","MC","F37BHigh","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",2.31030577576444
-"657","summer","MC","F37BHigh","Santa Ana Sucker","Juvenile","Velocity","Soft","High",2.31030577576444
-"658","summer","LOB","F37BLow","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",6.63646659116648
-"659","summer","LOB","F37BLow","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",6.63646659116648
-"660","summer","LOB","F37BLow","Santa Ana Sucker","Juvenile","Velocity","Soft","High",6.63646659116648
-"661","summer","MC","F37BLow","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",11.9818799546999
-"662","summer","MC","F37BLow","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",11.9818799546999
-"663","summer","MC","F37BLow","Santa Ana Sucker","Juvenile","Velocity","Soft","High",11.9818799546999
-"664","summer","ROB","F37BLow","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",4.73386183465459
-"665","summer","ROB","F37BLow","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",4.73386183465459
-"666","summer","ROB","F37BLow","Santa Ana Sucker","Juvenile","Velocity","Soft","High",4.73386183465459
-"667","summer","MC","F45B","Santa Ana Sucker","Juvenile","Velocity","Concrete","Low",29.8233695652174
-"668","summer","MC","F45B","Santa Ana Sucker","Juvenile","Velocity","Concrete","Medium",29.8233695652174
-"669","summer","MC","F45B","Santa Ana Sucker","Juvenile","Velocity","Concrete","High",29.8233695652174
-"670","summer","LOB","F57C","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",99.9320652173913
-"671","summer","LOB","F57C","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",99.9320652173913
-"672","summer","LOB","F57C","Santa Ana Sucker","Juvenile","Velocity","Soft","High",99.9320652173913
-"673","summer","MC","F57C","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",100
-"674","summer","MC","F57C","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",100
-"675","summer","MC","F57C","Santa Ana Sucker","Juvenile","Velocity","Soft","High",100
-"676","summer","ROB","F57C","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",1.15515288788222
-"677","summer","ROB","F57C","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",1.15515288788222
-"678","summer","ROB","F57C","Santa Ana Sucker","Juvenile","Velocity","Soft","High",1.15515288788222
-"679","summer","LOB","GLEN","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",100
-"680","summer","LOB","GLEN","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",100
-"681","summer","LOB","GLEN","Santa Ana Sucker","Juvenile","Velocity","Soft","High",100
-"682","summer","MC","GLEN","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",99.9547101449275
-"683","summer","MC","GLEN","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",99.9547101449275
-"684","summer","MC","GLEN","Santa Ana Sucker","Juvenile","Velocity","Soft","High",99.9547101449275
-"685","summer","ROB","GLEN","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",100
-"686","summer","ROB","GLEN","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",100
-"687","summer","ROB","GLEN","Santa Ana Sucker","Juvenile","Velocity","Soft","High",100
-"688","summer","MC","LA1","Santa Ana Sucker","Juvenile","Velocity","Concrete","Low",100
-"689","summer","MC","LA1","Santa Ana Sucker","Juvenile","Velocity","Concrete","Medium",100
-"690","summer","MC","LA1","Santa Ana Sucker","Juvenile","Velocity","Concrete","High",100
-"691","summer","LOB","LA11","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",5.02831257078143
-"692","summer","LOB","LA11","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",5.02831257078143
-"693","summer","LOB","LA11","Santa Ana Sucker","Juvenile","Velocity","Soft","High",5.02831257078143
-"694","summer","MC","LA11","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",100
-"695","summer","MC","LA11","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",100
-"696","summer","MC","LA11","Santa Ana Sucker","Juvenile","Velocity","Soft","High",100
-"697","summer","ROB","LA11","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",2.71800679501699
-"698","summer","ROB","LA11","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",2.71800679501699
-"699","summer","ROB","LA11","Santa Ana Sucker","Juvenile","Velocity","Soft","High",2.71800679501699
-"700","summer","MC","LA13","Santa Ana Sucker","Juvenile","Velocity","Concrete","Low",100
-"701","summer","MC","LA13","Santa Ana Sucker","Juvenile","Velocity","Concrete","Medium",100
-"702","summer","MC","LA13","Santa Ana Sucker","Juvenile","Velocity","Concrete","High",100
-"703","summer","LOB","LA14","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",100
-"704","summer","LOB","LA14","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",100
-"705","summer","LOB","LA14","Santa Ana Sucker","Juvenile","Velocity","Soft","High",100
-"706","summer","MC","LA14","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",100
-"707","summer","MC","LA14","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",100
-"708","summer","MC","LA14","Santa Ana Sucker","Juvenile","Velocity","Soft","High",100
-"709","summer","ROB","LA14","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",100
-"710","summer","ROB","LA14","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",100
-"711","summer","ROB","LA14","Santa Ana Sucker","Juvenile","Velocity","Soft","High",100
-"712","summer","LOB","LA2","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",99.7961494903737
-"713","summer","LOB","LA2","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",99.7961494903737
-"714","summer","LOB","LA2","Santa Ana Sucker","Juvenile","Velocity","Soft","High",99.7961494903737
-"715","summer","MC","LA2","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",100
-"716","summer","MC","LA2","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",100
-"717","summer","MC","LA2","Santa Ana Sucker","Juvenile","Velocity","Soft","High",100
-"718","summer","ROB","LA2","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",0.747451868629672
-"719","summer","ROB","LA2","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",0.747451868629672
-"720","summer","ROB","LA2","Santa Ana Sucker","Juvenile","Velocity","Soft","High",0.747451868629672
-"721","summer","LOB","LA20","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",1.22310305775764
-"722","summer","LOB","LA20","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",1.22310305775764
-"723","summer","LOB","LA20","Santa Ana Sucker","Juvenile","Velocity","Soft","High",1.22310305775764
-"724","summer","MC","LA20","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",98.3469202898551
-"725","summer","MC","LA20","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",98.3469202898551
-"726","summer","MC","LA20","Santa Ana Sucker","Juvenile","Velocity","Soft","High",98.3469202898551
-"727","summer","ROB","LA20","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",1.22310305775764
-"728","summer","ROB","LA20","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",1.22310305775764
-"729","summer","ROB","LA20","Santa Ana Sucker","Juvenile","Velocity","Soft","High",1.22310305775764
-"730","summer","LOB","LA202","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",0.271800679501699
-"731","summer","LOB","LA202","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",0.271800679501699
-"732","summer","LOB","LA202","Santa Ana Sucker","Juvenile","Velocity","Soft","High",0.271800679501699
-"733","summer","MC","LA202","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",99.9094202898551
-"734","summer","MC","LA202","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",99.9094202898551
-"735","summer","MC","LA202","Santa Ana Sucker","Juvenile","Velocity","Soft","High",99.9094202898551
-"736","summer","ROB","LA202","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",0.158514492753623
-"737","summer","ROB","LA202","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",0.158514492753623
-"738","summer","ROB","LA202","Santa Ana Sucker","Juvenile","Velocity","Soft","High",0.158514492753623
-"739","summer","LOB","LA3","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",99.9773550724638
-"740","summer","LOB","LA3","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",99.9773550724638
-"741","summer","LOB","LA3","Santa Ana Sucker","Juvenile","Velocity","Soft","High",99.9773550724638
-"742","summer","MC","LA3","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",99.7282608695652
-"743","summer","MC","LA3","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",99.7282608695652
-"744","summer","MC","LA3","Santa Ana Sucker","Juvenile","Velocity","Soft","High",99.7282608695652
-"745","summer","ROB","LA3","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",99.9773550724638
-"746","summer","ROB","LA3","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",99.9773550724638
-"747","summer","ROB","LA3","Santa Ana Sucker","Juvenile","Velocity","Soft","High",99.9773550724638
-"748","summer","LOB","LA8","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",99.9773550724638
-"749","summer","LOB","LA8","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",99.9773550724638
-"750","summer","LOB","LA8","Santa Ana Sucker","Juvenile","Velocity","Soft","High",99.9773550724638
-"751","summer","MC","LA8","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",31.4990942028986
-"752","summer","MC","LA8","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",31.4990942028986
-"753","summer","MC","LA8","Santa Ana Sucker","Juvenile","Velocity","Soft","High",31.4990942028986
-"754","summer","ROB","LA8","Santa Ana Sucker","Juvenile","Velocity","Soft","Low",99.9773550724638
-"755","summer","ROB","LA8","Santa Ana Sucker","Juvenile","Velocity","Soft","Medium",99.9773550724638
-"756","summer","ROB","LA8","Santa Ana Sucker","Juvenile","Velocity","Soft","High",99.9773550724638
+"631","summer","LOB","11101250","SAS","Juvenile","Velocity","Soft","Low",0.226449275362319
+"632","summer","LOB","11101250","SAS","Juvenile","Velocity","Soft","Medium",0.226449275362319
+"633","summer","LOB","11101250","SAS","Juvenile","Velocity","Soft","High",0.226449275362319
+"634","summer","MC","11101250","SAS","Juvenile","Velocity","Soft","Low",26.2514156285391
+"635","summer","MC","11101250","SAS","Juvenile","Velocity","Soft","Medium",26.2514156285391
+"636","summer","MC","11101250","SAS","Juvenile","Velocity","Soft","High",26.2514156285391
+"637","summer","ROB","11101250","SAS","Juvenile","Velocity","Soft","Low",0.226449275362319
+"638","summer","ROB","11101250","SAS","Juvenile","Velocity","Soft","Medium",0.226449275362319
+"639","summer","ROB","11101250","SAS","Juvenile","Velocity","Soft","High",0.226449275362319
+"640","summer","LOB","F300","SAS","Juvenile","Velocity","Soft","Low",2.40090600226501
+"641","summer","LOB","F300","SAS","Juvenile","Velocity","Soft","Medium",2.40090600226501
+"642","summer","LOB","F300","SAS","Juvenile","Velocity","Soft","High",2.40090600226501
+"643","summer","MC","F300","SAS","Juvenile","Velocity","Soft","Low",99.6376811594203
+"644","summer","MC","F300","SAS","Juvenile","Velocity","Soft","Medium",99.6376811594203
+"645","summer","MC","F300","SAS","Juvenile","Velocity","Soft","High",99.6376811594203
+"646","summer","ROB","F300","SAS","Juvenile","Velocity","Soft","Low",2.40090600226501
+"647","summer","ROB","F300","SAS","Juvenile","Velocity","Soft","Medium",2.40090600226501
+"648","summer","ROB","F300","SAS","Juvenile","Velocity","Soft","High",2.40090600226501
+"649","summer","MC","F319","SAS","Juvenile","Velocity","Concrete","Low",99.9773550724638
+"650","summer","MC","F319","SAS","Juvenile","Velocity","Concrete","Medium",99.9773550724638
+"651","summer","MC","F319","SAS","Juvenile","Velocity","Concrete","High",99.9773550724638
+"652","summer","MC","F34D","SAS","Juvenile","Velocity","Concrete","Low",99.9773550724638
+"653","summer","MC","F34D","SAS","Juvenile","Velocity","Concrete","Medium",99.9773550724638
+"654","summer","MC","F34D","SAS","Juvenile","Velocity","Concrete","High",99.9773550724638
+"655","summer","MC","F37BHigh","SAS","Juvenile","Velocity","Soft","Low",2.31030577576444
+"656","summer","MC","F37BHigh","SAS","Juvenile","Velocity","Soft","Medium",2.31030577576444
+"657","summer","MC","F37BHigh","SAS","Juvenile","Velocity","Soft","High",2.31030577576444
+"658","summer","LOB","F37BLow","SAS","Juvenile","Velocity","Soft","Low",6.63646659116648
+"659","summer","LOB","F37BLow","SAS","Juvenile","Velocity","Soft","Medium",6.63646659116648
+"660","summer","LOB","F37BLow","SAS","Juvenile","Velocity","Soft","High",6.63646659116648
+"661","summer","MC","F37BLow","SAS","Juvenile","Velocity","Soft","Low",11.9818799546999
+"662","summer","MC","F37BLow","SAS","Juvenile","Velocity","Soft","Medium",11.9818799546999
+"663","summer","MC","F37BLow","SAS","Juvenile","Velocity","Soft","High",11.9818799546999
+"664","summer","ROB","F37BLow","SAS","Juvenile","Velocity","Soft","Low",4.73386183465459
+"665","summer","ROB","F37BLow","SAS","Juvenile","Velocity","Soft","Medium",4.73386183465459
+"666","summer","ROB","F37BLow","SAS","Juvenile","Velocity","Soft","High",4.73386183465459
+"667","summer","MC","F45B","SAS","Juvenile","Velocity","Concrete","Low",29.8233695652174
+"668","summer","MC","F45B","SAS","Juvenile","Velocity","Concrete","Medium",29.8233695652174
+"669","summer","MC","F45B","SAS","Juvenile","Velocity","Concrete","High",29.8233695652174
+"670","summer","LOB","F57C","SAS","Juvenile","Velocity","Soft","Low",99.9320652173913
+"671","summer","LOB","F57C","SAS","Juvenile","Velocity","Soft","Medium",99.9320652173913
+"672","summer","LOB","F57C","SAS","Juvenile","Velocity","Soft","High",99.9320652173913
+"673","summer","MC","F57C","SAS","Juvenile","Velocity","Soft","Low",100
+"674","summer","MC","F57C","SAS","Juvenile","Velocity","Soft","Medium",100
+"675","summer","MC","F57C","SAS","Juvenile","Velocity","Soft","High",100
+"676","summer","ROB","F57C","SAS","Juvenile","Velocity","Soft","Low",1.15515288788222
+"677","summer","ROB","F57C","SAS","Juvenile","Velocity","Soft","Medium",1.15515288788222
+"678","summer","ROB","F57C","SAS","Juvenile","Velocity","Soft","High",1.15515288788222
+"679","summer","LOB","GLEN","SAS","Juvenile","Velocity","Soft","Low",100
+"680","summer","LOB","GLEN","SAS","Juvenile","Velocity","Soft","Medium",100
+"681","summer","LOB","GLEN","SAS","Juvenile","Velocity","Soft","High",100
+"682","summer","MC","GLEN","SAS","Juvenile","Velocity","Soft","Low",99.9547101449275
+"683","summer","MC","GLEN","SAS","Juvenile","Velocity","Soft","Medium",99.9547101449275
+"684","summer","MC","GLEN","SAS","Juvenile","Velocity","Soft","High",99.9547101449275
+"685","summer","ROB","GLEN","SAS","Juvenile","Velocity","Soft","Low",100
+"686","summer","ROB","GLEN","SAS","Juvenile","Velocity","Soft","Medium",100
+"687","summer","ROB","GLEN","SAS","Juvenile","Velocity","Soft","High",100
+"688","summer","MC","LA1","SAS","Juvenile","Velocity","Concrete","Low",100
+"689","summer","MC","LA1","SAS","Juvenile","Velocity","Concrete","Medium",100
+"690","summer","MC","LA1","SAS","Juvenile","Velocity","Concrete","High",100
+"691","summer","LOB","LA11","SAS","Juvenile","Velocity","Soft","Low",5.02831257078143
+"692","summer","LOB","LA11","SAS","Juvenile","Velocity","Soft","Medium",5.02831257078143
+"693","summer","LOB","LA11","SAS","Juvenile","Velocity","Soft","High",5.02831257078143
+"694","summer","MC","LA11","SAS","Juvenile","Velocity","Soft","Low",100
+"695","summer","MC","LA11","SAS","Juvenile","Velocity","Soft","Medium",100
+"696","summer","MC","LA11","SAS","Juvenile","Velocity","Soft","High",100
+"697","summer","ROB","LA11","SAS","Juvenile","Velocity","Soft","Low",2.71800679501699
+"698","summer","ROB","LA11","SAS","Juvenile","Velocity","Soft","Medium",2.71800679501699
+"699","summer","ROB","LA11","SAS","Juvenile","Velocity","Soft","High",2.71800679501699
+"700","summer","MC","LA13","SAS","Juvenile","Velocity","Concrete","Low",100
+"701","summer","MC","LA13","SAS","Juvenile","Velocity","Concrete","Medium",100
+"702","summer","MC","LA13","SAS","Juvenile","Velocity","Concrete","High",100
+"703","summer","LOB","LA14","SAS","Juvenile","Velocity","Soft","Low",100
+"704","summer","LOB","LA14","SAS","Juvenile","Velocity","Soft","Medium",100
+"705","summer","LOB","LA14","SAS","Juvenile","Velocity","Soft","High",100
+"706","summer","MC","LA14","SAS","Juvenile","Velocity","Soft","Low",100
+"707","summer","MC","LA14","SAS","Juvenile","Velocity","Soft","Medium",100
+"708","summer","MC","LA14","SAS","Juvenile","Velocity","Soft","High",100
+"709","summer","ROB","LA14","SAS","Juvenile","Velocity","Soft","Low",100
+"710","summer","ROB","LA14","SAS","Juvenile","Velocity","Soft","Medium",100
+"711","summer","ROB","LA14","SAS","Juvenile","Velocity","Soft","High",100
+"712","summer","LOB","LA2","SAS","Juvenile","Velocity","Soft","Low",99.7961494903737
+"713","summer","LOB","LA2","SAS","Juvenile","Velocity","Soft","Medium",99.7961494903737
+"714","summer","LOB","LA2","SAS","Juvenile","Velocity","Soft","High",99.7961494903737
+"715","summer","MC","LA2","SAS","Juvenile","Velocity","Soft","Low",100
+"716","summer","MC","LA2","SAS","Juvenile","Velocity","Soft","Medium",100
+"717","summer","MC","LA2","SAS","Juvenile","Velocity","Soft","High",100
+"718","summer","ROB","LA2","SAS","Juvenile","Velocity","Soft","Low",0.747451868629672
+"719","summer","ROB","LA2","SAS","Juvenile","Velocity","Soft","Medium",0.747451868629672
+"720","summer","ROB","LA2","SAS","Juvenile","Velocity","Soft","High",0.747451868629672
+"721","summer","LOB","LA20","SAS","Juvenile","Velocity","Soft","Low",1.22310305775764
+"722","summer","LOB","LA20","SAS","Juvenile","Velocity","Soft","Medium",1.22310305775764
+"723","summer","LOB","LA20","SAS","Juvenile","Velocity","Soft","High",1.22310305775764
+"724","summer","MC","LA20","SAS","Juvenile","Velocity","Soft","Low",98.3469202898551
+"725","summer","MC","LA20","SAS","Juvenile","Velocity","Soft","Medium",98.3469202898551
+"726","summer","MC","LA20","SAS","Juvenile","Velocity","Soft","High",98.3469202898551
+"727","summer","ROB","LA20","SAS","Juvenile","Velocity","Soft","Low",1.22310305775764
+"728","summer","ROB","LA20","SAS","Juvenile","Velocity","Soft","Medium",1.22310305775764
+"729","summer","ROB","LA20","SAS","Juvenile","Velocity","Soft","High",1.22310305775764
+"730","summer","LOB","LA202","SAS","Juvenile","Velocity","Soft","Low",0.271800679501699
+"731","summer","LOB","LA202","SAS","Juvenile","Velocity","Soft","Medium",0.271800679501699
+"732","summer","LOB","LA202","SAS","Juvenile","Velocity","Soft","High",0.271800679501699
+"733","summer","MC","LA202","SAS","Juvenile","Velocity","Soft","Low",99.9094202898551
+"734","summer","MC","LA202","SAS","Juvenile","Velocity","Soft","Medium",99.9094202898551
+"735","summer","MC","LA202","SAS","Juvenile","Velocity","Soft","High",99.9094202898551
+"736","summer","ROB","LA202","SAS","Juvenile","Velocity","Soft","Low",0.158514492753623
+"737","summer","ROB","LA202","SAS","Juvenile","Velocity","Soft","Medium",0.158514492753623
+"738","summer","ROB","LA202","SAS","Juvenile","Velocity","Soft","High",0.158514492753623
+"739","summer","LOB","LA3","SAS","Juvenile","Velocity","Soft","Low",99.9773550724638
+"740","summer","LOB","LA3","SAS","Juvenile","Velocity","Soft","Medium",99.9773550724638
+"741","summer","LOB","LA3","SAS","Juvenile","Velocity","Soft","High",99.9773550724638
+"742","summer","MC","LA3","SAS","Juvenile","Velocity","Soft","Low",99.7282608695652
+"743","summer","MC","LA3","SAS","Juvenile","Velocity","Soft","Medium",99.7282608695652
+"744","summer","MC","LA3","SAS","Juvenile","Velocity","Soft","High",99.7282608695652
+"745","summer","ROB","LA3","SAS","Juvenile","Velocity","Soft","Low",99.9773550724638
+"746","summer","ROB","LA3","SAS","Juvenile","Velocity","Soft","Medium",99.9773550724638
+"747","summer","ROB","LA3","SAS","Juvenile","Velocity","Soft","High",99.9773550724638
+"748","summer","LOB","LA8","SAS","Juvenile","Velocity","Soft","Low",99.9773550724638
+"749","summer","LOB","LA8","SAS","Juvenile","Velocity","Soft","Medium",99.9773550724638
+"750","summer","LOB","LA8","SAS","Juvenile","Velocity","Soft","High",99.9773550724638
+"751","summer","MC","LA8","SAS","Juvenile","Velocity","Soft","Low",31.4990942028986
+"752","summer","MC","LA8","SAS","Juvenile","Velocity","Soft","Medium",31.4990942028986
+"753","summer","MC","LA8","SAS","Juvenile","Velocity","Soft","High",31.4990942028986
+"754","summer","ROB","LA8","SAS","Juvenile","Velocity","Soft","Low",99.9773550724638
+"755","summer","ROB","LA8","SAS","Juvenile","Velocity","Soft","Medium",99.9773550724638
+"756","summer","ROB","LA8","SAS","Juvenile","Velocity","Soft","High",99.9773550724638
 "757","Annual","LOB","11101250","Typha","Adult","Depth","Soft","Low",29.2841648590022
 "758","Annual","LOB","11101250","Typha","Adult","Depth","Soft","Medium",29.2841648590022
 "759","Annual","LOB","11101250","Typha","Adult","Depth","Soft","High",29.2841648590022
@@ -1511,213 +1511,297 @@
 "1510","critical","LOB","LA8","SAS","Fry","Velocity","Soft","Seasonal",0
 "1511","critical","MC","LA8","SAS","Fry","Velocity","Soft","Seasonal",0
 "1512","critical","ROB","LA8","SAS","Fry","Velocity","Soft","Seasonal",0
-"1513","critical","LOB","11101250","Steelhead","Migration","Depth","Soft","Seasonal",19.437893081761
-"1514","critical","MC","11101250","Steelhead","Migration","Depth","Soft","Seasonal",100
-"1515","critical","ROB","11101250","Steelhead","Migration","Depth","Soft","Seasonal",26.6312893081761
-"1516","critical","LOB","F300","Steelhead","Migration","Depth","Soft","Seasonal",8.41194968553459
-"1517","critical","MC","F300","Steelhead","Migration","Depth","Soft","Seasonal",100
-"1518","critical","ROB","F300","Steelhead","Migration","Depth","Soft","Seasonal",8.41194968553459
-"1519","critical","MC","F319","Steelhead","Migration","Depth","Concrete","Seasonal",100
-"1520","critical","MC","F34D","Steelhead","Migration","Depth","Concrete","Seasonal",100
-"1521","critical","MC","F37BHigh","Steelhead","Migration","Depth","Soft","Seasonal",6.21069182389937
-"1522","critical","LOB","F37BLow","Steelhead","Migration","Depth","Soft","Seasonal",2.59433962264151
-"1523","critical","MC","F37BLow","Steelhead","Migration","Depth","Soft","Seasonal",3.85220125786164
-"1524","critical","ROB","F37BLow","Steelhead","Migration","Depth","Soft","Seasonal",4.55974842767296
-"1525","critical","MC","F45B","Steelhead","Migration","Depth","Concrete","Seasonal",3.10534591194969
-"1526","critical","LOB","F57C","Steelhead","Migration","Depth","Soft","Seasonal",100
-"1527","critical","MC","F57C","Steelhead","Migration","Depth","Soft","Seasonal",100
-"1528","critical","ROB","F57C","Steelhead","Migration","Depth","Soft","Seasonal",5.38522012578616
-"1529","critical","LOB","GLEN","Steelhead","Migration","Depth","Soft","Seasonal",100
-"1530","critical","MC","GLEN","Steelhead","Migration","Depth","Soft","Seasonal",10.8687106918239
-"1531","critical","ROB","GLEN","Steelhead","Migration","Depth","Soft","Seasonal",38.5809748427673
-"1532","critical","MC","LA1","Steelhead","Migration","Depth","Concrete","Seasonal",100
-"1533","critical","LOB","LA11","Steelhead","Migration","Depth","Soft","Seasonal",14.0133647798742
-"1534","critical","MC","LA11","Steelhead","Migration","Depth","Soft","Seasonal",100
-"1535","critical","ROB","LA11","Steelhead","Migration","Depth","Soft","Seasonal",6.36792452830189
-"1536","critical","MC","LA13","Steelhead","Migration","Depth","Concrete","Seasonal",5.71933962264151
-"1537","critical","LOB","LA14","Steelhead","Migration","Depth","Soft","Seasonal",17.7083333333333
-"1538","critical","MC","LA14","Steelhead","Migration","Depth","Soft","Seasonal",5.42452830188679
-"1539","critical","ROB","LA14","Steelhead","Migration","Depth","Soft","Seasonal",100
-"1540","critical","LOB","LA2","Steelhead","Migration","Depth","Soft","Seasonal",5.01179245283019
-"1541","critical","MC","LA2","Steelhead","Migration","Depth","Soft","Seasonal",100
-"1542","critical","ROB","LA2","Steelhead","Migration","Depth","Soft","Seasonal",6.80031446540881
-"1543","critical","LOB","LA20","Steelhead","Migration","Depth","Soft","Seasonal",4.79559748427673
-"1544","critical","MC","LA20","Steelhead","Migration","Depth","Soft","Seasonal",71.1674528301887
-"1545","critical","ROB","LA20","Steelhead","Migration","Depth","Soft","Seasonal",4.77594339622642
-"1546","critical","LOB","LA202","Steelhead","Migration","Depth","Soft","Seasonal",0.235849056603774
-"1547","critical","MC","LA202","Steelhead","Migration","Depth","Soft","Seasonal",28.6949685534591
-"1548","critical","ROB","LA202","Steelhead","Migration","Depth","Soft","Seasonal",0.235849056603774
-"1549","critical","LOB","LA3","Steelhead","Migration","Depth","Soft","Seasonal",10.8490566037736
-"1550","critical","MC","LA3","Steelhead","Migration","Depth","Soft","Seasonal",100
-"1551","critical","ROB","LA3","Steelhead","Migration","Depth","Soft","Seasonal",10.8490566037736
-"1552","critical","LOB","LA8","Steelhead","Migration","Depth","Soft","Seasonal",22.5432389937107
-"1553","critical","MC","LA8","Steelhead","Migration","Depth","Soft","Seasonal",100
-"1554","critical","ROB","LA8","Steelhead","Migration","Depth","Soft","Seasonal",22.5432389937107
-"1555","critical","LOB","11101250","Steelhead","Migration","Velocity","Soft","Seasonal",100
-"1556","critical","MC","11101250","Steelhead","Migration","Velocity","Soft","Seasonal",100
-"1557","critical","ROB","11101250","Steelhead","Migration","Velocity","Soft","Seasonal",100
-"1558","critical","LOB","F300","Steelhead","Migration","Velocity","Soft","Seasonal",99.8820754716981
-"1559","critical","MC","F300","Steelhead","Migration","Velocity","Soft","Seasonal",99.5479559748428
-"1560","critical","ROB","F300","Steelhead","Migration","Velocity","Soft","Seasonal",99.8820754716981
-"1561","critical","MC","F319","Steelhead","Migration","Velocity","Concrete","Seasonal",100
-"1562","critical","MC","F34D","Steelhead","Migration","Velocity","Concrete","Seasonal",99.9410377358491
-"1563","critical","MC","F37BHigh","Steelhead","Migration","Velocity","Soft","Seasonal",23.8993710691824
-"1564","critical","LOB","F37BLow","Steelhead","Migration","Velocity","Soft","Seasonal",37.0479559748428
-"1565","critical","MC","F37BLow","Steelhead","Migration","Velocity","Soft","Seasonal",37.0479559748428
-"1566","critical","ROB","F37BLow","Steelhead","Migration","Velocity","Soft","Seasonal",37.0479559748428
-"1567","critical","MC","F45B","Steelhead","Migration","Velocity","Concrete","Seasonal",6.81996855345912
-"1568","critical","LOB","F57C","Steelhead","Migration","Velocity","Soft","Seasonal",100
-"1569","critical","MC","F57C","Steelhead","Migration","Velocity","Soft","Seasonal",100
-"1570","critical","ROB","F57C","Steelhead","Migration","Velocity","Soft","Seasonal",100
-"1571","critical","LOB","GLEN","Steelhead","Migration","Velocity","Soft","Seasonal",100
-"1572","critical","MC","GLEN","Steelhead","Migration","Velocity","Soft","Seasonal",100
-"1573","critical","ROB","GLEN","Steelhead","Migration","Velocity","Soft","Seasonal",100
-"1574","critical","MC","LA1","Steelhead","Migration","Velocity","Concrete","Seasonal",100
-"1575","critical","LOB","LA11","Steelhead","Migration","Velocity","Soft","Seasonal",100
-"1576","critical","MC","LA11","Steelhead","Migration","Velocity","Soft","Seasonal",100
-"1577","critical","ROB","LA11","Steelhead","Migration","Velocity","Soft","Seasonal",100
-"1578","critical","MC","LA13","Steelhead","Migration","Velocity","Concrete","Seasonal",100
-"1579","critical","LOB","LA14","Steelhead","Migration","Velocity","Soft","Seasonal",100
-"1580","critical","MC","LA14","Steelhead","Migration","Velocity","Soft","Seasonal",100
-"1581","critical","ROB","LA14","Steelhead","Migration","Velocity","Soft","Seasonal",100
-"1582","critical","LOB","LA2","Steelhead","Migration","Velocity","Soft","Seasonal",100
-"1583","critical","MC","LA2","Steelhead","Migration","Velocity","Soft","Seasonal",100
-"1584","critical","ROB","LA2","Steelhead","Migration","Velocity","Soft","Seasonal",100
-"1585","critical","LOB","LA20","Steelhead","Migration","Velocity","Soft","Seasonal",100
-"1586","critical","MC","LA20","Steelhead","Migration","Velocity","Soft","Seasonal",100
-"1587","critical","ROB","LA20","Steelhead","Migration","Velocity","Soft","Seasonal",100
-"1588","critical","LOB","LA202","Steelhead","Migration","Velocity","Soft","Seasonal",100
-"1589","critical","MC","LA202","Steelhead","Migration","Velocity","Soft","Seasonal",99.8034591194968
-"1590","critical","ROB","LA202","Steelhead","Migration","Velocity","Soft","Seasonal",100
-"1591","critical","LOB","LA3","Steelhead","Migration","Velocity","Soft","Seasonal",100
-"1592","critical","MC","LA3","Steelhead","Migration","Velocity","Soft","Seasonal",100
-"1593","critical","ROB","LA3","Steelhead","Migration","Velocity","Soft","Seasonal",100
-"1594","critical","LOB","LA8","Steelhead","Migration","Velocity","Soft","Seasonal",99.8624213836478
-"1595","critical","MC","LA8","Steelhead","Migration","Velocity","Soft","Seasonal",99.5872641509434
-"1596","critical","ROB","LA8","Steelhead","Migration","Velocity","Soft","Seasonal",99.8624213836478
-"1597","critical","LOB","11101250","Steelhead","Smolts","Depth","Soft","Seasonal",22.9080932784636
-"1598","critical","MC","11101250","Steelhead","Smolts","Depth","Soft","Seasonal",100
-"1599","critical","ROB","11101250","Steelhead","Smolts","Depth","Soft","Seasonal",24.537037037037
-"1600","critical","LOB","F300","Steelhead","Smolts","Depth","Soft","Seasonal",11.1454046639232
-"1601","critical","MC","F300","Steelhead","Smolts","Depth","Soft","Seasonal",100
-"1602","critical","ROB","F300","Steelhead","Smolts","Depth","Soft","Seasonal",11.1454046639232
-"1603","critical","MC","F319","Steelhead","Smolts","Depth","Concrete","Seasonal",100
-"1604","critical","MC","F34D","Steelhead","Smolts","Depth","Concrete","Seasonal",100
-"1605","critical","MC","F37BHigh","Steelhead","Smolts","Depth","Soft","Seasonal",7.68175582990398
-"1606","critical","LOB","F37BLow","Steelhead","Smolts","Depth","Soft","Seasonal",2.26337448559671
-"1607","critical","MC","F37BLow","Steelhead","Smolts","Depth","Soft","Seasonal",5.76131687242798
-"1608","critical","ROB","F37BLow","Steelhead","Smolts","Depth","Soft","Seasonal",20.1646090534979
-"1609","critical","MC","F45B","Steelhead","Smolts","Depth","Concrete","Seasonal",3.44650205761317
-"1610","critical","LOB","F57C","Steelhead","Smolts","Depth","Soft","Seasonal",100
-"1611","critical","MC","F57C","Steelhead","Smolts","Depth","Soft","Seasonal",100
-"1612","critical","ROB","F57C","Steelhead","Smolts","Depth","Soft","Seasonal",5.04115226337449
-"1613","critical","LOB","GLEN","Steelhead","Smolts","Depth","Soft","Seasonal",100
-"1614","critical","MC","GLEN","Steelhead","Smolts","Depth","Soft","Seasonal",11.6598079561043
-"1615","critical","ROB","GLEN","Steelhead","Smolts","Depth","Soft","Seasonal",95.1303155006859
-"1616","critical","MC","LA1","Steelhead","Smolts","Depth","Concrete","Seasonal",100
-"1617","critical","LOB","LA11","Steelhead","Smolts","Depth","Soft","Seasonal",13.8888888888889
-"1618","critical","MC","LA11","Steelhead","Smolts","Depth","Soft","Seasonal",100
-"1619","critical","ROB","LA11","Steelhead","Smolts","Depth","Soft","Seasonal",7.3559670781893
-"1620","critical","MC","LA13","Steelhead","Smolts","Depth","Concrete","Seasonal",10.7853223593964
-"1621","critical","LOB","LA14","Steelhead","Smolts","Depth","Soft","Seasonal",47.7194787379973
-"1622","critical","MC","LA14","Steelhead","Smolts","Depth","Soft","Seasonal",5.43552812071331
-"1623","critical","ROB","LA14","Steelhead","Smolts","Depth","Soft","Seasonal",100
-"1624","critical","LOB","LA2","Steelhead","Smolts","Depth","Soft","Seasonal",4.61248285322359
-"1625","critical","MC","LA2","Steelhead","Smolts","Depth","Soft","Seasonal",100
-"1626","critical","ROB","LA2","Steelhead","Smolts","Depth","Soft","Seasonal",6.31001371742112
-"1627","critical","LOB","LA20","Steelhead","Smolts","Depth","Soft","Seasonal",4.56104252400549
-"1628","critical","MC","LA20","Steelhead","Smolts","Depth","Soft","Seasonal",94.9245541838134
-"1629","critical","ROB","LA20","Steelhead","Smolts","Depth","Soft","Seasonal",4.54389574759945
-"1630","critical","LOB","LA202","Steelhead","Smolts","Depth","Soft","Seasonal",0.205761316872428
-"1631","critical","MC","LA202","Steelhead","Smolts","Depth","Soft","Seasonal",100
-"1632","critical","ROB","LA202","Steelhead","Smolts","Depth","Soft","Seasonal",0.205761316872428
-"1633","critical","LOB","LA3","Steelhead","Smolts","Depth","Soft","Seasonal",14.5061728395062
-"1634","critical","MC","LA3","Steelhead","Smolts","Depth","Soft","Seasonal",100
-"1635","critical","ROB","LA3","Steelhead","Smolts","Depth","Soft","Seasonal",14.5061728395062
-"1636","critical","LOB","LA8","Steelhead","Smolts","Depth","Soft","Seasonal",98.9197530864197
-"1637","critical","MC","LA8","Steelhead","Smolts","Depth","Soft","Seasonal",100
-"1638","critical","ROB","LA8","Steelhead","Smolts","Depth","Soft","Seasonal",98.9197530864197
-"1639","Annual","LOB","11101250","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1640","Annual","MC","11101250","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1641","Annual","ROB","11101250","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1642","Annual","LOB","F300","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1643","Annual","MC","F300","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1644","Annual","ROB","F300","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1645","Annual","MC","F319","Willow","Adult","StreamPower","Concrete","Seasonal",100
-"1646","Annual","MC","F34D","Willow","Adult","StreamPower","Concrete","Seasonal",100
-"1647","Annual","MC","F37BHigh","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1648","Annual","LOB","F37BLow","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1649","Annual","MC","F37BLow","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1650","Annual","ROB","F37BLow","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1651","Annual","MC","F45B","Willow","Adult","StreamPower","Concrete","Seasonal",100
-"1652","Annual","LOB","F57C","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1653","Annual","MC","F57C","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1654","Annual","ROB","F57C","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1655","Annual","LOB","GLEN","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1656","Annual","MC","GLEN","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1657","Annual","ROB","GLEN","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1658","Annual","MC","LA1","Willow","Adult","StreamPower","Concrete","Seasonal",100
-"1659","Annual","LOB","LA11","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1660","Annual","MC","LA11","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1661","Annual","ROB","LA11","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1662","Annual","MC","LA13","Willow","Adult","StreamPower","Concrete","Seasonal",100
-"1663","Annual","LOB","LA14","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1664","Annual","MC","LA14","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1665","Annual","ROB","LA14","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1666","Annual","LOB","LA2","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1667","Annual","MC","LA2","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1668","Annual","ROB","LA2","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1669","Annual","LOB","LA20","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1670","Annual","MC","LA20","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1671","Annual","ROB","LA20","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1672","Annual","LOB","LA202","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1673","Annual","MC","LA202","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1674","Annual","ROB","LA202","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1675","Annual","LOB","LA3","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1676","Annual","MC","LA3","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1677","Annual","ROB","LA3","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1678","Annual","LOB","LA8","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1679","Annual","MC","LA8","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1680","Annual","ROB","LA8","Willow","Adult","StreamPower","Soft","Seasonal",100
-"1681","critical","LOB","11101250","Willow","Germination","Depth","Soft","Seasonal",27.2540983606557
-"1682","critical","MC","11101250","Willow","Germination","Depth","Soft","Seasonal",100
-"1683","critical","ROB","11101250","Willow","Germination","Depth","Soft","Seasonal",30.4189435336976
-"1684","critical","LOB","F300","Willow","Germination","Depth","Soft","Seasonal",4.89526411657559
-"1685","critical","MC","F300","Willow","Germination","Depth","Soft","Seasonal",100
-"1686","critical","ROB","F300","Willow","Germination","Depth","Soft","Seasonal",4.89526411657559
-"1687","critical","MC","F319","Willow","Germination","Depth","Concrete","Seasonal",100
-"1688","critical","MC","F34D","Willow","Germination","Depth","Concrete","Seasonal",100
-"1689","critical","MC","F37BHigh","Willow","Germination","Depth","Soft","Seasonal",3.36976320582878
-"1690","critical","LOB","F37BLow","Willow","Germination","Depth","Soft","Seasonal",0.204918032786885
-"1691","critical","MC","F37BLow","Willow","Germination","Depth","Soft","Seasonal",1.70765027322404
-"1692","critical","ROB","F37BLow","Willow","Germination","Depth","Soft","Seasonal",0.0455373406193078
-"1693","critical","MC","F45B","Willow","Germination","Depth","Concrete","Seasonal",0.751366120218579
-"1694","critical","LOB","F57C","Willow","Germination","Depth","Soft","Seasonal",100
-"1695","critical","MC","F57C","Willow","Germination","Depth","Soft","Seasonal",100
-"1696","critical","ROB","F57C","Willow","Germination","Depth","Soft","Seasonal",0.63752276867031
-"1697","critical","LOB","GLEN","Willow","Germination","Depth","Soft","Seasonal",100
-"1698","critical","MC","GLEN","Willow","Germination","Depth","Soft","Seasonal",3.07377049180328
-"1699","critical","ROB","GLEN","Willow","Germination","Depth","Soft","Seasonal",100
-"1700","critical","MC","LA1","Willow","Germination","Depth","Concrete","Seasonal",100
-"1701","critical","LOB","LA11","Willow","Germination","Depth","Soft","Seasonal",5.12295081967213
-"1702","critical","MC","LA11","Willow","Germination","Depth","Soft","Seasonal",100
-"1703","critical","ROB","LA11","Willow","Germination","Depth","Soft","Seasonal",0.774134790528233
-"1704","critical","MC","LA13","Willow","Germination","Depth","Concrete","Seasonal",46.6757741347905
-"1705","critical","LOB","LA14","Willow","Germination","Depth","Soft","Seasonal",100
-"1706","critical","MC","LA14","Willow","Germination","Depth","Soft","Seasonal",0.728597449908925
-"1707","critical","ROB","LA14","Willow","Germination","Depth","Soft","Seasonal",100
-"1708","critical","LOB","LA2","Willow","Germination","Depth","Soft","Seasonal",0.63752276867031
-"1709","critical","MC","LA2","Willow","Germination","Depth","Soft","Seasonal",100
-"1710","critical","ROB","LA2","Willow","Germination","Depth","Soft","Seasonal",0.956284153005465
-"1711","critical","LOB","LA20","Willow","Germination","Depth","Soft","Seasonal",0.683060109289617
-"1712","critical","MC","LA20","Willow","Germination","Depth","Soft","Seasonal",98.2695810564663
-"1713","critical","ROB","LA20","Willow","Germination","Depth","Soft","Seasonal",0.683060109289617
-"1714","critical","LOB","LA202","Willow","Germination","Depth","Soft","Seasonal",0.0227686703096539
-"1715","critical","MC","LA202","Willow","Germination","Depth","Soft","Seasonal",100
-"1716","critical","ROB","LA202","Willow","Germination","Depth","Soft","Seasonal",0.0227686703096539
-"1717","critical","LOB","LA3","Willow","Germination","Depth","Soft","Seasonal",45.6967213114754
-"1718","critical","MC","LA3","Willow","Germination","Depth","Soft","Seasonal",100
-"1719","critical","ROB","LA3","Willow","Germination","Depth","Soft","Seasonal",45.6967213114754
-"1720","critical","LOB","LA8","Willow","Germination","Depth","Soft","Seasonal",100
-"1721","critical","MC","LA8","Willow","Germination","Depth","Soft","Seasonal",100
-"1722","critical","ROB","LA8","Willow","Germination","Depth","Soft","Seasonal",100
+"1513","critical","LOB","11101250","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",16.8042452830189
+"1514","critical","MC","11101250","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",100
+"1515","critical","ROB","11101250","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",24.3710691823899
+"1516","critical","LOB","F300","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",5.52279874213836
+"1517","critical","MC","F300","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",100
+"1518","critical","ROB","F300","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",5.52279874213836
+"1519","critical","MC","F319","Steelhead","Migration_Prolonged","Depth","Concrete","Seasonal",100
+"1520","critical","MC","F34D","Steelhead","Migration_Prolonged","Depth","Concrete","Seasonal",100
+"1521","critical","MC","F37BHigh","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",4.71698113207547
+"1522","critical","LOB","F37BLow","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",2.53537735849057
+"1523","critical","MC","F37BLow","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",3.18396226415094
+"1524","critical","ROB","F37BLow","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",2.43710691823899
+"1525","critical","MC","F45B","Steelhead","Migration_Prolonged","Depth","Concrete","Seasonal",2.88915094339623
+"1526","critical","LOB","F57C","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",100
+"1527","critical","MC","F57C","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",62.4213836477987
+"1528","critical","ROB","F57C","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",5.1690251572327
+"1529","critical","LOB","GLEN","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",100
+"1530","critical","MC","GLEN","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",9.25707547169811
+"1531","critical","ROB","GLEN","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",18.9858490566038
+"1532","critical","MC","LA1","Steelhead","Migration_Prolonged","Depth","Concrete","Seasonal",100
+"1533","critical","LOB","LA11","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",12.1462264150943
+"1534","critical","MC","LA11","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",100
+"1535","critical","ROB","LA11","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",5.71933962264151
+"1536","critical","MC","LA13","Steelhead","Migration_Prolonged","Depth","Concrete","Seasonal",5.0314465408805
+"1537","critical","LOB","LA14","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",15.9787735849057
+"1538","critical","MC","LA14","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",5.22798742138365
+"1539","critical","ROB","LA14","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",100
+"1540","critical","LOB","LA2","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",4.63836477987421
+"1541","critical","MC","LA2","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",100
+"1542","critical","ROB","LA2","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",6.28930817610063
+"1543","critical","LOB","LA20","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",4.42216981132075
+"1544","critical","MC","LA20","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",44.123427672956
+"1545","critical","ROB","LA20","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",4.40251572327044
+"1546","critical","LOB","LA202","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",0.216194968553459
+"1547","critical","MC","LA202","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",14.4654088050314
+"1548","critical","ROB","LA202","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",0.235849056603774
+"1549","critical","LOB","LA3","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",8.13679245283019
+"1550","critical","MC","LA3","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",100
+"1551","critical","ROB","LA3","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",8.13679245283019
+"1552","critical","LOB","LA8","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",14.5833333333333
+"1553","critical","MC","LA8","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",100
+"1554","critical","ROB","LA8","Steelhead","Migration_Prolonged","Depth","Soft","Seasonal",14.5833333333333
+"1555","critical","LOB","11101250","Steelhead","Migration","Depth","Soft","Seasonal",19.437893081761
+"1556","critical","MC","11101250","Steelhead","Migration","Depth","Soft","Seasonal",100
+"1557","critical","ROB","11101250","Steelhead","Migration","Depth","Soft","Seasonal",26.6312893081761
+"1558","critical","LOB","F300","Steelhead","Migration","Depth","Soft","Seasonal",8.41194968553459
+"1559","critical","MC","F300","Steelhead","Migration","Depth","Soft","Seasonal",100
+"1560","critical","ROB","F300","Steelhead","Migration","Depth","Soft","Seasonal",8.41194968553459
+"1561","critical","MC","F319","Steelhead","Migration","Depth","Concrete","Seasonal",100
+"1562","critical","MC","F34D","Steelhead","Migration","Depth","Concrete","Seasonal",100
+"1563","critical","MC","F37BHigh","Steelhead","Migration","Depth","Soft","Seasonal",6.21069182389937
+"1564","critical","LOB","F37BLow","Steelhead","Migration","Depth","Soft","Seasonal",2.59433962264151
+"1565","critical","MC","F37BLow","Steelhead","Migration","Depth","Soft","Seasonal",3.85220125786164
+"1566","critical","ROB","F37BLow","Steelhead","Migration","Depth","Soft","Seasonal",4.55974842767296
+"1567","critical","MC","F45B","Steelhead","Migration","Depth","Concrete","Seasonal",3.10534591194969
+"1568","critical","LOB","F57C","Steelhead","Migration","Depth","Soft","Seasonal",100
+"1569","critical","MC","F57C","Steelhead","Migration","Depth","Soft","Seasonal",100
+"1570","critical","ROB","F57C","Steelhead","Migration","Depth","Soft","Seasonal",5.38522012578616
+"1571","critical","LOB","GLEN","Steelhead","Migration","Depth","Soft","Seasonal",100
+"1572","critical","MC","GLEN","Steelhead","Migration","Depth","Soft","Seasonal",10.8687106918239
+"1573","critical","ROB","GLEN","Steelhead","Migration","Depth","Soft","Seasonal",38.5809748427673
+"1574","critical","MC","LA1","Steelhead","Migration","Depth","Concrete","Seasonal",100
+"1575","critical","LOB","LA11","Steelhead","Migration","Depth","Soft","Seasonal",14.0133647798742
+"1576","critical","MC","LA11","Steelhead","Migration","Depth","Soft","Seasonal",100
+"1577","critical","ROB","LA11","Steelhead","Migration","Depth","Soft","Seasonal",6.36792452830189
+"1578","critical","MC","LA13","Steelhead","Migration","Depth","Concrete","Seasonal",5.71933962264151
+"1579","critical","LOB","LA14","Steelhead","Migration","Depth","Soft","Seasonal",17.7083333333333
+"1580","critical","MC","LA14","Steelhead","Migration","Depth","Soft","Seasonal",5.42452830188679
+"1581","critical","ROB","LA14","Steelhead","Migration","Depth","Soft","Seasonal",100
+"1582","critical","LOB","LA2","Steelhead","Migration","Depth","Soft","Seasonal",5.01179245283019
+"1583","critical","MC","LA2","Steelhead","Migration","Depth","Soft","Seasonal",100
+"1584","critical","ROB","LA2","Steelhead","Migration","Depth","Soft","Seasonal",6.80031446540881
+"1585","critical","LOB","LA20","Steelhead","Migration","Depth","Soft","Seasonal",4.79559748427673
+"1586","critical","MC","LA20","Steelhead","Migration","Depth","Soft","Seasonal",71.1674528301887
+"1587","critical","ROB","LA20","Steelhead","Migration","Depth","Soft","Seasonal",4.77594339622642
+"1588","critical","LOB","LA202","Steelhead","Migration","Depth","Soft","Seasonal",0.235849056603774
+"1589","critical","MC","LA202","Steelhead","Migration","Depth","Soft","Seasonal",28.6949685534591
+"1590","critical","ROB","LA202","Steelhead","Migration","Depth","Soft","Seasonal",0.235849056603774
+"1591","critical","LOB","LA3","Steelhead","Migration","Depth","Soft","Seasonal",10.8490566037736
+"1592","critical","MC","LA3","Steelhead","Migration","Depth","Soft","Seasonal",100
+"1593","critical","ROB","LA3","Steelhead","Migration","Depth","Soft","Seasonal",10.8490566037736
+"1594","critical","LOB","LA8","Steelhead","Migration","Depth","Soft","Seasonal",22.5432389937107
+"1595","critical","MC","LA8","Steelhead","Migration","Depth","Soft","Seasonal",100
+"1596","critical","ROB","LA8","Steelhead","Migration","Depth","Soft","Seasonal",22.5432389937107
+"1597","critical","LOB","11101250","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",100
+"1598","critical","MC","11101250","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",100
+"1599","critical","ROB","11101250","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",100
+"1600","critical","LOB","F300","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",99.5283018867924
+"1601","critical","MC","F300","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",98.3883647798742
+"1602","critical","ROB","F300","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",99.5283018867924
+"1603","critical","MC","F319","Steelhead","Migration_Prolonged","Velocity","Concrete","Seasonal",99.8034591194968
+"1604","critical","MC","F34D","Steelhead","Migration_Prolonged","Velocity","Concrete","Seasonal",99.3317610062893
+"1605","critical","MC","F37BHigh","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",23.8993710691824
+"1606","critical","LOB","F37BLow","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",37.0479559748428
+"1607","critical","MC","F37BLow","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",37.0479559748428
+"1608","critical","ROB","F37BLow","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",37.0479559748428
+"1609","critical","MC","F45B","Steelhead","Migration_Prolonged","Velocity","Concrete","Seasonal",6.30896226415094
+"1610","critical","LOB","F57C","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",99.7444968553459
+"1611","critical","MC","F57C","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",100
+"1612","critical","ROB","F57C","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",100
+"1613","critical","LOB","GLEN","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",100
+"1614","critical","MC","GLEN","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",100
+"1615","critical","ROB","GLEN","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",100
+"1616","critical","MC","LA1","Steelhead","Migration_Prolonged","Velocity","Concrete","Seasonal",100
+"1617","critical","LOB","LA11","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",100
+"1618","critical","MC","LA11","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",100
+"1619","critical","ROB","LA11","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",100
+"1620","critical","MC","LA13","Steelhead","Migration_Prolonged","Velocity","Concrete","Seasonal",99.8624213836478
+"1621","critical","LOB","LA14","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",99.9606918238994
+"1622","critical","MC","LA14","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",100
+"1623","critical","ROB","LA14","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",100
+"1624","critical","LOB","LA2","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",100
+"1625","critical","MC","LA2","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",100
+"1626","critical","ROB","LA2","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",100
+"1627","critical","LOB","LA20","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",100
+"1628","critical","MC","LA20","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",100
+"1629","critical","ROB","LA20","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",100
+"1630","critical","LOB","LA202","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",100
+"1631","critical","MC","LA202","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",99.0369496855346
+"1632","critical","ROB","LA202","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",100
+"1633","critical","LOB","LA3","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",99.7641509433962
+"1634","critical","MC","LA3","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",99.312106918239
+"1635","critical","ROB","LA3","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",99.7641509433962
+"1636","critical","LOB","LA8","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",99.3317610062893
+"1637","critical","MC","LA8","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",98.5849056603774
+"1638","critical","ROB","LA8","Steelhead","Migration_Prolonged","Velocity","Soft","Seasonal",99.3514150943396
+"1639","critical","LOB","11101250","Steelhead","Migration","Velocity","Soft","Seasonal",100
+"1640","critical","MC","11101250","Steelhead","Migration","Velocity","Soft","Seasonal",100
+"1641","critical","ROB","11101250","Steelhead","Migration","Velocity","Soft","Seasonal",100
+"1642","critical","LOB","F300","Steelhead","Migration","Velocity","Soft","Seasonal",99.8820754716981
+"1643","critical","MC","F300","Steelhead","Migration","Velocity","Soft","Seasonal",99.5479559748428
+"1644","critical","ROB","F300","Steelhead","Migration","Velocity","Soft","Seasonal",99.8820754716981
+"1645","critical","MC","F319","Steelhead","Migration","Velocity","Concrete","Seasonal",100
+"1646","critical","MC","F34D","Steelhead","Migration","Velocity","Concrete","Seasonal",99.9410377358491
+"1647","critical","MC","F37BHigh","Steelhead","Migration","Velocity","Soft","Seasonal",23.8993710691824
+"1648","critical","LOB","F37BLow","Steelhead","Migration","Velocity","Soft","Seasonal",37.0479559748428
+"1649","critical","MC","F37BLow","Steelhead","Migration","Velocity","Soft","Seasonal",37.0479559748428
+"1650","critical","ROB","F37BLow","Steelhead","Migration","Velocity","Soft","Seasonal",37.0479559748428
+"1651","critical","MC","F45B","Steelhead","Migration","Velocity","Concrete","Seasonal",6.81996855345912
+"1652","critical","LOB","F57C","Steelhead","Migration","Velocity","Soft","Seasonal",100
+"1653","critical","MC","F57C","Steelhead","Migration","Velocity","Soft","Seasonal",100
+"1654","critical","ROB","F57C","Steelhead","Migration","Velocity","Soft","Seasonal",100
+"1655","critical","LOB","GLEN","Steelhead","Migration","Velocity","Soft","Seasonal",100
+"1656","critical","MC","GLEN","Steelhead","Migration","Velocity","Soft","Seasonal",100
+"1657","critical","ROB","GLEN","Steelhead","Migration","Velocity","Soft","Seasonal",100
+"1658","critical","MC","LA1","Steelhead","Migration","Velocity","Concrete","Seasonal",100
+"1659","critical","LOB","LA11","Steelhead","Migration","Velocity","Soft","Seasonal",100
+"1660","critical","MC","LA11","Steelhead","Migration","Velocity","Soft","Seasonal",100
+"1661","critical","ROB","LA11","Steelhead","Migration","Velocity","Soft","Seasonal",100
+"1662","critical","MC","LA13","Steelhead","Migration","Velocity","Concrete","Seasonal",100
+"1663","critical","LOB","LA14","Steelhead","Migration","Velocity","Soft","Seasonal",100
+"1664","critical","MC","LA14","Steelhead","Migration","Velocity","Soft","Seasonal",100
+"1665","critical","ROB","LA14","Steelhead","Migration","Velocity","Soft","Seasonal",100
+"1666","critical","LOB","LA2","Steelhead","Migration","Velocity","Soft","Seasonal",100
+"1667","critical","MC","LA2","Steelhead","Migration","Velocity","Soft","Seasonal",100
+"1668","critical","ROB","LA2","Steelhead","Migration","Velocity","Soft","Seasonal",100
+"1669","critical","LOB","LA20","Steelhead","Migration","Velocity","Soft","Seasonal",100
+"1670","critical","MC","LA20","Steelhead","Migration","Velocity","Soft","Seasonal",100
+"1671","critical","ROB","LA20","Steelhead","Migration","Velocity","Soft","Seasonal",100
+"1672","critical","LOB","LA202","Steelhead","Migration","Velocity","Soft","Seasonal",100
+"1673","critical","MC","LA202","Steelhead","Migration","Velocity","Soft","Seasonal",99.8034591194968
+"1674","critical","ROB","LA202","Steelhead","Migration","Velocity","Soft","Seasonal",100
+"1675","critical","LOB","LA3","Steelhead","Migration","Velocity","Soft","Seasonal",100
+"1676","critical","MC","LA3","Steelhead","Migration","Velocity","Soft","Seasonal",100
+"1677","critical","ROB","LA3","Steelhead","Migration","Velocity","Soft","Seasonal",100
+"1678","critical","LOB","LA8","Steelhead","Migration","Velocity","Soft","Seasonal",99.8624213836478
+"1679","critical","MC","LA8","Steelhead","Migration","Velocity","Soft","Seasonal",99.5872641509434
+"1680","critical","ROB","LA8","Steelhead","Migration","Velocity","Soft","Seasonal",99.8624213836478
+"1681","critical","LOB","11101250","Steelhead","Smolts","Depth","Soft","Seasonal",22.9080932784636
+"1682","critical","MC","11101250","Steelhead","Smolts","Depth","Soft","Seasonal",100
+"1683","critical","ROB","11101250","Steelhead","Smolts","Depth","Soft","Seasonal",24.537037037037
+"1684","critical","LOB","F300","Steelhead","Smolts","Depth","Soft","Seasonal",11.1454046639232
+"1685","critical","MC","F300","Steelhead","Smolts","Depth","Soft","Seasonal",100
+"1686","critical","ROB","F300","Steelhead","Smolts","Depth","Soft","Seasonal",11.1454046639232
+"1687","critical","MC","F319","Steelhead","Smolts","Depth","Concrete","Seasonal",100
+"1688","critical","MC","F34D","Steelhead","Smolts","Depth","Concrete","Seasonal",100
+"1689","critical","MC","F37BHigh","Steelhead","Smolts","Depth","Soft","Seasonal",7.68175582990398
+"1690","critical","LOB","F37BLow","Steelhead","Smolts","Depth","Soft","Seasonal",2.26337448559671
+"1691","critical","MC","F37BLow","Steelhead","Smolts","Depth","Soft","Seasonal",5.76131687242798
+"1692","critical","ROB","F37BLow","Steelhead","Smolts","Depth","Soft","Seasonal",20.1646090534979
+"1693","critical","MC","F45B","Steelhead","Smolts","Depth","Concrete","Seasonal",3.44650205761317
+"1694","critical","LOB","F57C","Steelhead","Smolts","Depth","Soft","Seasonal",100
+"1695","critical","MC","F57C","Steelhead","Smolts","Depth","Soft","Seasonal",100
+"1696","critical","ROB","F57C","Steelhead","Smolts","Depth","Soft","Seasonal",5.04115226337449
+"1697","critical","LOB","GLEN","Steelhead","Smolts","Depth","Soft","Seasonal",100
+"1698","critical","MC","GLEN","Steelhead","Smolts","Depth","Soft","Seasonal",11.6598079561043
+"1699","critical","ROB","GLEN","Steelhead","Smolts","Depth","Soft","Seasonal",95.1303155006859
+"1700","critical","MC","LA1","Steelhead","Smolts","Depth","Concrete","Seasonal",100
+"1701","critical","LOB","LA11","Steelhead","Smolts","Depth","Soft","Seasonal",13.8888888888889
+"1702","critical","MC","LA11","Steelhead","Smolts","Depth","Soft","Seasonal",100
+"1703","critical","ROB","LA11","Steelhead","Smolts","Depth","Soft","Seasonal",7.3559670781893
+"1704","critical","MC","LA13","Steelhead","Smolts","Depth","Concrete","Seasonal",10.7853223593964
+"1705","critical","LOB","LA14","Steelhead","Smolts","Depth","Soft","Seasonal",47.7194787379973
+"1706","critical","MC","LA14","Steelhead","Smolts","Depth","Soft","Seasonal",5.43552812071331
+"1707","critical","ROB","LA14","Steelhead","Smolts","Depth","Soft","Seasonal",100
+"1708","critical","LOB","LA2","Steelhead","Smolts","Depth","Soft","Seasonal",4.61248285322359
+"1709","critical","MC","LA2","Steelhead","Smolts","Depth","Soft","Seasonal",100
+"1710","critical","ROB","LA2","Steelhead","Smolts","Depth","Soft","Seasonal",6.31001371742112
+"1711","critical","LOB","LA20","Steelhead","Smolts","Depth","Soft","Seasonal",4.56104252400549
+"1712","critical","MC","LA20","Steelhead","Smolts","Depth","Soft","Seasonal",94.9245541838134
+"1713","critical","ROB","LA20","Steelhead","Smolts","Depth","Soft","Seasonal",4.54389574759945
+"1714","critical","LOB","LA202","Steelhead","Smolts","Depth","Soft","Seasonal",0.205761316872428
+"1715","critical","MC","LA202","Steelhead","Smolts","Depth","Soft","Seasonal",100
+"1716","critical","ROB","LA202","Steelhead","Smolts","Depth","Soft","Seasonal",0.205761316872428
+"1717","critical","LOB","LA3","Steelhead","Smolts","Depth","Soft","Seasonal",14.5061728395062
+"1718","critical","MC","LA3","Steelhead","Smolts","Depth","Soft","Seasonal",100
+"1719","critical","ROB","LA3","Steelhead","Smolts","Depth","Soft","Seasonal",14.5061728395062
+"1720","critical","LOB","LA8","Steelhead","Smolts","Depth","Soft","Seasonal",98.9197530864197
+"1721","critical","MC","LA8","Steelhead","Smolts","Depth","Soft","Seasonal",100
+"1722","critical","ROB","LA8","Steelhead","Smolts","Depth","Soft","Seasonal",98.9197530864197
+"1723","Annual","LOB","11101250","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1724","Annual","MC","11101250","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1725","Annual","ROB","11101250","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1726","Annual","LOB","F300","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1727","Annual","MC","F300","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1728","Annual","ROB","F300","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1729","Annual","MC","F319","Willow","Adult","StreamPower","Concrete","Seasonal",100
+"1730","Annual","MC","F34D","Willow","Adult","StreamPower","Concrete","Seasonal",100
+"1731","Annual","MC","F37BHigh","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1732","Annual","LOB","F37BLow","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1733","Annual","MC","F37BLow","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1734","Annual","ROB","F37BLow","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1735","Annual","MC","F45B","Willow","Adult","StreamPower","Concrete","Seasonal",100
+"1736","Annual","LOB","F57C","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1737","Annual","MC","F57C","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1738","Annual","ROB","F57C","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1739","Annual","LOB","GLEN","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1740","Annual","MC","GLEN","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1741","Annual","ROB","GLEN","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1742","Annual","MC","LA1","Willow","Adult","StreamPower","Concrete","Seasonal",100
+"1743","Annual","LOB","LA11","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1744","Annual","MC","LA11","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1745","Annual","ROB","LA11","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1746","Annual","MC","LA13","Willow","Adult","StreamPower","Concrete","Seasonal",100
+"1747","Annual","LOB","LA14","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1748","Annual","MC","LA14","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1749","Annual","ROB","LA14","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1750","Annual","LOB","LA2","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1751","Annual","MC","LA2","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1752","Annual","ROB","LA2","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1753","Annual","LOB","LA20","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1754","Annual","MC","LA20","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1755","Annual","ROB","LA20","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1756","Annual","LOB","LA202","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1757","Annual","MC","LA202","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1758","Annual","ROB","LA202","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1759","Annual","LOB","LA3","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1760","Annual","MC","LA3","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1761","Annual","ROB","LA3","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1762","Annual","LOB","LA8","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1763","Annual","MC","LA8","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1764","Annual","ROB","LA8","Willow","Adult","StreamPower","Soft","Seasonal",100
+"1765","critical","LOB","11101250","Willow","Germination","Depth","Soft","Seasonal",27.2540983606557
+"1766","critical","MC","11101250","Willow","Germination","Depth","Soft","Seasonal",100
+"1767","critical","ROB","11101250","Willow","Germination","Depth","Soft","Seasonal",30.4189435336976
+"1768","critical","LOB","F300","Willow","Germination","Depth","Soft","Seasonal",4.89526411657559
+"1769","critical","MC","F300","Willow","Germination","Depth","Soft","Seasonal",100
+"1770","critical","ROB","F300","Willow","Germination","Depth","Soft","Seasonal",4.89526411657559
+"1771","critical","MC","F319","Willow","Germination","Depth","Concrete","Seasonal",100
+"1772","critical","MC","F34D","Willow","Germination","Depth","Concrete","Seasonal",100
+"1773","critical","MC","F37BHigh","Willow","Germination","Depth","Soft","Seasonal",3.36976320582878
+"1774","critical","LOB","F37BLow","Willow","Germination","Depth","Soft","Seasonal",0.204918032786885
+"1775","critical","MC","F37BLow","Willow","Germination","Depth","Soft","Seasonal",1.70765027322404
+"1776","critical","ROB","F37BLow","Willow","Germination","Depth","Soft","Seasonal",0.0455373406193078
+"1777","critical","MC","F45B","Willow","Germination","Depth","Concrete","Seasonal",0.751366120218579
+"1778","critical","LOB","F57C","Willow","Germination","Depth","Soft","Seasonal",100
+"1779","critical","MC","F57C","Willow","Germination","Depth","Soft","Seasonal",100
+"1780","critical","ROB","F57C","Willow","Germination","Depth","Soft","Seasonal",0.63752276867031
+"1781","critical","LOB","GLEN","Willow","Germination","Depth","Soft","Seasonal",100
+"1782","critical","MC","GLEN","Willow","Germination","Depth","Soft","Seasonal",3.07377049180328
+"1783","critical","ROB","GLEN","Willow","Germination","Depth","Soft","Seasonal",100
+"1784","critical","MC","LA1","Willow","Germination","Depth","Concrete","Seasonal",100
+"1785","critical","LOB","LA11","Willow","Germination","Depth","Soft","Seasonal",5.12295081967213
+"1786","critical","MC","LA11","Willow","Germination","Depth","Soft","Seasonal",100
+"1787","critical","ROB","LA11","Willow","Germination","Depth","Soft","Seasonal",0.774134790528233
+"1788","critical","MC","LA13","Willow","Germination","Depth","Concrete","Seasonal",46.6757741347905
+"1789","critical","LOB","LA14","Willow","Germination","Depth","Soft","Seasonal",100
+"1790","critical","MC","LA14","Willow","Germination","Depth","Soft","Seasonal",0.728597449908925
+"1791","critical","ROB","LA14","Willow","Germination","Depth","Soft","Seasonal",100
+"1792","critical","LOB","LA2","Willow","Germination","Depth","Soft","Seasonal",0.63752276867031
+"1793","critical","MC","LA2","Willow","Germination","Depth","Soft","Seasonal",100
+"1794","critical","ROB","LA2","Willow","Germination","Depth","Soft","Seasonal",0.956284153005465
+"1795","critical","LOB","LA20","Willow","Germination","Depth","Soft","Seasonal",0.683060109289617
+"1796","critical","MC","LA20","Willow","Germination","Depth","Soft","Seasonal",98.2695810564663
+"1797","critical","ROB","LA20","Willow","Germination","Depth","Soft","Seasonal",0.683060109289617
+"1798","critical","LOB","LA202","Willow","Germination","Depth","Soft","Seasonal",0.0227686703096539
+"1799","critical","MC","LA202","Willow","Germination","Depth","Soft","Seasonal",100
+"1800","critical","ROB","LA202","Willow","Germination","Depth","Soft","Seasonal",0.0227686703096539
+"1801","critical","LOB","LA3","Willow","Germination","Depth","Soft","Seasonal",45.6967213114754
+"1802","critical","MC","LA3","Willow","Germination","Depth","Soft","Seasonal",100
+"1803","critical","ROB","LA3","Willow","Germination","Depth","Soft","Seasonal",45.6967213114754
+"1804","critical","LOB","LA8","Willow","Germination","Depth","Soft","Seasonal",100
+"1805","critical","MC","LA8","Willow","Germination","Depth","Soft","Seasonal",100
+"1806","critical","ROB","LA8","Willow","Germination","Depth","Soft","Seasonal",100

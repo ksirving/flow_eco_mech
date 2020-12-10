@@ -42,7 +42,7 @@ for(j in 1: length(ts)) {
     select(-X) %>%
     # filter(Probability_Threshold == ann_stats) %>%
     rename(TimePeriod = season, TimePercentage = value) %>%
-    mutate(Species = "Santa Ana Sucker", Life_Stage = "Juvenile", Hydraulic = "Velocity") %>%
+    mutate(Species = "SAS", Life_Stage = "Juvenile", Hydraulic = "Velocity") %>%
     distinct()
   
   time_statsx <- rbind(time_statsx, time_stats)
@@ -119,7 +119,7 @@ for(j in 1: length(td)) {
     select(-X, -month_year) %>%
     # filter(Probability_Threshold == ann_stats) %>%
     rename(TimePeriod = season,  DaysPerMonth = n_days) %>%
-    mutate(Species = "Santa Ana Sucker", Life_Stage = "Juvenile", Hydraulic = "Velocity") %>%
+    mutate(Species = "SAS", Life_Stage = "Juvenile", Hydraulic = "Velocity") %>%
     distinct()
   
   total_daysx <- rbind(total_daysx, total_days)

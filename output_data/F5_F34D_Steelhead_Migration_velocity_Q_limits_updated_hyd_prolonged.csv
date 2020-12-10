@@ -1,0 +1,5 @@
+"","V1","Type","Species","Life_Stage","Hydraulic","Node"
+"1",59.7375183105469,"Q_limit1","Steelhead","Migration_Prolonged","Velocity","F34D"
+"2",2587.48458620284,"Q_limit2","Steelhead","Migration_Prolonged","Velocity","F34D"
+"3",0.422112687736693,"Hydraulic_limit1","Steelhead","Migration_Prolonged","Velocity","F34D"
+"4",2,"Hydraulic_limit2","Steelhead","Migration_Prolonged","Velocity","F34D"
