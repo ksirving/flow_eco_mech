@@ -118,6 +118,11 @@ for(n in 1: length(h)) {
   H_limits <- as.data.frame(matrix(ncol=length(positions), nrow=2)) 
   H_limits$Type<-c("Hydraulic_limit1", "Hydraulic_limit2")
   
+  ## calculation
+  Q_Calc <- as.data.frame(matrix(ncol=1, nrow=3 ))
+  
+  names(Q_Calc) <- "Thresh"
+  
   
   time_statsx <- NULL
   days_data <- NULL
@@ -168,7 +173,8 @@ for(n in 1: length(h)) {
       dplyr::mutate(Seasonal = sum(Q >= newx1a)/length(DateTime)*100) %>%
       distinct(water_year,  Seasonal) %>%
       mutate(position= paste(PositionName), Node = NodeName)
-    time_stats
+    
+    Q_Calc[p,] <- paste("Q >= newx1a")
     
     time_statsx <- rbind(time_statsx, time_stats)
     
@@ -183,6 +189,13 @@ for(n in 1: length(h)) {
     
     
   } ## end 2nd loop
+  
+  Q_Calc$Position <- positions
+  
+  Q_Calc <- Q_Calc %>%
+    mutate(Species ="Steelhead", Life_Stage = "Migration_Prolonged", Hydraulic = "Depth", Node = NodeName)
+  
+  write.csv(Q_Calc, paste("output_data/F5_",NodeName,"_Steelhead_Migration_depth_Q_calculation_updated_hyd_prolonged.csv", sep=""))
   
   ## limits
   limits <- rbind(limits, H_limits)
@@ -363,6 +376,10 @@ for(n in 1: length(h)) {
   H_limits <- as.data.frame(matrix(ncol=length(positions), nrow=2)) 
   H_limits$Type<-c("Hydraulic_limit1", "Hydraulic_limit2")
   
+  ## calculation
+  Q_Calc <- as.data.frame(matrix(ncol=1, nrow=3 ))
+  names(Q_Calc) <- "Thresh"
+  
   time_statsx <- NULL
   days_data <- NULL
   
@@ -406,7 +423,7 @@ for(n in 1: length(h)) {
     # dataframe for stats -----------------------------------------------------
     
     ## define critical period or season for juvenile as all year is critical
-    # Q >= newx1a & 
+    
     ###### calculate amount of time
     time_stats <- new_data %>%
       dplyr::group_by(water_year, season) %>%
@@ -414,7 +431,7 @@ for(n in 1: length(h)) {
       distinct(water_year,  Seasonal) %>%
       mutate(position= paste(PositionName), Node = NodeName)
     
-    
+    Q_Calc[p,] <- paste("Q >= min_limit & Q <= newx1a")
     time_statsx <- rbind(time_statsx, time_stats)
     
     ### count days per month
@@ -428,6 +445,13 @@ for(n in 1: length(h)) {
     
     
   } ## end 2nd loop
+  
+  Q_Calc$Position <- positions
+  
+  Q_Calc <- Q_Calc %>%
+    mutate(Species ="Steelhead", Life_Stage = "Migration_Prolonged", Hydraulic = "Velocity", Node = NodeName)
+  
+  write.csv(Q_Calc, paste("output_data/F%_",NodeName,"_Steelhead_Migration_velocity_Q_calculation_updated_hyd.csv", sep=""))
   
   ## limits
   limits <- rbind(limits, H_limits)

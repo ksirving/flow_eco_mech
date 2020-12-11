@@ -146,6 +146,9 @@ limits$Type<-c("Q_limit")
 H_limits <- as.data.frame(matrix(ncol=length(positions), nrow=12)) 
 H_limits$Type<-c("Hydraulic_limit")
 
+Q_Calc <- as.data.frame(matrix(ncol=3, nrow=3 ))
+# 
+names(Q_Calc) <- c("Low", "Medium", "High")
 
 time_statsx <- NULL
 days_data <- NULL
@@ -241,7 +244,7 @@ new_datax <- new_datax %>%
 
 ## Main channel curves
 
-
+class(low_thresh)
 low_thresh <- expression_Q(newx1a, peakQ) 
 low_thresh <-as.expression(do.call("substitute", list(low_thresh[[1]], list(limit = as.name("newx1a")))))
 
@@ -250,6 +253,10 @@ med_thresh <-as.expression(do.call("substitute", list(med_thresh[[1]], list(limi
 
 high_thresh <- expression_Q(newx3a, peakQ)
 high_thresh <-as.expression(do.call("substitute", list(high_thresh[[1]], list(limit = as.name("newx3a")))))
+class(med_thresh)
+
+Q_Calc[p,] <- c(paste(low_thresh), paste(med_thresh), paste(high_thresh))
+# Q_Calc[p,] <- c(low_thresh, med_thresh, high_thresh)
 
 
 ###### calculate amount of time
@@ -290,6 +297,12 @@ days_data <- rbind(days_data, new_datax)
 
 ## limits
 ## note that 0.1 upper/lower limit is max/min Q to adhere to 0.1 bound
+Q_Calc$Position <- positions
+
+Q_Calc <- Q_Calc %>%
+  mutate(Species ="SAS", Life_Stage = "Adult", Hydraulic = "Depth", Node = NodeName)
+
+write.csv(Q_Calc, paste("output_data/F1_",NodeName,"_SAS_adult_depth_Q_calculation_updated_hyd.csv", sep=""))
 
 limits <- rbind(limits, H_limits)
 
@@ -544,6 +557,9 @@ hyd_vel <- left_join(hyd_vel, hyd_dep, by="date_num")
   H_limits <- as.data.frame(matrix(ncol=length(positions), nrow=12)) 
   H_limits$Type<-c("Hydraulic_limit")
   
+  Q_Calc <- as.data.frame(matrix(ncol=3, nrow=3 ))
+  names(Q_Calc) <- c("Low", "Medium", "High")
+  
   time_statsx <- NULL
   days_data <- NULL
   
@@ -652,6 +668,8 @@ hyd_vel <- left_join(hyd_vel, hyd_dep, by="date_num")
     high_thresh <- expression_Q(newx3a, peakQ)
     high_thresh <-as.expression(do.call("substitute", list(high_thresh[[1]], list(limit = as.name("newx3a")))))
     
+    Q_Calc[p,] <- c(paste(low_thresh), paste(med_thresh), paste(high_thresh))
+    # Q_Calc[p,] <- c(low_thresh, med_thresh, high_thresh)
    
     ###### calculate amount of time
     
@@ -687,6 +705,13 @@ hyd_vel <- left_join(hyd_vel, hyd_dep, by="date_num")
     days_data <- rbind(days_data, new_datax)
     
   } ## end 2nd loop
+  
+  Q_Calc$Position <- positions
+  
+  Q_Calc <- Q_Calc %>%
+    mutate(Species ="SAS", Life_Stage = "Adult", Hydraulic = "Depth", Node = NodeName)
+  
+  write.csv(Q_Calc, paste("output_data/F1_",NodeName,"_SAS_adult_velocity_Q_calculation_updated_hyd.csv", sep=""))
   
   ## limits
   limits <- rbind(limits, H_limits)

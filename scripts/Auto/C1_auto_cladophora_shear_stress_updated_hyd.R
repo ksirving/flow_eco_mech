@@ -124,10 +124,15 @@ for(n in 1: length(h)) {
   H_limits <- as.data.frame(matrix(ncol=length(positions), nrow=2)) 
   H_limits$Type<-c("Hydraulic_limit1", "Hydraulic_limit2")
   
+  ## calculation
+  Q_Calc <- as.data.frame(matrix(ncol=1, nrow=3 ))
+  
+  names(Q_Calc) <- "Thresh"
+  
   time_statsx <- NULL
   days_data <- NULL
   
-p=1
+
   # probability as a function of discharge -----------------------------------
   
   for(p in 1:length(positions)) {
@@ -167,12 +172,13 @@ p=1
 
     
     ###### calculate amount of time
-    time_stats <- new_data %>%
+    time_stats <- new_datax %>%
       dplyr::group_by(water_year, season) %>%
       dplyr::mutate(Seasonal = sum(Q >= min_limit & Q <= newx2a)/length(DateTime)*100) %>%
       distinct(water_year,  Seasonal) %>%
       mutate(position= paste(PositionName), Node = NodeName)
     
+    Q_Calc[p,] <- paste("Q >= min_limit & Q <= newx1a")
     
     time_statsx <- rbind(time_statsx, time_stats)
     
@@ -187,6 +193,13 @@ p=1
     
     
   } ## end 2nd loop
+  
+  Q_Calc$Position <- positions
+  
+  Q_Calc <- Q_Calc %>%
+    mutate(Species ="Cladophora", Life_Stage = "Adult", Hydraulic = "Shear Stress", Node = NodeName)
+  
+  write.csv(Q_Calc, paste("output_data/W2_",NodeName,"_Cladophora_Adult_Shear_Stress_Q_calculation_updated_hyd.csv", sep=""))
   
   ## limits
   limits <- rbind(limits, H_limits)
@@ -229,6 +242,7 @@ p=1
   
   # # create year_month column       
   total_days <- ungroup(total_days) %>%
+    unite(month_year, water_year:month, sep="-", remove=F) %>%
     mutate(Node= paste(NodeName)) #%>%
 
   ## convert month year to date format

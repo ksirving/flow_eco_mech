@@ -1,0 +1,4 @@
+"","Thresh","Position","Species","Life_Stage","Hydraulic","Node"
+"1","Q >= min_limit & Q <= newx2a","vel_m_LOB","SAS","Fry","Velocity","LA20"
+"2","Q >= min_limit & Q <= newx2a","vel_m_MC","SAS","Fry","Velocity","LA20"
+"3","Q >= min_limit & Q <= newx2a","vel_m_ROB","SAS","Fry","Velocity","LA20"

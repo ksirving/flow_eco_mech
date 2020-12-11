@@ -148,6 +148,11 @@ for(n in 1: length(h)) {
   H_limits <- as.data.frame(matrix(ncol=length(positions), nrow=12)) 
   H_limits$Type<-c("Hydraulic_limit")
   
+  ## calculation
+  Q_Calc <- as.data.frame(matrix(ncol=3, nrow=3 ))
+
+  names(Q_Calc) <- c("Low", "Medium", "High")
+  
   time_statsx <- NULL
   days_data <- NULL
   
@@ -255,6 +260,7 @@ for(n in 1: length(h)) {
     high_thresh <- expression_Q(newx3a, peakQ)
     high_thresh <-as.expression(do.call("substitute", list(high_thresh[[1]], list(limit = as.name("newx3a")))))
     
+    Q_Calc[p,] <- c(paste(low_thresh), paste(med_thresh), paste(high_thresh))
     
     ###### calculate amount of time
     
@@ -290,6 +296,13 @@ for(n in 1: length(h)) {
     days_data <- rbind(days_data, new_datax)
     
   } ## end 2nd loop
+  
+  Q_Calc$Position <- positions
+  
+  Q_Calc <- Q_Calc %>%
+    mutate(Species ="SAS", Life_Stage = "Juvenile", Hydraulic = "Depth", Node = NodeName)
+  
+  write.csv(Q_Calc, paste("output_data/F1_",NodeName,"_SAS_juvenile_depth_Q_calculation_updated_hyd.csv", sep=""))
   
   ## limits
   limits <- rbind(limits, H_limits)

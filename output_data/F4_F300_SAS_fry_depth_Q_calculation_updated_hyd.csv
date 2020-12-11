@@ -1,0 +1,4 @@
+"","Thresh","Position","Species","Life_Stage","Hydraulic","Node"
+"1","Q >= newx1a & Q <= newx2a","depth_cm_LOB","SAS","Fry","Depth","F300"
+"2","Q >= newx1a & Q <= newx2a","depth_cm_MC","SAS","Fry","Depth","F300"
+"3","Q >= newx1a & Q <= newx2a","depth_cm_ROB","SAS","Fry","Depth","F300"

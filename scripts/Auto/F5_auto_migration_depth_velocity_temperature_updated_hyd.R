@@ -118,6 +118,9 @@ for(n in 1: length(h)) {
   H_limits <- as.data.frame(matrix(ncol=length(positions), nrow=2)) 
   H_limits$Type<-c("Hydraulic_limit1", "Hydraulic_limit2")
   
+  ## calculation
+  Q_Calc <- as.data.frame(matrix(ncol=1, nrow=3 ))
+  names(Q_Calc) <- "Thresh"
   
   time_statsx <- NULL
   days_data <- NULL
@@ -132,7 +135,7 @@ for(n in 1: length(h)) {
     ## define position
     PositionName <- str_split(positions[p], "_", 3)[[1]]
     PositionName <- PositionName[3]
-    PositionName
+   
     
     ## get roots
     curve <- spline(new_data$Q, new_data$value,
@@ -168,7 +171,8 @@ for(n in 1: length(h)) {
       dplyr::mutate(Seasonal = sum(Q >= newx1a)/length(DateTime)*100) %>%
       distinct(water_year,  Seasonal) %>%
       mutate(position= paste(PositionName), Node = NodeName)
-    time_stats
+    
+    Q_Calc[p,] <- paste("Q >= newx1a")
     
     time_statsx <- rbind(time_statsx, time_stats)
     
@@ -183,6 +187,13 @@ for(n in 1: length(h)) {
     
     
   } ## end 2nd loop
+  
+  Q_Calc$Position <- positions
+  
+  Q_Calc <- Q_Calc %>%
+    mutate(Species ="Steelhead", Life_Stage = "Migration", Hydraulic = "Depth", Node = NodeName)
+  
+  write.csv(Q_Calc, paste("output_data/F5_",NodeName,"_Steelhead_Migration_depth_Q_calculation_updated_hyd.csv", sep=""))
   
   ## limits
   limits <- rbind(limits, H_limits)
@@ -391,6 +402,10 @@ for(n in 1: length(h)) {
   H_limits <- as.data.frame(matrix(ncol=length(positions), nrow=2)) 
   H_limits$Type<-c("Hydraulic_limit1", "Hydraulic_limit2")
   
+  ## calculation
+  Q_Calc <- as.data.frame(matrix(ncol=1, nrow=3 ))
+  names(Q_Calc) <- "Thresh"
+  
   time_statsx <- NULL
   days_data <- NULL
   
@@ -442,6 +457,7 @@ for(n in 1: length(h)) {
       distinct(water_year,  Seasonal) %>%
       mutate(position= paste(PositionName), Node = NodeName)
 
+    Q_Calc[p,] <- paste("Q <= newx1a")
     
     time_statsx <- rbind(time_statsx, time_stats)
     
@@ -456,6 +472,13 @@ for(n in 1: length(h)) {
     
     
   } ## end 2nd loop
+  
+  Q_Calc$Position <- positions
+  
+  Q_Calc <- Q_Calc %>%
+    mutate(Species ="Steelhead", Life_Stage = "Migration", Hydraulic = "Velocity", Node = NodeName)
+  
+  write.csv(Q_Calc, paste("output_data/F5_",NodeName,"_Steelhead_Migration_velocity_Q_calculation_updated_hyd.csv", sep=""))
   
   ## limits
   limits <- rbind(limits, H_limits)
@@ -652,6 +675,10 @@ for(n in 1: length(h)) {
   H_limits <- as.data.frame(matrix(ncol=length(positions), nrow=2)) 
   H_limits$Type<-c("Hydraulic_limit1", "Hydraulic_limit2")
   
+  ## calculation
+  Q_Calc <- as.data.frame(matrix(ncol=1, nrow=3 ))
+  names(Q_Calc) <- "Thresh"
+  
   time_statsx <- NULL
   days_data <- NULL
   
@@ -701,6 +728,7 @@ for(n in 1: length(h)) {
       distinct(water_year,  Seasonal) %>%
       mutate(position= paste(PositionName), Node = NodeName)
     
+    Q_Calc[p,] <- paste("Q >= newx1a")
     
     time_statsx <- rbind(time_statsx, time_stats)
     
@@ -715,6 +743,13 @@ for(n in 1: length(h)) {
     
     
   } ## end 2nd loop
+  
+  Q_Calc$Position <- positions
+  
+  Q_Calc <- Q_Calc %>%
+    mutate(Species ="Steelhead", Life_Stage = "Smolts", Hydraulic = "Depth", Node = NodeName)
+  
+  write.csv(Q_Calc, paste("output_data/F5_",NodeName,"_Steelhead_Smolts_depth_Q_calculation_updated_hyd.csv", sep=""))
   
   ## limits
   limits <- rbind(limits, H_limits)

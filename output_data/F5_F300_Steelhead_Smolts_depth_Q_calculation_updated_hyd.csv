@@ -1,0 +1,4 @@
+"","Thresh","Position","Species","Life_Stage","Hydraulic","Node"
+"1","Q >= newx1a","depth_cm_LOB","Steelhead","Smolts","Depth","F300"
+"2","Q >= newx1a","depth_cm_MC","Steelhead","Smolts","Depth","F300"
+"3","Q >= newx1a","depth_cm_ROB","Steelhead","Smolts","Depth","F300"

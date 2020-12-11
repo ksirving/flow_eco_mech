@@ -1,0 +1,4 @@
+"","Thresh","Position","Species","Life_Stage","Hydraulic","Node"
+"1","Q >= min_limit & Q <= newx1a","shear_pa_MC","Cladophora","Adult","Shear Stress","F45B"
+"2",NA,"shear_pa_MC","Cladophora","Adult","Shear Stress","F45B"
+"3",NA,"shear_pa_MC","Cladophora","Adult","Shear Stress","F45B"

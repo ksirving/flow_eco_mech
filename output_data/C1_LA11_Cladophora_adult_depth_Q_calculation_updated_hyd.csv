@@ -1,0 +1,4 @@
+"","Low","Medium","High","Position","Species","Life_Stage","Hydraulic","Node"
+"1","Q > min_limit & Q <= newx1a","Q > min_limit & Q <= newx2a","Q > min_limit & Q <= newx3a","depth_cm_LOB","Cladophora","Adult","Depth","LA11"
+"2","Q > min_limit & Q <= newx1a","Q > min_limit & Q <= newx2a","Q > min_limit & Q <= newx3a","depth_cm_MC","Cladophora","Adult","Depth","LA11"
+"3","Q > min_limit & Q <= newx1a","Q > min_limit & Q <= newx2a","Q > min_limit & Q <= newx3a","depth_cm_ROB","Cladophora","Adult","Depth","LA11"

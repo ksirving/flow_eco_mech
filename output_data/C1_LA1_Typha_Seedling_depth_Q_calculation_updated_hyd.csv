@@ -1,0 +1,4 @@
+"","Low","Medium","High","Position","Species","Life_Stage","Hydraulic","Node"
+"1","Q > min_limit & Q <= newx1a","Q < 0","Q < 0","depth_cm_MC","Typha","Seedling","Depth","LA1"
+"2",NA,NA,NA,"depth_cm_MC","Typha","Seedling","Depth","LA1"
+"3",NA,NA,NA,"depth_cm_MC","Typha","Seedling","Depth","LA1"

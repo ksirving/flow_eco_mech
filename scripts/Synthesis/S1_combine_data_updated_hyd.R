@@ -89,46 +89,49 @@ head(all_datax)
 SuitabilityPerSlice <- all_datax %>%
   group_by(Species, Life_Stage, Hydraulic, position, Node) %>%
   mutate(MaxPercentage = max(TimePercentage)) %>%
+  mutate(MeanPercentage = mean(TimePercentage)) %>%
   select(-water_year,  - TimePercentage, -Suitability_Class) %>%
   distinct()
 
 head(SuitabilityPerSlice)
-SuitabilityPerSlice
+unique(SuitabilityPerSlice$Life_Stage)
 
 write.csv(SuitabilityPerSlice, "S1_suitability_per_slice.csv")
 
+SuitabilityPerSlice <- read.csv("S1_suitability_per_slice.csv")
 
 # Q limits for high Probs -------------------------------------------------
 # 
 # ## different number of slices per node, so combine Q limits by node, not species
-# ## does not work due to different num of positions - TRY LATER!!!!
+# ## does not work due to different num of positions - TRY LATER!!!! related to nodenames LA1, LA11 - all taken as LA1
 # 
-# ## define nodes
-# NodeNames <- unique(SuitabilityPerSlice$Node)
-# NodeNames
-# 
-# setwd("/Users/katieirving/Documents/git/flow_eco_mech")
-# ## list all files
-# ts <- list.files("output_data/", pattern="Q_limits_updated_hyd")
-# # ts <- Filter(function(x) !grepl("High_Probs", x), ts)
-# 
-# ts
-# 
-# for(n in 1:length(NodeNames)) {
-#   ## subset per node
-#   limitsx <- NULL
-#   ns <- Filter(function(x) grepl(paste(NodeNames[n]), x), ts)
-#   
-#   for(s in 1: length(ns)) {
-#     ## upload species per node and combine
-#     limits <- read.csv(file=paste("output_data/", ns[s], sep=""))
-#     limitsx <- rbind(limitsx, limits)
-# 
-#     
-#   }
-#   write.csv(limitsx, paste("results/S1_", NodeNames[n], "_Q_limits_all_species.csv", sep=""))
-# }
-# 
+## define nodes
+NodeNames <- unique(SuitabilityPerSlice$Node)
+NodeNames
+
+setwd("/Users/katieirving/Documents/git/flow_eco_mech")
+## list all files
+ts <- list.files("output_data/", pattern="Q_limits_updated_hyd")
+# ts <- Filter(function(x) !grepl("High_Probs", x), ts)
+
+ts
+
+for(n in 1:length(NodeNames)) {
+  ## subset per node
+  limitsx <- NULL
+  ns <- Filter(function(x) grepl(paste(NodeNames[n]), x), ts)
+ns
+  for(s in 1: length(ns)) {
+    ## upload species per node and combine
+    limits <- read.csv(file=paste("output_data/", ns[s], sep=""))
+    limitsx <- rbind(limitsx, limits)
+
+limitsx
+limits
+  }
+  write.csv(limitsx, paste("results/S1_", NodeNames[n], "_Q_limits_all_species.csv", sep=""))
+}
+
 # # Number of days ----------------------------------------------------------
 # 
 # ## upload data

@@ -1,0 +1,4 @@
+"","Thresh","Position","Species","Life_Stage","Hydraulic","Node"
+"1","Q >= newx1a","depth_cm_LOB","Willow","Germination","Depth","LA20"
+"2","Q >= newx1a","depth_cm_MC","Willow","Germination","Depth","LA20"
+"3","Q >= newx1a","depth_cm_ROB","Willow","Germination","Depth","LA20"

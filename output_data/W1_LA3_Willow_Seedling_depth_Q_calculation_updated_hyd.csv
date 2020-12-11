@@ -1,0 +1,4 @@
+"","Low","Medium","High","Position","Species","Life_Stage","Hydraulic","Node"
+"1","Q >= newx1a","Q >= newx2a","Q >= newx3a","depth_cm_LOB","Willow","Seedling","Depth","LA3"
+"2","Q >= newx1a","Q < 0","Q >= newx3a[1] & Q <= newx3a[2] | Q >= newx3a[3]","depth_cm_MC","Willow","Seedling","Depth","LA3"
+"3","Q >= newx1a","Q >= newx2a","Q >= newx3a","depth_cm_ROB","Willow","Seedling","Depth","LA3"
