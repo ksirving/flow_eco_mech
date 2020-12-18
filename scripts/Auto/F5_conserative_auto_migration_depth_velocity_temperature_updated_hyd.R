@@ -22,7 +22,7 @@ h <- list.files(pattern="predictions")
 length(h) ## 18
 h
 
-
+n
 ## set wd back to main
 setwd("/Users/katieirving/Documents/git/flow_eco_mech")
 
@@ -151,6 +151,7 @@ for(n in 1: length(h)) {
       newx1a <- approx(x = curve$y, y = curve$x, xout = 23)$y
     }
     
+   
     
     
     ## MAKE DF OF Q LIMITS
@@ -195,7 +196,7 @@ for(n in 1: length(h)) {
   Q_Calc <- Q_Calc %>%
     mutate(Species ="Steelhead", Life_Stage = "Migration_Prolonged", Hydraulic = "Depth", Node = NodeName)
   
-  write.csv(Q_Calc, paste("output_data/F5_",NodeName,"_Steelhead_Migration_depth_Q_calculation_updated_hyd_prolonged.csv", sep=""))
+  write.csv(Q_Calc, paste("output_data/F5_",NodeName,"_Steelhead_Prolonged_depth_Q_calculation_updated_hyd.csv", sep=""))
   
   ## limits
   limits <- rbind(limits, H_limits)
@@ -203,7 +204,7 @@ for(n in 1: length(h)) {
   limits <- limits %>%
     mutate(Species ="Steelhead", Life_Stage = "Migration_Prolonged", Hydraulic = "Depth", Node = NodeName)
   
-  write.csv(limits, paste("output_data/F5_",NodeName,"_Steelhead_Migration_depth_Q_limits_updated_hyd_prolonged.csv", sep=""))
+  write.csv(limits, paste("output_data/F5_",NodeName,"_Steelhead_Prolonged_depth_Q_limits_updated_hyd.csv", sep=""))
   
 
   
@@ -213,7 +214,7 @@ for(n in 1: length(h)) {
     rename( Season = variable) %>%
     mutate(Species ="Steelhead", Life_Stage = "Migration_Prolonged", Hydraulic = "Depth", Node = NodeName)
   
-  write.csv(melt_time, paste("output_data/F5_", NodeName, "_Steelhead_Migration_depth_time_stats_updated_hyd_prolonged.csv", sep=""))
+  write.csv(melt_time, paste("output_data/F5_", NodeName, "_Steelhead_Prolonged_depth_time_stats_updated_hyd.csv", sep=""))
   
   ### days per month
   days_data <- select(days_data,c(Q, month, water_year, month_year, year, day, ID, threshold, position, season, node))
@@ -262,7 +263,7 @@ for(n in 1: length(h)) {
   
   
   ## save df
-  write.csv(melt_days, paste("output_data/F5_", NodeName, "_Steelhead_Migration_depth_total_days_long_updated_hyd_prolonged.csv", sep="") )
+  write.csv(melt_days, paste("output_data/F5_", NodeName, "_Steelhead_Prolonged_depth_total_days_long_updated_hyd.csv", sep="") )
   
 } ## end 1st loop
 
@@ -360,7 +361,7 @@ for(n in 1: length(h)) {
   
   
   ## save out
-  save(all_data, file=paste("output_data/F5_", NodeName, "_Steelhead_velocity_Migration_discharge_probs_2010_2017_TS_updated_hyd_prolonged.RData", sep=""))
+  save(all_data, file=paste("output_data/F5_", NodeName, "_Steelhead_velocity_Prolonged_discharge_probs_2010_2017_TS_updated_hyd.RData", sep=""))
   
   # format probability time series ------------------------------------------
   
@@ -431,7 +432,7 @@ for(n in 1: length(h)) {
       distinct(water_year,  Seasonal) %>%
       mutate(position= paste(PositionName), Node = NodeName)
     
-    Q_Calc[p,] <- paste("Q >= min_limit & Q <= newx1a")
+    Q_Calc[p,] <- paste("Q >= min_limit & Q <= newx2a")
     time_statsx <- rbind(time_statsx, time_stats)
     
     ### count days per month
@@ -451,7 +452,7 @@ for(n in 1: length(h)) {
   Q_Calc <- Q_Calc %>%
     mutate(Species ="Steelhead", Life_Stage = "Migration_Prolonged", Hydraulic = "Velocity", Node = NodeName)
   
-  write.csv(Q_Calc, paste("output_data/F%_",NodeName,"_Steelhead_Migration_velocity_Q_calculation_updated_hyd.csv", sep=""))
+  write.csv(Q_Calc, paste("output_data/F5_",NodeName,"_Steelhead_Prolonged_velocity_Q_calculation_updated_hyd.csv", sep=""))
   
   ## limits
   limits <- rbind(limits, H_limits)
@@ -459,7 +460,7 @@ for(n in 1: length(h)) {
   limits <- limits %>%
     mutate(Species ="Steelhead", Life_Stage = "Migration_Prolonged", Hydraulic = "Velocity", Node = NodeName)
   
-  write.csv(limits, paste("output_data/F5_",NodeName,"_Steelhead_Migration_velocity_Q_limits_updated_hyd_prolonged.csv", sep=""))
+  write.csv(limits, paste("output_data/F5_",NodeName,"_Steelhead_Prolonged_velocity_Q_limits_updated_hyd.csv", sep=""))
 
   ## percentage time
   melt_time<-reshape2::melt(time_statsx, id=c("season", "position", "water_year", "Node"))
@@ -467,7 +468,7 @@ for(n in 1: length(h)) {
     rename( Season = variable) %>%
     mutate(Species ="Steelhead", Life_Stage = "Migration_Prolonged", Hydraulic = "Velocity", Node = NodeName)
   
-  write.csv(melt_time, paste("output_data/F5_", NodeName, "_Steelhead_Migration_velocity_time_stats_updated_hyd_prolonged.csv", sep=""))
+  write.csv(melt_time, paste("output_data/F5_", NodeName, "_Steelhead_Prolonged_velocity_time_stats_updated_hyd.csv", sep=""))
   
   ### days per month
   days_data <- select(days_data,c(Q, month, water_year, month_year, year, day, ID, threshold, position, season, node))
@@ -516,7 +517,7 @@ for(n in 1: length(h)) {
   
   
   ## save df
-  write.csv(melt_days, paste("output_data/F5_", NodeName, "_Steelhead_Migration_velocity_total_days_long_updated_hyd_prolonged.csv", sep="") )
+  write.csv(melt_days, paste("output_data/F5_", NodeName, "_Steelhead_Prolonged_velocity_total_days_long_updated_hyd.csv", sep="") )
   
 } ## end 1st loop
 

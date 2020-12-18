@@ -9,20 +9,21 @@ library(ggplot2)   # graphics
 library(gridExtra) # tile several plots next to each other
 library(scales)
 library(data.table)
-
+setwd("/Users/katieirving/Documents/git/flow_eco_mech")
 ## upload hydraulic data
 setwd("input_data/HecRas")
 
 h <- list.files(pattern="predictions")
 length(h) ## 18
 h
-n=1
+n=11
 ## set wd back to main
 setwd("/Users/katieirving/Documents/git/flow_eco_mech")
 
 for(n in 1: length(h)) {
   
   NodeData <- read.csv(file=paste("input_data/HecRas/", h[n], sep=""))
+  head(NodeData)
   F34D <- read.csv("input_data/HecRas/hydraulic_ts_F34D.csv") ## for dates
   
   NodeName <- str_split(h[n], "_", 3)[[1]]
@@ -49,7 +50,7 @@ for(n in 1: length(h)) {
     hyd_dep <- hydraul %>%
       mutate(depth_cm_MC = (Max..Depth..ft..MC*0.3048)*100) %>%
       mutate(shear_pa_MC = (Shear..lb.sq.ft..MC/0.020885)) %>%
-      mutate(sp_w_MC = (Shear..lb.sq.ft..MC*4.44822)/0.3048) %>%
+      mutate(sp_w_MC = (Stream.Power..lb.ft.s..MC*4.44822)/0.3048) %>%
       mutate(vel_m_MC = (Avg..Vel...ft.s..MC*0.3048)) %>%
       select(-contains("ft")) %>%
       mutate(date_num = seq(1,length(DateTime), 1))
@@ -61,9 +62,9 @@ for(n in 1: length(h)) {
       mutate(shear_pa_LOB = (Shear..lb.sq.ft..LOB/0.020885),
              shear_pa_MC = (Shear..lb.sq.ft..MC/0.020885),
              shear_pa_ROB = (Shear..lb.sq.ft..ROB/0.020885)) %>%
-      mutate(sp_w_LOB = (Shear..lb.sq.ft..LOB*4.44822)/0.3048,
-             sp_w_MC = (Shear..lb.sq.ft..MC*4.44822)/0.3048,
-             sp_w_ROB = (Shear..lb.sq.ft..ROB*4.44822)/0.3048) %>%
+      mutate(sp_w_LOB = (Stream.Power..lb.ft.s..LOB*4.44822)/0.3048,
+             sp_w_MC = (Stream.Power..lb.ft.s..MC*4.44822)/0.3048,
+             sp_w_ROB = (Stream.Power..lb.ft.s..LOB*4.44822)/0.3048) %>%
       mutate(vel_m_LOB = (Avg..Vel...ft.s..LOB*0.3048),
              vel_m_MC = (Avg..Vel...ft.s..MC*0.3048),
              vel_m_ROB = (Avg..Vel...ft.s..ROB*0.3048)) %>%
@@ -103,10 +104,10 @@ for(n in 1: length(h)) {
     mutate(year = year(DateTime)) %>%
     mutate(day = day(DateTime)) %>%
     mutate(hour = hour(DateTime)) %>%
-    mutate(season = ifelse(month == 3 | month == 4 | month == 5 | month == 6 | month == 7, paste("critical"), paste("non_critical")))%>%
+    mutate(season =  paste("critical"))%>%
     mutate(water_year = ifelse(month == 10 | month == 11 | month == 12, year, year-1))
   
-  
+
   ## save out
   save(all_data, file=paste("output_data/C1_", NodeName, "_Cladophora_Shear_Stress_Adult_discharge_probs_2010_2017_TS_updated_hyd.RData", sep=""))
   
@@ -134,7 +135,7 @@ for(n in 1: length(h)) {
   
 
   # probability as a function of discharge -----------------------------------
-  
+
   for(p in 1:length(positions)) {
     
     new_data <- all_data %>% 
@@ -152,17 +153,17 @@ for(n in 1: length(h)) {
                     xmin = min(new_data$Q), xmax = max(new_data$Q), ties = mean)
     
     
-    if(max(curve$y)<25.6) {
+    if(max(curve$y)<16.9) {
       newx2a <- max(curve$x)
     } else {
-      newx2a <- approx(x = curve$y, y = curve$x, xout = 25.6)$y
+      newx2a <- approx(x = curve$y, y = curve$x, xout = 16.9)$y
     }
     
     
     ## MAKE DF OF Q LIMITS
     limits[,p] <- c(min_limit, newx2a)
-    H_limits[, p] <- c(min_shear, 25.6)
-    
+    H_limits[, p] <- c(min_shear, 16.9)
+
     # create year_month column       
     new_datax <- new_data %>% unite(month_year, c(water_year,month), sep="-", remove=F) 
     
@@ -174,18 +175,18 @@ for(n in 1: length(h)) {
     ###### calculate amount of time
     time_stats <- new_datax %>%
       dplyr::group_by(water_year, season) %>%
-      dplyr::mutate(Seasonal = sum(Q >= min_limit & Q <= newx2a)/length(DateTime)*100) %>%
+      dplyr::mutate(Seasonal = sum(Q <= newx2a)/length(DateTime)*100) %>%
       distinct(water_year,  Seasonal) %>%
       mutate(position= paste(PositionName), Node = NodeName)
     
-    Q_Calc[p,] <- paste("Q >= min_limit & Q <= newx1a")
+    Q_Calc[p,] <- paste("Q <= newx2a")
     
     time_statsx <- rbind(time_statsx, time_stats)
     
     ### count days per month
     new_datax <- new_datax %>% 
-      group_by(month, day, water_year, ID = data.table::rleid(Q >= min_limit & Q <= newx2a)) %>%
-      mutate(threshold = if_else(Q >= min_limit & Q <= newx2a,  row_number(), 0L)) %>%
+      group_by(month, day, water_year, ID = data.table::rleid(Q <= newx2a)) %>%
+      mutate(threshold = if_else(Q <= newx2a,  row_number(), 0L)) %>%
       mutate(position= paste(PositionName)) 
     
     

@@ -127,6 +127,7 @@ for(n in 1: length(h)) {
     
     cat(paste("Running Species", SpeciesName))
     cat(paste("Running Life Stage", LifeStageName))
+    cat(paste("Running Variable", HydraulicName))
 
   # Q_Calc <- read.csv(paste("output_data/F1_", NodeName, "_SAS_juvenile_depth_Q_calculation_updated_hyd.csv", sep=""))
   
@@ -144,7 +145,7 @@ for(n in 1: length(h)) {
     lim <- Filter(function(x) grepl(paste(SpeciesName), x), QL)
     lim <- Filter(function(x) grepl(paste(LifeStageName), x), lim)
     lim <- Filter(function(x) grepl(paste(HydraulicName), x), lim)
-    
+  lim
     limits <- read.csv(file=paste("output_data/", lim, sep=""))
     
  
@@ -175,8 +176,6 @@ for(n in 1: length(h)) {
     }
   
  
- 
-  
   melt_timex <- NULL
   melt_daysx <- NULL
 
@@ -280,7 +279,7 @@ for(n in 1: length(h)) {
           select(Thresh, Position) %>%
           filter(Position == PositionName)
         
-        thresh <- parse(text = thresh[,1])
+        thresh <- parse(text = threshx[,1])
         
         
       }
@@ -316,7 +315,7 @@ for(n in 1: length(h)) {
       
         
       } else {
-        time_stats <- new_data %>%
+        time_stats <- new_datax %>%
           dplyr::group_by(water_year, season) %>%
           dplyr::mutate(Seasonal = sum(eval(thresh))/length(DateTime)*100) %>%
           distinct(water_year,  Seasonal) %>%
@@ -354,12 +353,13 @@ for(n in 1: length(h)) {
     } ## end 3rd loop - positions
     
      ## in scenario loop
+   
     ## percentage time
     melt_time<-reshape2::melt(time_statsx, id=c("season", "position", "water_year", "Node"))
     melt_time <- melt_time %>% 
       rename( Probability_Threshold = variable) %>%
       mutate(Species = SpeciesName, Life_Stage = LifeStageName, Hydraulic = HydraulicName, Node = NodeName, Scenario =scenarios[s])
-    
+   
     melt_timex <- rbind(melt_timex, melt_time)
     
     ### days per month
@@ -449,7 +449,7 @@ for(n in 1: length(h)) {
         group_by(ID, day, month, water_year, month_year, position, season) %>%
         summarise(n_hours = max(consec_hours))  %>%
         mutate(n_days = ifelse(n_hours >= 24, 1, 0)) # %>%
-      total_days01
+      
       ## count the number of days in each month
       total_days_per_month01 <- total_days01 %>%
         group_by(water_year, position, season, month,  month_year,) %>%
@@ -457,16 +457,16 @@ for(n in 1: length(h)) {
       
       ## combine all thresholds
       total_days <- total_days_per_month01
-      
+      head(total_days)
       # # create year_month column       
       total_days <- ungroup(total_days) %>%
-        unite(month_year, water_year:month, sep="-", remove=F) %>%
+        # unite(month_year, water_year:month, sep="-", remove=F) %>%
         mutate(Node= paste(NodeName)) #%>%
       
       ## convert month year to date format
       
       total_days$month_year <-  zoo::as.yearmon(total_days$month_year)
-      # total_days$month_year <- as.Date(total_days$month_year)
+      total_days$month_year <- as.Date(total_days$month_year)
       
       ## define seasons
       winter <- c(1,2,3,4,11,12) ## winter months
@@ -487,7 +487,7 @@ for(n in 1: length(h)) {
     
     
     melt_daysx <- rbind(melt_daysx, melt_days)
-    
+    head(melt_daysx)
   } ## end 2nd loop scenarios
   
   ## in species hydraulic loop

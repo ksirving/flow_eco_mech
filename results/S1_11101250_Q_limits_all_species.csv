@@ -120,9 +120,9 @@
 "119",23,NA,NA,NA,"Hydraulic_limit","SAS","Juvenile","Depth",11101250
 "120",24,NA,NA,NA,"Hydraulic_limit","SAS","Juvenile","Depth",11101250
 "121",1,0.0025,0.0025,0.0025,"Q_limit1","Cladophora","Adult","Shear Stress",11101250
-"122",2,8327.5,7055.68380815224,8327.5,"Q_limit2","Cladophora","Adult","Shear Stress",11101250
+"122",2,7706.32556642157,4689.45947568449,6742.48875075903,"Q_limit2","Cladophora","Adult","Shear Stress",11101250
 "123",3,0,0,0,"Hydraulic_limit1","Cladophora","Adult","Shear Stress",11101250
-"124",4,25.6,25.6,25.6,"Hydraulic_limit2","Cladophora","Adult","Shear Stress",11101250
+"124",4,16.9,16.9,16.9,"Hydraulic_limit2","Cladophora","Adult","Shear Stress",11101250
 "125",1,70.2185765308431,0.0325687401976213,51.1078356492219,"Q_limit1","SAS","Fry","Depth",11101250
 "126",2,88.1501189829065,0.108562467325404,64.9806819743285,"Q_limit2","SAS","Fry","Depth",11101250
 "127",3,3,3,3,"Hydraulic_limit1","SAS","Fry","Depth",11101250
@@ -131,22 +131,22 @@
 "130",2,281.96251310505,22.7933510792546,208.138706711454,"Q_limit2","SAS","Fry","Velocity",11101250
 "131",3,0.0001276097016,0.0005181304344,0.0001553205936,"Hydraulic_limit1","SAS","Fry","Velocity",11101250
 "132",4,0.05,0.05,0.05,"Hydraulic_limit2","SAS","Fry","Velocity",11101250
-"133",1,131.509918507435,0.24969367484843,99.6436839978287,"Q_limit1","Steelhead","Migration_Prolonged","Depth",11101250
-"134",2,131.509918507435,0.24969367484843,99.6436839978287,"Q_limit2","Steelhead","Migration_Prolonged","Depth",11101250
-"135",3,23,23,23,"Hydraulic_limit1","Steelhead","Migration_Prolonged","Depth",11101250
-"136",4,23,23,23,"Hydraulic_limit2","Steelhead","Migration_Prolonged","Depth",11101250
-"137",1,113.247625671388,0.195412441185728,84.9456148146392,"Q_limit1","Steelhead","Migration","Depth",11101250
-"138",2,113.247625671388,0.195412441185728,84.9456148146392,"Q_limit2","Steelhead","Migration","Depth",11101250
-"139",3,18,18,18,"Hydraulic_limit1","Steelhead","Migration","Depth",11101250
-"140",4,18,18,18,"Hydraulic_limit2","Steelhead","Migration","Depth",11101250
-"141",1,0.0025,0.0025,0.0025,"Q_limit1","Steelhead","Migration_Prolonged","Velocity",11101250
-"142",2,8327.5,8327.5,8327.5,"Q_limit2","Steelhead","Migration_Prolonged","Velocity",11101250
-"143",3,0,0,0,"Hydraulic_limit1","Steelhead","Migration_Prolonged","Velocity",11101250
-"144",4,2,2,2,"Hydraulic_limit2","Steelhead","Migration_Prolonged","Velocity",11101250
-"145",1,0.0025,0.0025,0.0025,"Q_limit1","Steelhead","Migration","Velocity",11101250
-"146",2,8327.5,8327.5,8327.5,"Q_limit2","Steelhead","Migration","Velocity",11101250
-"147",3,0,0,0,"Hydraulic_limit1","Steelhead","Migration","Velocity",11101250
-"148",4,3.1,3.1,3.1,"Hydraulic_limit2","Steelhead","Migration","Velocity",11101250
+"133",1,113.247625671388,0.195412441185728,84.9456148146392,"Q_limit1","Steelhead","Migration","Depth",11101250
+"134",2,113.247625671388,0.195412441185728,84.9456148146392,"Q_limit2","Steelhead","Migration","Depth",11101250
+"135",3,18,18,18,"Hydraulic_limit1","Steelhead","Migration","Depth",11101250
+"136",4,18,18,18,"Hydraulic_limit2","Steelhead","Migration","Depth",11101250
+"137",1,0.0025,0.0025,0.0025,"Q_limit1","Steelhead","Migration","Velocity",11101250
+"138",2,8327.5,8327.5,8327.5,"Q_limit2","Steelhead","Migration","Velocity",11101250
+"139",3,0,0,0,"Hydraulic_limit1","Steelhead","Migration","Velocity",11101250
+"140",4,3.1,3.1,3.1,"Hydraulic_limit2","Steelhead","Migration","Velocity",11101250
+"141",1,131.509918507435,0.24969367484843,99.6436839978287,"Q_limit1","Steelhead","Migration_Prolonged","Depth",11101250
+"142",2,131.509918507435,0.24969367484843,99.6436839978287,"Q_limit2","Steelhead","Migration_Prolonged","Depth",11101250
+"143",3,23,23,23,"Hydraulic_limit1","Steelhead","Migration_Prolonged","Depth",11101250
+"144",4,23,23,23,"Hydraulic_limit2","Steelhead","Migration_Prolonged","Depth",11101250
+"145",1,0.0025,0.0025,0.0025,"Q_limit1","Steelhead","Migration_Prolonged","Velocity",11101250
+"146",2,8327.5,8327.5,8327.5,"Q_limit2","Steelhead","Migration_Prolonged","Velocity",11101250
+"147",3,0,0,0,"Hydraulic_limit1","Steelhead","Migration_Prolonged","Velocity",11101250
+"148",4,2,2,2,"Hydraulic_limit2","Steelhead","Migration_Prolonged","Velocity",11101250
 "149",1,93.9757755809249,0.130274960790485,69.5876810430188,"Q_limit1","Steelhead","Smolts","Depth",11101250
 "150",2,93.9757755809249,0.130274960790485,69.5876810430188,"Q_limit2","Steelhead","Smolts","Depth",11101250
 "151",3,12,12,12,"Hydraulic_limit1","Steelhead","Smolts","Depth",11101250
@@ -223,7 +223,7 @@
 "222",22,NA,NA,NA,"Hydraulic_limit","Typha","Seedling","Depth",11101250
 "223",23,NA,NA,NA,"Hydraulic_limit","Typha","Seedling","Depth",11101250
 "224",24,NA,NA,NA,"Hydraulic_limit","Typha","Seedling","Depth",11101250
-"225",1,114.63745834201,0.00428568806219757,86.059534968219,"Q_limit","Willow","Seedling","Depth",11101250
+"225",1,179.300940424702,0.068324808094523,138.632630354907,"Q_limit","Willow","Seedling","Depth",11101250
 "226",2,NA,NA,NA,"Q_limit","Willow","Seedling","Depth",11101250
 "227",3,NA,NA,NA,"Q_limit","Willow","Seedling","Depth",11101250
 "228",4,NA,NA,NA,"Q_limit","Willow","Seedling","Depth",11101250
@@ -231,11 +231,11 @@
 "230",6,NA,NA,NA,"Q_limit","Willow","Seedling","Depth",11101250
 "231",7,NA,NA,NA,"Q_limit","Willow","Seedling","Depth",11101250
 "232",8,NA,NA,NA,"Q_limit","Willow","Seedling","Depth",11101250
-"233",9,179.300940424702,0.068324808094523,138.632630354907,"Q_limit","Willow","Seedling","Depth",11101250
+"233",9,114.63745834201,0.00428568806219757,86.059534968219,"Q_limit","Willow","Seedling","Depth",11101250
 "234",10,NA,NA,NA,"Q_limit","Willow","Seedling","Depth",11101250
 "235",11,NA,NA,NA,"Q_limit","Willow","Seedling","Depth",11101250
 "236",12,NA,NA,NA,"Q_limit","Willow","Seedling","Depth",11101250
-"237",13,18.4014586565965,18.3465567472686,18.4014749892543,"Hydraulic_limit","Willow","Seedling","Depth",11101250
+"237",13,33.9504071900376,33.9501787060127,33.9504436899805,"Hydraulic_limit","Willow","Seedling","Depth",11101250
 "238",14,NA,NA,NA,"Hydraulic_limit","Willow","Seedling","Depth",11101250
 "239",15,NA,NA,NA,"Hydraulic_limit","Willow","Seedling","Depth",11101250
 "240",16,NA,NA,NA,"Hydraulic_limit","Willow","Seedling","Depth",11101250
@@ -243,11 +243,11 @@
 "242",18,NA,NA,NA,"Hydraulic_limit","Willow","Seedling","Depth",11101250
 "243",19,NA,NA,NA,"Hydraulic_limit","Willow","Seedling","Depth",11101250
 "244",20,NA,NA,NA,"Hydraulic_limit","Willow","Seedling","Depth",11101250
-"245",21,33.9504071900376,33.9501787060127,33.9504436899805,"Hydraulic_limit","Willow","Seedling","Depth",11101250
+"245",21,18.4014586565965,18.3465567472686,18.4014749892543,"Hydraulic_limit","Willow","Seedling","Depth",11101250
 "246",22,NA,NA,NA,"Hydraulic_limit","Willow","Seedling","Depth",11101250
 "247",23,NA,NA,NA,"Hydraulic_limit","Willow","Seedling","Depth",11101250
 "248",24,NA,NA,NA,"Hydraulic_limit","Willow","Seedling","Depth",11101250
-"249",1,834.721966574428,179.913432471116,550.600366215411,"Q_limit","Willow","Seedling","Shear",11101250
+"249",1,8327.5,8327.5,8327.5,"Q_limit","Willow","Seedling","Shear",11101250
 "250",2,NA,NA,NA,"Q_limit","Willow","Seedling","Shear",11101250
 "251",3,NA,NA,NA,"Q_limit","Willow","Seedling","Shear",11101250
 "252",4,NA,NA,NA,"Q_limit","Willow","Seedling","Shear",11101250
@@ -255,22 +255,22 @@
 "254",6,NA,NA,NA,"Q_limit","Willow","Seedling","Shear",11101250
 "255",7,NA,NA,NA,"Q_limit","Willow","Seedling","Shear",11101250
 "256",8,NA,NA,NA,"Q_limit","Willow","Seedling","Shear",11101250
-"257",9,NA,NA,NA,"Q_limit","Willow","Seedling","Shear",11101250
+"257",9,834.721966574428,179.913432471116,550.600366215411,"Q_limit","Willow","Seedling","Shear",11101250
 "258",10,NA,NA,NA,"Q_limit","Willow","Seedling","Shear",11101250
 "259",11,NA,NA,NA,"Q_limit","Willow","Seedling","Shear",11101250
 "260",12,NA,NA,NA,"Q_limit","Willow","Seedling","Shear",11101250
-"261",13,0.533455392809609,0.533455392809609,0.533455392809607,"Hydraulic_limit","Willow","Seedling","Shear",11101250
+"261",13,436.092343968,436.092343968,436.092343968,"Hydraulic_limit","Willow","Seedling","Shear",11101250
 "262",14,NA,NA,NA,"Hydraulic_limit","Willow","Seedling","Shear",11101250
 "263",15,NA,NA,NA,"Hydraulic_limit","Willow","Seedling","Shear",11101250
 "264",16,NA,NA,NA,"Hydraulic_limit","Willow","Seedling","Shear",11101250
-"265",17,NA,21.6303262316911,NA,"Hydraulic_limit","Willow","Seedling","Shear",11101250
-"266",18,NA,NA,NA,"Hydraulic_limit","Willow","Seedling","Shear",11101250
-"267",19,NA,NA,NA,"Hydraulic_limit","Willow","Seedling","Shear",11101250
-"268",20,NA,NA,NA,"Hydraulic_limit","Willow","Seedling","Shear",11101250
-"269",21,NA,NA,NA,"Hydraulic_limit","Willow","Seedling","Shear",11101250
-"270",22,NA,NA,NA,"Hydraulic_limit","Willow","Seedling","Shear",11101250
-"271",23,NA,NA,NA,"Hydraulic_limit","Willow","Seedling","Shear",11101250
-"272",24,NA,NA,NA,"Hydraulic_limit","Willow","Seedling","Shear",11101250
+"265",17,NA,257.52771687776,NA,"Hydraulic_limit","Willow","Seedling","Shear",11101250
+"266",18,NA,257.527823338688,NA,"Hydraulic_limit","Willow","Seedling","Shear",11101250
+"267",19,NA,257.708990830342,NA,"Hydraulic_limit","Willow","Seedling","Shear",11101250
+"268",20,NA,258.062298926322,NA,"Hydraulic_limit","Willow","Seedling","Shear",11101250
+"269",21,103.449762395726,34.093071783028,81.6103107786375,"Hydraulic_limit","Willow","Seedling","Shear",11101250
+"270",22,103.499690645659,34.0931906521998,81.6103179860032,"Hydraulic_limit","Willow","Seedling","Shear",11101250
+"271",23,103.532472886636,34.4029548474526,81.9073795120576,"Hydraulic_limit","Willow","Seedling","Shear",11101250
+"272",24,103.533253151187,34.5677035019269,81.9074995866046,"Hydraulic_limit","Willow","Seedling","Shear",11101250
 "273",1,8327.5,8327.5,8327.5,"Q_limit1","Willow","Adult","StreamPower",11101250
 "274",2,8327.5,8327.5,8327.5,"Q_limit2","Willow","Adult","StreamPower",11101250
 "275",3,4000,4000,4000,"Hydraulic_limit1","Willow","Adult","StreamPower",11101250

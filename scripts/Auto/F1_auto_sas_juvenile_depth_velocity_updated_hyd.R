@@ -36,6 +36,7 @@ setwd("input_data/HecRas")
 h <- list.files(pattern="predictions")
 length(h) ## 20
 h
+n=9
 ## set wd back to main
 setwd("/Users/katieirving/Documents/git/flow_eco_mech")
 
@@ -157,7 +158,7 @@ for(n in 1: length(h)) {
   days_data <- NULL
   
 
-  
+  p=1
   # probability as a function of discharge -----------------------------------
   
   for(p in 1:length(positions)) {
@@ -249,7 +250,6 @@ for(n in 1: length(h)) {
     ## produces percentage of time for each year and season within year for each threshold
     
     ## Main channel curves
-    
     
     low_thresh <- expression_Q(newx1a, peakQ) 
     low_thresh <-as.expression(do.call("substitute", list(low_thresh[[1]], list(limit = as.name("newx1a")))))

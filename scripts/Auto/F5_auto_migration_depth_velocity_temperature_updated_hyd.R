@@ -457,7 +457,7 @@ for(n in 1: length(h)) {
       distinct(water_year,  Seasonal) %>%
       mutate(position= paste(PositionName), Node = NodeName)
 
-    Q_Calc[p,] <- paste("Q <= newx1a")
+    Q_Calc[p,] <- paste("Q >= min_limit & Q <= newx2a")
     
     time_statsx <- rbind(time_statsx, time_stats)
     

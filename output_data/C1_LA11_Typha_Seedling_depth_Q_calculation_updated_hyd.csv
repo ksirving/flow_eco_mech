@@ -1,4 +1,4 @@
 "","Low","Medium","High","Position","Species","Life_Stage","Hydraulic","Node"
-"1","Q > min_limit & Q <= newx1a","Q > min_limit & Q <= newx2a","Q < 0","depth_cm_LOB","Typha","Seedling","Depth","LA11"
-"2","Q > min_limit & Q <= newx1a","Q > min_limit & Q <= newx2a","Q < 0","depth_cm_MC","Typha","Seedling","Depth","LA11"
-"3","Q > min_limit & Q <= newx1a","Q > min_limit & Q <= newx2a","Q < 0","depth_cm_ROB","Typha","Seedling","Depth","LA11"
+"1","Q >= min_limit & Q <= newx1a","Q >= min_limit & Q <= newx2a","Q < 0","depth_cm_LOB","Typha","Seedling","Depth","LA11"
+"2","Q >= min_limit & Q <= newx1a","Q >= min_limit & Q <= newx2a","Q < 0","depth_cm_MC","Typha","Seedling","Depth","LA11"
+"3","Q >= min_limit & Q <= newx1a","Q >= min_limit & Q <= newx2a","Q < 0","depth_cm_ROB","Typha","Seedling","Depth","LA11"

@@ -1,0 +1,4 @@
+"","Thresh","Position","Species","Life_Stage","Hydraulic","Node"
+"1","Q >= min_limit & Q <= newx2a","vel_m_LOB","Steelhead","Migration_Prolonged","Velocity","LA8"
+"2","Q >= min_limit & Q <= newx2a","vel_m_MC","Steelhead","Migration_Prolonged","Velocity","LA8"
+"3","Q >= min_limit & Q <= newx2a","vel_m_ROB","Steelhead","Migration_Prolonged","Velocity","LA8"

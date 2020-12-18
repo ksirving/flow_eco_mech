@@ -1,5 +1,5 @@
 "","V1","V2","V3","Type","Species","Life_Stage","Hydraulic","Node"
 "1",0.454739391803741,0.454739391803741,0.454739391803741,"Q_limit1","Cladophora","Adult","Shear Stress","LA202"
-"2",2296.16119342626,49.8410951369379,4882.04454386244,"Q_limit2","Cladophora","Adult","Shear Stress","LA202"
+"2",1498.63958969127,35.6687519588193,3163.12001352481,"Q_limit2","Cladophora","Adult","Shear Stress","LA202"
 "3",0.0052372649032905,1.14567345222113,0.00251252622841091,"Hydraulic_limit1","Cladophora","Adult","Shear Stress","LA202"
-"4",25.6,25.6,25.6,"Hydraulic_limit2","Cladophora","Adult","Shear Stress","LA202"
+"4",16.9,16.9,16.9,"Hydraulic_limit2","Cladophora","Adult","Shear Stress","LA202"

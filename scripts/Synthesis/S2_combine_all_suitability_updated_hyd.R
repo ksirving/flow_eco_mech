@@ -15,7 +15,6 @@ full_df <- data %>%
   mutate(pos_code = paste(Node, "_", position, sep="")) %>%
   distinct()
 
-head(full_df)
 write.csv(full_df, "results/S2_Overall_Class_per_node_species_position.csv")
 
 ### if one hydraulic varibale per species and per position is low/partial, position is low

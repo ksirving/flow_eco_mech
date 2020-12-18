@@ -18,6 +18,8 @@ library(data.table)
 library(zoo)
 library(scales)
 
+setwd("/Users/katieirving/Documents/git/flow_eco_mech")
+
 ## function to find roots
 load(file="root_interpolation_function.Rdata")
 
@@ -35,7 +37,8 @@ setwd("input_data/HecRas")
 
 h <- list.files(pattern="predictions")
 length(h) ## 20
-
+h
+n=11
 ## set wd back to main
 setwd("/Users/katieirving/Documents/git/flow_eco_mech")
 n=1
@@ -171,7 +174,7 @@ for(n in 1: length(h)) {
     peakQ  <- max(peak$Q)
     min_limit <- filter(new_data, depth_cm >= 0.03)
     min_limit <- min(min_limit$Q)
-
+    
     ## Main channel curves
     
     ## find roots for each probability
@@ -230,11 +233,11 @@ for(n in 1: length(h)) {
     # dataframe for stats -----------------------------------------------------
     
     ## define critical period or season for adult as all year is critical
-    non_critical <- c(1,2,8:12) 
-    critical <- c(3:7) 
+    # # non_critical <- c(1,2,8:12) 
+    # critical <- c(1:12) 
     
     new_datax <- new_datax %>%
-      mutate(season = ifelse(month %in% non_critical, "non_critical", "critical") )
+      mutate(season =  "critical")
     
     ## define equation for roots
     ## produces percentage of time for each year and season within year for each threshold
@@ -251,7 +254,7 @@ for(n in 1: length(h)) {
     high_thresh <- expression_Q(newx3a, peakQ)
     high_thresh <-as.expression(do.call("substitute", list(high_thresh[[1]], list(limit = as.name("newx3a")))))
     Q_Calc[p,] <- c(paste(low_thresh), paste(med_thresh), paste(high_thresh))
-
+    
     ###### calculate amount of time
    
     time_stats <- new_datax %>%
@@ -371,11 +374,11 @@ for(n in 1: length(h)) {
   total_days <- rename(total_days, Low = days_per_month_low, Medium = days_per_month_medium, High = days_per_month_high)
   
   ## define seasons
-  non_critical <- c(1,2,8:12) 
-  critical <- c(3:7) 
+  # non_critical <- c(1,2,8:12) 
+  # critical <- c(3:7) 
   
   total_days <- total_days %>%
-    mutate(season = ifelse(month %in% non_critical, "non_critical", "critical") )
+    mutate(season = "critical") 
   
   # ## melt data
   
@@ -404,10 +407,10 @@ setwd("input_data/HecRas")
 
 h <- list.files(pattern="predictions")
 length(h) ## 18
-
+h
 ## set wd back to main
 setwd("/Users/katieirving/Documents/git/flow_eco_mech")
-n=1
+n=6
 n
 for(n in 1: length(h)) {
   
@@ -533,9 +536,9 @@ for(n in 1: length(h)) {
   time_statsx <- NULL
   days_data <- NULL
 
-  
+
   # probability as a function of discharge -----------------------------------
-  
+  p=2
   for(p in 1:length(positions)) {
     
     new_data <- all_data %>% 
@@ -556,10 +559,16 @@ for(n in 1: length(h)) {
     ## Main channel curves
     
     ## find roots for each probability
-    newx1a <- RootLinearInterpolant(new_data$Q, new_data$prob_fit, 0.25)
-    hy_lim1 <- RootLinearInterpolant(new_data$Velocity, new_data$prob_fit, 0.25)
     
-    
+    if(min(new_data$prob_fit)>0.25) {
+      newx1a <- min(new_data$Q)
+      hy_lim1 <- min(new_data$Velocity)
+    } else {
+      newx1a <- RootLinearInterpolant(new_data$Q, new_data$prob_fit, 0.25)
+      hy_lim1 <- RootLinearInterpolant(new_data$Velocity, new_data$prob_fit, 0.25)
+    }
+    newx1a
+
     if(length(newx1a) > 4) {
       newx1a <- c(newx1a[1], newx1a[length(newx1a)])
       hy_lim1 <- c(hy_lim1[1], hy_lim1[length(hy_lim1)])
@@ -595,6 +604,8 @@ for(n in 1: length(h)) {
       hy_lim3 <- hy_lim3
     }
     
+  
+    
     
     ## MAKE DF OF Q LIMITS
     limits[,p] <- c(newx1a[1], newx1a[2],newx1a[3], newx1a[4],
@@ -611,18 +622,18 @@ for(n in 1: length(h)) {
     # dataframe for stats -----------------------------------------------------
     
     ## define critical period or season for adult as all year is critical
-    non_critical <- c(1,2,8:12) 
-    critical <- c(3:7) 
+    # non_critical <- c(1,2,8:12) 
+    # critical <- c(3:7) 
     
     new_datax <- new_datax %>%
-      mutate(season = ifelse(month %in% non_critical, "non_critical", "critical") )
+      mutate(season =  "critical")
     
     ## define equation for roots
     ## produces percentage of time for each year and season within year for each threshold
     
     ## Main channel curves
     
-    
+    low_thresh
     low_thresh <- expression_Q(newx1a, peakQ) 
     low_thresh <-as.expression(do.call("substitute", list(low_thresh[[1]], list(limit = as.name("newx1a")))))
     
@@ -635,7 +646,7 @@ for(n in 1: length(h)) {
     Q_Calc[p,] <- c(paste(low_thresh), paste(med_thresh), paste(high_thresh))
 
     ###### calculate amount of time
-
+    head(time_stats)
     time_stats <- new_datax %>%
       dplyr::group_by(water_year) %>%
       dplyr::mutate(Low = sum(eval(low_thresh))/length(DateTime)*100) %>%
@@ -755,11 +766,11 @@ for(n in 1: length(h)) {
   total_days <- rename(total_days, Low = days_per_month_low, Medium = days_per_month_medium, High = days_per_month_high)
   
   ## define seasons
-  non_critical <- c(1,2,8:12) 
-  critical <- c(3:7) 
+  # non_critical <- c(1,2,8:12) 
+  # critical <- c(3:7) 
   
   total_days <- total_days %>%
-    mutate(season = ifelse(month %in% non_critical, "non_critical", "critical") )
+    mutate(season = "critical") 
   
   # ## melt data
   

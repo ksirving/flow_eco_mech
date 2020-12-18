@@ -1,4 +1,4 @@
 "","Low","Medium","High","Position","Species","Life_Stage","Hydraulic","Node"
 "1","Q >= newx1a","Q >= newx2a","Q >= newx3a","vel_m_LOB","Cladophora","Adult","Velocity","LA11"
-"2","Q < 0","Q >= newx2a","Q >= newx3a","vel_m_MC","Cladophora","Adult","Velocity","LA11"
+"2","Q >= newx1a","Q >= newx2a","Q >= newx3a","vel_m_MC","Cladophora","Adult","Velocity","LA11"
 "3","Q >= newx1a","Q >= newx2a","Q >= newx3a","vel_m_ROB","Cladophora","Adult","Velocity","LA11"

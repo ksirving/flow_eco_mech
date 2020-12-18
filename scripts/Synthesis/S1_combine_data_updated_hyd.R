@@ -32,7 +32,7 @@ ts <- list.files(pattern="time_stats_updated_hyd")
 length(ts) ## 21
 
 ## thresholds
-ts <- ts[-c(1,3,4,5,8,9,15,16,17,20,21)] # 10
+ts <- ts[-c(1,3,4,5,8,9,15,16,17,20,21,22)] # 10
 all_data <- NULL
 
 for(s in 1: length(ts)) {
