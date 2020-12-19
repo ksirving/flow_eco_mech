@@ -25,7 +25,7 @@ inund <- inund %>%
 
 head(inund)
 
-p1 <- ggplot(data = inund, mapping = aes(x = depth_cm, y = mortality_prec))+
+p1 <- ggplot(data = inund, mapping = aes(x = vel_m, y = mortality_prec))+
   geom_point(size = 2)+
   geom_smooth(method = "lm", formula = y ~ x + I(x^2))+
   labs(x = "Depth (cm)", y = "Mortality (%)")+
@@ -274,7 +274,6 @@ dim(depth_freq) ## 1376
 # Adult data distribution -------------------------------------------------------
 
 
-
 # ## compare different data sets
 unique(depth_freq$Dataset)
 
@@ -297,20 +296,20 @@ data.f <- factor(Dataset_num, levels= 1:3,
 out.dir
 png(paste0(out.dir, "SAS_adult_depth_data_dist.png"), width = 1200, height = 1000)
 
-par(mar=c(5, 8,4,6))
+par(mgp=c(9,3,0),mar=c(5, 11,4,6))
 
-par(cex.axis=3, cex.lab = 3, las=1)
+par(cex.axis=4, cex.lab = 4, las=1)
 
 sm.density.compare(as.vector(Depth), Dataset_num, 
                    ylab="", 
                    xlab="Depth (cm)", 
                    col=c("red", "blue", "purple"),
-                   lwd = 3,
+                   lwd = 5,
                    lty=c(1,5,3))
 
-# add legend via mouse click
 colfill<-c("red", "blue", "purple")
-legend("topright",levels(data.f), fill=colfill, bty = "n", cex = 3)
+# axis(2, at=c(0, 0.1, 0.2, 0.3, 0.4), cex.axis=5, las = 2)
+legend("topright",levels(data.f), fill=colfill, bty = "n", cex = 5)
 # axis(2, ylab="Data Density")
 
 dev.off()
@@ -326,15 +325,15 @@ yfit<-dnorm(xfit,mean=mean(scaled_x),sd=sd(scaled_x))
 ## x axis with raw depth values
 xfit_r <- seq(min(depth_freq$Depth), max(depth_freq$Depth), length=120)
 
-?ggsave
+
 png(paste0(out.dir, "SAS_adult_depth.png"), width = 1500, height = 1200)
 
-par(mgp=c(9,3,0), mar=c(9, 9,4,6))
-par(cex.axis=5)
+par(mgp=c(9,3,0), mar=c(10, 10,4,6))
+par(cex.axis=6)
 
 ## plot curve with raw depth axis
 plot(xfit_r, yfit, axes=FALSE, xlab='', ylab='', type='l', col='white', main = "" )
-axis(1, at=pretty(xfit_r), cex.axis=5, line = 0)
+axis(1, at=pretty(xfit_r), cex.axis=6, line = 0)
 par(new=TRUE)
 #plot the line with no axes or labels
 plot(xfit, yfit, axes=FALSE,
@@ -345,25 +344,35 @@ plot(xfit, yfit, axes=FALSE,
      lwd = 5)
 #add these now with axis
 par(new=TRUE)
-axis(2, at=pretty(range(yfit)), cex.axis=5, las = 2)
+axis(2, at=pretty(range(yfit)), cex.axis=6, las = 2)
 title(xlab = "Depth (cm)", line = 7, cex.lab=5)
 dev.off()
 
 # file.name <- paste0(out.dir, "SAS_adult_depth.jpg")
 # ggsave(, filename=file.name, dpi=300, height=7, width=6)
 
+
+# Velocity ----------------------------------------------------------------
+
+
 ## Velocity
 
 ## data distribution by dataset
 
-vel_data <- read.csv("output_data/adult_velocity_prob_curve_data.csv")
+vel_data <- read.csv("output_data/old_data/05a_adult_velocity_continuous.csv")
+head(vel_data)
+all_vel <- vel_data
+unique(all_vel$Dataset)
 
-all_vel <- ad_vel_con
+all_vel <- all_vel %>%
+  filter(!Dataset == "Thompson") %>%
+  select(-X)
+
 
 vel_freq <- all_vel %>% 
   uncount(Abundance)
 vel_freq <- na.omit(vel_freq)
-
+sum(is.na(vel_freq))
 tx <- vel_freq$Dataset == "Saiki"
 wx <- vel_freq$Dataset == "Wulff"
 
@@ -374,55 +383,72 @@ attach(vel_freq)
 
 # create value labels
 data.f <- factor(Dataset_num, levels= 1:2,
-                 labels = c("Saiki", "Wulff"))
-data.f
+                 labels = c("S", "W"))
+
 # plot densities
 sm.density.compare(as.vector(Velocity), Dataset_num, xlab="Velocity m/s")
-title(main="Adult/Velocity")
+
+png(paste0(out.dir, "SAS_adult_velocity_data_dist.png"), width = 1200, height = 1000)
+
+par(mgp=c(9,3,0),mar=c(5, 9.5,4,6))
+
+par(cex.axis=4, cex.lab = 4, las=1)
+
+sm.density.compare(as.vector(Velocity), Dataset_num, 
+                   ylab="", 
+                   xlab="Velocity (m/s)", 
+                   col=c("red", "blue"),
+                   lwd = 5,
+                   lty=c(1,5,3))
 
 # add legend via mouse click
-colfill<-c(2:(2+length(levels(data.f))))
-legend(locator(1), levels(data.f), fill=colfill)
+colfill<-c("red", "blue")
+# axis(2, at=c(0, 0.1, 0.2, 0.3, 0.4), cex.axis=5, las = 2)
+legend("topright",levels(data.f), fill=colfill, bty = "n", cex = 5)
+# axis(2, ylab="Data Density")
 
-# check data
-unique(vel_freq$Dataset)
-mean(vel_freq$Velocity) ## 0.6121954
-dim(vel_freq) ## 1167
-range(vel_freq$Velocity)
+dev.off()
 
-## probability curve
+## probability curve - prep data
 vel_freq$Scaled_Vel <-scale(vel_freq$Velocity, scale=T, center=T)
 scaled_x <- vel_freq$Scaled_Vel
 h <- hist(scaled_x, plot=F)
 xfit<-seq(min(scaled_x),max(scaled_x),length=1000)
 yfit<-dnorm(xfit,mean=mean(scaled_x),sd=sd(scaled_x))
-
 ## x axis with raw velocity values
 xfit_r <- seq(min(vel_freq$Velocity), max(vel_freq$Velocity), length=1000)
 
-## plot curve with raw depth axis
-png("figures/Final_curves/Velocity/F2_SAS_Adult_velocity_Prob_curve.png", width = 700, height = 700)
+## plot curve
 
-plot(xfit_r, yfit, axes=FALSE, xlab='', ylab='', type='l', col='', main = "" )
-axis(1, at=pretty(xfit_r), cex.axis=2)
+png(paste0(out.dir, "SAS_adult_velocity.png"), width = 1500, height = 1200)
+par(mgp=c(9,3,0), mar=c(10, 10,4,6))
+par(cex.axis=6)
+
+## plot curve with raw depth axis
+plot(xfit_r, yfit, axes=FALSE, xlab='', ylab='', type='l', col='white', main = "" )
+axis(1, at=pretty(xfit_r), cex.axis=6, line = 0)
 par(new=TRUE)
 #plot the line with no axes or labels
-plot(xfit, yfit, axes=FALSE, xlab='Velocity (m/s)', ylab='Probability', type='l', col='red', main = "Adult/Velocity",
-     cex.main = 2, cex.axis=2, cex.lab=2)
-## add 1sd shift
-par(new=TRUE)
-
+plot(xfit, yfit, axes=FALSE,
+     xlab='', 
+     ylab='', 
+     type='l', 
+     col='red',
+     lwd = 5)
 #add these now with axis
-
-axis(2, at=pretty(range(yfit)), cex.axis=2)
+par(new=TRUE)
+axis(2, at=pretty(range(yfit)), cex.axis=6, las = 2)
+title(xlab = "Velocity (m/s)", line = 7, cex.lab=5)
 dev.off()
+
+
+# Temperature -------------------------------------------------------
+
 ##Temperature
 ## temperature
 ad_temp_con <- read.csv("output_data/Old_data/05a_adult_temperature_continuous.csv")
 juv_temp_con <- read.csv("output_data/Old_data/05a_juvenile_temperature_continuous.csv")
 
-
-# Data distribution -------------------------------------------------------
 
 all_temp <- ad_temp_con
 
@@ -447,19 +473,35 @@ temp_freq$Dataset_num[sx] <- 1
 temp_freq$Dataset_num[swx] <- 2
 
 attach(temp_freq)
-
+head(temp_freq)
 # create value labels
 data.f <- factor(Dataset_num, levels= 1:2,
-                 labels = c( "Saiki", "SAWA"))
+                 labels = c( "S", "SW"))
 tail(data.f)
 
 # plot densities
 sm.density.compare(as.vector(Temp), Dataset_num, xlab="Temperature (Celsius)")
-title(main="Adult/Temperature")
+png(paste0(out.dir, "SAS_adult_temperature_data_dist.png"), width = 1200, height = 1000)
+
+par(mgp=c(9,3,0),mar=c(5, 9.5,4,6))
+
+par(cex.axis=4, cex.lab = 4, las=1)
+
+sm.density.compare(as.vector(Temp), Dataset_num, 
+                   ylab="", 
+                   xlab="Temperature (Celsius)", 
+                   col=c("red", "orange"),
+                   lwd = 5,
+                   lty=c(1,5,3))
 
 # add legend via mouse click
-colfill<-c(2:(2+length(levels(data.f))))
-legend(locator(1), levels(data.f), fill=colfill)
+colfill<-c("red", "orange")
+# axis(2, at=c(0, 0.1, 0.2, 0.3, 0.4), cex.axis=5, las = 2)
+legend("topleft",levels(data.f), fill=colfill, bty = "n", cex = 5)
+# axis(2, ylab="Data Density")
+
+dev.off()
+
 
 
 # Build adult temperature model -------------------------------------------------
@@ -480,36 +522,43 @@ xfit_r <- seq(min(temp_freq$Temp), max(temp_freq$Temp), length=120)
 
 ## plot curve with raw depth axis
 
-png("figures/Final_curves/Temperature/F3_SAS_Adult_temperature_Prob_curve.png", width = 700, height = 700)
+png(paste0(out.dir, "SAS_adult_temperature.png"), width = 1500, height = 1200)
 
-plot(xfit_r, yfit, axes=FALSE, xlab='', ylab='', type='l', col='', main = "" )
-axis(1, at=pretty(xfit_r), cex.axis=2)
+par(mgp=c(9,3,0), mar=c(10, 10,4,6))
+par(cex.axis=6)
+
+## plot curve with raw depth axis
+plot(xfit_r, yfit, axes=FALSE, xlab='', ylab='', type='l', col='white', main = "" )
+axis(1, at=pretty(xfit_r), cex.axis=6, line = 0)
 par(new=TRUE)
 #plot the line with no axes or labels
-plot(xfit, yfit, axes=FALSE, xlab='Temperature (Celsius)', ylab='Probability', type='l', col='red', main = "Adult/Temperature",
-     cex.main = 2, cex.axis=2, cex.lab=2)
-## add 1sd shift
-par(new=TRUE)
-
+plot(xfit, yfit, axes=FALSE,
+     xlab='', 
+     ylab='', 
+     type='l', 
+     col='red',
+     lwd = 5)
 #add these now with axis
-
-axis(2, at=pretty(range(yfit)), cex.axis=2)
+par(new=TRUE)
+axis(2, at=c(0, 0.1, 0.2, 0.3, 0.4), cex.axis=6, las = 2)
+title(xlab = "Temp (Celcius)", line = 7, cex.lab=5)
 dev.off()
 
-head(ad_temp_con)
-
-fitdata <- data.frame(matrix(ncol=2, nrow=length(yfit)))
-fitdata[,1] <- xfit_r
-fitdata[,2] <- yfit
-colnames(fitdata) <- c("temp_fit", "prob_fit")
-head(fitdata)
-
-write.csv(fitdata, "output_data/adult_temp_prob_curve_data.csv")
+# head(ad_temp_con)
+# 
+# fitdata <- data.frame(matrix(ncol=2, nrow=length(yfit)))
+# fitdata[,1] <- xfit_r
+# fitdata[,2] <- yfit
+# colnames(fitdata) <- c("temp_fit", "prob_fit")
+# head(fitdata)
+# 
+# write.csv(fitdata, "output_data/adult_temp_prob_curve_data.csv")
 
 
 # Juvenile ----------------------------------------------------------------
 
 ## data distribution 
+
 
 all_temp <- juv_temp_con
 
@@ -533,33 +582,47 @@ yfit<-dnorm(xfit,mean=mean(scaled_x),sd=sd(scaled_x))
 ## x axis with raw depth values
 xfit_r <- seq(min(temp_freq$Temp), max(temp_freq$Temp), length=120)
 
-png("figures/Final_curves/Temperature/F3_SAS_juvenile_temperature_Prob_curve.png", width = 700, height = 700)
 ## plot curve with raw depth axis
-plot(xfit_r, yfit, axes=FALSE, xlab='', ylab='', type='l', col='', main = "" )
-axis(1, at=pretty(xfit_r), cex.axis=2)
+
+png(paste0(out.dir, "SAS_juvenile_temperature.png"), width = 1500, height = 1200)
+
+par(mgp=c(9,3,0), mar=c(10, 10,4,6))
+par(cex.axis=6)
+
+## plot curve with raw depth axis
+plot(xfit_r, yfit, axes=FALSE, xlab='', ylab='', type='l', col='white', main = "" )
+axis(1, at=pretty(xfit_r), cex.axis=6, line = 0)
 par(new=TRUE)
 #plot the line with no axes or labels
-plot(xfit, yfit, axes=FALSE, xlab='Temperature (Celsius)', ylab='Probability', type='l', col='red', main = "Juvenile/Temperature",
-     cex.main = 2, cex.axis=2, cex.lab=2)
-## add 1sd shift
-par(new=TRUE)
-
+plot(xfit, yfit, axes=FALSE,
+     xlab='', 
+     ylab='', 
+     type='l', 
+     col='red',
+     lwd = 5)
 #add these now with axis
-
-axis(2, at=pretty(range(yfit)), cex.axis=2)
-
+par(new=TRUE)
+axis(2, at=c(0, 0.1, 0.2, 0.3, 0.4), cex.axis=6, las = 2)
+title(xlab = "Temp (Celcius)", line = 7, cex.lab=5)
 dev.off()
 
-fitdata <- data.frame(matrix(ncol=2, nrow=length(yfit)))
-fitdata[,1] <- xfit_r
-fitdata[,2] <- yfit
-colnames(fitdata) <- c("temp_fit", "prob_fit")
-head(fitdata)
+# fitdata <- data.frame(matrix(ncol=2, nrow=length(yfit)))
+# fitdata[,1] <- xfit_r
+# fitdata[,2] <- yfit
+# colnames(fitdata) <- c("temp_fit", "prob_fit")
+# head(fitdata)
+# 
+# write.csv(fitdata, "output_data/juvenile_temp_prob_curve_data.csv")
 
-write.csv(fitdata, "output_data/juvenile_temp_prob_curve_data.csv")
+
+# Juvenile ----------------------------------------------------------------
+
 
 ## Juvenile
 ## Depth
+
+juv_depth_con <- read.csv("output_data/old_data/05a_juvenile_depth_continuous.csv")
+juv_depth_cat <- read.csv("output_data/old_data/05a_juvenile_depth_categorical.csv")
 
 head(juv_depth_con)
 juv_depth_con
@@ -567,18 +630,57 @@ head(juv_depth_cat)
 unique(juv_depth_con$Dataset) ## 1 dataset
 all_depth <- rbind(juv_depth_con, juv_depth_cat)
 
+
+
 ## data distribution 
 # ad_depth_red <- subset(ad_depth_con, !Dataset=="Thompson")
 all_depth <- rbind(juv_depth_con, juv_depth_cat)
 
-unique(all_depth$Dataset) # 4 datasets, observations (n=1293)
+unique(all_depth$Dataset) # 2 datasets, observations (n=1293)
 
 depth_freq <- all_depth %>% 
   uncount(Abundance)
-hist(depth_freq$Depth)
-mean(depth_freq$Depth) ## 36.55253
-dim(depth_freq) ## 257
+
+
+# ## compare different data sets
+# ### get numbers for datasets
+
+
+sx <- depth_freq$Dataset == "Saiki"
+swx <- depth_freq$Dataset == "SMEA"
+
+depth_freq$Dataset_num[sx] <- 1
+depth_freq$Dataset_num[swx] <- 2
+
+attach(depth_freq)
 head(depth_freq)
+# create value labels
+data.f <- factor(Dataset_num, levels= 1:2,
+                 labels = c( "S", "HB"))
+tail(data.f)
+
+# plot densities
+sm.density.compare(as.vector(Depth), Dataset_num, xlab="Temperature (Celsius)")
+png(paste0(out.dir, "SAS_juvenile_depth_data_dist.png"), width = 1200, height = 1000)
+
+par(mgp=c(9,3,0),mar=c(5, 9.5,4,6))
+
+par(cex.axis=4, cex.lab = 4, las=1)
+
+sm.density.compare(as.vector(Depth), Dataset_num, 
+                   ylab="", 
+                   xlab="Depth (cm)", 
+                   col=c("red", "purple"),
+                   lwd = 5,
+                   lty=c(1,5,3))
+
+# add legend via mouse click
+colfill<-c("red", "purple")
+# axis(2, at=c(0, 0.1, 0.2, 0.3, 0.4), cex.axis=5, las = 2)
+legend("topright",levels(data.f), fill=colfill, bty = "n", cex = 5)
+# axis(2, ylab="Data Density")
+
+dev.off()
 
 ## probability curve 
 depth_freq$Scaled_Depth <-scale(depth_freq$Depth, scale=T, center=T)
@@ -590,19 +692,126 @@ yfit<-dnorm(xfit,mean=mean(scaled_x),sd=sd(scaled_x))
 ## x axis with raw depth values
 xfit_r <- seq(min(depth_freq$Depth), max(depth_freq$Depth), length=120)
 
+
+png(paste0(out.dir, "SAS_juvenile_depth.png"), width = 1500, height = 1200)
+
+par(mgp=c(9,3,0), mar=c(10, 10,4,6))
+par(cex.axis=6)
+
 ## plot curve with raw depth axis
-plot(xfit_r, yfit, axes=FALSE, xlab='', ylab='', type='l', col='', main = "" )
-axis(1, at=pretty(xfit_r))
+plot(xfit_r, yfit, axes=FALSE, xlab='', ylab='', type='l', col='white', main = "" )
+axis(1, at=pretty(xfit_r), cex.axis=6, line = 0)
 par(new=TRUE)
 #plot the line with no axes or labels
-plot(xfit, yfit, axes=FALSE, xlab='Depth (cm)', ylab='Probability', type='l', col='red', main = "Juvenile/Depth: Probability curve" )
-## add 1sd shift
-par(new=TRUE)
-
+plot(xfit, yfit, axes=FALSE,
+     xlab='', 
+     ylab='', 
+     # ylim(c(0, 0.4)),
+     # xlim(c(0, 70)),
+     type='l', 
+     col='red',
+     lwd = 5)
 #add these now with axis
+par(new=TRUE)
+# axis(2, at=pretty(range(yfit)), cex.axis=5, las = 2)
+axis(2, at=c(0, 0.1, 0.2, 0.3, 0.4), cex.axis=6, las = 2)
+title(xlab = "Depth (cm)", line = 7, cex.lab=5)
+dev.off()
+yfit
 
-axis(2, at=pretty(range(yfit)))
+
+## 
 
 
+# rating curve conceptual example -----------------------------------------
 
-## rating curve conceptual example
+## time series data
+load(file="output_data/M1_LA11_Typha_velocity_adult_discharge_probs_2010_2017_TS_updated_hyd.RData")
+
+head(all_data)
+unique(all_data$variable)
+## limits
+limits <- read.csv("output_data/M1_LA11_Typha_adult_velocity_Q_limits_updated_hyd.csv")
+limits
+limits <- select(limits, -X)
+
+## velocity v flow rating curve
+
+### node figure for depth ~ Q
+labels <- c(vel_m_LOB = "Left Overbank", vel_m_MC = "Main Channel", vel_m_ROB = "Right Overbank")
+
+# file_name <- paste("figures/Application_curves/nodes/", NodeName, "_Depth_Q_updated_hyd.png", sep="")
+# png(file_name, width = 500, height = 600)
+
+p1 <- ggplot(all_data, aes(x = Q, y=vel_m_s)) +
+  geom_line(aes( group = variable, lty = variable)) +
+  scale_linetype_manual(values= c("dotted", "solid", "dashed"),
+                        breaks=c("vel_m_LOB", "vel_m_MC", "vel_m_ROB"))+
+  facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
+  theme(axis.text = element_text(size = 15), axis.title = element_text(size = 15), strip.text = element_text(size = 15))+
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
+  labs(y = "Velocity (m/s)",
+       x = "Q (cfs)") #+ theme_bw(base_size = 15)
+
+file.name1 <- paste0(out.dir, "velocity_v_Q.jpg")
+ggsave(p1, filename=file.name1, dpi=300, height=5, width=6)
+
+
+# file_name = paste("figures/Application_curves/Depth/", NodeName, "_SAS_adult_depth_prob_Q_thresholds_updated_hyd.png", sep ="")
+
+# png(file_name, width = 500, height = 600)
+
+p1 <- ggplot(all_data, aes(x = Q, y=prob_fit)) +
+  geom_line(aes(group = variable, lty = variable)) +
+  scale_linetype_manual(values= c("dotted", "solid", "dashed"))+
+  #                       name="Cross\nSection\nPosition",
+  #                       breaks=c("depth_cm_LOB", "depth_cm_MC", "depth_cm_ROB"),
+  #                         labels = c("LOB", "MC", "ROB")) +
+  
+  facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
+  geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.25, x=limits[1,2]), color="green") +
+  geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.25, x=limits[2,2]), color="green") +
+  geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.25, x=limits[3,2]), color="green") +
+  geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.25, x=limits[4,2]), color="green") +
+  geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.5, x=limits[5,2]), color="red") +
+  geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.5, x=limits[6,2]), color="red") +
+  geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.5, x=limits[7,2]), color="red") +
+  geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.5, x=limits[8,2]), color="red") +
+  geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.75, x=limits[9,2]), color="blue") +
+  geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.75, x=limits[10,2]), color="blue") +
+  geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.75, x=limits[11,2]), color="blue") +
+  geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.75, x=limits[12,2]), color="blue") +
+  
+  geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.25, x=limits[1,1]), color="green") +
+  geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.25, x=limits[2,1]), color="green") +
+  geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.25, x=limits[3,1]), color="green") +
+  geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.25, x=limits[4,1]), color="green") +
+  geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.5, x=limits[5,1]), color="red") +
+  geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.5, x=limits[6,1]), color="red") +
+  geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.5, x=limits[7,1]), color="red") +
+  geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.5, x=limits[8,1]), color="red") +
+  geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.75, x=limits[9,1]), color="blue") +
+  geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.75, x=limits[10,1]), color="blue") +
+  geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.75, x=limits[11,1]), color="blue") +
+  geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.75, x=limits[12,1]), color="blue") +
+  
+  geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.25, x=limits[1,3]), color="green") +
+  geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.25, x=limits[2,3]), color="green") +
+  geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.25, x=limits[3,3]), color="green") +
+  geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.25, x=limits[4,3]), color="green") +
+  geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.5, x=limits[5,3]), color="red") +
+  geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.5, x=limits[6,3]), color="red") +
+  geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.5, x=limits[7,3]), color="red") +
+  geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.5, x=limits[8,3]), color="red") +
+  geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.75, x=limits[9,3]), color="blue") +
+  geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.75, x=limits[10,3]), color="blue") +
+  geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.75, x=limits[11,3]), color="blue") +
+  geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.75, x=limits[12,3]), color="blue") +
+  theme(axis.text = element_text(size = 15), axis.title = element_text(size = 15), strip.text = element_text(size = 15)) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
+  labs(y = "Probability",
+       x = "Q (cfs)") #+ theme_bw(base_size = 15)
+
+
+file.name1 <- paste0(out.dir, "prob_v_Q.jpg")
+ggsave(p1, filename=file.name1, dpi=300, height=5, width=6)
