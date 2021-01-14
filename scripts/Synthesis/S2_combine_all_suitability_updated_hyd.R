@@ -69,8 +69,8 @@ sp_dfx
 
 sp_dfx ## data frame has overall class per node, position, species, life stage and hydraulic variable
 names(sp_dfx)
-
-write.csv(sp_dfx, "Overall_class_with_each_hydraulic_updated_hyd_prolonged.csv")
+getwd()
+write.csv(sp_dfx, "synthesis/Overall_class_with_each_hydraulic_updated_hyd_prolonged.csv")
 
 hp_dfx <- sp_dfx %>%
   select(Node, Species, Life_Stage, position, sp_code, Check_Class) %>%
@@ -78,7 +78,7 @@ hp_dfx <- sp_dfx %>%
 
 unique(hp_dfx$sp_code)
 
-write.csv(hp_dfx, "Overall_class_per_node_all_species_updated_hyd_prolonged.csv")
+write.csv(hp_dfx, "synthesis/Overall_class_per_node_all_species_updated_hyd_prolonged.csv")
 
 ### if one position is high then node is high
 ## subset by species, then time period, then node
@@ -132,7 +132,7 @@ df <- node_dfx %>%
 
 df
 
-write.csv(df, "All_Species_suit_class_Per_Node_updated_hyd_prolonged.csv")
+write.csv(df, "synthesis/All_Species_suit_class_Per_Node_updated_hyd_prolonged.csv")
 
 ### make wide
 df_wide
@@ -140,7 +140,7 @@ df_wide
 df_wide <- df %>%
   pivot_wider(id_cols = Node, names_from = sp_code, values_from = Node_Class)
 
-write.csv(df_wide, "All_species_suit_class_wide_updated_hyd_prolonged.csv")
+write.csv(df_wide, "synthesis/All_species_suit_class_wide_updated_hyd_prolonged.csv")
 
 getwd()
 
@@ -240,11 +240,11 @@ for (j in 1:length(ts)) {
 j
 SuitClassOverYearsx
 ## merge together
-
+setwd("/Users/katieirving/Documents/git/flow_eco_mech")
 full_df <- merge(suit_df, SuitClassOverYearsx, by="pos_code", all=T)
 head(full_df)
 
-write.csv(full_df, "Overall_Class_per_node_species_position_total_days_updated_hyd_prolonged.csv")
+write.csv(full_df, "synthesis/Overall_Class_per_node_species_position_total_days_updated_hyd_prolonged.csv")
 
 ### if one hydraulic varibale per species and per position is low/partial, position is low
 
@@ -295,7 +295,7 @@ for(p in 1: length(pos)) {
 }
 sp_dfx ## datsa frame has overall class per node, position, species, life stage and hydraulic variable
 names(sp_dfx)
-write.csv(sp_dfx, "Overall_class_with_each_hydraulic_total_days_updated_hyd_prolonged.csv")
+write.csv(sp_dfx, "synthesis/Overall_class_with_each_hydraulic_total_days_updated_hyd_prolonged.csv")
 
 hp_dfx <- sp_dfx %>%
   select(Node, Species, Life_Stage, position, sp_code, Check_Class) %>%
@@ -303,7 +303,7 @@ hp_dfx <- sp_dfx %>%
 
 unique(hp_dfx$sp_code)
 
-write.csv(hp_dfx, "Overall_class_per_node_all_species_total_days_updated_hyd_prolonged.csv")
+write.csv(hp_dfx, "synthesis/Overall_class_per_node_all_species_total_days_updated_hyd_prolonged.csv")
 
 ### if one position is high then node is high
 ## subset by species, then time period, then node
@@ -358,7 +358,7 @@ df <- node_dfx %>%
 
 df
 
-write.csv(df, "All_Species_suit_class_Per_Node_total_days_updated_hyd_prolonged.csv")
+write.csv(df, "synthesis/All_Species_suit_class_Per_Node_total_days_updated_hyd_prolonged.csv")
 
 ### make wide
 df_wide
@@ -366,6 +366,6 @@ df_wide
 df_wide <- df %>%
   pivot_wider(id_cols = Node, names_from = sp_code, values_from = Node_Class)
 
-write.csv(df_wide, "All_species_suit_class_wide_total_days_updated_hyd_prolonged.csv")
+write.csv(df_wide, "synthesis/All_species_suit_class_wide_total_days_updated_hyd_prolonged.csv")
 
 

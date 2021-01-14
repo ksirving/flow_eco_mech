@@ -34,6 +34,7 @@ suit_df <- time_stats %>%
   distinct()
 
 suit_df
+j
 
 for (j in 1:length(ts)) {
   

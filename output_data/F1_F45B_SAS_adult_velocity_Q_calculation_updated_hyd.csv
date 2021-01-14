@@ -1,4 +1,4 @@
 "","Low","Medium","High","Position","Species","Life_Stage","Hydraulic","Node"
-"1","Q >= newx1a[1] & Q <= newx1a[2] | Q >= newx1a[3] & Q <= newx1a[4]","Q >= newx2a[1] & Q <= newx2a[2] | Q >= newx2a[3] & Q <= newx2a[4]","Q >= newx3a[1] & Q <= newx3a[2] | Q >= newx3a[3] & Q <= newx3a[4]","vel_m_MC","SAS","Adult","Depth","F45B"
+"1","Q >= newx1a[1] & Q <= newx1a[2]","Q >= newx2a[1] & Q <= newx2a[2]","Q >= newx3a[1] & Q <= newx3a[2]","vel_m_MC","SAS","Adult","Depth","F45B"
 "2",NA,NA,NA,"vel_m_MC","SAS","Adult","Depth","F45B"
 "3",NA,NA,NA,"vel_m_MC","SAS","Adult","Depth","F45B"

@@ -204,34 +204,34 @@ for(n in 1: length(h)) {
   write.csv(limits, paste("output_data/F5_",NodeName,"_Steelhead_Migration_depth_Q_limits_updated_hyd.csv", sep=""))
   
   
-  file_name = paste("figures/Application_curves/Depth/", NodeName, "_Steelhead_Migration_depth_prob_Q_thresholds_updated_hyd.png", sep ="")
-  
-  png(file_name, width = 500, height = 600)
-  
-  ggplot(all_data, aes(x = Q, y=value)) +
-    geom_line(aes(group = variable, lty = variable)) +
-    scale_linetype_manual(values= c("dotted", "solid", "dashed"))+
-    #                       name="Cross\nSection\nPosition",
-    #                       breaks=c("depth_cm_LOB", "depth_cm_MC", "depth_cm_ROB"),
-    #                         labels = c("LOB", "MC", "ROB")) +
-    
-    facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
-    # geom_point(data = subset(all_data, variable =="depth_cm_MC"), aes(y=0.1, x=limits[1,2]), color="green") +
-    geom_point(data = subset(hyd_dep, variable =="depth_cm_MC"), aes(y=18, x=limits[1,2]), color="green") +
-    # geom_point(data = subset(hyd_dep, variable =="depth_cm_MC"), aes(y=10, x=limits[1,2]), color="green") +
-    
-    geom_point(data = subset(hyd_dep, variable =="depth_cm_LOB"), aes(y=18, x=limits[1,1]), color="green") +
-    # geom_point(data = subset(hyd_dep, variable =="depth_cm_LOB"), aes(y=10, x=limits[1,1]), color="green") +
-    
-    geom_point(data = subset(hyd_dep, variable =="depth_cm_ROB"), aes(y=18, x=limits[1,3]), color="green") +
-    # geom_point(data = subset(hyd_dep, variable =="depth_cm_ROB"), aes(y=10, x=limits[1,3]), color="green") +
-    
-    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
-    labs(title = paste(NodeName, ": Migration/Depth: Depth ~ Q", sep=""),
-         y = "Probability",
-         x = "Q (cfs)") #+ theme_bw(base_size = 15)
-  
-  dev.off()
+  # file_name = paste("figures/Application_curves/Depth/", NodeName, "_Steelhead_Migration_depth_prob_Q_thresholds_updated_hyd.png", sep ="")
+  # 
+  # png(file_name, width = 500, height = 600)
+  # 
+  # ggplot(all_data, aes(x = Q, y=value)) +
+  #   geom_line(aes(group = variable, lty = variable)) +
+  #   scale_linetype_manual(values= c("dotted", "solid", "dashed"))+
+  #   #                       name="Cross\nSection\nPosition",
+  #   #                       breaks=c("depth_cm_LOB", "depth_cm_MC", "depth_cm_ROB"),
+  #   #                         labels = c("LOB", "MC", "ROB")) +
+  #   
+  #   facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
+  #   # geom_point(data = subset(all_data, variable =="depth_cm_MC"), aes(y=0.1, x=limits[1,2]), color="green") +
+  #   geom_point(data = subset(hyd_dep, variable =="depth_cm_MC"), aes(y=18, x=limits[1,2]), color="green") +
+  #   # geom_point(data = subset(hyd_dep, variable =="depth_cm_MC"), aes(y=10, x=limits[1,2]), color="green") +
+  #   
+  #   geom_point(data = subset(hyd_dep, variable =="depth_cm_LOB"), aes(y=18, x=limits[1,1]), color="green") +
+  #   # geom_point(data = subset(hyd_dep, variable =="depth_cm_LOB"), aes(y=10, x=limits[1,1]), color="green") +
+  #   
+  #   geom_point(data = subset(hyd_dep, variable =="depth_cm_ROB"), aes(y=18, x=limits[1,3]), color="green") +
+  #   # geom_point(data = subset(hyd_dep, variable =="depth_cm_ROB"), aes(y=10, x=limits[1,3]), color="green") +
+  #   
+  #   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
+  #   labs(title = paste(NodeName, ": Migration/Depth: Depth ~ Q", sep=""),
+  #        y = "Probability",
+  #        x = "Q (cfs)") #+ theme_bw(base_size = 15)
+  # 
+  # dev.off()
   
   ## percentage time
   melt_time<-reshape2::melt(time_statsx, id=c("season", "position", "water_year", "Node"))
@@ -348,26 +348,17 @@ for(n in 1: length(h)) {
     
   }
   
-  ## take only depth variable for min limit
+  # take only depth variable for min limit
   hyd_dep <- hyd_vel %>% select(DateTime, node, Q, contains("depth"), date_num)
-
-
-  hyd_dep<-reshape2::melt(hyd_dep, id=c("DateTime","Q", "node", "date_num"))
-  hyd_dep <- hyd_dep %>%
-    mutate(depth_cm = value) %>%
-    select(date_num, depth_cm)
   
-  ## take only depth variable
-  hyd_vel <- hyd_vel %>% select(DateTime, node, Q, contains("vel"), date_num)
+  
+  ## take only vel variable
+  hyd_vel <- hyd_vel %>% select(DateTime, node, Q, contains( "vel"), date_num)
   
   # ## melt channel position data
   hyd_vel<-reshape2::melt(hyd_vel, id=c("DateTime","Q", "node", "date_num"))
-  ## change NAs to 0 in concrete overbanks
-  hyd_vel[is.na(hyd_vel)] <- 0
-
-  ## join depth data to vel df
-  hyd_vel <- left_join(hyd_vel, hyd_dep, by="date_num")
-  head(hyd_vel)
+  
+  
   ## format date time
   hyd_vel$DateTime<-as.POSIXct(hyd_vel$DateTime,
                                format = "%Y-%m-%d %H:%M",
@@ -422,8 +413,16 @@ for(n in 1: length(h)) {
     PositionName <- str_split(positions[p], "_", 3)[[1]]
     PositionName <- PositionName[3]
     
-    min_limit <- filter(new_data, depth_cm > 0.03)
+    new_dataD <- hyd_dep %>% 
+      select(DateTime, node, Q, contains(PositionName)) 
+    
+    colnames(new_dataD)[4] <- "depth_cm"
+    
+    
+    min_limit <- filter(new_dataD, depth_cm >0.03)
+    
     min_limit <- min(min_limit$Q)
+    
 
     ## get roots
     curve <- spline(new_data$Q, new_data$value,

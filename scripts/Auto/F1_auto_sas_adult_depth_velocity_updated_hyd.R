@@ -28,6 +28,7 @@ load(file="expression_Q_limit_function.RData")
 
 ## upload habitat curve data
 fitdata <- read.csv("output_data/old_data/adult_depth_prob_curve_data.csv")
+# fitdata <- read.csv("output_data/old_data/juvenile_depth_prob_curve_data.csv")
 
 ## upload hydraulic data
 setwd("input_data/HecRas")
@@ -35,7 +36,7 @@ setwd("input_data/HecRas")
 h <- list.files(pattern="_predictions")
 length(h) ## 20
 h
-n=16
+n=1
 ## set wd back to main
 setwd("/Users/katieirving/Documents/git/flow_eco_mech")
 
@@ -154,7 +155,7 @@ time_statsx <- NULL
 days_data <- NULL
 
 # probability as a function of discharge -----------------------------------
-
+p=1
 for(p in 1:length(positions)) {
 
 new_data <- all_data %>% 
@@ -179,39 +180,57 @@ min_limit <- min(min_limit$Q)
 ## Main channel curves
 
 ## find roots for each probability
-newx1a <- RootLinearInterpolant(new_data$Q, new_data$prob_fit, 0.1)
-newx1a <- c(min(new_data$Q), max(new_data$Q))
-hy_lim1 <- RootLinearInterpolant(new_data$depth_cm, new_data$prob_fit, 0.1)
+
+newx1a <- c(min_limit, max(new_data$Q))
 hy_lim1 <- c(min(new_data$depth_cm), max(new_data$depth_cm))
 
 
-newx2a  <- RootLinearInterpolant(new_data$Q, new_data$prob_fit, 0.2)
-hy_lim2 <- RootLinearInterpolant(new_data$depth_cm, new_data$prob_fit, 0.2)
+## medium
+if(max(new_data$prob_fit)<0.2) {
+  newx2a <- max(new_data$Q)
+  hy_lim2 <- max(new_data$depth_cm)
+} else {
+  newx2a <- RootLinearInterpolant(new_data$Q, new_data$prob_fit, 0.2)
+  hy_lim2 <- RootLinearInterpolant(new_data$depth_cm, new_data$prob_fit, 0.2)
+}
 
-
-if(length(newx2a) > 4) {
-  newx2a <- c(newx2a[1], newx2a[length(newx2a)])
-  hy_lim2 <- c(hy_lim2[1], hy_lim2[length(hy_lim2)])
+if(min(new_data$prob_fit)>0.2) {
+  newx2a <- min_limit
+  hy_lim2 <- min(new_data$depth_cm)
 } else {
   newx2a <- newx2a
   hy_lim2 <- hy_lim2
 }
 
-newx3a <- RootLinearInterpolant(new_data$Q, new_data$prob_fit, 0.3)
-hy_lim3 <- RootLinearInterpolant(new_data$depth_cm, new_data$prob_fit, 0.3)
+if(length(newx2a) > 2) {
+  newx2a <- c(newx2a[1], newx2a[length(newx2a)])
+  hy_lim2<- c(hy_lim2[1], hy_lim2[length(hy_lim2)])
+} else {
+  newx2a <- newx2a
+  hy_lim2 <- hy_lim2
+}
 
 
+##  high prob of occurrence
 if(min(new_data$prob_fit)>0.3) {
-  newx3a <- min(new_data$Q)
+  newx3a <- min_limit
   hy_lim3 <- min(new_data$depth_cm)
+} else {
+  newx3a <- RootLinearInterpolant(new_data$Q, new_data$prob_fit, 0.3)
+  hy_lim3 <- RootLinearInterpolant(new_data$depth_cm, new_data$prob_fit, 0.3)
+}
+
+if(max(new_data$prob_fit)<0.3) {
+  newx3a <- max(new_data$Q)
+  hy_lim2 <- max(new_data$depth_cm)
 } else {
   newx3a <- newx3a
   hy_lim3 <- hy_lim3
 }
 
-if(length(newx3a) > 4) {
+if(length(newx3a) > 2) {
   newx3a <- c(newx3a[1], newx3a[length(newx3a)])
-  hy_lim3 <- c(hy_lim3[1], hy_lim3[length(hy_lim3)])
+  hy_lim3<- c(hy_lim3[1], hy_lim3[length(hy_lim3)])
 } else {
   newx3a <- newx3a
   hy_lim3 <- hy_lim3
@@ -244,7 +263,6 @@ new_datax <- new_datax %>%
 
 ## Main channel curves
 
-class(low_thresh)
 low_thresh <- expression_Q(newx1a, peakQ) 
 low_thresh <-as.expression(do.call("substitute", list(low_thresh[[1]], list(limit = as.name("newx1a")))))
 
@@ -441,8 +459,7 @@ hydraul <- hydraul %>%
   rename(Q = Flow) %>%
   mutate(node = NodeName)
   
-  
-  
+
   ## convert units and change names
   
 if(length(NodeData) == 8) {
@@ -472,45 +489,16 @@ if(length(NodeData) == 8) {
   
 }
 
-  
-## take only depth variable for min limit
+# take only depth variable for min limit
 hyd_dep <- hyd_vel %>% select(DateTime, node, Q, contains("depth"), date_num)
 
 
-hyd_dep<-reshape2::melt(hyd_dep, id=c("DateTime","Q", "node", "date_num"))
-hyd_dep <- hyd_dep %>%
-  mutate(depth_cm = value) %>%
-  select(date_num, depth_cm)
-
-## take only depth variable
-hyd_vel <- hyd_vel %>% select(DateTime, node, Q, contains("vel"), date_num)
+## take only vel variable
+hyd_vel <- hyd_vel %>% select(DateTime, node, Q, contains( "vel"), date_num)
 
 # ## melt channel position data
 hyd_vel<-reshape2::melt(hyd_vel, id=c("DateTime","Q", "node", "date_num"))
-## change NAs to 0 in concrete overbanks
-hyd_vel[is.na(hyd_vel)] <- 0
 
-## join depth data to vel df
-hyd_vel <- left_join(hyd_vel, hyd_dep, by="date_num")
-
-  ### node figure for depth ~ Q
-  file_name <- paste("figures/Application_curves/nodes/", NodeName, "_Velocity_Q_updated_hyd.png", sep="")
-  png(file_name, width = 500, height = 600)
-  
-  ggplot(hyd_vel, aes(x = Q, y=value)) +
-    geom_line(aes( group = variable, lty = variable)) +
-    scale_linetype_manual(values= c("dotted", "solid", "dashed"),
-                          breaks=c("vel_m_LOB", "vel_m_MC", "vel_m_ROB"))+
-    facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
-    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
-    labs(title = paste(NodeName, ": Velocity ~ Q"),
-         y = "Velocity (m/s)",
-         x = "Q (cfs)") #+ theme_bw(base_size = 15)
-  
-  dev.off()
-  
-  ## change NAs to 0 in concrete overbanks
-  hyd_vel[is.na(hyd_vel)] <- 0
 
   ## use smooth spline to predict on new data set
   new_values <-smooth.spline(fitdata$velocity_fit, fitdata$prob_fit)
@@ -519,8 +507,7 @@ hyd_vel <- left_join(hyd_vel, hyd_dep, by="date_num")
     group_by(variable) %>%
     mutate(prob_fit = predict(new_values, value)$y) %>%
     rename(vel_m = value)
-  
-  
+
   
   ## save out
   save(all_data, file=paste("output_data/F1_", NodeName, "_SAS_adult_velocity_discharge_probability_updated_hyd.RData", sep=""))
@@ -575,61 +562,98 @@ hyd_vel <- left_join(hyd_vel, hyd_dep, by="date_num")
     ## define position
     PositionName <- str_split(positions[p], "_", 3)[[1]]
     PositionName <- PositionName[3]
-  
-    ## bind shallow and deeper depths by 0.1 - 10cm & 120cm
-    ## change all prob_fit lower than 0.1 to 0.1
-
+    
+    new_dataD <- hyd_dep %>% 
+      select(DateTime, node, Q, contains(PositionName)) 
+    
+    colnames(new_dataD)[4] <- "depth_cm"
+   
+    ## get peak of curve
     peak <- new_data %>%
       filter(prob_fit == max(prob_fit)) #%>%
     
     peakQ  <- max(peak$Q)
-    min_limit <- filter(new_data, depth_cm > 0.03)
+    min_limit <- filter(new_dataD, depth_cm >0.03)
     min_limit <- min(min_limit$Q)
-  
+
     ## Main channel curves
     
-    ## find roots for each probability
-    newx1a <- RootLinearInterpolant(new_data$Q, new_data$prob_fit, 0.1)
-    hy_lim1 <- RootLinearInterpolant(new_data$vel_m, new_data$prob_fit, 0.1)
+    ## low
+    if(min(new_data$prob_fit)>0.1) {
+      newx1a <- min_limit
+      hy_lim1 <- min(new_data$vel_m )
+    } else {
+      newx1a <- RootLinearInterpolant(new_data$Q, new_data$prob_fit, 0.1)
+      hy_lim1 <- RootLinearInterpolant(new_data$vel_m , new_data$prob_fit, 0.1)
+    }
     
-    if(length(newx1a) > 4) {
-      newx1a <- c(newx1a[1], newx1a[length(newx1a)])
-      hy_lim1 <- c(hy_lim1[1], hy_lim1[length(hy_lim1)])
+    if(max(new_data$prob_fit)<0.1) {
+      newx1a <- max(new_data$Q)
+      hy_lim1 <- max(new_data$vel_m )
     } else {
       newx1a <- newx1a
       hy_lim1 <- hy_lim1
     }
     
-    newx2a  <- RootLinearInterpolant(new_data$Q, new_data$prob_fit, 0.2)
-    hy_lim2 <- RootLinearInterpolant(new_data$vel_m, new_data$prob_fit, 0.2)
+    if(length(newx1a) > 2) {
+      newx1a <- c(newx1a[1], newx1a[length(newx1a)])
+      hy_lim1<- c(hy_lim1[1], hy_lim1[length(hy_lim1)])
+    } else {
+      newx1a <- newx1a
+      hy_lim1 <- hy_lim1
+    }
     
-    if(length(newx2a) > 4) {
-      newx2a <- c(newx2a[1], newx2a[length(newx2a)])
-      hy_lim2 <- c(hy_lim2[1], hy_lim2[length(hy_lim2)])
+    ## medium
+    if(max(new_data$prob_fit)<0.2) {
+      newx2a <- max(new_data$Q)
+      hy_lim2 <- max(new_data$vel_m )
+    } else {
+      newx2a <- RootLinearInterpolant(new_data$Q, new_data$prob_fit, 0.2)
+      hy_lim2 <- RootLinearInterpolant(new_data$vel_m , new_data$prob_fit, 0.2)
+    }
+    
+    if(min(new_data$prob_fit)>0.2) {
+      newx2a <- min_limit
+      hy_lim2 <- min(new_data$vel_m) 
     } else {
       newx2a <- newx2a
       hy_lim2 <- hy_lim2
     }
     
-    newx3a <- RootLinearInterpolant(new_data$Q, new_data$prob_fit, 0.3)
-    hy_lim3 <- RootLinearInterpolant(new_data$vel_m, new_data$prob_fit, 0.3)
-
+    if(length(newx2a) > 2) {
+      newx2a <- c(newx2a[1], newx2a[length(newx2a)])
+      hy_lim2<- c(hy_lim2[1], hy_lim2[length(hy_lim2)])
+    } else {
+      newx2a <- newx2a
+      hy_lim2 <- hy_lim2
+    }
     
+    
+    ##  high prob of occurrence
     if(min(new_data$prob_fit)>0.3) {
-      newx3a <- min(new_data$Q)
-      hy_lim3 <- min(new_data$vel_m)
+      newx3a <- min_limit
+      hy_lim3 <- min(new_data$vel_m )
+    } else {
+      newx3a <- RootLinearInterpolant(new_data$Q, new_data$prob_fit, 0.3)
+      hy_lim3 <- RootLinearInterpolant(new_data$vel_m , new_data$prob_fit, 0.3)
+    }
+    
+    if(max(new_data$prob_fit)<0.3) {
+      newx3a <- max(new_data$Q)
+      hy_lim2 <- max(new_data$vel_m )
     } else {
       newx3a <- newx3a
       hy_lim3 <- hy_lim3
     }
     
-    if(length(newx3a) > 4) {
+    if(length(newx3a) > 2) {
       newx3a <- c(newx3a[1], newx3a[length(newx3a)])
-      hy_lim3 <- c(hy_lim3[1], hy_lim3[length(hy_lim3)])
+      hy_lim3<- c(hy_lim3[1], hy_lim3[length(hy_lim3)])
     } else {
       newx3a <- newx3a
       hy_lim3 <- hy_lim3
     }
+    
     
     
     ## MAKE DF OF Q LIMITS
@@ -657,8 +681,7 @@ hyd_vel <- left_join(hyd_vel, hyd_dep, by="date_num")
     ## produces percentage of time for each year and season within year for each threshold
     
     ## Main channel curves
-    
-    
+
     low_thresh <- expression_Q(newx1a, peakQ) 
     low_thresh <-as.expression(do.call("substitute", list(low_thresh[[1]], list(limit = as.name("newx1a")))))
     
@@ -721,64 +744,64 @@ hyd_vel <- left_join(hyd_vel, hyd_dep, by="date_num")
   write.csv(limits, paste("output_data/F1_",NodeName,"_SAS_adult_velocity_Q_limits_updated_hyd.csv", sep=""))
 
   ## plot thresholds
-  file_name = paste("figures/Application_curves/Velocity/", NodeName, "_adult_depth_prob_Q_thresholds_updated_hyd.png", sep ="")
-  
-  png(file_name, width = 500, height = 600)
-  
-  ggplot(all_data, aes(x = Q, y=prob_fit)) +
-    geom_line(aes(group = variable, lty = variable)) +
-    scale_linetype_manual(values= c("dotted", "solid", "dashed"))+
-    #                       name="Cross\nSection\nPosition",
-    #                       breaks=c("depth_cm_LOB", "depth_cm_MC", "depth_cm_ROB"),
-    #                         labels = c("LOB", "MC", "ROB")) +
-    
-    facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
-    geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.1, x=limits[1,2]), color="green") +
-    geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.1, x=limits[2,2]), color="green") +
-    geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.1, x=limits[3,2]), color="green") +
-    geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.1, x=limits[4,2]), color="green") +
-    geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.2, x=limits[5,2]), color="red") +
-    geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.2, x=limits[6,2]), color="red") +
-    geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.2, x=limits[7,2]), color="red") +
-    geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.2, x=limits[8,2]), color="red") +
-    geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.3, x=limits[9,2]), color="blue") +
-    geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.3, x=limits[10,2]), color="blue") +
-    geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.3, x=limits[11,2]), color="blue") +
-    geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.3, x=limits[12,2]), color="blue") +
-    
-    geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.1, x=limits[1,1]), color="green") +
-    geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.1, x=limits[2,1]), color="green") +
-    geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.1, x=limits[3,1]), color="green") +
-    geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.1, x=limits[4,1]), color="green") +
-    geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.2, x=limits[5,1]), color="red") +
-    geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.2, x=limits[6,1]), color="red") +
-    geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.2, x=limits[7,1]), color="red") +
-    geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.2, x=limits[8,1]), color="red") +
-    geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.3, x=limits[9,1]), color="blue") +
-    geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.3, x=limits[10,1]), color="blue") +
-    geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.3, x=limits[11,1]), color="blue") +
-    geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.3, x=limits[12,1]), color="blue") +
-    
-    geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.1, x=limits[1,3]), color="green") +
-    geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.1, x=limits[2,3]), color="green") +
-    geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.1, x=limits[3,3]), color="green") +
-    geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.1, x=limits[4,3]), color="green") +
-    geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.2, x=limits[5,3]), color="red") +
-    geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.2, x=limits[6,3]), color="red") +
-    geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.2, x=limits[7,3]), color="red") +
-    geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.2, x=limits[8,3]), color="red") +
-    geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.3, x=limits[9,3]), color="blue") +
-    geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.3, x=limits[10,3]), color="blue") +
-    geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.3, x=limits[11,3]), color="blue") +
-    geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.3, x=limits[12,3]), color="blue") +
-    
-    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
-    labs(title = paste(NodeName, ": Adult/Velocity: Probability ~ Q", sep=""),
-         y = "Probability",
-         x = "Q (cfs)") #+ theme_bw(base_size = 15)
-  
-  dev.off()
-  
+  # file_name = paste("figures/Application_curves/Velocity/", NodeName, "_adult_depth_prob_Q_thresholds_updated_hyd.png", sep ="")
+  # 
+  # png(file_name, width = 500, height = 600)
+  # 
+  # ggplot(all_data, aes(x = Q, y=prob_fit)) +
+  #   geom_line(aes(group = variable, lty = variable)) +
+  #   scale_linetype_manual(values= c("dotted", "solid", "dashed"))+
+  #   #                       name="Cross\nSection\nPosition",
+  #   #                       breaks=c("depth_cm_LOB", "depth_cm_MC", "depth_cm_ROB"),
+  #   #                         labels = c("LOB", "MC", "ROB")) +
+  #   
+  #   facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
+  #   geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.1, x=limits[1,2]), color="green") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.1, x=limits[2,2]), color="green") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.1, x=limits[3,2]), color="green") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.1, x=limits[4,2]), color="green") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.2, x=limits[5,2]), color="red") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.2, x=limits[6,2]), color="red") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.2, x=limits[7,2]), color="red") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.2, x=limits[8,2]), color="red") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.3, x=limits[9,2]), color="blue") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.3, x=limits[10,2]), color="blue") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.3, x=limits[11,2]), color="blue") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_MC"), aes(y=0.3, x=limits[12,2]), color="blue") +
+  #   
+  #   geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.1, x=limits[1,1]), color="green") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.1, x=limits[2,1]), color="green") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.1, x=limits[3,1]), color="green") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.1, x=limits[4,1]), color="green") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.2, x=limits[5,1]), color="red") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.2, x=limits[6,1]), color="red") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.2, x=limits[7,1]), color="red") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.2, x=limits[8,1]), color="red") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.3, x=limits[9,1]), color="blue") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.3, x=limits[10,1]), color="blue") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.3, x=limits[11,1]), color="blue") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_LOB"), aes(y=0.3, x=limits[12,1]), color="blue") +
+  #   
+  #   geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.1, x=limits[1,3]), color="green") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.1, x=limits[2,3]), color="green") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.1, x=limits[3,3]), color="green") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.1, x=limits[4,3]), color="green") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.2, x=limits[5,3]), color="red") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.2, x=limits[6,3]), color="red") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.2, x=limits[7,3]), color="red") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.2, x=limits[8,3]), color="red") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.3, x=limits[9,3]), color="blue") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.3, x=limits[10,3]), color="blue") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.3, x=limits[11,3]), color="blue") +
+  #   geom_point(data = subset(all_data, variable =="vel_m_ROB"), aes(y=0.3, x=limits[12,3]), color="blue") +
+  #   
+  #   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
+  #   labs(title = paste(NodeName, ": Adult/Velocity: Probability ~ Q", sep=""),
+  #        y = "Probability",
+  #        x = "Q (cfs)") #+ theme_bw(base_size = 15)
+  # 
+  # dev.off()
+  # 
   ## percentage time
   melt_time<-reshape2::melt(time_statsx, id=c("season", "position", "water_year", "Node"))
   melt_time <- melt_time %>% 

@@ -1,4 +1,4 @@
 "","Thresh","Position","Species","Life_Stage","Hydraulic","Node"
-"1","Q <= newx2a","shear_pa_MC","Cladophora","Adult","Shear Stress","F319"
-"2",NA,"shear_pa_MC","Cladophora","Adult","Shear Stress","F319"
-"3",NA,"shear_pa_MC","Cladophora","Adult","Shear Stress","F319"
+"1","Q <= newx2a","vel_m_MC","Cladophora","Adult","Shear Stress","F319"
+"2",NA,"vel_m_MC","Cladophora","Adult","Shear Stress","F319"
+"3",NA,"vel_m_MC","Cladophora","Adult","Shear Stress","F319"

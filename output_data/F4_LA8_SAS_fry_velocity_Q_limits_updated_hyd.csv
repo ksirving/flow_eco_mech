@@ -1,5 +1,5 @@
 "","V1","V2","V3","Type","Species","Life_Stage","Hydraulic","Node"
 "1",46.5073356628418,46.5073356628418,46.5073356628418,"Q_limit1","SAS","Fry","Velocity","LA8"
 "2",46.5073356628418,46.5073356628418,46.5073356628418,"Q_limit2","SAS","Fry","Velocity","LA8"
-"3",0.245131321797818,0.96758891249864,0.346481763574096,"Hydraulic_limit1","SAS","Fry","Velocity","LA8"
+"3",0,0,0,"Hydraulic_limit1","SAS","Fry","Velocity","LA8"
 "4",0.05,0.05,0.05,"Hydraulic_limit2","SAS","Fry","Velocity","LA8"

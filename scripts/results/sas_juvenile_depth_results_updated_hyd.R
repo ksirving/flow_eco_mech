@@ -54,7 +54,8 @@ head(time_statsx)
 # 
 time_stats_seas <- time_statsx %>%
   filter(Probability_Threshold %in% crit_stats) %>%
-  filter(TimePeriod == "critical") %>%
+  filter(TimePeriod == "summer") %>%
+  mutate(TimePeriod = "critical") %>%
   mutate(bottom_type = ifelse(Node %in% concrete, "Concrete", "Soft")) %>%
   distinct()
 time_stats_seas
@@ -130,7 +131,8 @@ unique(total_daysx$Probability_Threshold)
 # ## change time period to seasonal and add bottom and water year type
 # 
 total_days_seas <- total_daysx %>%
-  filter(TimePeriod == "critical") %>%
+  filter(TimePeriod == "summer") %>%
+  mutate(TimePeriod = "critical") %>%
   mutate(bottom_type = ifelse(Node %in% concrete, "Concrete", "Soft")) %>%
   distinct()
 total_days_seas

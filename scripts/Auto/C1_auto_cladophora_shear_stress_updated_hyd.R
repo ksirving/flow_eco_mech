@@ -9,6 +9,7 @@ library(ggplot2)   # graphics
 library(gridExtra) # tile several plots next to each other
 library(scales)
 library(data.table)
+
 setwd("/Users/katieirving/Documents/git/flow_eco_mech")
 ## upload hydraulic data
 setwd("input_data/HecRas")
@@ -16,14 +17,14 @@ setwd("input_data/HecRas")
 h <- list.files(pattern="predictions")
 length(h) ## 18
 h
-n=11
+n=1
 ## set wd back to main
 setwd("/Users/katieirving/Documents/git/flow_eco_mech")
 
 for(n in 1: length(h)) {
   
   NodeData <- read.csv(file=paste("input_data/HecRas/", h[n], sep=""))
-  head(NodeData)
+
   F34D <- read.csv("input_data/HecRas/hydraulic_ts_F34D.csv") ## for dates
   
   NodeName <- str_split(h[n], "_", 3)[[1]]
@@ -43,7 +44,6 @@ for(n in 1: length(h)) {
     rename(Q = Flow) %>%
     mutate(node = NodeName)
   
-  names(hydraul)
   ## convert units and change names - depending on concrete/soft bottom. if/else to determine changes to data
   
   if(length(NodeData) == 8) {
@@ -73,24 +73,17 @@ for(n in 1: length(h)) {
     
   }
   
-  ## take only depth variable
-  hyd_shear <- hyd_dep %>% select(DateTime, node, Q, contains("shear"), date_num)
+  ## take only vel variable
+  hyd_shear <- hyd_dep %>% select(DateTime, node, Q, contains( "vel"), date_num)
   
   # ## melt channel position data
   hyd_shear<-reshape2::melt(hyd_shear, id=c("DateTime","Q", "node", "date_num"))
-  ## change NAs to 0 in concrete overbanks
-  hyd_shear[is.na(hyd_shear)] <- 0
+
   
-  ## take only depth variable for min limit
+  ### take only depth variable for min limit
   hyd_dep <- hyd_dep %>% select(DateTime, node, Q, contains("depth"), date_num)
+
   
-  hyd_dep<-reshape2::melt(hyd_dep, id=c("DateTime","Q", "node", "date_num"))
-  hyd_dep <- hyd_dep %>%
-    mutate(depth_cm = value) %>%
-    select(date_num, depth_cm)
-  
-  ## join depth data to vel df
-  hyd_shear <- left_join(hyd_shear, hyd_dep, by="date_num")
   
   ## format date time
   hyd_shear$DateTime<-as.POSIXct(hyd_shear$DateTime,
@@ -133,20 +126,26 @@ for(n in 1: length(h)) {
   time_statsx <- NULL
   days_data <- NULL
   
-
   # probability as a function of discharge -----------------------------------
 
   for(p in 1:length(positions)) {
     
     new_data <- all_data %>% 
       filter(variable  == positions[p])
-    
+
     ## define position
     PositionName <- str_split(positions[p], "_", 3)[[1]]
     PositionName <- PositionName[3]
-    min_limit <- filter(new_data, depth_cm >= 0.03)
-    min_shear <- min(min_limit$value)
+    
+    new_dataD <- hyd_dep %>% 
+      select(DateTime, node, Q, contains(PositionName)) 
+    
+    colnames(new_dataD)[4] <- "depth_cm"
+    
+    min_limit <- filter(new_dataD, depth_cm >0.03)
     min_limit <- min(min_limit$Q)
+    min_shear <- min(new_data$value)
+    min_limit
   
     ## get roots
     curve <- spline(new_data$Q, new_data$value,
@@ -171,7 +170,7 @@ for(n in 1: length(h)) {
     
     ## define critical period or season for juvenile as all year is critical
 
-    
+
     ###### calculate amount of time
     time_stats <- new_datax %>%
       dplyr::group_by(water_year, season) %>%

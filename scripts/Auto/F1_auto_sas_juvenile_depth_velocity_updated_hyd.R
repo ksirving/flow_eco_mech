@@ -18,7 +18,6 @@ library(data.table)
 library(zoo)
 library(scales)
 
-setwd("/Users/katieirving/Documents/git/flow_eco_mech")
 ## function to find roots
 load(file="root_interpolation_function.Rdata")
 
@@ -28,15 +27,16 @@ load(file="expression_Q_limit_function.RData")
 # Combine with hydraulic data -------------------------------------------
 
 ## upload habitat curve data
+# fitdata <- read.csv("output_data/old_data/adult_depth_prob_curve_data.csv")
 fitdata <- read.csv("output_data/old_data/juvenile_depth_prob_curve_data.csv")
 
 ## upload hydraulic data
 setwd("input_data/HecRas")
 
-h <- list.files(pattern="predictions")
+h <- list.files(pattern="_predictions")
 length(h) ## 20
 h
-n=9
+n=1
 ## set wd back to main
 setwd("/Users/katieirving/Documents/git/flow_eco_mech")
 
@@ -44,11 +44,10 @@ for(n in 1: length(h)) {
   
   NodeData <- read.csv(file=paste("input_data/HecRas/", h[n], sep=""))
   F34D <- read.csv("input_data/HecRas/hydraulic_ts_F34D.csv") ## for dates
-  
   NodeName <- str_split(h[n], "_", 3)[[1]]
   NodeName <- NodeName[1]
   ## format hydraulic data
-  names(NodeData)
+  
   
   cat(paste("Running Node", NodeName))
   
@@ -56,15 +55,12 @@ for(n in 1: length(h)) {
     mutate(DateTime = F34D$Q_ts.datetime)
   
   hydraul <-NodeData[,-1]
-
+  
   ## change some names
   hydraul <- hydraul %>%
     rename(Q = Flow) %>%
     mutate(node = NodeName)
   
-  
-  ## define node name
-  # NodeName <- unique(hydraul$node)
   
   ## convert units and change names - depending on concrete/soft bottom. if/else to determine changes to data
   
@@ -95,12 +91,15 @@ for(n in 1: length(h)) {
     
   }
   
+  
+  
   ## take only depth variable
   hyd_dep <- hyd_dep %>% select(DateTime, node, Q, contains("depth"), date_num)
   
   # ## melt channel position data
   hyd_dep<-reshape2::melt(hyd_dep, id=c("DateTime","Q", "node", "date_num"))
-
+  
+  
   ## change NAs to 0 in concrete overbanks
   hyd_dep[is.na(hyd_dep)] <- 0
   
@@ -111,7 +110,7 @@ for(n in 1: length(h)) {
     group_by(variable) %>%
     mutate(prob_fit = predict(new_values, value)$y) %>%
     rename(depth_cm = value)
-
+  
   ## save out
   save(all_data, file=paste("output_data/F1_", NodeName, "_SAS_juvenile_depth_discharge_probability_updated_hyd.RData", sep=""))
   
@@ -136,7 +135,6 @@ for(n in 1: length(h)) {
   
   save(all_data, file=paste("output_data/F1_", NodeName, "_SAS_depth_juvenile_discharge_probs_2010_2017_TS_updated_hyd.RData", sep=""))
   
-  
   ### define dataframes for 2nd loop
   
   ## define positions
@@ -149,18 +147,15 @@ for(n in 1: length(h)) {
   H_limits <- as.data.frame(matrix(ncol=length(positions), nrow=12)) 
   H_limits$Type<-c("Hydraulic_limit")
   
-  ## calculation
   Q_Calc <- as.data.frame(matrix(ncol=3, nrow=3 ))
-
+  # 
   names(Q_Calc) <- c("Low", "Medium", "High")
   
   time_statsx <- NULL
   days_data <- NULL
   
-
-  p=1
   # probability as a function of discharge -----------------------------------
-  
+  p=1
   for(p in 1:length(positions)) {
     
     new_data <- all_data %>% 
@@ -185,39 +180,57 @@ for(n in 1: length(h)) {
     ## Main channel curves
     
     ## find roots for each probability
-    newx1a <- RootLinearInterpolant(new_data$Q, new_data$prob_fit, 0.1)
-    newx1a <- c(min(new_data$Q), max(new_data$Q))
-    hy_lim1 <- RootLinearInterpolant(new_data$depth_cm, new_data$prob_fit, 0.1)
+    
+    newx1a <- c(min_limit, max(new_data$Q))
     hy_lim1 <- c(min(new_data$depth_cm), max(new_data$depth_cm))
     
     
-    newx2a  <- RootLinearInterpolant(new_data$Q, new_data$prob_fit, 0.2)
-    hy_lim2 <- RootLinearInterpolant(new_data$depth_cm, new_data$prob_fit, 0.2)
+    ## medium
+    if(max(new_data$prob_fit)<0.2) {
+      newx2a <- max(new_data$Q)
+      hy_lim2 <- max(new_data$depth_cm)
+    } else {
+      newx2a <- RootLinearInterpolant(new_data$Q, new_data$prob_fit, 0.2)
+      hy_lim2 <- RootLinearInterpolant(new_data$depth_cm, new_data$prob_fit, 0.2)
+    }
     
-    
-    if(length(newx2a) > 4) {
-      newx2a <- c(newx2a[1], newx2a[length(newx2a)])
-      hy_lim2 <- c(hy_lim2[1], hy_lim2[length(hy_lim2)])
+    if(min(new_data$prob_fit)>0.2) {
+      newx2a <- min_limit
+      hy_lim2 <- min(new_data$depth_cm)
     } else {
       newx2a <- newx2a
       hy_lim2 <- hy_lim2
     }
     
-    newx3a <- RootLinearInterpolant(new_data$Q, new_data$prob_fit, 0.3)
-    hy_lim3 <- RootLinearInterpolant(new_data$depth_cm, new_data$prob_fit, 0.3)
+    if(length(newx2a) > 2) {
+      newx2a <- c(newx2a[1], newx2a[length(newx2a)])
+      hy_lim2<- c(hy_lim2[1], hy_lim2[length(hy_lim2)])
+    } else {
+      newx2a <- newx2a
+      hy_lim2 <- hy_lim2
+    }
     
     
+    ##  high prob of occurrence
     if(min(new_data$prob_fit)>0.3) {
-      newx3a <- min(new_data$Q)
+      newx3a <- min_limit
       hy_lim3 <- min(new_data$depth_cm)
+    } else {
+      newx3a <- RootLinearInterpolant(new_data$Q, new_data$prob_fit, 0.3)
+      hy_lim3 <- RootLinearInterpolant(new_data$depth_cm, new_data$prob_fit, 0.3)
+    }
+    
+    if(max(new_data$prob_fit)<0.3) {
+      newx3a <- max(new_data$Q)
+      hy_lim2 <- max(new_data$depth_cm)
     } else {
       newx3a <- newx3a
       hy_lim3 <- hy_lim3
     }
     
-    if(length(newx3a) > 4) {
+    if(length(newx3a) > 2) {
       newx3a <- c(newx3a[1], newx3a[length(newx3a)])
-      hy_lim3 <- c(hy_lim3[1], hy_lim3[length(hy_lim3)])
+      hy_lim3<- c(hy_lim3[1], hy_lim3[length(hy_lim3)])
     } else {
       newx3a <- newx3a
       hy_lim3 <- hy_lim3
@@ -238,13 +251,12 @@ for(n in 1: length(h)) {
     
     # dataframe for stats -----------------------------------------------------
     
-    ## define critical period
-    non_critical <- c(1,2,8:12) 
-    critical <- c(3:7) 
+    ## define critical period or season for juvenile as all year is critical for adults
+    winter <- c(1,2,3,4,11,12) ## winter months
+    summer <- c(5:10) ## summer months
     
     new_datax <- new_datax %>%
-      mutate(season = ifelse(month %in% non_critical, "non_critical", "critical") )
-    
+      mutate(season = ifelse(month %in% winter, "winter", "summer") )
     
     ## define equation for roots
     ## produces percentage of time for each year and season within year for each threshold
@@ -259,10 +271,14 @@ for(n in 1: length(h)) {
     
     high_thresh <- expression_Q(newx3a, peakQ)
     high_thresh <-as.expression(do.call("substitute", list(high_thresh[[1]], list(limit = as.name("newx3a")))))
+    class(med_thresh)
     
     Q_Calc[p,] <- c(paste(low_thresh), paste(med_thresh), paste(high_thresh))
+    # Q_Calc[p,] <- c(low_thresh, med_thresh, high_thresh)
+    
     
     ###### calculate amount of time
+    mean(new_datax$depth_cm)
     
     time_stats <- new_datax %>%
       dplyr::group_by(water_year) %>%
@@ -276,7 +292,7 @@ for(n in 1: length(h)) {
       dplyr::mutate(High.Seasonal = sum(eval(high_thresh))/length(DateTime)*100) %>%
       distinct(water_year, Low , Medium , High , Low.Seasonal, Medium.Seasonal, High.Seasonal) %>%
       mutate(position= paste(PositionName), Node = NodeName)
-    
+    head(time_stats)
     time_statsx <- rbind(time_statsx, time_stats)
     
     ### count days per month
@@ -297,6 +313,8 @@ for(n in 1: length(h)) {
     
   } ## end 2nd loop
   
+  ## limits
+  ## note that 0.1 upper/lower limit is max/min Q to adhere to 0.1 bound
   Q_Calc$Position <- positions
   
   Q_Calc <- Q_Calc %>%
@@ -304,9 +322,8 @@ for(n in 1: length(h)) {
   
   write.csv(Q_Calc, paste("output_data/F1_",NodeName,"_SAS_juvenile_depth_Q_calculation_updated_hyd.csv", sep=""))
   
-  ## limits
   limits <- rbind(limits, H_limits)
-  ## note that 0.1 upper/lower limit is max/min Q to adhere to 0.1 bound
+  
   limits <- limits %>%
     mutate(Species ="SAS", Life_Stage = "Juvenile", Hydraulic = "Depth", Node = NodeName)
   
@@ -314,7 +331,7 @@ for(n in 1: length(h)) {
   
   all_data[which(all_data$prob_fit <  0.1),"prob_fit"] <- 0.1
   
-
+  
   ## percentage time
   melt_time<-reshape2::melt(time_statsx, id=c("season", "position", "water_year", "Node"))
   melt_time <- melt_time %>% 
@@ -367,7 +384,7 @@ for(n in 1: length(h)) {
   
   ## combine all thresholds
   total_days <- cbind( total_days_per_month01,total_days_per_month02[,4], total_days_per_month03[,4])
-
+  total_days
   
   # # create year_month column       
   total_days <- ungroup(total_days) %>%
@@ -383,12 +400,12 @@ for(n in 1: length(h)) {
   total_days <- rename(total_days, Low = days_per_month_low, Medium = days_per_month_medium, High = days_per_month_high)
   
   ## define seasons
-  non_critical <- c(1,2,8:12) 
-  critical <- c(3:7) 
+  winter <- c(1,2,3,4,11,12) ## winter months
+  summer <- c(5:10) ## summer months
   
   total_days <- total_days %>%
-    mutate(season = ifelse(month %in% non_critical, "non_critical", "critical") )
-
+    mutate(season = ifelse(month %in% winter, "winter", "summer") )
+  
   # ## melt data
   
   melt_days<-reshape2::melt(total_days, id=c("month_year", "water_year", "month", "season", "position", "Node"))

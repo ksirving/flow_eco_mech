@@ -1,5 +1,5 @@
 "","V1","V2","V3","Type","Species","Life_Stage","Hydraulic","Node"
-"1",0,0,0,"Q_limit","SAS","Juvenile","Depth","11101250"
+"1",70.0475,0.0025,51,"Q_limit","SAS","Juvenile","Depth","11101250"
 "2",8327.5,8327.5,8327.5,"Q_limit","SAS","Juvenile","Depth","11101250"
 "3",NA,NA,NA,"Q_limit","SAS","Juvenile","Depth","11101250"
 "4",NA,NA,NA,"Q_limit","SAS","Juvenile","Depth","11101250"

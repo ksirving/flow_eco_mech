@@ -319,7 +319,7 @@ file_name = paste("figures/Application_curves/Depth/", NodeName, "_SAS_adult_dep
 
 png(file_name, width = 500, height = 600)
 
-ggplot(all_data, aes(x = Q, y=prob_fit)) +
+ggplot(new_data, aes(x = Q, y=prob_fit)) +
   geom_line(aes(group = variable, lty = variable)) +
   scale_linetype_manual(values= c("dotted", "solid", "dashed"))+
   #                       name="Cross\nSection\nPosition",
@@ -327,45 +327,45 @@ ggplot(all_data, aes(x = Q, y=prob_fit)) +
   #                         labels = c("LOB", "MC", "ROB")) +
   
   facet_wrap(~variable, scales="free_x", nrow=3, labeller=labeller(variable = labels)) +
-  geom_point(data = subset(all_data, variable =="depth_cm_MC"), aes(y=0.1, x=limits[1,2]), color="green") +
-  geom_point(data = subset(all_data, variable =="depth_cm_MC"), aes(y=0.1, x=limits[2,2]), color="green") +
-  geom_point(data = subset(all_data, variable =="depth_cm_MC"), aes(y=0.1, x=limits[3,2]), color="green") +
-  geom_point(data = subset(all_data, variable =="depth_cm_MC"), aes(y=0.1, x=limits[4,2]), color="green") +
-  geom_point(data = subset(all_data, variable =="depth_cm_MC"), aes(y=0.2, x=limits[5,2]), color="red") +
-  geom_point(data = subset(all_data, variable =="depth_cm_MC"), aes(y=0.2, x=limits[6,2]), color="red") +
-  geom_point(data = subset(all_data, variable =="depth_cm_MC"), aes(y=0.2, x=limits[7,2]), color="red") +
-  geom_point(data = subset(all_data, variable =="depth_cm_MC"), aes(y=0.2, x=limits[8,2]), color="red") +
-  geom_point(data = subset(all_data, variable =="depth_cm_MC"), aes(y=0.3, x=limits[9,2]), color="blue") +
-  geom_point(data = subset(all_data, variable =="depth_cm_MC"), aes(y=0.3, x=limits[10,2]), color="blue") +
-  geom_point(data = subset(all_data, variable =="depth_cm_MC"), aes(y=0.3, x=limits[11,2]), color="blue") +
-  geom_point(data = subset(all_data, variable =="depth_cm_MC"), aes(y=0.3, x=limits[12,2]), color="blue") +
-  
-  geom_point(data = subset(all_data, variable =="depth_cm_LOB"), aes(y=0.1, x=limits[1,1]), color="green") +
-  geom_point(data = subset(all_data, variable =="depth_cm_LOB"), aes(y=0.1, x=limits[2,1]), color="green") +
-  geom_point(data = subset(all_data, variable =="depth_cm_LOB"), aes(y=0.1, x=limits[3,1]), color="green") +
-  geom_point(data = subset(all_data, variable =="depth_cm_LOB"), aes(y=0.1, x=limits[4,1]), color="green") +
-  geom_point(data = subset(all_data, variable =="depth_cm_LOB"), aes(y=0.2, x=limits[5,1]), color="red") +
-  geom_point(data = subset(all_data, variable =="depth_cm_LOB"), aes(y=0.2, x=limits[6,1]), color="red") +
-  geom_point(data = subset(all_data, variable =="depth_cm_LOB"), aes(y=0.2, x=limits[7,1]), color="red") +
-  geom_point(data = subset(all_data, variable =="depth_cm_LOB"), aes(y=0.2, x=limits[8,1]), color="red") +
-  geom_point(data = subset(all_data, variable =="depth_cm_LOB"), aes(y=0.3, x=limits[9,1]), color="blue") +
-  geom_point(data = subset(all_data, variable =="depth_cm_LOB"), aes(y=0.3, x=limits[10,1]), color="blue") +
-  geom_point(data = subset(all_data, variable =="depth_cm_LOB"), aes(y=0.3, x=limits[11,1]), color="blue") +
-  geom_point(data = subset(all_data, variable =="depth_cm_LOB"), aes(y=0.3, x=limits[12,1]), color="blue") +
-  
-  geom_point(data = subset(all_data, variable =="depth_cm_ROB"), aes(y=0.1, x=limits[1,3]), color="green") +
-  geom_point(data = subset(all_data, variable =="depth_cm_ROB"), aes(y=0.1, x=limits[2,3]), color="green") +
-  geom_point(data = subset(all_data, variable =="depth_cm_ROB"), aes(y=0.1, x=limits[3,3]), color="green") +
-  geom_point(data = subset(all_data, variable =="depth_cm_ROB"), aes(y=0.1, x=limits[4,3]), color="green") +
-  geom_point(data = subset(all_data, variable =="depth_cm_ROB"), aes(y=0.2, x=limits[5,3]), color="red") +
-  geom_point(data = subset(all_data, variable =="depth_cm_ROB"), aes(y=0.2, x=limits[6,3]), color="red") +
-  geom_point(data = subset(all_data, variable =="depth_cm_ROB"), aes(y=0.2, x=limits[7,3]), color="red") +
-  geom_point(data = subset(all_data, variable =="depth_cm_ROB"), aes(y=0.2, x=limits[8,3]), color="red") +
-  geom_point(data = subset(all_data, variable =="depth_cm_ROB"), aes(y=0.3, x=limits[9,3]), color="blue") +
-  geom_point(data = subset(all_data, variable =="depth_cm_ROB"), aes(y=0.3, x=limits[10,3]), color="blue") +
-  geom_point(data = subset(all_data, variable =="depth_cm_ROB"), aes(y=0.3, x=limits[11,3]), color="blue") +
-  geom_point(data = subset(all_data, variable =="depth_cm_ROB"), aes(y=0.3, x=limits[12,3]), color="blue") +
-  
+  # geom_point(data = subset(all_data, variable =="depth_cm_MC"), aes(y=0.1, x=limits[1,2]), color="green") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_MC"), aes(y=0.1, x=limits[2,2]), color="green") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_MC"), aes(y=0.1, x=limits[3,2]), color="green") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_MC"), aes(y=0.1, x=limits[4,2]), color="green") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_MC"), aes(y=0.2, x=limits[5,2]), color="red") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_MC"), aes(y=0.2, x=limits[6,2]), color="red") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_MC"), aes(y=0.2, x=limits[7,2]), color="red") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_MC"), aes(y=0.2, x=limits[8,2]), color="red") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_MC"), aes(y=0.3, x=limits[9,2]), color="blue") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_MC"), aes(y=0.3, x=limits[10,2]), color="blue") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_MC"), aes(y=0.3, x=limits[11,2]), color="blue") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_MC"), aes(y=0.3, x=limits[12,2]), color="blue") +
+  # 
+  # geom_point(data = subset(all_data, variable =="depth_cm_LOB"), aes(y=0.1, x=limits[1,1]), color="green") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_LOB"), aes(y=0.1, x=limits[2,1]), color="green") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_LOB"), aes(y=0.1, x=limits[3,1]), color="green") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_LOB"), aes(y=0.1, x=limits[4,1]), color="green") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_LOB"), aes(y=0.2, x=limits[5,1]), color="red") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_LOB"), aes(y=0.2, x=limits[6,1]), color="red") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_LOB"), aes(y=0.2, x=limits[7,1]), color="red") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_LOB"), aes(y=0.2, x=limits[8,1]), color="red") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_LOB"), aes(y=0.3, x=limits[9,1]), color="blue") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_LOB"), aes(y=0.3, x=limits[10,1]), color="blue") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_LOB"), aes(y=0.3, x=limits[11,1]), color="blue") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_LOB"), aes(y=0.3, x=limits[12,1]), color="blue") +
+  # 
+  # geom_point(data = subset(all_data, variable =="depth_cm_ROB"), aes(y=0.1, x=limits[1,3]), color="green") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_ROB"), aes(y=0.1, x=limits[2,3]), color="green") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_ROB"), aes(y=0.1, x=limits[3,3]), color="green") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_ROB"), aes(y=0.1, x=limits[4,3]), color="green") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_ROB"), aes(y=0.2, x=limits[5,3]), color="red") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_ROB"), aes(y=0.2, x=limits[6,3]), color="red") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_ROB"), aes(y=0.2, x=limits[7,3]), color="red") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_ROB"), aes(y=0.2, x=limits[8,3]), color="red") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_ROB"), aes(y=0.3, x=limits[9,3]), color="blue") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_ROB"), aes(y=0.3, x=limits[10,3]), color="blue") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_ROB"), aes(y=0.3, x=limits[11,3]), color="blue") +
+  # geom_point(data = subset(all_data, variable =="depth_cm_ROB"), aes(y=0.3, x=limits[12,3]), color="blue") +
+  # 
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position = "none") +
   labs(title = paste(NodeName, ": Adult/Depth: Probability ~ Q", sep=""),
        y = "Probability",

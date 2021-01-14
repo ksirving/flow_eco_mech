@@ -19,6 +19,7 @@ s
 for(s in 1: length(ts)) {
   
   time_stats <- read.csv(ts[s])
+  head(time_stats)
   colnames(time_stats)[10:12] <- c("Low", "Medium", "High")
   all_data <- rbind(all_data, time_stats)
   
@@ -67,16 +68,17 @@ all_datax <- bind_rows(all_data_first, all_data)
 
 write.csv(all_datax, "S1_all_suitability_all_years.csv")
 head(all_datax)
-
+head(time_stats)
 time_stats <- all_datax  %>%
   select(Species, Life_Stage, Node,Hydraulic, water_year,TimePeriod, position,
          Suitability_Class) %>%
   distinct()
 
+time_stats$Suitability_Class <- as.factor(time_stats$Suitability_Class)
 
 SuitClassOverYears <- time_stats %>%
   group_by(Species, Life_Stage, Hydraulic, TimePeriod, position, Node) %>%
-  summarise(Overall_Class = tail(names(sort(table(Suitability_Class))), 1))
+  summarise(Overall_Class = tail(names(sort(table(Suitability_Class))),1))
 
 SuitClassOverYears
 
@@ -103,34 +105,34 @@ SuitabilityPerSlice <- read.csv("S1_suitability_per_slice.csv")
 # Q limits for high Probs -------------------------------------------------
 # 
 # ## different number of slices per node, so combine Q limits by node, not species
-# ## does not work due to different num of positions - TRY LATER!!!! related to nodenames LA1, LA11 - all taken as LA1
+# # ## does not work due to different num of positions - TRY LATER!!!! related to nodenames LA1, LA11 - all taken as LA1
+# # 
+# ## define nodes
+# NodeNames <- unique(SuitabilityPerSlice$Node)
+# NodeNames
 # 
-## define nodes
-NodeNames <- unique(SuitabilityPerSlice$Node)
-NodeNames
-
-setwd("/Users/katieirving/Documents/git/flow_eco_mech")
-## list all files
-ts <- list.files("output_data/", pattern="Q_limits_updated_hyd")
-# ts <- Filter(function(x) !grepl("High_Probs", x), ts)
-
-ts
-
-for(n in 1:length(NodeNames)) {
-  ## subset per node
-  limitsx <- NULL
-  ns <- Filter(function(x) grepl(paste(NodeNames[n]), x), ts)
-ns
-  for(s in 1: length(ns)) {
-    ## upload species per node and combine
-    limits <- read.csv(file=paste("output_data/", ns[s], sep=""))
-    limitsx <- rbind(limitsx, limits)
-
-limitsx
-limits
-  }
-  write.csv(limitsx, paste("results/S1_", NodeNames[n], "_Q_limits_all_species.csv", sep=""))
-}
+# setwd("/Users/katieirving/Documents/git/flow_eco_mech")
+# ## list all files
+# ts <- list.files("output_data/", pattern="Q_limits_updated_hyd")
+# # ts <- Filter(function(x) !grepl("High_Probs", x), ts)
+# 
+# ts
+# 
+# for(n in 1:length(NodeNames)) {
+#   ## subset per node
+#   limitsx <- NULL
+#   ns <- Filter(function(x) grepl(paste(NodeNames[n]), x), ts)
+# ns
+#   for(s in 1: length(ns)) {
+#     ## upload species per node and combine
+#     limits <- read.csv(file=paste("output_data/", ns[s], sep=""))
+#     limitsx <- rbind(limitsx, limits)
+# 
+# limitsx
+# limits
+#   }
+#   write.csv(limitsx, paste("results/S1_", NodeNames[n], "_Q_limits_all_species.csv", sep=""))
+# }
 
 # # Number of days ----------------------------------------------------------
 # 

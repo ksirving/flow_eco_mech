@@ -23,10 +23,10 @@ setwd("/Users/katieirving/Documents/git/flow_eco_mech")
 ## upload all time stats csvs
 
 ## time stats
-ts <- list.files("output_data/", pattern="time_stats_updated_hyd_prolonged")
+ts <- list.files("output_data/", pattern="time_stats_updated_hyd")
 length(ts) ## 219
 ts
-ts <- Filter(function(x) grepl("Migration", x), ts)
+ts <- Filter(function(x) grepl("Prolonged", x), ts)
 ts <- Filter(function(x) grepl("velocity", x), ts)
 
 time_statsx <- NULL
@@ -100,10 +100,10 @@ write.csv(time_stats_all, "results/Steelhead_Migration_Velocity_time_stats_updat
 
 
 ### days per month
-td <- list.files("output_data/", pattern="total_days_long_updated_hyd_prolonged")
+td <- list.files("output_data/", pattern="total_days_long_updated_hyd")
 length(td) ## 153
 
-td <- Filter(function(x) grepl("Migration", x), td)
+td <- Filter(function(x) grepl("Prolonged", x), td)
 td <- Filter(function(x) grepl("velocity", x), td)
 
 td

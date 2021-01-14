@@ -7,7 +7,7 @@ library(tidyr)
 ## converge all species
 ## calculate suitability per node position
 ## calculate suitability per node (if 1 position suitable, node is suitable)
-
+ 
 
 ## threshold to change to annual 
 

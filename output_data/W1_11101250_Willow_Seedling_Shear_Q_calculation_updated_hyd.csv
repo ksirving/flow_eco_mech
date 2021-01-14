@@ -1,4 +1,4 @@
 "","Low","Medium","High","Position","Species","Life_Stage","Hydraulic","Node"
-"1","Q <= newx3a","Q < 0","Q <= newx1a","shear_pa_LOB","Willow","Seedling","Shear","11101250"
-"2","Q <= newx3a","Q <= newx2a","Q <= newx1a","shear_pa_MC","Willow","Seedling","Shear","11101250"
-"3","Q <= newx3a","Q < 0","Q <= newx1a","shear_pa_ROB","Willow","Seedling","Shear","11101250"
+"1","Q <= newx1a","Q <= newx2a","Q <= newx3a","shear_pa_LOB","Willow","Seedling","Shear","11101250"
+"2","Q <= newx1a","Q <= newx2a","Q <= newx3a","shear_pa_MC","Willow","Seedling","Shear","11101250"
+"3","Q <= newx1a","Q <= newx2a","Q <= newx3a","shear_pa_ROB","Willow","Seedling","Shear","11101250"

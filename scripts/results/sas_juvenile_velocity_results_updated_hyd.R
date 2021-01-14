@@ -2,7 +2,7 @@
 library(tidyverse)
 library(tidyr)
 ### work flow
-## upload time stats
+## upload time stats 
 ## converge all nodes per species
 ## converge all species
 ## calculate suitability per node position

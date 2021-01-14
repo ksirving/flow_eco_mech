@@ -20,7 +20,7 @@ setwd("input_data/HecRas")
 
 h <- list.files(pattern="predictions")
 length(h) ## 18
-
+n=1
 ## set wd back to main
 setwd("/Users/katieirving/Documents/git/flow_eco_mech")
 
@@ -124,7 +124,7 @@ for(n in 1: length(h)) {
   
   time_statsx <- NULL
   days_data <- NULL
-  
+  p=1
   # probability as a function of discharge -----------------------------------
   
   for(p in 1:length(positions)) {
@@ -322,25 +322,17 @@ for(n in 1: length(h)) {
     
   }
   
-  ## take only depth variable for min limit
+  # take only depth variable for min limit
   hyd_dep <- hyd_vel %>% select(DateTime, node, Q, contains("depth"), date_num)
   
   
-  hyd_dep<-reshape2::melt(hyd_dep, id=c("DateTime","Q", "node", "date_num"))
-  hyd_dep <- hyd_dep %>%
-    mutate(depth_cm = value) %>%
-    select(date_num, depth_cm)
-  
-  ## take only depth variable
-  hyd_vel <- hyd_vel %>% select(DateTime, node, Q, contains("vel"), date_num)
+  ## take only vel variable
+  hyd_vel <- hyd_vel %>% select(DateTime, node, Q, contains( "vel"), date_num)
   
   # ## melt channel position data
   hyd_vel<-reshape2::melt(hyd_vel, id=c("DateTime","Q", "node", "date_num"))
-  ## change NAs to 0 in concrete overbanks
-  hyd_vel[is.na(hyd_vel)] <- 0
   
-  ## join depth data to vel df
-  hyd_vel <- left_join(hyd_vel, hyd_dep, by="date_num")
+  
 
   
   ## format date time
@@ -394,10 +386,19 @@ for(n in 1: length(h)) {
     ## define position
     PositionName <- str_split(positions[p], "_", 3)[[1]]
     PositionName <- PositionName[3]
-    min_limit <- filter(new_data, depth_cm > 0.03)
-    min_vel <- min(min_limit$value)
+    
+    new_dataD <- hyd_dep %>% 
+      select(DateTime, node, Q, contains(PositionName)) 
+    
+    colnames(new_dataD)[4] <- "depth_cm"
+    
+  
+    min_limit <- filter(new_dataD, depth_cm >0.03)
+    
     min_limit <- min(min_limit$Q)
     
+
+    head(new_data)
     ## get roots
     curve <- spline(new_data$Q, new_data$value,
                     xmin = min(new_data$Q), xmax = max(new_data$Q), ties = mean)
@@ -416,7 +417,7 @@ for(n in 1: length(h)) {
     
     ## MAKE DF OF Q LIMITS
     limits[,p] <- c(min_limit, newx2a)
-    H_limits[, p] <- c(min_vel, 0.05)
+    H_limits[, p] <- c(0, 0.05)
     
     # create year_month column       
     new_datax <- new_data %>% unite(month_year, c(water_year,month), sep="-", remove=F) 

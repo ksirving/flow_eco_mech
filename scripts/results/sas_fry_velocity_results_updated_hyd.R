@@ -11,7 +11,7 @@ library(tidyr)
 
 ## threshold to change to annual 
 
-ann_stats <- c("Low", "Medium", "High")
+ann_stats <- c("Low", "Medium", "High") 
 
 crit_stats <- c("Low.Seasonal", "Medium.Seasonal", "High.Seasonal")
 
