@@ -319,7 +319,7 @@ file_name = paste("figures/Application_curves/Depth/", NodeName, "_SAS_adult_dep
 
 png(file_name, width = 500, height = 600)
 head(new_data)
-ggplot(new_data, aes(x = Q, y=prob_fit)) +
+ggplot(new_data, aes(x = Q, y=value)) +
   geom_line(aes(group = variable, lty = variable)) +
   scale_linetype_manual(values= c("dotted", "solid", "dashed"))+
   #                       name="Cross\nSection\nPosition",

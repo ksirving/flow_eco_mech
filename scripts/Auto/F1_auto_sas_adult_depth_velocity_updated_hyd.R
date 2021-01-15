@@ -36,7 +36,7 @@ setwd("input_data/HecRas")
 h <- list.files(pattern="_predictions")
 length(h) ## 20
 h
-n=1
+n=13
 ## set wd back to main
 setwd("/Users/katieirving/Documents/git/flow_eco_mech")
 
@@ -155,7 +155,7 @@ time_statsx <- NULL
 days_data <- NULL
 
 # probability as a function of discharge -----------------------------------
-p=1
+p=3
 for(p in 1:length(positions)) {
 
 new_data <- all_data %>% 
@@ -436,7 +436,7 @@ length(h) ## 18
 
 ## set wd back to main
 setwd("/Users/katieirving/Documents/git/flow_eco_mech")
-n=1
+# n=1
 
 for(n in 1: length(h)) {
   

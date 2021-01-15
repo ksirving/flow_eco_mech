@@ -503,3 +503,6 @@
 "502","LA8","Willow","Adult","ROB","Willow_Adult","High"
 "503","LA8","Willow","Germination","ROB","Willow_Germination","Low"
 "504","LA8","Willow","Seedling","ROB","Willow_Seedling","High"
+"505","LA202Jan","Willow","Seedling","LOB","Willow_Seedling","High"
+"506","LA202Jan","Willow","Seedling","MC","Willow_Seedling","Low"
+"507","LA202Jan","Willow","Seedling","ROB","Willow_Seedling","High"

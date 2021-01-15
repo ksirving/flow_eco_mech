@@ -38,7 +38,7 @@ setwd("input_data/HecRas")
 h <- list.files(pattern="predictions")
 length(h) ## 20
 h
-n=1
+n=12
 ## set wd back to main
 setwd("/Users/katieirving/Documents/git/flow_eco_mech")
 
