@@ -17,21 +17,15 @@ Hydraulic_limit,Cladophora,Adult,Depth,11101250,Medium,ROB,186.73,cm,Q >= min_li
 Hydraulic_limit,Cladophora,Adult,Depth,11101250,High,LOB,80.6,cm,Q >= min_limit & Q <= newx3a,critical,Soft,30.9966891197625,7.86130958179969
 Hydraulic_limit,Cladophora,Adult,Depth,11101250,High,MC,80.6,cm,Q >= min_limit & Q <= newx3a,critical,Soft,99.9771689497717,92.9427232206575
 Hydraulic_limit,Cladophora,Adult,Depth,11101250,High,ROB,80.6,cm,Q >= min_limit & Q <= newx3a,critical,Soft,34.3646534992579,8.6610522841066
-Q_limit,Cladophora,Adult,Velocity,11101250,Low,LOB,7260.93,m,Q >= newx1a,critical,Soft,0.0114168284050691,0.00271358852303359
+Q_limit,Cladophora,Adult,Velocity,11101250,Low,LOB,7260.93,m,Q >= newx1a,critical,Soft,0.0114168284050691,0.00162936612733578
 Q_limit,Cladophora,Adult,Velocity,11101250,Low,MC,1232.47,m,Q >= newx1a,critical,Soft,1.5869391483046,0.289591078266764
-Q_limit,Cladophora,Adult,Velocity,11101250,Low,ROB,6224.61,m,Q >= newx1a,critical,Soft,0.0570776255707763,0.00543163275454264
-Q_limit,Cladophora,Adult,Velocity,11101250,Medium,LOB,8327.5,m,Q >= newx2a,critical,Soft,0.0114168284050691,0.00271358852303359
+Q_limit,Cladophora,Adult,Velocity,11101250,Low,ROB,6224.61,m,Q >= newx1a,critical,Soft,0.0570776255707763,0.00434741035884483
 Q_limit,Cladophora,Adult,Velocity,11101250,Medium,MC,2287.81,m,Q >= newx2a,critical,Soft,1.5869391483046,0.289591078266764
-Q_limit,Cladophora,Adult,Velocity,11101250,Medium,ROB,8327.5,m,Q >= newx2a,critical,Soft,0.0570776255707763,0.00543163275454264
-Q_limit,Cladophora,Adult,Velocity,11101250,High,LOB,8327.5,m,Q >= newx3a,critical,Soft,0.0114168284050691,0.00271358852303359
 Q_limit,Cladophora,Adult,Velocity,11101250,High,MC,3603.18,m,Q >= newx3a,critical,Soft,1.5869391483046,0.289591078266764
-Q_limit,Cladophora,Adult,Velocity,11101250,High,ROB,8327.5,m,Q >= newx3a,critical,Soft,0.0570776255707763,0.00543163275454264
-Hydraulic_limit,Cladophora,Adult,Velocity,11101250,Low,LOB,0.39,m,Q >= newx1a,critical,Soft,0.0114168284050691,0.00271358852303359
+Hydraulic_limit,Cladophora,Adult,Velocity,11101250,Low,LOB,0.39,m,Q >= newx1a,critical,Soft,0.0114168284050691,0.00162936612733578
 Hydraulic_limit,Cladophora,Adult,Velocity,11101250,Low,MC,0.39,m,Q >= newx1a,critical,Soft,1.5869391483046,0.289591078266764
-Hydraulic_limit,Cladophora,Adult,Velocity,11101250,Low,ROB,0.39,m,Q >= newx1a,critical,Soft,0.0570776255707763,0.00543163275454264
-Hydraulic_limit,Cladophora,Adult,Velocity,11101250,Medium,LOB,0.43,m,Q >= newx2a,critical,Soft,0.0114168284050691,0.00271358852303359
+Hydraulic_limit,Cladophora,Adult,Velocity,11101250,Low,ROB,0.39,m,Q >= newx1a,critical,Soft,0.0570776255707763,0.00434741035884483
 Hydraulic_limit,Cladophora,Adult,Velocity,11101250,Medium,MC,0.55,m,Q >= newx2a,critical,Soft,1.5869391483046,0.289591078266764
-Hydraulic_limit,Cladophora,Adult,Velocity,11101250,Medium,ROB,0.48,m,Q >= newx2a,critical,Soft,0.0570776255707763,0.00543163275454264
 Hydraulic_limit,Cladophora,Adult,Velocity,11101250,High,MC,0.7,m,Q >= newx3a,critical,Soft,1.5869391483046,0.289591078266764
 Q_limit,Cladophora,Adult,Depth,F300,Low,LOB,24316.09,cm,Q >= min_limit & Q <= newx1a,critical,Soft,12.7625570776256,5.57000617661409
 Q_limit,Cladophora,Adult,Depth,F300,Low,MC,14533.44,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,97.7405674266529
@@ -129,27 +123,24 @@ Hydraulic_limit,Cladophora,Adult,Depth,F37BLow,High,LOB,80.6,cm,Q >= min_limit &
 Hydraulic_limit,Cladophora,Adult,Depth,F37BLow,High,MC,80.6,cm,Q >= min_limit & Q <= newx3a,critical,Soft,7.26110286562393,4.29455478708979
 Hydraulic_limit,Cladophora,Adult,Depth,F37BLow,High,ROB,80.6,cm,Q >= newx3a[1] & Q <= newx3a[2],critical,Soft,30.3116794154584,7.09567123469799
 Hydraulic_limit,Cladophora,Adult,Depth,F37BLow,High,ROB,80.6,cm,Q >= newx3a[1] & Q <= newx3a[2],critical,Soft,30.3116794154584,7.09567123469799
-Q_limit,Cladophora,Adult,Velocity,F37BLow,Low,LOB,2754.94,m,Q >= newx1a,critical,Soft,0.0114155251141553,0.00163078930202219
+Q_limit,Cladophora,Adult,Velocity,F37BLow,Low,LOB,2754.94,m,Q >= newx1a,critical,Soft,0.0114155251141553,5.43596434007395e-4
 Q_limit,Cladophora,Adult,Velocity,F37BLow,Low,MC,4.57,m,Q >= newx1a[1] & Q <= newx1a[2],critical,Soft,9.6700536590935,3.9224493999229
 Q_limit,Cladophora,Adult,Velocity,F37BLow,Low,ROB,27.34,m,Q >= newx1a[1] & Q <= newx1a[2],critical,Soft,4.29272748030597,1.33805648127566
 Q_limit,Cladophora,Adult,Velocity,F37BLow,Low,MC,1930.22,m,Q >= newx1a[1] & Q <= newx1a[2],critical,Soft,9.6700536590935,3.9224493999229
 Q_limit,Cladophora,Adult,Velocity,F37BLow,Low,ROB,2956.08,m,Q >= newx1a[1] & Q <= newx1a[2],critical,Soft,4.29272748030597,1.33805648127566
-Q_limit,Cladophora,Adult,Velocity,F37BLow,Medium,LOB,3369.26,m,Q >= newx2a,critical,Soft,0.0114155251141553,0.00163078930202219
 Q_limit,Cladophora,Adult,Velocity,F37BLow,Medium,MC,10.72,m,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,9.6700536590935,3.9224493999229
 Q_limit,Cladophora,Adult,Velocity,F37BLow,Medium,ROB,45.95,m,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,4.29272748030597,1.33805648127566
 Q_limit,Cladophora,Adult,Velocity,F37BLow,Medium,MC,3088.55,m,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,9.6700536590935,3.9224493999229
 Q_limit,Cladophora,Adult,Velocity,F37BLow,Medium,ROB,211.78,m,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,4.29272748030597,1.33805648127566
-Q_limit,Cladophora,Adult,Velocity,F37BLow,High,LOB,3369.26,m,Q >= newx3a,critical,Soft,0.0114155251141553,0.00163078930202219
 Q_limit,Cladophora,Adult,Velocity,F37BLow,High,MC,23.32,m,Q >= newx3a[1] & Q <= newx3a[2],critical,Soft,9.6700536590935,3.9224493999229
 Q_limit,Cladophora,Adult,Velocity,F37BLow,High,ROB,71.93,m,Q >= newx3a[1] & Q <= newx3a[2],critical,Soft,4.29272748030597,1.33805648127566
 Q_limit,Cladophora,Adult,Velocity,F37BLow,High,MC,139.22,m,Q >= newx3a[1] & Q <= newx3a[2],critical,Soft,9.6700536590935,3.9224493999229
 Q_limit,Cladophora,Adult,Velocity,F37BLow,High,ROB,184.21,m,Q >= newx3a[1] & Q <= newx3a[2],critical,Soft,4.29272748030597,1.33805648127566
-Hydraulic_limit,Cladophora,Adult,Velocity,F37BLow,Low,LOB,0.39,m,Q >= newx1a,critical,Soft,0.0114155251141553,0.00163078930202219
+Hydraulic_limit,Cladophora,Adult,Velocity,F37BLow,Low,LOB,0.39,m,Q >= newx1a,critical,Soft,0.0114155251141553,5.43596434007395e-4
 Hydraulic_limit,Cladophora,Adult,Velocity,F37BLow,Low,MC,0.39,m,Q >= newx1a[1] & Q <= newx1a[2],critical,Soft,9.6700536590935,3.9224493999229
 Hydraulic_limit,Cladophora,Adult,Velocity,F37BLow,Low,ROB,0.39,m,Q >= newx1a[1] & Q <= newx1a[2],critical,Soft,4.29272748030597,1.33805648127566
 Hydraulic_limit,Cladophora,Adult,Velocity,F37BLow,Low,MC,0.39,m,Q >= newx1a[1] & Q <= newx1a[2],critical,Soft,9.6700536590935,3.9224493999229
 Hydraulic_limit,Cladophora,Adult,Velocity,F37BLow,Low,ROB,0.39,m,Q >= newx1a[1] & Q <= newx1a[2],critical,Soft,4.29272748030597,1.33805648127566
-Hydraulic_limit,Cladophora,Adult,Velocity,F37BLow,Medium,LOB,0.45,m,Q >= newx2a,critical,Soft,0.0114155251141553,0.00163078930202219
 Hydraulic_limit,Cladophora,Adult,Velocity,F37BLow,Medium,MC,0.55,m,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,9.6700536590935,3.9224493999229
 Hydraulic_limit,Cladophora,Adult,Velocity,F37BLow,Medium,ROB,0.55,m,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,4.29272748030597,1.33805648127566
 Hydraulic_limit,Cladophora,Adult,Velocity,F37BLow,Medium,MC,0.55,m,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,9.6700536590935,3.9224493999229
@@ -343,19 +334,17 @@ Hydraulic_limit,Cladophora,Adult,Velocity,LA14,High,LOB,0.7,m,Q >= newx3a,critic
 Hydraulic_limit,Cladophora,Adult,Velocity,LA14,High,MC,0.7,m,Q >= newx3a[1] & Q <= newx3a[2],critical,Soft,7.85477794268752,2.0263135717765
 Hydraulic_limit,Cladophora,Adult,Velocity,LA14,High,ROB,0.7,m,Q >= newx3a,critical,Soft,100,37.561755028816
 Q_limit,Cladophora,Adult,Depth,LA2,Low,LOB,36733.41,cm,Q >= min_limit & Q <= newx1a,critical,Soft,3.69905240324238,1.55008053413369
-Q_limit,Cladophora,Adult,Depth,LA2,Low,MC,7998.2,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,98.9112001866669
+Q_limit,Cladophora,Adult,Depth,LA2,Low,MC,7998.2,cm,Q >= min_limit & Q <= newx1a,critical,Soft,99.9315068493151,65.5778668533335
 Q_limit,Cladophora,Adult,Depth,LA2,Low,ROB,31935.26,cm,Q >= min_limit & Q <= newx1a,critical,Soft,5.28599155154698,2.32642374823275
 Q_limit,Cladophora,Adult,Depth,LA2,Medium,LOB,16372.97,cm,Q >= min_limit & Q <= newx2a,critical,Soft,3.69905240324238,1.55008053413369
-Q_limit,Cladophora,Adult,Depth,LA2,Medium,MC,947.52,cm,Q >= min_limit & Q <= newx2a,critical,Soft,100,98.9112001866669
+Q_limit,Cladophora,Adult,Depth,LA2,Medium,MC,947.52,cm,Q >= min_limit & Q <= newx2a,critical,Soft,99.9315068493151,65.5778668533335
 Q_limit,Cladophora,Adult,Depth,LA2,Medium,ROB,13212.69,cm,Q >= min_limit & Q <= newx2a,critical,Soft,5.28599155154698,2.32642374823275
 Q_limit,Cladophora,Adult,Depth,LA2,High,LOB,5919.44,cm,Q >= min_limit & Q <= newx3a,critical,Soft,3.69905240324238,1.55008053413369
-Q_limit,Cladophora,Adult,Depth,LA2,High,MC,50922.74,cm,Q >= min_limit & Q <= newx3a,critical,Soft,100,98.9112001866669
 Q_limit,Cladophora,Adult,Depth,LA2,High,ROB,4154.05,cm,Q >= min_limit & Q <= newx3a,critical,Soft,5.28599155154698,2.32642374823275
 Hydraulic_limit,Cladophora,Adult,Depth,LA2,Low,LOB,318.17,cm,Q >= min_limit & Q <= newx1a,critical,Soft,3.69905240324238,1.55008053413369
-Hydraulic_limit,Cladophora,Adult,Depth,LA2,Low,MC,318.17,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,98.9112001866669
+Hydraulic_limit,Cladophora,Adult,Depth,LA2,Low,MC,318.17,cm,Q >= min_limit & Q <= newx1a,critical,Soft,99.9315068493151,65.5778668533335
 Hydraulic_limit,Cladophora,Adult,Depth,LA2,Low,ROB,318.17,cm,Q >= min_limit & Q <= newx1a,critical,Soft,5.28599155154698,2.32642374823275
 Hydraulic_limit,Cladophora,Adult,Depth,LA2,Medium,LOB,186.73,cm,Q >= min_limit & Q <= newx2a,critical,Soft,3.69905240324238,1.55008053413369
-Hydraulic_limit,Cladophora,Adult,Depth,LA2,Medium,MC,600.22,cm,Q >= min_limit & Q <= newx2a,critical,Soft,100,98.9112001866669
 Hydraulic_limit,Cladophora,Adult,Depth,LA2,Medium,ROB,186.73,cm,Q >= min_limit & Q <= newx2a,critical,Soft,5.28599155154698,2.32642374823275
 Hydraulic_limit,Cladophora,Adult,Depth,LA2,High,LOB,80.6,cm,Q >= min_limit & Q <= newx3a,critical,Soft,3.69905240324238,1.55008053413369
 Hydraulic_limit,Cladophora,Adult,Depth,LA2,High,ROB,80.6,cm,Q >= min_limit & Q <= newx3a,critical,Soft,5.28599155154698,2.32642374823275
@@ -1423,29 +1412,26 @@ Hydraulic_limit,SAS,Juvenile,Depth,LA14,High,LOB,47.65,cm,Q >= newx3a[1] & Q <= 
 Hydraulic_limit,SAS,Juvenile,Depth,LA14,High,MC,47.65,cm,Q >= newx3a[1] & Q <= newx3a[2],critical,Soft,1.4722536806342,0.230789217306894
 Hydraulic_limit,SAS,Juvenile,Depth,LA14,High,ROB,47.65,cm,Q >= newx3a[1] & Q <= newx3a[2],critical,Soft,100,86.6758770448945
 Q_limit,SAS,Adult,Depth,LA2,Low,LOB,1767.23,cm,Q >= newx1a[1] & Q <= newx1a[2],Annual,Soft,3.72188606005252,0.917656211539713
-Q_limit,SAS,Adult,Depth,LA2,Low,MC,62.58,cm,Q >= newx1a[1] & Q <= newx1a[2],Annual,Soft,100,33.3344205262013
+Q_limit,SAS,Adult,Depth,LA2,Low,MC,62.58,cm,Q >= newx1a[1] & Q <= newx1a[2],Annual,Soft,100,33.3333333333333
 Q_limit,SAS,Adult,Depth,LA2,Low,ROB,990.02,cm,Q >= newx1a[1] & Q <= newx1a[2],Annual,Soft,5.3544925219774004,1.40881234202368
 Q_limit,SAS,Adult,Depth,LA2,Low,LOB,50922.74,cm,Q >= newx1a[1] & Q <= newx1a[2],Annual,Soft,3.72188606005252,0.917656211539713
-Q_limit,SAS,Adult,Depth,LA2,Low,MC,50922.74,cm,Q >= newx1a[1] & Q <= newx1a[2],Annual,Soft,100,33.3344205262013
+Q_limit,SAS,Adult,Depth,LA2,Low,MC,50922.74,cm,Q >= newx1a[1] & Q <= newx1a[2],Annual,Soft,100,33.3333333333333
 Q_limit,SAS,Adult,Depth,LA2,Low,ROB,50922.74,cm,Q >= newx1a[1] & Q <= newx1a[2],Annual,Soft,5.3544925219774004,1.40881234202368
 Q_limit,SAS,Adult,Depth,LA2,Medium,LOB,2567.61,cm,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,3.72188606005252,0.917656211539713
-Q_limit,SAS,Adult,Depth,LA2,Medium,MC,50922.74,cm,Q >= newx2a,Annual,Soft,100,33.3344205262013
 Q_limit,SAS,Adult,Depth,LA2,Medium,ROB,1539.07,cm,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,5.3544925219774004,1.40881234202368
 Q_limit,SAS,Adult,Depth,LA2,Medium,LOB,4890.72,cm,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,3.72188606005252,0.917656211539713
 Q_limit,SAS,Adult,Depth,LA2,Medium,ROB,3321.94,cm,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,5.3544925219774004,1.40881234202368
 Q_limit,SAS,Adult,Depth,LA2,High,LOB,2919.16,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,3.72188606005252,0.917656211539713
-Q_limit,SAS,Adult,Depth,LA2,High,MC,50922.74,cm,Q >= newx3a,Annual,Soft,100,33.3344205262013
 Q_limit,SAS,Adult,Depth,LA2,High,ROB,1797.09,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,5.3544925219774004,1.40881234202368
 Q_limit,SAS,Adult,Depth,LA2,High,LOB,4411.1,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,3.72188606005252,0.917656211539713
 Q_limit,SAS,Adult,Depth,LA2,High,ROB,2941.26,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,5.3544925219774004,1.40881234202368
 Hydraulic_limit,SAS,Adult,Depth,LA2,Low,LOB,0,cm,Q >= newx1a[1] & Q <= newx1a[2],Annual,Soft,3.72188606005252,0.917656211539713
-Hydraulic_limit,SAS,Adult,Depth,LA2,Low,MC,134.8,cm,Q >= newx1a[1] & Q <= newx1a[2],Annual,Soft,100,33.3344205262013
+Hydraulic_limit,SAS,Adult,Depth,LA2,Low,MC,134.8,cm,Q >= newx1a[1] & Q <= newx1a[2],Annual,Soft,100,33.3333333333333
 Hydraulic_limit,SAS,Adult,Depth,LA2,Low,ROB,0,cm,Q >= newx1a[1] & Q <= newx1a[2],Annual,Soft,5.3544925219774004,1.40881234202368
 Hydraulic_limit,SAS,Adult,Depth,LA2,Low,LOB,388.99,cm,Q >= newx1a[1] & Q <= newx1a[2],Annual,Soft,3.72188606005252,0.917656211539713
-Hydraulic_limit,SAS,Adult,Depth,LA2,Low,MC,600.22,cm,Q >= newx1a[1] & Q <= newx1a[2],Annual,Soft,100,33.3344205262013
+Hydraulic_limit,SAS,Adult,Depth,LA2,Low,MC,600.22,cm,Q >= newx1a[1] & Q <= newx1a[2],Annual,Soft,100,33.3333333333333
 Hydraulic_limit,SAS,Adult,Depth,LA2,Low,ROB,415.82,cm,Q >= newx1a[1] & Q <= newx1a[2],Annual,Soft,5.3544925219774004,1.40881234202368
 Hydraulic_limit,SAS,Adult,Depth,LA2,Medium,LOB,23.17,cm,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,3.72188606005252,0.917656211539713
-Hydraulic_limit,SAS,Adult,Depth,LA2,Medium,MC,600.22,cm,Q >= newx2a,Annual,Soft,100,33.3344205262013
 Hydraulic_limit,SAS,Adult,Depth,LA2,Medium,ROB,23.17,cm,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,5.3544925219774004,1.40881234202368
 Hydraulic_limit,SAS,Adult,Depth,LA2,Medium,LOB,65.64,cm,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,3.72188606005252,0.917656211539713
 Hydraulic_limit,SAS,Adult,Depth,LA2,Medium,ROB,65.64,cm,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,5.3544925219774004,1.40881234202368
@@ -1496,12 +1482,10 @@ Q_limit,SAS,Juvenile,Depth,LA2,Low,LOB,50922.74,cm,Q >= newx1a[1] & Q <= newx1a[
 Q_limit,SAS,Juvenile,Depth,LA2,Low,MC,50922.74,cm,Q >= newx1a[1] & Q <= newx1a[2],critical,Soft,100,33.3333333333333
 Q_limit,SAS,Juvenile,Depth,LA2,Low,ROB,50922.74,cm,Q >= newx1a[1] & Q <= newx1a[2],critical,Soft,1.22310305775764,0.257745021950546
 Q_limit,SAS,Juvenile,Depth,LA2,Medium,LOB,2397.62,cm,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,0.498301245753114,0.113232209193359
-Q_limit,SAS,Juvenile,Depth,LA2,Medium,MC,50922.74,cm,Q >= newx2a,critical,Soft,100,33.3333333333333
 Q_limit,SAS,Juvenile,Depth,LA2,Medium,ROB,1416.37,cm,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,1.22310305775764,0.257745021950546
 Q_limit,SAS,Juvenile,Depth,LA2,Medium,LOB,4157.1,cm,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,0.498301245753114,0.113232209193359
 Q_limit,SAS,Juvenile,Depth,LA2,Medium,ROB,2741.83,cm,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,1.22310305775764,0.257745021950546
 Q_limit,SAS,Juvenile,Depth,LA2,High,LOB,2670.3,cm,Q >= newx3a[1] & Q <= newx3a[2],critical,Soft,0.498301245753114,0.113232209193359
-Q_limit,SAS,Juvenile,Depth,LA2,High,MC,50922.74,cm,Q >= newx3a,critical,Soft,100,33.3333333333333
 Q_limit,SAS,Juvenile,Depth,LA2,High,ROB,1613.86,cm,Q >= newx3a[1] & Q <= newx3a[2],critical,Soft,1.22310305775764,0.257745021950546
 Q_limit,SAS,Juvenile,Depth,LA2,High,LOB,3800.26,cm,Q >= newx3a[1] & Q <= newx3a[2],critical,Soft,0.498301245753114,0.113232209193359
 Q_limit,SAS,Juvenile,Depth,LA2,High,ROB,2464.58,cm,Q >= newx3a[1] & Q <= newx3a[2],critical,Soft,1.22310305775764,0.257745021950546
@@ -1512,7 +1496,6 @@ Hydraulic_limit,SAS,Juvenile,Depth,LA2,Low,LOB,388.99,cm,Q >= newx1a[1] & Q <= n
 Hydraulic_limit,SAS,Juvenile,Depth,LA2,Low,MC,600.22,cm,Q >= newx1a[1] & Q <= newx1a[2],critical,Soft,100,33.3333333333333
 Hydraulic_limit,SAS,Juvenile,Depth,LA2,Low,ROB,415.82,cm,Q >= newx1a[1] & Q <= newx1a[2],critical,Soft,1.22310305775764,0.257745021950546
 Hydraulic_limit,SAS,Juvenile,Depth,LA2,Medium,LOB,19.27,cm,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,0.498301245753114,0.113232209193359
-Hydraulic_limit,SAS,Juvenile,Depth,LA2,Medium,MC,600.22,cm,Q >= newx2a,critical,Soft,100,33.3333333333333
 Hydraulic_limit,SAS,Juvenile,Depth,LA2,Medium,ROB,19.27,cm,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,1.22310305775764,0.257745021950546
 Hydraulic_limit,SAS,Juvenile,Depth,LA2,Medium,LOB,53.83,cm,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,0.498301245753114,0.113232209193359
 Hydraulic_limit,SAS,Juvenile,Depth,LA2,Medium,ROB,53.83,cm,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,1.22310305775764,0.257745021950546
@@ -1769,23 +1752,21 @@ Hydraulic_limit,SAS,Adult,Depth,LA3,High,LOB,58.04,cm,Q >= newx3a[1] & Q <= newx
 Hydraulic_limit,SAS,Adult,Depth,LA3,High,MC,58.04,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,100,98.6090894491621
 Hydraulic_limit,SAS,Adult,Depth,LA3,High,ROB,58.04,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,100,33.8993747987736
 Q_limit,SAS,Adult,Velocity,LA3,Low,LOB,1502.21,m,Q >= min_limit & Q <= newx1a,Annual,Soft,98.5730593607306,67.9801054688338
-Q_limit,SAS,Adult,Velocity,LA3,Low,MC,191.34,m,Q >= min_limit & Q <= newx1a,Annual,Soft,100,62.9609526352023
+Q_limit,SAS,Adult,Velocity,LA3,Low,MC,191.34,m,Q >= min_limit & Q <= newx1a,Annual,Soft,96.8835616438356,29.627619301869
 Q_limit,SAS,Adult,Velocity,LA3,Low,ROB,1502.21,m,Q >= min_limit & Q <= newx1a,Annual,Soft,98.5730593607306,67.9801054688338
 Q_limit,SAS,Adult,Velocity,LA3,Medium,LOB,96.32,m,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,98.5730593607306,67.9801054688338
-Q_limit,SAS,Adult,Velocity,LA3,Medium,MC,77.77,m,Q >= min_limit & Q <= newx2a,Annual,Soft,100,62.9609526352023
+Q_limit,SAS,Adult,Velocity,LA3,Medium,MC,77.77,m,Q >= min_limit & Q <= newx2a,Annual,Soft,96.8835616438356,29.627619301869
 Q_limit,SAS,Adult,Velocity,LA3,Medium,ROB,96.32,m,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,98.5730593607306,67.9801054688338
 Q_limit,SAS,Adult,Velocity,LA3,Medium,LOB,1096.42,m,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,98.5730593607306,67.9801054688338
 Q_limit,SAS,Adult,Velocity,LA3,Medium,ROB,1096.42,m,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,98.5730593607306,67.9801054688338
 Q_limit,SAS,Adult,Velocity,LA3,High,LOB,182.48,m,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,98.5730593607306,67.9801054688338
-Q_limit,SAS,Adult,Velocity,LA3,High,MC,47491.04,m,Q >= min_limit & Q <= newx3a,Annual,Soft,100,62.9609526352023
 Q_limit,SAS,Adult,Velocity,LA3,High,ROB,182.48,m,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,98.5730593607306,67.9801054688338
 Q_limit,SAS,Adult,Velocity,LA3,High,LOB,810.9,m,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,98.5730593607306,67.9801054688338
 Q_limit,SAS,Adult,Velocity,LA3,High,ROB,810.9,m,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,98.5730593607306,67.9801054688338
 Hydraulic_limit,SAS,Adult,Velocity,LA3,Low,LOB,1.13,m,Q >= min_limit & Q <= newx1a,Annual,Soft,98.5730593607306,67.9801054688338
-Hydraulic_limit,SAS,Adult,Velocity,LA3,Low,MC,1.13,m,Q >= min_limit & Q <= newx1a,Annual,Soft,100,62.9609526352023
+Hydraulic_limit,SAS,Adult,Velocity,LA3,Low,MC,1.13,m,Q >= min_limit & Q <= newx1a,Annual,Soft,96.8835616438356,29.627619301869
 Hydraulic_limit,SAS,Adult,Velocity,LA3,Low,ROB,1.13,m,Q >= min_limit & Q <= newx1a,Annual,Soft,98.5730593607306,67.9801054688338
 Hydraulic_limit,SAS,Adult,Velocity,LA3,Medium,LOB,0.24,m,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,98.5730593607306,67.9801054688338
-Hydraulic_limit,SAS,Adult,Velocity,LA3,Medium,MC,4.62,m,Q >= min_limit & Q <= newx2a,Annual,Soft,100,62.9609526352023
 Hydraulic_limit,SAS,Adult,Velocity,LA3,Medium,ROB,0.24,m,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,98.5730593607306,67.9801054688338
 Hydraulic_limit,SAS,Adult,Velocity,LA3,Medium,LOB,0.98,m,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,98.5730593607306,67.9801054688338
 Hydraulic_limit,SAS,Adult,Velocity,LA3,Medium,ROB,0.98,m,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,98.5730593607306,67.9801054688338
@@ -1862,21 +1843,19 @@ Hydraulic_limit,SAS,Adult,Depth,LA8,High,LOB,58.04,cm,Q >= newx3a[1] & Q <= newx
 Hydraulic_limit,SAS,Adult,Depth,LA8,High,MC,58.04,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,100,75.4088192517716
 Hydraulic_limit,SAS,Adult,Depth,LA8,High,ROB,58.04,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,100,34.7031966322434
 Q_limit,SAS,Adult,Velocity,LA8,Low,LOB,545.47,m,Q >= min_limit & Q <= newx1a,Annual,Soft,98.9041095890411,96.5790377072024
-Q_limit,SAS,Adult,Velocity,LA8,Low,MC,84.19,m,Q >= min_limit & Q <= newx1a,Annual,Soft,100,36.3435107252628
+Q_limit,SAS,Adult,Velocity,LA8,Low,MC,84.19,m,Q >= min_limit & Q <= newx1a,Annual,Soft,25.6033697632058,3.01017739192943
 Q_limit,SAS,Adult,Velocity,LA8,Low,ROB,549.72,m,Q >= min_limit & Q <= newx1a,Annual,Soft,98.9041095890411,96.6474601871665
 Q_limit,SAS,Adult,Velocity,LA8,Medium,LOB,399.74,m,Q >= min_limit & Q <= newx2a,Annual,Soft,98.9041095890411,96.5790377072024
-Q_limit,SAS,Adult,Velocity,LA8,Medium,MC,48.86,m,Q >= min_limit & Q <= newx2a,Annual,Soft,100,36.3435107252628
+Q_limit,SAS,Adult,Velocity,LA8,Medium,MC,48.86,m,Q >= min_limit & Q <= newx2a,Annual,Soft,25.6033697632058,3.01017739192943
 Q_limit,SAS,Adult,Velocity,LA8,Medium,ROB,402.96,m,Q >= min_limit & Q <= newx2a,Annual,Soft,98.9041095890411,96.6474601871665
 Q_limit,SAS,Adult,Velocity,LA8,High,LOB,66.35,m,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,98.9041095890411,96.5790377072024
-Q_limit,SAS,Adult,Velocity,LA8,High,MC,42906.52,m,Q >= min_limit & Q <= newx3a,Annual,Soft,100,36.3435107252628
 Q_limit,SAS,Adult,Velocity,LA8,High,ROB,54.86,m,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,98.9041095890411,96.6474601871665
 Q_limit,SAS,Adult,Velocity,LA8,High,LOB,294.44,m,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,98.9041095890411,96.5790377072024
 Q_limit,SAS,Adult,Velocity,LA8,High,ROB,296.87,m,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,98.9041095890411,96.6474601871665
 Hydraulic_limit,SAS,Adult,Velocity,LA8,Low,LOB,1.13,m,Q >= min_limit & Q <= newx1a,Annual,Soft,98.9041095890411,96.5790377072024
-Hydraulic_limit,SAS,Adult,Velocity,LA8,Low,MC,1.13,m,Q >= min_limit & Q <= newx1a,Annual,Soft,100,36.3435107252628
+Hydraulic_limit,SAS,Adult,Velocity,LA8,Low,MC,1.13,m,Q >= min_limit & Q <= newx1a,Annual,Soft,25.6033697632058,3.01017739192943
 Hydraulic_limit,SAS,Adult,Velocity,LA8,Low,ROB,1.13,m,Q >= min_limit & Q <= newx1a,Annual,Soft,98.9041095890411,96.6474601871665
 Hydraulic_limit,SAS,Adult,Velocity,LA8,Medium,LOB,0.98,m,Q >= min_limit & Q <= newx2a,Annual,Soft,98.9041095890411,96.5790377072024
-Hydraulic_limit,SAS,Adult,Velocity,LA8,Medium,MC,6.45,m,Q >= min_limit & Q <= newx2a,Annual,Soft,100,36.3435107252628
 Hydraulic_limit,SAS,Adult,Velocity,LA8,Medium,ROB,0.98,m,Q >= min_limit & Q <= newx2a,Annual,Soft,98.9041095890411,96.6474601871665
 Hydraulic_limit,SAS,Adult,Velocity,LA8,High,LOB,0.38,m,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,98.9041095890411,96.5790377072024
 Hydraulic_limit,SAS,Adult,Velocity,LA8,High,ROB,0.38,m,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,98.9041095890411,96.6474601871665
@@ -3297,21 +3276,15 @@ Hydraulic_limit,Typha,Adult,Velocity,11101250,Medium,ROB,0,m,Q >= newx2a,Annual,
 Hydraulic_limit,Typha,Adult,Velocity,11101250,High,LOB,0.07,m,Q >= min_limit & Q <= newx3a,Annual,Soft,30.9966891197625,7.91075891881586
 Hydraulic_limit,Typha,Adult,Velocity,11101250,High,MC,0.07,m,Q >= min_limit & Q <= newx3a,Annual,Soft,100,96.4570741644805
 Hydraulic_limit,Typha,Adult,Velocity,11101250,High,ROB,0.07,m,Q >= min_limit & Q <= newx3a,Annual,Soft,34.3646534992579,8.66108323429838
-Q_limit,Typha,Seedling,Depth,11101250,Low,LOB,160.89,cm,Q >= min_limit & Q <= newx1a,critical,Soft,27.550091074681202,4.14064532916992
-Q_limit,Typha,Seedling,Depth,11101250,Low,MC,0.04,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,33.9892878827305
-Q_limit,Typha,Seedling,Depth,11101250,Low,ROB,123.53,cm,Q >= min_limit & Q <= newx1a,critical,Soft,30.8743169398907,3.84898950472721
-Q_limit,Typha,Seedling,Depth,11101250,Medium,LOB,124.28,cm,Q >= min_limit & Q <= newx2a,critical,Soft,27.550091074681202,4.14064532916992
-Q_limit,Typha,Seedling,Depth,11101250,Medium,MC,0.01,cm,Q >= min_limit & Q <= newx2a,critical,Soft,100,33.9892878827305
-Q_limit,Typha,Seedling,Depth,11101250,Medium,ROB,93.81,cm,Q >= min_limit & Q <= newx2a,critical,Soft,30.8743169398907,3.84898950472721
-Q_limit,Typha,Seedling,Depth,11101250,High,LOB,8327.5,cm,Q >= min_limit & Q <= newx3a,critical,Soft,27.550091074681202,4.14064532916992
-Q_limit,Typha,Seedling,Depth,11101250,High,MC,8327.5,cm,Q >= min_limit & Q <= newx3a,critical,Soft,100,33.9892878827305
-Q_limit,Typha,Seedling,Depth,11101250,High,ROB,8327.5,cm,Q >= min_limit & Q <= newx3a,critical,Soft,30.8743169398907,3.84898950472721
-Hydraulic_limit,Typha,Seedling,Depth,11101250,Low,LOB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,27.550091074681202,4.14064532916992
-Hydraulic_limit,Typha,Seedling,Depth,11101250,Low,MC,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,33.9892878827305
-Hydraulic_limit,Typha,Seedling,Depth,11101250,Low,ROB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,30.8743169398907,3.84898950472721
-Hydraulic_limit,Typha,Seedling,Depth,11101250,Medium,LOB,295.88,cm,Q >= min_limit & Q <= newx2a,critical,Soft,27.550091074681202,4.14064532916992
-Hydraulic_limit,Typha,Seedling,Depth,11101250,Medium,MC,436.09,cm,Q >= min_limit & Q <= newx2a,critical,Soft,100,33.9892878827305
-Hydraulic_limit,Typha,Seedling,Depth,11101250,Medium,ROB,305.03,cm,Q >= min_limit & Q <= newx2a,critical,Soft,30.8743169398907,3.84898950472721
+Q_limit,Typha,Seedling,Depth,11101250,Low,LOB,160.89,cm,Q >= min_limit & Q <= newx1a,critical,Soft,18.2377049180328,1.66644982218753
+Q_limit,Typha,Seedling,Depth,11101250,Low,MC,0.04,cm,Q >= min_limit & Q <= newx1a,critical,Soft,16.8715846994535,0.874967473328127
+Q_limit,Typha,Seedling,Depth,11101250,Low,ROB,123.53,cm,Q >= min_limit & Q <= newx1a,critical,Soft,13.9799635701275,1.16445485297944
+Q_limit,Typha,Seedling,Depth,11101250,Medium,LOB,124.28,cm,Q >= min_limit & Q <= newx2a,critical,Soft,18.2377049180328,1.66644982218753
+Q_limit,Typha,Seedling,Depth,11101250,Medium,MC,0.01,cm,Q >= min_limit & Q <= newx2a,critical,Soft,16.8715846994535,0.874967473328127
+Q_limit,Typha,Seedling,Depth,11101250,Medium,ROB,93.81,cm,Q >= min_limit & Q <= newx2a,critical,Soft,13.9799635701275,1.16445485297944
+Hydraulic_limit,Typha,Seedling,Depth,11101250,Low,LOB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,18.2377049180328,1.66644982218753
+Hydraulic_limit,Typha,Seedling,Depth,11101250,Low,MC,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,16.8715846994535,0.874967473328127
+Hydraulic_limit,Typha,Seedling,Depth,11101250,Low,ROB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,13.9799635701275,1.16445485297944
 Q_limit,Typha,Adult,Depth,F300,Low,LOB,5722.01,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,12.3744292237443,3.17947609403782
 Q_limit,Typha,Adult,Depth,F300,Low,MC,416.86,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,99.0867579908676,95.4015572059379
 Q_limit,Typha,Adult,Depth,F300,Low,ROB,5722.01,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,12.3744292237443,3.17947609403782
@@ -3343,53 +3316,38 @@ Hydraulic_limit,Typha,Adult,Depth,F300,High,LOB,84.41,cm,Q >= newx3a[1] & Q <= n
 Hydraulic_limit,Typha,Adult,Depth,F300,High,MC,78.63,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,99.0867579908676,95.4015572059379
 Hydraulic_limit,Typha,Adult,Depth,F300,High,ROB,84.41,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,12.3744292237443,3.17947609403782
 Q_limit,Typha,Adult,Velocity,F300,Low,LOB,670.11,m,Q >= min_limit & Q <= newx1a,Annual,Soft,10.148401826484,2.38296844346438
-Q_limit,Typha,Adult,Velocity,F300,Low,MC,57.18,m,Q >= min_limit & Q <= newx1a,Annual,Soft,100,46.9539749746017
+Q_limit,Typha,Adult,Velocity,F300,Low,MC,57.18,m,Q >= min_limit & Q <= newx1a,Annual,Soft,86.0883424408015,13.6402040633198
 Q_limit,Typha,Adult,Velocity,F300,Low,ROB,670.11,m,Q >= min_limit & Q <= newx1a,Annual,Soft,10.148401826484,2.38296844346438
 Q_limit,Typha,Adult,Velocity,F300,Medium,LOB,308.31,m,Q >= min_limit & Q <= newx2a,Annual,Soft,10.148401826484,2.38296844346438
-Q_limit,Typha,Adult,Velocity,F300,Medium,MC,5.37,m,Q >= min_limit & Q <= newx2a,Annual,Soft,100,46.9539749746017
+Q_limit,Typha,Adult,Velocity,F300,Medium,MC,5.37,m,Q >= min_limit & Q <= newx2a,Annual,Soft,86.0883424408015,13.6402040633198
 Q_limit,Typha,Adult,Velocity,F300,Medium,ROB,308.31,m,Q >= min_limit & Q <= newx2a,Annual,Soft,10.148401826484,2.38296844346438
 Q_limit,Typha,Adult,Velocity,F300,High,LOB,97.02,m,Q >= min_limit & Q <= newx3a,Annual,Soft,10.148401826484,2.38296844346438
-Q_limit,Typha,Adult,Velocity,F300,High,MC,35384.01,m,Q >= min_limit & Q <= newx3a,Annual,Soft,100,46.9539749746017
 Q_limit,Typha,Adult,Velocity,F300,High,ROB,97.02,m,Q >= min_limit & Q <= newx3a,Annual,Soft,10.148401826484,2.38296844346438
 Hydraulic_limit,Typha,Adult,Velocity,F300,Low,LOB,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,10.148401826484,2.38296844346438
-Hydraulic_limit,Typha,Adult,Velocity,F300,Low,MC,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,100,46.9539749746017
+Hydraulic_limit,Typha,Adult,Velocity,F300,Low,MC,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,86.0883424408015,13.6402040633198
 Hydraulic_limit,Typha,Adult,Velocity,F300,Low,ROB,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,10.148401826484,2.38296844346438
 Hydraulic_limit,Typha,Adult,Velocity,F300,Medium,LOB,0.56,m,Q >= min_limit & Q <= newx2a,Annual,Soft,10.148401826484,2.38296844346438
-Hydraulic_limit,Typha,Adult,Velocity,F300,Medium,MC,6.51,m,Q >= min_limit & Q <= newx2a,Annual,Soft,100,46.9539749746017
 Hydraulic_limit,Typha,Adult,Velocity,F300,Medium,ROB,0.56,m,Q >= min_limit & Q <= newx2a,Annual,Soft,10.148401826484,2.38296844346438
 Hydraulic_limit,Typha,Adult,Velocity,F300,High,LOB,0.07,m,Q >= min_limit & Q <= newx3a,Annual,Soft,10.148401826484,2.38296844346438
 Hydraulic_limit,Typha,Adult,Velocity,F300,High,ROB,0.07,m,Q >= min_limit & Q <= newx3a,Annual,Soft,10.148401826484,2.38296844346438
-Q_limit,Typha,Seedling,Depth,F300,Low,LOB,793.69,cm,Q >= min_limit & Q <= newx1a,critical,Soft,6.23861566484517,1.3335935467083
-Q_limit,Typha,Seedling,Depth,F300,Low,MC,35.72,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,33.4862086911267
-Q_limit,Typha,Seedling,Depth,F300,Low,ROB,793.69,cm,Q >= min_limit & Q <= newx1a,critical,Soft,6.23861566484517,1.3335935467083
-Q_limit,Typha,Seedling,Depth,F300,Medium,LOB,485.77,cm,Q >= min_limit & Q <= newx2a,critical,Soft,6.23861566484517,1.3335935467083
-Q_limit,Typha,Seedling,Depth,F300,Medium,MC,22.56,cm,Q >= min_limit & Q <= newx2a,critical,Soft,100,33.4862086911267
-Q_limit,Typha,Seedling,Depth,F300,Medium,ROB,485.77,cm,Q >= min_limit & Q <= newx2a,critical,Soft,6.23861566484517,1.3335935467083
-Q_limit,Typha,Seedling,Depth,F300,High,LOB,35384.01,cm,Q >= min_limit & Q <= newx3a,critical,Soft,6.23861566484517,1.3335935467083
-Q_limit,Typha,Seedling,Depth,F300,High,MC,35384.01,cm,Q >= min_limit & Q <= newx3a,critical,Soft,100,33.4862086911267
-Q_limit,Typha,Seedling,Depth,F300,High,ROB,35384.01,cm,Q >= min_limit & Q <= newx3a,critical,Soft,6.23861566484517,1.3335935467083
-Hydraulic_limit,Typha,Seedling,Depth,F300,Low,LOB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,6.23861566484517,1.3335935467083
-Hydraulic_limit,Typha,Seedling,Depth,F300,Low,MC,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,33.4862086911267
-Hydraulic_limit,Typha,Seedling,Depth,F300,Low,ROB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,6.23861566484517,1.3335935467083
-Hydraulic_limit,Typha,Seedling,Depth,F300,Medium,LOB,413.76,cm,Q >= min_limit & Q <= newx2a,critical,Soft,6.23861566484517,1.3335935467083
-Hydraulic_limit,Typha,Seedling,Depth,F300,Medium,MC,510.38,cm,Q >= min_limit & Q <= newx2a,critical,Soft,100,33.4862086911267
-Hydraulic_limit,Typha,Seedling,Depth,F300,Medium,ROB,413.76,cm,Q >= min_limit & Q <= newx2a,critical,Soft,6.23861566484517,1.3335935467083
+Q_limit,Typha,Seedling,Depth,F300,Low,LOB,793.69,cm,Q >= min_limit & Q <= newx1a,critical,Soft,6.03369763205829,0.842440801457195
+Q_limit,Typha,Seedling,Depth,F300,Low,MC,35.72,cm,Q >= min_limit & Q <= newx1a,critical,Soft,1.25227686703097,0.186486252060023
+Q_limit,Typha,Seedling,Depth,F300,Low,ROB,793.69,cm,Q >= min_limit & Q <= newx1a,critical,Soft,6.03369763205829,0.842440801457195
+Q_limit,Typha,Seedling,Depth,F300,Medium,LOB,485.77,cm,Q >= min_limit & Q <= newx2a,critical,Soft,6.03369763205829,0.842440801457195
+Q_limit,Typha,Seedling,Depth,F300,Medium,MC,22.56,cm,Q >= min_limit & Q <= newx2a,critical,Soft,1.25227686703097,0.186486252060023
+Q_limit,Typha,Seedling,Depth,F300,Medium,ROB,485.77,cm,Q >= min_limit & Q <= newx2a,critical,Soft,6.03369763205829,0.842440801457195
+Hydraulic_limit,Typha,Seedling,Depth,F300,Low,LOB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,6.03369763205829,0.842440801457195
+Hydraulic_limit,Typha,Seedling,Depth,F300,Low,MC,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,1.25227686703097,0.186486252060023
+Hydraulic_limit,Typha,Seedling,Depth,F300,Low,ROB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,6.03369763205829,0.842440801457195
 Q_limit,Typha,Adult,Depth,F319,Low,MC,5023.8,cm,Q >= min_limit & Q <= newx1a,Annual,Concrete,99.7831050228311,98.9704042317471
 Q_limit,Typha,Adult,Depth,F319,Medium,MC,3862.15,cm,Q >= min_limit & Q <= newx2a,Annual,Concrete,99.7831050228311,98.9704042317471
 Q_limit,Typha,Adult,Depth,F319,High,MC,2419.96,cm,Q >= min_limit & Q <= newx3a,Annual,Concrete,99.7831050228311,98.9704042317471
 Hydraulic_limit,Typha,Adult,Depth,F319,Low,MC,115.35,cm,Q >= min_limit & Q <= newx1a,Annual,Concrete,99.7831050228311,98.9704042317471
 Hydraulic_limit,Typha,Adult,Depth,F319,Medium,MC,102.58,cm,Q >= min_limit & Q <= newx2a,Annual,Concrete,99.7831050228311,98.9704042317471
 Hydraulic_limit,Typha,Adult,Depth,F319,High,MC,84.41,cm,Q >= min_limit & Q <= newx3a,Annual,Concrete,99.7831050228311,98.9704042317471
-Q_limit,Typha,Adult,Velocity,F319,Low,MC,1330.09,m,Q >= min_limit & Q <= newx1a,Annual,Concrete,100,96.8830201005172
-Q_limit,Typha,Adult,Velocity,F319,Medium,MC,283.33,m,Q >= min_limit & Q <= newx2a,Annual,Concrete,100,96.8830201005172
-Q_limit,Typha,Adult,Velocity,F319,High,MC,49845.45,m,Q >= min_limit & Q <= newx3a,Annual,Concrete,100,96.8830201005172
-Hydraulic_limit,Typha,Adult,Velocity,F319,Low,MC,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Concrete,100,96.8830201005172
-Hydraulic_limit,Typha,Adult,Velocity,F319,Medium,MC,4,m,Q >= min_limit & Q <= newx2a,Annual,Concrete,100,96.8830201005172
-Q_limit,Typha,Seedling,Depth,F319,Low,MC,49845.45,cm,Q >= min_limit & Q <= newx1a,critical,Concrete,100,100
-Q_limit,Typha,Seedling,Depth,F319,Medium,MC,49845.45,cm,Q >= min_limit & Q <= newx2a,critical,Concrete,100,100
-Q_limit,Typha,Seedling,Depth,F319,High,MC,49845.45,cm,Q >= min_limit & Q <= newx3a,critical,Concrete,100,100
-Hydraulic_limit,Typha,Seedling,Depth,F319,Low,MC,381.3,cm,Q >= min_limit & Q <= newx1a,critical,Concrete,100,100
-Hydraulic_limit,Typha,Seedling,Depth,F319,Medium,MC,381.3,cm,Q >= min_limit & Q <= newx2a,critical,Concrete,100,100
+Q_limit,Typha,Adult,Velocity,F319,Low,MC,1330.09,m,Q >= min_limit & Q <= newx1a,Annual,Concrete,99.0182648401827,63.5496867671839
+Q_limit,Typha,Adult,Velocity,F319,Medium,MC,283.33,m,Q >= min_limit & Q <= newx2a,Annual,Concrete,99.0182648401827,63.5496867671839
+Hydraulic_limit,Typha,Adult,Velocity,F319,Low,MC,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Concrete,99.0182648401827,63.5496867671839
 Q_limit,Typha,Adult,Depth,F34D,Low,MC,9741.22,cm,Q >= min_limit & Q <= newx1a,Annual,Concrete,99.9657534246575,99.640898264396
 Q_limit,Typha,Adult,Depth,F34D,Medium,MC,7670.43,cm,Q >= min_limit & Q <= newx2a,Annual,Concrete,99.9657534246575,99.640898264396
 Q_limit,Typha,Adult,Depth,F34D,High,MC,72.24,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Concrete,99.9657534246575,99.640898264396
@@ -3398,17 +3356,12 @@ Hydraulic_limit,Typha,Adult,Depth,F34D,Low,MC,115.35,cm,Q >= min_limit & Q <= ne
 Hydraulic_limit,Typha,Adult,Depth,F34D,Medium,MC,102.58,cm,Q >= min_limit & Q <= newx2a,Annual,Concrete,99.9657534246575,99.640898264396
 Hydraulic_limit,Typha,Adult,Depth,F34D,High,MC,29.36,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Concrete,99.9657534246575,99.640898264396
 Hydraulic_limit,Typha,Adult,Depth,F34D,High,MC,84.41,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Concrete,99.9657534246575,99.640898264396
-Q_limit,Typha,Adult,Velocity,F34D,Low,MC,565.54,m,Q >= min_limit & Q <= newx1a,Annual,Concrete,100,87.3636510278959
-Q_limit,Typha,Adult,Velocity,F34D,Medium,MC,80.02,m,Q >= newx2a[1] & Q <= newx2a[2],Annual,Concrete,100,87.3636510278959
-Q_limit,Typha,Adult,Velocity,F34D,Medium,MC,145.87,m,Q >= newx2a[1] & Q <= newx2a[2],Annual,Concrete,100,87.3636510278959
-Q_limit,Typha,Adult,Velocity,F34D,High,MC,46292.14,m,Q >= min_limit & Q <= newx3a,Annual,Concrete,100,87.3636510278959
-Hydraulic_limit,Typha,Adult,Velocity,F34D,Low,MC,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Concrete,100,87.3636510278959
-Hydraulic_limit,Typha,Adult,Velocity,F34D,Medium,MC,4.72,m,Q >= newx2a[1] & Q <= newx2a[2],Annual,Concrete,100,87.3636510278959
-Q_limit,Typha,Seedling,Depth,F34D,Low,MC,74.85,cm,Q >= min_limit & Q <= newx1a,critical,Concrete,100,66.6710035562495
-Q_limit,Typha,Seedling,Depth,F34D,Medium,MC,46292.14,cm,Q >= min_limit & Q <= newx2a,critical,Concrete,100,66.6710035562495
-Q_limit,Typha,Seedling,Depth,F34D,High,MC,46292.14,cm,Q >= min_limit & Q <= newx3a,critical,Concrete,100,66.6710035562495
-Hydraulic_limit,Typha,Seedling,Depth,F34D,Low,MC,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Concrete,100,66.6710035562495
-Hydraulic_limit,Typha,Seedling,Depth,F34D,Medium,MC,272.33,cm,Q >= min_limit & Q <= newx2a,critical,Concrete,100,66.6710035562495
+Q_limit,Typha,Adult,Velocity,F34D,Low,MC,565.54,m,Q >= min_limit & Q <= newx1a,Annual,Concrete,98.7785388127854,54.0303176945625
+Q_limit,Typha,Adult,Velocity,F34D,Medium,MC,80.02,m,Q >= newx2a[1] & Q <= newx2a[2],Annual,Concrete,98.7785388127854,54.0303176945625
+Q_limit,Typha,Adult,Velocity,F34D,Medium,MC,145.87,m,Q >= newx2a[1] & Q <= newx2a[2],Annual,Concrete,98.7785388127854,54.0303176945625
+Hydraulic_limit,Typha,Adult,Velocity,F34D,Low,MC,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Concrete,98.7785388127854,54.0303176945625
+Q_limit,Typha,Seedling,Depth,F34D,Low,MC,74.85,cm,Q >= min_limit & Q <= newx1a,critical,Concrete,0.0910746812386157,0.00433688958279122
+Hydraulic_limit,Typha,Seedling,Depth,F34D,Low,MC,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Concrete,0.0910746812386157,0.00433688958279122
 Q_limit,Typha,Adult,Depth,F37BHigh,Low,MC,1135.78,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,17.855919625528,5.40379724982876
 Q_limit,Typha,Adult,Depth,F37BHigh,Medium,MC,11.29,cm,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,17.855919625528,5.40379724982876
 Q_limit,Typha,Adult,Depth,F37BHigh,Medium,MC,903.84,cm,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,17.855919625528,5.40379724982876
@@ -3425,11 +3378,9 @@ Q_limit,Typha,Adult,Velocity,F37BHigh,High,MC,5.96,m,Q >= min_limit & Q <= newx3
 Hydraulic_limit,Typha,Adult,Velocity,F37BHigh,Low,MC,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,17.9700879095787,9.72246896591773
 Hydraulic_limit,Typha,Adult,Velocity,F37BHigh,Medium,MC,0.56,m,Q >= min_limit & Q <= newx2a,Annual,Soft,17.9700879095787,9.72246896591773
 Hydraulic_limit,Typha,Adult,Velocity,F37BHigh,High,MC,0.07,m,Q >= min_limit & Q <= newx3a,Annual,Soft,17.9700879095787,9.72246896591773
-Q_limit,Typha,Seedling,Depth,F37BHigh,Low,MC,80.52,cm,Q >= min_limit & Q <= newx1a,critical,Soft,4.78142076502732,2.57394396738659
-Q_limit,Typha,Seedling,Depth,F37BHigh,Medium,MC,39.9,cm,Q >= min_limit & Q <= newx2a,critical,Soft,4.78142076502732,2.57394396738659
-Q_limit,Typha,Seedling,Depth,F37BHigh,High,MC,3369.26,cm,Q >= min_limit & Q <= newx3a,critical,Soft,4.78142076502732,2.57394396738659
-Hydraulic_limit,Typha,Seedling,Depth,F37BHigh,Low,MC,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,4.78142076502732,2.57394396738659
-Hydraulic_limit,Typha,Seedling,Depth,F37BHigh,Medium,MC,202.45,cm,Q >= min_limit & Q <= newx2a,critical,Soft,4.78142076502732,2.57394396738659
+Q_limit,Typha,Seedling,Depth,F37BHigh,Low,MC,80.52,cm,Q >= min_limit & Q <= newx1a,critical,Soft,4.41712204007286,1.6816289357273
+Q_limit,Typha,Seedling,Depth,F37BHigh,Medium,MC,39.9,cm,Q >= min_limit & Q <= newx2a,critical,Soft,4.41712204007286,1.6816289357273
+Hydraulic_limit,Typha,Seedling,Depth,F37BHigh,Low,MC,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,4.41712204007286,1.6816289357273
 Q_limit,Typha,Adult,Depth,F37BLow,Low,LOB,236.19,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,0.570776255707762,0.220510985618311
 Q_limit,Typha,Adult,Depth,F37BLow,Low,MC,214.27,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,6.55251141552511,2.21108156482444
 Q_limit,Typha,Adult,Depth,F37BLow,Low,ROB,194.2,cm,Q <= newx1a[1] & Q >= newx1a[2],Annual,Soft,16.7827377554515,4.89579215321506
@@ -3485,24 +3436,18 @@ Hydraulic_limit,Typha,Adult,Velocity,F37BLow,High,LOB,0.07,m,Q >= min_limit & Q 
 Hydraulic_limit,Typha,Adult,Velocity,F37BLow,High,MC,0.07,m,Q >= min_limit & Q <= newx3a,Annual,Soft,7.77486014385204,1.5478128055697
 Hydraulic_limit,Typha,Adult,Velocity,F37BLow,High,ROB,0.07,m,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,30.905354492522,10.1319472800009
 Hydraulic_limit,Typha,Adult,Velocity,F37BLow,High,ROB,0.07,m,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,30.905354492522,10.1319472800009
-Q_limit,Typha,Seedling,Depth,F37BLow,Low,LOB,163.38,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.227686703096539,0.0227686703096539
-Q_limit,Typha,Seedling,Depth,F37BLow,Low,MC,114.77,cm,Q >= min_limit & Q <= newx1a,critical,Soft,1.91256830601093,0.873883250932431
-Q_limit,Typha,Seedling,Depth,F37BLow,Low,ROB,10.63,cm,Q <= newx1a[1] & Q >= newx1a[2],critical,Soft,7.6275045537340596,1.67403937895741
-Q_limit,Typha,Seedling,Depth,F37BLow,Low,ROB,302.83,cm,Q <= newx1a[1] & Q >= newx1a[2],critical,Soft,7.6275045537340596,1.67403937895741
-Q_limit,Typha,Seedling,Depth,F37BLow,Medium,LOB,152.11,cm,Q >= min_limit & Q <= newx2a,critical,Soft,0.227686703096539,0.0227686703096539
-Q_limit,Typha,Seedling,Depth,F37BLow,Medium,MC,88.67,cm,Q >= min_limit & Q <= newx2a,critical,Soft,1.91256830601093,0.873883250932431
-Q_limit,Typha,Seedling,Depth,F37BLow,Medium,ROB,3.73,cm,Q <= newx2a[1] & Q >= newx2a[2],critical,Soft,7.6275045537340596,1.67403937895741
-Q_limit,Typha,Seedling,Depth,F37BLow,Medium,ROB,298.96,cm,Q <= newx2a[1] & Q >= newx2a[2],critical,Soft,7.6275045537340596,1.67403937895741
-Q_limit,Typha,Seedling,Depth,F37BLow,High,LOB,3369.26,cm,Q >= min_limit & Q <= newx3a,critical,Soft,0.227686703096539,0.0227686703096539
-Q_limit,Typha,Seedling,Depth,F37BLow,High,MC,3369.26,cm,Q >= min_limit & Q <= newx3a,critical,Soft,1.91256830601093,0.873883250932431
-Q_limit,Typha,Seedling,Depth,F37BLow,High,ROB,3369.26,cm,Q >= min_limit & Q <= newx3a,critical,Soft,7.6275045537340596,1.67403937895741
-Hydraulic_limit,Typha,Seedling,Depth,F37BLow,Low,LOB,30.02,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.227686703096539,0.0227686703096539
-Hydraulic_limit,Typha,Seedling,Depth,F37BLow,Low,MC,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,1.91256830601093,0.873883250932431
-Hydraulic_limit,Typha,Seedling,Depth,F37BLow,Low,ROB,30.03,cm,Q <= newx1a[1] & Q >= newx1a[2],critical,Soft,7.6275045537340596,1.67403937895741
-Hydraulic_limit,Typha,Seedling,Depth,F37BLow,Low,ROB,30.03,cm,Q <= newx1a[1] & Q >= newx1a[2],critical,Soft,7.6275045537340596,1.67403937895741
-Hydraulic_limit,Typha,Seedling,Depth,F37BLow,Medium,LOB,521.73,cm,Q >= min_limit & Q <= newx2a,critical,Soft,0.227686703096539,0.0227686703096539
-Hydraulic_limit,Typha,Seedling,Depth,F37BLow,Medium,MC,552.61,cm,Q >= min_limit & Q <= newx2a,critical,Soft,1.91256830601093,0.873883250932431
-Hydraulic_limit,Typha,Seedling,Depth,F37BLow,Medium,ROB,576.9,cm,Q <= newx2a[1] & Q >= newx2a[2],critical,Soft,7.6275045537340596,1.67403937895741
+Q_limit,Typha,Seedling,Depth,F37BLow,Low,LOB,163.38,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.11384335154827,0.0108422239569781
+Q_limit,Typha,Seedling,Depth,F37BLow,Low,MC,114.77,cm,Q >= min_limit & Q <= newx1a,critical,Soft,1.68488160291439,0.571385202532743
+Q_limit,Typha,Seedling,Depth,F37BLow,Low,ROB,10.63,cm,Q <= newx1a[1] & Q >= newx1a[2],critical,Soft,0,0
+Q_limit,Typha,Seedling,Depth,F37BLow,Low,ROB,302.83,cm,Q <= newx1a[1] & Q >= newx1a[2],critical,Soft,0,0
+Q_limit,Typha,Seedling,Depth,F37BLow,Medium,LOB,152.11,cm,Q >= min_limit & Q <= newx2a,critical,Soft,0.11384335154827,0.0108422239569781
+Q_limit,Typha,Seedling,Depth,F37BLow,Medium,MC,88.67,cm,Q >= min_limit & Q <= newx2a,critical,Soft,1.68488160291439,0.571385202532743
+Q_limit,Typha,Seedling,Depth,F37BLow,Medium,ROB,3.73,cm,Q <= newx2a[1] & Q >= newx2a[2],critical,Soft,0,0
+Q_limit,Typha,Seedling,Depth,F37BLow,Medium,ROB,298.96,cm,Q <= newx2a[1] & Q >= newx2a[2],critical,Soft,0,0
+Hydraulic_limit,Typha,Seedling,Depth,F37BLow,Low,LOB,30.02,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.11384335154827,0.0108422239569781
+Hydraulic_limit,Typha,Seedling,Depth,F37BLow,Low,MC,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,1.68488160291439,0.571385202532743
+Hydraulic_limit,Typha,Seedling,Depth,F37BLow,Low,ROB,30.03,cm,Q <= newx1a[1] & Q >= newx1a[2],critical,Soft,0,0
+Hydraulic_limit,Typha,Seedling,Depth,F37BLow,Low,ROB,30.03,cm,Q <= newx1a[1] & Q >= newx1a[2],critical,Soft,0,0
 Q_limit,Typha,Adult,Depth,F45B,Low,MC,1183.77,cm,Q >= min_limit & Q <= newx1a,Annual,Concrete,3.74544626593807,0.957150667826687
 Q_limit,Typha,Adult,Depth,F45B,Medium,MC,129.03,cm,Q >= newx2a[1] & Q <= newx2a[2],Annual,Concrete,3.74544626593807,0.957150667826687
 Q_limit,Typha,Adult,Depth,F45B,Medium,MC,1006.4,cm,Q >= newx2a[1] & Q <= newx2a[2],Annual,Concrete,3.74544626593807,0.957150667826687
@@ -3521,11 +3466,9 @@ Hydraulic_limit,Typha,Adult,Velocity,F45B,Low,MC,1.05,m,Q <= newx1a[1] & Q >= ne
 Hydraulic_limit,Typha,Adult,Velocity,F45B,Low,MC,1.05,m,Q <= newx1a[1] & Q >= newx1a[2],Annual,Concrete,0.799086757990868,0.0978238468278549
 Hydraulic_limit,Typha,Adult,Velocity,F45B,Medium,MC,0.56,m,Q >= min_limit & Q <= newx2a,Annual,Concrete,0.799086757990868,0.0978238468278549
 Hydraulic_limit,Typha,Adult,Velocity,F45B,High,MC,0.07,m,Q >= min_limit & Q <= newx3a,Annual,Concrete,0.799086757990868,0.0978238468278549
-Q_limit,Typha,Seedling,Depth,F45B,Low,MC,556.04,cm,Q >= min_limit & Q <= newx1a,critical,Concrete,0.979052823315118,0.277560933298638
-Q_limit,Typha,Seedling,Depth,F45B,Medium,MC,329.24,cm,Q >= min_limit & Q <= newx2a,critical,Concrete,0.979052823315118,0.277560933298638
-Q_limit,Typha,Seedling,Depth,F45B,High,MC,27365.46,cm,Q >= min_limit & Q <= newx3a,critical,Concrete,0.979052823315118,0.277560933298638
-Hydraulic_limit,Typha,Seedling,Depth,F45B,Low,MC,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Concrete,0.979052823315118,0.277560933298638
-Hydraulic_limit,Typha,Seedling,Depth,F45B,Medium,MC,449.37,cm,Q >= min_limit & Q <= newx2a,critical,Concrete,0.979052823315118,0.277560933298638
+Q_limit,Typha,Seedling,Depth,F45B,Low,MC,556.04,cm,Q >= min_limit & Q <= newx1a,critical,Concrete,0.910746812386157,0.18214936247723101
+Q_limit,Typha,Seedling,Depth,F45B,Medium,MC,329.24,cm,Q >= min_limit & Q <= newx2a,critical,Concrete,0.910746812386157,0.18214936247723101
+Hydraulic_limit,Typha,Seedling,Depth,F45B,Low,MC,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Concrete,0.910746812386157,0.18214936247723101
 Q_limit,Typha,Adult,Depth,F57C,Low,LOB,1432.11,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,99.4406392694064,98.3748614881035
 Q_limit,Typha,Adult,Depth,F57C,Low,MC,1895.45,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,99.6004566210046,83.8286876417708
 Q_limit,Typha,Adult,Depth,F57C,Low,ROB,5032.1,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,4.01872359858431,1.35192161644133
@@ -3552,43 +3495,32 @@ Hydraulic_limit,Typha,Adult,Depth,F57C,High,ROB,29.36,cm,Q >= newx3a[1] & Q <= n
 Hydraulic_limit,Typha,Adult,Depth,F57C,High,LOB,84.41,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,99.4406392694064,98.3748614881035
 Hydraulic_limit,Typha,Adult,Depth,F57C,High,MC,84.41,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,99.6004566210046,83.8286876417708
 Hydraulic_limit,Typha,Adult,Depth,F57C,High,ROB,84.41,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,4.01872359858431,1.35192161644133
-Q_limit,Typha,Adult,Velocity,F57C,Low,LOB,164.07,m,Q >= newx1a[1] & Q <= newx1a[2],Annual,Soft,100,66.8526013221281
-Q_limit,Typha,Adult,Velocity,F57C,Low,MC,2298.03,m,Q >= min_limit & Q <= newx1a,Annual,Soft,100,98.9377755708338
+Q_limit,Typha,Adult,Velocity,F57C,Low,LOB,164.07,m,Q >= newx1a[1] & Q <= newx1a[2],Annual,Soft,98.6073059360731,33.5192679887947
+Q_limit,Typha,Adult,Velocity,F57C,Low,MC,2298.03,m,Q >= min_limit & Q <= newx1a,Annual,Soft,99.6575342465753,65.6044422375005
 Q_limit,Typha,Adult,Velocity,F57C,Low,ROB,9126.96,m,Q >= min_limit & Q <= newx1a,Annual,Soft,4.54389770521749,1.20463785399895
-Q_limit,Typha,Adult,Velocity,F57C,Low,LOB,1005.11,m,Q >= newx1a[1] & Q <= newx1a[2],Annual,Soft,100,66.8526013221281
-Q_limit,Typha,Adult,Velocity,F57C,Medium,LOB,34.86,m,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,100,66.8526013221281
-Q_limit,Typha,Adult,Velocity,F57C,Medium,MC,585.67,m,Q >= min_limit & Q <= newx2a,Annual,Soft,100,98.9377755708338
+Q_limit,Typha,Adult,Velocity,F57C,Low,LOB,1005.11,m,Q >= newx1a[1] & Q <= newx1a[2],Annual,Soft,98.6073059360731,33.5192679887947
+Q_limit,Typha,Adult,Velocity,F57C,Medium,LOB,34.86,m,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,98.6073059360731,33.5192679887947
+Q_limit,Typha,Adult,Velocity,F57C,Medium,MC,585.67,m,Q >= min_limit & Q <= newx2a,Annual,Soft,99.6575342465753,65.6044422375005
 Q_limit,Typha,Adult,Velocity,F57C,Medium,ROB,3478.32,m,Q >= min_limit & Q <= newx2a,Annual,Soft,4.54389770521749,1.20463785399895
-Q_limit,Typha,Adult,Velocity,F57C,Medium,LOB,274.53,m,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,100,66.8526013221281
-Q_limit,Typha,Adult,Velocity,F57C,High,LOB,41750.17,m,Q >= min_limit & Q <= newx3a,Annual,Soft,100,66.8526013221281
-Q_limit,Typha,Adult,Velocity,F57C,High,MC,41750.17,m,Q >= min_limit & Q <= newx3a,Annual,Soft,100,98.9377755708338
+Q_limit,Typha,Adult,Velocity,F57C,Medium,LOB,274.53,m,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,98.6073059360731,33.5192679887947
 Q_limit,Typha,Adult,Velocity,F57C,High,ROB,616.92,m,Q >= min_limit & Q <= newx3a,Annual,Soft,4.54389770521749,1.20463785399895
-Hydraulic_limit,Typha,Adult,Velocity,F57C,Low,LOB,1.05,m,Q >= newx1a[1] & Q <= newx1a[2],Annual,Soft,100,66.8526013221281
-Hydraulic_limit,Typha,Adult,Velocity,F57C,Low,MC,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,100,98.9377755708338
+Hydraulic_limit,Typha,Adult,Velocity,F57C,Low,LOB,1.05,m,Q >= newx1a[1] & Q <= newx1a[2],Annual,Soft,98.6073059360731,33.5192679887947
+Hydraulic_limit,Typha,Adult,Velocity,F57C,Low,MC,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,99.6575342465753,65.6044422375005
 Hydraulic_limit,Typha,Adult,Velocity,F57C,Low,ROB,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,4.54389770521749,1.20463785399895
-Hydraulic_limit,Typha,Adult,Velocity,F57C,Low,LOB,1.05,m,Q >= newx1a[1] & Q <= newx1a[2],Annual,Soft,100,66.8526013221281
-Hydraulic_limit,Typha,Adult,Velocity,F57C,Medium,LOB,4.54,m,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,100,66.8526013221281
-Hydraulic_limit,Typha,Adult,Velocity,F57C,Medium,MC,2.71,m,Q >= min_limit & Q <= newx2a,Annual,Soft,100,98.9377755708338
+Hydraulic_limit,Typha,Adult,Velocity,F57C,Low,LOB,1.05,m,Q >= newx1a[1] & Q <= newx1a[2],Annual,Soft,98.6073059360731,33.5192679887947
 Hydraulic_limit,Typha,Adult,Velocity,F57C,Medium,ROB,0.56,m,Q >= min_limit & Q <= newx2a,Annual,Soft,4.54389770521749,1.20463785399895
 Hydraulic_limit,Typha,Adult,Velocity,F57C,High,ROB,0.07,m,Q >= min_limit & Q <= newx3a,Annual,Soft,4.54389770521749,1.20463785399895
-Q_limit,Typha,Seedling,Depth,F57C,Low,LOB,28.6,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,66.6666666666667
-Q_limit,Typha,Seedling,Depth,F57C,Low,MC,94.69,cm,Q <= newx1a[1] & Q >= newx1a[2],critical,Soft,100,33.3333333333333
-Q_limit,Typha,Seedling,Depth,F57C,Low,ROB,1192.49,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.660291438979964,0.18757047445572
-Q_limit,Typha,Seedling,Depth,F57C,Low,MC,180.22,cm,Q <= newx1a[1] & Q >= newx1a[2],critical,Soft,100,33.3333333333333
-Q_limit,Typha,Seedling,Depth,F57C,Medium,LOB,41750.17,cm,Q >= min_limit & Q <= newx2a,critical,Soft,100,66.6666666666667
-Q_limit,Typha,Seedling,Depth,F57C,Medium,MC,51.7,cm,Q <= newx2a[1] & Q >= newx2a[2],critical,Soft,100,33.3333333333333
-Q_limit,Typha,Seedling,Depth,F57C,Medium,ROB,977.22,cm,Q >= min_limit & Q <= newx2a,critical,Soft,0.660291438979964,0.18757047445572
-Q_limit,Typha,Seedling,Depth,F57C,Medium,MC,113.05,cm,Q <= newx2a[1] & Q >= newx2a[2],critical,Soft,100,33.3333333333333
-Q_limit,Typha,Seedling,Depth,F57C,High,LOB,41750.17,cm,Q >= min_limit & Q <= newx3a,critical,Soft,100,66.6666666666667
-Q_limit,Typha,Seedling,Depth,F57C,High,MC,41750.17,cm,Q >= min_limit & Q <= newx3a,critical,Soft,100,33.3333333333333
-Q_limit,Typha,Seedling,Depth,F57C,High,ROB,41750.17,cm,Q >= min_limit & Q <= newx3a,critical,Soft,0.660291438979964,0.18757047445572
-Hydraulic_limit,Typha,Seedling,Depth,F57C,Low,LOB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,66.6666666666667
-Hydraulic_limit,Typha,Seedling,Depth,F57C,Low,MC,30.03,cm,Q <= newx1a[1] & Q >= newx1a[2],critical,Soft,100,33.3333333333333
-Hydraulic_limit,Typha,Seedling,Depth,F57C,Low,ROB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.660291438979964,0.18757047445572
-Hydraulic_limit,Typha,Seedling,Depth,F57C,Low,MC,30.03,cm,Q <= newx1a[1] & Q >= newx1a[2],critical,Soft,100,33.3333333333333
-Hydraulic_limit,Typha,Seedling,Depth,F57C,Medium,LOB,477.25,cm,Q >= min_limit & Q <= newx2a,critical,Soft,100,66.6666666666667
-Hydraulic_limit,Typha,Seedling,Depth,F57C,Medium,MC,462.62,cm,Q <= newx2a[1] & Q >= newx2a[2],critical,Soft,100,33.3333333333333
-Hydraulic_limit,Typha,Seedling,Depth,F57C,Medium,ROB,400.75,cm,Q >= min_limit & Q <= newx2a,critical,Soft,0.660291438979964,0.18757047445572
+Q_limit,Typha,Seedling,Depth,F57C,Low,LOB,28.6,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0,0
+Q_limit,Typha,Seedling,Depth,F57C,Low,MC,94.69,cm,Q <= newx1a[1] & Q >= newx1a[2],critical,Soft,0,0
+Q_limit,Typha,Seedling,Depth,F57C,Low,ROB,1192.49,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.341530054644809,0.0813166796773355
+Q_limit,Typha,Seedling,Depth,F57C,Low,MC,180.22,cm,Q <= newx1a[1] & Q >= newx1a[2],critical,Soft,0,0
+Q_limit,Typha,Seedling,Depth,F57C,Medium,MC,51.7,cm,Q <= newx2a[1] & Q >= newx2a[2],critical,Soft,0,0
+Q_limit,Typha,Seedling,Depth,F57C,Medium,ROB,977.22,cm,Q >= min_limit & Q <= newx2a,critical,Soft,0.341530054644809,0.0813166796773355
+Q_limit,Typha,Seedling,Depth,F57C,Medium,MC,113.05,cm,Q <= newx2a[1] & Q >= newx2a[2],critical,Soft,0,0
+Hydraulic_limit,Typha,Seedling,Depth,F57C,Low,LOB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0,0
+Hydraulic_limit,Typha,Seedling,Depth,F57C,Low,MC,30.03,cm,Q <= newx1a[1] & Q >= newx1a[2],critical,Soft,0,0
+Hydraulic_limit,Typha,Seedling,Depth,F57C,Low,ROB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.341530054644809,0.0813166796773355
+Hydraulic_limit,Typha,Seedling,Depth,F57C,Low,MC,30.03,cm,Q <= newx1a[1] & Q >= newx1a[2],critical,Soft,0,0
 Q_limit,Typha,Adult,Depth,GLEN,Low,LOB,1562.77,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,99.5890410958904,89.3317239422843
 Q_limit,Typha,Adult,Depth,GLEN,Low,MC,2894.92,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,11.3254937778285,2.48334624500895
 Q_limit,Typha,Adult,Depth,GLEN,Low,ROB,2073.04,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,99.634703196347,59.110690949485
@@ -3617,38 +3549,27 @@ Hydraulic_limit,Typha,Adult,Depth,GLEN,High,ROB,29.36,cm,Q >= newx3a[1] & Q <= n
 Hydraulic_limit,Typha,Adult,Depth,GLEN,High,LOB,84.41,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,99.5890410958904,89.3317239422843
 Hydraulic_limit,Typha,Adult,Depth,GLEN,High,MC,84.41,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,11.3254937778285,2.48334624500895
 Hydraulic_limit,Typha,Adult,Depth,GLEN,High,ROB,84.41,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,99.634703196347,59.110690949485
-Q_limit,Typha,Adult,Velocity,GLEN,Low,LOB,3825.74,m,Q >= min_limit & Q <= newx1a,Annual,Soft,100,99.0616463807812
+Q_limit,Typha,Adult,Velocity,GLEN,Low,LOB,3825.74,m,Q >= min_limit & Q <= newx1a,Annual,Soft,99.851598173516,65.7283130474478
 Q_limit,Typha,Adult,Velocity,GLEN,Low,MC,197.82,m,Q >= newx1a,Annual,Soft,13.0037675533737,3.39618118260237
-Q_limit,Typha,Adult,Velocity,GLEN,Low,ROB,2323.8,m,Q >= min_limit & Q <= newx1a,Annual,Soft,100,98.9671092332099
-Q_limit,Typha,Adult,Velocity,GLEN,Medium,LOB,557.7,m,Q >= min_limit & Q <= newx2a,Annual,Soft,100,99.0616463807812
+Q_limit,Typha,Adult,Velocity,GLEN,Low,ROB,2323.8,m,Q >= min_limit & Q <= newx1a,Annual,Soft,99.6689497716895,65.6337758998766
+Q_limit,Typha,Adult,Velocity,GLEN,Medium,LOB,557.7,m,Q >= min_limit & Q <= newx2a,Annual,Soft,99.851598173516,65.7283130474478
 Q_limit,Typha,Adult,Velocity,GLEN,Medium,MC,8838.05,m,Q >= min_limit & Q <= newx2a,Annual,Soft,13.0037675533737,3.39618118260237
-Q_limit,Typha,Adult,Velocity,GLEN,Medium,ROB,568.34,m,Q >= min_limit & Q <= newx2a,Annual,Soft,100,98.9671092332099
-Q_limit,Typha,Adult,Velocity,GLEN,High,LOB,40590.86,m,Q >= min_limit & Q <= newx3a,Annual,Soft,100,99.0616463807812
+Q_limit,Typha,Adult,Velocity,GLEN,Medium,ROB,568.34,m,Q >= min_limit & Q <= newx2a,Annual,Soft,99.6689497716895,65.6337758998766
 Q_limit,Typha,Adult,Velocity,GLEN,High,MC,220.05,m,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,13.0037675533737,3.39618118260237
-Q_limit,Typha,Adult,Velocity,GLEN,High,ROB,40590.86,m,Q >= min_limit & Q <= newx3a,Annual,Soft,100,98.9671092332099
 Q_limit,Typha,Adult,Velocity,GLEN,High,MC,373.83,m,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,13.0037675533737,3.39618118260237
-Hydraulic_limit,Typha,Adult,Velocity,GLEN,Low,LOB,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,100,99.0616463807812
+Hydraulic_limit,Typha,Adult,Velocity,GLEN,Low,LOB,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,99.851598173516,65.7283130474478
 Hydraulic_limit,Typha,Adult,Velocity,GLEN,Low,MC,0.03,m,Q >= newx1a,Annual,Soft,13.0037675533737,3.39618118260237
-Hydraulic_limit,Typha,Adult,Velocity,GLEN,Low,ROB,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,100,98.9671092332099
-Hydraulic_limit,Typha,Adult,Velocity,GLEN,Medium,LOB,2.45,m,Q >= min_limit & Q <= newx2a,Annual,Soft,100,99.0616463807812
+Hydraulic_limit,Typha,Adult,Velocity,GLEN,Low,ROB,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,99.6689497716895,65.6337758998766
 Hydraulic_limit,Typha,Adult,Velocity,GLEN,Medium,MC,0.56,m,Q >= min_limit & Q <= newx2a,Annual,Soft,13.0037675533737,3.39618118260237
-Hydraulic_limit,Typha,Adult,Velocity,GLEN,Medium,ROB,2.96,m,Q >= min_limit & Q <= newx2a,Annual,Soft,100,98.9671092332099
 Hydraulic_limit,Typha,Adult,Velocity,GLEN,High,MC,0.07,m,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,13.0037675533737,3.39618118260237
-Q_limit,Typha,Seedling,Depth,GLEN,Low,LOB,89.91,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,86.5372105126203
-Q_limit,Typha,Seedling,Depth,GLEN,Low,MC,637.16,cm,Q >= min_limit & Q <= newx1a,critical,Soft,4.9408014571949,1.04410616705699
-Q_limit,Typha,Seedling,Depth,GLEN,Low,ROB,278.59,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,99.15322230896
-Q_limit,Typha,Seedling,Depth,GLEN,Medium,LOB,40590.86,cm,Q >= min_limit & Q <= newx2a,critical,Soft,100,86.5372105126203
-Q_limit,Typha,Seedling,Depth,GLEN,Medium,MC,492.51,cm,Q >= min_limit & Q <= newx2a,critical,Soft,4.9408014571949,1.04410616705699
-Q_limit,Typha,Seedling,Depth,GLEN,Medium,ROB,165.52,cm,Q >= min_limit & Q <= newx2a,critical,Soft,100,99.15322230896
-Q_limit,Typha,Seedling,Depth,GLEN,High,LOB,40590.86,cm,Q >= min_limit & Q <= newx3a,critical,Soft,100,86.5372105126203
-Q_limit,Typha,Seedling,Depth,GLEN,High,MC,40590.86,cm,Q >= min_limit & Q <= newx3a,critical,Soft,4.9408014571949,1.04410616705699
-Q_limit,Typha,Seedling,Depth,GLEN,High,ROB,40590.86,cm,Q >= min_limit & Q <= newx3a,critical,Soft,100,99.15322230896
-Hydraulic_limit,Typha,Seedling,Depth,GLEN,Low,LOB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,86.5372105126203
-Hydraulic_limit,Typha,Seedling,Depth,GLEN,Low,MC,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,4.9408014571949,1.04410616705699
-Hydraulic_limit,Typha,Seedling,Depth,GLEN,Low,ROB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,99.15322230896
-Hydraulic_limit,Typha,Seedling,Depth,GLEN,Medium,LOB,616.96,cm,Q >= min_limit & Q <= newx2a,critical,Soft,100,86.5372105126203
-Hydraulic_limit,Typha,Seedling,Depth,GLEN,Medium,MC,573.98,cm,Q >= min_limit & Q <= newx2a,critical,Soft,4.9408014571949,1.04410616705699
-Hydraulic_limit,Typha,Seedling,Depth,GLEN,Medium,ROB,598.97,cm,Q >= min_limit & Q <= newx2a,critical,Soft,100,99.15322230896
+Q_limit,Typha,Seedling,Depth,GLEN,Low,LOB,89.91,cm,Q >= min_limit & Q <= newx1a,critical,Soft,94.1712204007286,19.8705438459537
+Q_limit,Typha,Seedling,Depth,GLEN,Low,MC,637.16,cm,Q >= min_limit & Q <= newx1a,critical,Soft,4.62204007285975,0.625596322317634
+Q_limit,Typha,Seedling,Depth,GLEN,Low,ROB,278.59,cm,Q >= min_limit & Q <= newx1a,critical,Soft,99.7950819672131,65.8198889756267
+Q_limit,Typha,Seedling,Depth,GLEN,Medium,MC,492.51,cm,Q >= min_limit & Q <= newx2a,critical,Soft,4.62204007285975,0.625596322317634
+Q_limit,Typha,Seedling,Depth,GLEN,Medium,ROB,165.52,cm,Q >= min_limit & Q <= newx2a,critical,Soft,99.7950819672131,65.8198889756267
+Hydraulic_limit,Typha,Seedling,Depth,GLEN,Low,LOB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,94.1712204007286,19.8705438459537
+Hydraulic_limit,Typha,Seedling,Depth,GLEN,Low,MC,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,4.62204007285975,0.625596322317634
+Hydraulic_limit,Typha,Seedling,Depth,GLEN,Low,ROB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,99.7950819672131,65.8198889756267
 Q_limit,Typha,Adult,Depth,LA1,Low,MC,2928.1,cm,Q >= min_limit & Q <= newx1a,Annual,Concrete,99.5776255707762,98.2113393411505
 Q_limit,Typha,Adult,Depth,LA1,Medium,MC,2252.53,cm,Q >= min_limit & Q <= newx2a,Annual,Concrete,99.5776255707762,98.2113393411505
 Q_limit,Typha,Adult,Depth,LA1,High,MC,86.25,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Concrete,99.5776255707762,98.2113393411505
@@ -3657,16 +3578,11 @@ Hydraulic_limit,Typha,Adult,Depth,LA1,Low,MC,115.35,cm,Q >= min_limit & Q <= new
 Hydraulic_limit,Typha,Adult,Depth,LA1,Medium,MC,102.58,cm,Q >= min_limit & Q <= newx2a,Annual,Concrete,99.5776255707762,98.2113393411505
 Hydraulic_limit,Typha,Adult,Depth,LA1,High,MC,29.36,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Concrete,99.5776255707762,98.2113393411505
 Hydraulic_limit,Typha,Adult,Depth,LA1,High,MC,84.41,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Concrete,99.5776255707762,98.2113393411505
-Q_limit,Typha,Adult,Velocity,LA1,Low,MC,4540.59,m,Q >= min_limit & Q <= newx1a,Annual,Concrete,100,98.545536988022
-Q_limit,Typha,Adult,Velocity,LA1,Medium,MC,686.85,m,Q >= min_limit & Q <= newx2a,Annual,Concrete,100,98.545536988022
-Q_limit,Typha,Adult,Velocity,LA1,High,MC,53690.66,m,Q >= min_limit & Q <= newx3a,Annual,Concrete,100,98.545536988022
-Hydraulic_limit,Typha,Adult,Velocity,LA1,Low,MC,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Concrete,100,98.545536988022
-Hydraulic_limit,Typha,Adult,Velocity,LA1,Medium,MC,2.55,m,Q >= min_limit & Q <= newx2a,Annual,Concrete,100,98.545536988022
-Q_limit,Typha,Seedling,Depth,LA1,Low,MC,92.56,cm,Q >= min_limit & Q <= newx1a,critical,Concrete,100,66.737141122387
-Q_limit,Typha,Seedling,Depth,LA1,Medium,MC,53690.66,cm,Q >= min_limit & Q <= newx2a,critical,Concrete,100,66.737141122387
-Q_limit,Typha,Seedling,Depth,LA1,High,MC,53690.66,cm,Q >= min_limit & Q <= newx3a,critical,Concrete,100,66.737141122387
-Hydraulic_limit,Typha,Seedling,Depth,LA1,Low,MC,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Concrete,100,66.737141122387
-Hydraulic_limit,Typha,Seedling,Depth,LA1,Medium,MC,472.84,cm,Q >= min_limit & Q <= newx2a,critical,Concrete,100,66.737141122387
+Q_limit,Typha,Adult,Velocity,LA1,Low,MC,4540.59,m,Q >= min_limit & Q <= newx1a,Annual,Concrete,99.7260273972603,65.2122036546886
+Q_limit,Typha,Adult,Velocity,LA1,Medium,MC,686.85,m,Q >= min_limit & Q <= newx2a,Annual,Concrete,99.7260273972603,65.2122036546886
+Hydraulic_limit,Typha,Adult,Velocity,LA1,Low,MC,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Concrete,99.7260273972603,65.2122036546886
+Q_limit,Typha,Seedling,Depth,LA1,Low,MC,92.56,cm,Q >= min_limit & Q <= newx1a,critical,Concrete,0.933515482695811,0.0704744557203574
+Hydraulic_limit,Typha,Seedling,Depth,LA1,Low,MC,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Concrete,0.933515482695811,0.0704744557203574
 Q_limit,Typha,Adult,Depth,LA11,Low,LOB,2908.86,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,12.8781824409179,3.0626478368107
 Q_limit,Typha,Adult,Depth,LA11,Low,MC,1595.84,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,99.6004566210046,81.3083217011923
 Q_limit,Typha,Adult,Depth,LA11,Low,ROB,3869.62,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,6.4961753624843,1.69866547214326
@@ -3696,37 +3612,29 @@ Hydraulic_limit,Typha,Adult,Depth,LA11,High,LOB,84.41,cm,Q >= newx3a[1] & Q <= n
 Hydraulic_limit,Typha,Adult,Depth,LA11,High,MC,84.41,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,99.6004566210046,81.3083217011923
 Hydraulic_limit,Typha,Adult,Depth,LA11,High,ROB,84.41,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,6.4961753624843,1.69866547214326
 Q_limit,Typha,Adult,Velocity,LA11,Low,LOB,2827.91,m,Q >= min_limit & Q <= newx1a,Annual,Soft,12.8553487841078,2.31764480946363
-Q_limit,Typha,Adult,Velocity,LA11,Low,MC,2836.08,m,Q >= min_limit & Q <= newx1a,Annual,Soft,100,68.9087107674028
+Q_limit,Typha,Adult,Velocity,LA11,Low,MC,2836.08,m,Q >= min_limit & Q <= newx1a,Annual,Soft,99.7260273972603,35.5753774340694
 Q_limit,Typha,Adult,Velocity,LA11,Low,ROB,3485.6,m,Q >= min_limit & Q <= newx1a,Annual,Soft,6.24500513757278,1.29654685015922
 Q_limit,Typha,Adult,Velocity,LA11,Medium,LOB,435.93,m,Q >= min_limit & Q <= newx2a,Annual,Soft,12.8553487841078,2.31764480946363
-Q_limit,Typha,Adult,Velocity,LA11,Medium,MC,64.79,m,Q >= min_limit & Q <= newx2a,Annual,Soft,100,68.9087107674028
+Q_limit,Typha,Adult,Velocity,LA11,Medium,MC,64.79,m,Q >= min_limit & Q <= newx2a,Annual,Soft,99.7260273972603,35.5753774340694
 Q_limit,Typha,Adult,Velocity,LA11,Medium,ROB,1268.21,m,Q >= min_limit & Q <= newx2a,Annual,Soft,6.24500513757278,1.29654685015922
 Q_limit,Typha,Adult,Velocity,LA11,High,LOB,135.63,m,Q >= min_limit & Q <= newx3a,Annual,Soft,12.8553487841078,2.31764480946363
-Q_limit,Typha,Adult,Velocity,LA11,High,MC,40888.74,m,Q >= min_limit & Q <= newx3a,Annual,Soft,100,68.9087107674028
 Q_limit,Typha,Adult,Velocity,LA11,High,ROB,221.84,m,Q >= min_limit & Q <= newx3a,Annual,Soft,6.24500513757278,1.29654685015922
 Hydraulic_limit,Typha,Adult,Velocity,LA11,Low,LOB,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,12.8553487841078,2.31764480946363
-Hydraulic_limit,Typha,Adult,Velocity,LA11,Low,MC,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,100,68.9087107674028
+Hydraulic_limit,Typha,Adult,Velocity,LA11,Low,MC,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,99.7260273972603,35.5753774340694
 Hydraulic_limit,Typha,Adult,Velocity,LA11,Low,ROB,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,6.24500513757278,1.29654685015922
 Hydraulic_limit,Typha,Adult,Velocity,LA11,Medium,LOB,0.56,m,Q >= min_limit & Q <= newx2a,Annual,Soft,12.8553487841078,2.31764480946363
-Hydraulic_limit,Typha,Adult,Velocity,LA11,Medium,MC,2.39,m,Q >= min_limit & Q <= newx2a,Annual,Soft,100,68.9087107674028
 Hydraulic_limit,Typha,Adult,Velocity,LA11,Medium,ROB,0.56,m,Q >= min_limit & Q <= newx2a,Annual,Soft,6.24500513757278,1.29654685015922
 Hydraulic_limit,Typha,Adult,Velocity,LA11,High,LOB,0.07,m,Q >= min_limit & Q <= newx3a,Annual,Soft,12.8553487841078,2.31764480946363
 Hydraulic_limit,Typha,Adult,Velocity,LA11,High,ROB,0.07,m,Q >= min_limit & Q <= newx3a,Annual,Soft,6.24500513757278,1.29654685015922
-Q_limit,Typha,Seedling,Depth,LA11,Low,LOB,507.16,cm,Q >= min_limit & Q <= newx1a,critical,Soft,6.14754098360656,1.19047619047619
-Q_limit,Typha,Seedling,Depth,LA11,Low,MC,98.05,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,57.9950559458756
-Q_limit,Typha,Seedling,Depth,LA11,Low,ROB,897.68,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.796903460837887,0.278645155694336
-Q_limit,Typha,Seedling,Depth,LA11,Medium,LOB,376.8,cm,Q >= min_limit & Q <= newx2a,critical,Soft,6.14754098360656,1.19047619047619
-Q_limit,Typha,Seedling,Depth,LA11,Medium,MC,47.88,cm,Q >= min_limit & Q <= newx2a,critical,Soft,100,57.9950559458756
-Q_limit,Typha,Seedling,Depth,LA11,Medium,ROB,716.86,cm,Q >= min_limit & Q <= newx2a,critical,Soft,0.796903460837887,0.278645155694336
-Q_limit,Typha,Seedling,Depth,LA11,High,LOB,40888.74,cm,Q >= min_limit & Q <= newx3a,critical,Soft,6.14754098360656,1.19047619047619
-Q_limit,Typha,Seedling,Depth,LA11,High,MC,40888.74,cm,Q >= min_limit & Q <= newx3a,critical,Soft,100,57.9950559458756
-Q_limit,Typha,Seedling,Depth,LA11,High,ROB,40888.74,cm,Q >= min_limit & Q <= newx3a,critical,Soft,0.796903460837887,0.278645155694336
-Hydraulic_limit,Typha,Seedling,Depth,LA11,Low,LOB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,6.14754098360656,1.19047619047619
-Hydraulic_limit,Typha,Seedling,Depth,LA11,Low,MC,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,57.9950559458756
-Hydraulic_limit,Typha,Seedling,Depth,LA11,Low,ROB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.796903460837887,0.278645155694336
-Hydraulic_limit,Typha,Seedling,Depth,LA11,Medium,LOB,453.45,cm,Q >= min_limit & Q <= newx2a,critical,Soft,6.14754098360656,1.19047619047619
-Hydraulic_limit,Typha,Seedling,Depth,LA11,Medium,MC,490.33,cm,Q >= min_limit & Q <= newx2a,critical,Soft,100,57.9950559458756
-Hydraulic_limit,Typha,Seedling,Depth,LA11,Medium,ROB,432.42,cm,Q >= min_limit & Q <= newx2a,critical,Soft,0.796903460837887,0.278645155694336
+Q_limit,Typha,Seedling,Depth,LA11,Low,LOB,507.16,cm,Q >= min_limit & Q <= newx1a,critical,Soft,5.71493624772313,0.687396998872408
+Q_limit,Typha,Seedling,Depth,LA11,Low,MC,98.05,cm,Q >= min_limit & Q <= newx1a,critical,Soft,97.7686703096539,24.6617226125423
+Q_limit,Typha,Seedling,Depth,LA11,Low,ROB,897.68,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.432604735883424,0.132275132275132
+Q_limit,Typha,Seedling,Depth,LA11,Medium,LOB,376.8,cm,Q >= min_limit & Q <= newx2a,critical,Soft,5.71493624772313,0.687396998872408
+Q_limit,Typha,Seedling,Depth,LA11,Medium,MC,47.88,cm,Q >= min_limit & Q <= newx2a,critical,Soft,97.7686703096539,24.6617226125423
+Q_limit,Typha,Seedling,Depth,LA11,Medium,ROB,716.86,cm,Q >= min_limit & Q <= newx2a,critical,Soft,0.432604735883424,0.132275132275132
+Hydraulic_limit,Typha,Seedling,Depth,LA11,Low,LOB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,5.71493624772313,0.687396998872408
+Hydraulic_limit,Typha,Seedling,Depth,LA11,Low,MC,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,97.7686703096539,24.6617226125423
+Hydraulic_limit,Typha,Seedling,Depth,LA11,Low,ROB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.432604735883424,0.132275132275132
 Q_limit,Typha,Adult,Depth,LA13,Low,MC,9950.86,cm,Q >= min_limit & Q <= newx1a,Annual,Concrete,100,34.5012162061545
 Q_limit,Typha,Adult,Depth,LA13,Medium,MC,326.89,cm,Q >= newx2a[1] & Q <= newx2a[2],Annual,Concrete,100,34.5012162061545
 Q_limit,Typha,Adult,Depth,LA13,Medium,MC,8795.45,cm,Q >= newx2a[1] & Q <= newx2a[2],Annual,Concrete,100,34.5012162061545
@@ -3737,16 +3645,12 @@ Hydraulic_limit,Typha,Adult,Depth,LA13,Medium,MC,11.19,cm,Q >= newx2a[1] & Q <= 
 Hydraulic_limit,Typha,Adult,Depth,LA13,Medium,MC,102.58,cm,Q >= newx2a[1] & Q <= newx2a[2],Annual,Concrete,100,34.5012162061545
 Hydraulic_limit,Typha,Adult,Depth,LA13,High,MC,29.36,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Concrete,100,34.5012162061545
 Hydraulic_limit,Typha,Adult,Depth,LA13,High,MC,84.41,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Concrete,100,34.5012162061545
-Q_limit,Typha,Adult,Velocity,LA13,Low,MC,842.39,m,Q >= min_limit & Q <= newx1a,Annual,Concrete,100,97.7525000494786
-Q_limit,Typha,Adult,Velocity,LA13,Medium,MC,203.19,m,Q >= min_limit & Q <= newx2a,Annual,Concrete,100,97.7525000494786
-Q_limit,Typha,Adult,Velocity,LA13,High,MC,40486.03,m,Q >= min_limit & Q <= newx3a,Annual,Concrete,100,97.7525000494786
-Hydraulic_limit,Typha,Adult,Velocity,LA13,Low,MC,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Concrete,100,97.7525000494786
-Hydraulic_limit,Typha,Adult,Velocity,LA13,Medium,MC,2.33,m,Q >= min_limit & Q <= newx2a,Annual,Concrete,100,97.7525000494786
-Q_limit,Typha,Seedling,Depth,LA13,Low,MC,1843.09,cm,Q >= min_limit & Q <= newx1a,critical,Concrete,100,99.8080926359615
-Q_limit,Typha,Seedling,Depth,LA13,Medium,MC,920.34,cm,Q >= min_limit & Q <= newx2a,critical,Concrete,100,99.8080926359615
-Q_limit,Typha,Seedling,Depth,LA13,High,MC,40486.03,cm,Q >= min_limit & Q <= newx3a,critical,Concrete,100,99.8080926359615
-Hydraulic_limit,Typha,Seedling,Depth,LA13,Low,MC,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Concrete,100,99.8080926359615
-Hydraulic_limit,Typha,Seedling,Depth,LA13,Medium,MC,414.43,cm,Q >= min_limit & Q <= newx2a,critical,Concrete,100,99.8080926359615
+Q_limit,Typha,Adult,Velocity,LA13,Low,MC,842.39,m,Q >= min_limit & Q <= newx1a,Annual,Concrete,99.2009132420091,64.5189981057676
+Q_limit,Typha,Adult,Velocity,LA13,Medium,MC,203.19,m,Q >= min_limit & Q <= newx2a,Annual,Concrete,99.2009132420091,64.5189981057676
+Hydraulic_limit,Typha,Adult,Velocity,LA13,Low,MC,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Concrete,99.2009132420091,64.5189981057676
+Q_limit,Typha,Seedling,Depth,LA13,Low,MC,1843.09,cm,Q >= min_limit & Q <= newx1a,critical,Concrete,100,66.5072859744991
+Q_limit,Typha,Seedling,Depth,LA13,Medium,MC,920.34,cm,Q >= min_limit & Q <= newx2a,critical,Concrete,100,66.5072859744991
+Hydraulic_limit,Typha,Seedling,Depth,LA13,Low,MC,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Concrete,100,66.5072859744991
 Q_limit,Typha,Adult,Depth,LA14,Low,LOB,2405.92,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,99.7146118721461,41.5327360775196
 Q_limit,Typha,Adult,Depth,LA14,Low,MC,3753.76,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,5.45724397762302,1.50463052909706
 Q_limit,Typha,Adult,Depth,LA14,Low,ROB,1869.13,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,99.634703196347,67.765690797897
@@ -3776,55 +3680,40 @@ Hydraulic_limit,Typha,Adult,Depth,LA14,High,LOB,84.41,cm,Q >= newx3a[1] & Q <= n
 Hydraulic_limit,Typha,Adult,Depth,LA14,High,MC,84.41,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,5.45724397762302,1.50463052909706
 Hydraulic_limit,Typha,Adult,Depth,LA14,High,ROB,84.41,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,99.634703196347,67.765690797897
 Q_limit,Typha,Adult,Velocity,LA14,Low,LOB,535.11,m,Q >= min_limit & Q <= newx1a,Annual,Soft,99.0753424657534,32.6471040346236
-Q_limit,Typha,Adult,Velocity,LA14,Low,MC,9055.03,m,Q >= min_limit & Q <= newx1a,Annual,Soft,6.45050804886403,2.32780935097178
-Q_limit,Typha,Adult,Velocity,LA14,Low,ROB,2131.94,m,Q >= min_limit & Q <= newx1a,Annual,Soft,100,97.0774189642356
+Q_limit,Typha,Adult,Velocity,LA14,Low,MC,9055.03,m,Q >= min_limit & Q <= newx1a,Annual,Soft,6.18792099554744,1.45190824503604
+Q_limit,Typha,Adult,Velocity,LA14,Low,ROB,2131.94,m,Q >= min_limit & Q <= newx1a,Annual,Soft,99.6689497716895,63.7440856309023
 Q_limit,Typha,Adult,Velocity,LA14,Medium,LOB,27.85,m,Q >= min_limit & Q <= newx2a,Annual,Soft,99.0753424657534,32.6471040346236
-Q_limit,Typha,Adult,Velocity,LA14,Medium,MC,399.86,m,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,6.45050804886403,2.32780935097178
-Q_limit,Typha,Adult,Velocity,LA14,Medium,ROB,118.77,m,Q >= min_limit & Q <= newx2a,Annual,Soft,100,97.0774189642356
-Q_limit,Typha,Adult,Velocity,LA14,Medium,MC,2427.53,m,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,6.45050804886403,2.32780935097178
+Q_limit,Typha,Adult,Velocity,LA14,Medium,MC,399.86,m,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,6.18792099554744,1.45190824503604
+Q_limit,Typha,Adult,Velocity,LA14,Medium,ROB,118.77,m,Q >= min_limit & Q <= newx2a,Annual,Soft,99.6689497716895,63.7440856309023
+Q_limit,Typha,Adult,Velocity,LA14,Medium,MC,2427.53,m,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,6.18792099554744,1.45190824503604
 Q_limit,Typha,Adult,Velocity,LA14,High,LOB,10.37,m,Q >= min_limit & Q <= newx3a,Annual,Soft,99.0753424657534,32.6471040346236
-Q_limit,Typha,Adult,Velocity,LA14,High,MC,39231.75,m,Q >= min_limit & Q <= newx3a,Annual,Soft,6.45050804886403,2.32780935097178
-Q_limit,Typha,Adult,Velocity,LA14,High,ROB,39231.75,m,Q >= min_limit & Q <= newx3a,Annual,Soft,100,97.0774189642356
 Hydraulic_limit,Typha,Adult,Velocity,LA14,Low,LOB,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,99.0753424657534,32.6471040346236
-Hydraulic_limit,Typha,Adult,Velocity,LA14,Low,MC,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,6.45050804886403,2.32780935097178
-Hydraulic_limit,Typha,Adult,Velocity,LA14,Low,ROB,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,100,97.0774189642356
+Hydraulic_limit,Typha,Adult,Velocity,LA14,Low,MC,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,6.18792099554744,1.45190824503604
+Hydraulic_limit,Typha,Adult,Velocity,LA14,Low,ROB,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,99.6689497716895,63.7440856309023
 Hydraulic_limit,Typha,Adult,Velocity,LA14,Medium,LOB,0.56,m,Q >= min_limit & Q <= newx2a,Annual,Soft,99.0753424657534,32.6471040346236
-Hydraulic_limit,Typha,Adult,Velocity,LA14,Medium,MC,1.81,m,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,6.45050804886403,2.32780935097178
-Hydraulic_limit,Typha,Adult,Velocity,LA14,Medium,ROB,2.76,m,Q >= min_limit & Q <= newx2a,Annual,Soft,100,97.0774189642356
 Hydraulic_limit,Typha,Adult,Velocity,LA14,High,LOB,0.07,m,Q >= min_limit & Q <= newx3a,Annual,Soft,99.0753424657534,32.6471040346236
-Q_limit,Typha,Seedling,Depth,LA14,Low,LOB,302.61,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,99.3624772313297
-Q_limit,Typha,Seedling,Depth,LA14,Low,MC,896.24,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.751366120218579,0.253708040593287
-Q_limit,Typha,Seedling,Depth,LA14,Low,ROB,130.36,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,66.0714285714286
-Q_limit,Typha,Seedling,Depth,LA14,Medium,LOB,196.74,cm,Q >= min_limit & Q <= newx2a,critical,Soft,100,99.3624772313297
-Q_limit,Typha,Seedling,Depth,LA14,Medium,MC,707.84,cm,Q >= min_limit & Q <= newx2a,critical,Soft,0.751366120218579,0.253708040593287
-Q_limit,Typha,Seedling,Depth,LA14,Medium,ROB,32.17,cm,Q >= min_limit & Q <= newx2a,critical,Soft,100,66.0714285714286
-Q_limit,Typha,Seedling,Depth,LA14,High,LOB,39231.75,cm,Q >= min_limit & Q <= newx3a,critical,Soft,100,99.3624772313297
-Q_limit,Typha,Seedling,Depth,LA14,High,MC,39231.75,cm,Q >= min_limit & Q <= newx3a,critical,Soft,0.751366120218579,0.253708040593287
-Q_limit,Typha,Seedling,Depth,LA14,High,ROB,39231.75,cm,Q >= min_limit & Q <= newx3a,critical,Soft,100,66.0714285714286
-Hydraulic_limit,Typha,Seedling,Depth,LA14,Low,LOB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,99.3624772313297
-Hydraulic_limit,Typha,Seedling,Depth,LA14,Low,MC,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.751366120218579,0.253708040593287
-Hydraulic_limit,Typha,Seedling,Depth,LA14,Low,ROB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,66.0714285714286
-Hydraulic_limit,Typha,Seedling,Depth,LA14,Medium,LOB,536.13,cm,Q >= min_limit & Q <= newx2a,critical,Soft,100,99.3624772313297
-Hydraulic_limit,Typha,Seedling,Depth,LA14,Medium,MC,502.6,cm,Q >= min_limit & Q <= newx2a,critical,Soft,0.751366120218579,0.253708040593287
-Hydraulic_limit,Typha,Seedling,Depth,LA14,Medium,ROB,551.98,cm,Q >= min_limit & Q <= newx2a,critical,Soft,100,66.0714285714286
+Q_limit,Typha,Seedling,Depth,LA14,Low,LOB,302.61,cm,Q >= min_limit & Q <= newx1a,critical,Soft,99.8633879781421,66.0421545667447
+Q_limit,Typha,Seedling,Depth,LA14,Low,MC,896.24,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.409836065573771,0.122517130713852
+Q_limit,Typha,Seedling,Depth,LA14,Low,ROB,130.36,cm,Q >= min_limit & Q <= newx1a,critical,Soft,99.7040072859745,32.7380952380952
+Q_limit,Typha,Seedling,Depth,LA14,Medium,LOB,196.74,cm,Q >= min_limit & Q <= newx2a,critical,Soft,99.8633879781421,66.0421545667447
+Q_limit,Typha,Seedling,Depth,LA14,Medium,MC,707.84,cm,Q >= min_limit & Q <= newx2a,critical,Soft,0.409836065573771,0.122517130713852
+Q_limit,Typha,Seedling,Depth,LA14,Medium,ROB,32.17,cm,Q >= min_limit & Q <= newx2a,critical,Soft,99.7040072859745,32.7380952380952
+Hydraulic_limit,Typha,Seedling,Depth,LA14,Low,LOB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,99.8633879781421,66.0421545667447
+Hydraulic_limit,Typha,Seedling,Depth,LA14,Low,MC,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.409836065573771,0.122517130713852
+Hydraulic_limit,Typha,Seedling,Depth,LA14,Low,ROB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,99.7040072859745,32.7380952380952
 Q_limit,Typha,Adult,Depth,LA2,Low,LOB,8734.48,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,2.47745176389999,1.04803996398724
-Q_limit,Typha,Adult,Depth,LA2,Low,MC,50922.74,cm,Q >= newx1a,Annual,Soft,0.0114155251141553,0.00163078930202219
 Q_limit,Typha,Adult,Depth,LA2,Low,ROB,6509.18,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,3.83605434410321,1.62720296048258
 Q_limit,Typha,Adult,Depth,LA2,Medium,LOB,2067.41,cm,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,2.47745176389999,1.04803996398724
-Q_limit,Typha,Adult,Depth,LA2,Medium,MC,50922.74,cm,Q >= newx2a,Annual,Soft,0.0114155251141553,0.00163078930202219
 Q_limit,Typha,Adult,Depth,LA2,Medium,ROB,1182.44,cm,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,3.83605434410321,1.62720296048258
 Q_limit,Typha,Adult,Depth,LA2,Medium,LOB,7630.49,cm,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,2.47745176389999,1.04803996398724
 Q_limit,Typha,Adult,Depth,LA2,Medium,ROB,5574.37,cm,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,3.83605434410321,1.62720296048258
 Q_limit,Typha,Adult,Depth,LA2,High,LOB,2851.94,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,2.47745176389999,1.04803996398724
-Q_limit,Typha,Adult,Depth,LA2,High,MC,50922.74,cm,Q >= newx3a,Annual,Soft,0.0114155251141553,0.00163078930202219
 Q_limit,Typha,Adult,Depth,LA2,High,ROB,1747.33,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,3.83605434410321,1.62720296048258
 Q_limit,Typha,Adult,Depth,LA2,High,LOB,6198.76,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,2.47745176389999,1.04803996398724
 Q_limit,Typha,Adult,Depth,LA2,High,ROB,4383.1,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,3.83605434410321,1.62720296048258
 Hydraulic_limit,Typha,Adult,Depth,LA2,Low,LOB,115.35,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,2.47745176389999,1.04803996398724
-Hydraulic_limit,Typha,Adult,Depth,LA2,Low,MC,600.22,cm,Q >= newx1a,Annual,Soft,0.0114155251141553,0.00163078930202219
 Hydraulic_limit,Typha,Adult,Depth,LA2,Low,ROB,115.35,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,3.83605434410321,1.62720296048258
 Hydraulic_limit,Typha,Adult,Depth,LA2,Medium,LOB,11.19,cm,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,2.47745176389999,1.04803996398724
-Hydraulic_limit,Typha,Adult,Depth,LA2,Medium,MC,600.22,cm,Q >= newx2a,Annual,Soft,0.0114155251141553,0.00163078930202219
 Hydraulic_limit,Typha,Adult,Depth,LA2,Medium,ROB,11.19,cm,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,3.83605434410321,1.62720296048258
 Hydraulic_limit,Typha,Adult,Depth,LA2,Medium,LOB,102.58,cm,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,2.47745176389999,1.04803996398724
 Hydraulic_limit,Typha,Adult,Depth,LA2,Medium,ROB,102.58,cm,Q >= newx2a[1] & Q <= newx2a[2],Annual,Soft,3.83605434410321,1.62720296048258
@@ -3852,21 +3741,12 @@ Hydraulic_limit,Typha,Adult,Velocity,LA2,Medium,LOB,0.56,m,Q <= newx2a[1] & Q >=
 Hydraulic_limit,Typha,Adult,Velocity,LA2,High,LOB,0.07,m,Q >= min_limit & Q <= newx3a,Annual,Soft,3.3222970658751,0.552006078191239
 Hydraulic_limit,Typha,Adult,Velocity,LA2,High,MC,0.07,m,Q >= min_limit & Q <= newx3a,Annual,Soft,99.7602739726027,65.8685946576622
 Hydraulic_limit,Typha,Adult,Velocity,LA2,High,ROB,0.07,m,Q >= min_limit & Q <= newx3a,Annual,Soft,4.9092362141797,1.7260701963097
-Q_limit,Typha,Seedling,Depth,LA2,Low,LOB,2884.02,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.660291438979964,0.122517130713852
-Q_limit,Typha,Seedling,Depth,LA2,Low,MC,50922.74,cm,Q >= newx1a,critical,Soft,0,0
-Q_limit,Typha,Seedling,Depth,LA2,Low,ROB,1771.07,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.979052823315118,0.246118483823402
-Q_limit,Typha,Seedling,Depth,LA2,Medium,LOB,2475.77,cm,Q >= min_limit & Q <= newx2a,critical,Soft,0.660291438979964,0.122517130713852
-Q_limit,Typha,Seedling,Depth,LA2,Medium,MC,50922.74,cm,Q >= newx2a,critical,Soft,0,0
-Q_limit,Typha,Seedling,Depth,LA2,Medium,ROB,1472.6,cm,Q >= min_limit & Q <= newx2a,critical,Soft,0.979052823315118,0.246118483823402
-Q_limit,Typha,Seedling,Depth,LA2,High,LOB,50922.74,cm,Q >= min_limit & Q <= newx3a,critical,Soft,0.660291438979964,0.122517130713852
-Q_limit,Typha,Seedling,Depth,LA2,High,MC,50922.74,cm,Q >= newx3a,critical,Soft,0,0
-Q_limit,Typha,Seedling,Depth,LA2,High,ROB,50922.74,cm,Q >= min_limit & Q <= newx3a,critical,Soft,0.979052823315118,0.246118483823402
-Hydraulic_limit,Typha,Seedling,Depth,LA2,Low,LOB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.660291438979964,0.122517130713852
-Hydraulic_limit,Typha,Seedling,Depth,LA2,Low,MC,600.22,cm,Q >= newx1a,critical,Soft,0,0
-Hydraulic_limit,Typha,Seedling,Depth,LA2,Low,ROB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.979052823315118,0.246118483823402
-Hydraulic_limit,Typha,Seedling,Depth,LA2,Medium,LOB,388.99,cm,Q >= min_limit & Q <= newx2a,critical,Soft,0.660291438979964,0.122517130713852
-Hydraulic_limit,Typha,Seedling,Depth,LA2,Medium,MC,600.22,cm,Q >= newx2a,critical,Soft,0,0
-Hydraulic_limit,Typha,Seedling,Depth,LA2,Medium,ROB,415.82,cm,Q >= min_limit & Q <= newx2a,critical,Soft,0.979052823315118,0.246118483823402
+Q_limit,Typha,Seedling,Depth,LA2,Low,LOB,2884.02,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.250455373406193,0.0563795645762859
+Q_limit,Typha,Seedling,Depth,LA2,Low,ROB,1771.07,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.318761384335155,0.111674906756874
+Q_limit,Typha,Seedling,Depth,LA2,Medium,LOB,2475.77,cm,Q >= min_limit & Q <= newx2a,critical,Soft,0.250455373406193,0.0563795645762859
+Q_limit,Typha,Seedling,Depth,LA2,Medium,ROB,1472.6,cm,Q >= min_limit & Q <= newx2a,critical,Soft,0.318761384335155,0.111674906756874
+Hydraulic_limit,Typha,Seedling,Depth,LA2,Low,LOB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.250455373406193,0.0563795645762859
+Hydraulic_limit,Typha,Seedling,Depth,LA2,Low,ROB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.318761384335155,0.111674906756874
 Q_limit,Typha,Adult,Depth,LA20,Low,LOB,2254.68,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,3.69905240324238,1.53878512696396
 Q_limit,Typha,Adult,Depth,LA20,Low,MC,1071.96,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,94.7290528233151,48.6513933643638
 Q_limit,Typha,Adult,Depth,LA20,Low,ROB,2262.16,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,3.67621874643224,1.53172109554829
@@ -3915,21 +3795,15 @@ Hydraulic_limit,Typha,Adult,Velocity,LA20,Medium,ROB,0.56,m,Q >= min_limit & Q <
 Hydraulic_limit,Typha,Adult,Velocity,LA20,High,LOB,0.07,m,Q >= min_limit & Q <= newx3a,Annual,Soft,2.83137344445713,0.833489288895248
 Hydraulic_limit,Typha,Adult,Velocity,LA20,High,MC,0.07,m,Q >= min_limit & Q <= newx3a,Annual,Soft,94.1029143897996,47.7857380782514
 Hydraulic_limit,Typha,Adult,Velocity,LA20,High,ROB,0.07,m,Q >= min_limit & Q <= newx3a,Annual,Soft,2.79712295924192,0.812839367907567
-Q_limit,Typha,Seedling,Depth,LA20,Low,LOB,362.92,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.705828779599271,0.184317807268627
-Q_limit,Typha,Seedling,Depth,LA20,Low,MC,26.26,cm,Q >= min_limit & Q <= newx1a,critical,Soft,98.7021857923497,69.8163327261688
-Q_limit,Typha,Seedling,Depth,LA20,Low,ROB,367.19,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.705828779599271,0.18214936247723101
-Q_limit,Typha,Seedling,Depth,LA20,Medium,LOB,256.27,cm,Q >= min_limit & Q <= newx2a,critical,Soft,0.705828779599271,0.184317807268627
-Q_limit,Typha,Seedling,Depth,LA20,Medium,MC,13.62,cm,Q >= min_limit & Q <= newx2a,critical,Soft,98.7021857923497,69.8163327261688
-Q_limit,Typha,Seedling,Depth,LA20,Medium,ROB,259.38,cm,Q >= min_limit & Q <= newx2a,critical,Soft,0.705828779599271,0.18214936247723101
-Q_limit,Typha,Seedling,Depth,LA20,High,LOB,16912.98,cm,Q >= min_limit & Q <= newx3a,critical,Soft,0.705828779599271,0.184317807268627
-Q_limit,Typha,Seedling,Depth,LA20,High,MC,16912.98,cm,Q >= min_limit & Q <= newx3a,critical,Soft,98.7021857923497,69.8163327261688
-Q_limit,Typha,Seedling,Depth,LA20,High,ROB,16912.98,cm,Q >= min_limit & Q <= newx3a,critical,Soft,0.705828779599271,0.18214936247723101
-Hydraulic_limit,Typha,Seedling,Depth,LA20,Low,LOB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.705828779599271,0.184317807268627
-Hydraulic_limit,Typha,Seedling,Depth,LA20,Low,MC,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,98.7021857923497,69.8163327261688
-Hydraulic_limit,Typha,Seedling,Depth,LA20,Low,ROB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.705828779599271,0.18214936247723101
-Hydraulic_limit,Typha,Seedling,Depth,LA20,Medium,LOB,464.34,cm,Q >= min_limit & Q <= newx2a,critical,Soft,0.705828779599271,0.184317807268627
-Hydraulic_limit,Typha,Seedling,Depth,LA20,Medium,MC,519.81,cm,Q >= min_limit & Q <= newx2a,critical,Soft,98.7021857923497,69.8163327261688
-Hydraulic_limit,Typha,Seedling,Depth,LA20,Medium,ROB,464.03,cm,Q >= min_limit & Q <= newx2a,critical,Soft,0.705828779599271,0.18214936247723101
+Q_limit,Typha,Seedling,Depth,LA20,Low,LOB,362.92,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.341530054644809,0.0845693468644288
+Q_limit,Typha,Seedling,Depth,LA20,Low,MC,26.26,cm,Q >= min_limit & Q <= newx1a,critical,Soft,98.1785063752277,45.4289183797381
+Q_limit,Typha,Seedling,Depth,LA20,Low,ROB,367.19,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.341530054644809,0.0834851244687311
+Q_limit,Typha,Seedling,Depth,LA20,Medium,LOB,256.27,cm,Q >= min_limit & Q <= newx2a,critical,Soft,0.341530054644809,0.0845693468644288
+Q_limit,Typha,Seedling,Depth,LA20,Medium,MC,13.62,cm,Q >= min_limit & Q <= newx2a,critical,Soft,98.1785063752277,45.4289183797381
+Q_limit,Typha,Seedling,Depth,LA20,Medium,ROB,259.38,cm,Q >= min_limit & Q <= newx2a,critical,Soft,0.341530054644809,0.0834851244687311
+Hydraulic_limit,Typha,Seedling,Depth,LA20,Low,LOB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.341530054644809,0.0845693468644288
+Hydraulic_limit,Typha,Seedling,Depth,LA20,Low,MC,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,98.1785063752277,45.4289183797381
+Hydraulic_limit,Typha,Seedling,Depth,LA20,Low,ROB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.341530054644809,0.0834851244687311
 Q_limit,Typha,Adult,Depth,LA202,Low,LOB,13958.74,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,0.102751455645622,0.0364043174125631
 Q_limit,Typha,Adult,Depth,LA202,Low,MC,1754.72,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,99.7602739726027,66.8036810676398
 Q_limit,Typha,Adult,Depth,LA202,Low,ROB,13253.62,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,0.102751455645622,0.0364043794740352
@@ -3978,22 +3852,16 @@ Hydraulic_limit,Typha,Adult,Velocity,LA202,Medium,ROB,0.56,m,Q >= min_limit & Q 
 Hydraulic_limit,Typha,Adult,Velocity,LA202,High,LOB,0.07,m,Q >= min_limit & Q <= newx3a,Annual,Soft,0.102751455645622,0.0163010253926781
 Hydraulic_limit,Typha,Adult,Velocity,LA202,High,MC,0.07,m,Q >= min_limit & Q <= newx3a,Annual,Soft,98.2876712328767,62.429891078211
 Hydraulic_limit,Typha,Adult,Velocity,LA202,High,ROB,0.07,m,Q >= min_limit & Q <= newx3a,Annual,Soft,0.148401826484018,0.0358622682761863
-Q_limit,Typha,Seedling,Depth,LA202,Low,LOB,9130.75,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.0227686703096539,0.0010842223956978
-Q_limit,Typha,Seedling,Depth,LA202,Low,MC,141.13,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,66.5278862000173
-Q_limit,Typha,Seedling,Depth,LA202,Low,ROB,8767.21,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.0227686703096539,0.0010842223956978
-Q_limit,Typha,Seedling,Depth,LA202,Medium,LOB,8689.13,cm,Q >= min_limit & Q <= newx2a,critical,Soft,0.0227686703096539,0.0010842223956978
-Q_limit,Typha,Seedling,Depth,LA202,Medium,MC,23.02,cm,Q <= newx2a[1] & Q >= newx2a[2],critical,Soft,100,66.5278862000173
-Q_limit,Typha,Seedling,Depth,LA202,Medium,ROB,8329.27,cm,Q >= min_limit & Q <= newx2a,critical,Soft,0.0227686703096539,0.0010842223956978
-Q_limit,Typha,Seedling,Depth,LA202,Medium,MC,71.04,cm,Q <= newx2a[1] & Q >= newx2a[2],critical,Soft,100,66.5278862000173
-Q_limit,Typha,Seedling,Depth,LA202,High,LOB,28466.28,cm,Q >= min_limit & Q <= newx3a,critical,Soft,0.0227686703096539,0.0010842223956978
-Q_limit,Typha,Seedling,Depth,LA202,High,MC,28466.28,cm,Q >= min_limit & Q <= newx3a,critical,Soft,100,66.5278862000173
-Q_limit,Typha,Seedling,Depth,LA202,High,ROB,28466.28,cm,Q >= min_limit & Q <= newx3a,critical,Soft,0.0227686703096539,0.0010842223956978
-Hydraulic_limit,Typha,Seedling,Depth,LA202,Low,LOB,30.02,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.0227686703096539,0.0010842223956978
-Hydraulic_limit,Typha,Seedling,Depth,LA202,Low,MC,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,66.5278862000173
-Hydraulic_limit,Typha,Seedling,Depth,LA202,Low,ROB,29.97,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0.0227686703096539,0.0010842223956978
-Hydraulic_limit,Typha,Seedling,Depth,LA202,Medium,LOB,346.01,cm,Q >= min_limit & Q <= newx2a,critical,Soft,0.0227686703096539,0.0010842223956978
-Hydraulic_limit,Typha,Seedling,Depth,LA202,Medium,MC,616.98,cm,Q <= newx2a[1] & Q >= newx2a[2],critical,Soft,100,66.5278862000173
-Hydraulic_limit,Typha,Seedling,Depth,LA202,Medium,ROB,353.32,cm,Q >= min_limit & Q <= newx2a,critical,Soft,0.0227686703096539,0.0010842223956978
+Q_limit,Typha,Seedling,Depth,LA202,Low,LOB,9130.75,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0,0
+Q_limit,Typha,Seedling,Depth,LA202,Low,MC,141.13,cm,Q >= min_limit & Q <= newx1a,critical,Soft,99.8633879781421,33.1978055338711
+Q_limit,Typha,Seedling,Depth,LA202,Low,ROB,8767.21,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0,0
+Q_limit,Typha,Seedling,Depth,LA202,Medium,LOB,8689.13,cm,Q >= min_limit & Q <= newx2a,critical,Soft,0,0
+Q_limit,Typha,Seedling,Depth,LA202,Medium,MC,23.02,cm,Q <= newx2a[1] & Q >= newx2a[2],critical,Soft,99.8633879781421,33.1978055338711
+Q_limit,Typha,Seedling,Depth,LA202,Medium,ROB,8329.27,cm,Q >= min_limit & Q <= newx2a,critical,Soft,0,0
+Q_limit,Typha,Seedling,Depth,LA202,Medium,MC,71.04,cm,Q <= newx2a[1] & Q >= newx2a[2],critical,Soft,99.8633879781421,33.1978055338711
+Hydraulic_limit,Typha,Seedling,Depth,LA202,Low,LOB,30.02,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0,0
+Hydraulic_limit,Typha,Seedling,Depth,LA202,Low,MC,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,99.8633879781421,33.1978055338711
+Hydraulic_limit,Typha,Seedling,Depth,LA202,Low,ROB,29.97,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0,0
 Q_limit,Typha,Adult,Depth,LA3,Low,LOB,9510.53,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,99.9200913242009,35.0398370172997
 Q_limit,Typha,Adult,Depth,LA3,Low,MC,5906.01,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,99.8401826484018,99.1920821207334
 Q_limit,Typha,Adult,Depth,LA3,Low,ROB,9510.53,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,99.9200913242009,35.0398370172997
@@ -4022,38 +3890,24 @@ Hydraulic_limit,Typha,Adult,Depth,LA3,High,ROB,29.36,cm,Q >= newx3a[1] & Q <= ne
 Hydraulic_limit,Typha,Adult,Depth,LA3,High,LOB,84.41,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,99.9200913242009,35.0398370172997
 Hydraulic_limit,Typha,Adult,Depth,LA3,High,MC,84.41,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,99.8401826484018,99.1920821207334
 Hydraulic_limit,Typha,Adult,Depth,LA3,High,ROB,84.41,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,99.9200913242009,35.0398370172997
-Q_limit,Typha,Adult,Velocity,LA3,Low,LOB,1283.1,m,Q >= min_limit & Q <= newx1a,Annual,Soft,100,96.4040156534074
-Q_limit,Typha,Adult,Velocity,LA3,Low,MC,89.16,m,Q <= newx1a[1] & Q >= newx1a[2],Annual,Soft,100,66.6666666666667
-Q_limit,Typha,Adult,Velocity,LA3,Low,ROB,1283.1,m,Q >= min_limit & Q <= newx1a,Annual,Soft,100,96.4040156534074
-Q_limit,Typha,Adult,Velocity,LA3,Low,MC,132.96,m,Q <= newx1a[1] & Q >= newx1a[2],Annual,Soft,100,66.6666666666667
-Q_limit,Typha,Adult,Velocity,LA3,Medium,LOB,365.01,m,Q >= min_limit & Q <= newx2a,Annual,Soft,100,96.4040156534074
-Q_limit,Typha,Adult,Velocity,LA3,Medium,MC,47491.04,m,Q >= min_limit & Q <= newx2a,Annual,Soft,100,66.6666666666667
-Q_limit,Typha,Adult,Velocity,LA3,Medium,ROB,365.01,m,Q >= min_limit & Q <= newx2a,Annual,Soft,100,96.4040156534074
-Q_limit,Typha,Adult,Velocity,LA3,High,LOB,47491.04,m,Q >= min_limit & Q <= newx3a,Annual,Soft,100,96.4040156534074
-Q_limit,Typha,Adult,Velocity,LA3,High,MC,47491.04,m,Q >= min_limit & Q <= newx3a,Annual,Soft,100,66.6666666666667
-Q_limit,Typha,Adult,Velocity,LA3,High,ROB,47491.04,m,Q >= min_limit & Q <= newx3a,Annual,Soft,100,96.4040156534074
-Hydraulic_limit,Typha,Adult,Velocity,LA3,Low,LOB,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,100,96.4040156534074
-Hydraulic_limit,Typha,Adult,Velocity,LA3,Low,MC,1.05,m,Q <= newx1a[1] & Q >= newx1a[2],Annual,Soft,100,66.6666666666667
-Hydraulic_limit,Typha,Adult,Velocity,LA3,Low,ROB,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,100,96.4040156534074
-Hydraulic_limit,Typha,Adult,Velocity,LA3,Low,MC,1.05,m,Q <= newx1a[1] & Q >= newx1a[2],Annual,Soft,100,66.6666666666667
-Hydraulic_limit,Typha,Adult,Velocity,LA3,Medium,LOB,4.22,m,Q >= min_limit & Q <= newx2a,Annual,Soft,100,96.4040156534074
-Hydraulic_limit,Typha,Adult,Velocity,LA3,Medium,MC,4.62,m,Q >= min_limit & Q <= newx2a,Annual,Soft,100,66.6666666666667
-Hydraulic_limit,Typha,Adult,Velocity,LA3,Medium,ROB,4.22,m,Q >= min_limit & Q <= newx2a,Annual,Soft,100,96.4040156534074
-Q_limit,Typha,Seedling,Depth,LA3,Low,LOB,1228.32,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,99.5413739266198
-Q_limit,Typha,Seedling,Depth,LA3,Low,MC,70.53,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,66.6666666666667
-Q_limit,Typha,Seedling,Depth,LA3,Low,ROB,1228.32,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,99.5413739266198
-Q_limit,Typha,Seedling,Depth,LA3,Medium,LOB,743.78,cm,Q >= min_limit & Q <= newx2a,critical,Soft,100,99.5413739266198
-Q_limit,Typha,Seedling,Depth,LA3,Medium,MC,47491.04,cm,Q >= min_limit & Q <= newx2a,critical,Soft,100,66.6666666666667
-Q_limit,Typha,Seedling,Depth,LA3,Medium,ROB,743.78,cm,Q >= min_limit & Q <= newx2a,critical,Soft,100,99.5413739266198
-Q_limit,Typha,Seedling,Depth,LA3,High,LOB,47491.04,cm,Q >= min_limit & Q <= newx3a,critical,Soft,100,99.5413739266198
-Q_limit,Typha,Seedling,Depth,LA3,High,MC,47491.04,cm,Q >= min_limit & Q <= newx3a,critical,Soft,100,66.6666666666667
-Q_limit,Typha,Seedling,Depth,LA3,High,ROB,47491.04,cm,Q >= min_limit & Q <= newx3a,critical,Soft,100,99.5413739266198
-Hydraulic_limit,Typha,Seedling,Depth,LA3,Low,LOB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,99.5413739266198
-Hydraulic_limit,Typha,Seedling,Depth,LA3,Low,MC,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,66.6666666666667
-Hydraulic_limit,Typha,Seedling,Depth,LA3,Low,ROB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,99.5413739266198
-Hydraulic_limit,Typha,Seedling,Depth,LA3,Medium,LOB,319.77,cm,Q >= min_limit & Q <= newx2a,critical,Soft,100,99.5413739266198
-Hydraulic_limit,Typha,Seedling,Depth,LA3,Medium,MC,350.25,cm,Q >= min_limit & Q <= newx2a,critical,Soft,100,66.6666666666667
-Hydraulic_limit,Typha,Seedling,Depth,LA3,Medium,ROB,319.77,cm,Q >= min_limit & Q <= newx2a,critical,Soft,100,99.5413739266198
+Q_limit,Typha,Adult,Velocity,LA3,Low,LOB,1283.1,m,Q >= min_limit & Q <= newx1a,Annual,Soft,98.3561643835616,63.4722812659128
+Q_limit,Typha,Adult,Velocity,LA3,Low,MC,89.16,m,Q <= newx1a[1] & Q >= newx1a[2],Annual,Soft,0,0
+Q_limit,Typha,Adult,Velocity,LA3,Low,ROB,1283.1,m,Q >= min_limit & Q <= newx1a,Annual,Soft,98.3561643835616,63.4722812659128
+Q_limit,Typha,Adult,Velocity,LA3,Low,MC,132.96,m,Q <= newx1a[1] & Q >= newx1a[2],Annual,Soft,0,0
+Q_limit,Typha,Adult,Velocity,LA3,Medium,LOB,365.01,m,Q >= min_limit & Q <= newx2a,Annual,Soft,98.3561643835616,63.4722812659128
+Q_limit,Typha,Adult,Velocity,LA3,Medium,ROB,365.01,m,Q >= min_limit & Q <= newx2a,Annual,Soft,98.3561643835616,63.4722812659128
+Hydraulic_limit,Typha,Adult,Velocity,LA3,Low,LOB,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,98.3561643835616,63.4722812659128
+Hydraulic_limit,Typha,Adult,Velocity,LA3,Low,MC,1.05,m,Q <= newx1a[1] & Q >= newx1a[2],Annual,Soft,0,0
+Hydraulic_limit,Typha,Adult,Velocity,LA3,Low,ROB,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,98.3561643835616,63.4722812659128
+Hydraulic_limit,Typha,Adult,Velocity,LA3,Low,MC,1.05,m,Q <= newx1a[1] & Q >= newx1a[2],Annual,Soft,0,0
+Q_limit,Typha,Seedling,Depth,LA3,Low,LOB,1228.32,cm,Q >= min_limit & Q <= newx1a,critical,Soft,99.9089253187614,66.2785150490069
+Q_limit,Typha,Seedling,Depth,LA3,Low,MC,70.53,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0,0
+Q_limit,Typha,Seedling,Depth,LA3,Low,ROB,1228.32,cm,Q >= min_limit & Q <= newx1a,critical,Soft,99.9089253187614,66.2785150490069
+Q_limit,Typha,Seedling,Depth,LA3,Medium,LOB,743.78,cm,Q >= min_limit & Q <= newx2a,critical,Soft,99.9089253187614,66.2785150490069
+Q_limit,Typha,Seedling,Depth,LA3,Medium,ROB,743.78,cm,Q >= min_limit & Q <= newx2a,critical,Soft,99.9089253187614,66.2785150490069
+Hydraulic_limit,Typha,Seedling,Depth,LA3,Low,LOB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,99.9089253187614,66.2785150490069
+Hydraulic_limit,Typha,Seedling,Depth,LA3,Low,MC,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,0,0
+Hydraulic_limit,Typha,Seedling,Depth,LA3,Low,ROB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,99.9089253187614,66.2785150490069
 Q_limit,Typha,Adult,Depth,LA8,Low,LOB,6400.86,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,99.9429223744292,64.9581369235434
 Q_limit,Typha,Adult,Depth,LA8,Low,MC,5103.87,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,99.8630136986301,88.4550080414555
 Q_limit,Typha,Adult,Depth,LA8,Low,ROB,6400.86,cm,Q >= min_limit & Q <= newx1a,Annual,Soft,99.9429223744292,64.9581369235434
@@ -4082,36 +3936,23 @@ Hydraulic_limit,Typha,Adult,Depth,LA8,High,ROB,29.36,cm,Q >= newx3a[1] & Q <= ne
 Hydraulic_limit,Typha,Adult,Depth,LA8,High,LOB,84.41,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,99.9429223744292,64.9581369235434
 Hydraulic_limit,Typha,Adult,Depth,LA8,High,MC,84.41,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,99.8630136986301,88.4550080414555
 Hydraulic_limit,Typha,Adult,Depth,LA8,High,ROB,84.41,cm,Q >= newx3a[1] & Q <= newx3a[2],Annual,Soft,99.9429223744292,64.9581369235434
-Q_limit,Typha,Adult,Velocity,LA8,Low,LOB,467.31,m,Q >= min_limit & Q <= newx1a,Annual,Soft,100,90.6978002666156
-Q_limit,Typha,Adult,Velocity,LA8,Low,MC,64.29,m,Q >= min_limit & Q <= newx1a,Annual,Soft,100,66.7084701235835
-Q_limit,Typha,Adult,Velocity,LA8,Low,ROB,471.01,m,Q >= min_limit & Q <= newx1a,Annual,Soft,100,91.0851018003137
-Q_limit,Typha,Adult,Velocity,LA8,Medium,LOB,124.75,m,Q >= min_limit & Q <= newx2a,Annual,Soft,100,90.6978002666156
-Q_limit,Typha,Adult,Velocity,LA8,Medium,MC,42906.52,m,Q >= min_limit & Q <= newx2a,Annual,Soft,100,66.7084701235835
-Q_limit,Typha,Adult,Velocity,LA8,Medium,ROB,125.83,m,Q >= min_limit & Q <= newx2a,Annual,Soft,100,91.0851018003137
-Q_limit,Typha,Adult,Velocity,LA8,High,LOB,42906.52,m,Q >= min_limit & Q <= newx3a,Annual,Soft,100,90.6978002666156
-Q_limit,Typha,Adult,Velocity,LA8,High,MC,42906.52,m,Q >= min_limit & Q <= newx3a,Annual,Soft,100,66.7084701235835
-Q_limit,Typha,Adult,Velocity,LA8,High,ROB,42906.52,m,Q >= min_limit & Q <= newx3a,Annual,Soft,100,91.0851018003137
-Hydraulic_limit,Typha,Adult,Velocity,LA8,Low,LOB,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,100,90.6978002666156
-Hydraulic_limit,Typha,Adult,Velocity,LA8,Low,MC,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,100,66.7084701235835
-Hydraulic_limit,Typha,Adult,Velocity,LA8,Low,ROB,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,100,91.0851018003137
-Hydraulic_limit,Typha,Adult,Velocity,LA8,Medium,LOB,5.55,m,Q >= min_limit & Q <= newx2a,Annual,Soft,100,90.6978002666156
-Hydraulic_limit,Typha,Adult,Velocity,LA8,Medium,MC,6.45,m,Q >= min_limit & Q <= newx2a,Annual,Soft,100,66.7084701235835
-Hydraulic_limit,Typha,Adult,Velocity,LA8,Medium,ROB,5.55,m,Q >= min_limit & Q <= newx2a,Annual,Soft,100,91.0851018003137
-Q_limit,Typha,Seedling,Depth,LA8,Low,LOB,607.83,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,99.5316159250585
-Q_limit,Typha,Seedling,Depth,LA8,Low,MC,104.76,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,50.6765547749154
-Q_limit,Typha,Seedling,Depth,LA8,Low,ROB,607.83,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,99.5316159250585
-Q_limit,Typha,Seedling,Depth,LA8,Medium,LOB,275.22,cm,Q >= min_limit & Q <= newx2a,critical,Soft,100,99.5316159250585
-Q_limit,Typha,Seedling,Depth,LA8,Medium,MC,53.23,cm,Q >= min_limit & Q <= newx2a,critical,Soft,100,50.6765547749154
-Q_limit,Typha,Seedling,Depth,LA8,Medium,ROB,275.22,cm,Q >= min_limit & Q <= newx2a,critical,Soft,100,99.5316159250585
-Q_limit,Typha,Seedling,Depth,LA8,High,LOB,42906.52,cm,Q >= min_limit & Q <= newx3a,critical,Soft,100,99.5316159250585
-Q_limit,Typha,Seedling,Depth,LA8,High,MC,42906.52,cm,Q >= min_limit & Q <= newx3a,critical,Soft,100,50.6765547749154
-Q_limit,Typha,Seedling,Depth,LA8,High,ROB,42906.52,cm,Q >= min_limit & Q <= newx3a,critical,Soft,100,99.5316159250585
-Hydraulic_limit,Typha,Seedling,Depth,LA8,Low,LOB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,99.5316159250585
-Hydraulic_limit,Typha,Seedling,Depth,LA8,Low,MC,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,50.6765547749154
-Hydraulic_limit,Typha,Seedling,Depth,LA8,Low,ROB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,100,99.5316159250585
-Hydraulic_limit,Typha,Seedling,Depth,LA8,Medium,LOB,388.01,cm,Q >= min_limit & Q <= newx2a,critical,Soft,100,99.5316159250585
-Hydraulic_limit,Typha,Seedling,Depth,LA8,Medium,MC,403.25,cm,Q >= min_limit & Q <= newx2a,critical,Soft,100,50.6765547749154
-Hydraulic_limit,Typha,Seedling,Depth,LA8,Medium,ROB,388.01,cm,Q >= min_limit & Q <= newx2a,critical,Soft,100,99.5316159250585
+Q_limit,Typha,Adult,Velocity,LA8,Low,LOB,467.31,m,Q >= min_limit & Q <= newx1a,Annual,Soft,98.812785388127807,57.3644669332823
+Q_limit,Typha,Adult,Velocity,LA8,Low,MC,64.29,m,Q >= min_limit & Q <= newx1a,Annual,Soft,0.342465753424658,0.0418034569168636
+Q_limit,Typha,Adult,Velocity,LA8,Low,ROB,471.01,m,Q >= min_limit & Q <= newx1a,Annual,Soft,98.824200913242,57.7517684669804
+Q_limit,Typha,Adult,Velocity,LA8,Medium,LOB,124.75,m,Q >= min_limit & Q <= newx2a,Annual,Soft,98.812785388127807,57.3644669332823
+Q_limit,Typha,Adult,Velocity,LA8,Medium,ROB,125.83,m,Q >= min_limit & Q <= newx2a,Annual,Soft,98.824200913242,57.7517684669804
+Hydraulic_limit,Typha,Adult,Velocity,LA8,Low,LOB,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,98.812785388127807,57.3644669332823
+Hydraulic_limit,Typha,Adult,Velocity,LA8,Low,MC,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,0.342465753424658,0.0418034569168636
+Hydraulic_limit,Typha,Adult,Velocity,LA8,Low,ROB,1.05,m,Q >= min_limit & Q <= newx1a,Annual,Soft,98.824200913242,57.7517684669804
+Q_limit,Typha,Seedling,Depth,LA8,Low,LOB,607.83,cm,Q >= min_limit & Q <= newx1a,critical,Soft,99.8633879781421,66.1982825917252
+Q_limit,Typha,Seedling,Depth,LA8,Low,MC,104.76,cm,Q >= min_limit & Q <= newx1a,critical,Soft,82.7413479052823,17.3432214415821
+Q_limit,Typha,Seedling,Depth,LA8,Low,ROB,607.83,cm,Q >= min_limit & Q <= newx1a,critical,Soft,99.8633879781421,66.1982825917252
+Q_limit,Typha,Seedling,Depth,LA8,Medium,LOB,275.22,cm,Q >= min_limit & Q <= newx2a,critical,Soft,99.8633879781421,66.1982825917252
+Q_limit,Typha,Seedling,Depth,LA8,Medium,MC,53.23,cm,Q >= min_limit & Q <= newx2a,critical,Soft,82.7413479052823,17.3432214415821
+Q_limit,Typha,Seedling,Depth,LA8,Medium,ROB,275.22,cm,Q >= min_limit & Q <= newx2a,critical,Soft,99.8633879781421,66.1982825917252
+Hydraulic_limit,Typha,Seedling,Depth,LA8,Low,LOB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,99.8633879781421,66.1982825917252
+Hydraulic_limit,Typha,Seedling,Depth,LA8,Low,MC,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,82.7413479052823,17.3432214415821
+Hydraulic_limit,Typha,Seedling,Depth,LA8,Low,ROB,30.03,cm,Q >= min_limit & Q <= newx1a,critical,Soft,99.8633879781421,66.1982825917252
 Q_limit,Willow,Seedling,Depth,11101250,Low,LOB,179.3,cm,Q <= newx1a,critical,Soft,99.931693989071,95.1014832162373
 Q_limit,Willow,Seedling,Depth,11101250,Low,MC,0.07,cm,Q <= newx1a,critical,Soft,25.9107468123862,2.10447567004944
 Q_limit,Willow,Seedling,Depth,11101250,Low,ROB,138.63,cm,Q <= newx1a,critical,Soft,99.9089253187614,93.9001648018042
@@ -4130,24 +3971,14 @@ Hydraulic_limit,Willow,Seedling,Depth,11101250,Medium,ROB,27.52,cm,Q <= newx2a,c
 Hydraulic_limit,Willow,Seedling,Depth,11101250,High,LOB,18.4,cm,Q <= newx3a,critical,Soft,99.931693989071,95.1014832162373
 Hydraulic_limit,Willow,Seedling,Depth,11101250,High,MC,18.35,cm,Q <= newx3a,critical,Soft,25.9107468123862,2.10447567004944
 Hydraulic_limit,Willow,Seedling,Depth,11101250,High,ROB,18.4,cm,Q <= newx3a,critical,Soft,99.9089253187614,93.9001648018042
-Q_limit,Willow,Seedling,Shear,11101250,Low,LOB,8327.5,pa,Q <= newx1a,critical,Soft,100,99.9663891057334
-Q_limit,Willow,Seedling,Shear,11101250,Low,MC,8327.5,pa,Q <= newx1a,critical,Soft,100,98.6924277907884
-Q_limit,Willow,Seedling,Shear,11101250,Low,ROB,8327.5,pa,Q <= newx1a,critical,Soft,100,99.870977534912
-Q_limit,Willow,Seedling,Shear,11101250,Medium,LOB,8327.5,pa,Q <= newx2a,critical,Soft,100,99.9663891057334
-Q_limit,Willow,Seedling,Shear,11101250,Medium,MC,5976.4,pa,Q <= newx2a,critical,Soft,100,98.6924277907884
-Q_limit,Willow,Seedling,Shear,11101250,Medium,ROB,8327.5,pa,Q <= newx2a,critical,Soft,100,99.870977534912
-Q_limit,Willow,Seedling,Shear,11101250,High,LOB,834.72,pa,Q <= newx3a,critical,Soft,100,99.9663891057334
-Q_limit,Willow,Seedling,Shear,11101250,High,MC,179.91,pa,Q <= newx3a,critical,Soft,100,98.6924277907884
-Q_limit,Willow,Seedling,Shear,11101250,High,ROB,550.6,pa,Q <= newx3a,critical,Soft,100,99.870977534912
-Hydraulic_limit,Willow,Seedling,Shear,11101250,Low,LOB,18.5,pa,Q <= newx1a,critical,Soft,100,99.9663891057334
-Hydraulic_limit,Willow,Seedling,Shear,11101250,Low,MC,30.28,pa,Q <= newx1a,critical,Soft,100,98.6924277907884
-Hydraulic_limit,Willow,Seedling,Shear,11101250,Low,ROB,21.35,pa,Q <= newx1a,critical,Soft,100,99.870977534912
-Hydraulic_limit,Willow,Seedling,Shear,11101250,Medium,LOB,18.5,pa,Q <= newx2a,critical,Soft,100,99.9663891057334
-Hydraulic_limit,Willow,Seedling,Shear,11101250,Medium,MC,21.63,pa,Q <= newx2a,critical,Soft,100,98.6924277907884
-Hydraulic_limit,Willow,Seedling,Shear,11101250,Medium,ROB,21.35,pa,Q <= newx2a,critical,Soft,100,99.870977534912
-Hydraulic_limit,Willow,Seedling,Shear,11101250,High,LOB,0.53,pa,Q <= newx3a,critical,Soft,100,99.9663891057334
-Hydraulic_limit,Willow,Seedling,Shear,11101250,High,MC,0.53,pa,Q <= newx3a,critical,Soft,100,98.6924277907884
-Hydraulic_limit,Willow,Seedling,Shear,11101250,High,ROB,0.53,pa,Q <= newx3a,critical,Soft,100,99.870977534912
+Q_limit,Willow,Seedling,Shear,11101250,Medium,MC,5976.4,pa,Q <= newx2a,critical,Soft,100,65.3590944574551
+Q_limit,Willow,Seedling,Shear,11101250,High,LOB,834.72,pa,Q <= newx3a,critical,Soft,100,33.2997224390667
+Q_limit,Willow,Seedling,Shear,11101250,High,MC,179.91,pa,Q <= newx3a,critical,Soft,100,65.3590944574551
+Q_limit,Willow,Seedling,Shear,11101250,High,ROB,550.6,pa,Q <= newx3a,critical,Soft,100,33.2043108682453
+Hydraulic_limit,Willow,Seedling,Shear,11101250,Medium,MC,21.63,pa,Q <= newx2a,critical,Soft,100,65.3590944574551
+Hydraulic_limit,Willow,Seedling,Shear,11101250,High,LOB,0.53,pa,Q <= newx3a,critical,Soft,100,33.2997224390667
+Hydraulic_limit,Willow,Seedling,Shear,11101250,High,MC,0.53,pa,Q <= newx3a,critical,Soft,100,65.3590944574551
+Hydraulic_limit,Willow,Seedling,Shear,11101250,High,ROB,0.53,pa,Q <= newx3a,critical,Soft,100,33.2043108682453
 Q_limit,Willow,Seedling,Depth,F300,Low,LOB,948.68,cm,Q <= newx1a,critical,Soft,99.9544626593807,99.7874924104432
 Q_limit,Willow,Seedling,Depth,F300,Low,MC,41.99,cm,Q <= newx1a,critical,Soft,3.57468123861567,0.587648538468211
 Q_limit,Willow,Seedling,Depth,F300,Low,ROB,948.68,cm,Q <= newx1a,critical,Soft,99.9544626593807,99.7874924104432
@@ -4166,144 +3997,102 @@ Hydraulic_limit,Willow,Seedling,Depth,F300,Medium,ROB,27.52,cm,Q <= newx2a,criti
 Hydraulic_limit,Willow,Seedling,Depth,F300,High,LOB,18.4,cm,Q <= newx3a,critical,Soft,99.9544626593807,99.7874924104432
 Hydraulic_limit,Willow,Seedling,Depth,F300,High,MC,18.4,cm,Q <= newx3a,critical,Soft,3.57468123861567,0.587648538468211
 Hydraulic_limit,Willow,Seedling,Depth,F300,High,ROB,18.4,cm,Q <= newx3a,critical,Soft,99.9544626593807,99.7874924104432
-Q_limit,Willow,Seedling,Shear,F300,Low,LOB,35384.01,pa,Q <= newx1a,critical,Soft,100,99.9002515395958
-Q_limit,Willow,Seedling,Shear,F300,Low,MC,35384.01,pa,Q <= newx1a,critical,Soft,100,66.6991933385376
-Q_limit,Willow,Seedling,Shear,F300,Low,ROB,35384.01,pa,Q <= newx1a,critical,Soft,100,99.9002515395958
-Q_limit,Willow,Seedling,Shear,F300,Medium,LOB,35384.01,pa,Q <= newx2a,critical,Soft,100,99.9002515395958
-Q_limit,Willow,Seedling,Shear,F300,Medium,MC,35384.01,pa,Q <= newx2a,critical,Soft,100,66.6991933385376
-Q_limit,Willow,Seedling,Shear,F300,Medium,ROB,35384.01,pa,Q <= newx2a,critical,Soft,100,99.9002515395958
-Q_limit,Willow,Seedling,Shear,F300,High,LOB,392.14,pa,Q <= newx3a,critical,Soft,100,99.9002515395958
-Q_limit,Willow,Seedling,Shear,F300,High,MC,1.17,pa,Q <= newx3a,critical,Soft,100,66.6991933385376
-Q_limit,Willow,Seedling,Shear,F300,High,ROB,392.14,pa,Q <= newx3a,critical,Soft,100,99.9002515395958
-Hydraulic_limit,Willow,Seedling,Shear,F300,Low,LOB,17.62,pa,Q <= newx1a,critical,Soft,100,99.9002515395958
-Hydraulic_limit,Willow,Seedling,Shear,F300,Low,MC,18.06,pa,Q <= newx1a,critical,Soft,100,66.6991933385376
-Hydraulic_limit,Willow,Seedling,Shear,F300,Low,ROB,17.62,pa,Q <= newx1a,critical,Soft,100,99.9002515395958
-Hydraulic_limit,Willow,Seedling,Shear,F300,Medium,LOB,17.62,pa,Q <= newx2a,critical,Soft,100,99.9002515395958
-Hydraulic_limit,Willow,Seedling,Shear,F300,Medium,MC,18.06,pa,Q <= newx2a,critical,Soft,100,66.6991933385376
-Hydraulic_limit,Willow,Seedling,Shear,F300,Medium,ROB,17.62,pa,Q <= newx2a,critical,Soft,100,99.9002515395958
-Hydraulic_limit,Willow,Seedling,Shear,F300,High,LOB,0.53,pa,Q <= newx3a,critical,Soft,100,99.9002515395958
-Hydraulic_limit,Willow,Seedling,Shear,F300,High,MC,0.53,pa,Q <= newx3a,critical,Soft,100,66.6991933385376
-Hydraulic_limit,Willow,Seedling,Shear,F300,High,ROB,0.53,pa,Q <= newx3a,critical,Soft,100,99.9002515395958
+Q_limit,Willow,Seedling,Shear,F300,High,LOB,392.14,pa,Q <= newx3a,critical,Soft,99.8861566484517,33.2335848729291
+Q_limit,Willow,Seedling,Shear,F300,High,MC,1.17,pa,Q <= newx3a,critical,Soft,0.546448087431694,0.0325266718709342
+Q_limit,Willow,Seedling,Shear,F300,High,ROB,392.14,pa,Q <= newx3a,critical,Soft,99.8861566484517,33.2335848729291
+Hydraulic_limit,Willow,Seedling,Shear,F300,High,LOB,0.53,pa,Q <= newx3a,critical,Soft,99.8861566484517,33.2335848729291
+Hydraulic_limit,Willow,Seedling,Shear,F300,High,MC,0.53,pa,Q <= newx3a,critical,Soft,0.546448087431694,0.0325266718709342
+Hydraulic_limit,Willow,Seedling,Shear,F300,High,ROB,0.53,pa,Q <= newx3a,critical,Soft,99.8861566484517,33.2335848729291
 Q_limit,Willow,Seedling,Depth,F319,Low,MC,79.73,cm,Q <= newx1a,critical,Concrete,0.0455373406193078,0.00216844479139561
 Q_limit,Willow,Seedling,Depth,F319,Medium,MC,62.58,cm,Q <= newx2a,critical,Concrete,0.0455373406193078,0.00216844479139561
 Q_limit,Willow,Seedling,Depth,F319,High,MC,62.58,cm,Q <= newx3a,critical,Concrete,0.0455373406193078,0.00216844479139561
 Hydraulic_limit,Willow,Seedling,Depth,F319,Low,MC,33.95,cm,Q <= newx1a,critical,Concrete,0.0455373406193078,0.00216844479139561
 Hydraulic_limit,Willow,Seedling,Depth,F319,Medium,MC,32.59,cm,Q <= newx2a,critical,Concrete,0.0455373406193078,0.00216844479139561
 Hydraulic_limit,Willow,Seedling,Depth,F319,High,MC,32.59,cm,Q <= newx3a,critical,Concrete,0.0455373406193078,0.00216844479139561
-Q_limit,Willow,Seedling,Shear,F319,Low,MC,49845.45,pa,Q <= newx1a,critical,Concrete,100,66.665582444271
-Q_limit,Willow,Seedling,Shear,F319,Medium,MC,25601.94,pa,Q <= newx2a,critical,Concrete,100,66.665582444271
-Q_limit,Willow,Seedling,Shear,F319,High,MC,62.58,pa,Q <= newx3a,critical,Concrete,100,66.665582444271
-Hydraulic_limit,Willow,Seedling,Shear,F319,Low,MC,30.4,pa,Q <= newx1a,critical,Concrete,100,66.665582444271
-Hydraulic_limit,Willow,Seedling,Shear,F319,Medium,MC,21.63,pa,Q <= newx2a,critical,Concrete,100,66.665582444271
-Hydraulic_limit,Willow,Seedling,Shear,F319,High,MC,0.72,pa,Q <= newx3a,critical,Concrete,100,66.665582444271
-Q_limit,Willow,Seedling,Depth,F34D,Low,MC,180.04,cm,Q >= newx1a[1] & Q <= newx1a[2],critical,Concrete,0,0
-Q_limit,Willow,Seedling,Depth,F34D,Low,MC,90.68,cm,Q >= newx1a[1] & Q <= newx1a[2],critical,Concrete,0,0
-Q_limit,Willow,Seedling,Depth,F34D,Medium,MC,65.28,cm,Q <= newx2a,critical,Concrete,0,0
-Q_limit,Willow,Seedling,Depth,F34D,High,MC,59.74,cm,Q <= newx3a,critical,Concrete,0,0
-Hydraulic_limit,Willow,Seedling,Depth,F34D,Low,MC,33.95,cm,Q >= newx1a[1] & Q <= newx1a[2],critical,Concrete,0,0
-Hydraulic_limit,Willow,Seedling,Depth,F34D,Low,MC,33.95,cm,Q >= newx1a[1] & Q <= newx1a[2],critical,Concrete,0,0
-Hydraulic_limit,Willow,Seedling,Depth,F34D,Medium,MC,27.52,cm,Q <= newx2a,critical,Concrete,0,0
-Hydraulic_limit,Willow,Seedling,Depth,F34D,High,MC,26,cm,Q <= newx3a,critical,Concrete,0,0
-Q_limit,Willow,Seedling,Shear,F34D,Low,MC,46292.14,pa,Q <= newx1a,critical,Concrete,100,66.6666666666667
-Q_limit,Willow,Seedling,Shear,F34D,Medium,MC,46292.14,pa,Q <= newx2a,critical,Concrete,100,66.6666666666667
-Q_limit,Willow,Seedling,Shear,F34D,High,MC,100,pa,Q >= newx3a[1] & Q <= newx3a[2],critical,Concrete,100,66.6666666666667
-Q_limit,Willow,Seedling,Shear,F34D,High,MC,96.04,pa,Q >= newx3a[1] & Q <= newx3a[2],critical,Concrete,100,66.6666666666667
-Hydraulic_limit,Willow,Seedling,Shear,F34D,Low,MC,10.72,pa,Q <= newx1a,critical,Concrete,100,66.6666666666667
-Hydraulic_limit,Willow,Seedling,Shear,F34D,Medium,MC,10.72,pa,Q <= newx2a,critical,Concrete,100,66.6666666666667
-Hydraulic_limit,Willow,Seedling,Shear,F34D,High,MC,0.53,pa,Q >= newx3a[1] & Q <= newx3a[2],critical,Concrete,100,66.6666666666667
+Q_limit,Willow,Seedling,Shear,F319,Medium,MC,25601.94,pa,Q <= newx2a,critical,Concrete,100,33.3322491109376
+Q_limit,Willow,Seedling,Shear,F319,High,MC,62.58,pa,Q <= newx3a,critical,Concrete,100,33.3322491109376
+Hydraulic_limit,Willow,Seedling,Shear,F319,Medium,MC,21.63,pa,Q <= newx2a,critical,Concrete,100,33.3322491109376
+Hydraulic_limit,Willow,Seedling,Shear,F319,High,MC,0.72,pa,Q <= newx3a,critical,Concrete,100,33.3322491109376
+Q_limit,Willow,Seedling,Depth,F34D,Low,MC,180.04,cm,Q <= newx1a,critical,Concrete,99.1803278688525,32.5114927573944
+Q_limit,Willow,Seedling,Depth,F34D,Medium,MC,65.28,cm,Q <= newx2a,critical,Concrete,99.1803278688525,32.5114927573944
+Q_limit,Willow,Seedling,Depth,F34D,High,MC,59.74,cm,Q <= newx3a,critical,Concrete,99.1803278688525,32.5114927573944
+Hydraulic_limit,Willow,Seedling,Depth,F34D,Low,MC,33.95,cm,Q <= newx1a,critical,Concrete,99.1803278688525,32.5114927573944
+Hydraulic_limit,Willow,Seedling,Depth,F34D,Low,MC,33.95,cm,Q <= newx1a,critical,Concrete,99.1803278688525,32.5114927573944
+Hydraulic_limit,Willow,Seedling,Depth,F34D,Medium,MC,27.52,cm,Q <= newx2a,critical,Concrete,99.1803278688525,32.5114927573944
+Hydraulic_limit,Willow,Seedling,Depth,F34D,High,MC,26,cm,Q <= newx3a,critical,Concrete,99.1803278688525,32.5114927573944
+Q_limit,Willow,Seedling,Shear,F34D,High,MC,100,pa,Q >= newx3a[1] & Q <= newx3a[2],critical,Concrete,0,0
+Q_limit,Willow,Seedling,Shear,F34D,High,MC,96.04,pa,Q >= newx3a[1] & Q <= newx3a[2],critical,Concrete,0,0
+Hydraulic_limit,Willow,Seedling,Shear,F34D,High,MC,0.53,pa,Q >= newx3a[1] & Q <= newx3a[2],critical,Concrete,0,0
 Q_limit,Willow,Seedling,Depth,F37BHigh,Low,MC,102.69,cm,Q <= newx1a,critical,Soft,100,99.8427877526238
 Q_limit,Willow,Seedling,Depth,F37BHigh,Medium,MC,67.72,cm,Q <= newx2a,critical,Soft,100,99.8427877526238
 Q_limit,Willow,Seedling,Depth,F37BHigh,High,MC,30.43,cm,Q <= newx3a,critical,Soft,100,99.8427877526238
 Hydraulic_limit,Willow,Seedling,Depth,F37BHigh,Low,MC,33.95,cm,Q <= newx1a,critical,Soft,100,99.8427877526238
 Hydraulic_limit,Willow,Seedling,Depth,F37BHigh,Medium,MC,27.52,cm,Q <= newx2a,critical,Soft,100,99.8427877526238
 Hydraulic_limit,Willow,Seedling,Depth,F37BHigh,High,MC,18.4,cm,Q <= newx3a,critical,Soft,100,99.8427877526238
-Q_limit,Willow,Seedling,Shear,F37BHigh,Low,MC,3369.26,pa,Q <= newx1a,critical,Soft,100,99.9945788880215
-Q_limit,Willow,Seedling,Shear,F37BHigh,Medium,MC,3369.26,pa,Q <= newx2a,critical,Soft,100,99.9945788880215
-Q_limit,Willow,Seedling,Shear,F37BHigh,High,MC,166.05,pa,Q <= newx3a,critical,Soft,100,99.9945788880215
-Hydraulic_limit,Willow,Seedling,Shear,F37BHigh,Low,MC,4.24,pa,Q <= newx1a,critical,Soft,100,99.9945788880215
-Hydraulic_limit,Willow,Seedling,Shear,F37BHigh,Medium,MC,4.24,pa,Q <= newx2a,critical,Soft,100,99.9945788880215
-Hydraulic_limit,Willow,Seedling,Shear,F37BHigh,High,MC,0.53,pa,Q <= newx3a,critical,Soft,100,99.9945788880215
+Q_limit,Willow,Seedling,Shear,F37BHigh,High,MC,166.05,pa,Q <= newx3a,critical,Soft,100,33.3279122213548
+Hydraulic_limit,Willow,Seedling,Shear,F37BHigh,High,MC,0.53,pa,Q <= newx3a,critical,Soft,100,33.3279122213548
 Q_limit,Willow,Seedling,Depth,F37BLow,Low,LOB,167.95,cm,Q <= newx1a,critical,Soft,100,99.9815682192731
 Q_limit,Willow,Seedling,Depth,F37BLow,Low,MC,123.11,cm,Q <= newx1a,critical,Soft,100,99.9479573250065
-Q_limit,Willow,Seedling,Depth,F37BLow,Low,ROB,304.03,cm,Q >= newx1a[1] & Q <= newx1a[2],critical,Soft,0,0
-Q_limit,Willow,Seedling,Depth,F37BLow,Low,ROB,17.37,cm,Q >= newx1a[1] & Q <= newx1a[2],critical,Soft,0,0
+Q_limit,Willow,Seedling,Depth,F37BLow,Low,ROB,304.03,cm,Q <= newx1a,critical,Soft,100,99.9934946656258
 Q_limit,Willow,Seedling,Depth,F37BLow,Medium,LOB,160.37,cm,Q <= newx2a,critical,Soft,100,99.9815682192731
 Q_limit,Willow,Seedling,Depth,F37BLow,Medium,MC,108.72,cm,Q <= newx2a,critical,Soft,100,99.9479573250065
-Q_limit,Willow,Seedling,Depth,F37BLow,Medium,ROB,301.35,cm,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,0,0
-Q_limit,Willow,Seedling,Depth,F37BLow,Medium,ROB,7.95,cm,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,0,0
+Q_limit,Willow,Seedling,Depth,F37BLow,Medium,ROB,301.35,cm,Q <= newx2a,critical,Soft,100,99.9934946656258
 Q_limit,Willow,Seedling,Depth,F37BLow,High,LOB,148.41,cm,Q <= newx3a,critical,Soft,100,99.9815682192731
 Q_limit,Willow,Seedling,Depth,F37BLow,High,MC,76.21,cm,Q <= newx3a,critical,Soft,100,99.9479573250065
-Q_limit,Willow,Seedling,Depth,F37BLow,High,ROB,298.68,cm,Q >= newx3a[1] & Q <= newx3a[2],critical,Soft,0,0
-Q_limit,Willow,Seedling,Depth,F37BLow,High,ROB,2.64,cm,Q >= newx3a[1] & Q <= newx3a[2],critical,Soft,0,0
+Q_limit,Willow,Seedling,Depth,F37BLow,High,ROB,298.68,cm,Q <= newx3a,critical,Soft,100,99.9934946656258
 Hydraulic_limit,Willow,Seedling,Depth,F37BLow,Low,LOB,33.95,cm,Q <= newx1a,critical,Soft,100,99.9815682192731
 Hydraulic_limit,Willow,Seedling,Depth,F37BLow,Low,MC,33.95,cm,Q <= newx1a,critical,Soft,100,99.9479573250065
-Hydraulic_limit,Willow,Seedling,Depth,F37BLow,Low,ROB,33.95,cm,Q >= newx1a[1] & Q <= newx1a[2],critical,Soft,0,0
-Hydraulic_limit,Willow,Seedling,Depth,F37BLow,Low,ROB,33.95,cm,Q >= newx1a[1] & Q <= newx1a[2],critical,Soft,0,0
+Hydraulic_limit,Willow,Seedling,Depth,F37BLow,Low,ROB,33.95,cm,Q <= newx1a,critical,Soft,100,99.9934946656258
+Hydraulic_limit,Willow,Seedling,Depth,F37BLow,Low,ROB,33.95,cm,Q <= newx1a,critical,Soft,100,99.9934946656258
 Hydraulic_limit,Willow,Seedling,Depth,F37BLow,Medium,LOB,27.52,cm,Q <= newx2a,critical,Soft,100,99.9815682192731
 Hydraulic_limit,Willow,Seedling,Depth,F37BLow,Medium,MC,27.52,cm,Q <= newx2a,critical,Soft,100,99.9479573250065
-Hydraulic_limit,Willow,Seedling,Depth,F37BLow,Medium,ROB,27.52,cm,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,0,0
-Hydraulic_limit,Willow,Seedling,Depth,F37BLow,Medium,ROB,27.52,cm,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,0,0
+Hydraulic_limit,Willow,Seedling,Depth,F37BLow,Medium,ROB,27.52,cm,Q <= newx2a,critical,Soft,100,99.9934946656258
+Hydraulic_limit,Willow,Seedling,Depth,F37BLow,Medium,ROB,27.52,cm,Q <= newx2a,critical,Soft,100,99.9934946656258
 Hydraulic_limit,Willow,Seedling,Depth,F37BLow,High,LOB,18.4,cm,Q <= newx3a,critical,Soft,100,99.9815682192731
 Hydraulic_limit,Willow,Seedling,Depth,F37BLow,High,MC,18.4,cm,Q <= newx3a,critical,Soft,100,99.9479573250065
-Hydraulic_limit,Willow,Seedling,Depth,F37BLow,High,ROB,18.4,cm,Q >= newx3a[1] & Q <= newx3a[2],critical,Soft,0,0
-Hydraulic_limit,Willow,Seedling,Depth,F37BLow,High,ROB,18.4,cm,Q >= newx3a[1] & Q <= newx3a[2],critical,Soft,0,0
-Q_limit,Willow,Seedling,Shear,F37BLow,Low,LOB,3369.26,pa,Q <= newx1a,critical,Soft,100,67.4028536733455
-Q_limit,Willow,Seedling,Shear,F37BLow,Low,MC,3369.26,pa,Q <= newx1a,critical,Soft,100,68.1596409055425
-Q_limit,Willow,Seedling,Shear,F37BLow,Low,ROB,3369.26,pa,Q <= newx1a,critical,Soft,100,67.397432561367
-Q_limit,Willow,Seedling,Shear,F37BLow,Medium,LOB,3369.26,pa,Q <= newx2a,critical,Soft,100,67.4028536733455
-Q_limit,Willow,Seedling,Shear,F37BLow,Medium,MC,3369.26,pa,Q <= newx2a,critical,Soft,100,68.1596409055425
-Q_limit,Willow,Seedling,Shear,F37BLow,Medium,ROB,3369.26,pa,Q <= newx2a,critical,Soft,100,67.397432561367
-Q_limit,Willow,Seedling,Shear,F37BLow,High,LOB,2288.64,pa,Q <= newx3a[1] & Q >= newx3a[2],critical,Soft,100,67.4028536733455
-Q_limit,Willow,Seedling,Shear,F37BLow,High,MC,1655.43,pa,Q <= newx3a[1] & Q >= newx3a[2],critical,Soft,100,68.1596409055425
-Q_limit,Willow,Seedling,Shear,F37BLow,High,ROB,2471.64,pa,Q <= newx3a[1] & Q >= newx3a[2],critical,Soft,100,67.397432561367
-Q_limit,Willow,Seedling,Shear,F37BLow,High,LOB,1.41,pa,Q <= newx3a[1] & Q >= newx3a[2],critical,Soft,100,67.4028536733455
-Q_limit,Willow,Seedling,Shear,F37BLow,High,MC,0.12,pa,Q <= newx3a[1] & Q >= newx3a[2],critical,Soft,100,68.1596409055425
-Q_limit,Willow,Seedling,Shear,F37BLow,High,ROB,1.44,pa,Q <= newx3a[1] & Q >= newx3a[2],critical,Soft,100,67.397432561367
-Hydraulic_limit,Willow,Seedling,Shear,F37BLow,Low,LOB,1.75,pa,Q <= newx1a,critical,Soft,100,67.4028536733455
-Hydraulic_limit,Willow,Seedling,Shear,F37BLow,Low,MC,5.8,pa,Q <= newx1a,critical,Soft,100,68.1596409055425
-Hydraulic_limit,Willow,Seedling,Shear,F37BLow,Low,ROB,5.51,pa,Q <= newx1a,critical,Soft,100,67.397432561367
-Hydraulic_limit,Willow,Seedling,Shear,F37BLow,Medium,LOB,1.75,pa,Q <= newx2a,critical,Soft,100,67.4028536733455
-Hydraulic_limit,Willow,Seedling,Shear,F37BLow,Medium,MC,5.8,pa,Q <= newx2a,critical,Soft,100,68.1596409055425
-Hydraulic_limit,Willow,Seedling,Shear,F37BLow,Medium,ROB,5.51,pa,Q <= newx2a,critical,Soft,100,67.397432561367
-Hydraulic_limit,Willow,Seedling,Shear,F37BLow,High,LOB,0.53,pa,Q <= newx3a[1] & Q >= newx3a[2],critical,Soft,100,67.4028536733455
-Hydraulic_limit,Willow,Seedling,Shear,F37BLow,High,MC,0.53,pa,Q <= newx3a[1] & Q >= newx3a[2],critical,Soft,100,68.1596409055425
-Hydraulic_limit,Willow,Seedling,Shear,F37BLow,High,ROB,0.53,pa,Q <= newx3a[1] & Q >= newx3a[2],critical,Soft,100,67.397432561367
-Hydraulic_limit,Willow,Seedling,Shear,F37BLow,High,LOB,0.53,pa,Q <= newx3a[1] & Q >= newx3a[2],critical,Soft,100,67.4028536733455
-Hydraulic_limit,Willow,Seedling,Shear,F37BLow,High,MC,0.53,pa,Q <= newx3a[1] & Q >= newx3a[2],critical,Soft,100,68.1596409055425
-Hydraulic_limit,Willow,Seedling,Shear,F37BLow,High,ROB,0.53,pa,Q <= newx3a[1] & Q >= newx3a[2],critical,Soft,100,67.397432561367
+Hydraulic_limit,Willow,Seedling,Depth,F37BLow,High,ROB,18.4,cm,Q <= newx3a,critical,Soft,100,99.9934946656258
+Hydraulic_limit,Willow,Seedling,Depth,F37BLow,High,ROB,18.4,cm,Q <= newx3a,critical,Soft,100,99.9934946656258
+Q_limit,Willow,Seedling,Shear,F37BLow,High,LOB,2288.64,pa,Q <= newx3a[1] & Q >= newx3a[2],critical,Soft,4.03005464480874,0.73618700667881
+Q_limit,Willow,Seedling,Shear,F37BLow,High,MC,1655.43,pa,Q <= newx3a[1] & Q >= newx3a[2],critical,Soft,6.94444444444444,1.49297423887588
+Q_limit,Willow,Seedling,Shear,F37BLow,High,ROB,2471.64,pa,Q <= newx3a[1] & Q >= newx3a[2],critical,Soft,4.00728597449909,0.73076589470032
+Q_limit,Willow,Seedling,Shear,F37BLow,High,LOB,1.41,pa,Q <= newx3a[1] & Q >= newx3a[2],critical,Soft,4.03005464480874,0.73618700667881
+Q_limit,Willow,Seedling,Shear,F37BLow,High,MC,0.12,pa,Q <= newx3a[1] & Q >= newx3a[2],critical,Soft,6.94444444444444,1.49297423887588
+Q_limit,Willow,Seedling,Shear,F37BLow,High,ROB,1.44,pa,Q <= newx3a[1] & Q >= newx3a[2],critical,Soft,4.00728597449909,0.73076589470032
+Hydraulic_limit,Willow,Seedling,Shear,F37BLow,High,LOB,0.53,pa,Q <= newx3a[1] & Q >= newx3a[2],critical,Soft,4.03005464480874,0.73618700667881
+Hydraulic_limit,Willow,Seedling,Shear,F37BLow,High,MC,0.53,pa,Q <= newx3a[1] & Q >= newx3a[2],critical,Soft,6.94444444444444,1.49297423887588
+Hydraulic_limit,Willow,Seedling,Shear,F37BLow,High,ROB,0.53,pa,Q <= newx3a[1] & Q >= newx3a[2],critical,Soft,4.00728597449909,0.73076589470032
+Hydraulic_limit,Willow,Seedling,Shear,F37BLow,High,LOB,0.53,pa,Q <= newx3a[1] & Q >= newx3a[2],critical,Soft,4.03005464480874,0.73618700667881
+Hydraulic_limit,Willow,Seedling,Shear,F37BLow,High,MC,0.53,pa,Q <= newx3a[1] & Q >= newx3a[2],critical,Soft,6.94444444444444,1.49297423887588
+Hydraulic_limit,Willow,Seedling,Shear,F37BLow,High,ROB,0.53,pa,Q <= newx3a[1] & Q >= newx3a[2],critical,Soft,4.00728597449909,0.73076589470032
 Q_limit,Willow,Seedling,Depth,F45B,Low,MC,671.1,cm,Q <= newx1a,critical,Concrete,100,99.9880735536473
 Q_limit,Willow,Seedling,Depth,F45B,Medium,MC,487.71,cm,Q <= newx2a,critical,Concrete,100,99.9880735536473
 Q_limit,Willow,Seedling,Depth,F45B,High,MC,269.67,cm,Q <= newx3a,critical,Concrete,100,99.9880735536473
 Hydraulic_limit,Willow,Seedling,Depth,F45B,Low,MC,33.95,cm,Q <= newx1a,critical,Concrete,100,99.9880735536473
 Hydraulic_limit,Willow,Seedling,Depth,F45B,Medium,MC,27.52,cm,Q <= newx2a,critical,Concrete,100,99.9880735536473
 Hydraulic_limit,Willow,Seedling,Depth,F45B,High,MC,18.4,cm,Q <= newx3a,critical,Concrete,100,99.9880735536473
-Q_limit,Willow,Seedling,Shear,F45B,Low,MC,27365.46,pa,Q <= newx1a,critical,Concrete,100,97.9421458929656
-Q_limit,Willow,Seedling,Shear,F45B,Medium,MC,16075.15,pa,Q <= newx2a,critical,Concrete,100,97.9421458929656
-Q_limit,Willow,Seedling,Shear,F45B,High,MC,0.67,pa,Q <= newx3a,critical,Concrete,100,97.9421458929656
-Hydraulic_limit,Willow,Seedling,Shear,F45B,Low,MC,38.12,pa,Q <= newx1a,critical,Concrete,100,97.9421458929656
-Hydraulic_limit,Willow,Seedling,Shear,F45B,Medium,MC,21.63,pa,Q <= newx2a,critical,Concrete,100,97.9421458929656
-Hydraulic_limit,Willow,Seedling,Shear,F45B,High,MC,0.53,pa,Q <= newx3a,critical,Concrete,100,97.9421458929656
-Q_limit,Willow,Seedling,Depth,F57C,Low,LOB,101.75,cm,Q >= newx1a[1] & Q <= newx1a[2],critical,Soft,0,0
-Q_limit,Willow,Seedling,Depth,F57C,Low,MC,215.11,cm,Q <= newx1a,critical,Soft,99.7040072859745,32.9224130453639
+Q_limit,Willow,Seedling,Shear,F45B,Medium,MC,16075.15,pa,Q <= newx2a,critical,Concrete,100,64.6088125596322
+Q_limit,Willow,Seedling,Shear,F45B,High,MC,0.67,pa,Q <= newx3a,critical,Concrete,100,64.6088125596322
+Hydraulic_limit,Willow,Seedling,Shear,F45B,Medium,MC,21.63,pa,Q <= newx2a,critical,Concrete,100,64.6088125596322
+Hydraulic_limit,Willow,Seedling,Shear,F45B,High,MC,0.53,pa,Q <= newx3a,critical,Concrete,100,64.6088125596322
+Q_limit,Willow,Seedling,Depth,F57C,Low,LOB,101.75,cm,Q <= newx1a,critical,Soft,98.4061930783242,25.7253447827218
+Q_limit,Willow,Seedling,Depth,F57C,Low,MC,215.11,cm,Q <= newx1a,critical,Soft,99.7040072859745,65.6008760516957
 Q_limit,Willow,Seedling,Depth,F57C,Low,ROB,1295.52,cm,Q <= newx1a,critical,Soft,99.9544626593807,99.8048399687744
-Q_limit,Willow,Seedling,Depth,F57C,Low,LOB,43.51,cm,Q >= newx1a[1] & Q <= newx1a[2],critical,Soft,0,0
-Q_limit,Willow,Seedling,Depth,F57C,Medium,LOB,26.23,cm,Q <= newx2a,critical,Soft,0,0
-Q_limit,Willow,Seedling,Depth,F57C,Medium,MC,159.65,cm,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,99.7040072859745,32.9224130453639
+Q_limit,Willow,Seedling,Depth,F57C,Medium,LOB,26.23,cm,Q <= newx2a,critical,Soft,98.4061930783242,25.7253447827218
+Q_limit,Willow,Seedling,Depth,F57C,Medium,MC,159.65,cm,Q <= newx2a,critical,Soft,99.7040072859745,65.6008760516957
 Q_limit,Willow,Seedling,Depth,F57C,Medium,ROB,1129.32,cm,Q <= newx2a,critical,Soft,99.9544626593807,99.8048399687744
-Q_limit,Willow,Seedling,Depth,F57C,Medium,MC,83.4,cm,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,99.7040072859745,32.9224130453639
-Q_limit,Willow,Seedling,Depth,F57C,High,LOB,26.23,cm,Q <= newx3a,critical,Soft,0,0
-Q_limit,Willow,Seedling,Depth,F57C,High,MC,39.57,cm,Q <= newx3a,critical,Soft,99.7040072859745,32.9224130453639
+Q_limit,Willow,Seedling,Depth,F57C,High,LOB,26.23,cm,Q <= newx3a,critical,Soft,98.4061930783242,25.7253447827218
+Q_limit,Willow,Seedling,Depth,F57C,High,MC,39.57,cm,Q <= newx3a,critical,Soft,99.7040072859745,65.6008760516957
 Q_limit,Willow,Seedling,Depth,F57C,High,ROB,917.76,cm,Q <= newx3a,critical,Soft,99.9544626593807,99.8048399687744
-Hydraulic_limit,Willow,Seedling,Depth,F57C,Low,LOB,33.95,cm,Q >= newx1a[1] & Q <= newx1a[2],critical,Soft,0,0
-Hydraulic_limit,Willow,Seedling,Depth,F57C,Low,MC,33.95,cm,Q <= newx1a,critical,Soft,99.7040072859745,32.9224130453639
+Hydraulic_limit,Willow,Seedling,Depth,F57C,Low,LOB,33.95,cm,Q <= newx1a,critical,Soft,98.4061930783242,25.7253447827218
+Hydraulic_limit,Willow,Seedling,Depth,F57C,Low,MC,33.95,cm,Q <= newx1a,critical,Soft,99.7040072859745,65.6008760516957
 Hydraulic_limit,Willow,Seedling,Depth,F57C,Low,ROB,33.95,cm,Q <= newx1a,critical,Soft,99.9544626593807,99.8048399687744
-Hydraulic_limit,Willow,Seedling,Depth,F57C,Low,LOB,33.95,cm,Q >= newx1a[1] & Q <= newx1a[2],critical,Soft,0,0
-Hydraulic_limit,Willow,Seedling,Depth,F57C,Medium,LOB,29.26,cm,Q <= newx2a,critical,Soft,0,0
-Hydraulic_limit,Willow,Seedling,Depth,F57C,Medium,MC,27.52,cm,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,99.7040072859745,32.9224130453639
+Hydraulic_limit,Willow,Seedling,Depth,F57C,Low,LOB,33.95,cm,Q <= newx1a,critical,Soft,98.4061930783242,25.7253447827218
+Hydraulic_limit,Willow,Seedling,Depth,F57C,Medium,LOB,29.26,cm,Q <= newx2a,critical,Soft,98.4061930783242,25.7253447827218
+Hydraulic_limit,Willow,Seedling,Depth,F57C,Medium,MC,27.52,cm,Q <= newx2a,critical,Soft,99.7040072859745,65.6008760516957
 Hydraulic_limit,Willow,Seedling,Depth,F57C,Medium,ROB,27.52,cm,Q <= newx2a,critical,Soft,99.9544626593807,99.8048399687744
-Hydraulic_limit,Willow,Seedling,Depth,F57C,Medium,MC,27.52,cm,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,99.7040072859745,32.9224130453639
-Hydraulic_limit,Willow,Seedling,Depth,F57C,High,LOB,29.26,cm,Q <= newx3a,critical,Soft,0,0
-Hydraulic_limit,Willow,Seedling,Depth,F57C,High,MC,18.4,cm,Q <= newx3a,critical,Soft,99.7040072859745,32.9224130453639
+Hydraulic_limit,Willow,Seedling,Depth,F57C,Medium,MC,27.52,cm,Q <= newx2a,critical,Soft,99.7040072859745,65.6008760516957
+Hydraulic_limit,Willow,Seedling,Depth,F57C,High,LOB,29.26,cm,Q <= newx3a,critical,Soft,98.4061930783242,25.7253447827218
+Hydraulic_limit,Willow,Seedling,Depth,F57C,High,MC,18.4,cm,Q <= newx3a,critical,Soft,99.7040072859745,65.6008760516957
 Hydraulic_limit,Willow,Seedling,Depth,F57C,High,ROB,18.4,cm,Q <= newx3a,critical,Soft,99.9544626593807,99.8048399687744
 Q_limit,Willow,Seedling,Shear,F57C,Low,LOB,2391.58,pa,Q <= newx1a,critical,Soft,100,66.5495706479313
 Q_limit,Willow,Seedling,Shear,F57C,Low,MC,1988.28,pa,Q <= newx1a,critical,Soft,100,66.5343915343915
@@ -4325,24 +4114,23 @@ Hydraulic_limit,Willow,Seedling,Shear,F57C,High,MC,3.56,pa,Q <= newx3a,critical,
 Hydraulic_limit,Willow,Seedling,Shear,F57C,High,ROB,0.56,pa,Q <= newx3a,critical,Soft,100,66.6319715500043
 Q_limit,Willow,Seedling,Depth,GLEN,Low,LOB,131.81,cm,Q <= newx1a,critical,Soft,99.5446265938069,32.9571081620262
 Q_limit,Willow,Seedling,Depth,GLEN,Low,MC,706.23,cm,Q <= newx1a,critical,Soft,99.9089253187614,99.687743950039
-Q_limit,Willow,Seedling,Depth,GLEN,Low,ROB,325.37,cm,Q <= newx1a,critical,Soft,99.8406193078324,65.6865296209559
+Q_limit,Willow,Seedling,Depth,GLEN,Low,ROB,325.37,cm,Q <= newx1a,critical,Soft,99.8406193078324,98.6848382340186
 Q_limit,Willow,Seedling,Depth,GLEN,Medium,LOB,53.9,cm,Q <= newx2a,critical,Soft,99.5446265938069,32.9571081620262
 Q_limit,Willow,Seedling,Depth,GLEN,Medium,MC,594.73,cm,Q <= newx2a,critical,Soft,99.9089253187614,99.687743950039
-Q_limit,Willow,Seedling,Depth,GLEN,Medium,ROB,250.49,cm,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,99.8406193078324,65.6865296209559
-Q_limit,Willow,Seedling,Depth,GLEN,Medium,ROB,195.56,cm,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,99.8406193078324,65.6865296209559
+Q_limit,Willow,Seedling,Depth,GLEN,Medium,ROB,250.49,cm,Q <= newx2a,critical,Soft,99.8406193078324,98.6848382340186
 Q_limit,Willow,Seedling,Depth,GLEN,High,LOB,22.98,cm,Q <= newx3a,critical,Soft,99.5446265938069,32.9571081620262
 Q_limit,Willow,Seedling,Depth,GLEN,High,MC,452.61,cm,Q <= newx3a,critical,Soft,99.9089253187614,99.687743950039
-Q_limit,Willow,Seedling,Depth,GLEN,High,ROB,149.54,cm,Q <= newx3a,critical,Soft,99.8406193078324,65.6865296209559
+Q_limit,Willow,Seedling,Depth,GLEN,High,ROB,149.54,cm,Q <= newx3a,critical,Soft,99.8406193078324,98.6848382340186
 Hydraulic_limit,Willow,Seedling,Depth,GLEN,Low,LOB,33.95,cm,Q <= newx1a,critical,Soft,99.5446265938069,32.9571081620262
 Hydraulic_limit,Willow,Seedling,Depth,GLEN,Low,MC,33.95,cm,Q <= newx1a,critical,Soft,99.9089253187614,99.687743950039
-Hydraulic_limit,Willow,Seedling,Depth,GLEN,Low,ROB,33.95,cm,Q <= newx1a,critical,Soft,99.8406193078324,65.6865296209559
+Hydraulic_limit,Willow,Seedling,Depth,GLEN,Low,ROB,33.95,cm,Q <= newx1a,critical,Soft,99.8406193078324,98.6848382340186
 Hydraulic_limit,Willow,Seedling,Depth,GLEN,Medium,LOB,27.52,cm,Q <= newx2a,critical,Soft,99.5446265938069,32.9571081620262
 Hydraulic_limit,Willow,Seedling,Depth,GLEN,Medium,MC,27.52,cm,Q <= newx2a,critical,Soft,99.9089253187614,99.687743950039
-Hydraulic_limit,Willow,Seedling,Depth,GLEN,Medium,ROB,27.52,cm,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,99.8406193078324,65.6865296209559
-Hydraulic_limit,Willow,Seedling,Depth,GLEN,Medium,ROB,27.52,cm,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,99.8406193078324,65.6865296209559
+Hydraulic_limit,Willow,Seedling,Depth,GLEN,Medium,ROB,27.52,cm,Q <= newx2a,critical,Soft,99.8406193078324,98.6848382340186
+Hydraulic_limit,Willow,Seedling,Depth,GLEN,Medium,ROB,27.52,cm,Q <= newx2a,critical,Soft,99.8406193078324,98.6848382340186
 Hydraulic_limit,Willow,Seedling,Depth,GLEN,High,LOB,23.05,cm,Q <= newx3a,critical,Soft,99.5446265938069,32.9571081620262
 Hydraulic_limit,Willow,Seedling,Depth,GLEN,High,MC,18.4,cm,Q <= newx3a,critical,Soft,99.9089253187614,99.687743950039
-Hydraulic_limit,Willow,Seedling,Depth,GLEN,High,ROB,18.4,cm,Q <= newx3a,critical,Soft,99.8406193078324,65.6865296209559
+Hydraulic_limit,Willow,Seedling,Depth,GLEN,High,ROB,18.4,cm,Q <= newx3a,critical,Soft,99.8406193078324,98.6848382340186
 Q_limit,Willow,Seedling,Shear,GLEN,Low,LOB,4993.09,pa,Q <= newx1a,critical,Soft,100,66.6026975453205
 Q_limit,Willow,Seedling,Shear,GLEN,Low,MC,7527.82,pa,Q <= newx1a,critical,Soft,100,66.6384768843785
 Q_limit,Willow,Seedling,Shear,GLEN,Low,ROB,7732.94,pa,Q <= newx1a,critical,Soft,100,66.635224217191407
@@ -4367,12 +4155,10 @@ Q_limit,Willow,Seedling,Depth,LA1,High,MC,62.58,cm,Q <= newx3a,critical,Concrete
 Hydraulic_limit,Willow,Seedling,Depth,LA1,Low,MC,33.95,cm,Q <= newx1a,critical,Concrete,79.2805100182149,15.4523375834851
 Hydraulic_limit,Willow,Seedling,Depth,LA1,Medium,MC,27.52,cm,Q <= newx2a,critical,Concrete,79.2805100182149,15.4523375834851
 Hydraulic_limit,Willow,Seedling,Depth,LA1,High,MC,26.54,cm,Q <= newx3a,critical,Concrete,79.2805100182149,15.4523375834851
-Q_limit,Willow,Seedling,Shear,LA1,Low,MC,53690.66,pa,Q <= newx1a,critical,Concrete,100,66.6644982218753
-Q_limit,Willow,Seedling,Shear,LA1,Medium,MC,19964.82,pa,Q <= newx2a,critical,Concrete,100,66.6644982218753
-Q_limit,Willow,Seedling,Shear,LA1,High,MC,62.58,pa,Q <= newx3a,critical,Concrete,100,66.6644982218753
-Hydraulic_limit,Willow,Seedling,Shear,LA1,Low,MC,37.31,pa,Q <= newx1a,critical,Concrete,100,66.6644982218753
-Hydraulic_limit,Willow,Seedling,Shear,LA1,Medium,MC,21.63,pa,Q <= newx2a,critical,Concrete,100,66.6644982218753
-Hydraulic_limit,Willow,Seedling,Shear,LA1,High,MC,1.31,pa,Q <= newx3a,critical,Concrete,100,66.6644982218753
+Q_limit,Willow,Seedling,Shear,LA1,Medium,MC,19964.82,pa,Q <= newx2a,critical,Concrete,100,33.3311648885419
+Q_limit,Willow,Seedling,Shear,LA1,High,MC,62.58,pa,Q <= newx3a,critical,Concrete,100,33.3311648885419
+Hydraulic_limit,Willow,Seedling,Shear,LA1,Medium,MC,21.63,pa,Q <= newx2a,critical,Concrete,100,33.3311648885419
+Hydraulic_limit,Willow,Seedling,Shear,LA1,High,MC,1.31,pa,Q <= newx3a,critical,Concrete,100,33.3311648885419
 Q_limit,Willow,Seedling,Depth,LA11,Low,LOB,570.88,cm,Q <= newx1a,critical,Soft,99.8861566484517,99.5413739266198
 Q_limit,Willow,Seedling,Depth,LA11,Low,MC,125.85,cm,Q <= newx1a,critical,Soft,99.4990892531876,44.4184231069477
 Q_limit,Willow,Seedling,Depth,LA11,Low,ROB,984.02,cm,Q <= newx1a,critical,Soft,99.9544626593807,99.7658079625293
@@ -4417,33 +4203,30 @@ Q_limit,Willow,Seedling,Depth,LA13,High,MC,736.15,cm,Q <= newx3a,critical,Concre
 Hydraulic_limit,Willow,Seedling,Depth,LA13,Low,MC,33.95,cm,Q <= newx1a,critical,Concrete,100,99.8471246422066
 Hydraulic_limit,Willow,Seedling,Depth,LA13,Medium,MC,27.52,cm,Q <= newx2a,critical,Concrete,100,99.8471246422066
 Hydraulic_limit,Willow,Seedling,Depth,LA13,High,MC,18.4,cm,Q <= newx3a,critical,Concrete,100,99.8471246422066
-Q_limit,Willow,Seedling,Shear,LA13,Low,MC,40486.03,pa,Q <= newx1a,critical,Concrete,100,33.334417555729
-Q_limit,Willow,Seedling,Shear,LA13,Medium,MC,6711.21,pa,Q <= newx2a[1] & Q >= newx2a[2],critical,Concrete,100,33.334417555729
-Q_limit,Willow,Seedling,Shear,LA13,Medium,MC,6001.6,pa,Q <= newx2a[1] & Q >= newx2a[2],critical,Concrete,100,33.334417555729
-Q_limit,Willow,Seedling,Shear,LA13,High,MC,12.44,pa,Q <= newx3a,critical,Concrete,100,33.334417555729
-Hydraulic_limit,Willow,Seedling,Shear,LA13,Low,MC,22.38,pa,Q <= newx1a,critical,Concrete,100,33.334417555729
-Hydraulic_limit,Willow,Seedling,Shear,LA13,Medium,MC,21.63,pa,Q <= newx2a[1] & Q >= newx2a[2],critical,Concrete,100,33.334417555729
-Hydraulic_limit,Willow,Seedling,Shear,LA13,High,MC,0.55,pa,Q <= newx3a,critical,Concrete,100,33.334417555729
+Q_limit,Willow,Seedling,Shear,LA13,Medium,MC,6711.21,pa,Q <= newx2a[1] & Q >= newx2a[2],critical,Concrete,0.0227686703096539,0.0010842223956978
+Q_limit,Willow,Seedling,Shear,LA13,Medium,MC,6001.6,pa,Q <= newx2a[1] & Q >= newx2a[2],critical,Concrete,0.0227686703096539,0.0010842223956978
+Q_limit,Willow,Seedling,Shear,LA13,High,MC,12.44,pa,Q <= newx3a,critical,Concrete,0.0227686703096539,0.0010842223956978
+Hydraulic_limit,Willow,Seedling,Shear,LA13,Medium,MC,21.63,pa,Q <= newx2a[1] & Q >= newx2a[2],critical,Concrete,0.0227686703096539,0.0010842223956978
+Hydraulic_limit,Willow,Seedling,Shear,LA13,High,MC,0.55,pa,Q <= newx3a,critical,Concrete,0.0227686703096539,0.0010842223956978
 Q_limit,Willow,Seedling,Depth,LA14,Low,LOB,356.04,cm,Q <= newx1a,critical,Soft,99.8861566484517,99.1521380865643
 Q_limit,Willow,Seedling,Depth,LA14,Low,MC,985.62,cm,Q <= newx1a,critical,Soft,99.9544626593807,99.7950819672131
-Q_limit,Willow,Seedling,Depth,LA14,Low,ROB,166.38,cm,Q <= newx1a,critical,Soft,99.7267759562842,32.9278341573424
+Q_limit,Willow,Seedling,Depth,LA14,Low,ROB,166.38,cm,Q <= newx1a,critical,Soft,99.7267759562842,65.3081360048573
 Q_limit,Willow,Seedling,Depth,LA14,Medium,LOB,270.63,cm,Q <= newx2a,critical,Soft,99.8861566484517,99.1521380865643
 Q_limit,Willow,Seedling,Depth,LA14,Medium,MC,841.17,cm,Q <= newx2a,critical,Soft,99.9544626593807,99.7950819672131
-Q_limit,Willow,Seedling,Depth,LA14,Medium,ROB,109.57,cm,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,99.7267759562842,32.9278341573424
-Q_limit,Willow,Seedling,Depth,LA14,Medium,ROB,90.48,cm,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,99.7267759562842,32.9278341573424
+Q_limit,Willow,Seedling,Depth,LA14,Medium,ROB,109.57,cm,Q <= newx2a,critical,Soft,99.7267759562842,65.3081360048573
 Q_limit,Willow,Seedling,Depth,LA14,High,LOB,169.33,cm,Q <= newx3a,critical,Soft,99.8861566484517,99.1521380865643
 Q_limit,Willow,Seedling,Depth,LA14,High,MC,655.5,cm,Q <= newx3a,critical,Soft,99.9544626593807,99.7950819672131
-Q_limit,Willow,Seedling,Depth,LA14,High,ROB,21.16,cm,Q <= newx3a,critical,Soft,99.7267759562842,32.9278341573424
+Q_limit,Willow,Seedling,Depth,LA14,High,ROB,21.16,cm,Q <= newx3a,critical,Soft,99.7267759562842,65.3081360048573
 Hydraulic_limit,Willow,Seedling,Depth,LA14,Low,LOB,33.95,cm,Q <= newx1a,critical,Soft,99.8861566484517,99.1521380865643
 Hydraulic_limit,Willow,Seedling,Depth,LA14,Low,MC,33.95,cm,Q <= newx1a,critical,Soft,99.9544626593807,99.7950819672131
-Hydraulic_limit,Willow,Seedling,Depth,LA14,Low,ROB,33.95,cm,Q <= newx1a,critical,Soft,99.7267759562842,32.9278341573424
+Hydraulic_limit,Willow,Seedling,Depth,LA14,Low,ROB,33.95,cm,Q <= newx1a,critical,Soft,99.7267759562842,65.3081360048573
 Hydraulic_limit,Willow,Seedling,Depth,LA14,Medium,LOB,27.52,cm,Q <= newx2a,critical,Soft,99.8861566484517,99.1521380865643
 Hydraulic_limit,Willow,Seedling,Depth,LA14,Medium,MC,27.52,cm,Q <= newx2a,critical,Soft,99.9544626593807,99.7950819672131
-Hydraulic_limit,Willow,Seedling,Depth,LA14,Medium,ROB,27.52,cm,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,99.7267759562842,32.9278341573424
-Hydraulic_limit,Willow,Seedling,Depth,LA14,Medium,ROB,27.52,cm,Q >= newx2a[1] & Q <= newx2a[2],critical,Soft,99.7267759562842,32.9278341573424
+Hydraulic_limit,Willow,Seedling,Depth,LA14,Medium,ROB,27.52,cm,Q <= newx2a,critical,Soft,99.7267759562842,65.3081360048573
+Hydraulic_limit,Willow,Seedling,Depth,LA14,Medium,ROB,27.52,cm,Q <= newx2a,critical,Soft,99.7267759562842,65.3081360048573
 Hydraulic_limit,Willow,Seedling,Depth,LA14,High,LOB,18.4,cm,Q <= newx3a,critical,Soft,99.8861566484517,99.1521380865643
 Hydraulic_limit,Willow,Seedling,Depth,LA14,High,MC,18.4,cm,Q <= newx3a,critical,Soft,99.9544626593807,99.7950819672131
-Hydraulic_limit,Willow,Seedling,Depth,LA14,High,ROB,18.4,cm,Q <= newx3a,critical,Soft,99.7267759562842,32.9278341573424
+Hydraulic_limit,Willow,Seedling,Depth,LA14,High,ROB,18.4,cm,Q <= newx3a,critical,Soft,99.7267759562842,65.3081360048573
 Q_limit,Willow,Seedling,Shear,LA14,Low,LOB,862.67,pa,Q >= newx1a[1] & Q <= newx1a[2],critical,Soft,98.9071038251366,25.8034087952121
 Q_limit,Willow,Seedling,Shear,LA14,Low,MC,2365.4,pa,Q >= newx1a[1] & Q <= newx1a[2],critical,Soft,0.0227686703096539,0.0010842223956978
 Q_limit,Willow,Seedling,Shear,LA14,Low,ROB,667.69,pa,Q <= newx1a,critical,Soft,99.931693989071,33.2899644375054
@@ -4484,24 +4267,20 @@ Hydraulic_limit,Willow,Seedling,Depth,LA2,Medium,ROB,27.52,cm,Q <= newx2a,critic
 Hydraulic_limit,Willow,Seedling,Depth,LA2,High,LOB,18.4,cm,Q <= newx3a,critical,Soft,100,99.8883250932431
 Hydraulic_limit,Willow,Seedling,Depth,LA2,High,MC,134.8,cm,Q <= newx3a,critical,Soft,0,0
 Hydraulic_limit,Willow,Seedling,Depth,LA2,High,ROB,18.4,cm,Q <= newx3a,critical,Soft,99.9772313296903,99.7712290745078
-Q_limit,Willow,Seedling,Shear,LA2,Low,LOB,50922.74,pa,Q <= newx1a,critical,Soft,100,99.827608639084
 Q_limit,Willow,Seedling,Shear,LA2,Low,MC,37293.9,pa,Q <= newx1a,critical,Soft,100,99.2768236620696
-Q_limit,Willow,Seedling,Shear,LA2,Low,ROB,50922.74,pa,Q <= newx1a,critical,Soft,100,99.8254401942927
-Q_limit,Willow,Seedling,Shear,LA2,Medium,LOB,34338.65,pa,Q <= newx2a,critical,Soft,100,99.827608639084
+Q_limit,Willow,Seedling,Shear,LA2,Medium,LOB,34338.65,pa,Q <= newx2a,critical,Soft,100,66.4942753057507
 Q_limit,Willow,Seedling,Shear,LA2,Medium,MC,11696.44,pa,Q <= newx2a,critical,Soft,100,99.2768236620696
-Q_limit,Willow,Seedling,Shear,LA2,Medium,ROB,34174.09,pa,Q <= newx2a,critical,Soft,100,99.8254401942927
-Q_limit,Willow,Seedling,Shear,LA2,High,LOB,770.3,pa,Q <= newx3a,critical,Soft,100,99.827608639084
+Q_limit,Willow,Seedling,Shear,LA2,Medium,ROB,34174.09,pa,Q <= newx2a,critical,Soft,100,66.4921068609593
+Q_limit,Willow,Seedling,Shear,LA2,High,LOB,770.3,pa,Q <= newx3a,critical,Soft,100,66.4942753057507
 Q_limit,Willow,Seedling,Shear,LA2,High,MC,241.39,pa,Q <= newx3a,critical,Soft,100,99.2768236620696
-Q_limit,Willow,Seedling,Shear,LA2,High,ROB,759.33,pa,Q <= newx3a,critical,Soft,100,99.8254401942927
-Hydraulic_limit,Willow,Seedling,Shear,LA2,Low,LOB,30.5,pa,Q <= newx1a,critical,Soft,100,99.827608639084
+Q_limit,Willow,Seedling,Shear,LA2,High,ROB,759.33,pa,Q <= newx3a,critical,Soft,100,66.4921068609593
 Hydraulic_limit,Willow,Seedling,Shear,LA2,Low,MC,42.73,pa,Q <= newx1a,critical,Soft,100,99.2768236620696
-Hydraulic_limit,Willow,Seedling,Shear,LA2,Low,ROB,30.46,pa,Q <= newx1a,critical,Soft,100,99.8254401942927
-Hydraulic_limit,Willow,Seedling,Shear,LA2,Medium,LOB,21.63,pa,Q <= newx2a,critical,Soft,100,99.827608639084
+Hydraulic_limit,Willow,Seedling,Shear,LA2,Medium,LOB,21.63,pa,Q <= newx2a,critical,Soft,100,66.4942753057507
 Hydraulic_limit,Willow,Seedling,Shear,LA2,Medium,MC,21.63,pa,Q <= newx2a,critical,Soft,100,99.2768236620696
-Hydraulic_limit,Willow,Seedling,Shear,LA2,Medium,ROB,21.63,pa,Q <= newx2a,critical,Soft,100,99.8254401942927
-Hydraulic_limit,Willow,Seedling,Shear,LA2,High,LOB,0.53,pa,Q <= newx3a,critical,Soft,100,99.827608639084
+Hydraulic_limit,Willow,Seedling,Shear,LA2,Medium,ROB,21.63,pa,Q <= newx2a,critical,Soft,100,66.4921068609593
+Hydraulic_limit,Willow,Seedling,Shear,LA2,High,LOB,0.53,pa,Q <= newx3a,critical,Soft,100,66.4942753057507
 Hydraulic_limit,Willow,Seedling,Shear,LA2,High,MC,0.53,pa,Q <= newx3a,critical,Soft,100,99.2768236620696
-Hydraulic_limit,Willow,Seedling,Shear,LA2,High,ROB,0.53,pa,Q <= newx3a,critical,Soft,100,99.8254401942927
+Hydraulic_limit,Willow,Seedling,Shear,LA2,High,ROB,0.53,pa,Q <= newx3a,critical,Soft,100,66.4921068609593
 Q_limit,Willow,Seedling,Depth,LA20,Low,LOB,421.49,cm,Q <= newx1a,critical,Soft,99.9544626593807,99.8351981958539
 Q_limit,Willow,Seedling,Depth,LA20,Low,MC,33.72,cm,Q <= newx1a,critical,Soft,99.8178506375228,92.9753230982739
 Q_limit,Willow,Seedling,Depth,LA20,Low,ROB,426.4,cm,Q <= newx1a,critical,Soft,99.9544626593807,99.8362824182496
@@ -4520,44 +4299,31 @@ Hydraulic_limit,Willow,Seedling,Depth,LA20,Medium,ROB,27.52,cm,Q <= newx2a,criti
 Hydraulic_limit,Willow,Seedling,Depth,LA20,High,LOB,18.4,cm,Q <= newx3a,critical,Soft,99.9544626593807,99.8351981958539
 Hydraulic_limit,Willow,Seedling,Depth,LA20,High,MC,18.4,cm,Q <= newx3a,critical,Soft,99.8178506375228,92.9753230982739
 Hydraulic_limit,Willow,Seedling,Depth,LA20,High,ROB,18.4,cm,Q <= newx3a,critical,Soft,99.9544626593807,99.8362824182496
-Q_limit,Willow,Seedling,Shear,LA20,Low,LOB,16912.98,pa,Q <= newx1a,critical,Soft,100,99.931693989071
-Q_limit,Willow,Seedling,Shear,LA20,Low,MC,16912.98,pa,Q <= newx1a,critical,Soft,100,77.6834504293521
-Q_limit,Willow,Seedling,Shear,LA20,Low,ROB,16912.98,pa,Q <= newx1a,critical,Soft,100,99.9251886546969
-Q_limit,Willow,Seedling,Shear,LA20,Medium,LOB,16912.98,pa,Q <= newx2a,critical,Soft,100,99.931693989071
-Q_limit,Willow,Seedling,Shear,LA20,Medium,MC,16912.98,pa,Q <= newx2a,critical,Soft,100,77.6834504293521
-Q_limit,Willow,Seedling,Shear,LA20,Medium,ROB,16912.98,pa,Q <= newx2a,critical,Soft,100,99.9251886546969
-Q_limit,Willow,Seedling,Shear,LA20,High,LOB,221.22,pa,Q <= newx3a,critical,Soft,100,99.931693989071
-Q_limit,Willow,Seedling,Shear,LA20,High,MC,3.15,pa,Q <= newx3a,critical,Soft,100,77.6834504293521
-Q_limit,Willow,Seedling,Shear,LA20,High,ROB,202.73,pa,Q <= newx3a,critical,Soft,100,99.9251886546969
-Hydraulic_limit,Willow,Seedling,Shear,LA20,Low,LOB,8.6,pa,Q <= newx1a,critical,Soft,100,99.931693989071
-Hydraulic_limit,Willow,Seedling,Shear,LA20,Low,MC,12.34,pa,Q <= newx1a,critical,Soft,100,77.6834504293521
-Hydraulic_limit,Willow,Seedling,Shear,LA20,Low,ROB,8.78,pa,Q <= newx1a,critical,Soft,100,99.9251886546969
-Hydraulic_limit,Willow,Seedling,Shear,LA20,Medium,LOB,8.6,pa,Q <= newx2a,critical,Soft,100,99.931693989071
-Hydraulic_limit,Willow,Seedling,Shear,LA20,Medium,MC,12.34,pa,Q <= newx2a,critical,Soft,100,77.6834504293521
-Hydraulic_limit,Willow,Seedling,Shear,LA20,Medium,ROB,8.78,pa,Q <= newx2a,critical,Soft,100,99.9251886546969
-Hydraulic_limit,Willow,Seedling,Shear,LA20,High,LOB,0.53,pa,Q <= newx3a,critical,Soft,100,99.931693989071
-Hydraulic_limit,Willow,Seedling,Shear,LA20,High,MC,0.53,pa,Q <= newx3a,critical,Soft,100,77.6834504293521
-Hydraulic_limit,Willow,Seedling,Shear,LA20,High,ROB,0.53,pa,Q <= newx3a,critical,Soft,100,99.9251886546969
+Q_limit,Willow,Seedling,Shear,LA20,High,LOB,221.22,pa,Q <= newx3a,critical,Soft,99.931693989071,33.2650273224044
+Q_limit,Willow,Seedling,Shear,LA20,High,MC,3.15,pa,Q <= newx3a,critical,Soft,67.0992714025501,11.0167837626854
+Q_limit,Willow,Seedling,Shear,LA20,High,ROB,202.73,pa,Q <= newx3a,critical,Soft,99.931693989071,33.2585219880302
+Hydraulic_limit,Willow,Seedling,Shear,LA20,High,LOB,0.53,pa,Q <= newx3a,critical,Soft,99.931693989071,33.2650273224044
+Hydraulic_limit,Willow,Seedling,Shear,LA20,High,MC,0.53,pa,Q <= newx3a,critical,Soft,67.0992714025501,11.0167837626854
+Hydraulic_limit,Willow,Seedling,Shear,LA20,High,ROB,0.53,pa,Q <= newx3a,critical,Soft,99.931693989071,33.2585219880302
 Q_limit,Willow,Seedling,Depth,LA202,Low,LOB,9324.84,cm,Q <= newx1a,critical,Soft,100,99.9967473328129
-Q_limit,Willow,Seedling,Depth,LA202,Low,MC,178.78,cm,Q <= newx1a,critical,Soft,99.8861566484517,66.4097059588863
+Q_limit,Willow,Seedling,Depth,LA202,Low,MC,178.78,cm,Q <= newx1a,critical,Soft,99.8861566484517,99.4015092375748
 Q_limit,Willow,Seedling,Depth,LA202,Low,ROB,8962.65,cm,Q <= newx1a,critical,Soft,100,99.9967473328129
 Q_limit,Willow,Seedling,Depth,LA202,Medium,LOB,9004.09,cm,Q <= newx2a,critical,Soft,100,99.9967473328129
-Q_limit,Willow,Seedling,Depth,LA202,Medium,MC,119.2,cm,Q <= newx2a,critical,Soft,99.8861566484517,66.4097059588863
+Q_limit,Willow,Seedling,Depth,LA202,Medium,MC,119.2,cm,Q <= newx2a,critical,Soft,99.8861566484517,99.4015092375748
 Q_limit,Willow,Seedling,Depth,LA202,Medium,ROB,8646.64,cm,Q <= newx2a,critical,Soft,100,99.9967473328129
 Q_limit,Willow,Seedling,Depth,LA202,High,LOB,8558.63,cm,Q <= newx3a,critical,Soft,100,99.9967473328129
-Q_limit,Willow,Seedling,Depth,LA202,High,MC,54.44,cm,Q >= newx3a[1] & Q <= newx3a[2],critical,Soft,99.8861566484517,66.4097059588863
+Q_limit,Willow,Seedling,Depth,LA202,High,MC,54.44,cm,Q <= newx3a,critical,Soft,99.8861566484517,99.4015092375748
 Q_limit,Willow,Seedling,Depth,LA202,High,ROB,8204.97,cm,Q <= newx3a,critical,Soft,100,99.9967473328129
-Q_limit,Willow,Seedling,Depth,LA202,High,MC,16.72,cm,Q >= newx3a[1] & Q <= newx3a[2],critical,Soft,99.8861566484517,66.4097059588863
 Hydraulic_limit,Willow,Seedling,Depth,LA202,Low,LOB,33.9,cm,Q <= newx1a,critical,Soft,100,99.9967473328129
-Hydraulic_limit,Willow,Seedling,Depth,LA202,Low,MC,33.95,cm,Q <= newx1a,critical,Soft,99.8861566484517,66.4097059588863
+Hydraulic_limit,Willow,Seedling,Depth,LA202,Low,MC,33.95,cm,Q <= newx1a,critical,Soft,99.8861566484517,99.4015092375748
 Hydraulic_limit,Willow,Seedling,Depth,LA202,Low,ROB,33.94,cm,Q <= newx1a,critical,Soft,100,99.9967473328129
 Hydraulic_limit,Willow,Seedling,Depth,LA202,Medium,LOB,27.46,cm,Q <= newx2a,critical,Soft,100,99.9967473328129
-Hydraulic_limit,Willow,Seedling,Depth,LA202,Medium,MC,27.52,cm,Q <= newx2a,critical,Soft,99.8861566484517,66.4097059588863
+Hydraulic_limit,Willow,Seedling,Depth,LA202,Medium,MC,27.52,cm,Q <= newx2a,critical,Soft,99.8861566484517,99.4015092375748
 Hydraulic_limit,Willow,Seedling,Depth,LA202,Medium,ROB,27.51,cm,Q <= newx2a,critical,Soft,100,99.9967473328129
 Hydraulic_limit,Willow,Seedling,Depth,LA202,High,LOB,18.4,cm,Q <= newx3a,critical,Soft,100,99.9967473328129
-Hydraulic_limit,Willow,Seedling,Depth,LA202,High,MC,18.4,cm,Q >= newx3a[1] & Q <= newx3a[2],critical,Soft,99.8861566484517,66.4097059588863
+Hydraulic_limit,Willow,Seedling,Depth,LA202,High,MC,18.4,cm,Q <= newx3a,critical,Soft,99.8861566484517,99.4015092375748
 Hydraulic_limit,Willow,Seedling,Depth,LA202,High,ROB,18.4,cm,Q <= newx3a,critical,Soft,100,99.9967473328129
-Hydraulic_limit,Willow,Seedling,Depth,LA202,High,MC,18.4,cm,Q >= newx3a[1] & Q <= newx3a[2],critical,Soft,99.8861566484517,66.4097059588863
+Hydraulic_limit,Willow,Seedling,Depth,LA202,High,MC,18.4,cm,Q <= newx3a,critical,Soft,99.8861566484517,99.4015092375748
 Q_limit,Willow,Seedling,Shear,LA202,Low,LOB,3924.24,pa,Q <= newx1a,critical,Soft,100,99.095758521988
 Q_limit,Willow,Seedling,Shear,LA202,Low,MC,59.98,pa,Q <= newx1a,critical,Soft,99.7495446265938,65.0240697371845
 Q_limit,Willow,Seedling,Shear,LA202,Low,ROB,8484.47,pa,Q <= newx1a,critical,Soft,100,99.8330297510625
@@ -4577,43 +4343,36 @@ Hydraulic_limit,Willow,Seedling,Shear,LA202,High,LOB,0.53,pa,Q <= newx3a,critica
 Hydraulic_limit,Willow,Seedling,Shear,LA202,High,MC,0.53,pa,Q <= newx3a,critical,Soft,99.7495446265938,65.0240697371845
 Hydraulic_limit,Willow,Seedling,Shear,LA202,High,ROB,0.53,pa,Q <= newx3a,critical,Soft,100,99.8330297510625
 Q_limit,Willow,Seedling,Depth,LA3,Low,LOB,1470.08,cm,Q <= newx1a,critical,Soft,99.931693989071,99.6335328302542
-Q_limit,Willow,Seedling,Depth,LA3,Low,MC,122.93,cm,Q >= newx1a[1] & Q <= newx1a[2],critical,Soft,0,0
+Q_limit,Willow,Seedling,Depth,LA3,Low,MC,122.93,cm,Q <= newx1a,critical,Soft,54.2577413479053,8.86893919680805
 Q_limit,Willow,Seedling,Depth,LA3,Low,ROB,1470.08,cm,Q <= newx1a,critical,Soft,99.931693989071,99.6335328302542
-Q_limit,Willow,Seedling,Depth,LA3,Low,MC,95.61,cm,Q >= newx1a[1] & Q <= newx1a[2],critical,Soft,0,0
 Q_limit,Willow,Seedling,Depth,LA3,Medium,LOB,1082.55,cm,Q <= newx2a,critical,Soft,99.931693989071,99.6335328302542
-Q_limit,Willow,Seedling,Depth,LA3,Medium,MC,61.81,cm,Q <= newx2a,critical,Soft,0,0
+Q_limit,Willow,Seedling,Depth,LA3,Medium,MC,61.81,cm,Q <= newx2a,critical,Soft,54.2577413479053,8.86893919680805
 Q_limit,Willow,Seedling,Depth,LA3,Medium,ROB,1082.55,cm,Q <= newx2a,critical,Soft,99.931693989071,99.6335328302542
 Q_limit,Willow,Seedling,Depth,LA3,High,LOB,618.18,cm,Q <= newx3a,critical,Soft,99.931693989071,99.6335328302542
-Q_limit,Willow,Seedling,Depth,LA3,High,MC,61.81,cm,Q <= newx3a,critical,Soft,0,0
+Q_limit,Willow,Seedling,Depth,LA3,High,MC,61.81,cm,Q <= newx3a,critical,Soft,54.2577413479053,8.86893919680805
 Q_limit,Willow,Seedling,Depth,LA3,High,ROB,618.18,cm,Q <= newx3a,critical,Soft,99.931693989071,99.6335328302542
 Hydraulic_limit,Willow,Seedling,Depth,LA3,Low,LOB,33.95,cm,Q <= newx1a,critical,Soft,99.931693989071,99.6335328302542
-Hydraulic_limit,Willow,Seedling,Depth,LA3,Low,MC,33.95,cm,Q >= newx1a[1] & Q <= newx1a[2],critical,Soft,0,0
+Hydraulic_limit,Willow,Seedling,Depth,LA3,Low,MC,33.95,cm,Q <= newx1a,critical,Soft,54.2577413479053,8.86893919680805
 Hydraulic_limit,Willow,Seedling,Depth,LA3,Low,ROB,33.95,cm,Q <= newx1a,critical,Soft,99.931693989071,99.6335328302542
-Hydraulic_limit,Willow,Seedling,Depth,LA3,Low,MC,33.95,cm,Q >= newx1a[1] & Q <= newx1a[2],critical,Soft,0,0
+Hydraulic_limit,Willow,Seedling,Depth,LA3,Low,MC,33.95,cm,Q <= newx1a,critical,Soft,54.2577413479053,8.86893919680805
 Hydraulic_limit,Willow,Seedling,Depth,LA3,Medium,LOB,27.52,cm,Q <= newx2a,critical,Soft,99.931693989071,99.6335328302542
-Hydraulic_limit,Willow,Seedling,Depth,LA3,Medium,MC,28.41,cm,Q <= newx2a,critical,Soft,0,0
+Hydraulic_limit,Willow,Seedling,Depth,LA3,Medium,MC,28.41,cm,Q <= newx2a,critical,Soft,54.2577413479053,8.86893919680805
 Hydraulic_limit,Willow,Seedling,Depth,LA3,Medium,ROB,27.52,cm,Q <= newx2a,critical,Soft,99.931693989071,99.6335328302542
 Hydraulic_limit,Willow,Seedling,Depth,LA3,High,LOB,18.4,cm,Q <= newx3a,critical,Soft,99.931693989071,99.6335328302542
-Hydraulic_limit,Willow,Seedling,Depth,LA3,High,MC,28.41,cm,Q <= newx3a,critical,Soft,0,0
+Hydraulic_limit,Willow,Seedling,Depth,LA3,High,MC,28.41,cm,Q <= newx3a,critical,Soft,54.2577413479053,8.86893919680805
 Hydraulic_limit,Willow,Seedling,Depth,LA3,High,ROB,18.4,cm,Q <= newx3a,critical,Soft,99.931693989071,99.6335328302542
-Q_limit,Willow,Seedling,Shear,LA3,Low,LOB,47491.04,pa,Q <= newx1a,critical,Soft,100,89.2737878393616
-Q_limit,Willow,Seedling,Shear,LA3,Low,MC,47491.04,pa,Q <= newx1a,critical,Soft,100,66.6644982218753
-Q_limit,Willow,Seedling,Shear,LA3,Low,ROB,47491.04,pa,Q <= newx1a,critical,Soft,100,72.8521554341227
-Q_limit,Willow,Seedling,Shear,LA3,Medium,LOB,22491.26,pa,Q <= newx2a,critical,Soft,100,89.2737878393616
-Q_limit,Willow,Seedling,Shear,LA3,Medium,MC,11998.81,pa,Q <= newx2a,critical,Soft,100,66.6644982218753
-Q_limit,Willow,Seedling,Shear,LA3,Medium,ROB,17856.91,pa,Q <= newx2a,critical,Soft,100,72.8521554341227
-Q_limit,Willow,Seedling,Shear,LA3,High,LOB,144.29,pa,Q <= newx3a,critical,Soft,100,89.2737878393616
-Q_limit,Willow,Seedling,Shear,LA3,High,MC,61.81,pa,Q <= newx3a,critical,Soft,100,66.6644982218753
-Q_limit,Willow,Seedling,Shear,LA3,High,ROB,117.02,pa,Q <= newx3a,critical,Soft,100,72.8521554341227
-Hydraulic_limit,Willow,Seedling,Shear,LA3,Low,LOB,37.13,pa,Q <= newx1a,critical,Soft,100,89.2737878393616
-Hydraulic_limit,Willow,Seedling,Shear,LA3,Low,MC,40.78,pa,Q <= newx1a,critical,Soft,100,66.6644982218753
-Hydraulic_limit,Willow,Seedling,Shear,LA3,Low,ROB,34.76,pa,Q <= newx1a,critical,Soft,100,72.8521554341227
-Hydraulic_limit,Willow,Seedling,Shear,LA3,Medium,LOB,21.63,pa,Q <= newx2a,critical,Soft,100,89.2737878393616
-Hydraulic_limit,Willow,Seedling,Shear,LA3,Medium,MC,21.63,pa,Q <= newx2a,critical,Soft,100,66.6644982218753
-Hydraulic_limit,Willow,Seedling,Shear,LA3,Medium,ROB,21.63,pa,Q <= newx2a,critical,Soft,100,72.8521554341227
-Hydraulic_limit,Willow,Seedling,Shear,LA3,High,LOB,0.53,pa,Q <= newx3a,critical,Soft,100,89.2737878393616
-Hydraulic_limit,Willow,Seedling,Shear,LA3,High,MC,3.7,pa,Q <= newx3a,critical,Soft,100,66.6644982218753
-Hydraulic_limit,Willow,Seedling,Shear,LA3,High,ROB,0.53,pa,Q <= newx3a,critical,Soft,100,72.8521554341227
+Q_limit,Willow,Seedling,Shear,LA3,Medium,LOB,22491.26,pa,Q <= newx2a,critical,Soft,100,55.9404545060283
+Q_limit,Willow,Seedling,Shear,LA3,Medium,MC,11998.81,pa,Q <= newx2a,critical,Soft,100,33.3311648885419
+Q_limit,Willow,Seedling,Shear,LA3,Medium,ROB,17856.91,pa,Q <= newx2a,critical,Soft,100,39.5188221007893
+Q_limit,Willow,Seedling,Shear,LA3,High,LOB,144.29,pa,Q <= newx3a,critical,Soft,100,55.9404545060283
+Q_limit,Willow,Seedling,Shear,LA3,High,MC,61.81,pa,Q <= newx3a,critical,Soft,100,33.3311648885419
+Q_limit,Willow,Seedling,Shear,LA3,High,ROB,117.02,pa,Q <= newx3a,critical,Soft,100,39.5188221007893
+Hydraulic_limit,Willow,Seedling,Shear,LA3,Medium,LOB,21.63,pa,Q <= newx2a,critical,Soft,100,55.9404545060283
+Hydraulic_limit,Willow,Seedling,Shear,LA3,Medium,MC,21.63,pa,Q <= newx2a,critical,Soft,100,33.3311648885419
+Hydraulic_limit,Willow,Seedling,Shear,LA3,Medium,ROB,21.63,pa,Q <= newx2a,critical,Soft,100,39.5188221007893
+Hydraulic_limit,Willow,Seedling,Shear,LA3,High,LOB,0.53,pa,Q <= newx3a,critical,Soft,100,55.9404545060283
+Hydraulic_limit,Willow,Seedling,Shear,LA3,High,MC,3.7,pa,Q <= newx3a,critical,Soft,100,33.3311648885419
+Hydraulic_limit,Willow,Seedling,Shear,LA3,High,ROB,0.53,pa,Q <= newx3a,critical,Soft,100,39.5188221007893
 Q_limit,Willow,Seedling,Depth,LA8,Low,LOB,778.37,cm,Q <= newx1a,critical,Soft,99.8861566484517,99.2605603261341
 Q_limit,Willow,Seedling,Depth,LA8,Low,MC,203.22,cm,Q <= newx1a,critical,Soft,99.5901639344262,38.9159944487813
 Q_limit,Willow,Seedling,Depth,LA8,Low,ROB,778.37,cm,Q <= newx1a,critical,Soft,99.8861566484517,99.2605603261341
@@ -4632,24 +4391,12 @@ Hydraulic_limit,Willow,Seedling,Depth,LA8,Medium,ROB,27.52,cm,Q <= newx2a,critic
 Hydraulic_limit,Willow,Seedling,Depth,LA8,High,LOB,18.4,cm,Q <= newx3a,critical,Soft,99.8861566484517,99.2605603261341
 Hydraulic_limit,Willow,Seedling,Depth,LA8,High,MC,19.62,cm,Q <= newx3a,critical,Soft,99.5901639344262,38.9159944487813
 Hydraulic_limit,Willow,Seedling,Depth,LA8,High,ROB,18.4,cm,Q <= newx3a,critical,Soft,99.8861566484517,99.2605603261341
-Q_limit,Willow,Seedling,Shear,LA8,Low,LOB,42906.52,pa,Q <= newx1a,critical,Soft,100,66.6840142249978
-Q_limit,Willow,Seedling,Shear,LA8,Low,MC,42906.52,pa,Q <= newx1a,critical,Soft,100,66.6666666666667
-Q_limit,Willow,Seedling,Shear,LA8,Low,ROB,42906.52,pa,Q <= newx1a,critical,Soft,100,99.2616445485298
-Q_limit,Willow,Seedling,Shear,LA8,Medium,LOB,42906.52,pa,Q <= newx2a,critical,Soft,100,66.6840142249978
-Q_limit,Willow,Seedling,Shear,LA8,Medium,MC,42906.52,pa,Q <= newx2a,critical,Soft,100,66.6666666666667
-Q_limit,Willow,Seedling,Shear,LA8,Medium,ROB,42906.52,pa,Q <= newx2a,critical,Soft,100,99.2616445485298
-Q_limit,Willow,Seedling,Shear,LA8,High,LOB,63.06,pa,Q <= newx3a,critical,Soft,100,66.6840142249978
-Q_limit,Willow,Seedling,Shear,LA8,High,MC,46.51,pa,Q <= newx3a,critical,Soft,100,66.6666666666667
-Q_limit,Willow,Seedling,Shear,LA8,High,ROB,159.96,pa,Q <= newx3a,critical,Soft,100,99.2616445485298
-Hydraulic_limit,Willow,Seedling,Shear,LA8,Low,LOB,13.44,pa,Q <= newx1a,critical,Soft,100,66.6840142249978
-Hydraulic_limit,Willow,Seedling,Shear,LA8,Low,MC,16.41,pa,Q <= newx1a,critical,Soft,100,66.6666666666667
-Hydraulic_limit,Willow,Seedling,Shear,LA8,Low,ROB,13.23,pa,Q <= newx1a,critical,Soft,100,99.2616445485298
-Hydraulic_limit,Willow,Seedling,Shear,LA8,Medium,LOB,13.44,pa,Q <= newx2a,critical,Soft,100,66.6840142249978
-Hydraulic_limit,Willow,Seedling,Shear,LA8,Medium,MC,16.41,pa,Q <= newx2a,critical,Soft,100,66.6666666666667
-Hydraulic_limit,Willow,Seedling,Shear,LA8,Medium,ROB,13.23,pa,Q <= newx2a,critical,Soft,100,99.2616445485298
-Hydraulic_limit,Willow,Seedling,Shear,LA8,High,LOB,0.53,pa,Q <= newx3a,critical,Soft,100,66.6840142249978
-Hydraulic_limit,Willow,Seedling,Shear,LA8,High,MC,0.85,pa,Q <= newx3a,critical,Soft,100,66.6666666666667
-Hydraulic_limit,Willow,Seedling,Shear,LA8,High,ROB,0.53,pa,Q <= newx3a,critical,Soft,100,99.2616445485298
+Q_limit,Willow,Seedling,Shear,LA8,High,LOB,63.06,pa,Q <= newx3a,critical,Soft,0.136612021857924,0.017347558331165
+Q_limit,Willow,Seedling,Shear,LA8,High,MC,46.51,pa,Q <= newx3a,critical,Soft,0,0
+Q_limit,Willow,Seedling,Shear,LA8,High,ROB,159.96,pa,Q <= newx3a,critical,Soft,99.4990892531876,32.5949778818631
+Hydraulic_limit,Willow,Seedling,Shear,LA8,High,LOB,0.53,pa,Q <= newx3a,critical,Soft,0.136612021857924,0.017347558331165
+Hydraulic_limit,Willow,Seedling,Shear,LA8,High,MC,0.85,pa,Q <= newx3a,critical,Soft,0,0
+Hydraulic_limit,Willow,Seedling,Shear,LA8,High,ROB,0.53,pa,Q <= newx3a,critical,Soft,99.4990892531876,32.5949778818631
 Q_limit1,Willow,Adult,StreamPower,11101250,Thresh,LOB,8327.5,w,Q <= newx1a,NA,NA,NA,NA
 Q_limit1,Willow,Adult,StreamPower,11101250,Thresh,MC,8327.5,w,Q <= newx1a,NA,NA,NA,NA
 Q_limit1,Willow,Adult,StreamPower,11101250,Thresh,ROB,8327.5,w,Q <= newx1a,NA,NA,NA,NA

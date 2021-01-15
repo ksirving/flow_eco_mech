@@ -187,8 +187,8 @@ hy_lim1 <- c(min(new_data$depth_cm), max(new_data$depth_cm))
 
 ## medium
 if(max(new_data$prob_fit)<0.2) {
-  newx2a <- max(new_data$Q)
-  hy_lim2 <- max(new_data$depth_cm)
+  newx2a <- NA
+  hy_lim2 <- NA
 } else {
   newx2a <- RootLinearInterpolant(new_data$Q, new_data$prob_fit, 0.2)
   hy_lim2 <- RootLinearInterpolant(new_data$depth_cm, new_data$prob_fit, 0.2)
@@ -221,8 +221,8 @@ if(min(new_data$prob_fit)>0.3) {
 }
 
 if(max(new_data$prob_fit)<0.3) {
-  newx3a <- max(new_data$Q)
-  hy_lim2 <- max(new_data$depth_cm)
+  newx3a <- NA
+  hy_lim2 <- NA
 } else {
   newx3a <- newx3a
   hy_lim3 <- hy_lim3
@@ -588,8 +588,8 @@ hyd_vel<-reshape2::melt(hyd_vel, id=c("DateTime","Q", "node", "date_num"))
     }
     
     if(max(new_data$prob_fit)<0.1) {
-      newx1a <- max(new_data$Q)
-      hy_lim1 <- max(new_data$vel_m )
+      newx1a <- NA
+      hy_lim1 <- NA
     } else {
       newx1a <- newx1a
       hy_lim1 <- hy_lim1
@@ -605,8 +605,8 @@ hyd_vel<-reshape2::melt(hyd_vel, id=c("DateTime","Q", "node", "date_num"))
     
     ## medium
     if(max(new_data$prob_fit)<0.2) {
-      newx2a <- max(new_data$Q)
-      hy_lim2 <- max(new_data$vel_m )
+      newx2a <- NA
+      hy_lim2 <- NA
     } else {
       newx2a <- RootLinearInterpolant(new_data$Q, new_data$prob_fit, 0.2)
       hy_lim2 <- RootLinearInterpolant(new_data$vel_m , new_data$prob_fit, 0.2)
@@ -639,8 +639,8 @@ hyd_vel<-reshape2::melt(hyd_vel, id=c("DateTime","Q", "node", "date_num"))
     }
     
     if(max(new_data$prob_fit)<0.3) {
-      newx3a <- max(new_data$Q)
-      hy_lim2 <- max(new_data$vel_m )
+      newx3a <- NA
+      hy_lim2 <- NA
     } else {
       newx3a <- newx3a
       hy_lim3 <- hy_lim3

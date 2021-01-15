@@ -318,7 +318,7 @@ new_dataL <- mutate(new_dataL, position="LOB")
 file_name = paste("figures/Application_curves/Depth/", NodeName, "_SAS_adult_depth_prob_Q_thresholds_updated_hyd.png", sep ="")
 
 png(file_name, width = 500, height = 600)
-
+head(new_data)
 ggplot(new_data, aes(x = Q, y=prob_fit)) +
   geom_line(aes(group = variable, lty = variable)) +
   scale_linetype_manual(values= c("dotted", "solid", "dashed"))+

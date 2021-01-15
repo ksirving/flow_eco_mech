@@ -1,4 +1,4 @@
 "","Low","Medium","High","Position","Species","Life_Stage","Hydraulic","Node"
-"1","Q <= newx1a","Q <= newx2a","Q <= newx3a","shear_pa_MC","Willow","Seedling","Shear","F37BHigh"
+"1","Q < 0","Q < 0","Q <= newx3a","shear_pa_MC","Willow","Seedling","Shear","F37BHigh"
 "2",NA,NA,NA,"shear_pa_MC","Willow","Seedling","Shear","F37BHigh"
 "3",NA,NA,NA,"shear_pa_MC","Willow","Seedling","Shear","F37BHigh"

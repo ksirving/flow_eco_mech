@@ -189,8 +189,8 @@ for(n in 1: length(h)) {
     }
     
     if(max(new_data$prob_fit)<25) {
-      newx1a <- max(new_data$Q)
-      hy_lim1 <- max(new_data$depth_cm)
+      newx1a <- NA
+      hy_lim1 <- NA
     } else {
       newx1a <- newx1a
       hy_lim1 <- hy_lim1
@@ -206,8 +206,8 @@ for(n in 1: length(h)) {
     
     ## medium
     if(max(new_data$prob_fit)<50) {
-      newx2a <- max(new_data$Q)
-      hy_lim2 <- max(new_data$depth_cm)
+      newx2a <- NA
+      hy_lim2 <- NA
     } else {
       newx2a <- RootLinearInterpolant(new_data$Q, new_data$prob_fit, 50)
       hy_lim2 <- RootLinearInterpolant(new_data$depth_cm, new_data$prob_fit, 50)
@@ -240,8 +240,8 @@ for(n in 1: length(h)) {
     }
     
     if(max(new_data$prob_fit)<75) {
-      newx3a <- max(new_data$Q)
-      hy_lim2 <- max(new_data$depth_cm)
+      newx3a <- NA
+      hy_lim2 <- NA
     } else {
       newx3a <- newx3a
       hy_lim3 <- hy_lim3
@@ -600,8 +600,8 @@ for(n in 1: length(h)) {
     }
     
     if(max(new_data$prob_fit)<0.25) {
-      newx1a <- max(new_data$Q)
-      hy_lim1 <- max(new_data$Velocity)
+      newx1a <- NA
+      hy_lim1 <- NA
     } else {
       newx1a <- newx1a
       hy_lim1 <- hy_lim1
@@ -617,8 +617,8 @@ for(n in 1: length(h)) {
     
     ## medium
     if(max(new_data$prob_fit)<0.5) {
-      newx2a <- max(new_data$Q)
-      hy_lim2 <- max(new_data$Velocity)
+      newx2a <- NA
+      hy_lim2 <- NA
     } else {
       newx2a <- RootLinearInterpolant(new_data$Q, new_data$prob_fit, 0.5)
       hy_lim2 <- RootLinearInterpolant(new_data$Velocity, new_data$prob_fit, 0.5)
@@ -653,8 +653,8 @@ for(n in 1: length(h)) {
     }
     
     if(max(new_data$prob_fit)<0.75) {
-      newx3a <- max(new_data$Q)
-      hy_lim2 <- max(new_data$Velocity)
+      newx3a <- NA
+      hy_lim2 <- NA
     } else {
       newx3a <- newx3a
       hy_lim3 <- hy_lim3

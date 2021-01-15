@@ -187,8 +187,8 @@ for(n in 1: length(h)) {
     
     ## medium
     if(max(new_data$prob_fit)<0.2) {
-      newx2a <- max(new_data$Q)
-      hy_lim2 <- max(new_data$depth_cm)
+      newx2a <- NA
+      hy_lim2 <- NA
     } else {
       newx2a <- RootLinearInterpolant(new_data$Q, new_data$prob_fit, 0.2)
       hy_lim2 <- RootLinearInterpolant(new_data$depth_cm, new_data$prob_fit, 0.2)
@@ -221,8 +221,8 @@ for(n in 1: length(h)) {
     }
     
     if(max(new_data$prob_fit)<0.3) {
-      newx3a <- max(new_data$Q)
-      hy_lim2 <- max(new_data$depth_cm)
+      newx3a <- NA
+      hy_lim2 <- NA
     } else {
       newx3a <- newx3a
       hy_lim3 <- hy_lim3
