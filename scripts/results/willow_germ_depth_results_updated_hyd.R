@@ -68,11 +68,11 @@ probs <- seq(1, length(time_stats_seas$TimePeriod), 1)
 
 for(p in 1: length(probs)) {
   
-  time_stats_seas$Suitability_Class[p] <- if(time_stats_seas$TimePercentage[p] >=30 && 
+  time_stats_seas$Suitability_Class[p] <- if(time_stats_seas$TimePercentage[p] >=24 && 
                                              time_stats_seas$TimePercentage[p] <= 76) {
     paste("High") 
     
-  } else if (time_stats_seas$TimePercentage[p] <=30 || 
+  } else if (time_stats_seas$TimePercentage[p] <=24 || 
              time_stats_seas$TimePercentage[p] >= 76) {
     paste("Low") 
 
@@ -146,12 +146,12 @@ probs <- seq(1, length(total_days_seas$TimePeriod), 1)
 
 for(p in 1: length(probs)) {
   
-  total_days_seas$Suitability_Class[p] <- if(total_days_seas$DaysPerMonth[p] >= 9 &&
-                                            total_days_seas$DaysPerMonth[p] <= 24) {
+  total_days_seas$Suitability_Class[p] <- if(total_days_seas$DaysPerMonth[p] >= 8 &&
+                                            total_days_seas$DaysPerMonth[p] <= 23) {
     paste("High") 
     
-  } else if (total_days_seas$DaysPerMonth[p] <= 9 ||
-             total_days_seas$DaysPerMonth[p] >= 24) {
+  } else if (total_days_seas$DaysPerMonth[p] <= 8 ||
+             total_days_seas$DaysPerMonth[p] >= 23) {
     
     paste("Low") 
     
