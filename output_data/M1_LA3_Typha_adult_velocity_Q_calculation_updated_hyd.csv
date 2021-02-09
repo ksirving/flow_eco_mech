@@ -1,4 +1,4 @@
 "","Low","Medium","High","Position","Species","Life_Stage","Hydraulic","Node"
-"1","Q >= min_limit & Q <= newx1a","Q >= min_limit & Q <= newx2a","Q < 0","vel_m_LOB","Typha","Adult","Velocity","LA3"
+"1","Q >= min_limit & Q <= newx1a","Q >= min_limit & Q <= newx2a","Q >= newx3a[1] & Q <= newx3a[2]","vel_m_LOB","Typha","Adult","Velocity","LA3"
 "2","Q <= newx1a[1] & Q >= newx1a[2]","Q < 0","Q < 0","vel_m_MC","Typha","Adult","Velocity","LA3"
-"3","Q >= min_limit & Q <= newx1a","Q >= min_limit & Q <= newx2a","Q < 0","vel_m_ROB","Typha","Adult","Velocity","LA3"
+"3","Q >= min_limit & Q <= newx1a","Q >= min_limit & Q <= newx2a","Q >= newx3a[1] & Q <= newx3a[2]","vel_m_ROB","Typha","Adult","Velocity","LA3"

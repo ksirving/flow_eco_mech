@@ -1,5 +1,5 @@
 "","V1","Type","Species","Life_Stage","Hydraulic","Node"
 "1",16.0653305053711,"Q_limit1","SAS","Fry","Velocity","F45B"
-"2",0.578532461976042,"Q_limit2","SAS","Fry","Velocity","F45B"
+"2",8.00827164899091,"Q_limit2","SAS","Fry","Velocity","F45B"
 "3",0,"Hydraulic_limit1","SAS","Fry","Velocity","F45B"
 "4",0.05,"Hydraulic_limit2","SAS","Fry","Velocity","F45B"

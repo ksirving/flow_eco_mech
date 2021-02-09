@@ -1,5 +1,5 @@
 "","V1","V2","V3","Type","Species","Life_Stage","Hydraulic","Node"
-"1",8093.93310546875,0.454739391803741,7489.60791015625,"Q_limit1","Steelhead","Migration_Prolonged","Velocity","LA202"
-"2",28466.283203125,451.991328096089,28466.283203125,"Q_limit2","Steelhead","Migration_Prolonged","Velocity","LA202"
+"1",1278.57861328125,0,1173.27380371094,"Q_limit1","Steelhead","Migration_Prolonged","Velocity","LA202"
+"2",28466.283203125,28466.283203125,28466.283203125,"Q_limit2","Steelhead","Migration_Prolonged","Velocity","LA202"
 "3",0,0,0,"Hydraulic_limit1","Steelhead","Migration_Prolonged","Velocity","LA202"
 "4",2,2,2,"Hydraulic_limit2","Steelhead","Migration_Prolonged","Velocity","LA202"

@@ -65,7 +65,7 @@
 "64",2010-10-01,2010,10,"critical","MC","F319","Low",0,"Typha","adult","velocity",500
 "65",2011-10-01,2011,10,"critical","MC","F319","Low",3,"Typha","adult","velocity",500
 "66",2012-10-01,2012,10,"critical","MC","F319","Low",0,"Typha","adult","velocity",500
-"67",2013-10-01,2013,10,"critical","MC","F319","Low",7,"Typha","adult","velocity",500
+"67",2013-10-01,2013,10,"critical","MC","F319","Low",8,"Typha","adult","velocity",500
 "68",2014-10-01,2014,10,"critical","MC","F319","Low",8,"Typha","adult","velocity",500
 "69",2015-10-01,2015,10,"critical","MC","F319","Low",8,"Typha","adult","velocity",500
 "70",2016-10-01,2016,10,"critical","MC","F319","Low",8,"Typha","adult","velocity",500
@@ -149,7 +149,7 @@
 "148",2010-10-01,2010,10,"critical","MC","F319","Medium",0,"Typha","adult","velocity",500
 "149",2011-10-01,2011,10,"critical","MC","F319","Medium",2,"Typha","adult","velocity",500
 "150",2012-10-01,2012,10,"critical","MC","F319","Medium",0,"Typha","adult","velocity",500
-"151",2013-10-01,2013,10,"critical","MC","F319","Medium",7,"Typha","adult","velocity",500
+"151",2013-10-01,2013,10,"critical","MC","F319","Medium",8,"Typha","adult","velocity",500
 "152",2014-10-01,2014,10,"critical","MC","F319","Medium",7,"Typha","adult","velocity",500
 "153",2015-10-01,2015,10,"critical","MC","F319","Medium",0,"Typha","adult","velocity",500
 "154",2016-10-01,2016,10,"critical","MC","F319","Medium",0,"Typha","adult","velocity",500

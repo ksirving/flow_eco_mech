@@ -142,7 +142,7 @@ for(n in 1: length(h)) {
     
     colnames(new_dataD)[4] <- "depth_cm"
     
-    min_limit <- filter(new_dataD, depth_cm >0.03)
+    min_limit <- filter(new_dataD, depth_cm >= 3)
     min_limit <- min(min_limit$Q)
     min_shear <- min(new_data$value)
     min_limit

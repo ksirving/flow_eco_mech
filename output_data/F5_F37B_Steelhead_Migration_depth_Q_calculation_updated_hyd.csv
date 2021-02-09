@@ -1,0 +1,4 @@
+"","Thresh","Position","Species","Life_Stage","Hydraulic","Node"
+"1","Q >= newx1a","depth_cm_LOB","Steelhead","Migration","Depth","F37B"
+"2","Q >= newx1a","depth_cm_MC","Steelhead","Migration","Depth","F37B"
+"3","Q >= newx1a","depth_cm_ROB","Steelhead","Migration","Depth","F37B"

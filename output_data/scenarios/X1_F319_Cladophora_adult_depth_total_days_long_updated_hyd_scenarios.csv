@@ -65,7 +65,7 @@
 "64",2010-10-01,2010,10,"critical","MC","F319","Low",8,"Cladophora","adult","depth",500
 "65",2011-10-01,2011,10,"critical","MC","F319","Low",8,"Cladophora","adult","depth",500
 "66",2012-10-01,2012,10,"critical","MC","F319","Low",8,"Cladophora","adult","depth",500
-"67",2013-10-01,2013,10,"critical","MC","F319","Low",7,"Cladophora","adult","depth",500
+"67",2013-10-01,2013,10,"critical","MC","F319","Low",8,"Cladophora","adult","depth",500
 "68",2014-10-01,2014,10,"critical","MC","F319","Low",8,"Cladophora","adult","depth",500
 "69",2015-10-01,2015,10,"critical","MC","F319","Low",8,"Cladophora","adult","depth",500
 "70",2016-10-01,2016,10,"critical","MC","F319","Low",8,"Cladophora","adult","depth",500
@@ -149,7 +149,7 @@
 "148",2010-10-01,2010,10,"critical","MC","F319","Medium",8,"Cladophora","adult","depth",500
 "149",2011-10-01,2011,10,"critical","MC","F319","Medium",8,"Cladophora","adult","depth",500
 "150",2012-10-01,2012,10,"critical","MC","F319","Medium",8,"Cladophora","adult","depth",500
-"151",2013-10-01,2013,10,"critical","MC","F319","Medium",7,"Cladophora","adult","depth",500
+"151",2013-10-01,2013,10,"critical","MC","F319","Medium",8,"Cladophora","adult","depth",500
 "152",2014-10-01,2014,10,"critical","MC","F319","Medium",8,"Cladophora","adult","depth",500
 "153",2015-10-01,2015,10,"critical","MC","F319","Medium",8,"Cladophora","adult","depth",500
 "154",2016-10-01,2016,10,"critical","MC","F319","Medium",8,"Cladophora","adult","depth",500
@@ -233,7 +233,7 @@
 "232",2010-10-01,2010,10,"critical","MC","F319","High",8,"Cladophora","adult","depth",500
 "233",2011-10-01,2011,10,"critical","MC","F319","High",3,"Cladophora","adult","depth",500
 "234",2012-10-01,2012,10,"critical","MC","F319","High",8,"Cladophora","adult","depth",500
-"235",2013-10-01,2013,10,"critical","MC","F319","High",7,"Cladophora","adult","depth",500
+"235",2013-10-01,2013,10,"critical","MC","F319","High",8,"Cladophora","adult","depth",500
 "236",2014-10-01,2014,10,"critical","MC","F319","High",8,"Cladophora","adult","depth",500
 "237",2015-10-01,2015,10,"critical","MC","F319","High",8,"Cladophora","adult","depth",500
 "238",2016-10-01,2016,10,"critical","MC","F319","High",8,"Cladophora","adult","depth",500

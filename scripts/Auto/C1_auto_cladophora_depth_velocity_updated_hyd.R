@@ -38,7 +38,7 @@ setwd("input_data/HecRas")
 h <- list.files(pattern="predictions")
 length(h) ## 20
 h
-n=12
+n=19
 ## set wd back to main
 setwd("/Users/katieirving/Documents/git/flow_eco_mech")
 
@@ -159,6 +159,7 @@ for(n in 1: length(h)) {
 
   # probability as a function of discharge -----------------------------------
   p=1
+  
   for(p in 1:length(positions)) {
     
     new_data <- all_data %>% 
@@ -172,7 +173,7 @@ for(n in 1: length(h)) {
       filter(prob_fit == max(prob_fit)) #%>%
     
     peakQ  <- max(peak$Q)
-    min_limit <- filter(new_data, depth_cm >= 0.03)
+    min_limit <- filter(new_data, depth_cm >= 3)
     min_limit <- min(min_limit$Q)
 
     ## Main channel curves
@@ -254,7 +255,7 @@ for(n in 1: length(h)) {
       newx3a <- newx3a
       hy_lim3 <- hy_lim3
     }
-    
+
     ## MAKE DF OF Q LIMITS
     limits[,p] <- c(newx1a[1], newx1a[2],newx1a[3], newx1a[4],
                     newx2a[1], newx2a[2],newx2a[3], newx2a[4], 
@@ -281,7 +282,7 @@ for(n in 1: length(h)) {
     
     ## Main channel curves
     
-    
+    high_thresh
     low_thresh <- expression_Q(newx1a, peakQ) 
     low_thresh <-as.expression(do.call("substitute", list(low_thresh[[1]], list(limit = as.name("newx1a")))))
     
@@ -294,7 +295,7 @@ for(n in 1: length(h)) {
     Q_Calc[p,] <- c(paste(low_thresh), paste(med_thresh), paste(high_thresh))
     
     ###### calculate amount of time
-   
+   head(time_stats)
     time_stats <- new_datax %>%
       dplyr::group_by(water_year) %>%
       dplyr::mutate(Low = sum(eval(low_thresh))/length(DateTime)*100) %>%
@@ -547,7 +548,7 @@ for(n in 1: length(h)) {
   save(all_data, file=paste("output_data/C1_", NodeName, "_Cladophora_velocity_adult_discharge_probs_2010_2017_TS_updated_hyd.RData", sep=""))
   
   ### define dataframes for 2nd loop
-  
+
   ## define positions
   positions <- unique(all_data$variable)
   ## Q Limits
@@ -576,7 +577,7 @@ for(n in 1: length(h)) {
     ## define position
     PositionName <- str_split(positions[p], "_", 3)[[1]]
     PositionName <- PositionName[3]
-    
+
     new_dataD <- hyd_dep %>% 
       select(DateTime, node, Q, contains(PositionName)) 
     
@@ -587,7 +588,7 @@ for(n in 1: length(h)) {
       filter(prob_fit == max(prob_fit)) #%>%
     
     peakQ  <- max(peak$Q)
-    min_limit <- filter(new_dataD, depth_cm >0.03)
+    min_limit <- filter(new_dataD, depth_cm >=3)
     min_limit <- min(min_limit$Q)
 
     ## low
@@ -668,7 +669,7 @@ for(n in 1: length(h)) {
       hy_lim3 <- hy_lim3
     }
     
-    
+    newx3a
     ## MAKE DF OF Q LIMITS
     limits[,p] <- c(newx1a[1], newx1a[2],newx1a[3], newx1a[4],
                     newx2a[1], newx2a[2],newx2a[3], newx2a[4], 
@@ -707,7 +708,7 @@ for(n in 1: length(h)) {
     Q_Calc[p,] <- c(paste(low_thresh), paste(med_thresh), paste(high_thresh))
 
     ###### calculate amount of time
-    head(time_stats)
+
     time_stats <- new_datax %>%
       dplyr::group_by(water_year) %>%
       dplyr::mutate(Low = sum(eval(low_thresh))/length(DateTime)*100) %>%

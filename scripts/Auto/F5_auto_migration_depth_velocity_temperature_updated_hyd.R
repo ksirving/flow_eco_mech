@@ -21,7 +21,7 @@ setwd("input_data/HecRas")
 h <- list.files(pattern="predictions")
 length(h) ## 18
 h
-n=2
+n=16
 
 ## set wd back to main
 setwd("/Users/katieirving/Documents/git/flow_eco_mech")
@@ -126,7 +126,7 @@ for(n in 1: length(h)) {
   days_data <- NULL
   
   # probability as a function of discharge -----------------------------------
-  p=1
+  p=2
   for(p in 1:length(positions)) {
     
     new_data <- all_data %>% 
@@ -400,7 +400,7 @@ for(n in 1: length(h)) {
   time_statsx <- NULL
   days_data <- NULL
   
-p=2
+# p=2
 
   # probability as a function of discharge -----------------------------------
   
@@ -408,7 +408,7 @@ p=2
     
     new_data <- all_data %>% 
       filter(variable  == positions[p])
-    
+
     ## define position
     PositionName <- str_split(positions[p], "_", 3)[[1]]
     PositionName <- PositionName[3]
@@ -419,7 +419,7 @@ p=2
     colnames(new_dataD)[4] <- "depth_cm"
     
     
-    min_limit <- filter(new_dataD, depth_cm >0.03)
+    min_limit <- filter(new_dataD, depth_cm >= 3)
     
     min_limit <- min(min_limit$Q)
     
@@ -437,7 +437,7 @@ p=2
       newx2a <- approx(x = curve$y, y = curve$x, xout = 3.1)$y
     }
 
-    
+    newx2a
     ## MAKE DF OF Q LIMITS
     limits[,p] <- c(min_limit, newx2a)
     H_limits[, p] <- c(min(new_data$value), 3.1)

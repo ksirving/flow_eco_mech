@@ -17,17 +17,17 @@ setwd("/Users/katieirving/Documents/git/flow_eco_mech")
 ### change wd
 setwd("input_data/LAR_WaterTemperature")
 tp <- list.files(pattern="Sim_Avg")
-
+tp
 ## change wd back 
 setwd("/Users/katieirving/Documents/git/flow_eco_mech")
 all_probsx <- NULL
-
+n=1
 
 ## start loop
 for(n in 1: length(tp)) {
   ## temp data
   TempData <- read.csv(file=paste("input_data/LAR_WaterTemperature/", tp[n], sep=""))
-  TempData
+  TempData ## mean_max_temp
   
   ### species data
   fitdata <- read.csv("output_data/adult_temp_prob_curve_data.csv")

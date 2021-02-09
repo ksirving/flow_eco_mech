@@ -36,7 +36,7 @@ setwd("input_data/HecRas")
 h <- list.files(pattern="_predictions")
 length(h) ## 20
 h
-n=9
+n=8
 ## set wd back to main
 setwd("/Users/katieirving/Documents/git/flow_eco_mech")
 
@@ -155,7 +155,7 @@ for(n in 1: length(h)) {
   days_data <- NULL
   
   # probability as a function of discharge -----------------------------------
-
+p=1
   for(p in 1:length(positions)) {
     
     new_data <- all_data %>% 
@@ -174,7 +174,7 @@ for(n in 1: length(h)) {
       filter(prob_fit == max(prob_fit)) #%>%
     
     peakQ  <- max(peak$Q)
-    min_limit <- filter(new_data, depth_cm >= 0.03)
+    min_limit <- filter(new_data, depth_cm >= 3)
     min_limit <- min(min_limit$Q)
     
     ## Main channel curves
@@ -236,7 +236,7 @@ for(n in 1: length(h)) {
       hy_lim3 <- hy_lim3
     }
     
-    
+    newx3a
     ## MAKE DF OF Q LIMITS
     limits[,p] <- c(newx1a[1], newx1a[2],newx1a[3], newx1a[4],
                     newx2a[1], newx2a[2],newx2a[3], newx2a[4], 

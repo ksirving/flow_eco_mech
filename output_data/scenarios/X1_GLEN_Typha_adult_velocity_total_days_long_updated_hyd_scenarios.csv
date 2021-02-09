@@ -245,9 +245,9 @@
 "244",2014-12-01,2014,12,"critical","LOB","GLEN","Low",8,"Typha","adult","velocity",500
 "245",2014-12-01,2014,12,"critical","MC","GLEN","Low",0,"Typha","adult","velocity",500
 "246",2014-12-01,2014,12,"critical","ROB","GLEN","Low",0,"Typha","adult","velocity",500
-"247",2015-12-01,2015,12,"critical","LOB","GLEN","Low",0,"Typha","adult","velocity",500
+"247",2015-12-01,2015,12,"critical","LOB","GLEN","Low",8,"Typha","adult","velocity",500
 "248",2015-12-01,2015,12,"critical","MC","GLEN","Low",0,"Typha","adult","velocity",500
-"249",2015-12-01,2015,12,"critical","ROB","GLEN","Low",0,"Typha","adult","velocity",500
+"249",2015-12-01,2015,12,"critical","ROB","GLEN","Low",8,"Typha","adult","velocity",500
 "250",2016-12-01,2016,12,"critical","LOB","GLEN","Low",8,"Typha","adult","velocity",500
 "251",2016-12-01,2016,12,"critical","MC","GLEN","Low",0,"Typha","adult","velocity",500
 "252",2016-12-01,2016,12,"critical","ROB","GLEN","Low",0,"Typha","adult","velocity",500
@@ -497,9 +497,9 @@
 "496",2014-12-01,2014,12,"critical","LOB","GLEN","Medium",0,"Typha","adult","velocity",500
 "497",2014-12-01,2014,12,"critical","MC","GLEN","Medium",8,"Typha","adult","velocity",500
 "498",2014-12-01,2014,12,"critical","ROB","GLEN","Medium",0,"Typha","adult","velocity",500
-"499",2015-12-01,2015,12,"critical","LOB","GLEN","Medium",0,"Typha","adult","velocity",500
-"500",2015-12-01,2015,12,"critical","MC","GLEN","Medium",0,"Typha","adult","velocity",500
-"501",2015-12-01,2015,12,"critical","ROB","GLEN","Medium",0,"Typha","adult","velocity",500
+"499",2015-12-01,2015,12,"critical","LOB","GLEN","Medium",8,"Typha","adult","velocity",500
+"500",2015-12-01,2015,12,"critical","MC","GLEN","Medium",8,"Typha","adult","velocity",500
+"501",2015-12-01,2015,12,"critical","ROB","GLEN","Medium",8,"Typha","adult","velocity",500
 "502",2016-12-01,2016,12,"critical","LOB","GLEN","Medium",0,"Typha","adult","velocity",500
 "503",2016-12-01,2016,12,"critical","MC","GLEN","Medium",8,"Typha","adult","velocity",500
 "504",2016-12-01,2016,12,"critical","ROB","GLEN","Medium",0,"Typha","adult","velocity",500

@@ -1,0 +1,5 @@
+"","V1","V2","V3","Type","Species","Life_Stage","Hydraulic","Node"
+"1",1496.15765235602,0,1385.63393773073,"Q_limit1","Steelhead","Migration","Depth","LA202Jan"
+"2",1496.15765235602,0,1385.63393773073,"Q_limit2","Steelhead","Migration","Depth","LA202Jan"
+"3",18,18,18,"Hydraulic_limit1","Steelhead","Migration","Depth","LA202Jan"
+"4",18,18,18,"Hydraulic_limit2","Steelhead","Migration","Depth","LA202Jan"

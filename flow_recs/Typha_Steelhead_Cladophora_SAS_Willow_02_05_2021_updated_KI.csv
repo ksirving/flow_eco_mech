@@ -1,0 +1,204 @@
+﻿Species,Species_Label,Node,Reach,Critial_XS_Position,Seasonal Component,Current_Suitability,Lower_Limit,Upper_Limit,Probability_Threshold,Designation,Duration_Days,Timing_Start_WYDay,Timing_End_WYDay
+Willow - Growth,Willow Growth,LA20 2,LAR 10 - Upstream Reach,Overbank,Summer Baseflow,suitable,1,1646,Medium,Existing,182,183,365
+Willow - Growth,Willow Growth,LA14,LAR 7 - Below Burbank,Overbank,Summer Baseflow,suitable,8,841,Medium,Existing,182,183,365
+Willow - Growth,Willow Growth,GLEN,LAR 5 - Glendale Narrows,Overbank,Summer Baseflow,suitable,23,595,Medium,Existing,182,183,365
+Willow - Growth,Willow Growth,LA11,LAR 5 - Glendale Narrows,Overbank,Summer Baseflow,suitable,25,844,Medium,Existing,182,183,365
+Willow - Growth,Willow Growth,F57C,LAR 5 - Glendale Narrows,Overbank,Summer Baseflow,suitable,26,91,Medium,Existing,182,183,365
+Willow - Growth,Willow Growth,11101250,Rio Hondo 2 - Above Spreading Grounds,Overbank,Summer Baseflow,suitable,1,487,Medium,Existing,182,183,365
+Willow - Growth,Willow Growth,F37B Low,Compton Creek,Overbank,Summer Baseflow,unsuitable,10,114,Medium,Existing,182,183,365
+Willow - Adult,Willow Adult,LA20_2,LAR 10 - Upstream Reach,Overbank,Summer Baseflow,suitable,1,28466,Medium,Existing,365,1,365
+Willow - Adult,Willow Adult,LA14,LAR 7 - Below Burbank,Overbank,Summer Baseflow,suitable,8,39231,Medium,Existing,365,1,365
+Willow - Adult,Willow Adult,GLEN,LAR 5 - Glendale Narrows,Overbank,Summer Baseflow,suitable,23,40590,Medium,Existing,365,1,365
+Willow - Adult,Willow Adult,LA11,LAR 5 - Glendale Narrows,Overbank,Summer Baseflow,suitable,25,40888,Medium,Existing,365,1,365
+Willow - Adult,Willow Adult,F57C,LAR 5 - Glendale Narrows,Overbank,Summer Baseflow,suitable,26,41750,Medium,Existing,365,1,365
+Willow - Adult,Willow Adult,11101250,Rio Hondo 2 - Above Spreading Grounds,Overbank,Summer Baseflow,suitable,1,8327,Medium,Existing,365,1,365
+Willow - Adult,Willow Adult,F37B Low,Compton Creek,Overbank,Summer Baseflow,unsuitable,8,3369,Medium,Existing,365,1,365
+Willow - Growth,Willow Growth,LA20 2,LAR 10 - Upstream Reach,Overbank,Summer Baseflow,suitable,1,1502,High,Existing,182,183,365
+Willow - Growth,Willow Growth,LA14,LAR 7 - Below Burbank,Overbank,Summer Baseflow,suitable,8,655,High,Existing,182,183,365
+Willow - Growth,Willow Growth,GLEN,LAR 5 - Glendale Narrows,Overbank,Summer Baseflow,suitable,23,256,High,Existing,182,183,365
+Willow - Growth,Willow Growth,LA11,LAR 5 - Glendale Narrows,Overbank,Summer Baseflow,suitable,25,666,High,Existing,182,183,365
+Willow - Growth,Willow Growth,F57C,LAR 5 - Glendale Narrows,Overbank,Summer Baseflow,unsuitable,26,42,High,Existing,182,183,365
+Willow - Growth,Willow Growth,11101250,Rio Hondo 2 - Above Spreading Grounds,Overbank,Summer Baseflow,suitable,1,269,High,Existing,182,183,365
+Willow - Growth,Willow Growth,F37B Low,Compton Creek,Overbank,Summer Baseflow,unsuitable,10,86,High,Existing,182,183,365
+Willow - Adult,Willow Adult,LA20_2,LAR 10 - Upstream Reach,Overbank,Winter Baseflow,suitable,1,28466,NA,Existing,365,1,365
+Willow - Adult,Willow Adult,LA14,LAR 7 - Below Burbank,Overbank,Winter Baseflow,suitable,8,39231,NA,Existing,365,1,365
+Willow - Adult,Willow Adult,GLEN,LAR 5 - Glendale Narrows,Overbank,Winter Baseflow,suitable,23,40590,NA,Existing,365,1,365
+Willow - Adult,Willow Adult,LA11,LAR 5 - Glendale Narrows,Overbank,Winter Baseflow,suitable,25,40888,NA,Existing,365,1,365
+Willow - Adult,Willow Adult,F57C,LAR 5 - Glendale Narrows,Overbank,Winter Baseflow,suitable,26,41750,NA,Existing,365,1,365
+Willow - Adult,Willow Adult,11101250,Rio Hondo 2 - Above Spreading Grounds,Overbank,Winter Baseflow,suitable,1,8327,NA,Existing,365,1,365
+Willow - Adult,Willow Adult,F37B Low,Compton Creek,Overbank,Winter Baseflow,unsuitable,8,3369,NA,Existing,365,1,365
+Willow - Adult,Willow Adult,LA20_2,LAR 10 - Upstream Reach,Overbank,Winter Peak Flows,suitable,0,28466,NA,Existing,,,
+Willow - Adult,Willow Adult,LA14,LAR 7 - Below Burbank,Overbank,Winter Peak Flows,suitable,0,39231,NA,Existing,,,
+Willow - Adult,Willow Adult,GLEN,LAR 5 - Glendale Narrows,Overbank,Winter Peak Flows,suitable,0,40590,NA,Existing,,,
+Willow - Adult,Willow Adult,LA11,LAR 5 - Glendale Narrows,Overbank,Winter Peak Flows,suitable,0,40888,NA,Existing,,,
+Willow - Adult,Willow Adult,F57C,LAR 5 - Glendale Narrows,Overbank,Winter Peak Flows,suitable,0,41750,NA,Existing,,,
+Willow - Adult,Willow Adult,11101250,Rio Hondo 2 - Above Spreading Grounds,Overbank,Winter Peak Flows,suitable,0,8327,NA,Existing,,,
+Willow - Adult,Willow Adult,F37B Low,Compton Creek,Overbank,Winter Peak Flows,suitable,0,3369,NA,Existing,,,
+Steelhead - Migration (Prolonged),Steelhead Migration (Prolonged),LA20,LAR 10 - Upstream Reach,Main Channel,Summer Baseflow,unsuitable,16,3091,NA,Future,90,183,273
+Steelhead - Migration (Prolonged),Steelhead Migration (Prolonged),LA20 2,LAR 10 - Upstream Reach,Main Channel,Summer Baseflow,unsuitable,1,28466,NA,Future,90,183,273
+Steelhead - Migration (Prolonged),Steelhead Migration (Prolonged),F300,LAR 8 - Above Burbank,Main Channel,Summer Baseflow,suitable,25,215,NA,Future,90,183,273
+Steelhead - Migration (Prolonged),Steelhead Migration (Prolonged),LA14,LAR 7 - Below Burbank,Main Channel,Summer Baseflow,suitable,43,17070,NA,Future,90,183,273
+Steelhead - Migration (Prolonged),Steelhead Migration (Prolonged),LA13,LAR 6 - Above Glendale WRP,Main Channel,Summer Baseflow,unsuitable,998,5276,NA,Future,90,183,273
+Steelhead - Migration (Prolonged),Steelhead Migration (Prolonged),GLEN,LAR 5 - Glendale Narrows,Main Channel,Summer Baseflow,suitable,26,23399,NA,Future,90,183,273
+Steelhead - Migration (Prolonged),Steelhead Migration (Prolonged),LA11,LAR 5 - Glendale Narrows,Main Channel,Summer Baseflow,suitable,57,25087,NA,Future,90,183,273
+Steelhead - Migration (Prolonged),Steelhead Migration (Prolonged),F57C,LAR 5 - Glendale Narrows,Main Channel,Summer Baseflow,suitable,26,3828,NA,Future,90,183,273
+Steelhead - Migration (Prolonged),Steelhead Migration (Prolonged),LA8,LAR 4 - Above Rio Hondo,Main Channel,Summer Baseflow,suitable,63,689,NA,Future,90,183,273
+Steelhead - Migration (Prolonged),Steelhead Migration (Prolonged),F34D,LAR 4 - Above Rio Hondo,Main Channel,Summer Baseflow,suitable,60,2587,NA,Future,90,183,273
+Steelhead - Migration (Prolonged),Steelhead Migration (Prolonged),LA3,LAR 3 - Below Rio Hondo,Main Channel,Summer Baseflow,suitable,62,2698,NA,Future,90,183,273
+Steelhead - Migration (Prolonged),Steelhead Migration (Prolonged),F319,LAR 2 - Below Compton Creek,Main Channel,Summer Baseflow,suitable,63,7145,NA,Future,90,183,273
+Steelhead - Migration (Prolonged),Steelhead Migration (Prolonged),LA2,LAR 1 - Tidal Reach,Main Channel,Summer Baseflow,,,,NA,Future,90,183,273
+Steelhead - Migration (Prolonged),Steelhead Migration (Prolonged),LA1,LAR 1 - Tidal Reach,Main Channel,Summer Baseflow,,,,NA,Future,90,183,273
+Steelhead - Migration (Prolonged),Steelhead Migration (Prolonged),LA20,LAR 10 - Upstream Reach,Main Channel,Winter Baseflow,suitable,16,3091,NA,Future,120,62,182
+Steelhead - Migration (Prolonged),Steelhead Migration (Prolonged),LA20 2,LAR 10 - Upstream Reach,Main Channel,Winter Baseflow,unsuitable,1,28466,NA,Future,120,62,182
+Steelhead - Migration (Prolonged),Steelhead Migration (Prolonged),F300,LAR 8 - Above Burbank,Main Channel,Winter Baseflow,suitable,25,215,NA,Future,120,62,182
+Steelhead - Migration (Prolonged),Steelhead Migration (Prolonged),LA14,LAR 7 - Below Burbank,Main Channel,Winter Baseflow,suitable,43,17070,NA,Future,120,62,182
+Steelhead - Migration (Prolonged),Steelhead Migration (Prolonged),LA13,LAR 6 - Above Glendale WRP,Main Channel,Winter Baseflow,unsuitable,998,5276,NA,Future,120,62,182
+Steelhead - Migration (Prolonged),Steelhead Migration (Prolonged),GLEN,LAR 5 - Glendale Narrows,Main Channel,Winter Baseflow,suitable,26,23399,NA,Future,120,62,182
+Steelhead - Migration (Prolonged),Steelhead Migration (Prolonged),LA11,LAR 5 - Glendale Narrows,Main Channel,Winter Baseflow,suitable,57,25087,NA,Future,120,62,182
+Steelhead - Migration (Prolonged),Steelhead Migration (Prolonged),F57C,LAR 5 - Glendale Narrows,Main Channel,Winter Baseflow,suitable,26,3828,NA,Future,120,62,182
+Steelhead - Migration (Prolonged),Steelhead Migration (Prolonged),LA8,LAR 4 - Above Rio Hondo,Main Channel,Winter Baseflow,suitable,63,689,NA,Future,120,62,182
+Steelhead - Migration (Prolonged),Steelhead Migration (Prolonged),F34D,LAR 4 - Above Rio Hondo,Main Channel,Winter Baseflow,suitable,60,2587,NA,Future,120,62,182
+Steelhead - Migration (Prolonged),Steelhead Migration (Prolonged),LA3,LAR 3 - Below Rio Hondo,Main Channel,Winter Baseflow,suitable,62,2698,NA,Future,120,62,182
+Steelhead - Migration (Prolonged),Steelhead Migration (Prolonged),F319,LAR 2 - Below Compton Creek,Main Channel,Winter Baseflow,suitable,63,7145,NA,Future,120,62,182
+Steelhead - Migration (Prolonged),Steelhead Migration (Prolonged),LA2,LAR 1 - Tidal Reach,Main Channel,Winter Baseflow,,,,NA,Future,120,62,182
+Steelhead - Migration (Prolonged),Steelhead Migration (Prolonged),LA1,LAR 1 - Tidal Reach,Main Channel,Winter Baseflow,,,,NA,Future,120,62,182
+Typha - (Freshwater marsh),Typha (Freshwater marsh Growth),LA20 2,LAR 10 - Upstream Reach,Main Channel,Summer Baseflow,TBD,1,1432,Medium,Existing,182,183,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh Growth),LA14,LAR 7 - Below Burbank,Overbank,Summer Baseflow,suitable,23,197,Medium,Existing,182,183,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh Growth),GLEN,LAR 5 - Glendale Narrows,Overbank,Summer Baseflow,suitable,23,166,Medium,Existing,182,183,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh Growth),LA11,LAR 5 - Glendale Narrows,Main Channel,Summer Baseflow,unsuitable,24,48,Medium,Existing,182,183,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh Growth),F57C,LAR 5 - Glendale Narrows,Main Channel,Summer Baseflow,suitable,26,55,Medium,Existing,182,183,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh Growth),11101250,Rio Hondo 2 - Above Spreading Grounds,Main Channel,Summer Baseflow,suitable,0.0025,0.1,Medium,Existing,182,183,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh),F37B Low,Compton Creek,Overbank,Summer Baseflow,unsuitable,4,299,Medium,Existing,182,183,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh),LA20 2,LAR 10 - Upstream Reach,Main Channel,Summer Baseflow,TBD,TBD,,Medium,Existing,365,1,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh),LA14,LAR 7 - Below Burbank,Overbank,Summer Baseflow,,,,Medium,Existing,365,1,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh),GLEN,LAR 5 - Glendale Narrows,Overbank,Summer Baseflow,suitable,77,568,Medium,Existing,365,1,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh),LA11,LAR 5 - Glendale Narrows,Main Channel,Summer Baseflow,unsuitable,24,65,Medium,Existing,365,1,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh),F57C,LAR 5 - Glendale Narrows,Main Channel,Summer Baseflow,suitable,26,586,Medium,Existing,365,1,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh),11101250,Rio Hondo 2 - Above Spreading Grounds,Main Channel,Summer Baseflow,suitable,1,14,Medium,Existing,365,1,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh),F37B Low,Compton Creek,Overbank,Summer Baseflow,unsuitable,1,182,Medium,Existing,365,1,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh),LA20 2,LAR 10 - Upstream Reach,Main Channel,Summer Baseflow,,,,High,Existing,365,1,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh),LA14,LAR 7 - Below Burbank,Overbank,Summer Baseflow,,,,High,Existing,365,1,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh),GLEN,LAR 5 - Glendale Narrows,Overbank,Summer Baseflow,unsuitable,270,1237,High,Existing,365,1,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh),LA11,LAR 5 - Glendale Narrows,Main Channel,Summer Baseflow,unsuitable,93,823,High,Existing,365,1,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh),F57C,LAR 5 - Glendale Narrows,Main Channel,Summer Baseflow,suitable,91,1010,High,Existing,365,1,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh),11101250,Rio Hondo 2 - Above Spreading Grounds,Main Channel,Summer Baseflow,suitable,1,5,High,Existing,365,1,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh),F37B Low,Compton Creek,Overbank,Summer Baseflow,unsuitable,10,162,High,Existing,365,1,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh),LA20 2,LAR 10 - Upstream Reach,Main Channel,Winter Baseflow,TBD,TBD,,Medium,Existing,365,1,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh),LA14,LAR 7 - Below Burbank,Overbank,Winter Baseflow,,,,Medium,Existing,365,1,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh),GLEN,LAR 5 - Glendale Narrows,Overbank,Winter Baseflow,suitable,77,568,Medium,Existing,365,1,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh),LA11,LAR 5 - Glendale Narrows,Main Channel,Winter Baseflow,unsuitable,24,65,Medium,Existing,365,1,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh),F57C,LAR 5 - Glendale Narrows,Main Channel,Winter Baseflow,suitable,26,586,Medium,Existing,365,1,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh),11101250,Rio Hondo 2 - Above Spreading Grounds,Main Channel,Winter Baseflow,suitable,1,14,Medium,Existing,365,1,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh),F37B Low,Compton Creek,Overbank,Winter Baseflow,unsuitable,1,182,Medium,Existing,365,1,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh),LA20 2,LAR 10 - Upstream Reach,Main Channel,Winter Baseflow,,,,High,Existing,365,1,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh),LA14,LAR 7 - Below Burbank,Overbank,Winter Baseflow,,,,High,Existing,365,1,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh),GLEN,LAR 5 - Glendale Narrows,Overbank,Winter Baseflow,unsuitable,270,1237,High,Existing,365,1,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh),LA11,LAR 5 - Glendale Narrows,Main Channel,Winter Baseflow,suitable,93,823,High,Existing,365,1,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh),F57C,LAR 5 - Glendale Narrows,Main Channel,Winter Baseflow,suitable,91,1010,High,Existing,365,1,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh),11101250,Rio Hondo 2 - Above Spreading Grounds,Main Channel,Winter Baseflow,suitable,1,5,High,Existing,365,1,365
+Typha - (Freshwater marsh),Typha (Freshwater marsh),F37B Low,Compton Creek,Overbank,Winter Baseflow,unsuitable,10,162,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA20,LAR 10 - Upstream Reach,Main Channel,Summer Baseflow,unsuitable,17,2659,Medium,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA20 2,LAR 10 - Upstream Reach,Main Channel,Summer Baseflow,unsuitable,50,4093,Medium,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA13,LAR 6 - Above Glendale WRP,Main Channel,Summer Baseflow,unsuitable,192,16595,Medium,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),GLEN,LAR 5 - Glendale Narrows,Overbank,Summer Baseflow,unsuitable,537,4758,Medium,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA11,LAR 5 - Glendale Narrows,Main Channel,Summer Baseflow,suitable,57,4572,Medium,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),F57C,LAR 5 - Glendale Narrows,Overbank,Summer Baseflow,suitable,32,260,Medium,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA8,LAR 4 - Above Rio Hondo,Overbank,Summer Baseflow,unsuitable,118,13667,Medium,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),F34D,LAR 4 - Above Rio Hondo,Main Channel,Summer Baseflow,suitable,80,138,Medium,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA3,LAR 3 - Below Rio Hondo,Overbank,Summer Baseflow,unsuitable,348,20232,Medium,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),F319,LAR 2 - Below Compton Creek,Main Channel,Summer Baseflow,unsuitable,266,12447,Medium,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA2,LAR 1 - Tidal Reach,,Summer Baseflow,TBD,TBD,TBD,Medium,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA1,LAR 1 - Tidal Reach,,Summer Baseflow,TBD,TBD,TBD,Medium,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),11101250,Rio Hondo  2 - Above Spreading Grounds,Main Channel,Summer Baseflow,,,,Medium,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),F37B High,Compton Creek,Main Channel,Summer Baseflow,unsuitable,407,2899,Medium,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),F37B Low,Compton Creek,Overbank,Summer Baseflow,,,,Medium,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA20,LAR 10 - Upstream Reach,Main Channel,Summer Baseflow,unsuitable,45,300,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA20 2,LAR 10 - Upstream Reach,Main Channel,Summer Baseflow,unsuitable,60,914,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA13,LAR 6 - Above Glendale WRP,Main Channel,Summer Baseflow,unsuitable,332,6816,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),GLEN,LAR 5 - Glendale Narrows,Overbank,Summer Baseflow,unsuitable,927,1149,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA11,LAR 5 - Glendale Narrows,Main Channel,Summer Baseflow,unsuitable,195,747,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),F57C,LAR 5 - Glendale Narrows,Overbank,Summer Baseflow,suitable,64,435,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA8,LAR 4 - Above Rio Hondo,Overbank,Summer Baseflow,unsuitable,199,3591,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),F34D,LAR 4 - Above Rio Hondo,Main Channel,Summer Baseflow,suitable,80,234,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA3,LAR 3 - Below Rio Hondo,Overbank,Summer Baseflow,unsuitable,557,5453,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),F319,LAR 2 - Below Compton Creek,Main Channel,Summer Baseflow,unsuitable,486,2151,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA2,LAR 1 - Tidal Reach,,Summer Baseflow,TBD,TBD,TBD,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA1,LAR 1 - Tidal Reach,,Summer Baseflow,TBD,TBD,TBD,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),11101250,Rio Hondo  2 - Above Spreading Grounds,Main Channel,Summer Baseflow,,,,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),F37B High,Compton Creek,Main Channel,Summer Baseflow, ,,,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),F37B Low,Compton Creek,Overbank,Summer Baseflow,unsuitable,158,184,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA20,LAR 10 - Upstream Reach,Main Channel,Winter Baseflow,suitable,17,2659,Medium,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA20 2,LAR 10 - Upstream Reach,Main Channel,Winter Baseflow,unsuitable,50,4093,Medium,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA13,LAR 6 - Above Glendale WRP,Main Channel,Winter Baseflow,unsuitable,192,16595,Medium,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),GLEN,LAR 5 - Glendale Narrows,Overbank,Winter Baseflow,unsuitable,537,4758,Medium,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA11,LAR 5 - Glendale Narrows,Main Channel,Winter Baseflow,suitable,57,4572,Medium,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),F57C,LAR 5 - Glendale Narrows,Overbank,Winter Baseflow,suitable,32,260,Medium,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA8,LAR 4 - Above Rio Hondo,Overbank,Winter Baseflow,suitable,118,13667,Medium,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),F34D,LAR 4 - Above Rio Hondo,Main Channel,Winter Baseflow,suitable,80,138,Medium,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA3,LAR 3 - Below Rio Hondo,Overbank,Winter Baseflow,unsuitable,348,20232,Medium,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),F319,LAR 2 - Below Compton Creek,Main Channel,Winter Baseflow,unsuitable,266,12447,Medium,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA2,LAR 1 - Tidal Reach,,Winter Baseflow,TBD,,,Medium,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA1,LAR 1 - Tidal Reach,,Winter Baseflow,TBD,,,Medium,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),11101250,Rio Hondo  2 - Above Spreading Grounds,Main Channel,Winter Baseflow,,,,Medium,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),F37B High,Compton Creek,Main Channel,Winter Baseflow,unsuitable,407,2899,Medium,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),F37B Low,Compton Creek,Overbank,Winter Baseflow,,,,Medium,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA20,LAR 10 - Upstream Reach,Main Channel,Winter Baseflow,unsuitable,45,300,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA20 2,LAR 10 - Upstream Reach,Main Channel,Winter Baseflow,unsuitable,60,914,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA13,LAR 6 - Above Glendale WRP,Main Channel,Winter Baseflow,unsuitable,332,6816,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),GLEN,LAR 5 - Glendale Narrows,Overbank,Winter Baseflow,unsuitable,927,1149,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA11,LAR 5 - Glendale Narrows,Main Channel,Winter Baseflow,unsuitable,195,747,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),F57C,LAR 5 - Glendale Narrows,Overbank,Winter Baseflow,suitable,64,435,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA8,LAR 4 - Above Rio Hondo,Overbank,Winter Baseflow,unsuitable,199,3591,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),F34D,LAR 4 - Above Rio Hondo,Main Channel,Winter Baseflow,suitable,80,234,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA3,LAR 3 - Below Rio Hondo,Overbank,Winter Baseflow,unsuitable,557,5453,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),F319,LAR 2 - Below Compton Creek,Main Channel,Winter Baseflow,unsuitable,486,2151,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA2,LAR 1 - Tidal Reach,,Winter Baseflow,TBD,TBD,TBD,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA1,LAR 1 - Tidal Reach,,Winter Baseflow,TBD,TBD,TBD,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),11101250,Rio Hondo  2 - Above Spreading Grounds,Main Channel,Winter Baseflow,,,,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),F37B High,Compton Creek,Main Channel,Winter Baseflow,,,,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),F37B Low,Compton Creek,Overbank,Winter Peak Flows,unsuitable,158,184,High,Existing,365,1,365
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA20,LAR 10 - Upstream Reach,Main Channel,Winter Peak Flows,suitable,0,16912,NA,Existing,,,
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA20 2,LAR 10 - Upstream Reach,Main Channel,Winter Peak Flows,suitable,0,28466,NA,Existing,,,
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA13,LAR 6 - Above Glendale WRP,Main Channel,Winter Peak Flows,suitable,0,40486,NA,Existing,,,
+Cladophora - (Wading Bird),Cladophora (Wading Bird),GLEN,LAR 5 - Glendale Narrows,Overbank,Winter Peak Flows,suitable,0,40590,NA,Existing,,,
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA11,LAR 5 - Glendale Narrows,Main Channel,Winter Peak Flows,suitable,0,40888,NA,Existing,,,
+Cladophora - (Wading Bird),Cladophora (Wading Bird),F57C,LAR 5 - Glendale Narrows,Overbank,Winter Peak Flows,suitable,0,41750,NA,Existing,,,
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA8,LAR 4 - Above Rio Hondo,Overbank,Winter Peak Flows,suitable,0,42906,NA,Existing,,,
+Cladophora - (Wading Bird),Cladophora (Wading Bird),F34D,LAR 4 - Above Rio Hondo,Main Channel,Winter Peak Flows,suitable,0,46292,NA,Existing,,,
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA3,LAR 3 - Below Rio Hondo,Overbank,Winter Peak Flows,suitable,0,47491,NA,Existing,,,
+Cladophora - (Wading Bird),Cladophora (Wading Bird),F319,LAR 2 - Below Compton Creek,Main Channel,Winter Peak Flows,suitable,0,49845,NA,Existing,,,
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA2,LAR 1 - Tidal Reach,,Winter Peak Flows,TBD,TBD,TBD,NA,Existing,,,
+Cladophora - (Wading Bird),Cladophora (Wading Bird),LA1,LAR 1 - Tidal Reach,,Winter Peak Flows,TBD,TBD,TBD,NA,Existing,,,
+Cladophora - (Wading Bird),Cladophora (Wading Bird),11101250,Rio Hondo  2 - Above Spreading Grounds,Main Channel,Winter Peak Flows,,,8328,NA,Existing,,,
+Cladophora - (Wading Bird),Cladophora (Wading Bird),F37B High,Compton Creek,Main Channel,Winter Peak Flows,suitable,0,3369,NA,Existing,,,
+Cladophora - (Wading Bird),Cladophora (Wading Bird),F37B Low,Compton Creek,Overbank,Winter Peak Flows,suitable,0,3369,NA,Existing,,,
+SAS - (Coldwater fish),SAS (Coldwater fish),LA20 2,LAR 10 - Upstream Reach,Main Channel,Summer Baseflow,suitable,18,60,Medium,Future,152,152,304
+SAS - (Coldwater fish),SAS (Coldwater fish),LA14,LAR 6 - Above Glendale WRP,Main Channel,Summer Baseflow,suitable,24,415,Medium,Future,152,152,304
+SAS - (Coldwater fish),SAS (Coldwater fish),GLEN,LAR 5 - Glendale Narrows,Main Channel,Summer Baseflow,unsuitable,524,1389,Medium,Future,152,152,304
+SAS - (Coldwater fish),SAS (Coldwater fish),LA11,LAR 5 - Glendale Narrows,Main Channel,Summer Baseflow,suitable,40,323,Medium,Future,152,152,304
+SAS - (Coldwater fish),SAS (Coldwater fish),F57C,LAR 5 - Glendale Narrows,Main Channel,Summer Baseflow,unsuitable,104,447,Medium,Future,152,152,304
+SAS - (Coldwater fish),SAS (Coldwater fish),LA20 2,LAR 10 - Upstream Reach,Main Channel,Summer Baseflow,suitable,29,60,Medium,Future,365,1,365
+SAS - (Coldwater fish),SAS (Coldwater fish),LA14,LAR 6 - Above Glendale WRP,Main Channel,Summer Baseflow,suitable,44,615,Medium,Future,365,1,365
+SAS - (Coldwater fish),SAS (Coldwater fish),GLEN,LAR 5 - Glendale Narrows,Main Channel,Summer Baseflow,unsuitable,524,1389,Medium,Future,365,1,365
+SAS - (Coldwater fish),SAS (Coldwater fish),LA11,LAR 5 - Glendale Narrows,Main Channel,Summer Baseflow,suitable,58,487,Medium,Future,365,1,365
+SAS - (Coldwater fish),SAS (Coldwater fish),F57C,LAR 5 - Glendale Narrows,Main Channel,Summer Baseflow,unsuitable,104,632,Medium,Future,365,1,365
+SAS - (Coldwater fish),SAS (Coldwater fish),LA20 2,LAR 10 - Upstream Reach,Main Channel,Summer Baseflow,suitable,30,60,High,Future,152,152,304
+SAS - (Coldwater fish),SAS (Coldwater fish),LA14,LAR 6 - Above Glendale WRP,Main Channel,Summer Baseflow,suitable,64,326,High,Future,152,152,304
+SAS - (Coldwater fish),SAS (Coldwater fish),GLEN,LAR 5 - Glendale Narrows,Main Channel,Summer Baseflow,unsuitable,649,1205,High,Future,152,152,304
+SAS - (Coldwater fish),SAS (Coldwater fish),LA11,LAR 5 - Glendale Narrows,Main Channel,Summer Baseflow,suitable,70,252,High,Future,152,152,304
+SAS - (Coldwater fish),SAS (Coldwater fish),F57C,LAR 5 - Glendale Narrows,Main Channel,Summer Baseflow,unsuitable,251,364,High,Future,152,152,304
+SAS - (Coldwater fish),SAS (Coldwater fish),LA20 2,LAR 10 - Upstream Reach,Main Channel,Summer Baseflow,suitable,30,60,High,Future,365,1,365
+SAS - (Coldwater fish),SAS (Coldwater fish),LA14,LAR 6 - Above Glendale WRP,Main Channel,Summer Baseflow,unsuitable,136,870,High,Future,365,1,365
+SAS - (Coldwater fish),SAS (Coldwater fish),GLEN,LAR 5 - Glendale Narrows,Main Channel,Summer Baseflow,unsuitable,649,1205,High,Future,365,1,365
+SAS - (Coldwater fish),SAS (Coldwater fish),LA11,LAR 5 - Glendale Narrows,Main Channel,Summer Baseflow,unsuitable,103,378,High,Future,365,1,365
+SAS - (Coldwater fish),SAS (Coldwater fish),F57C,LAR 5 - Glendale Narrows,Main Channel,Summer Baseflow,unsuitable,251,510,High,Future,365,1,365
+SAS - (Coldwater fish),SAS (Coldwater fish),LA20 2,LAR 10 - Upstream Reach,Main Channel,Winter Baseflow,suitable,29,60,Medium,Future,365,1,365
+SAS - (Coldwater fish),SAS (Coldwater fish),LA14,LAR 6 - Above Glendale WRP,Main Channel,Winter Baseflow,suitable,44,615,Medium,Future,365,1,365
+SAS - (Coldwater fish),SAS (Coldwater fish),GLEN,LAR 5 - Glendale Narrows,Main Channel,Winter Baseflow,unsuitable,524,1389,Medium,Future,365,1,365
+SAS - (Coldwater fish),SAS (Coldwater fish),LA11,LAR 5 - Glendale Narrows,Main Channel,Winter Baseflow,suitable,58,487,Medium,Future,365,1,365
+SAS - (Coldwater fish),SAS (Coldwater fish),F57C,LAR 5 - Glendale Narrows,Main Channel,Winter Baseflow,suitable,104,632,Medium,Future,365,1,365
+SAS - (Coldwater fish),SAS (Coldwater fish),LA20 2,LAR 10 - Upstream Reach,Main Channel,Winter Baseflow,suitable,30,60,High,Future,365,1,365
+SAS - (Coldwater fish),SAS (Coldwater fish),LA14,LAR 6 - Above Glendale WRP,Main Channel,Winter Baseflow,unsuitable,136,870,High,Future,365,1,365
+SAS - (Coldwater fish),SAS (Coldwater fish),GLEN,LAR 5 - Glendale Narrows,Main Channel,Winter Baseflow,unsuitable,649,1205,High,Future,365,1,365
+SAS - (Coldwater fish),SAS (Coldwater fish),LA11,LAR 5 - Glendale Narrows,Main Channel,Winter Baseflow,suitable,103,378,High,Future,365,1,365
+SAS - (Coldwater fish),SAS (Coldwater fish),F57C,LAR 5 - Glendale Narrows,Main Channel,Winter Baseflow,unsuitable,251,510,High,Future,365,1,365

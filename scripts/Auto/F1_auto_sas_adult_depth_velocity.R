@@ -27,7 +27,7 @@ load(file="expression_Q_limit_function.RData")
 # Combine with hydraulic data -------------------------------------------
 
 ## upload habitat curve data
-fitdata <- read.csv("output_data/adult_depth_prob_curve_data.csv")
+fitdata <- read.csv("output_data/old_data/adult_depth_prob_curve_data.csv")
 
 ## upload hydraulic data
 setwd("input_data/HecRas")
@@ -172,8 +172,9 @@ peak <- new_data %>%
   filter(prob_fit == max(prob_fit)) #%>%
 
 peakQ  <- max(peak$Q)
-min_limit <- filter(new_data, depth_cm >= 0.1)
+min_limit <- filter(new_data, depth_cm >= 3)
 min_limit <- min(min_limit$Q)
+
 
 ## Main channel curves
 

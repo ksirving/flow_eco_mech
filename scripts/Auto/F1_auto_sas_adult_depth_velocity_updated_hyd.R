@@ -17,7 +17,8 @@ library(scales)
 library(data.table)
 library(zoo)
 library(scales)
-
+getwd()
+setwd("/Users/katieirving/Documents/git/flow_eco_mech")
 ## function to find roots
 load(file="root_interpolation_function.Rdata")
 
@@ -29,14 +30,14 @@ load(file="expression_Q_limit_function.RData")
 ## upload habitat curve data
 fitdata <- read.csv("output_data/old_data/adult_depth_prob_curve_data.csv")
 # fitdata <- read.csv("output_data/old_data/juvenile_depth_prob_curve_data.csv")
-
+head(fitdata)
 ## upload hydraulic data
 setwd("input_data/HecRas")
 
 h <- list.files(pattern="_predictions")
 length(h) ## 20
 h
-n=13
+n=8
 ## set wd back to main
 setwd("/Users/katieirving/Documents/git/flow_eco_mech")
 
@@ -98,19 +99,20 @@ hyd_dep <- hyd_dep %>% select(DateTime, node, Q, contains("depth"), date_num)
 
 # ## melt channel position data
 hyd_dep<-reshape2::melt(hyd_dep, id=c("DateTime","Q", "node", "date_num"))
-
+# head(hyd_dep)
 
 ## change NAs to 0 in concrete overbanks
 hyd_dep[is.na(hyd_dep)] <- 0
 
   ## use smooth spline to predict on new data set
 new_values <-smooth.spline(fitdata$depth_fit, fitdata$prob_fit)
-
+# head(new_values)
 all_data <- hyd_dep %>%
     group_by(variable) %>%
     mutate(prob_fit = predict(new_values, value)$y) %>%
     rename(depth_cm = value)
-
+head(all_data)
+range(all_data$prob_fit)
 ## save out
 save(all_data, file=paste("output_data/F1_", NodeName, "_SAS_adult_depth_discharge_probability_updated_hyd.RData", sep=""))
 
@@ -155,12 +157,14 @@ time_statsx <- NULL
 days_data <- NULL
 
 # probability as a function of discharge -----------------------------------
-p=3
+p=1
 for(p in 1:length(positions)) {
 
 new_data <- all_data %>% 
   filter(variable  == positions[p])
-
+head(new_data)
+range(new_data$prob_fit)
+range(new_data$depth_cm)
 ## define position
 PositionName <- str_split(positions[p], "_", 3)[[1]]
 PositionName <- PositionName[3]
@@ -172,9 +176,10 @@ new_data[which(new_data$prob_fit <  0.1),"prob_fit"] <- 0.1
 
 peak <- new_data %>%
   filter(prob_fit == max(prob_fit)) #%>%
-
+range(new_data$depth_cm)
 peakQ  <- max(peak$Q)
-min_limit <- filter(new_data, depth_cm >= 0.03)
+min_limit <- filter(new_data, depth_cm >=3)
+min_limit
 min_limit <- min(min_limit$Q)
 
 ## Main channel curves
@@ -236,7 +241,7 @@ if(length(newx3a) > 2) {
   hy_lim3 <- hy_lim3
 }
 
-
+# newx3a
 ## MAKE DF OF Q LIMITS
 limits[,p] <- c(newx1a[1], newx1a[2],newx1a[3], newx1a[4],
                newx2a[1], newx2a[2],newx2a[3], newx2a[4], 
@@ -573,7 +578,7 @@ hyd_vel<-reshape2::melt(hyd_vel, id=c("DateTime","Q", "node", "date_num"))
       filter(prob_fit == max(prob_fit)) #%>%
     
     peakQ  <- max(peak$Q)
-    min_limit <- filter(new_dataD, depth_cm >0.03)
+    min_limit <- filter(new_dataD, depth_cm >=3)
     min_limit <- min(min_limit$Q)
 
     ## Main channel curves
@@ -654,7 +659,7 @@ hyd_vel<-reshape2::melt(hyd_vel, id=c("DateTime","Q", "node", "date_num"))
       hy_lim3 <- hy_lim3
     }
     
-    
+    # newx2a
     
     ## MAKE DF OF Q LIMITS
     limits[,p] <- c(newx1a[1], newx1a[2],newx1a[3], newx1a[4],

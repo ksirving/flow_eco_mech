@@ -1,0 +1,4 @@
+"","Low","Medium","High","Position","Species","Life_Stage","Hydraulic","Node"
+"1","Q >= newx1a[1] & Q <= newx1a[2]","Q >= newx2a[1] & Q <= newx2a[2]","Q >= newx3a[1] & Q <= newx3a[2]","depth_cm_LOB","SAS","Juvenile","Depth","F37B"
+"2","Q >= newx1a[1] & Q <= newx1a[2]","Q >= newx2a[1] & Q <= newx2a[2]","Q >= newx3a[1] & Q <= newx3a[2]","depth_cm_MC","SAS","Juvenile","Depth","F37B"
+"3","Q >= newx1a[1] & Q <= newx1a[2]","Q >= newx2a[1] & Q <= newx2a[2]","Q >= newx3a[1] & Q <= newx3a[2]","depth_cm_ROB","SAS","Juvenile","Depth","F37B"

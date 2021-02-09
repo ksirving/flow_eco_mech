@@ -18,6 +18,7 @@ setwd("input_data/HecRas/scenarios")
 
 h <- list.files(pattern="_predictions")
 length(h) ## 
+h <- h[-c(9,13)] ## remove LA1/ LA2
 h
 ## set wd back to main
 setwd("/Users/katieirving/Documents/git/flow_eco_mech")
@@ -30,8 +31,8 @@ C <- list.files(path = "output_data", pattern="_calculation_updated_hyd")
 C
 length(L) 
 # Q_Calc <- read.csv(paste("output_data/F1_", NodeName, "_SAS_juvenile_depth_Q_calculation_updated_hyd.csv", sep=""))
-n=1
-
+n = 12
+n
 for(n in 1: length(h)) {
   
   NodeData <- read.csv(file=paste("input_data/HecRas/scenarios/", h[n], sep=""))
@@ -52,10 +53,10 @@ for(n in 1: length(h)) {
     rename(Q = Flow) %>%
     mutate(node = NodeName)
   
-  
+  head(NodeData)
   ## convert units and change names - depending on concrete/soft bottom. if/else to determine changes to data
   
-  if(length(NodeData) == 9) {
+  if(length(NodeData) <= 9) {
     hyd_dep <- hydraul %>%
       mutate(depth_cm_MC = (Max..Depth..ft..MC*0.3048)*100) %>%
       mutate(Shear_pa_MC = (Shear..lb.sq.ft..MC/0.020885)) %>%
@@ -96,7 +97,7 @@ for(n in 1: length(h)) {
   all_data$DateTime<-as.POSIXct(all_data$DateTime,
                                 format = "%m/%d/%Y",
                                 tz = "GMT")
-  
+  head(all_data)
   ## create year, month, day and hour columns and add water year
   
   all_data <- all_data %>%
@@ -114,14 +115,14 @@ for(n in 1: length(h)) {
   # all_positions <- unique(all_data$variable)
   scenarios <- unique(all_data$Scenario)
 QC
-c=1
+# c=17
   for(c in 1: length(QC)) {
     
     ## upload and format Q limits and calculation
     Q_Calc <- read.csv(file=paste("output_data/", QC[c], sep=""))
-  
+    Q_Calc
     QName <- str_split(QC[c], "_", 6)[[1]]
-    QName
+    # QName
     SpeciesName <- QName[3]
     LifeStageName <- QName[4]
     HydraulicName <- QName[5]
@@ -132,7 +133,7 @@ c=1
     
   # Q_Calc <- read.csv(paste("output_data/F1_", NodeName, "_SAS_juvenile_depth_Q_calculation_updated_hyd.csv", sep=""))
   
-  if(length(NodeData) == 9) {
+  if(length(NodeData) <= 9) {
     Q_Calc <- Q_Calc %>%
       mutate(Position = c("MC"))
     Q_Calc <- na.omit(Q_Calc)
@@ -142,16 +143,30 @@ c=1
   }
   
   # limits <- read.csv(paste("output_data/F1_", NodeName, "_SAS_juvenile_depth_Q_limits_updated_hyd.csv", sep=""))  
-  
+
     lim <- Filter(function(x) grepl(paste(SpeciesName), x), QL)
+
     lim <- Filter(function(x) grepl(paste(LifeStageName), x), lim)
     lim <- Filter(function(x) grepl(paste(HydraulicName), x), lim)
-  
-    limits <- read.csv(file=paste("output_data/", lim, sep=""))
     
+    limx <- str_split(lim, "_", 6)
+   
+    
+    if(limx[[1]][2] == NodeName) {
+      lim <- lim[1]
+    } else if(limx[[2]][2] == NodeName) {
+      lim <- lim[2]
+    } else if(limx[[3]][2] == NodeName) {
+      lim <- lim[3]
+    } else if(limx[[4]][2] == NodeName) {
+      lim <- lim[4]
+    }
+    
+    limits <- read.csv(file=paste("output_data/", lim, sep=""))
+    # limits
  
     
-  if(length(NodeData) == 9) {
+  if(length(NodeData) <= 9) {
     limits <- limits %>%
       rename(MC = V1) 
   } else {
@@ -175,13 +190,13 @@ c=1
       limits$Thresh[2] <- "newx2a"
         
     }
-  
+  # limits
  
   melt_timex <- NULL
   melt_daysx <- NULL
 
   # Select Scenarios -----------------------------------
-s=1
+# s=1
   for(s in 1:length(scenarios)) {
     
     scen_data <- all_data %>% 
@@ -193,12 +208,12 @@ s=1
       select(starts_with(HydraulicName))
     
     positions <- names(positions)
-    positions
+    # positions
     time_statsx <- NULL
     days_data <- NULL
     
     # cat(paste("Running Scenario", s))
-p=1
+# p=1
 
     for(p in 1:length(positions)) {
       
@@ -208,16 +223,16 @@ p=1
       
       PositionName <- str_split(positions[p], "_", 3)[[1]]
       PositionName <- PositionName[3]
-      PositionName
+      # PositionName
       min_limit <- scen_data %>% 
         select(Q,  contains(PositionName)) %>%
         select(Q, starts_with("depth"))
       
       depth_pos <- names(min_limit)[2]
-      min_limit <- filter(min_limit, depth_pos >0.03)
+      min_limit <- filter(min_limit, depth_pos >=3)
       min_limit <- min(min_limit$Q)
-      min_limit
-   
+      # min_limit
+
       ## Q limits
       if(dim(limits)[1] == 12) {
         ## low
@@ -227,15 +242,25 @@ p=1
           filter(ProbThresh == "Low")
         
         newx1a <- newx1ax[,1]
-        newx1a <- na.omit(newx1a)
-        
+       
+        if (sum(is.na(newx1a)) == 4)  {
+          newx1a = 0
+        } else {
+          newx1a <- sort(na.omit(newx1a))
+          }
+
         # medium
         newx2ax <- limits %>%
           select(all_of(PositionName), ProbThresh) %>%
           filter(ProbThresh == "Medium")
         
         newx2a <- newx2ax[,1]
-        newx2a <- na.omit(newx2a)
+        
+        if (sum(is.na(newx2a)) == 4)  {
+          newx2a = 0
+        } else {
+          newx2a <- sort(na.omit(newx2a))
+        }
         
         # high
         newx3ax <- limits %>%
@@ -243,8 +268,13 @@ p=1
           filter(ProbThresh == "High")
         
         newx3a <- newx3ax[,1]
-        newx3a <- na.omit(newx3a)
         
+        if (sum(is.na(newx3a)) == 4)  {
+          newx3a = 0
+        } else {
+          newx3a <- sort(na.omit(newx3a))
+        }
+
         ## Q calculation
         
         low_threshx <- Q_Calc %>%
@@ -285,7 +315,9 @@ p=1
         
       }
       
-    
+      # newx1a
+      # newx2a
+      # sort(newx3a)
       # create year_month column       
       new_datax <- new_data %>% unite(month_year, c(water_year,month), sep="-", remove=F) 
       
@@ -312,7 +344,7 @@ p=1
      
       new_datax <- new_datax %>%
         mutate(season = ifelse(month %in% critical, "critical", "non_critical"))
-      
+      head(new_datax)
       ###### calculate amount of time
       
       if(dim(limits)[1] == 12) {
@@ -340,7 +372,10 @@ p=1
       }
       
       time_statsx <- rbind(time_statsx, time_stats)
+      low_thresh
+      newx1a
       
+      data.table::rleid(eval(low_thresh))
       ### count days per month
       
       if(dim(limits)[1] == 12) {
@@ -498,7 +533,7 @@ p=1
     
     
     melt_daysx <- rbind(melt_daysx, melt_days)
-    head(melt_daysx)
+    # head(melt_daysx)
   } ## end 2nd loop scenarios
   
   ## in species hydraulic loop
